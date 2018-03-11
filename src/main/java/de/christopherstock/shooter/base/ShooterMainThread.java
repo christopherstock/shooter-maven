@@ -176,7 +176,6 @@
             SoundBg.stopCurrentSound();
         }
 
-        @Override
         public final void draw2D()
         {
             //draw loading screen if not initialized
@@ -215,7 +214,6 @@
             }
         }
 
-        @Override
         public final void draw3D()
         {
             //draw loading screen if not initialized
@@ -252,7 +250,6 @@
             }
         }
 
-        @Override
         public final void onFormDestroyed()
         {
           //ShooterDebug.major.out( "Main Form was closed - Shooter is destroyed" );

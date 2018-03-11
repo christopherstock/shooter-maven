@@ -67,7 +67,7 @@
 
             PlugInManager.addPlugIn
             (
-                com.sun.media.codec.audio.mp3.JavaDecoder.class.getName(),
+                com.sun.media.codec.audio.mpa.JavaDecoder.class.getName(),
                 new Format[]{input1, input2},
                 new Format[]{output},
                 PlugInManager.CODEC
@@ -120,7 +120,6 @@
                 final String soundName = this.toString();
                 iControllerListener = new ControllerListener()
                 {
-                    @Override
                     public void controllerUpdate( ControllerEvent ce )
                     {
                         ShooterDebug.sound.out( "Sound [" + soundName + "] ControllerUpdate [" + ce + "]" );

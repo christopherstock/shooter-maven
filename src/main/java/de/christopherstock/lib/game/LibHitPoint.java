@@ -222,7 +222,6 @@
             );
         }
 
-        @Override
         public final int compareTo( LibHitPoint otherHP )
         {
             if ( iHorzDistance == otherHP.iHorzDistance ) return 0;

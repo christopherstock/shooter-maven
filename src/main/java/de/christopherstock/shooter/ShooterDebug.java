@@ -65,25 +65,21 @@
             iDebugEnabled = aDebugEnabled;
         }
 
-        @Override
         public final void out( Object obj )
         {
             if ( DEBUG_MODE && iDebugEnabled    ) System.out.println( "[" + LibStringFormat.getSingleton().formatDateTime() + "] " + obj );
         }
 
-        @Override
         public final void err( Object obj )
         {
             if ( DEBUG_MODE                     ) System.err.println( "[" + LibStringFormat.getSingleton().formatDateTime() + "] " + obj );
         }
 
-        @Override
         public final void trace( Throwable obj )
         {
             if ( DEBUG_MODE                     ) obj.printStackTrace();
         }
 
-        @Override
         public final void mem()
         {
             if ( DEBUG_MODE && iDebugEnabled )

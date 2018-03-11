@@ -71,7 +71,6 @@
         *   @param  performTranslationOnFaces   Determines if the faces shall be translated
         *                                       by the new anchor.
         ******************************************************************************************/
-        @Override
         public void setNewAnchor( LibVertex newAnchor, boolean performTranslationOnFaces, LibTransformationMode transformationMode )
         {
             //assign new anchor for this mesh and for all it's faces - translate all faces by the new anchor!
@@ -131,7 +130,6 @@
         *   @param  tY  The translation for axis y.
         *   @param  tZ  The translation for axis z.
         **************************************************************************************/
-        @Override
         public void translate( float tX, float tY, float tZ, LibTransformationMode transformationMode )
         {
             //translate all faces ( resetting the rotation! )
@@ -199,7 +197,6 @@
             return false;
         }
 
-        @Override
         public boolean checkCollisionHorz( LibCylinder cylinder )
         {
             return checkCollisionHorz( cylinder, WallClimbable.EYes );
@@ -217,7 +214,6 @@
             return false;
         }
 
-        @Override
         public Vector<Float> checkCollisionVert( LibCylinder cylinder, Object exclude )
         {
             Vector<Float> vecZ = new Vector<Float>();
@@ -288,7 +284,6 @@
             return hitPoints;
         }
 
-        @Override
         public final LibVertex getAnchor()
         {
             return iAnchor;

@@ -160,7 +160,6 @@
             }
         }
 
-        @Override
         public final Float getHighestFloor( LibGameObject aParentGameObject, LibVertex aAnchor, float aRadius, float aHeight, int aCollisionCheckingSteps, LibDebug aDebug, boolean aDebugDrawBotCircles, float aBottomCollisionToleranceZ, float aMinBottomCollisionToleranceZ, int aEllipseSegments, Object exclude )
         {
             return getHighestFloor( new Cylinder( aParentGameObject, aAnchor, aRadius, aHeight, aCollisionCheckingSteps, aDebug, aDebugDrawBotCircles, aBottomCollisionToleranceZ, aMinBottomCollisionToleranceZ, aEllipseSegments, Material.EHumanFlesh ), exclude );

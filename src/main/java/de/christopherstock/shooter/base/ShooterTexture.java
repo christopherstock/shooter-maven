@@ -80,19 +80,16 @@
                 iTexObject = new TexObject( aTranslucency, aMaterial, aMask );
             }
 
-            @Override
             public final void loadImage( String url )
             {
                 iTexObject.loadImage( url );
             }
 
-            @Override
             public LibGLTexture getTexture()
             {
                 return iTexObject.iTexture;
             }
 
-            @Override
             public final LibGLImage getTextureImage()
             {
                 return iTexObject.iTextureImage;
@@ -133,19 +130,16 @@
                 iTexObject = new TexObject( aTranslucency, aMaterial, aMask );
             }
 
-            @Override
             public final void loadImage( String url )
             {
                 iTexObject.loadImage( url );
             }
 
-            @Override
             public LibGLTexture getTexture()
             {
                 return iTexObject.iTexture;
             }
 
-            @Override
             public final LibGLImage getTextureImage()
             {
                 return iTexObject.iTextureImage;
@@ -274,19 +268,16 @@
                 iTexObject = new TexObject( aTranslucency, aMaterial, aMask );
             }
 
-            @Override
             public final void loadImage( String url )
             {
                 iTexObject.loadImage( url );
             }
 
-            @Override
             public LibGLTexture getTexture()
             {
                 return iTexObject.iTexture;
             }
 
-            @Override
             public final LibGLImage getTextureImage()
             {
                 return iTexObject.iTextureImage;
@@ -394,19 +385,16 @@
                 iTexObject = new TexObject( aTranslucency, aMaterial, aMask );
             }
 
-            @Override
             public final void loadImage( String url )
             {
                 iTexObject.loadImage( url );
             }
 
-            @Override
             public final LibGLImage getTextureImage()
             {
                 return iTexObject.iTextureImage;
             }
 
-            @Override
             public LibGLTexture getTexture()
             {
                 return iTexObject.iTexture;
@@ -450,19 +438,16 @@
                 iTexObject = new TexObject( aTranslucency, aMaterial, aMask );
             }
 
-            @Override
             public final void loadImage( String url )
             {
                 iTexObject.loadImage( url );
             }
 
-            @Override
             public LibGLTexture getTexture()
             {
                 return iTexObject.iTexture;
             }
 
-            @Override
             public final LibGLImage getTextureImage()
             {
                 return iTexObject.iTextureImage;

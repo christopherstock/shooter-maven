@@ -161,7 +161,6 @@
             }
         }
 
-        @Override
         public final void healthChanged()
         {
             iHealthShowTimer = HUDSettings.TICKS_SHOW_HEALTH_AFTER_CHANGE;

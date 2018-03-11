@@ -29,13 +29,11 @@
 
             public                      LibD3dsImporter            iD3dsfile                    = null;
 
-            @Override
             public final void initFile( LibD3dsImporter aD3dsfile )
             {
                 iD3dsfile = aD3dsfile;
             }
 
-            @Override
             public final LibD3dsImporter getFile()
             {
                 return iD3dsfile;
@@ -129,13 +127,11 @@
 
             public                      LibD3dsImporter            iD3dsfile                    = null;
 
-            @Override
             public final void initFile( LibD3dsImporter aD3dsfile )
             {
                 iD3dsfile = aD3dsfile;
             }
 
-            @Override
             public final LibD3dsImporter getFile()
             {
                 return iD3dsfile;
@@ -178,13 +174,11 @@
 
             public                      LibD3dsImporter            iD3dsfile                    = null;
 
-            @Override
             public final void initFile( LibD3dsImporter aD3dsfile )
             {
                 iD3dsfile = aD3dsfile;
             }
 
-            @Override
             public final  LibD3dsImporter getFile()
             {
                 return iD3dsfile;
@@ -208,13 +202,11 @@
 
             public                      LibD3dsImporter            iD3dsfile                    = null;
 
-            @Override
             public final void initFile( LibD3dsImporter aD3dsfile )
             {
                 iD3dsfile = aD3dsfile;
             }
 
-            @Override
             public final LibD3dsImporter getFile()
             {
                 return iD3dsfile;

@@ -26,7 +26,6 @@
 
         ;
 
-        @Override
         public void perform( Bot bot )
         {
             switch ( this )

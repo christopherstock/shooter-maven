@@ -339,7 +339,6 @@
             LibStrings.drawString( g, LibColors.EWhite.colARGB, LibColors.EBlack.colARGB, null, Fonts.EDebug, LibAnchor.EAnchorLeftBottom, "walk3: " + iWalkingAngleWearponY,           OffsetsOrtho.EBorderHudX, y - 0 );
         }
 */
-        @Override
         public final LibShot getShot( float modHorzCC )
         {
             boolean isFirearm = ( iArtefactSet.getArtefactType().iArtefactKind instanceof FireArm );
@@ -506,19 +505,16 @@
             }
         }
 
-        @Override
         public final LibVertex getAnchor()
         {
             return iCylinder.getAnchor();
         }
 
-        @Override
         public final float getCarriersFaceAngle()
         {
             return 0.0f;
         }
 
-        @Override
         public final Vector<LibHitPoint> launchShot( LibShot shot )
         {
             return getCylinder().launchShot( shot );
@@ -657,7 +653,6 @@
             getCylinder().moveToTargetPosition( getView().iDepthTotal, General.DISABLE_PLAYER_TO_WALL_COLLISIONS, General.DISABLE_PLAYER_TO_BOT_COLLISIONS );
         }
 
-        @Override
         public HitPointCarrier getHitPointCarrier()
         {
             return HitPointCarrier.EPlayer;
@@ -693,7 +688,6 @@
             return ( iHealth <= HUDSettings.PLAYER_LOW_HEALTH_WARNING_PERCENT );
         }
 
-        @Override
         public final void launchAction( LibCylinder aCylinder, Object gadget, float faceAngle )
         {
             //actions have no effect on the player ?

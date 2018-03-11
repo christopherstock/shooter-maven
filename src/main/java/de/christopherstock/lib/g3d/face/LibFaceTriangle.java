@@ -66,7 +66,7 @@
             super( aDebug, ank, texture, col, aFaceNormal );
 
             iEllipseSegments = aEllipseSegments;
-            
+
             //assign default texture
             iDefaultTexture = aDefaultTexture;
 
@@ -477,7 +477,6 @@
             );
         }
 
-        @Override
         public boolean checkCollisionHorz( LibCylinder cylinder )
         {
             //this method is never called?
@@ -495,7 +494,6 @@
             return cylinder.checkCollisionHorzLines( this, useBottomToleranceZ, invertBottomTolerance   );
         }
 
-        @Override
         public Vector<Float> checkCollisionVert( LibCylinder cylinder, Object exclude )
         {
             Vector<Float> v = new Vector<Float>();

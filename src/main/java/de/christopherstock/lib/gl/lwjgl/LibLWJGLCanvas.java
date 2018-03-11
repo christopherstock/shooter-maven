@@ -50,13 +50,11 @@
             g2d.drawImage( iBgImage, ( getWidth() - iBgImage.getWidth() ) / 2, ( getHeight() -iBgImage.getHeight() ) / 2, null );
         }
 
-        @Override
         public void focusGained( FocusEvent f )
         {
             //ShooterDebug.bugfix.out( "GAINED FOCUS" );
         }
 
-        @Override
         public void focusLost( FocusEvent f )
         {
             //ShooterDebug.bugfix.out( "LOST FOCUS" );

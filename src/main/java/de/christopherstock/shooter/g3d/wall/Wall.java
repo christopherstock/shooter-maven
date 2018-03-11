@@ -239,7 +239,6 @@
             }
         }
 
-        @Override
         public final void launchAction( LibCylinder cylinder, Object gadget, float faceAngle )
         {
             //only if not destroyed
@@ -305,7 +304,6 @@
             }
         }
 
-        @Override
         public final float getCarriersFaceAngle()
         {
             return 0.0f;
@@ -370,7 +368,6 @@
             return vecZ;
         }
 */
-        @Override
         public HitPointCarrier getHitPointCarrier()
         {
             return HitPointCarrier.EWall;
@@ -455,7 +452,6 @@
             super.draw();
         }
 
-        @Override
         public final boolean isClimbable()
         {
             return ( iClimbable == WallClimbable.EYes );

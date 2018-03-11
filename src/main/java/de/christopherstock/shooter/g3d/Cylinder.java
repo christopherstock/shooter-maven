@@ -86,13 +86,11 @@
             }
         }
 
-        @Override
         public final Point2D.Float getCenterHorz()
         {
             return new Point2D.Float( iAnchor.x, iAnchor.y );
         }
 
-        @Override
         public final void setNewAnchor( LibVertex newAnk, boolean b, LibTransformationMode tm )
         {
             iAnchor.x = newAnk.x;
@@ -100,7 +98,6 @@
             iAnchor.z = newAnk.z;
         }
 
-        @Override
         public final void translate( float x, float y, float z, LibTransformationMode tm )
         {
             iAnchor.translate( x, y, z );
@@ -199,7 +196,6 @@
             return null;
         }
 
-        @Override
         public final Ellipse2D.Float getCircle()
         {
             return new Ellipse2D.Float( iAnchor.x - iRadius, iAnchor.y - iRadius, iRadius * 2, iRadius * 2 );
@@ -233,7 +229,6 @@
         *   @return         <code>true</code> if the player's vertical collision line
         *                   intersects the given wall points. Otherwise <code>false</code>.
         ************************************************************************************/
-        @Override
         public final boolean heightsIntersect( float wallZ1, float wallZ2, boolean useBottomToleranceZ, boolean invertBottomTolerance )
         {
             float lowestWallZ   = Math.min( wallZ1, wallZ2 );
@@ -426,7 +421,6 @@
             return ( !circleHorz.isEmpty() );
         }
 
-        @Override
         public final boolean checkCollisionHorzLines( LibFaceTriangle face, boolean useBottomToleranceZ, boolean invertBottomTolerance  )
         {
             //check horizontal intersection
@@ -455,7 +449,6 @@
         *    @param c   Cylinder to check collision with.
         *    @return    <code>true</code> if collision appears. Otherwise <code>false</code>.
         **************************************************************************************/
-        @Override
         public final boolean checkCollisionHorz( LibCylinder c )
         {
             //check horizontal and vertical intersection
@@ -474,7 +467,6 @@
         *    @param c   Cylinder to check collision with.
         *    @return    <code>true</code> if collision appears. Otherwise <code>false</code>.
         **************************************************************************************/
-        @Override
         public final Vector<Float> checkCollisionVert( LibCylinder c, Object exclude )
         {
             Vector<Float> v = new Vector<Float>();
@@ -489,7 +481,6 @@
             return v;
         }
 
-        @Override
         public final LibVertex getAnchor()
         {
             return iAnchor;

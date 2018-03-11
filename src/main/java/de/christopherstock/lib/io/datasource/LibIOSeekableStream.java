@@ -34,7 +34,6 @@
         *
         *   @return Returns <CODE>true</CODE> if there is no more data.
         **************************************************************************************/
-        @Override
         public boolean endOfStream()
         {
             return ( !inputBuffer.hasRemaining() );
@@ -45,7 +44,6 @@
         *
         *   @return The current <CODE>ContentDescriptor</CODE> for this stream.
         **************************************************************************************/
-        @Override
         public ContentDescriptor getContentDescriptor()
         {
             return null;
@@ -56,7 +54,6 @@
         *
         *   @return The content length in bytes.
         **************************************************************************************/
-        @Override
         public long getContentLength()
         {
             return inputBuffer.capacity();
@@ -73,7 +70,6 @@
         *
         *   @return <code>null</code>.
         **************************************************************************************/
-        @Override
         public Object getControl( String controlType )
         {
             return null;
@@ -89,7 +85,6 @@
         *
         *   @return A zero length array
         **************************************************************************************/
-        @Override
         public Object[] getControls()
         {
             Object[] objects = new Object[ 0 ];
@@ -104,7 +99,6 @@
         *   @return Returns <CODE>true</CODE> if the stream is random access, <CODE>false</CODE> if the stream can only
         *   be reset to the beginning.
         **************************************************************************************/
-        @Override
         public boolean isRandomAccess()
         {
             return true;
@@ -131,7 +125,6 @@
         *
         *   @throws IOException Thrown if an error occurs while reading.
         **************************************************************************************/
-        @Override
         public int read(byte[] buffer, int offset, int length) throws IOException
         {
             // return n (number of bytes read), -1 (eof), 0 (asked for zero bytes)
@@ -159,7 +152,6 @@
         *   @param  where The position to seek to.
         *   @return The new stream position.
         **************************************************************************************/
-        @Override
         public long seek( long where )
         {
             try
@@ -176,7 +168,6 @@
         /**************************************************************************************
         *   Obtain the current point in the stream.
         **************************************************************************************/
-        @Override
         public long tell()
         {
             return inputBuffer.position();
@@ -188,7 +179,6 @@
         *
         *   @return Returns <CODE>true</CODE> if read would block; otherwise returns <CODE>false</CODE>.
         **************************************************************************************/
-        @Override
         public boolean willReadBlock()
         {
            return ( inputBuffer.remaining() == 0 );

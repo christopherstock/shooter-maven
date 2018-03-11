@@ -302,7 +302,6 @@ import  de.christopherstock.shooter.level.*;
             return ( iAliveState == BotAliveState.EAlive ? iCylinder.checkCollisionHorz( aCylinder ) : false );
         }
 
-        @Override
         public final void launchAction( LibCylinder aCylinder, Object artefact, float faceAngle )
         {
             //only if alive
@@ -1055,7 +1054,6 @@ import  de.christopherstock.shooter.level.*;
             }
         }
 
-        @Override
         public final LibShot getShot( float modZ )
         {
             return new LibShot
@@ -1122,19 +1120,16 @@ import  de.christopherstock.shooter.level.*;
             return ( hitPoint.length > 0 && hitPoint[ 0 ].iCarrier.getHitPointCarrier() == HitPointCarrier.EPlayer );
         }
 
-        @Override
         public final LibVertex getAnchor()
         {
             return iCylinder.getAnchor();
         }
 
-        @Override
         public final float getCarriersFaceAngle()
         {
             return iFacingAngle;
         }
 
-        @Override
         public final Vector<LibHitPoint> launchShot( LibShot shot )
         {
             return iBotMeshes.launchShot( shot );
@@ -1145,7 +1140,6 @@ import  de.christopherstock.shooter.level.*;
             return ( iAliveState == BotAliveState.EDead );
         }
 
-        @Override
         public HitPointCarrier getHitPointCarrier()
         {
             return HitPointCarrier.EBot;

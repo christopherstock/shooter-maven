@@ -45,7 +45,6 @@
         /**************************************************************************************
         *   Don't move to the constructor - Circle reference in {@link BulletHoleTex}.
         **************************************************************************************/
-        @Override
         public LibTexture getBulletHoleTexture()
         {
             switch ( this )
@@ -66,19 +65,16 @@
             return null;
         }
 
-        @Override
         public LibColors[] getSliverColors()
         {
             return iSliverColors;
         }
 
-        @Override
         public boolean isPenetrable()
         {
             return iPenetrable;
         }
 
-        @Override
         public LibSound getBulletImpactSound()
         {
             return iBulletImpactSound;

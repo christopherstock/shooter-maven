@@ -104,7 +104,6 @@
 
         protected abstract void setCollisionValues();
 
-        @Override
         public final void setNewAnchor( LibVertex newAnchor, boolean performTranslationOnFaces, LibTransformationMode transformationMode )
         {
             iAnchor = newAnchor;
@@ -121,7 +120,6 @@
         *   @param  tY  The y-modification value to translate all original vertices for.
         *   @param  tZ  The z-modification value to translate all original vertices for.
         ***********************************************************************/
-        @Override
         public void translate( float tX, float tY, float  tZ, LibTransformationMode transformationMode )
         {
             LibVertex[] newTransformedVertices  = new LibVertex[ iOriginalVertices.length ];
@@ -346,31 +344,26 @@
             }
         }
 
-        @Override
         public final LibVertex getFaceNormal()
         {
             return iNormal; //iTransformedNormal; inoperative :(
         }
 
-        @Override
         public final LibGLTexture getTexture()
         {
             return iTexture;
         }
 
-        @Override
         public final float[] getColor3f()
         {
             return iColor.f3;
         }
 
-        @Override
         public final LibColors getColor()
         {
             return iColor;
         }
 
-        @Override
         public final LibVertex[] getVerticesToDraw()
         {
             return iTransformedVertices;
@@ -381,7 +374,6 @@
             return iOriginalVertices;
         }
 
-        @Override
         public final LibVertex getAnchor()
         {
             return iAnchor;
@@ -413,13 +405,11 @@
             if ( iDarkenOpacity < 0.0f ) iDarkenOpacity = 0.0f;
         }
 
-        @Override
         public final float getAlpha()
         {
             return iAlpha;
         }
 
-        @Override
         public final float getDarkenOpacity()
         {
             return iDarkenOpacity;

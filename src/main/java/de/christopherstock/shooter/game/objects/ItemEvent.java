@@ -46,7 +46,6 @@ import  de.christopherstock.shooter.ui.hud.HUDMessageManager;
 
         ;
 
-        @Override
         public void perform( Bot bot )
         {
             switch ( this )

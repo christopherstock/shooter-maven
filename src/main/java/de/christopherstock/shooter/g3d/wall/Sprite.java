@@ -30,7 +30,6 @@
             super(   file, aAnchor, 90.0f, scale, Invert.ENo, collidable, WallAction.ESprite, WallClimbable.ENo, DrawMethod.EAlwaysDraw, tex, null, 0, WallHealth.EUnbreakale, null, null );
         }
 
-        @Override
         public void animateSprite( LibVertex trans )
         {
             //get wall's 2d center point and player's 2d point

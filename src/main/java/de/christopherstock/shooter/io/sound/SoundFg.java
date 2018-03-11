@@ -129,7 +129,6 @@
             }
         }
 
-        @Override
         public final void playDistancedFx( Point2D.Float distantLocation )
         {
             playDistancedFx( distantLocation, 0 );

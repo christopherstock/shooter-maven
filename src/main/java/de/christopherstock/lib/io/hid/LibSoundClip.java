@@ -162,7 +162,6 @@
             return iSoundHasFinished;
         }
 
-        @Override
         public void update( LineEvent le )
         {
             LineEvent.Type t = le.getType();

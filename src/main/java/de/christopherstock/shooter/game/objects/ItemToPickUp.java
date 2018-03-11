@@ -231,31 +231,26 @@ import  de.christopherstock.shooter.ui.hud.*;
             iMesh = mesh; //new Mesh( mesh.getFaces(), iAnchor, iStartRotZ, 1.0f, Invert.ENo, this, LibTransformationMode.EOriginalsToTransformed, DrawMethod.EAlwaysDraw );
         }
 
-        @Override
         public final LibVertex getAnchor()
         {
             return iAnchor;
         }
 
-        @Override
         public final float getCarriersFaceAngle()
         {
             return 0.0f;
         }
 
-        @Override
         public final HitPointCarrier getHitPointCarrier()
         {
             return null;
         }
 
-        @Override
         public final Vector<LibHitPoint> launchShot( LibShot s )
         {
             return null;
         }
 
-        @Override
         public final void launchAction( LibCylinder aCylinder, Object gadget, float faceAngle )
         {
             //actions have no effect on items

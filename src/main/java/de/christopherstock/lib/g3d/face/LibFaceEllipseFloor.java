@@ -61,14 +61,12 @@
             //bullet holes do not have collision values
         }
 
-        @Override
         public boolean checkCollisionHorz( LibCylinder cylinder )
         {
             //empty implementation - debug circles can not be shot :)
             return false;
         }
 
-        @Override
         public Vector<Float> checkCollisionVert( LibCylinder cylinder, Object exclude )
         {
             //empty implementation - debug circles can not be shot :)
