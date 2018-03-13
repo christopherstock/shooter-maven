@@ -890,28 +890,28 @@
         public static int getSettingInt(int whichSetting)
         {
             tmpInts.clear();
-            GL11.glGetIntegerv(whichSetting, tmpInts);
+            GL11.glGetInteger(whichSetting, tmpInts);
             return tmpInt.get(0);
         }
 
         public static FloatBuffer getModelviewMatrix()
         {
             bufferModelviewMatrix.clear();
-            GL11.glGetFloatv(GL11.GL_MODELVIEW_MATRIX, bufferModelviewMatrix);
+            GL11.glGetFloat(GL11.GL_MODELVIEW_MATRIX, bufferModelviewMatrix);
             return bufferModelviewMatrix;
         }
 
         public static FloatBuffer getProjectionMatrix()
         {
             bufferProjectionMatrix.clear();
-            GL11.glGetFloatv(GL11.GL_PROJECTION_MATRIX, bufferProjectionMatrix);
+            GL11.glGetFloat(GL11.GL_PROJECTION_MATRIX, bufferProjectionMatrix);
             return bufferProjectionMatrix;
         }
 
         public static IntBuffer getViewport()
         {
             bufferViewport.clear();
-            GL11.glGetIntegerv(GL11.GL_VIEWPORT, bufferViewport);
+            GL11.glGetInteger(GL11.GL_VIEWPORT, bufferViewport);
             return bufferViewport;
         }
 
@@ -1162,7 +1162,7 @@
                 // Due to LWJGL buffer check, you can't use smaller sized buffers (min_size = 16 for glGetFloat()).
                 FloatBuffer max_a = allocFloats(16);
                 // Grab the maximum anisotropic filter.
-                GL11.glGetFloatv(EXTTextureFilterAnisotropic.GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT, max_a);
+                GL11.glGetFloat(EXTTextureFilterAnisotropic.GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT, max_a);
                 // Set up the anisotropic filter.
                 GL11.glTexParameterf(GL11.GL_TEXTURE_2D, EXTTextureFilterAnisotropic.GL_TEXTURE_MAX_ANISOTROPY_EXT, max_a.get(0));
             }
@@ -1671,10 +1671,10 @@
             FloatBuffer ltAmbient = allocFloats(ambientLightColor);
             FloatBuffer ltSpecular = allocFloats(specularLightColor);
             FloatBuffer ltPosition = allocFloats(position);
-            GL11.glLightfv(GLLightHandle, GL11.GL_DIFFUSE, ltDiffuse);   // color of the direct illumination
-            GL11.glLightfv(GLLightHandle, GL11.GL_SPECULAR, ltSpecular); // color of the highlight
-            GL11.glLightfv(GLLightHandle, GL11.GL_AMBIENT, ltAmbient);   // color of the reflected light
-            GL11.glLightfv(GLLightHandle, GL11.GL_POSITION, ltPosition);
+            GL11.glLight(GLLightHandle, GL11.GL_DIFFUSE, ltDiffuse);   // color of the direct illumination
+            GL11.glLight(GLLightHandle, GL11.GL_SPECULAR, ltSpecular); // color of the highlight
+            GL11.glLight(GLLightHandle, GL11.GL_AMBIENT, ltAmbient);   // color of the reflected light
+            GL11.glLight(GLLightHandle, GL11.GL_POSITION, ltPosition);
             GL11.glEnable(GLLightHandle);    // Enable the light (GL_LIGHT1 - 7)
             //GL11.glLightf(GLLightHandle, GL11.GL_QUADRATIC_ATTENUATION, .005F);    // how light beam drops off
         }
@@ -1687,7 +1687,7 @@
             FloatBuffer ltDirection = allocFloats(direction);
             setLight(GLLightHandle, diffuseLightColor, ambientLightColor, diffuseLightColor, position);
             GL11.glLightf(GLLightHandle, GL11.GL_SPOT_CUTOFF, cutoffAngle);   // width of the beam
-            GL11.glLightfv(GLLightHandle, GL11.GL_SPOT_DIRECTION, ltDirection);    // which way it points
+            GL11.glLight(GLLightHandle, GL11.GL_SPOT_DIRECTION, ltDirection);    // which way it points
             GL11.glLightf(GLLightHandle, GL11.GL_CONSTANT_ATTENUATION, 2F);    // how light beam drops off
             //GL11.glLightf(GLLightHandle, GL11.GL_LINEAR_ATTENUATION, .5F);    // how light beam drops off
             //GL11.glLightf(GLLightHandle, GL11.GL_QUADRATIC_ATTENUATION, .5F);    // how light beam drops off
@@ -1700,7 +1700,7 @@
         public static void setAmbientLight(float[] ambientLightColor)
         {
             put(tmpFloats,ambientLightColor);
-            GL11.glLightModelfv( GL11.GL_LIGHT_MODEL_AMBIENT, tmpFloats );
+            GL11.glLightModel( GL11.GL_LIGHT_MODEL_AMBIENT, tmpFloats );
         }
 
         /**
@@ -1710,7 +1710,7 @@
         public static void setLightPosition(int GLLightHandle, float x, float y, float z)
         {
             put(tmpFloats, new float[] {x,y,z,1});
-            GL11.glLightfv( GLLightHandle, GL11.GL_POSITION, tmpFloats );
+            GL11.glLight( GLLightHandle, GL11.GL_POSITION, tmpFloats );
         }
 
         /**
@@ -1719,7 +1719,7 @@
         public static void setLightPosition(int GLLightHandle, float[] position)
         {
             put(tmpFloats,position);
-            GL11.glLightfv( GLLightHandle, GL11.GL_POSITION, tmpFloats );
+            GL11.glLight( GLLightHandle, GL11.GL_POSITION, tmpFloats );
         }
 
         /**
@@ -1827,11 +1827,11 @@
          *  These properties will stay in effect until you change them or disable lighting.
          */
         public static void applyMaterial() {
-            GL11.glMaterialfv( GL11.GL_FRONT, GL11.GL_DIFFUSE, mtldiffuse     );
-            GL11.glMaterialfv( GL11.GL_FRONT, GL11.GL_AMBIENT, mtlambient     );
-            GL11.glMaterialfv( GL11.GL_FRONT, GL11.GL_SPECULAR, mtlspecular   );
-            GL11.glMaterialfv( GL11.GL_FRONT, GL11.GL_EMISSION, mtlemissive   );
-            GL11.glMaterialfv( GL11.GL_FRONT, GL11.GL_SHININESS, mtlshininess );
+            GL11.glMaterial( GL11.GL_FRONT, GL11.GL_DIFFUSE, mtldiffuse     );
+            GL11.glMaterial( GL11.GL_FRONT, GL11.GL_AMBIENT, mtlambient     );
+            GL11.glMaterial( GL11.GL_FRONT, GL11.GL_SPECULAR, mtlspecular   );
+            GL11.glMaterial( GL11.GL_FRONT, GL11.GL_EMISSION, mtlemissive   );
+            GL11.glMaterial( GL11.GL_FRONT, GL11.GL_SHININESS, mtlshininess );
         }
 
 
@@ -1858,7 +1858,7 @@
             //GL11.glFogf(GL11.GL_FOG_START, 100f);
             //GL11.glFogf(GL11.GL_FOG_END, 1000f);
             // color
-            GL11.glFogfv(GL11.GL_FOG_COLOR, tmpFloats);
+            GL11.glFog(GL11.GL_FOG_COLOR, tmpFloats);
             // density
             GL11.glFogf(GL11.GL_FOG_DENSITY, fogdensity);
             // quality

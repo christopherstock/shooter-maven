@@ -510,7 +510,7 @@
 
             //set ambient light
             FloatBuffer buffAmbient  = (FloatBuffer)ByteBuffer.allocateDirect( 16 ).order(  ByteOrder.nativeOrder() ).asFloatBuffer().put( ambient.f4 ).flip();
-            GL11.glLightModelfv(  GL11.GL_LIGHT_MODEL_AMBIENT, buffAmbient );
+            GL11.glLightModel(  GL11.GL_LIGHT_MODEL_AMBIENT, buffAmbient );
 
             //effect ?
             GL11.glLightModeli( GL12.GL_LIGHT_MODEL_COLOR_CONTROL, GL12.GL_SEPARATE_SPECULAR_COLOR );
@@ -563,19 +563,19 @@
             FloatBuffer buffDiffuse       = (FloatBuffer)ByteBuffer.allocateDirect( 16 ).order( ByteOrder.nativeOrder() ).asFloatBuffer().put( light.iColDiffuse.f4     ).flip();
             FloatBuffer buffSpecular      = (FloatBuffer)ByteBuffer.allocateDirect( 16 ).order( ByteOrder.nativeOrder() ).asFloatBuffer().put( light.iColDiffuse.f4     ).flip();
 
-            GL11.glLightfv(  lightKey, GL11.GL_POSITION, buffPosition );
-            GL11.glLightfv(  lightKey, GL11.GL_DIFFUSE,  buffDiffuse  );
-            GL11.glLightfv(  lightKey, GL11.GL_SPECULAR, buffSpecular );
+            GL11.glLight(  lightKey, GL11.GL_POSITION, buffPosition );
+            GL11.glLight(  lightKey, GL11.GL_DIFFUSE,  buffDiffuse  );
+            GL11.glLight(  lightKey, GL11.GL_SPECULAR, buffSpecular );
 
           //GL11.glLight(  glKey, GL11.GL_EMISSION, (FloatBuffer)temp4.asFloatBuffer().put( lightSpecular ).flip() );
           //GL11.glLight(  glKey, GL11.GL_AMBIENT,  (FloatBuffer)temp .asFloatBuffer().put( lightAmbient  ).flip() );
 
             //spot size and direction
             GL11.glLightf(  lightKey,  GL11.GL_SPOT_CUTOFF,    light.iSpotCutoff    );
-            GL11.glLightfv( lightKey,  GL11.GL_SPOT_DIRECTION, buffSpotDirection    );
+            GL11.glLight( lightKey,  GL11.GL_SPOT_DIRECTION, buffSpotDirection    );
 
-            GL11.glMaterialfv( GL11.GL_FRONT, GL11.GL_DIFFUSE,    buffDiffuse  );
-            GL11.glMaterialfv( GL11.GL_FRONT, GL11.GL_SPECULAR,   buffSpecular );
+            GL11.glMaterial( GL11.GL_FRONT, GL11.GL_DIFFUSE,    buffDiffuse  );
+            GL11.glMaterial( GL11.GL_FRONT, GL11.GL_SPECULAR,   buffSpecular );
 
           //GL11.glMaterial( GL11.GL_FRONT, GL11.GL_SHININESS, 96.0f );
         }
