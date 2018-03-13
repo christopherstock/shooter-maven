@@ -14,6 +14,10 @@
     *   The {@link #main(String[])} method is the application's entry point.
     *   Contains ToDo List, main method and inanity.
     *
+    *   TODO            Source in pom.xml to 1.8
+    *   TODO            Remove runme and turn to maven goal etc.!
+    *   TODO            Remove all KILLEFIT!!
+    *
     *   TODO HIGH       slow panning for zoomed view?
     *   TODO            Refactor the Artefact-System.
     *   TODO            Simple switch for lighting?

@@ -24,9 +24,11 @@
         EExtraction(    131000000000L,       134649000000L,     4323000000L,    134649000000L         ),
         EPelagic2(      131000000000L,       134649000000L,     4323000000L,    134649000000L         ),
 */
-        EExtraction(    0L,                  134649000000L,     4323000000L,    134649000000L         ),
+        EExtraction(     0L,                  134649000000L,     4323000000L,    134649000000L         ),
+        EInvestigationX( 0L,                  134649000000L,     4323000000L,    134649000000L         ),
+/*
         EPelagic2(      0L,                  134649000000L,     4323000000L,    134649000000L         ),
-
+*/
         ;
 
         private         static          SoundBg                 currentSound            = null;
@@ -78,9 +80,9 @@
         {
             try
             {
-                ByteArrayInputStream bais  = LibIO.preStreamJarResource( ShooterSettings.Path.ESoundsBg.iUrl + toString() + LibExtension.mp3.getSpecifier() );
+                ByteArrayInputStream bais  = LibIO.preStreamJarResource( ShooterSettings.Path.ESoundsBg.iUrl + toString() + LibExtension.au.getSpecifier() );
                 byte[]               bytes = LibIO.readStreamBuffered( bais );
-                LibIODataSource      ds    = new LibIODataSource( LibIO.createByteBufferFromByteArray( bytes ), FileTypeDescriptor.MPEG_AUDIO );
+                LibIODataSource      ds    = new LibIODataSource( LibIO.createByteBufferFromByteArray( bytes ), FileTypeDescriptor.BASIC_AUDIO );
 
                 iPlayer = Manager.createPlayer( ds );
             }

@@ -26,6 +26,9 @@
         /** MPEG Audio Layer III. */
         mp3( ".mp3" ),
 
+        /** Sun Audio. */
+        au( ".au" ),
+
         ;
 
         private                     String      iSpecifier          = null;
