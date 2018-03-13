@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Main-Class: de.christopherstock.shooter.Shooter
+Class-Path: lib/jars/lwjgl.jar lib/jars/lwjgl_util.jar lib/jars/vecmath.jar lib/jars/mp3plugin.jar lib/jars/jmf.jar
+Created-By: Christopher Stock
+Specification-Title: Shooter
+Specification-Vendor: Christopher Stock
+Specification-Version: 0.3.11
+Implementation-Title: Shooter
+Implementation-Vendor: Christopher Stock
+Implementation-Version: 0.3.11
