@@ -14,9 +14,17 @@
     *   The {@link #main(String[])} method is the application's entry point.
     *   Contains ToDo List, main method and inanity.
     *
+    *   TODO            Update Eclipse.
+    *   TODO            Zoom Auto Shotgun.
+    *   TODO            Enable Fullscreen.
+    *   TODO            Let Maven create JNLP.
+    *   TODO            Remove all KILLEFIT!!
     *   TODO            Source in pom.xml to 1.8
     *   TODO            Remove runme and turn to maven goal etc.!
-    *   TODO            Remove all KILLEFIT!!
+    *   TODO            Add assets.
+    *   TODO            Maven Goal for creating JNLP file.
+    *   TODO            Maven Goal for signing JAR.
+    *   TODO            Complete version 0.3 and add DONE items to History.
     *
     *   TODO HIGH       slow panning for zoomed view?
     *   TODO            Refactor the Artefact-System.
