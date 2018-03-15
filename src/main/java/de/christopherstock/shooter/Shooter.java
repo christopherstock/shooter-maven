@@ -14,6 +14,8 @@
     *   The {@link #main(String[])} method is the application's entry point.
     *   Contains ToDo List, main method and inanity.
     *
+	*	TODO			Mayflower preloader and textures ( posters ).
+	*	TODO			Revise level design.
     *   TODO            Update Eclipse.
     *   TODO            Zoom Auto Shotgun.
     *   TODO            Enable Fullscreen.
