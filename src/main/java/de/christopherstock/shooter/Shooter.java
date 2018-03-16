@@ -15,6 +15,11 @@
     *   Contains ToDo List, main method and inanity.
     *
 	*	TODO			Mayflower preloader and textures ( posters ).
+	*   TODO            Revise menu.
+	*   TODO            Different heights for particle effects.
+	*   TODO            Revise preloader!
+	*   TODO            Revise level.
+	*   TODO            Prune all static fields!!
 	*	TODO			Revise level design.
     *   TODO            Update Eclipse.
     *   TODO            Zoom Auto Shotgun.
