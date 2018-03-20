@@ -90,7 +90,6 @@
 
 
 
-        //TODO only for FireArms!
         protected                   LibGLImage[]        iFXImages                       = null;
         protected                   FireArmFXOffset   	iFXOffset                       = null;
 

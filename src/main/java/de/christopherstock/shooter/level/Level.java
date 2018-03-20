@@ -36,7 +36,7 @@
     public class Level implements LibFloorStack
     {
         /**************************************************************************************
-        *   The global player-instance being controlled by the user. TODO ASAP why global static ??
+        *   The global player-instance being controlled by the user.
         **************************************************************************************/
         private     static          Player                      player                          = null;
 

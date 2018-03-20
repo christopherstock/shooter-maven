@@ -12,8 +12,6 @@ import  de.christopherstock.lib.game.LibShot.ShotSpender;
     /**************************************************************************************
     *   The kind of artefact.
     *   
-    *   TODO ASAP make new subclass:  Wearpon  !!
-    *   
     *   @author     Christopher Stock
     *   @version    0.3.11
     **************************************************************************************/

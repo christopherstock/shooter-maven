@@ -57,7 +57,7 @@ import  de.christopherstock.shooter.level.*;
             //let random decide direction ( hit left to right or right to left )
             float from  = -25.0f;
             float to    =  25.0f;
-            float delta = 5.0f;		// TODO to settings!
+            float delta = 5.0f;
 
             if ( LibMath.getRandom( 0, 1 ) == 0 )
             {

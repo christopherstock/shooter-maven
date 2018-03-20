@@ -15,25 +15,30 @@
     *   Contains ToDo List, main method and inanity.
     *
     *   TODO            Maven Goal for creating JNLP file.
+    *   TODO            make new subclass:  Wearpon that derives from ArtefactKind!!
     *   TODO            Maven Goal for signing JAR.
-    *
+    *   TODO            Move all CloseCombat constants to settings!
+    *   TODO            Unify all docblocks (length 120), imports and all coding style!
 	*	TODO			Mayflower preloader and textures ( posters ).
 	*   TODO            Revise menu.
 	*   TODO            Replace all tabs.
 	*   TODO            Different heights for particle effects.
 	*   TODO            Revise preloader!
 	*   TODO            Revise level.
+	*   TODO            Remove ALL static fields!
+	*   TODO            Turn static field Level.player to non-static!!
 	*   TODO            Fix all code lints.
 	*   TODO            Prune all static fields!!
 	*	TODO			Revise level design.
     *   TODO            Update Eclipse.
     *   TODO            Zoom Auto Shotgun.
+    *   TODO            only for FireArms! Move ArtefactType.iFXImages to Firearms (Wearpons)!
     *   TODO            Enable Fullscreen.
     *   TODO            Let Maven create JNLP.
     *   TODO            Remove all KILLEFIT!!
     *   TODO            Source in pom.xml to 1.8
     *   TODO            Add assets.
-    *   TODO            Complete version 0.3 and add DONE items to History.
+    *   TODO            Complete version 0.3.11 and add DONE items to History.
     *
     *   TODO HIGH       slow panning for zoomed view?
     *   TODO            Refactor the Artefact-System.
