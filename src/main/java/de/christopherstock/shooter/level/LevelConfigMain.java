@@ -1,13 +1,11 @@
-/*  $Id: ShooterLevelConfig.java 1224 2012-12-31 12:32:24Z jenetic.bytemare@googlemail.com $
- *  =======================================================================================
- */
+
     package de.christopherstock.shooter.level;
 
     import  de.christopherstock.lib.Lib.ViewSet;
-import de.christopherstock.shooter.game.artefact.ArtefactType;
+    import  de.christopherstock.shooter.game.artefact.ArtefactType;
     import  de.christopherstock.shooter.game.objects.ItemEvent;
     import  de.christopherstock.shooter.io.sound.*;
-import  de.christopherstock.shooter.level.Level.*;
+    import  de.christopherstock.shooter.level.Level.*;
 
     /**************************************************************************************
     *   The configuration set for one main level.

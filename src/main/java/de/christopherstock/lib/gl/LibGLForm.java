@@ -1,6 +1,4 @@
-/*  $Id: LibGLForm.java 1287 2014-10-11 17:10:14Z jenetic.bytemare $
- *  =======================================================================================
- */
+
     package de.christopherstock.lib.gl;
 
     import  java.awt.*;

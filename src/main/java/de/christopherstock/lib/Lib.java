@@ -1,6 +1,4 @@
-/*  $Id: Lib.java 1252 2013-01-02 23:10:04Z jenetic.bytemare@gmail.com $
- *  =======================================================================================
- */
+
     package de.christopherstock.lib;
 
     import  java.awt.*;

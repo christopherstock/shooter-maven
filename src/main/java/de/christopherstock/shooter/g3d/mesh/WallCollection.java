@@ -1,6 +1,4 @@
-/*  $Id: WallCollection.java 1297 2015-02-11 18:57:35Z jenetic.bytemare $
- *  =======================================================================================
- */
+
     package de.christopherstock.shooter.g3d.mesh;
 
     import  java.util.*;
@@ -8,7 +6,7 @@
     import  de.christopherstock.lib.g3d.*;
     import  de.christopherstock.shooter.g3d.*;
     import  de.christopherstock.shooter.g3d.wall.Wall;
-import de.christopherstock.shooter.game.artefact.gadget.Gadget;
+    import  de.christopherstock.shooter.game.artefact.gadget.Gadget;
 
     /**************************************************************************************
     *   Represents a mesh-collection.

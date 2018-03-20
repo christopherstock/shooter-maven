@@ -1,6 +1,4 @@
-/*  $Id: LibFX.java 1250 2013-01-02 21:00:46Z jenetic.bytemare@gmail.com $
- *  =======================================================================================
- */
+
     package de.christopherstock.lib.fx;
 
     import  de.christopherstock.lib.*;

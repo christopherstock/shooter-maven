@@ -1,15 +1,13 @@
-/*  $Id: ItemEvent.java 1294 2014-10-12 15:50:36Z jenetic.bytemare $
- *  =======================================================================================
- */
+
     package de.christopherstock.shooter.game.objects;
 
     import  de.christopherstock.shooter.*;
     import  de.christopherstock.shooter.base.*;
-import de.christopherstock.shooter.game.artefact.Artefact;
-import de.christopherstock.shooter.game.artefact.ArtefactType;
-import de.christopherstock.shooter.game.artefact.firearm.*;
+    import  de.christopherstock.shooter.game.artefact.Artefact;
+    import  de.christopherstock.shooter.game.artefact.ArtefactType;
+    import  de.christopherstock.shooter.game.artefact.firearm.*;
     import  de.christopherstock.shooter.level.*;
-import  de.christopherstock.shooter.ui.hud.HUDMessageManager;
+    import  de.christopherstock.shooter.ui.hud.HUDMessageManager;
 
     /**************************************************************************************
     *   An event being invoked - not only by picking up items but on level start etc.

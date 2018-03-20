@@ -1,6 +1,4 @@
-/*  $Id: LibSoundFactory.java 1280 2014-10-08 17:14:17Z jenetic.bytemare $
- *  =======================================================================================
- */
+
     package de.christopherstock.lib.io.hid;
 
     import  java.awt.geom.*;

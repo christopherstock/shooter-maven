@@ -1,6 +1,4 @@
-/*  $Id: LWJGLKeys.java 1258 2013-01-05 00:05:13Z jenetic.bytemare@gmail.com $
- *  =======================================================================================
- */
+
     package de.christopherstock.shooter.io.hid.lwjgl;
 
     import  org.lwjgl.input.*;

@@ -1,6 +1,4 @@
-/*  $Id: AmmoType.java 1284 2014-10-08 21:57:48Z jenetic.bytemare $
- *  =======================================================================================
- */
+
     package de.christopherstock.shooter.game.artefact.firearm;
 
     import  java.awt.image.BufferedImage;

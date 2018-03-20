@@ -1,6 +1,4 @@
-/*  $Id: ShooterSettings.java 1299 2015-02-12 14:35:21Z jenetic.bytemare $
- *  =======================================================================================
- */
+
     package de.christopherstock.shooter;
 
     import  java.awt.*;

@@ -1,6 +1,4 @@
-/*  $Id: LibGLLight.java 1224 2012-12-31 12:32:24Z jenetic.bytemare@googlemail.com $
- *  =======================================================================================
- */
+
     package de.christopherstock.lib.gl;
 
     import  de.christopherstock.lib.g3d.*;

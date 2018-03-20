@@ -1,6 +1,4 @@
-/*  $Id: Gadget.java 1288 2014-10-11 17:19:47Z jenetic.bytemare $
- *  =======================================================================================
- */
+
     package de.christopherstock.shooter.game.artefact.gadget;
 
     import  java.awt.geom.Point2D;
@@ -10,10 +8,10 @@
     import  de.christopherstock.lib.g3d.LibHoleSize;
     import  de.christopherstock.lib.game.LibShot.*;
     import  de.christopherstock.shooter.ShooterSettings.PlayerSettings;
-import de.christopherstock.shooter.game.artefact.Artefact;
-import de.christopherstock.shooter.game.artefact.ArtefactKind;
-import de.christopherstock.shooter.game.artefact.ArtefactType.*;
-import  de.christopherstock.shooter.level.*;
+    import  de.christopherstock.shooter.game.artefact.Artefact;
+    import  de.christopherstock.shooter.game.artefact.ArtefactKind;
+    import  de.christopherstock.shooter.game.artefact.ArtefactType.*;
+    import  de.christopherstock.shooter.level.*;
 
     /**************************************************************************************
     *   A close-combat Wearpon.

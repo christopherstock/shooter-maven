@@ -1,6 +1,4 @@
-/*  $Id: ShooterMainThread.java 1296 2014-10-12 20:14:13Z jenetic.bytemare $
- *  =======================================================================================
- */
+
     package de.christopherstock.shooter.base;
 
     import  de.christopherstock.lib.*;

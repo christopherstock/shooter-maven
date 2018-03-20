@@ -1,6 +1,4 @@
-/*  $Id: LibGLTexture.java 1238 2013-01-02 13:39:56Z jenetic.bytemare@googlemail.com $
- *  =======================================================================================
- */
+
     package de.christopherstock.lib.gl;
 
     import  java.io.Serializable;

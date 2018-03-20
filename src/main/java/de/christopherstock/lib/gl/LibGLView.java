@@ -1,6 +1,4 @@
-/*  $Id: LibGLView.java 1264 2013-01-06 16:55:45Z jenetic.bytemare@googlemail.com $
- *  =======================================================================================
- */
+
     package de.christopherstock.lib.gl;
 
     import  java.util.*;

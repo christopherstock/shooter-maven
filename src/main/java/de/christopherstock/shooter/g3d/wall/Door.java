@@ -1,6 +1,4 @@
-/*  $Id: Door.java 1297 2015-02-11 18:57:35Z jenetic.bytemare $
- *  =======================================================================================
- */
+
     package de.christopherstock.shooter.g3d.wall;
 
     import  java.util.IllegalFormatCodePointException;
@@ -15,11 +13,11 @@
     import  de.christopherstock.shooter.ShooterDebug;
     import  de.christopherstock.shooter.ShooterSettings.DoorSettings;
     import  de.christopherstock.shooter.g3d.*;
-import de.christopherstock.shooter.game.artefact.ArtefactType;
-import de.christopherstock.shooter.game.artefact.gadget.Gadget;
+    import  de.christopherstock.shooter.game.artefact.ArtefactType;
+    import  de.christopherstock.shooter.game.artefact.gadget.Gadget;
     import  de.christopherstock.shooter.game.objects.*;
     import  de.christopherstock.shooter.io.sound.*;
-import  de.christopherstock.shooter.level.*;
+    import  de.christopherstock.shooter.level.*;
 
     /**************************************************************************************
     *   Represents a wall that acts as a door.

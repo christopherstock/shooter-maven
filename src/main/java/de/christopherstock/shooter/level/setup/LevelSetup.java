@@ -1,6 +1,4 @@
-/*  $Id: ShooterLevel.java 1264 2013-01-06 16:55:45Z jenetic.bytemare@googlemail.com $
- *  =======================================================================================
- */
+
     package de.christopherstock.shooter.level.setup;
 
     import  de.christopherstock.shooter.g3d.mesh.WallCollection;

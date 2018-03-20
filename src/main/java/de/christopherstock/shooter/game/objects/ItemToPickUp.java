@@ -1,11 +1,8 @@
-/*  $Id: ItemToPickUp.java 1296 2014-10-12 20:14:13Z jenetic.bytemare $
- *  =======================================================================================
- */
+
     package de.christopherstock.shooter.game.objects;
 
     import  java.awt.geom.*;
     import  java.util.*;
-
     import  de.christopherstock.lib.*;
     import  de.christopherstock.lib.Lib.Invert;
     import  de.christopherstock.lib.Lib.LibTransformationMode;
@@ -19,8 +16,8 @@
     import  de.christopherstock.shooter.ShooterSettings.ItemSettings;
     import  de.christopherstock.shooter.base.*;
     import  de.christopherstock.shooter.g3d.mesh.*;
-import de.christopherstock.shooter.game.artefact.Artefact;
-import de.christopherstock.shooter.game.artefact.firearm.*;
+    import de.christopherstock.shooter.game.artefact.Artefact;
+    import de.christopherstock.shooter.game.artefact.firearm.*;
     import  de.christopherstock.shooter.level.*;
 import  de.christopherstock.shooter.ui.hud.*;
 

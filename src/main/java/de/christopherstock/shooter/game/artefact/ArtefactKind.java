@@ -1,13 +1,11 @@
-/*  $Id: WearponKind.java 1224 2012-12-31 12:32:24Z jenetic.bytemare@googlemail.com $
- *  =======================================================================================
- */
+
     package de.christopherstock.shooter.game.artefact;
 
     import  java.awt.geom.Point2D;
     import  de.christopherstock.lib.Lib;
     import  de.christopherstock.lib.fx.LibFX.FXSize;
     import  de.christopherstock.lib.g3d.LibHoleSize;
-import  de.christopherstock.lib.game.LibShot.ShotSpender;
+    import  de.christopherstock.lib.game.LibShot.ShotSpender;
 
     /**************************************************************************************
     *   The kind of artefact.

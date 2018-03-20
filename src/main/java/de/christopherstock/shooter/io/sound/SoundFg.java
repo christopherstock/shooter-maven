@@ -1,6 +1,4 @@
-/*  $Id: ShooterSound.java 1279 2014-10-07 21:59:11Z jenetic.bytemare $
- *  =======================================================================================
- */
+
     package de.christopherstock.shooter.io.sound;
 
     import  java.awt.geom.*;

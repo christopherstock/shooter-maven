@@ -1,6 +1,4 @@
-/*  $Id: HUD.java 1296 2014-10-12 20:14:13Z jenetic.bytemare $
- *  =======================================================================================
- */
+
     package de.christopherstock.shooter.ui.hud;
 
     import  de.christopherstock.lib.Lib.LibAnimation;

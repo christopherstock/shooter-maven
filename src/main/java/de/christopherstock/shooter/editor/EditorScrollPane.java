@@ -1,10 +1,7 @@
-/*  $Id: EditorScrollPane.java 1224 2012-12-31 12:32:24Z jenetic.bytemare@googlemail.com $
- *  =======================================================================================
- */
+
     package de.christopherstock.shooter.editor;
 
     import  java.awt.*;
-
     import  javax.swing.*;
 
     /**************************************************************************************

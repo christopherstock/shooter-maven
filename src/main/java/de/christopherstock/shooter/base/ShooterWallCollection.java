@@ -1,6 +1,4 @@
-/*  $Id: ShooterWallCollection.java 1284 2014-10-08 21:57:48Z jenetic.bytemare $
- *  =======================================================================================
- */
+
     package de.christopherstock.shooter.base;
 
     import  java.util.*;

@@ -1,6 +1,4 @@
-/*  $Id: CloseCombat.java 1288 2014-10-11 17:19:47Z jenetic.bytemare $
- *  =======================================================================================
- */
+
     package de.christopherstock.shooter.game.artefact.closecombat;
 
     import  java.awt.geom.Point2D;
@@ -12,10 +10,10 @@
     import  de.christopherstock.lib.game.*;
     import  de.christopherstock.lib.game.LibShot.ShotSpender;
     import  de.christopherstock.lib.math.*;
-import de.christopherstock.shooter.game.artefact.Artefact;
-import de.christopherstock.shooter.game.artefact.ArtefactKind;
+    import  de.christopherstock.shooter.game.artefact.Artefact;
+    import  de.christopherstock.shooter.game.artefact.ArtefactKind;
     import  de.christopherstock.shooter.io.sound.*;
-import  de.christopherstock.shooter.level.*;
+    import  de.christopherstock.shooter.level.*;
 
     /**************************************************************************************
     *   A close-combat Wearpon.

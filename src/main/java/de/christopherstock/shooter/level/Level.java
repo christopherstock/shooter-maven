@@ -1,6 +1,4 @@
-/*  $Id: ShooterGameLevel.java 1261 2013-01-05 00:51:42Z jenetic.bytemare@gmail.com $
- *  =======================================================================================
- */
+
     package de.christopherstock.shooter.level;
 
     import  java.awt.geom.Point2D;

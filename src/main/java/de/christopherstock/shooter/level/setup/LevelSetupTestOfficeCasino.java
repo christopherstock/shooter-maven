@@ -1,6 +1,4 @@
-/*  $Id: ShooterLevelTestOfficeCasino.java 1283 2014-10-08 21:21:35Z jenetic.bytemare $
- *  =======================================================================================
- */
+
     package de.christopherstock.shooter.level.setup;
 
     import  de.christopherstock.shooter.base.*;

@@ -1,6 +1,4 @@
-/*  $Id: ShooterMaterial.java 1280 2014-10-08 17:14:17Z jenetic.bytemare $
- *  =======================================================================================
- */
+
     package de.christopherstock.shooter.g3d;
 
     import  de.christopherstock.lib.gl.*;

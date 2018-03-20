@@ -1,6 +1,4 @@
-/*  $Id: ShooterDebug.java 1298 2015-02-11 23:02:42Z jenetic.bytemare $
- *  =======================================================================================
- */
+
     package de.christopherstock.shooter;
 
     import  de.christopherstock.lib.*;

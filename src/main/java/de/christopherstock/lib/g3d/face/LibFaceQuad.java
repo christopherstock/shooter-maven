@@ -1,6 +1,4 @@
-/*  $Id: FaceQuad.java 1241 2013-01-02 15:01:12Z jenetic.bytemare@googlemail.com $
- *  =======================================================================================
- */
+
     package de.christopherstock.lib.g3d.face;
 
     import  java.util.*;

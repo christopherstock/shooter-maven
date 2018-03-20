@@ -1,6 +1,4 @@
-/*  $Id: ArtefactSet.java 1287 2014-10-11 17:10:14Z jenetic.bytemare $
- *  =======================================================================================
- */
+
     package de.christopherstock.shooter.game.artefact;
 
     import  java.util.Vector;

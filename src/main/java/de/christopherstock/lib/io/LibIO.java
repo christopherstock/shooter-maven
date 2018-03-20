@@ -1,6 +1,4 @@
-/*  $Id: LibIO.java 1304 2015-02-12 19:03:53Z jenetic.bytemare $
- *  =======================================================================================
- */
+
     package de.christopherstock.lib.io;
 
     import  java.io.*;

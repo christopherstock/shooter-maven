@@ -1,6 +1,4 @@
-/*  $Id: LibSound.java 1237 2013-01-02 13:05:24Z jenetic.bytemare@googlemail.com $
- *  =======================================================================================
- */
+
     package de.christopherstock.lib.io.hid;
 
     import  java.awt.geom.*;

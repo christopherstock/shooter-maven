@@ -1,6 +1,4 @@
-/*  $Id: LibLWJGLView.java 1283 2014-10-08 21:21:35Z jenetic.bytemare $
- *  =======================================================================================
- */
+
     package de.christopherstock.lib.gl.lwjgl;
 
     import  java.awt.*;

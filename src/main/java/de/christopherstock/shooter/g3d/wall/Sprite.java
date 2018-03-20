@@ -1,6 +1,4 @@
-/*  $Id: Sprite.java 1288 2014-10-11 17:19:47Z jenetic.bytemare $
- *  =======================================================================================
- */
+
     package de.christopherstock.shooter.g3d.wall;
 
     import  java.awt.geom.Point2D;

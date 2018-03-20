@@ -1,6 +1,4 @@
-/*  $Id: ShooterLevelTestFacility.java 1283 2014-10-08 21:21:35Z jenetic.bytemare $
- *  =======================================================================================
- */
+
     package de.christopherstock.shooter.level.setup;
 
     import  de.christopherstock.shooter.base.*;
@@ -16,14 +14,14 @@
     import  de.christopherstock.shooter.g3d.mesh.WallCollection;
     import  de.christopherstock.shooter.g3d.wall.*;
     import  de.christopherstock.shooter.g3d.wall.Wall.*;
-import de.christopherstock.shooter.game.artefact.ArtefactType;
-import  de.christopherstock.shooter.game.bot.*;
+    import  de.christopherstock.shooter.game.artefact.ArtefactType;
+    import  de.christopherstock.shooter.game.bot.*;
     import  de.christopherstock.shooter.game.bot.BotFactory.*;
     import  de.christopherstock.shooter.game.objects.*;
     import  de.christopherstock.shooter.io.sound.*;
     import  de.christopherstock.shooter.level.*;
     import  de.christopherstock.shooter.level.Level.*;
-import  de.christopherstock.shooter.ui.hud.*;
+    import  de.christopherstock.shooter.ui.hud.*;
 
     /**************************************************************************************
     *   All settings for level 'Test Facility'.

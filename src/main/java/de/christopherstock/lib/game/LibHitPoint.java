@@ -1,6 +1,4 @@
-/*  $Id: LibHitPoint.java 1262 2013-01-06 16:08:51Z jenetic.bytemare@googlemail.com $
- *  =======================================================================================
- */
+
     package de.christopherstock.lib.game;
 
     import  java.awt.geom.*;

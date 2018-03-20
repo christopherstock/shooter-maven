@@ -1,6 +1,4 @@
-/*  $Id: BotMeshes.java 1288 2014-10-11 17:19:47Z jenetic.bytemare $
- *  =======================================================================================
- */
+
     package de.christopherstock.shooter.g3d.mesh;
 
     import  java.util.*;

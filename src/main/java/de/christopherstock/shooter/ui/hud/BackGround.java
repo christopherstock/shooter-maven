@@ -1,6 +1,4 @@
-/*  $Id: BackGround.java 1257 2013-01-04 23:50:02Z jenetic.bytemare@gmail.com $
- *  =======================================================================================
- */
+
     package de.christopherstock.shooter.ui.hud;
 
     import  java.awt.image.*;

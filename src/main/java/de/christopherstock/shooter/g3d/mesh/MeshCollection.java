@@ -1,6 +1,4 @@
-/*  $Id: MeshCollection.java 1240 2013-01-02 14:43:47Z jenetic.bytemare@googlemail.com $
- *  =======================================================================================
- */
+
     package de.christopherstock.shooter.g3d.mesh;
 
     import  java.io.*;

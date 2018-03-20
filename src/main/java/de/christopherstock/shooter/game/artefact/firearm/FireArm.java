@@ -1,10 +1,7 @@
-/*  $Id: FireArm.java 1288 2014-10-11 17:19:47Z jenetic.bytemare $
- *  =======================================================================================
- */
+
     package de.christopherstock.shooter.game.artefact.firearm;
 
     import  java.awt.geom.Point2D;
-
     import  de.christopherstock.lib.*;
     import  de.christopherstock.lib.fx.LibFX.*;
     import  de.christopherstock.lib.g3d.*;

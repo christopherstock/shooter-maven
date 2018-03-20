@@ -1,6 +1,4 @@
-/*  $Id: ShooterSound.java 1275 2014-07-02 06:16:12Z jenetic.bytemare $
- *  =======================================================================================
- */
+
     package de.christopherstock.shooter.io.sound;
 
     import  java.io.ByteArrayInputStream;

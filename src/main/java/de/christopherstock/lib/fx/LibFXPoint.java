@@ -1,6 +1,4 @@
-/*  $Id: FXPoint.java 1242 2013-01-02 15:32:27Z jenetic.bytemare@googlemail.com $
- *  =======================================================================================
- */
+
     package de.christopherstock.lib.fx;
 
     import  de.christopherstock.lib.Lib.LibTransformationMode;

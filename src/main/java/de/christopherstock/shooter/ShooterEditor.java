@@ -1,6 +1,4 @@
-/*  $Id: ShooterEditor.java 1294 2014-10-12 15:50:36Z jenetic.bytemare $
- *  =======================================================================================
- */
+
     package de.christopherstock.shooter;
 
     import  javax.swing.JPanel;

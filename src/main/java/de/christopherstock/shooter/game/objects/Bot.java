@@ -1,6 +1,4 @@
-/*  $Id: Bot.java 1304 2015-02-12 19:03:53Z jenetic.bytemare $
- *  =======================================================================================
- */
+
     package de.christopherstock.shooter.game.objects;
 
     import  java.awt.geom.*;
@@ -20,14 +18,14 @@
     import  de.christopherstock.shooter.g3d.*;
     import  de.christopherstock.shooter.g3d.mesh.*;
     import  de.christopherstock.shooter.g3d.mesh.BotMeshes.*;
-import de.christopherstock.shooter.game.artefact.Artefact;
-import de.christopherstock.shooter.game.artefact.ArtefactSet;
-import de.christopherstock.shooter.game.artefact.ArtefactType;
-import de.christopherstock.shooter.game.artefact.firearm.*;
-import de.christopherstock.shooter.game.artefact.gadget.Gadget;
+    import  de.christopherstock.shooter.game.artefact.Artefact;
+    import  de.christopherstock.shooter.game.artefact.ArtefactSet;
+    import  de.christopherstock.shooter.game.artefact.ArtefactType;
+    import  de.christopherstock.shooter.game.artefact.firearm.*;
+    import  de.christopherstock.shooter.game.artefact.gadget.Gadget;
     import  de.christopherstock.shooter.game.bot.*;
     import  de.christopherstock.shooter.io.sound.*;
-import  de.christopherstock.shooter.level.*;
+    import  de.christopherstock.shooter.level.*;
 
     /**************************************************************************************
     *   The superclass of all non-player-characters.
