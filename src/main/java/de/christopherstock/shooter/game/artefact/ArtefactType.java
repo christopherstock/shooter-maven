@@ -14,11 +14,11 @@
     import  de.christopherstock.shooter.ShooterSettings.PlayerSettings;
     import  de.christopherstock.shooter.base.ShooterD3ds.Items;
     import  de.christopherstock.shooter.base.ShooterD3ds.Others;
-	import 	de.christopherstock.shooter.game.artefact.closecombat.CloseCombat;
-	import 	de.christopherstock.shooter.game.artefact.firearm.AmmoType;
-	import 	de.christopherstock.shooter.game.artefact.firearm.FireArm;
-	import 	de.christopherstock.shooter.game.artefact.firearm.FireArmFXOffset;
-	import 	de.christopherstock.shooter.game.artefact.gadget.Gadget;
+    import  de.christopherstock.shooter.game.artefact.closecombat.CloseCombat;
+    import  de.christopherstock.shooter.game.artefact.firearm.AmmoType;
+    import  de.christopherstock.shooter.game.artefact.firearm.FireArm;
+    import  de.christopherstock.shooter.game.artefact.firearm.FireArmFXOffset;
+    import  de.christopherstock.shooter.game.artefact.gadget.Gadget;
     import  de.christopherstock.shooter.game.objects.*;
     import  de.christopherstock.shooter.io.sound.*;
     import  de.christopherstock.shooter.ui.hud.*;
@@ -35,17 +35,17 @@
         EHands(             new CloseCombat( 10 ),                                                                                                                                                                                                              PlayerSettings.RADIUS_CLOSE_COMBAT,     500,                false,              1,                              new FireArmFXOffset( 225, 200 ),   0.0f,                       null,               null,                                           CrossHair.EDefault,     false               ),
         EKnife(             new CloseCombat( 15 ),                                                                                                                                                                                                              PlayerSettings.RADIUS_CLOSE_COMBAT,     500,                false,              1,                              new FireArmFXOffset( 225, 200 ),   0.0f,                       null,               null,                                           CrossHair.EDefault,     false               ),
 
-        //fireArms                       ammoType                       magazine    irrDepth    irrAngle    shotCount       scRandMod   useSound                    	reloadSound             bulletShellSound
-        EAutoShotgun(       new FireArm( AmmoType.EShotgunShells,       5,          60,         60,         25,             5,          SoundFg.EShotShotgun1,          SoundFg.EReload2,       SoundFg.EBulletShell1, null                         ),          100.0f,                                 300,                false,              1,                              new FireArmFXOffset( 325, 100 ),   0.0f,                       null,               null,                                           CrossHair.ECircle ,     false               ),
-        EWaltherPPK(        new FireArm( AmmoType.EBullet44mm,          7,          3,          3,          1,              0,          SoundFg.EShotSilenced,       	SoundFg.EReload1,    	SoundFg.EBulletShell1, null        	                ),          75.0f, 									350,                true,               1,                              new FireArmFXOffset( 263, 200 ),   0.0f,                       null,               null,                                           CrossHair.EDefault,     false               ),
-        EPistol(            new FireArm( AmmoType.EBullet9mm,           8,          10,         10,         1,              0,          SoundFg.EShotRifle1,         	SoundFg.EReload1,    	SoundFg.EBulletShell1, null        	                ),  		75.0f,              					150,                true,               1,                              new FireArmFXOffset( 225, 200 ),   0.0f,                       null,               null,                                           CrossHair.EDefault,     false               ),
-        EMagnum357(         new FireArm( AmmoType.EMagnumBullet357,     6,          5,          5,          1,              0,          SoundFg.EShotRifle1,         	SoundFg.EReload2,    	null,                  null     	               ),  			75.0f,              					500,                false,              1,                              new FireArmFXOffset( 225, 200 ),   0.0f,                       Items.EPistol1,     ItemKind.EWearponPistol9mm,                     CrossHair.EDefault,     true                ),
-        EHuntingRifle(      new FireArm( AmmoType.EBullet51mm,          50,         35,         35,         1,              0,          SoundFg.EShotRifle1,         	SoundFg.EReload2,    	SoundFg.EBulletShell1, null        	                ),  		75.0f,              					100,                true,               3,                              new FireArmFXOffset( 225, 200 ),   0.0f,                       null,               null,                                           CrossHair.EDefault,     false               ),
-        ESpaz12(            new FireArm( AmmoType.EShotgunShells,       5,          100,        100,        10,             3,          SoundFg.EShotShotgun1,       	SoundFg.EReload2,    	SoundFg.EBulletShell1, null        	                ),  		75.0f,              					500,                false,              1,                              new FireArmFXOffset( 225, 200 ),   0.0f,                       Items.EShotgun1,    ItemKind.EWearponShotgun,                       CrossHair.ECircle ,     false               ),
-        EAutomaticShotgun(  new FireArm( AmmoType.EShotgunShells,       5,          60,         60,         15,             2,          SoundFg.EShotShotgun1,       	SoundFg.EReload2,    	SoundFg.EBulletShell1, null        	                ),  		75.0f,              					400,                false,              1,                              new FireArmFXOffset( 325, 100 ),   0.0f,                       null,               null,                                           CrossHair.ECircle ,     false               ),
-        ERCP180(            new FireArm( AmmoType.EBullet792mm,         180,        10,         10,         1,              0,          SoundFg.EShotAssault1,       	SoundFg.EReload2,    	SoundFg.EBulletShell1, null        	                ),  		75.0f,              					50,                 false,              1,                              new FireArmFXOffset( 315, 90  ),   General.MAX_ZOOM / 2,       null,               null,                                           CrossHair.EDefault,     false               ),
-        ESniperRifle(       new FireArm( AmmoType.EBullet792mm,         8,          0,          0,          1,              0,          SoundFg.EShotSilenced,       	SoundFg.EReload2,    	SoundFg.EBulletShell1, null        	                ),  		250.0f,             					500,                false,              1,                              new FireArmFXOffset( 225, 200 ),   General.MAX_ZOOM,           null,               null,                                           CrossHair.EPrecise,     false               ),
-        ETranquilizerGun(   new FireArm( AmmoType.ETranquilizerDarts,   8,          0,          0,          1,              0,          SoundFg.ETranquilizerShot,   	SoundFg.EReload2,    	SoundFg.EBulletShell1, Others.ETranquilizerDart        	),  	250.0f,             					500,                false,              1,                              new FireArmFXOffset( 225, 200 ),   General.MAX_ZOOM * 3 / 4,   null,               null,                                           CrossHair.EPrecise,     false               ),
+        //fireArms                       ammoType                       magazine    irrDepth    irrAngle    shotCount       scRandMod   useSound                        reloadSound             bulletShellSound
+        EAutoShotgun(       new FireArm( AmmoType.EShotgunShells,       5,          60,         60,         25,             5,          SoundFg.EShotShotgun1,          SoundFg.EReload2,       SoundFg.EBulletShell1, null                            ),          100.0f,                                 300,                false,              1,                              new FireArmFXOffset( 325, 100 ),   0.0f,                       null,               null,                                           CrossHair.ECircle ,     false               ),
+        EWaltherPPK(        new FireArm( AmmoType.EBullet44mm,          7,          3,          3,          1,              0,          SoundFg.EShotSilenced,          SoundFg.EReload1,       SoundFg.EBulletShell1, null                            ),          75.0f,                                     350,                true,               1,                              new FireArmFXOffset( 263, 200 ),   0.0f,                       null,               null,                                           CrossHair.EDefault,     false               ),
+        EPistol(            new FireArm( AmmoType.EBullet9mm,           8,          10,         10,         1,              0,          SoundFg.EShotRifle1,            SoundFg.EReload1,       SoundFg.EBulletShell1, null                            ),          75.0f,                                  150,                true,               1,                              new FireArmFXOffset( 225, 200 ),   0.0f,                       null,               null,                                           CrossHair.EDefault,     false               ),
+        EMagnum357(         new FireArm( AmmoType.EMagnumBullet357,     6,          5,          5,          1,              0,          SoundFg.EShotRifle1,            SoundFg.EReload2,       null,                  null                            ),              75.0f,                                  500,                false,              1,                              new FireArmFXOffset( 225, 200 ),   0.0f,                       Items.EPistol1,     ItemKind.EWearponPistol9mm,                     CrossHair.EDefault,     true                ),
+        EHuntingRifle(      new FireArm( AmmoType.EBullet51mm,          50,         35,         35,         1,              0,          SoundFg.EShotRifle1,            SoundFg.EReload2,       SoundFg.EBulletShell1, null                            ),          75.0f,                                  100,                true,               3,                              new FireArmFXOffset( 225, 200 ),   0.0f,                       null,               null,                                           CrossHair.EDefault,     false               ),
+        ESpaz12(            new FireArm( AmmoType.EShotgunShells,       5,          100,        100,        10,             3,          SoundFg.EShotShotgun1,          SoundFg.EReload2,       SoundFg.EBulletShell1, null                            ),          75.0f,                                  500,                false,              1,                              new FireArmFXOffset( 225, 200 ),   0.0f,                       Items.EShotgun1,    ItemKind.EWearponShotgun,                       CrossHair.ECircle ,     false               ),
+        EAutomaticShotgun(  new FireArm( AmmoType.EShotgunShells,       5,          60,         60,         15,             2,          SoundFg.EShotShotgun1,          SoundFg.EReload2,       SoundFg.EBulletShell1, null                            ),          75.0f,                                  400,                false,              1,                              new FireArmFXOffset( 325, 100 ),   0.0f,                       null,               null,                                           CrossHair.ECircle ,     false               ),
+        ERCP180(            new FireArm( AmmoType.EBullet792mm,         180,        10,         10,         1,              0,          SoundFg.EShotAssault1,          SoundFg.EReload2,       SoundFg.EBulletShell1, null                            ),          75.0f,                                  50,                 false,              1,                              new FireArmFXOffset( 315, 90  ),   General.MAX_ZOOM / 2,       null,               null,                                           CrossHair.EDefault,     false               ),
+        ESniperRifle(       new FireArm( AmmoType.EBullet792mm,         8,          0,          0,          1,              0,          SoundFg.EShotSilenced,          SoundFg.EReload2,       SoundFg.EBulletShell1, null                            ),          250.0f,                                 500,                false,              1,                              new FireArmFXOffset( 225, 200 ),   General.MAX_ZOOM,           null,               null,                                           CrossHair.EPrecise,     false               ),
+        ETranquilizerGun(   new FireArm( AmmoType.ETranquilizerDarts,   8,          0,          0,          1,              0,          SoundFg.ETranquilizerShot,      SoundFg.EReload2,       SoundFg.EBulletShell1, Others.ETranquilizerDart        ),      250.0f,                                 500,                false,              1,                              new FireArmFXOffset( 225, 200 ),   General.MAX_ZOOM * 3 / 4,   null,               null,                                           CrossHair.EPrecise,     false               ),
 
         //gadgets
         EKeycard1(          new Gadget( 10, 25, 10 ),                                                                                                                                                                                                           PlayerSettings.RADIUS_ACTION,           1000,               false,              1,                              new FireArmFXOffset( 225, 200 ),   0.0f,                       null,               null,                                           CrossHair.EDefault,     false               ),
@@ -69,7 +69,7 @@
         }
 
         /** The kind of artefact. */
-        public                      ArtefactKind      	iArtefactKind              	     = null;
+        public                      ArtefactKind       iArtefactKind                       = null;
 
 
 
@@ -79,27 +79,27 @@
         // TODO ASAP All these fields belong to ArtefactKind !!
 
         /** The orthogonal image for displaying this artefact to the player. */
-        private                     LibGLImage         	iArtefactImage                	= null;
+        private                     LibGLImage          iArtefactImage               = null;
 
 
         protected                   long                iDelayAfterUse                  = 0;
         protected                   boolean             iUseNeedsKeyRelease             = false;
         public                      int                 iShotsTillKeyReleaseRequired    = 0;
 
-        protected                   float               iRange                         	= 0.0f;
+        protected                   float               iRange                          = 0.0f;
 
 
 
         protected                   LibGLImage[]        iFXImages                       = null;
-        protected                   FireArmFXOffset   	iFXOffset                       = null;
+        protected                   FireArmFXOffset     iFXOffset                     = null;
 
         //TODO not for gadgets!
         protected                   float               iZoom                           = 0.0f;
 
 
 
-        public                      Items               iItemMesh                     	= null;
-        public                      ItemKind            iPickUpItemKind           		= null;
+        public                      Items               iItemMesh                       = null;
+        public                      ItemKind            iPickUpItemKind                 = null;
         public                      CrossHair           iCrossHair                      = null;
         public                      boolean             iBreaksWalls                    = false;
 
@@ -117,8 +117,8 @@
             iShotsTillKeyReleaseRequired    = aShotsTillKeyReleaseRequired;
             iFXOffset                       = aFXOffset;
             iZoom                           = aZoom;
-            iItemMesh                      	= aItemMesh;
-            iPickUpItemKind               	= aPickUpItemKind;
+            iItemMesh                       = aItemMesh;
+            iPickUpItemKind                 = aPickUpItemKind;
             iCrossHair                      = aCrossHair;
             iBreaksWalls                    = aBreaksWalls;
 

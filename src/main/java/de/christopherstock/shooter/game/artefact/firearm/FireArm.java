@@ -11,12 +11,12 @@
     import  de.christopherstock.lib.game.*;
     import  de.christopherstock.lib.game.LibShot.ShotSpender;
     import  de.christopherstock.lib.gl.*;
-import de.christopherstock.lib.io.d3ds.*;
+    import  de.christopherstock.lib.io.d3ds.*;
     import  de.christopherstock.lib.math.*;
-    import 	de.christopherstock.shooter.game.artefact.Artefact;
-import de.christopherstock.shooter.game.artefact.ArtefactKind;
+    import  de.christopherstock.shooter.game.artefact.Artefact;
+    import  de.christopherstock.shooter.game.artefact.ArtefactKind;
     import  de.christopherstock.shooter.io.sound.*;
-import  de.christopherstock.shooter.level.*;
+    import  de.christopherstock.shooter.level.*;
 
     /**************************************************************************************
     *   A Wearpons that uses ammo.
@@ -34,7 +34,7 @@ import  de.christopherstock.shooter.level.*;
         private                     int                 iWearponIrregularityHorz        = 0;
         private                     int                 iShotCount                      = 0;
         private                     int                 iShotCountRandomMod             = 0;
-        public						int                 iMagazineSize                   = 0;
+        public                      int                 iMagazineSize                   = 0;
 
         public                      LibD3dsFile         iProjectile                     = null;
         

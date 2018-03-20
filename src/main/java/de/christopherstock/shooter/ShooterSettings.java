@@ -5,9 +5,9 @@
 
     import  java.awt.*;
     import  de.christopherstock.lib.gl.*;
-	import  de.christopherstock.lib.ui.*;
-	import  de.christopherstock.shooter.level.setup.*;
-	import  de.christopherstock.shooter.state.*;
+    import  de.christopherstock.lib.ui.*;
+    import  de.christopherstock.shooter.level.setup.*;
+    import  de.christopherstock.shooter.state.*;
 
     /**********************************************************************************
     *   All settings for the project.

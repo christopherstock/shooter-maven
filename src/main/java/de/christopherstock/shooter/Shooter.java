@@ -1,18 +1,10 @@
-/*  $Id: Shooter.java 1303 2015-02-12 15:41:58Z jenetic.bytemare $
- *  =======================================================================================
- */
+
     package de.christopherstock.shooter;
 
     import  de.christopherstock.shooter.base.*;
 
-    /**
-        'real coders may cast to void but never die.'                              |\      _,,,---,,_
-                                                                                   /,`.-'`'    -.  ;-;;,_
-                                                                                  |,4-  ) )-,_..;\ (  `'-'
-    ********************************************************************---------'---''(_/--'--`-'\_)-----------
-    *   The Project's Main-Class.
-    *   The {@link #main(String[])} method is the application's entry point.
-    *   Contains ToDo List, main method and inanity.
+    /*******************************************************************************************************************
+    *   Project's Main-Class containing the {@link #main(String[])} method.
     *
     *   TODO            Maven Goal for creating JNLP file.
     *   TODO            make new subclass:  Wearpon that derives from ArtefactKind!!
@@ -22,20 +14,20 @@
     *   TODO            Setup, copy and prune '_ASSETS'.
     *   TODO            Copy and prune 'MayDay' folder.
     *   TODO            Unify all docblocks (length 120), imports and all coding style!
-	*	TODO			Mayflower preloader and textures ( posters ).
-	*   TODO            Remove all tabs
-	*   TODO             Remove all prefixes.
-	*   TODO            Revise menu.
-	*   TODO            Create example test!
-	*   TODO            Replace all tabs.
-	*   TODO            Different heights for particle effects.
-	*   TODO            Revise preloader!
-	*   TODO            Revise level.
-	*   TODO            Remove ALL static fields!
-	*   TODO            Turn static field Level.player to non-static!!
-	*   TODO            Fix all code lints.
-	*   TODO            Prune all static fields!!
-	*	TODO			Revise level design.
+    *   TODO            Mayflower preloader and textures ( posters ).
+    *   TODO            Remove all tabs
+    *   TODO             Remove all prefixes.
+    *   TODO            Revise menu.
+    *   TODO            Create example test!
+    *   TODO            Replace all tabs.
+    *   TODO            Different heights for particle effects.
+    *   TODO            Revise preloader!
+    *   TODO            Revise level.
+    *   TODO            Remove ALL static fields!
+    *   TODO            Turn static field Level.player to non-static!!
+    *   TODO            Fix all code lints.
+    *   TODO            Prune all static fields!!
+    *   TODO            Revise level design.
     *   TODO            Update Eclipse.
     *   TODO            Zoom Auto Shotgun.
     *   TODO            only for FireArms! Move ArtefactType.iFXImages to Firearms (Wearpons)!

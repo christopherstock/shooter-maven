@@ -11,8 +11,8 @@
     import  de.christopherstock.lib.gl.*;
     import  de.christopherstock.lib.math.*;
     import  de.christopherstock.shooter.*;
-    import 	de.christopherstock.shooter.game.artefact.firearm.AmmoSet;
-	import 	de.christopherstock.shooter.game.artefact.firearm.FireArm;
+    import  de.christopherstock.shooter.game.artefact.firearm.AmmoSet;
+    import  de.christopherstock.shooter.game.artefact.firearm.FireArm;
     import  de.christopherstock.shooter.game.artefact.gadget.Gadget;
     import  de.christopherstock.shooter.game.objects.*;
     import  de.christopherstock.shooter.io.hid.*;

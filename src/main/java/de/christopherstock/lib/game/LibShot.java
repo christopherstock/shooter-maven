@@ -86,7 +86,7 @@
             int                     aDamage,
             FXSize                  aSliverSize,
             boolean                 aWallBreakingAmmo,
-            LibD3dsFile  			aProjectile,
+            LibD3dsFile             aProjectile,
             int                     aFadeOutTicks
         )
         {

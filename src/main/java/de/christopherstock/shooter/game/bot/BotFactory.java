@@ -6,9 +6,9 @@
     import  java.awt.geom.*;
     import  de.christopherstock.lib.g3d.*;
     import  de.christopherstock.lib.math.*;
-    import 	de.christopherstock.shooter.game.artefact.Artefact;
-	import 	de.christopherstock.shooter.game.artefact.ArtefactType;
-	import  de.christopherstock.shooter.game.objects.*;
+    import     de.christopherstock.shooter.game.artefact.Artefact;
+    import     de.christopherstock.shooter.game.artefact.ArtefactType;
+    import  de.christopherstock.shooter.game.objects.*;
     import  de.christopherstock.shooter.game.objects.Bot.*;
 
     /**************************************************************************************

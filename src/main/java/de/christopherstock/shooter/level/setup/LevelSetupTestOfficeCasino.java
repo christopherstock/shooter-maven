@@ -25,7 +25,7 @@
     import  de.christopherstock.shooter.g3d.wall.Wall.WallAction;
     import  de.christopherstock.shooter.g3d.wall.Wall.WallClimbable;
     import  de.christopherstock.shooter.g3d.wall.Wall.WallCollidable;
-    import 	de.christopherstock.shooter.game.artefact.ArtefactType;
+    import     de.christopherstock.shooter.game.artefact.ArtefactType;
     import  de.christopherstock.shooter.game.bot.*;
     import  de.christopherstock.shooter.game.bot.BotFactory.*;
     import  de.christopherstock.shooter.game.objects.*;
