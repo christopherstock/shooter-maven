@@ -14,11 +14,16 @@
     *   The {@link #main(String[])} method is the application's entry point.
     *   Contains ToDo List, main method and inanity.
     *
+    *   TODO            Maven Goal for creating JNLP file.
+    *   TODO            Maven Goal for signing JAR.
+    *
 	*	TODO			Mayflower preloader and textures ( posters ).
 	*   TODO            Revise menu.
+	*   TODO            Replace all tabs.
 	*   TODO            Different heights for particle effects.
 	*   TODO            Revise preloader!
 	*   TODO            Revise level.
+	*   TODO            Fix all code lints.
 	*   TODO            Prune all static fields!!
 	*	TODO			Revise level design.
     *   TODO            Update Eclipse.
@@ -27,10 +32,7 @@
     *   TODO            Let Maven create JNLP.
     *   TODO            Remove all KILLEFIT!!
     *   TODO            Source in pom.xml to 1.8
-    *   TODO            Remove runme and turn to maven goal etc.!
     *   TODO            Add assets.
-    *   TODO            Maven Goal for creating JNLP file.
-    *   TODO            Maven Goal for signing JAR.
     *   TODO            Complete version 0.3 and add DONE items to History.
     *
     *   TODO HIGH       slow panning for zoomed view?
@@ -53,6 +55,7 @@
     *   TODO WEAK       create cool story level data
     *   TODO WEAK       create double-handed bots or artefacts? - 2 x iCurrentArtefact?
     *
+    *   DONE            Removed runme and turn to maven goal etc.!
     *   DONE            Fixed the sound gap on the two looped bg sounds!
     *   DONE            Let the JMF playback sources from InputStreams.
     *   DONE            Pruned JLayer mp3 player.
