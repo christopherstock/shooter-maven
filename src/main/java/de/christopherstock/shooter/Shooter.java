@@ -18,9 +18,15 @@
     *   TODO            make new subclass:  Wearpon that derives from ArtefactKind!!
     *   TODO            Maven Goal for signing JAR.
     *   TODO            Move all CloseCombat constants to settings!
+    *   TODO            Setup, copy and prune 'dist'.
+    *   TODO            Setup, copy and prune '_ASSETS'.
+    *   TODO            Copy and prune 'MayDay' folder.
     *   TODO            Unify all docblocks (length 120), imports and all coding style!
 	*	TODO			Mayflower preloader and textures ( posters ).
+	*   TODO            Remove all tabs
+	*   TODO             Remove all prefixes.
 	*   TODO            Revise menu.
+	*   TODO            Create example test!
 	*   TODO            Replace all tabs.
 	*   TODO            Different heights for particle effects.
 	*   TODO            Revise preloader!
