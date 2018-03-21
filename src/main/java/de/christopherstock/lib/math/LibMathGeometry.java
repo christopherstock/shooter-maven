@@ -7,9 +7,6 @@
 
     /**************************************************************************************
     *   A collection of static geometry utility methods.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
     **************************************************************************************/
     public final class LibMathGeometry
     {

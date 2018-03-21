@@ -16,16 +16,13 @@
     import  de.christopherstock.shooter.ShooterSettings.ItemSettings;
     import  de.christopherstock.shooter.base.*;
     import  de.christopherstock.shooter.g3d.mesh.*;
-    import de.christopherstock.shooter.game.artefact.Artefact;
-    import de.christopherstock.shooter.game.artefact.firearm.*;
+    import  de.christopherstock.shooter.game.artefact.Artefact;
+    import  de.christopherstock.shooter.game.artefact.firearm.*;
     import  de.christopherstock.shooter.level.*;
-import  de.christopherstock.shooter.ui.hud.*;
+    import  de.christopherstock.shooter.ui.hud.*;
 
     /**************************************************************************************
     *   An item being able to be picked up by the player.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
     **************************************************************************************/
     public class ItemToPickUp implements LibGameObject
     {

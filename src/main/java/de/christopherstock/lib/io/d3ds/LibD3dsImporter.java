@@ -13,9 +13,6 @@
     /********************************************************************************
     *   A 3d studio max ascii scene export file importer using regular expressions.
     *   Switched from enum to ordinary class in order to deliver instances of the meshes.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
     ********************************************************************************/
     public class LibD3dsImporter
     {

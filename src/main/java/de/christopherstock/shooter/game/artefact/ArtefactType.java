@@ -23,9 +23,6 @@
 
     /**************************************************************************************
     *   All different artefacts ( cc-wearpons, fire-arms and gadgets ) the game makes use of.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
     **************************************************************************************/
     public enum ArtefactType
     {

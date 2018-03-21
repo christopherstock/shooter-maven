@@ -10,9 +10,6 @@
 
     /**************************************************************************************
     *   An event being invoked - not only by picking up items but on level start etc.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
     **************************************************************************************/
     public enum BotEvent implements GameEvent
     {

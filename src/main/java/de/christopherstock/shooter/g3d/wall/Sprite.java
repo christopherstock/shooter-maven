@@ -15,9 +15,6 @@
 
     /**************************************************************************************
     *   Represents a mesh with all faces collision enabled.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
     **************************************************************************************/
     public class Sprite extends Wall implements LibSprite
     {

@@ -9,9 +9,6 @@
 
     /**************************************************************************************
     *   Represents a pop-up-message with an avatar image and a message.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
     **************************************************************************************/
     public enum CrossHair
     {

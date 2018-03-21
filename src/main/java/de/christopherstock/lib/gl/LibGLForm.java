@@ -10,9 +10,6 @@
 
     /**************************************************************************************
     *   The Form holds the gl-canvas and the preloader-view.
-    *
-    *   @author         Christopher Stock
-    *   @version        0.3.11
     **************************************************************************************/
     public class LibGLForm implements WindowListener, FocusListener
     {

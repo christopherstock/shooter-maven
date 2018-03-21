@@ -12,9 +12,6 @@
     /**************************************************************************************
     *   The background sound engine. Uses the JavaMediaFramework player that is able
     *   to playback mp3 files with nanosecond precision.
-    *
-    *   @version    0.3.11
-    *   @author     Christopher Stock
     **************************************************************************************/
     public enum SoundBg
     {

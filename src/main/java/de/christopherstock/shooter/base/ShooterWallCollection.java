@@ -22,9 +22,6 @@
 
     /**************************************************************************************
     *   The current version enumeration.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
     **************************************************************************************/
     public abstract class ShooterWallCollection
     {
@@ -92,9 +89,6 @@
 
         /**************************************************************************************
         *   Creates a room with maximum possibilities for adjustments.
-        *
-        *   @author     Christopher Stock
-        *   @version    0.3.11
         **************************************************************************************/
         public static final WallCollection createWall( LibD3dsFile file, float x, float y, float z, float rotZ, int sizeX, LibTexture doorTex, WallHealth doorHealth )
         {
@@ -406,9 +400,6 @@
 
         /**************************************************************************************
         *   Creates a room with maximum possibilities for adjustments.
-        *
-        *   @author     Christopher Stock
-        *   @version    0.3.11
         **************************************************************************************/
         public static final WallCollection createRoom( float x, float y, float z, float rotZ, int sizeX, int sizeY, WallStyle left, WallStyle top, WallStyle right, WallStyle bottom, LibTexture doorTex, WallHealth doorHealth, WallAction doorAction, DoorStyle doorStyle, int doorOffset, LibTexture wallTex, LibTexture floorTex, LibTexture ceilingTex, Wall[] furniture, int[] gapTop, int[] gapBottom, int[] gapLeft, int[] gapRight )
         {
@@ -678,8 +669,6 @@
 
         public static final WallCollection createDeskOffice( float x, float y, float z, float rotZ )
         {
-            //TODO LOW let random assign different topping positions
-
             return new WallCollection
             (
                 new Wall(   Others.EDeskOffice1,    new LibVertex(  x, y, z    ), rotZ,  Scalation.ENone,        Invert.EYes, WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EWood1, new LibTexture[] { WallTex.EScreen2, }, 0, WallHealth.ESolidWood, FXSize.ESmall, null   ),

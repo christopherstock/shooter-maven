@@ -3,9 +3,6 @@
 
     /**************************************************************************************
     *   Control for one key enables key blocking after being pressed.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
     **************************************************************************************/
     public class KeyControl
     {

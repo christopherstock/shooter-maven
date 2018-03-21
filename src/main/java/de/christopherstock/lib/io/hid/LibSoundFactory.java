@@ -9,9 +9,6 @@
     /**************************************************************************************
     *   A factory being initialized with one sound.
     *   It delivers one-shot sound-clips from this sound.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
     **************************************************************************************/
     public class LibSoundFactory
     {

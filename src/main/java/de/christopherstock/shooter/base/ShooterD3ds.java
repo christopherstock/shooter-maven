@@ -16,9 +16,6 @@
     *   of the enum constant is the filename of the ascii scene export file (.ase).
     *   Remember to set the UVW mapping for all ase files being exported
     *   otherwise the texture will not be displayed correctly.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
     ********************************************************************************/
     public class ShooterD3ds
     {

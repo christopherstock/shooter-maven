@@ -7,9 +7,6 @@
     /**************************************************************************************
     *   What is the matrix?
     *   Simple math-class exclusively containg static functionality for transforming matrices.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
     **************************************************************************************/
     public class LibMatrix
     {

@@ -25,9 +25,6 @@
 
     /**************************************************************************************
     *   All settings for level 'Test Facility'.
-    *
-    *   @version    0.3.11
-    *   @author     Christopher Stock
     **************************************************************************************/
     public class LevelSetupTestFacility extends LevelSetup
     {

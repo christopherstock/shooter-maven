@@ -6,9 +6,6 @@
 
     /**************************************************************************************
     *   Represents a material that is bound to a texture.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
     **************************************************************************************/
     public abstract interface LibMaterial
     {

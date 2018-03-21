@@ -8,9 +8,6 @@
 
     /**************************************************************************************
     *   Manages a set of artefacts being holded by the player, a bot or a device.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
     **************************************************************************************/
     public class ArtefactSet
     {

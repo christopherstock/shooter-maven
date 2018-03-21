@@ -18,9 +18,6 @@
 
     /**************************************************************************************
     *   Represents a cylinder.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
     **************************************************************************************/
     public class Cylinder implements LibGeomObject, LibCylinder
     {

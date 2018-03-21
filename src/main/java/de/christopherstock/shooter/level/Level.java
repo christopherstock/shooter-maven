@@ -27,9 +27,6 @@
 
     /**************************************************************************************
     *   Holds all values that are bound to the current active level.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
     **************************************************************************************/
     public class Level implements LibFloorStack
     {

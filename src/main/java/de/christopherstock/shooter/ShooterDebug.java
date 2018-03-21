@@ -6,9 +6,6 @@
 
     /**************************************************************************************
     *   The debug system consisting of switchable debug groups.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
     **************************************************************************************/
     public enum ShooterDebug implements LibDebug
     {

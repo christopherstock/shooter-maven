@@ -5,9 +5,6 @@
 
     /**************************************************************************************
     *   The Texture-System.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
     **************************************************************************************/
     public class LibGLTexture implements Serializable
     {

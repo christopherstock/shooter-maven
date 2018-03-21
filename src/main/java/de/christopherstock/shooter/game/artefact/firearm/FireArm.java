@@ -17,9 +17,6 @@
 
     /**************************************************************************************
     *   A Wearpons that uses ammo.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
     **************************************************************************************/
     public final class FireArm extends ArtefactKind
     {

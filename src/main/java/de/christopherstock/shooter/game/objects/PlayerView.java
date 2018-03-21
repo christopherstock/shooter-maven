@@ -11,9 +11,6 @@
 
     /**************************************************************************************
     *   The players field of view.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
     **************************************************************************************/
     public class PlayerView implements PlayerSettings
     {

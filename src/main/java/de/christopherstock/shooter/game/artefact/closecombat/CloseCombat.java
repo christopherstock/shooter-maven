@@ -17,9 +17,6 @@
 
     /**************************************************************************************
     *   A close-combat Wearpon.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
     **************************************************************************************/
     public final class CloseCombat extends ArtefactKind
     {

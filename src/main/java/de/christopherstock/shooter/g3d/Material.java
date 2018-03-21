@@ -10,9 +10,6 @@
 
     /**************************************************************************************
     *   Different materials that can be assigned for texture surfaces.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
     **************************************************************************************/
     public enum Material implements LibMaterial
     {

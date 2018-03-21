@@ -10,9 +10,6 @@
 
     /**************************************************************************************
     *   A seekable IO stream for the JFM.
-    *
-    *   @version    0.3.11
-    *   @author     Christopher Stock
     **************************************************************************************/
     public class LibIOSeekableStream implements PullSourceStream, Seekable
     {

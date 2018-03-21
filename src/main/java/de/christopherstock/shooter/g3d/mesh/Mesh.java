@@ -17,9 +17,6 @@
 
     /**************************************************************************************
     *   Represents a mesh.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
     **************************************************************************************/
     public class Mesh implements LibGeomObject, Serializable
     {

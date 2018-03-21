@@ -29,9 +29,6 @@
 
     /**************************************************************************************
     *   The superclass of all non-player-characters.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
     **************************************************************************************/
     public class Bot implements LibGameObject, ShotSpender
     {

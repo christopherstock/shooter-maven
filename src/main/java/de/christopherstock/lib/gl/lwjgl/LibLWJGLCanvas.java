@@ -7,11 +7,8 @@
     import  de.christopherstock.lib.ui.*;
 
     /**************************************************************************************
-     * The Form holds the gl-canvas and the preloader-view.
-     *
-     * @author      Christopher Stock
-     * @version     0.3.11
-     **************************************************************************************/
+    *   The Form holds the gl-canvas and the preloader-view.
+    **************************************************************************************/
     public class LibLWJGLCanvas extends Canvas implements FocusListener
     {
         private     static  final   long            serialVersionUID    = 7582941416008508760L;

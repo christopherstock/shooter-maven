@@ -2,7 +2,6 @@
     package de.christopherstock.shooter.game.artefact.gadget;
 
     import  java.awt.geom.Point2D;
-
     import  de.christopherstock.lib.Lib;
     import  de.christopherstock.lib.fx.LibFX.FXSize;
     import  de.christopherstock.lib.g3d.LibHoleSize;
@@ -15,9 +14,6 @@
 
     /**************************************************************************************
     *   A close-combat Wearpon.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
     **************************************************************************************/
     public final class Gadget extends ArtefactKind
     {

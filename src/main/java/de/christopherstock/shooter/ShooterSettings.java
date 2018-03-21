@@ -9,9 +9,6 @@
 
     /**********************************************************************************
     *   All settings for the project.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
     ***********************************************************************************/
     public class ShooterSettings
     {
@@ -89,9 +86,6 @@
 
         /**************************************************************************************
         *   Holding all of player's constant attributes.
-        *
-        *   @author     Christopher Stock
-        *   @version    0.3.11
         **************************************************************************************/
         public static interface PlayerSettings
         {
@@ -378,9 +372,6 @@
         /**************************************************************************************
         *   All paths the application makes use of.
         *   All references are specified absolute.
-        *
-        *   @author     Christopher Stock
-        *   @version    0.3.11
         **************************************************************************************/
         public enum Path
         {

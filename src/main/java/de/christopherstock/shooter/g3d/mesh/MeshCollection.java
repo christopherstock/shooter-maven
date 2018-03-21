@@ -10,9 +10,6 @@
 
     /**************************************************************************************
     *   Represents a collection of meshes.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
     **************************************************************************************/
     abstract class MeshCollection implements LibGeomObject, Serializable
     {

@@ -12,9 +12,6 @@
 
     /**************************************************************************************
     *   Represents a face with an anchor and a various number of vertices that define the polygon.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
     **************************************************************************************/
     public abstract class LibFace implements LibGLFace, LibGeomObject, Serializable
     {

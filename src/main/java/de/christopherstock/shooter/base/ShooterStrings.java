@@ -3,9 +3,6 @@
 
     /**************************************************************************************
     *   All content strings gather here.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
     **************************************************************************************/
     public abstract interface ShooterStrings
     {

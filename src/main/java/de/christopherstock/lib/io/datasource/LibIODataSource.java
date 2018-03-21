@@ -9,9 +9,6 @@
 
     /**************************************************************************************
     *   A DataSource for the JFM.
-    *
-    *   @version    0.3.11
-    *   @author     Christopher Stock
     **************************************************************************************/
     public class LibIODataSource extends PullDataSource
     {

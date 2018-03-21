@@ -14,9 +14,6 @@
 
     /**************************************************************************************
     *   Represents a point of shot collision.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
     **************************************************************************************/
     public class LibHitPoint implements Comparable<LibHitPoint>
     {

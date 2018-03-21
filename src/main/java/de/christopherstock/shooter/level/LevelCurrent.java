@@ -7,9 +7,6 @@
 
     /**************************************************************************************
     *   Stores all information for the current active level set.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.10
     **************************************************************************************/
     public abstract class LevelCurrent
     {

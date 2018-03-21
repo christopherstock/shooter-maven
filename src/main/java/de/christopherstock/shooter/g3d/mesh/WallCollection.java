@@ -10,9 +10,6 @@
 
     /**************************************************************************************
     *   Represents a mesh-collection.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
     **************************************************************************************/
     public class WallCollection extends MeshCollection
     {

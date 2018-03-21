@@ -8,9 +8,6 @@
 
     /**************************************************************************************
     *   The configuration set for one level section.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
     **************************************************************************************/
     public class LevelConfigSection
     {

@@ -28,9 +28,6 @@
 
     /**************************************************************************************
     *   Represents the player.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
     **************************************************************************************/
     public class Player implements LibGameObject, PlayerSettings, ShotSpender
     {

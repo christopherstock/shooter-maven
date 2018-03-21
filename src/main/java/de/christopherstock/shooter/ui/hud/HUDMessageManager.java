@@ -8,9 +8,6 @@
 
     /**************************************************************************************
     *   Manages the hud-messaging-queue
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
     **************************************************************************************/
     public final class HUDMessageManager
     {

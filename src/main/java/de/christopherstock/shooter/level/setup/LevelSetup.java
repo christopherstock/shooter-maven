@@ -6,9 +6,6 @@
 
     /**************************************************************************************
     *   All settings for all levels the game consists of.
-    *
-    *   @version    0.3.11
-    *   @author     Christopher Stock
     **************************************************************************************/
     public abstract class LevelSetup
     {

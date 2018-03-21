@@ -8,9 +8,6 @@
 
     /**************************************************************************************
     *   A one shot threaded sound clip.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
     **************************************************************************************/
     public class LibSoundClip extends Thread implements LineListener
     {

@@ -6,7 +6,7 @@
     /*******************************************************************************************************************
     *   Project's Main-Class containing the {@link #main(String[])} method.
     *
-    *   TODO            Remove all KILLEFIT!!
+    *   TODO            Fix all multilined docblocks to single lines!
     *   TODO            Maven Goal for creating JNLP file.
     *   TODO            Remove author and version tag.
     *   TODO            make new subclass:  Wearpon that derives from ArtefactKind!!
@@ -38,6 +38,7 @@
     *   TODO            Add assets.
     *   TODO            Complete version 0.3.11 and add DONE items to History.
     *
+    *   TODO            let random assign different topping positions for ShooterWallCollection.createDeskOffice
     *   TODO HIGH       slow panning for zoomed view?
     *   TODO            Refactor the Artefact-System.
     *   TODO            Simple switch for lighting?
@@ -83,9 +84,6 @@
     *   DONE            fixed hit point ( bullet hole ) gaps,
     *   DONE            dismissed: separate bullet holes to section or global,
     *   DONE            main level change,
-    *
-    *   @version    0.3.11
-    *   @author     Christopher Stock
     *******************************************************************************************/
     public class Shooter
     {

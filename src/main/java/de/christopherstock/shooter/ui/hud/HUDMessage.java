@@ -11,9 +11,6 @@
     /**************************************************************************************
     *   The HUD messages system. HUD messages pop up to give the user a short notice
     *   about an event. E.g. picking up items.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
     **************************************************************************************/
     final class HUDMessage
     {

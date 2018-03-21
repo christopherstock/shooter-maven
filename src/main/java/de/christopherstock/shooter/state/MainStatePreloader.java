@@ -11,9 +11,6 @@
 
     /**************************************************************************************
     *   The application's main thread. Start this thread to run the application.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
     **************************************************************************************/
     public class MainStatePreloader
     {

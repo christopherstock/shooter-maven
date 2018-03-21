@@ -13,10 +13,7 @@
     import  de.christopherstock.shooter.ShooterSettings;
 
     /**************************************************************************************
-    *   The ammunition.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
+    *   The type of ammunition.
     **************************************************************************************/
     public enum AmmoType
     {

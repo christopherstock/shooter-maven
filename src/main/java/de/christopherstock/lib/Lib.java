@@ -7,9 +7,6 @@
 
     /**************************************************************************************
     *   Use final instances of this class to declare different log groups.
-    *
-    *   @author     Christopher Stock
-    *   @version    0.3.11
     **************************************************************************************/
     public abstract class Lib
     {
@@ -97,9 +94,6 @@
 
         /**************************************************************************************
         *   Represents a camera adjustment in 3d space.
-        *
-        *   @author     Christopher Stock
-        *   @version    0.3.11
         **************************************************************************************/
         public static final class ViewSet
         {
