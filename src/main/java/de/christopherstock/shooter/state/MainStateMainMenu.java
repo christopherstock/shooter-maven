@@ -61,7 +61,7 @@
 
         }
 
-        public static final void init()
+        public static void init()
         {
             getSingleton();
             currentMainMenuItem = MainMenuItem.EStartNewGameFacility;
@@ -70,7 +70,7 @@
         public final void draw2D()
         {
             //draw hud
-            Shooter.mainThread.iHUD.draw2D();
+            Shooter.mainThread.hud.draw2D();
 
             //draw black pane
             LibGL3D.view.drawOrthoBitmapBytes( blackPane,               0,   0,   0.5f );
@@ -212,7 +212,7 @@
             Keys.enterKey.checkLaunchingAction();
         }
 
-        public static final MainStateMainMenu getSingleton()
+        public static MainStateMainMenu getSingleton()
         {
             if ( singleton == null )
             {

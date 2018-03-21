@@ -527,7 +527,7 @@
             }
         }
 
-        private final void toggleDoorOpening()
+        private void toggleDoorOpening()
         {
             iDoorOpening = !iDoorOpening;
             ShooterDebug.playerAction.out( "launch door change, doorOpening now [" + iDoorOpening + "]" );

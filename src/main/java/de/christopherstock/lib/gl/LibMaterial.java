@@ -7,13 +7,13 @@
     /*******************************************************************************************************************
     *   Represents a material that is bound to a texture.
     *******************************************************************************************************************/
-    public abstract interface LibMaterial
+    public interface LibMaterial
     {
-        public abstract LibColors[] getSliverColors();
+        LibColors[] getSliverColors();
 
-        public abstract boolean isPenetrable();
+        boolean isPenetrable();
 
-        public abstract LibTexture getBulletHoleTexture();
+        LibTexture getBulletHoleTexture();
 
-        public abstract LibSound getBulletImpactSound();
+        LibSound getBulletImpactSound();
     }

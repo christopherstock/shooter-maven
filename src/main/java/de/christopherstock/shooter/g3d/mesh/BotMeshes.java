@@ -777,7 +777,7 @@
             if ( iGlasses != null ) iGlasses.setTargetPitchs(   headPitch );
         }
 
-        private final Rotation[] getNewLegPosition( Leg leg, LegTarget newLegPosition )
+        private Rotation[] getNewLegPosition(Leg leg, LegTarget newLegPosition )
         {
             Rotation upperLegPitch  = new Rotation();
             Rotation lowerLegPitch  = new Rotation();
@@ -853,7 +853,7 @@
         }
 
 
-        private final Rotation getNewHeadPosition( HeadTarget newHeadPosition )
+        private Rotation getNewHeadPosition(HeadTarget newHeadPosition )
         {
             Rotation headPitch      = new Rotation();
 

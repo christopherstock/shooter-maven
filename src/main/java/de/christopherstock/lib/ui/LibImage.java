@@ -16,7 +16,7 @@
     *******************************************************************************************************************/
     public class LibImage
     {
-        public static final byte[] getBytesFromImg( BufferedImage aBufferedImage, LibDebug debug )
+        public static byte[] getBytesFromImg(BufferedImage aBufferedImage, LibDebug debug )
         {
             byte[]      imgBytes    = null;
             DataBuffer  db          = aBufferedImage.getRaster().getDataBuffer();
@@ -47,7 +47,7 @@
             return imgBytes;
         }
 
-        public static final BufferedImage getFullOpaque( Color col, int width, int height )
+        public static BufferedImage getFullOpaque(Color col, int width, int height )
         {
             //create dynamic buffered image and draw context
             BufferedImage   template2 = new BufferedImage( width, height, BufferedImage.TYPE_INT_ARGB );
@@ -62,7 +62,7 @@
             return template2;
         }
 
-        public static final BufferedImage load( String url, LibDebug debug, boolean switchRGBAtoARGB )
+        public static BufferedImage load(String url, LibDebug debug, boolean switchRGBAtoARGB )
         {
             BufferedImage ret = null;
 
@@ -103,21 +103,21 @@
             return ret;
         }
 
-        public static final BufferedImage flipVert( BufferedImage bi )
+        public static BufferedImage flipVert(BufferedImage bi )
         {
             AffineTransform tx = java.awt.geom.AffineTransform.getScaleInstance( 1, -1 );
             tx.translate( 0, -bi.getHeight( null ) );
             return new AffineTransformOp( tx, AffineTransformOp.TYPE_NEAREST_NEIGHBOR ).filter( bi, null );
         }
 
-        public static final BufferedImage flipHorz( BufferedImage bi )
+        public static BufferedImage flipHorz(BufferedImage bi )
         {
             AffineTransform tx = java.awt.geom.AffineTransform.getScaleInstance( -1, 1 );
             tx.translate( -bi.getWidth( null ), 0 );
             return new AffineTransformOp( tx, AffineTransformOp.TYPE_NEAREST_NEIGHBOR ).filter( bi, null );
         }
 
-        public static final byte[] insertAlphaByte( byte[] rgbBytes )
+        public static byte[] insertAlphaByte(byte[] rgbBytes )
         {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
@@ -139,7 +139,7 @@
         /***************************************************************************************************************
         *   Flips all bytes in the stream.
         ***************************************************************************************************************/
-        public static final byte[] flipBytesTest( byte[] original )
+        public static byte[] flipBytesTest(byte[] original )
         {
             ByteArrayOutputStream baos = new ByteArrayOutputStream( original.length );
 
@@ -151,7 +151,7 @@
             return baos.toByteArray();
         }
 
-        public static final BufferedImage changeRGBtoBGR( BufferedImage src )
+        public static BufferedImage changeRGBtoBGR(BufferedImage src )
         {
             BufferedImage ret = src;
 
@@ -168,7 +168,7 @@
             return ret;
         }
 
-        public static final BufferedImage resizeImage( BufferedImage in, int newWidth, int newHeight )
+        public static BufferedImage resizeImage(BufferedImage in, int newWidth, int newHeight )
         {
             BufferedImage scaledImage = new BufferedImage( newWidth, newHeight, BufferedImage.TYPE_INT_ARGB);
             Graphics2D graphics2D = scaledImage.createGraphics();
@@ -187,7 +187,7 @@
         *   @param  original    The bitmap's bytes - length must be a multiple of 4.
         ***************************************************************************************************************/
         @Deprecated
-        public static final byte[] flipBytesHorzARGB( byte[] original )
+        public static byte[] flipBytesHorzARGB(byte[] original )
         {
             byte[] flipped = new byte[ original.length ];
 
@@ -215,7 +215,7 @@
         *   @deprecated         Replaced by {@link #flipVert(BufferedImage)}
         ***************************************************************************************************************/
         @Deprecated
-        public static final byte[] flipBytesVertARGB( byte[] original, int rowLength )
+        public static byte[] flipBytesVertARGB(byte[] original, int rowLength )
         {
             int                     bytesPerRow = rowLength * 4;
             ByteArrayOutputStream   baos        = new ByteArrayOutputStream();
@@ -232,7 +232,7 @@
         }
 
         @Deprecated
-        public static final BufferedImage[] loadAllEnumNames( Vector<Object> enumConstants, String path, LibExtension extension, LibDebug debug, boolean switchRGBAtoARGB )
+        public static BufferedImage[] loadAllEnumNames(Vector<Object> enumConstants, String path, LibExtension extension, LibDebug debug, boolean switchRGBAtoARGB )
         {
             BufferedImage[] ret = new BufferedImage[ enumConstants.size() ];
 

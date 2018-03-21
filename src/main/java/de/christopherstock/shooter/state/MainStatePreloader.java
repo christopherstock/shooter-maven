@@ -26,7 +26,7 @@
             //singleton constructor
         }
 
-        public static final MainStatePreloader getSingleton()
+        public static MainStatePreloader getSingleton()
         {
             if ( singleton == null ) singleton = new MainStatePreloader();
             return singleton;

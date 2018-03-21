@@ -8,18 +8,18 @@
     /*******************************************************************************************************************
     *   Represents a mesh.
     *******************************************************************************************************************/
-    public abstract interface LibGameObject
+    public interface LibGameObject
     {
-        public static enum HitPointCarrier
+        enum HitPointCarrier
         {
             EWall,
             EPlayer,
             EBot,
         }
 
-        public abstract LibVertex getAnchor();
-        public abstract HitPointCarrier getHitPointCarrier();
-        public abstract float getCarriersFaceAngle();
-        public abstract Vector<LibHitPoint> launchShot( LibShot shot );
-        public abstract void launchAction( LibCylinder aCylinder, Object gadget, float faceAngle );
+        LibVertex getAnchor();
+        HitPointCarrier getHitPointCarrier();
+        float getCarriersFaceAngle();
+        Vector<LibHitPoint> launchShot(LibShot shot);
+        void launchAction(LibCylinder aCylinder, Object gadget, float faceAngle);
     }

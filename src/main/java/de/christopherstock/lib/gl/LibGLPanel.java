@@ -8,10 +8,10 @@
     *******************************************************************************************************************/
     public abstract class LibGLPanel
     {
-        public static interface GLDrawCallback
+        public interface GLDrawCallback
         {
-            public abstract void draw2D();
-            public abstract void draw3D();
+            void draw2D();
+            void draw3D();
         }
 
         public                      int                 width                   = 0;

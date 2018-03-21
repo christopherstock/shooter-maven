@@ -16,7 +16,7 @@
         *   @param  degrees     The degrees to get the sin-value for.
         *   @return             The sin-value from -1.0f to 1.0f of the given degree value.
         ***************************************************************************************************************/
-        public static final float sinDeg( float degrees )
+        public static float sinDeg(float degrees )
         {
             return (float)Math.sin( degrees * Math.PI / 180.0f );
         }
@@ -27,7 +27,7 @@
         *   @param  degrees     The degrees to get the cos-value for.
         *   @return     The cos-value from -1.0f to 1.0f of the given degree value.
         ***************************************************************************************************************/
-        public static final float cosDeg( float degrees )
+        public static float cosDeg(float degrees )
         {
             return (float)Math.cos( degrees * Math.PI / 180.0f );
         }
@@ -38,7 +38,7 @@
         *   @param  degrees     The degrees to get the sin-value for.
         *   @return             The sin-value from -1.0f to 1.0f of the given degree value.
         ***************************************************************************************************************/
-        public static final double sinDegD( double degrees )
+        public static double sinDegD(double degrees )
         {
             return Math.sin( degrees * Math.PI / 180.0f );
         }
@@ -49,7 +49,7 @@
         *   @param  degrees     The degrees to get the cos-value for.
         *   @return     The cos-value from -1.0f to 1.0f of the given degree value.
         ***************************************************************************************************************/
-        public static final double cosDegD( double degrees )
+        public static double cosDegD(double degrees )
         {
             return Math.cos( degrees * Math.PI / 180.0f );
         }
@@ -59,14 +59,14 @@
         *   There is no need to set a random seed.
         *   {@link Math#random()} does this on the first invocation.
         ***************************************************************************************************************/
-        public static final int getRandom( int from, int to )
+        public static int getRandom(int from, int to )
         {
             double  rand    = Math.random() * 1000;
             int     randI   = ( ( (int)rand % ( to + 1 - from ) ) + from );
             return randI;
         }
 
-        public static final float[] col2f3( int col )
+        public static float[] col2f3(int col )
         {
             float r = ( col & 0xff0000 )  >>  16;
             float g = ( col & 0x00ff00 )  >>  8;
@@ -75,7 +75,7 @@
             return new float[] { r / 255, g / 255, b / 255 };
         }
 
-        public static final float[] col2f4( int col )
+        public static float[] col2f4(int col )
         {
             float a = ( col & 0xff000000 )  >>  24;
             float r = ( col & 0x00ff0000 )  >>  16;
@@ -85,7 +85,7 @@
             return new float[] { r / 255, g / 255, b / 255, a / 255 };
         }
 
-        public static final float getAngleCorrect( Point2D.Float a, Point2D.Float b ) {
+        public static float getAngleCorrect(Point2D.Float a, Point2D.Float b ) {
 
             double distX = b.getX() - a.getX();
             double distY = b.getY() - a.getY();
@@ -121,7 +121,7 @@
         *
         *   @return     The nearest distance as an absolute value.
         ***************************************************************************************************************/
-        public static final float getAngleDistanceAbsolute( float angleSrc, float angleDest )
+        public static float getAngleDistanceAbsolute(float angleSrc, float angleDest )
         {
             return Math.abs( getAngleDistanceRelative( angleSrc, angleDest ) );
         }
@@ -131,7 +131,7 @@
         *
         *   @return     The nearest distance as a relative value.
         ***************************************************************************************************************/
-        public static final float getAngleDistanceRelative( float angleSrc, float angleDest )
+        public static float getAngleDistanceRelative(float angleSrc, float angleDest )
         {
             float distance = 0.0f;
 
@@ -142,7 +142,7 @@
             return distance;
         }
 
-        public static final float normalizeAngle( int aAngle )
+        public static float normalizeAngle(int aAngle )
         {
             float angle = aAngle;
             while ( angle <    0 ) angle += 360;
@@ -150,7 +150,7 @@
             return angle;
         }
 
-        public static final float normalizeAngle( float aAngle )
+        public static float normalizeAngle(float aAngle )
         {
             float angle = aAngle;
             while ( angle <    0.0f ) angle += 360.0f;
@@ -158,7 +158,7 @@
             return angle;
         }
 
-        public static final byte[] intArrayToByteArray( int[] ints )
+        public static byte[] intArrayToByteArray(int[] ints )
         {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
@@ -173,7 +173,7 @@
             return baos.toByteArray();
         }
 
-        public static final float reachToAbsolute( float aSrc, float aDest, float absoluteDistance )
+        public static float reachToAbsolute(float aSrc, float aDest, float absoluteDistance )
         {
             float src  = aSrc;
             float dest = aDest;
@@ -285,7 +285,7 @@
         }
 
         @Deprecated
-        public static final float reachToRelative( float src, float dest, float relativeDistance )
+        public static float reachToRelative(float src, float dest, float relativeDistance )
         {
             float angleDistance = getAngleDistanceAbsolute( src, dest );
 

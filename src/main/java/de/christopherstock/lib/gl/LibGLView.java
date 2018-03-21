@@ -15,16 +15,16 @@
     *******************************************************************************************************************/
     public abstract class LibGLView
     {
-        public abstract interface LibGLFace
+        public interface LibGLFace
         {
-            public abstract LibVertex    getAnchor();
-            public abstract float        getAlpha();
-            public abstract float        getDarkenOpacity();
-            public abstract LibColors    getColor();
-            public abstract float[]      getColor3f();
-            public abstract LibVertex    getFaceNormal();
-            public abstract LibGLTexture getTexture();
-            public abstract LibVertex[]  getVerticesToDraw();
+            LibVertex    getAnchor();
+            float        getAlpha();
+            float        getDarkenOpacity();
+            LibColors    getColor();
+            float[]      getColor3f();
+            LibVertex    getFaceNormal();
+            LibGLTexture getTexture();
+            LibVertex[]  getVerticesToDraw();
         }
 
         public enum Align3D
@@ -109,7 +109,7 @@
             }
         }
 
-        public static final Vector<LibGLFace> sortFacesAccordingToDistance( Vector<LibGLFace> faces, LibVertex cameraViewPoint )
+        public static Vector<LibGLFace> sortFacesAccordingToDistance(Vector<LibGLFace> faces, LibVertex cameraViewPoint )
         {
             //debug.out( "sort face queue - [" + faces.size() + "] faces" );
 

@@ -16,7 +16,7 @@
         private                     DateFormat          formatDateTime                  = DateFormat.getDateTimeInstance(   DateFormat.MEDIUM, DateFormat.MEDIUM,   Locale.GERMANY );
         private                     DateFormat          formatDate                      = DateFormat.getDateInstance(       DateFormat.MEDIUM,                      Locale.GERMANY );
 
-        public static final LibStringFormat getSingleton()
+        public static LibStringFormat getSingleton()
         {
             if ( singleton == null ) singleton = new LibStringFormat();
             return singleton;

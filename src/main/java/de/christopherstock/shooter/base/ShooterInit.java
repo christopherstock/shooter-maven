@@ -23,7 +23,7 @@
         /***************************************************************************************************************
         *   Inits the ui.
         ***************************************************************************************************************/
-        protected static final void initUi()
+        protected static void initUi()
         {
             ShooterDebug.init.out( "initUi 1" );
 
@@ -68,7 +68,7 @@
         /***************************************************************************************************************
         *   Inits the rest.
         ***************************************************************************************************************/
-        protected static final void initRest()
+        protected static void initRest()
         {
             ShooterDebug.init.out( "initUi 5" );
 
@@ -99,8 +99,8 @@
 
             //init hud
             MainStatePreloader.getSingleton().increase( "Initing HUD and sound" );
-            Shooter.mainThread.iHUD = new HUD();
-            Shooter.mainThread.iFPS = new LibFPS( Fonts.EFps, ShooterSettings.Colors.EFpsFg.colABGR, ShooterSettings.Colors.EFpsOutline.colABGR, ShooterDebug.glImage );
+            Shooter.mainThread.hud = new HUD();
+            Shooter.mainThread.fps = new LibFPS( Fonts.EFps, ShooterSettings.Colors.EFpsFg.colABGR, ShooterSettings.Colors.EFpsOutline.colABGR, ShooterDebug.glImage );
 
             //init HUD fx
             HUDFx.init();

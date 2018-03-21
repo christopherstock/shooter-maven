@@ -21,7 +21,7 @@
 
         public                          LibGLImage      bgImage                     = null;
 
-        public static final void loadImages()
+        public static void loadImages()
         {
             for ( BackGround bg : values() )
             {

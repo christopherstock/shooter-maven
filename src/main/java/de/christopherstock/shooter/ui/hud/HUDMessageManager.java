@@ -22,7 +22,7 @@
 
         private                         Vector<HUDMessage>      messageQueue            = new Vector<HUDMessage>();
 
-        public static final HUDMessageManager getSingleton()
+        public static HUDMessageManager getSingleton()
         {
             if ( singleton == null ) singleton = new HUDMessageManager();
             return singleton;

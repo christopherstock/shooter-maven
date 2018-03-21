@@ -16,7 +16,7 @@
         public      static      EditorFrame     frame           = null;
         public      static      JPanel          contentPanel    = null;
 
-        public static final void main( String[] args )
+        public static void main(String[] args )
         {
             //assign look and feel
             setLookAndFeel( ShooterDebug.editor );
@@ -35,7 +35,7 @@
         /***************************************************************************************************************
          *   Sets lookAndFeel of the host operating system for all ui elements to come.
          **************************************************************************************************************/
-         public static final void setLookAndFeel( LibDebug debug )
+         public static void setLookAndFeel(LibDebug debug )
          {
              try
              {

@@ -54,7 +54,7 @@
 
         private                     LibSoundFactory         factory                 = null;
 
-        public static final void init()
+        public static void init()
         {
             //load all sounds
             for ( SoundFg sound : values() )
@@ -63,7 +63,7 @@
             }
         }
 
-        public static final void onRun()
+        public static void onRun()
         {
             //ShooterDebug.sound.out( "maintaining [" + soundQueue.size() + "] sounds" );
 
@@ -101,7 +101,7 @@
             }
         }
 
-        private final void loadBytes()
+        private void loadBytes()
         {
             String uri = ShooterSettings.Path.ESoundsFg.iUrl + toString() + LibExtension.wav.getSpecifier();
 
@@ -164,7 +164,7 @@
         /***************************************************************************************************************
         *   Starts a one-shot sound effect that is not referenced.
         ***************************************************************************************************************/
-        private final void playFx( float volume, float balance, int delay, Point2D.Float distantLocation )
+        private void playFx(float volume, float balance, int delay, Point2D.Float distantLocation )
         {
             //break on disabled system
             boolean disableSoundFx = General.DISABLE_SOUND_FX;

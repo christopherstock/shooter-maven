@@ -10,9 +10,9 @@
     *******************************************************************************************************************/
     public class LibGLFrame extends JFrame
     {
-        public static interface GLCallbackForm
+        public interface GLCallbackForm
         {
-            public void onFormDestroyed();
+            void onFormDestroyed();
         }
 
         private     static  final   long            serialVersionUID        = -4651971360551632489L;

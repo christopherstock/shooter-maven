@@ -33,7 +33,7 @@
 
             public          BufferedImage           img         = null;
 
-            public static final void loadImages()
+            public static void loadImages()
             {
                 for ( AvatarImage avatarImage : values() )
                 {
@@ -41,7 +41,7 @@
                 }
             }
 
-            private final void loadImage()
+            private void loadImage()
             {
                 img = LibImage.load( ShooterSettings.Path.EAvatar.iUrl + toString() + LibExtension.png.getSpecifier(), ShooterDebug.glImage, true );
             }
@@ -93,7 +93,7 @@
             bgBar = LibGLImage.getFullOpaque( bgColor, LibGL3D.panel.width - iImgAvatar.width - 3 * OffsetsOrtho.EAvatarMsgX, iImgAvatar.height, ShooterDebug.glImage );
         }
 
-        public static final void showMessage( AvatarImage img, String text, Color bgColor )
+        public static void showMessage(AvatarImage img, String text, Color bgColor )
         {
             //check if this message is already on the queue!
             for ( AvatarMessage m : messageQueue )
@@ -108,7 +108,7 @@
             messageQueue.add( new AvatarMessage( img, text, Fonts.EAvatarMessage, bgColor ) );
         }
 
-        public static final void animate()
+        public static void animate()
         {
             //next animation-tick!
             if ( anim > -1 ) --anim;
@@ -157,7 +157,7 @@
             }
         }
 
-        public static final void drawMessage()
+        public static void drawMessage()
         {
             //only draw if an avatar-animation is active
             if ( anim > -1 && messageQueue.size() > 0 )
@@ -167,7 +167,7 @@
             }
         }
 
-        private final void draw()
+        private void draw()
         {
             //get panel's current alpha
             float alphaBgBar      = 0.0f;
@@ -215,13 +215,13 @@
             }
         }
 
-        public static final boolean queueIsEmpty()
+        public static boolean queueIsEmpty()
         {
             return messageQueue.isEmpty();
         }
 
         @Deprecated
-        public static final void showDebugMessage()
+        public static void showDebugMessage()
         {
             switch ( AvatarMessage.currentDebugMsg )
             //switch ( LibMath.getRandom( 0, 2 ) )

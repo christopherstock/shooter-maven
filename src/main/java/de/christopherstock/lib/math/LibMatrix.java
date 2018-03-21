@@ -85,7 +85,7 @@
         }
 
         @SuppressWarnings( "unused" )
-        private static final double[][] getTranslationMatrix( double x, double y, double z )
+        private static double[][] getTranslationMatrix(double x, double y, double z )
         {
             return new double[][]
             {
@@ -97,7 +97,7 @@
         }
 
         @SuppressWarnings( "unused" )
-        private static final double[][] getScalationMatrix( double x, double y, double z )
+        private static double[][] getScalationMatrix(double x, double y, double z )
         {
             return new double[][]
             {
@@ -110,7 +110,7 @@
 
         @Deprecated
         @SuppressWarnings( "unused" )
-        private static final double[][] getVertexRotXMatrix( double angle )
+        private static double[][] getVertexRotXMatrix(double angle )
         {
             double sin = LibMath.sinDegD( angle );
             double cos = LibMath.cosDegD( angle );
@@ -126,7 +126,7 @@
 
         @Deprecated
         @SuppressWarnings( "unused" )
-        private static final double[][] getVertexRotYMatrix( double angle )
+        private static double[][] getVertexRotYMatrix(double angle )
         {
             double sin = LibMath.sinDegD( angle );
             double cos = LibMath.cosDegD( angle );
@@ -142,7 +142,7 @@
 
         @Deprecated
         @SuppressWarnings( "unused" )
-        private static final double[][] getVertexRotZMatrix( double angle )
+        private static double[][] getVertexRotZMatrix(double angle )
         {
             double sin = LibMath.sinDegD( angle );
             double cos = LibMath.cosDegD( angle );
@@ -156,7 +156,7 @@
             return newMatrix;
         }
 
-        private static final double[][] getAxisRotXMatrix( double angle )
+        private static double[][] getAxisRotXMatrix(double angle )
         {
             double sin = LibMath.sinDegD( angle );
             double cos = LibMath.cosDegD( angle );
@@ -170,7 +170,7 @@
             return newMatrix;
         }
 
-        private static final double[][] getAxisRotYMatrix( double angle )
+        private static double[][] getAxisRotYMatrix(double angle )
         {
             double sin = LibMath.sinDegD( angle );
             double cos = LibMath.cosDegD( angle );
@@ -184,7 +184,7 @@
             return newMatrix;
         }
 
-        private static final double[][] getAxisRotZMatrix( double angle )
+        private static double[][] getAxisRotZMatrix(double angle )
         {
             double sin = LibMath.sinDegD( angle );
             double cos = LibMath.cosDegD( angle );
@@ -198,7 +198,7 @@
             return newMatrix;
         }
 
-        private static final double[][] multiply( double[][] matrix1, double[][] matrix2 )
+        private static double[][] multiply(double[][] matrix1, double[][] matrix2 )
         {
             double[][] ret = new double[][]
             {

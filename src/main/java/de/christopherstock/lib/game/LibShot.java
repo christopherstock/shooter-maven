@@ -16,9 +16,9 @@
     *******************************************************************************************************************/
     public class LibShot
     {
-        public static interface ShotSpender
+        public interface ShotSpender
         {
-            public abstract LibShot getShot( float modZ );
+            LibShot getShot(float modZ);
         }
 
         public static enum ShotType

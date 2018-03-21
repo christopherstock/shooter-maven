@@ -6,9 +6,9 @@
     /*******************************************************************************************************************
     *   The interface to a sound clip.
     *******************************************************************************************************************/
-    public abstract interface LibSound
+    public interface LibSound
     {
-        public abstract void playDistancedFx( Point2D.Float distantLocation );
+        void playDistancedFx(Point2D.Float distantLocation);
 
 
     }

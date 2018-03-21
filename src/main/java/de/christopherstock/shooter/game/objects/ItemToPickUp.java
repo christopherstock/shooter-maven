@@ -124,7 +124,7 @@
             checkPlayerCollision();
         }
 
-        private final void checkPlayerCollision()
+        private void checkPlayerCollision()
         {
             //check collision of 2 circles ( easy  task.. )
             Area player = new Area( Level.currentPlayer().getCylinder().getCircle() );

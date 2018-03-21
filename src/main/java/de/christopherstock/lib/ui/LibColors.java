@@ -88,7 +88,7 @@
             colABGR = new Color( colARGB.getBlue(), colARGB.getGreen(), colARGB.getRed(), colARGB.getAlpha() );
         }
 
-        public static final LibColors getByName( String name )
+        public static LibColors getByName(String name )
         {
             if ( name == null ) return null;
 

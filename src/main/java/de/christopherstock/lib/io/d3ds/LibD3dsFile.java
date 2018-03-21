@@ -6,7 +6,7 @@
      ******************************************************************************************************************/
     public interface LibD3dsFile
     {
-        public abstract void initFile( LibD3dsImporter aD3dsFile );
-        public abstract LibD3dsImporter getFile();
+        void initFile(LibD3dsImporter aD3dsFile);
+        LibD3dsImporter getFile();
     }
     

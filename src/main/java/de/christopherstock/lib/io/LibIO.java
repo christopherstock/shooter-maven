@@ -53,7 +53,7 @@
             }
         }
 
-        public static final void saveObjects( String filename, Vector<Object> objectsToSave ) throws Throwable
+        public static void saveObjects(String filename, Vector<Object> objectsToSave ) throws Throwable
         {
             FileOutputStream   fos = new FileOutputStream(   filename   );
             ObjectOutputStream oos = new ObjectOutputStream( fos        );
@@ -66,7 +66,7 @@
             oos.close();
         }
 
-        public static final Object[] loadObjects( String filename ) throws Throwable
+        public static Object[] loadObjects(String filename ) throws Throwable
         {
             Vector<Object>     ret = new Vector<Object>();
 
@@ -93,7 +93,7 @@
             return ret.toArray( new Object[] {} );
         }
 
-        public static final ByteArrayInputStream preStreamJarResource( String url ) throws IOException
+        public static ByteArrayInputStream preStreamJarResource(String url ) throws IOException
         {
             InputStream             in      = Thread.currentThread().getClass().getResourceAsStream( url );
             ByteArrayOutputStream   byteOut = new ByteArrayOutputStream();
@@ -104,7 +104,7 @@
             return byteIn;
         }
 
-        public static final ByteBuffer createByteBufferFromByteArray( byte[] bytes )
+        public static ByteBuffer createByteBufferFromByteArray(byte[] bytes )
         {
             // Wrap a byte array into a buffer
             return ByteBuffer.wrap(bytes);

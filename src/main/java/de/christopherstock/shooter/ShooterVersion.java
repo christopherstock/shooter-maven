@@ -39,7 +39,7 @@
             log     = aLog;
         }
 
-        public static final String getCurrentVersionDesc()
+        public static String getCurrentVersionDesc()
         {
             return "v. " + values()[ 0 ].version + ", " + values()[ 0 ].date;
         }

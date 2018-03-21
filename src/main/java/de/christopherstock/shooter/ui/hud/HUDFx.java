@@ -36,7 +36,7 @@
         public          static          boolean         drawReincarnationFx         = false;
         public          static          boolean         drawAdrenalineFx            = false;
 
-        public static final void init()
+        public static void init()
         {
             //init panes
             damagePane      = LibGLImage.getFullOpaque( LibColors.ERed.colABGR,    LibGL3D.panel.width, LibGL3D.panel.height, ShooterDebug.glImage );
@@ -57,7 +57,7 @@
             }
         }
 
-        public static final void disableAllFx()
+        public static void disableAllFx()
         {
             animationHUDHealthFX        = 0;
             animationHUDDamageFX        = 0;
@@ -75,7 +75,7 @@
             drawAdrenalineFx            = false;
         }
         
-        public static final void drawHUDEffects()
+        public static void drawHUDEffects()
         {
             //draw healing effect?
             if ( animationHUDHealthFX > 0 )
@@ -119,7 +119,7 @@
             }
         }
 
-        public static final void launchDamageFX( int descent )
+        public static void launchDamageFX(int descent )
         {
             //set new opacity value and clip it
             opacityDamageFx = ShooterSettings.HUDSettings.MAX_OPACITY_DAMAGE_FX * descent / 15;
@@ -130,7 +130,7 @@
             animationHUDDamageFX        = animationHUDDamageFXticks;
         }
 
-        public static final void launchHealthFX( int gain )
+        public static void launchHealthFX(int gain )
         {
             //set new opacity value and clip it
             opacityHealthFx = ShooterSettings.HUDSettings.MAX_OPACITY_HEALTH_FX * gain / 15;
@@ -140,7 +140,7 @@
             animationHUDHealthFX = ShooterSettings.Performance.TICKS_HEALTH_FX;
         }
 
-        public static final void launchDyingFX()
+        public static void launchDyingFX()
         {
             if ( !drawDyingFx )
             {
@@ -150,7 +150,7 @@
             }
         }
 
-        public static final void launchDeadFX()
+        public static void launchDeadFX()
         {
             if ( !drawDeadFx )
             {
@@ -160,7 +160,7 @@
             }
         }
 
-        public static final void launchReincarnationFX()
+        public static void launchReincarnationFX()
         {
             if ( !drawReincarnationFx )
             {
@@ -170,7 +170,7 @@
             }
         }
 
-        public static final void animateEffects()
+        public static void animateEffects()
         {
             if ( animationHUDHealthFX       > 0     ) --animationHUDHealthFX;
             if ( animationHUDDamageFX       > 0     ) --animationHUDDamageFX;

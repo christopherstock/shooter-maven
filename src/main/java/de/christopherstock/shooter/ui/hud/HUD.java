@@ -103,7 +103,7 @@
             HUDFx.drawHUDEffects();
 
             //draw frames per second last
-            Shooter.mainThread.iFPS.draw( OffsetsOrtho.EBorderHudX, OffsetsOrtho.EBorderHudY );
+            Shooter.mainThread.fps.draw( OffsetsOrtho.EBorderHudX, OffsetsOrtho.EBorderHudY );
 
             //draw debug logs
             //Level.currentPlayer().drawDebugLog(      g );
@@ -114,7 +114,7 @@
             Artefact currentWearpon = Level.currentPlayer().iArtefactSet.getArtefact();
 
             //only if this is a reloadable wearpon
-            if ( currentWearpon.iArtefactType.isFireArm() /* && Shooter.mainThread.iHUD.iAnimationState == LibAnimation.EAnimationNone */ )
+            if ( currentWearpon.iArtefactType.isFireArm() /* && Shooter.mainThread.hud.iAnimationState == LibAnimation.EAnimationNone */ )
             {
                 //create current ammo string
                 iCurrentAmmoStringMagazineAmmo  = currentWearpon.getCurrentAmmoStringMagazineAmmo();
@@ -212,13 +212,13 @@
             HUDMessageManager.getSingleton().animateAll();  //animate hud msgs
         }
 
-        private final void animateHUDScores()
+        private void animateHUDScores()
         {
             //animate HUD-effects
             if ( iHealthShowTimer > 0 ) --iHealthShowTimer;
         }
 
-        private final void animateRightHand()
+        private void animateRightHand()
         {
             //animate right hand
             if ( iAnimationPlayerRightHand > 0 )

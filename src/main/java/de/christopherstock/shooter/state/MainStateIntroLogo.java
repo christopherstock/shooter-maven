@@ -45,7 +45,7 @@
             iTextBottom = LibGLImage.getFromString( "The International PC Owners",      Fonts.EIntro, LibColors.EGreyDark.colARGB, null, null, ShooterDebug.glImage );
         }
 
-        public static final MainStateIntroLogo getSingleton()
+        public static MainStateIntroLogo getSingleton()
         {
             if ( singleton == null )
             {
@@ -58,7 +58,7 @@
         public final void draw2D()
         {
             //draw FPS
-            Shooter.mainThread.iHUD.draw2D();
+            Shooter.mainThread.hud.draw2D();
 
             if ( iLogoY <= TARGET_APPEARING_Y )
             {

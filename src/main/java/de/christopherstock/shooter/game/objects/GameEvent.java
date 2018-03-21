@@ -4,7 +4,7 @@
     /*******************************************************************************************************************
     *   An event being invoked - not only by picking up items but on level start etc.
     *******************************************************************************************************************/
-    public abstract interface GameEvent
+    public interface GameEvent
     {
-        public abstract void perform( Bot bot );
+        void perform(Bot bot);
     }

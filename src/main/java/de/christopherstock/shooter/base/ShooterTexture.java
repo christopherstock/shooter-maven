@@ -449,7 +449,7 @@
             }
         }
 
-        public static final LibTexture getByName( String name )
+        public static LibTexture getByName(String name )
         {
             if ( name == null ) return null;
 
@@ -492,7 +492,7 @@
             return null;
         }
 
-        public static final void loadImages()
+        public static void loadImages()
         {
             ShooterDebug.init.out( "initUi 5.0" );
             for ( Mask texture : Mask.values() )
@@ -522,7 +522,7 @@
             }
         }
 
-        public static final LibGLImage[] getAllTextureImages()
+        public static LibGLImage[] getAllTextureImages()
         {
             Vector<LibGLImage> ret = new Vector<LibGLImage>();
 

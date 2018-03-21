@@ -86,7 +86,7 @@
             iEllipseSegments        = aEllipseSegments;
         }
 
-        public static final LibHitPoint[] getAffectedHitPoints( Vector<LibHitPoint> hitPoints )
+        public static LibHitPoint[] getAffectedHitPoints(Vector<LibHitPoint> hitPoints )
         {
             LibHitPoint[] nearToFar = hitPoints.toArray( new LibHitPoint[] {} );
             Arrays.sort( nearToFar );
@@ -114,7 +114,7 @@
         }
 
         @Deprecated
-        public static final LibHitPoint getNearestHitPoint( Vector<LibHitPoint> hitPoints )
+        public static LibHitPoint getNearestHitPoint(Vector<LibHitPoint> hitPoints )
         {
             //return null if no hit point was found
             if ( hitPoints.size() == 0 )

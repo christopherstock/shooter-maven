@@ -122,7 +122,7 @@
             return iArtefactKind.getDamage();
         }
 
-        public static final void loadImages()
+        public static void loadImages()
         {
             for ( ArtefactType wearpon : values() )
             {

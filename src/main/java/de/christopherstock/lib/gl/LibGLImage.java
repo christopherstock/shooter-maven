@@ -74,7 +74,7 @@
             }
         }
 
-        public static final ByteBuffer getByteBuffer( BufferedImage aBufferedImage, LibDebug debug, boolean flipAllBytes )
+        public static ByteBuffer getByteBuffer(BufferedImage aBufferedImage, LibDebug debug, boolean flipAllBytes )
         {
             byte[] bytes = LibImage.getBytesFromImg( aBufferedImage, debug );
 
@@ -89,7 +89,7 @@
             return ret;
         }
 
-        public static final LibGLImage[] convertAll( BufferedImage[] bufferedImages, ImageUsage imageUsage, LibDebug debug )
+        public static LibGLImage[] convertAll(BufferedImage[] bufferedImages, ImageUsage imageUsage, LibDebug debug )
         {
             LibGLImage[] ret = new LibGLImage[ bufferedImages.length ];
 
@@ -101,7 +101,7 @@
             return ret;
         }
 
-        public static final LibGLImage getFromString( String stringToDisplay, Font font, Color colFg, Color colShadow, Color colOutline, LibDebug debug )
+        public static LibGLImage getFromString(String stringToDisplay, Font font, Color colFg, Color colShadow, Color colOutline, LibDebug debug )
         {
             Graphics2D      g           = LibGL3D.panel.getGraphics();
 
@@ -125,7 +125,7 @@
             return new LibGLImage( template2, ImageUsage.EOrtho, debug, false );
         }
 
-        public static final LibGLImage getFullOpaque( Color col, int width, int height, LibDebug debug )
+        public static LibGLImage getFullOpaque(Color col, int width, int height, LibDebug debug )
         {
             //create dynamic buffered image and draw context
             BufferedImage   template2 = new BufferedImage( width, height, BufferedImage.TYPE_INT_ARGB );

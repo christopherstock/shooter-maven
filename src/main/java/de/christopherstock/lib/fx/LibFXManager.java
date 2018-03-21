@@ -15,7 +15,7 @@
     {
         private         static          Vector<LibFXPoint>         fxPoints                    = new Vector<LibFXPoint>();
 
-        public static final void launchStaticPoint( LibDebug aDebug, LibVertex vertex, LibColors col, float size, int lifetime, int aFadeOutTicks )
+        public static void launchStaticPoint(LibDebug aDebug, LibVertex vertex, LibColors col, float size, int lifetime, int aFadeOutTicks )
         {
             LibFXPoint fx = new LibFXPoint
             (
@@ -39,19 +39,19 @@
             LibFXManager.start( fx );
         }
 
-        public static final void launchExplosion( LibDebug aDebug, LibVertex v, LibFX.FXSize size, LibFX.FXTime time, int lifetime, float baseZ, int aFadeOutTicks )
+        public static void launchExplosion(LibDebug aDebug, LibVertex v, LibFX.FXSize size, LibFX.FXTime time, int lifetime, float baseZ, int aFadeOutTicks )
         {
             LibFXExplosion fx = new LibFXExplosion( aDebug, v, size, time, lifetime, baseZ, aFadeOutTicks );
             fx.launch();
         }
 
-        public static final void launchSliver( LibDebug aDebug, LibVertex v, LibColors[] sliverColors, float angle, Lib.ParticleQuantity pq, float angleMod, int lifetime, FXSize size, FXGravity gravity, float baseZ, int aFadeoutTicks )
+        public static void launchSliver(LibDebug aDebug, LibVertex v, LibColors[] sliverColors, float angle, Lib.ParticleQuantity pq, float angleMod, int lifetime, FXSize size, FXGravity gravity, float baseZ, int aFadeoutTicks )
         {
             LibFXSliver fx = new LibFXSliver( aDebug, v, sliverColors, pq, angleMod, lifetime, size, gravity, baseZ, aFadeoutTicks );
             fx.launch( angle );
         }
 
-        public static final void onRun()
+        public static void onRun()
         {
             //browse all points reversed
             for ( int i = fxPoints.size() - 1; i >= 0; --i )
@@ -68,7 +68,7 @@
             }
         }
 
-        public static final void drawAll()
+        public static void drawAll()
         {
             //draw all points
             for ( LibFXPoint fxPoint : fxPoints )
@@ -90,7 +90,7 @@
             }
         }
 
-        public static final void clearDebugPoints()
+        public static void clearDebugPoints()
         {
             //browse all points reversed
             for ( int i = fxPoints.size() - 1; i >= 0; --i )
@@ -103,12 +103,12 @@
             }
         }
 
-        public static final void removeAllFxPoints()
+        public static void removeAllFxPoints()
         {
             fxPoints.removeAllElements();
         }
 
-        protected static final void start( LibFXPoint point )
+        protected static void start(LibFXPoint point )
         {
             //adding the fxpoint to the vector makes it active
             fxPoints.addElement( point );

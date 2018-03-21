@@ -75,7 +75,7 @@
             setCollisionValues();
         }
 
-        private final void updateFaceNormal()
+        private void updateFaceNormal()
         {
             //this is the best algo although it does not seem to operate flawless :/
             LibVertex a = new LibVertex( 0.0f, 0.0f, 0.0f );

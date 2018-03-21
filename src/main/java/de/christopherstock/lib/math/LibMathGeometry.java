@@ -281,7 +281,7 @@
         *   @deprecated     can be replaced by native api.
         ***************************************************************************************************************/
         @Deprecated
-        public static final boolean isLineIntersectingCircle( Line2D.Float line, Ellipse2D.Float circle )
+        public static boolean isLineIntersectingCircle(Line2D.Float line, Ellipse2D.Float circle )
         {
             //check if the closest distance from the circle's center is lower as it's radius
             return
@@ -295,7 +295,7 @@
         *   This would be a milestone ..
         */
         @Deprecated
-        public static final Point3f getLineFaceIntersectionF( Point3f ray1, Point3f ray2, Point3f plane1, Point3f plane2, Point3f plane3 )
+        public static Point3f getLineFaceIntersectionF(Point3f ray1, Point3f ray2, Point3f plane1, Point3f plane2, Point3f plane3 )
         {
             Vector3f p1 = new Vector3f( plane1 );
             Vector3f p2 = new Vector3f( plane2 );
@@ -368,7 +368,7 @@
         *   Returns the point where a line crosses a plane  ..
         *   This would be a milestone ..
         */
-        public static final Point3d getLineFaceIntersectionD( Point3d ray1, Point3d ray2, Point3d plane1, Point3d plane2, Point3d plane3 )
+        public static Point3d getLineFaceIntersectionD(Point3d ray1, Point3d ray2, Point3d plane1, Point3d plane2, Point3d plane3 )
         {
             Vector3d p1 = new Vector3d( plane1 );
             Vector3d p2 = new Vector3d( plane2 );
@@ -437,18 +437,18 @@
             return intersectionPoint;
         }
 
-        public static final double distance( Point3d p1, Point3d p2 )
+        public static double distance(Point3d p1, Point3d p2 )
         {
             return p1.distance( p2 );
         }
 
-        public static final float getDistanceXYZ( Point3f l1, Point3f l2 )
+        public static float getDistanceXYZ(Point3f l1, Point3f l2 )
         {
             float distance = (float)Math.sqrt( Math.pow( l2.x - l1.x, 2 ) + Math.pow( l2.y - l1.y, 2 ) + Math.pow( l2.z - l1.z, 2 ) );
             return distance;
         }
 
-        public static final float getDistanceXY( Point3f l1, Point3f l2 )
+        public static float getDistanceXY(Point3f l1, Point3f l2 )
         {
             float distance = (float)Math.sqrt( Math.pow( l2.x - l1.x, 2 ) + Math.pow( l2.y - l1.y, 2 ) );
             return distance;
@@ -459,7 +459,7 @@
         *
         *   Gosh! That was hard work!
         ***************************************************************************************************************/
-        public static final Point3d getDistantPoint( Point3d src, float distance3D, float rotX, float rotZ )
+        public static Point3d getDistantPoint(Point3d src, float distance3D, float rotX, float rotZ )
         {
             Point3d iEndPoint3d = null;
 

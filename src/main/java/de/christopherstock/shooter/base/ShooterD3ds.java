@@ -213,7 +213,7 @@
         /***************************************************************************************************************
         *   Returns a COPY of an imported 3dsmax mesh.
         ***************************************************************************************************************/
-        public static final LibFaceTriangle[] getFaces( LibD3dsFile file )
+        public static LibFaceTriangle[] getFaces(LibD3dsFile file )
         {
             //copy original faces
             LibMaxTriangle[] originalFaces = file.getFile().getFaces();
@@ -236,7 +236,7 @@
         /***************************************************************************************************************
         *   Init all 3dsmax-files.
         ***************************************************************************************************************/
-        public static final void init( LibDebug aDebug )
+        public static void init(LibDebug aDebug )
         {
             for ( LibD3dsFile file : Bots.values() )
             {

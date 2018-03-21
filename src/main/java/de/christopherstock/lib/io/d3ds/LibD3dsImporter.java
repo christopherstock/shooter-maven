@@ -67,7 +67,7 @@
             }
         }
 
-        private final String readAse()
+        private String readAse()
         {
             try
             {
@@ -100,7 +100,7 @@
             }
         }
 
-        private final void parseMaterials( String src )
+        private void parseMaterials(String src )
         {
             //check if materials are defined
             String[] chunksMaterials = LibStrings.getViaRegEx( src, "\\t\\*MATERIAL \\d+ \\{.+?\\n\\t\\}" );
@@ -134,7 +134,7 @@
             }
         }
 
-        private final void parseMeshes( String[] meshesSrc )
+        private void parseMeshes(String[] meshesSrc )
         {
             iDebug.out( "meshes to parse: ["+meshesSrc.length+"]" );
 

@@ -20,7 +20,7 @@
 
         private         LibGLImage          iImg         = null;
 
-        public static final void loadImages()
+        public static void loadImages()
         {
             for ( CrossHair crossHairImage : values() )
             {
@@ -28,7 +28,7 @@
             }
         }
 
-        private final void loadImage()
+        private void loadImage()
         {
             iImg = new LibGLImage( LibImage.load( ShooterSettings.Path.ECrossHair.iUrl + toString() + LibExtension.png.getSpecifier(), ShooterDebug.glImage, false ), ImageUsage.EOrtho, ShooterDebug.glImage, true );
         }

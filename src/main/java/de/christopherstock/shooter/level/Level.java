@@ -56,7 +56,7 @@
             iCurrentSectionIndex = aConfig;
         }
 
-        public static final void init()
+        public static void init()
         {
             //ShooterDebug.bugfix.out( "Init level" );
 
@@ -106,7 +106,7 @@
             }
 
             //reset HUD-animation so change to 1st artefact can occur
-            Shooter.mainThread.iHUD.resetAnimation();
+            Shooter.mainThread.hud.resetAnimation();
 
             //change to 1st artefact
             player.orderWearponOrGadget( ChangeAction.EActionNext );
@@ -391,7 +391,7 @@
             return affectedHitPoints;
         }
 
-        private final void animateWalls()
+        private void animateWalls()
         {
             //browse all mesh-collections
             for ( WallCollection meshCollection : iWallCollections )
@@ -401,7 +401,7 @@
             }
         }
 
-        private final void animateBots()
+        private void animateBots()
         {
             for ( int i = iBots.size() - 1; i >= 0; --i )
             {
@@ -494,7 +494,7 @@
             }
         }
 
-        private final void animateItems()
+        private void animateItems()
         {
             //browse reversed
             for ( int j = iItems.size() - 1; j >= 0; --j )
@@ -592,7 +592,7 @@
 
                 //animate particle systems and HUD
                 LibFXManager.onRun();
-                Shooter.mainThread.iHUD.onRun();
+                Shooter.mainThread.hud.onRun();
             }
         }
 

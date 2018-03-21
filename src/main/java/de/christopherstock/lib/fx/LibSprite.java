@@ -9,11 +9,11 @@
     *******************************************************************************************************************/
     public interface LibSprite
     {
-        public abstract float getCenterZ();
+        float getCenterZ();
 
-        public abstract void translate( float f, float g, float h, LibTransformationMode eoriginalstooriginals );
+        void translate(float f, float g, float h, LibTransformationMode eoriginalstooriginals);
 
-        public abstract void draw();
+        void draw();
 
-        public abstract void animateSprite( LibVertex object );
+        void animateSprite(LibVertex object);
     }

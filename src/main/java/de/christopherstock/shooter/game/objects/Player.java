@@ -31,9 +31,9 @@
     *******************************************************************************************************************/
     public class Player implements LibGameObject, PlayerSettings, ShotSpender
     {
-        public static interface HealthChangeListener
+        public interface HealthChangeListener
         {
-            public abstract void healthChanged();
+            void healthChanged();
         }
 
         /** The player's collision cylinger represents his position and hiscollision body. */
@@ -86,12 +86,12 @@
             //ShooterDebug.bugfix.out( "Reset player view!" );
 
             iAmmoSet                = new AmmoSet();
-            iHealthChangeCallback   = Shooter.mainThread.iHUD;
+            iHealthChangeCallback   = Shooter.mainThread.hud;
             iDisableGravity         = aDisableGravity;
             iArtefactSet            = new ArtefactSet();
         }
 
-        private final void handleKeys()
+        private void handleKeys()
         {
             //only if alive
             if ( !iDead )
@@ -278,7 +278,7 @@
             iCrouching = !iCrouching;
         }
 
-        private final void performFloorChange()
+        private void performFloorChange()
         {
             //no gravity no floor change
             if ( iDisableGravity ) return;
@@ -404,7 +404,7 @@
             //if no animation is active and no gadget is given
             if
             (
-                    !Shooter.mainThread.iHUD.animationActive()
+                    !Shooter.mainThread.hud.animationActive()
                 &&
                     (
                             !( iArtefactSet.iCurrentArtefact.iArtefactType.iArtefactKind instanceof Gadget )
@@ -412,7 +412,7 @@
                     )
             )
             {
-                Shooter.mainThread.iHUD.startHandAnimation( LibAnimation.EAnimationHide, changeAction );
+                Shooter.mainThread.hud.startHandAnimation( LibAnimation.EAnimationHide, changeAction );
             }
         }
 
@@ -525,7 +525,7 @@
             return iHealth;
         }
 
-        private final void setHealth( int health )
+        private void setHealth(int health )
         {
             iHealth = health;
 
@@ -620,7 +620,7 @@
             SoundFg.EPlayerHit1.playGlobalFx( 120  );
 
             //lower wearpon
-            Shooter.mainThread.iHUD.startHandAnimation( LibAnimation.EAnimationHide, ChangeAction.EActionDie );
+            Shooter.mainThread.hud.startHandAnimation( LibAnimation.EAnimationHide, ChangeAction.EActionDie );
         }
 
         public final boolean isDead()
@@ -663,7 +663,7 @@
             performFloorChange();                       //move player according to map collision ( floors )
 
             //handle artefact ( fire, reload, give ) if no HUD anim is running
-            if ( !Shooter.mainThread.iHUD.animationActive() )
+            if ( !Shooter.mainThread.hud.animationActive() )
             {
                 if ( iArtefactSet.iCurrentArtefact != null )
                 {

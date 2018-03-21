@@ -8,7 +8,7 @@
 
     public class LWJGLMouse extends MouseInput
     {
-        public static final void checkMouse()
+        public static void checkMouse()
         {
             //handle all occuring mouse events
             while ( Mouse.next() )
@@ -27,7 +27,7 @@
             //if ( centerMouse ) centerMouse();
         }
 
-        private static final void checkWheel()
+        private static void checkWheel()
         {
             //check wheel event
             int wheelSpin = Mouse.getEventDWheel();
@@ -43,7 +43,7 @@
             }
         }
 
-        private static final void checkButton()
+        private static void checkButton()
         {
             //check button event
             int     buttonPress = Mouse.getEventButton();
@@ -76,7 +76,7 @@
             }
         }
 
-        private static final void checkMovement()
+        private static void checkMovement()
         {
             int distX = Mouse.getEventDX();
             int distY = Mouse.getEventDY();
@@ -89,7 +89,7 @@
             if ( MouseInput.mouseMovementY > General.MOUSE_MAX_MOVEMENT_Y ) MouseInput.mouseMovementY = General.MOUSE_MAX_MOVEMENT_Y;
         }
 
-        public static final void init()
+        public static void init()
         {
             //grab mouse to lwjgl display
             Mouse.setGrabbed( true );

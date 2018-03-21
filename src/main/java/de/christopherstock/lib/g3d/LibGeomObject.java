@@ -8,11 +8,11 @@
     /*******************************************************************************************************************
     *   Represents a cylinder.
     *******************************************************************************************************************/
-    public abstract interface LibGeomObject
+    public interface LibGeomObject
     {
-        public abstract LibVertex getAnchor();
-        public abstract boolean checkCollisionHorz( LibCylinder c );
-        public abstract Vector<Float> checkCollisionVert( LibCylinder c, Object exclude );
-        public abstract void translate( float tX, float tY, float tZ, LibTransformationMode transformationMode );
-        public abstract void setNewAnchor( LibVertex newAnchor, boolean performTranslationOnFaces, LibTransformationMode transformationMode );
+        LibVertex getAnchor();
+        boolean checkCollisionHorz(LibCylinder c);
+        Vector<Float> checkCollisionVert(LibCylinder c, Object exclude);
+        void translate(float tX, float tY, float tZ, LibTransformationMode transformationMode);
+        void setNewAnchor(LibVertex newAnchor, boolean performTranslationOnFaces, LibTransformationMode transformationMode);
     }

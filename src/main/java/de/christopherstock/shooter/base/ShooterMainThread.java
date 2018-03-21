@@ -18,27 +18,27 @@
     *******************************************************************************************************************/
     public class ShooterMainThread extends Thread implements GLDrawCallback, GLCallbackForm
     {
-        public                      HUD                     iHUD                        = null;
-        public                      LibFPS                  iFPS                        = null;
+        public                      HUD                     hud                         = null;
+        public                      LibFPS                  fps                         = null;
 
         /***************************************************************************************************************
         *   The application's current main state.
         ***************************************************************************************************************/
-        private                     MainState               iMainState                  = MainState.EPreloader;
+        private                     MainState               mainState                   = MainState.EPreloader;
 
         /***************************************************************************************************************
         *   The application's main state to enter the next tick.
         ***************************************************************************************************************/
-        private                     MainState               iMainStateToChangeTo        = null;
+        private                     MainState               mainStateToChangeTo         = null;
 
         /***************************************************************************************************************
         *   A flag being set to true if a closing-event on the main form is invoked.
         ***************************************************************************************************************/
-        private                     boolean                 iDestroyed                  = false;
-        private                     long                    iTickStart                  = 0;
-        private                     long                    iTickTime                   = 0;
-        private                     boolean                 iTickDelaying               = false;
-        private                     long                    iTickDelay                  = 0;
+        private                     boolean                 destroyed                   = false;
+        private                     long                    tickStart                   = 0;
+        private                     long                    tickTime                    = 0;
+        private                     boolean                 tickDelaying                = false;
+        private                     long                    tickDelay                   = 0;
 
         /***************************************************************************************************************
         *   The game's main-thread run-method performing and endless loop of ticks.
@@ -51,10 +51,10 @@
             ShooterInit.initRest();
 
             //main thread ticks until the app is destroyed
-            while ( !iDestroyed )
+            while ( !destroyed)
             {
                 //meassure tick time
-                iTickStart = System.currentTimeMillis();
+                tickStart = System.currentTimeMillis();
 
                 //only perform game-loop if 3d-canvas is fully initialized
                 if ( LibGL3D.glPanelInitialized )
@@ -63,7 +63,7 @@
                     performMainStateChange();
 
                     //switch for mainState
-                    switch ( iMainState )
+                    switch (mainState)
                     {
                         case EIntroLogo:
                         {
@@ -128,43 +128,42 @@
                     }
 
                     //update frames per second
-                    iFPS.finishedDrawing();
+                    fps.finishedDrawing();
 
                     //draw gl for this tick
                     LibGL3D.panel.display();
                 }
 
                 //meassure tick time and set delay if desired
-                boolean calcDelay = ShooterSettings.Performance.ENABLE_DELAY;
-                if ( calcDelay )
+                if ( ShooterSettings.Performance.ENABLE_DELAY )
                 {
-                    iTickTime = ( System.currentTimeMillis() - iTickStart );
-                    if ( iTickTime < ShooterSettings.Performance.MIN_THREAD_DELAY )
+                    tickTime = ( System.currentTimeMillis() - tickStart);
+                    if ( tickTime < ShooterSettings.Performance.MIN_THREAD_DELAY )
                     {
-                        iTickDelay = ShooterSettings.Performance.MIN_THREAD_DELAY - iTickTime;
+                        tickDelay = ShooterSettings.Performance.MIN_THREAD_DELAY - tickTime;
 
-                        if ( !iTickDelaying )
+                        if ( !tickDelaying)
                         {
-                            iTickDelaying = true;
-                            //ShooterDebug.mainThreadDelay.out( "start delaying main thread [" + iTickDelay + "]" );
+                            tickDelaying = true;
+                            //ShooterDebug.mainThreadDelay.out( "start delaying main thread [" + tickDelay + "]" );
                         }
                     }
                     else
                     {
-                        iTickDelay = 0;
+                        tickDelay = 0;
 
-                        if ( iTickDelaying )
+                        if (tickDelaying)
                         {
-                            iTickDelaying = false;
+                            tickDelaying = false;
                             //ShooterDebug.mainThreadDelay.out( "stop delaying main thread" );
                         }
                     }
 
                     //delay for specified delay time
-                    Lib.delay( iTickDelay );
+                    Lib.delay( tickDelay );
                 }
 
-                //ShooterDebug.bugfix.out( "ticktime: [" + iTickTime + "] delay: [" + iTickDelay + "]" );
+                //ShooterDebug.bugfix.out( "ticktime: [" + tickTime + "] delay: [" + tickDelay + "]" );
             }
 
             //stop all bg sounds ( hangs on mac )
@@ -176,7 +175,7 @@
             //draw loading screen if not initialized
             if ( LibGL3D.glPanelInitialized )
             {
-                switch ( iMainState )
+                switch (mainState)
                 {
                     case EPreloader:
                     {
@@ -218,7 +217,7 @@
                 LibGL3D.view.clearFaceQueue();
 
                 //draw 3d according to main state
-                switch ( iMainState )
+                switch (mainState)
                 {
                     case EPreloader:
                     {
@@ -248,24 +247,24 @@
         public final void onFormDestroyed()
         {
           //ShooterDebug.major.out( "Main Form was closed - Shooter is destroyed" );
-            iDestroyed = true;
+            destroyed = true;
         }
 
         public final void orderMainStateChangeTo( MainState aFutureMainState )
         {
-            iMainStateToChangeTo = aFutureMainState;
+            mainStateToChangeTo = aFutureMainState;
         }
 
-        private final void performMainStateChange()
+        private void performMainStateChange()
         {
-            if ( iMainStateToChangeTo != null )
+            if ( mainStateToChangeTo != null )
             {
                 //center mouse for new mainstate
                 //LWJGLMouse.centerMouse();
                 //ShooterDebug.mouse.out( "Centered Mouse" );
 
-                iMainState = iMainStateToChangeTo;
-                iMainStateToChangeTo = null;
+                mainState = mainStateToChangeTo;
+                mainStateToChangeTo = null;
             }
         }
     }

@@ -139,7 +139,7 @@
             ;
         }
 
-        public static interface BotAction
+        public interface BotAction
         {
         }
 
@@ -275,7 +275,7 @@
             if ( deprecatedAnimateOnCreate ) animate();
         }
 
-        private final void setNextEyeChange()
+        private void setNextEyeChange()
         {
             //only if not dead
             if ( iAliveState == BotAliveState.EAlive )

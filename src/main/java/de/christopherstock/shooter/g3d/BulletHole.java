@@ -116,7 +116,7 @@
             updateFace( true );
         }
 
-        private final void updateFace( boolean newRandomTexRot )
+        private void updateFace(boolean newRandomTexRot )
         {
             iFace = new LibFaceEllipseWall
             (
@@ -134,7 +134,7 @@
             );
         }
 
-        public static final void drawAll()
+        public static void drawAll()
         {
             //draw all points
             for ( BulletHole bulletHole : BulletHole.bulletHoles )
@@ -155,7 +155,7 @@
             }
         }
 
-        public static final void translateAll( LibGameObject bhc, float transX, float transY, float transZ )
+        public static void translateAll(LibGameObject bhc, float transX, float transY, float transZ )
         {
             //browse all bullet-holes
             for ( BulletHole bulletHole : BulletHole.bulletHoles )
@@ -182,7 +182,7 @@
         }
 
         //only z-rotation are allowed for bullet-holes!
-        public static final void rotateForBot( Bot bhc, float rotZ )
+        public static void rotateForBot(Bot bhc, float rotZ )
         {
             //browse all bullet-holes
             for ( BulletHole bulletHole : BulletHole.bulletHoles )
@@ -207,7 +207,7 @@
             }
         }
 
-        public static final void rotateForWall( Wall bhc, float rotX, float rotY, float rotZ )
+        public static void rotateForWall(Wall bhc, float rotX, float rotY, float rotZ )
         {
             //browse all bullet-holes
             for ( BulletHole bulletHole : BulletHole.bulletHoles )
@@ -227,7 +227,7 @@
             }
         }
 
-        public static final void removeForWall( Wall bhc )
+        public static void removeForWall(Wall bhc )
         {
             //browse all bullet-holes reversed
             for ( int i = BulletHole.bulletHoles.size() - 1; i >= 0; --i )
@@ -241,7 +241,7 @@
             }
         }
 
-        public static final void darkenAll( Wall bhc, float opacity )
+        public static void darkenAll(Wall bhc, float opacity )
         {
             //browse all bullet-holes reversed
             for ( int i = BulletHole.bulletHoles.size() - 1; i >= 0; --i )
@@ -255,13 +255,13 @@
             }
         }
 
-        private final void darken( float opacity )
+        private void darken(float opacity )
         {
             iFace.darken( opacity );
             //if ( iProjectile != null ) iProjectile.darkenAllFaces( opacity, useRandomSubstract, useRandomAdd, maxSubstract, maxAdd );
         }
 
-        private final float getSuitableDistanceFromHorzFace()
+        private float getSuitableDistanceFromHorzFace()
         {
             float dis = BulletHoles.MIN_DISTANCE_FROM_FACE;
 
@@ -278,7 +278,7 @@
             return dis;
         }
 
-        private final float getSuitableDistanceFromVertFace()
+        private float getSuitableDistanceFromVertFace()
         {
             float dis = BulletHoles.MIN_DISTANCE_FROM_FACE;
 
@@ -295,7 +295,7 @@
             return dis;
         }
 
-        private final void rotateAroundVertex( LibVertex vertex, float rotX, float rotY, float rotZ )
+        private void rotateAroundVertex(LibVertex vertex, float rotX, float rotY, float rotZ )
         {
             //increase saved rot z
             ShooterDebug.bulletHole.out( " turn for [" + rotZ + "]" );
@@ -322,12 +322,12 @@
 */
         }
 
-        public static final void clearBulletHoles()
+        public static void clearBulletHoles()
         {
             BulletHole.bulletHoles.removeAllElements();
         }
 
-        public static final void addBulletHole( LibHitPoint hitPoint, LibD3dsFile aProjectile )
+        public static void addBulletHole(LibHitPoint hitPoint, LibD3dsFile aProjectile )
         {
             //add to bullet-hole-stack, prune stack if overflowing
             BulletHole.bulletHoles.add( new BulletHole( hitPoint, aProjectile ) );

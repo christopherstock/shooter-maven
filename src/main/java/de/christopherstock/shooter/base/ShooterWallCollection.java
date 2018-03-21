@@ -42,7 +42,7 @@
             ;
         }
 
-        public static final WallCollection createFloor( float x, float y, float z, float rotZ, int sizeX, int sizeY, LibTexture tex )
+        public static WallCollection createFloor(float x, float y, float z, float rotZ, int sizeX, int sizeY, LibTexture tex )
         {
             return createRoom
             (
@@ -72,7 +72,7 @@
             );
         }
 
-        public static final WallCollection createGround( LibTexture tex, float z )
+        public static WallCollection createGround(LibTexture tex, float z )
         {
             return new WallCollection
             (
@@ -90,7 +90,7 @@
         /***************************************************************************************************************
         *   Creates a room with maximum possibilities for adjustments.
         ***************************************************************************************************************/
-        public static final WallCollection createWall( LibD3dsFile file, float x, float y, float z, float rotZ, int sizeX, LibTexture doorTex, WallHealth doorHealth )
+        public static WallCollection createWall(LibD3dsFile file, float x, float y, float z, float rotZ, int sizeX, LibTexture doorTex, WallHealth doorHealth )
         {
             Vector<Wall> allWalls = new Vector<Wall>();
 
@@ -112,7 +112,7 @@
             return new WallCollection( anchor, allWalls.toArray( new Wall[] {} ) );
         }
 
-        public static final WallCollection createElevator( float x, float y, float z, float rotZ, LibTexture floorTex, LibTexture doorTex, WallAction action, WallTex wallTex, WallTex ceilingTex, int targetSectionDoorTwo, int targetSectionDoorOne )
+        public static WallCollection createElevator(float x, float y, float z, float rotZ, LibTexture floorTex, LibTexture doorTex, WallAction action, WallTex wallTex, WallTex ceilingTex, int targetSectionDoorTwo, int targetSectionDoorOne )
         {
             Vector<Wall> allWalls = new Vector<Wall>();
 
@@ -164,7 +164,7 @@
             );
         }
 
-        public static final WallCollection createSluice( float x, float y, float z, float rotZ, LibTexture floorTex, LibTexture doorTex, WallTex wallTex, WallTex ceilingTex, WallTex doorSocketTex, int sizeY, int targetSectionDoorOne, int targetSectionDoorTwo )
+        public static WallCollection createSluice(float x, float y, float z, float rotZ, LibTexture floorTex, LibTexture doorTex, WallTex wallTex, WallTex ceilingTex, WallTex doorSocketTex, int sizeY, int targetSectionDoorOne, int targetSectionDoorTwo )
         {
             Vector<Wall> allWalls = new Vector<Wall>();
 
@@ -222,7 +222,7 @@
             );
         }
 
-        public static final WallCollection createStaircase( float x, float y, float z, boolean toUpper, boolean toLower, float initRotZ, LibTexture wallTex )
+        public static WallCollection createStaircase(float x, float y, float z, boolean toUpper, boolean toLower, float initRotZ, LibTexture wallTex )
         {
             Wall[] wallsBasement = new Wall[]
             {
@@ -401,7 +401,7 @@
         /***************************************************************************************************************
         *   Creates a room with maximum possibilities for adjustments.
         ***************************************************************************************************************/
-        public static final WallCollection createRoom( float x, float y, float z, float rotZ, int sizeX, int sizeY, WallStyle left, WallStyle top, WallStyle right, WallStyle bottom, LibTexture doorTex, WallHealth doorHealth, WallAction doorAction, DoorStyle doorStyle, int doorOffset, LibTexture wallTex, LibTexture floorTex, LibTexture ceilingTex, Wall[] furniture, int[] gapTop, int[] gapBottom, int[] gapLeft, int[] gapRight )
+        public static WallCollection createRoom(float x, float y, float z, float rotZ, int sizeX, int sizeY, WallStyle left, WallStyle top, WallStyle right, WallStyle bottom, LibTexture doorTex, WallHealth doorHealth, WallAction doorAction, DoorStyle doorStyle, int doorOffset, LibTexture wallTex, LibTexture floorTex, LibTexture ceilingTex, Wall[] furniture, int[] gapTop, int[] gapBottom, int[] gapLeft, int[] gapRight )
         {
             Vector<Wall> allWalls = new Vector<Wall>();
 
@@ -629,7 +629,7 @@
         }
 
 
-        public static final WallCollection createShelves( float x, float y, float z, float rotZ )
+        public static WallCollection createShelves(float x, float y, float z, float rotZ )
         {
             Vector<Wall> boxes = new Vector<Wall>();
 
@@ -662,12 +662,12 @@
             );
         }
 
-        public static final Wall createCrate( float x, float y, float z, float rotZ, Scalation scalation )
+        public static Wall createCrate(float x, float y, float z, float rotZ, Scalation scalation )
         {
             return new Wall(   Others.ECrate1, new LibVertex( x, y, z ), rotZ, scalation, Invert.ENo, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ECrate1, null, 0, WallHealth.ECrate, FXSize.ESmall, null );
         }
 
-        public static final WallCollection createDeskOffice( float x, float y, float z, float rotZ )
+        public static WallCollection createDeskOffice(float x, float y, float z, float rotZ )
         {
             return new WallCollection
             (
@@ -683,7 +683,7 @@
             );
         }
 
-        public static final WallCollection createDeskLab( float x, float y, float z, float rotZ )
+        public static WallCollection createDeskLab(float x, float y, float z, float rotZ )
         {
             //let random assign different topping positions
 
@@ -700,7 +700,7 @@
            );
         }
 
-        private static final void addStyledWall( Vector<Wall> allWalls, WallStyle style, float x, float y, float angle, LibTexture wallTex, LibTexture ceilingTex )
+        private static void addStyledWall(Vector<Wall> allWalls, WallStyle style, float x, float y, float angle, LibTexture wallTex, LibTexture ceilingTex )
         {
             switch ( style )
             {

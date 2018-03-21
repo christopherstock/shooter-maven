@@ -54,7 +54,7 @@
             return maskId.intValue();
         }
 
-        public static final int getNextFreeID()
+        public static int getNextFreeID()
         {
             return freeID++;
         }

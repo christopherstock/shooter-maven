@@ -189,25 +189,26 @@
 
         public static  final   int             JAR_BUFFER_SIZE             = 0xffff;
 
-        public static final void delay( long millis )
+        public static void delay(long millis )
         {
             try { Thread.sleep( millis ); } catch ( InterruptedException ie ) {}
         }
 
-        public static final Font createFont( String filename, float size ) throws Throwable
+        public static Font createFont(String filename, float size ) throws Throwable
         {
             return Font.createFont( Font.TRUETYPE_FONT, LibIO.preStreamJarResource( filename ) ).deriveFont( size );
         }
         
-        public static final boolean contains( int[] arr, int element )
+        public static boolean contains( int[] arr, int element )
         {
-            for ( int i = 0; i < arr.length; ++i )
+            for ( int number : arr )
             {
-                if ( arr[ i ] == element )
+                if ( number == element )
                 {
                     return true;
                 }
             }
+
             return false;
         }
     }

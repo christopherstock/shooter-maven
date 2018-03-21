@@ -44,7 +44,7 @@
             iLoopNanoSecondEnd   = aLoopNanoSecondEnd;
         }
 
-        public static final void init()
+        public static void init()
         {
             //add the mp3 plugin in order to play mp3 sounds
             addMp3Plugin();
@@ -56,7 +56,7 @@
             }
         }
 
-        private static final void addMp3Plugin()
+        private static void addMp3Plugin()
         {
             Format input1 = new AudioFormat( AudioFormat.MPEGLAYER3 );
             Format input2 = new AudioFormat( AudioFormat.MPEG       );
@@ -71,7 +71,7 @@
             );
         }
 
-        private final void createPlayer()
+        private void createPlayer()
         {
             try
             {
@@ -87,7 +87,7 @@
             }
         }
 
-        public static final void startSound( SoundBg sound )
+        public static void startSound(SoundBg sound )
         {
             //stop current sound
             stopCurrentSound();
@@ -99,7 +99,7 @@
             currentSound.start();
         }
 
-        public static final void stopCurrentSound()
+        public static void stopCurrentSound()
         {
             //stop current sound
             if ( currentSound != null && currentSound.iPlayer != null )
@@ -109,7 +109,7 @@
             }
         }
 
-        private final void start()
+        private void start()
         {
             if ( iPlayer != null )
             {

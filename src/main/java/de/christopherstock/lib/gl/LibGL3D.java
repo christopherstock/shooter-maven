@@ -19,7 +19,7 @@
         ***************************************************************************************************************/
         public      static          boolean         glPanelInitialized              = false;
 
-        public static final void init
+        public static void init
         (
             int                 formWidth,
             int                 formHeight,
@@ -63,7 +63,7 @@
             );
         }
 
-        public static final void destroy()
+        public static void destroy()
         {
             //destroy the display
             Display.destroy();

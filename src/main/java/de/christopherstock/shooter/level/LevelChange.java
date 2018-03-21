@@ -16,14 +16,14 @@
         private         static          boolean                     resetOnLevelChange              = false;
         private         static          long                        levelChangeBlocker              = 0;
 
-        public static final void orderLevelChange( LevelSetup newLevelMain, int newLevelSectionIndex, boolean reset )
+        public static void orderLevelChange(LevelSetup newLevelMain, int newLevelSectionIndex, boolean reset )
         {
             levelMainToChangeTo         = newLevelMain;
             levelSectionIndexToChangeTo = newLevelSectionIndex;
             resetOnLevelChange          = reset;
         }
 
-        public static final void checkChangeToSection()
+        public static void checkChangeToSection()
         {
             if ( levelSectionIndexToChangeTo != -1 )
             {

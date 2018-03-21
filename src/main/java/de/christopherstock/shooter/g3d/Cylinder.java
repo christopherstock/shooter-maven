@@ -112,7 +112,7 @@
         *   Exception in thread "Thread-3" java.lang.NullPointerException
         *   at java.util.Vector.addAll(Unknown Source)
         */
-        private final LibHitPoint launchAShot( LibShot shot )
+        private LibHitPoint launchAShot(LibShot shot )
         {
             //if ( shot.iOrigin == ShotOrigin.EEnemies ) ShooterDebug.bugfix.out( "launch shot: [" + "on cylinder" + "]" );
 

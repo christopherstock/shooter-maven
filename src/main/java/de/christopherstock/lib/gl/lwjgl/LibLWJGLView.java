@@ -380,7 +380,7 @@
         *   information about the data rewinding can be found at
         *   http://www.experts-exchange.com/Programming/Languages/Java/Q_22397090.html?sfQueryTermInfo=1+jogl
         ***************************************************************************************************************/
-        private final void makeRGBTexture( LibGLImage img )
+        private void makeRGBTexture(LibGLImage img )
         {
             //bind texture to gl
             GL11.glTexParameteri( GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_LINEAR ); // GL_NEAREST is also possible ..

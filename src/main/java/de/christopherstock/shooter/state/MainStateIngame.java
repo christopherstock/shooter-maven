@@ -24,7 +24,7 @@
             //singleton constructor
         }
 
-        public static final MainStateIngame getSingleton()
+        public static MainStateIngame getSingleton()
         {
             if ( singleton == null ) singleton = new MainStateIngame();
             return singleton;
@@ -33,7 +33,7 @@
         public final void draw2D()
         {
             //draw hud
-            Shooter.mainThread.iHUD.draw2D();
+            Shooter.mainThread.hud.draw2D();
         }
 
         public final void draw3D()

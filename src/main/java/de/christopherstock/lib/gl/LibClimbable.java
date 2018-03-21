@@ -6,5 +6,5 @@
     *******************************************************************************************************************/
     public interface LibClimbable
     {
-        public abstract boolean isClimbable();
+        boolean isClimbable();
     }

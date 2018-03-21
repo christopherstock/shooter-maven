@@ -108,7 +108,7 @@
         /***************************************************************************************************************
         *   Sets lookAndFeel of the host operating system.
         ***************************************************************************************************************/
-        public static final void setLookAndFeel( LibDebug debug )
+        public static void setLookAndFeel(LibDebug debug )
         {
             try
             {

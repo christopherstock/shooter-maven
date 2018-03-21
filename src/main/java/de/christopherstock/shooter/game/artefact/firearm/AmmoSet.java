@@ -40,7 +40,7 @@
             ammo.put( at, new Integer( oldAmmo ) );
         }
 
-        public static final void loadImages()
+        public static void loadImages()
         {
             for ( AmmoType ammo : AmmoType.values() )
             {
