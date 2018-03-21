@@ -4,7 +4,7 @@
     import  de.christopherstock.shooter.base.*;
 
     /*******************************************************************************************************************
-    *   Project's Main-Class containing the {@link #main(String[])} method.
+    *   The main class.
     *
     *   TODO            Fix all multilined docblocks to single lines!
     *   TODO            Maven Goal for creating JNLP file.
@@ -27,6 +27,7 @@
     *   TODO            Remove ALL static fields!
     *   TODO            Turn static field Level.player to non-static!!
     *   TODO            Fix all code lints.
+    *   TODO            Cleanup game initialization.
     *   TODO            Prune all static fields!!
     *   TODO            Revise level design.
     *   TODO            Update Eclipse.
@@ -37,6 +38,7 @@
     *   TODO            Source in pom.xml to 1.8
     *   TODO            Add assets.
     *   TODO            Complete version 0.3.11 and add DONE items to History.
+    *   TODO            Optimize fields in ArtefactType!
     *
     *   TODO            let random assign different topping positions for ShooterWallCollection.createDeskOffice
     *   TODO HIGH       slow panning for zoomed view?

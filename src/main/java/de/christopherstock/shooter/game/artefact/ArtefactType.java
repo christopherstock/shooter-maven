@@ -71,7 +71,7 @@
 
 
 
-        // TODO ASAP All these fields belong to ArtefactKind !!
+        // -- All these fields belong to ArtefactKind !!
 
         /** The orthogonal image for displaying this artefact to the player. */
         private                     LibGLImage          iArtefactImage               = null;
@@ -88,18 +88,15 @@
         protected                   LibGLImage[]        iFXImages                       = null;
         protected                   FireArmFXOffset     iFXOffset                     = null;
 
-        //TODO not for gadgets!
+
+
+        // --- All these fields are not suitable for gadgets!
         protected                   float               iZoom                           = 0.0f;
-
-
 
         public                      Items               iItemMesh                       = null;
         public                      ItemKind            iPickUpItemKind                 = null;
         public                      CrossHair           iCrossHair                      = null;
         public                      boolean             iBreaksWalls                    = false;
-
-
-
 
 
 
