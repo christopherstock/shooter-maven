@@ -1,9 +1,9 @@
 
     package de.christopherstock.shooter.base;
 
-    /**************************************************************************************
+    /*******************************************************************************************************************
     *   All content strings gather here.
-    **************************************************************************************/
+    *******************************************************************************************************************/
     public abstract interface ShooterStrings
     {
         public static final class AvatarMessages
@@ -22,9 +22,9 @@
             public  static  final   String      TUTORIAL_VIEW_UP_DOWN                           = "Use 8 and 2 on the numeric keypad to look up and down.\n\nUse 4 and 6 on the numeric keypad to turn in all direction precisely.";
         }
 
-        /*********************************************************************************
+        /***************************************************************************************************************
         *   These characters will break lines.
-        *********************************************************************************/
+        ***************************************************************************************************************/
         public static final class HUDMessages
         {
             public  static  final   String      PICKED_UP_CRACKERS          = "Picked up a cracker bag";

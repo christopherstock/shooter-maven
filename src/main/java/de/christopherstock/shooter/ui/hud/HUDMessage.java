@@ -8,10 +8,10 @@
     import  de.christopherstock.shooter.ShooterSettings.OffsetsOrtho;
     import  de.christopherstock.shooter.ui.hud.HUDMessageManager.AnimState;
 
-    /**************************************************************************************
+    /*******************************************************************************************************************
     *   The HUD messages system. HUD messages pop up to give the user a short notice
     *   about an event. E.g. picking up items.
-    **************************************************************************************/
+    *******************************************************************************************************************/
     final class HUDMessage
     {
         private                     int                     iAnim                   = 0;

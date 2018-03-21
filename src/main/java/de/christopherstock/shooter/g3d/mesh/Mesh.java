@@ -15,9 +15,9 @@
     import  de.christopherstock.shooter.g3d.wall.Wall.WallClimbable;
     import  de.christopherstock.shooter.io.sound.*;
 
-    /**************************************************************************************
+    /*******************************************************************************************************************
     *   Represents a mesh.
-    **************************************************************************************/
+    *******************************************************************************************************************/
     public class Mesh implements LibGeomObject, Serializable
     {
         private     static  final   long                serialVersionUID            = 4360022553250020228L;
@@ -59,13 +59,13 @@
             return iFaces;
         }
 
-        /*******************************************************************************************************************
+        /***************************************************************************************************************
         *   Sets/updates anchor.
         *
         *   @param  newAnchor                   The new anchor vertex point.
         *   @param  performTranslationOnFaces   Determines if the faces shall be translated
         *                                       by the new anchor.
-        ******************************************************************************************/
+        ***************************************************************************************************************/
         public void setNewAnchor( LibVertex newAnchor, boolean performTranslationOnFaces, LibTransformationMode transformationMode )
         {
             //assign new anchor for this mesh and for all it's faces - translate all faces by the new anchor!

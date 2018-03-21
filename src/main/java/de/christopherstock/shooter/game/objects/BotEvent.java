@@ -8,9 +8,9 @@
     import  de.christopherstock.shooter.ui.hud.*;
     import  de.christopherstock.shooter.ui.hud.AvatarMessage.AvatarImage;
 
-    /**************************************************************************************
+    /*******************************************************************************************************************
     *   An event being invoked - not only by picking up items but on level start etc.
-    **************************************************************************************/
+    *******************************************************************************************************************/
     public enum BotEvent implements GameEvent
     {
         ELevel1AcclaimPlayer,

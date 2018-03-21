@@ -14,9 +14,9 @@
     import  de.christopherstock.shooter.ShooterSettings.OffsetsOrtho;
     import  de.christopherstock.shooter.base.*;
 
-    /**************************************************************************************
+    /*******************************************************************************************************************
     *   Represents a pop-up-message with an avatar image and a message.
-    **************************************************************************************/
+    *******************************************************************************************************************/
     public final class AvatarMessage
     {
         public static enum AvatarImage

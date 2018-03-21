@@ -13,9 +13,9 @@
     import  de.christopherstock.shooter.base.ShooterTexture.WallTex;
     import  de.christopherstock.shooter.level.*;
 
-    /**************************************************************************************
+    /*******************************************************************************************************************
     *   Represents a mesh with all faces collision enabled.
-    **************************************************************************************/
+    *******************************************************************************************************************/
     public class Sprite extends Wall implements LibSprite
     {
         private     static  final   long    serialVersionUID        = -8942237814400103635L;

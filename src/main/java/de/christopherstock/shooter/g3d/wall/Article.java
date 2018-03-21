@@ -10,9 +10,9 @@
     import  de.christopherstock.shooter.base.ShooterTexture.WallTex;
     import  de.christopherstock.shooter.io.sound.*;
 
-    /**************************************************************************************
+    /*******************************************************************************************************************
     *   Represents a mesh with all faces collision enabled.
-    **************************************************************************************/
+    *******************************************************************************************************************/
     public class Article extends Wall
     {
         private     static  final   long    serialVersionUID        = -896222659347000332L;

@@ -6,16 +6,16 @@
     import  de.christopherstock.shooter.game.objects.*;
     import  de.christopherstock.shooter.ui.hud.*;
 
-    /**************************************************************************************
+    /*******************************************************************************************************************
     *   The configuration set for one level section.
-    **************************************************************************************/
+    *******************************************************************************************************************/
     public class LevelConfigSection
     {
         protected               String                  iDescSection            = null;
         protected               BackGround              iBg                     = null;
         protected               LibColors               iBgCol                  = null;
         protected               ItemToPickUp[]          iItems                  = null;
-        protected               BotFactory[]     iBots                   = null;
+        protected               BotFactory[]            iBots                   = null;
 
         public LevelConfigSection( String aDesc, LibColors aBgCol, BackGround aBg, ItemToPickUp[] aItems, BotFactory[] aStartupBots )
         {

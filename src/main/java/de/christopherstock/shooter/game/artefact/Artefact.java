@@ -17,9 +17,9 @@
     import  de.christopherstock.shooter.level.*;
     import  de.christopherstock.shooter.ui.hud.HUD.*;
 
-    /**************************************************************************************
+    /*******************************************************************************************************************
     *   Represents one occurence of an {@link ArtefactType} being hold by a player or a bot.
-    **************************************************************************************/
+    *******************************************************************************************************************/
     public class Artefact
     {
         public              ArtefactType            iArtefactType                       = null;

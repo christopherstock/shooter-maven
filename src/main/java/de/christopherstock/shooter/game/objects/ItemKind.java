@@ -8,9 +8,9 @@
     import  de.christopherstock.shooter.game.objects.ItemToPickUp.*;
     import  de.christopherstock.shooter.io.sound.*;
 
-    /**************************************************************************************
+    /*******************************************************************************************************************
     *   All different item kinds.
-    **************************************************************************************/
+    *******************************************************************************************************************/
     public enum ItemKind
     {
         EAmmoBullet9mm(     ItemType.ECircle, ShooterSettings.ItemSettings.AMMO_RADIUS,    Items.EAmmoBullet9mm,       ShooterStrings.HUDMessages.PICKED_UP_BULLETS_9MM   , SoundFg.EPickUpItem1, new ItemEvent[] { ItemEvent.EGainAmmo20Bullet9mm,         }, true   ),

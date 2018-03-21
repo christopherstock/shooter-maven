@@ -8,9 +8,9 @@
     import  de.christopherstock.shooter.base.ShooterTexture.BulletHoleTex;
     import  de.christopherstock.shooter.io.sound.*;
 
-    /**************************************************************************************
+    /*******************************************************************************************************************
     *   Different materials that can be assigned for texture surfaces.
-    **************************************************************************************/
+    *******************************************************************************************************************/
     public enum Material implements LibMaterial
     {
         EBrownBricks(       false,      Colors.SLIVER_COLOR_BROWN_BRICKS,   SoundFg.EWallSolid1     ),

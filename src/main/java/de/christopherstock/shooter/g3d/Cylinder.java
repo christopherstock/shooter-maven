@@ -16,9 +16,9 @@
     import  de.christopherstock.shooter.base.ShooterTexture.BotTex;
     import  de.christopherstock.shooter.level.*;
 
-    /**************************************************************************************
+    /*******************************************************************************************************************
     *   Represents a cylinder.
-    **************************************************************************************/
+    *******************************************************************************************************************/
     public class Cylinder implements LibGeomObject, LibCylinder
     {
         private     static  final   int                 VERTICAL_DEBUG_SLICES           = 4;

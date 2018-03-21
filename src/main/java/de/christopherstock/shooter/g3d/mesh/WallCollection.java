@@ -8,9 +8,9 @@
     import  de.christopherstock.shooter.g3d.wall.Wall;
     import  de.christopherstock.shooter.game.artefact.gadget.Gadget;
 
-    /**************************************************************************************
+    /*******************************************************************************************************************
     *   Represents a mesh-collection.
-    **************************************************************************************/
+    *******************************************************************************************************************/
     public class WallCollection extends MeshCollection
     {
         private     static      final   long    serialVersionUID        = -4720545431322518528L;

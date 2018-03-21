@@ -15,6 +15,8 @@
     *   TODO            Turn static field Level.player to non-static!!
     *   TODO            Remove ALL static fields!
     *   TODO            Copy and prune 'MayDay' folder.
+    *   TODO            All enum constants to upper case.
+    *   TODO            Prune 'ShooterIdeas'.
     *   TODO            Unify all docblocks (length 120), imports and all coding style!
     *   TODO            Fix all code lints.
     *   TODO            Mayflower preloader and textures ( posters ).

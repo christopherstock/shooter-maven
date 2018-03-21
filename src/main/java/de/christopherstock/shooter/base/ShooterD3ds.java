@@ -11,12 +11,12 @@
     import  de.christopherstock.shooter.ShooterSettings.General;
     import  de.christopherstock.shooter.base.ShooterTexture.WallTex;
 
-    /********************************************************************************
+    /*******************************************************************************************************************
     *   All available Discreet 3D studio max resource files. The ordinal index
     *   of the enum constant is the filename of the ascii scene export file (.ase).
     *   Remember to set the UVW mapping for all ase files being exported
     *   otherwise the texture will not be displayed correctly.
-    ********************************************************************************/
+    *******************************************************************************************************************/
     public class ShooterD3ds
     {
         public static enum Menu implements LibD3dsFile

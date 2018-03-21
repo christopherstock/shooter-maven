@@ -7,9 +7,9 @@
     import  de.christopherstock.shooter.io.sound.*;
     import  de.christopherstock.shooter.level.Level.*;
 
-    /**************************************************************************************
+    /*******************************************************************************************************************
     *   The configuration set for one main level.
-    **************************************************************************************/
+    *******************************************************************************************************************/
     public class LevelConfigMain
     {
         protected               String                  iDescLevel              = null;
@@ -17,7 +17,7 @@
         protected               ArtefactType[]          iStartupWearpons        = null;
         protected               ItemEvent[]             iStartupItems           = null;
         protected               InvisibleZeroLayerZ     iHasInvisibleZLayer     = null;
-        protected               SoundBg          iBgSound                = null;
+        protected               SoundBg                 iBgSound                = null;
 
         public LevelConfigMain( String aDesc, ViewSet aStartPosition, ArtefactType[] aStartupWearpons, ItemEvent[] aStartupItems, InvisibleZeroLayerZ aHasInvisibleZLayer, SoundBg aBgSound )
         {

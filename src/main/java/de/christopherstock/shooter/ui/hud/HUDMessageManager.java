@@ -2,13 +2,12 @@
     package de.christopherstock.shooter.ui.hud;
 
     import  java.util.*;
-
     import  de.christopherstock.shooter.ShooterSettings.OffsetsOrtho;
     import  de.christopherstock.shooter.level.*;
 
-    /**************************************************************************************
+    /*******************************************************************************************************************
     *   Manages the hud-messaging-queue
-    **************************************************************************************/
+    *******************************************************************************************************************/
     public final class HUDMessageManager
     {
         protected static enum AnimState

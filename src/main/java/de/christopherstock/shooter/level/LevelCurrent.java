@@ -5,19 +5,19 @@
     import  de.christopherstock.shooter.g3d.mesh.*;
     import  de.christopherstock.shooter.level.setup.*;
 
-    /**************************************************************************************
+    /*******************************************************************************************************************
     *   Stores all information for the current active level set.
-    **************************************************************************************/
+    *******************************************************************************************************************/
     public abstract class LevelCurrent
     {
-        protected   static          LevelConfigMain          currentLevelConfig              = null;
-        public      static          WallCollection[]                currentGlobalMeshData           = null;
-        protected   static          WallCollection[][]              currentSectionMeshData          = null;
-        protected   static          LevelConfigSection[]     currentSectionConfigData        = null;
+        protected   static          LevelConfigMain         currentLevelConfig              = null;
+        public      static          WallCollection[]        currentGlobalMeshData           = null;
+        protected   static          WallCollection[][]      currentSectionMeshData          = null;
+        protected   static          LevelConfigSection[]    currentSectionConfigData        = null;
 
-        public      static          LevelSetup               currentLevelMain                = null;
-        protected   static          Level[]                  currentSections                 = null;
-        protected   static          Level                    currentSection                  = null;
+        public      static          LevelSetup              currentLevelMain                = null;
+        protected   static          Level[]                 currentSections                 = null;
+        protected   static          Level                   currentSection                  = null;
 
         public static final void init( LevelSetup levelToStart )
         {

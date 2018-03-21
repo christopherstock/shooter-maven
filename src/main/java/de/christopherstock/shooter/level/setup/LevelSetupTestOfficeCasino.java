@@ -32,9 +32,9 @@
     import  de.christopherstock.shooter.level.Level.*;
     import  de.christopherstock.shooter.ui.hud.*;
 
-    /**************************************************************************************
+    /*******************************************************************************************************************
     *   All settings for level 'Test Office Casino'.
-    **************************************************************************************/
+    *******************************************************************************************************************/
     public class LevelSetupTestOfficeCasino extends LevelSetup
     {
         private     static      final   int         SECTION_ONE                 = 0;

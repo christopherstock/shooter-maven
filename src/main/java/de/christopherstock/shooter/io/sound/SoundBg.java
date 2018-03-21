@@ -9,10 +9,10 @@
     import  de.christopherstock.lib.io.datasource.LibIODataSource;
     import  de.christopherstock.shooter.*;
 
-    /**************************************************************************************
+    /*******************************************************************************************************************
     *   The background sound engine. Uses the JavaMediaFramework player that is able
     *   to playback mp3 files with nanosecond precision.
-    **************************************************************************************/
+    *******************************************************************************************************************/
     public enum SoundBg
     {
 /*

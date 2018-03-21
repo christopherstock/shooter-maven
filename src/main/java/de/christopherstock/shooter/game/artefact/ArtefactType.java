@@ -21,9 +21,9 @@
     import  de.christopherstock.shooter.io.sound.*;
     import  de.christopherstock.shooter.ui.hud.*;
 
-    /**************************************************************************************
+    /*******************************************************************************************************************
     *   All different artefacts ( cc-wearpons, fire-arms and gadgets ) the game makes use of.
-    **************************************************************************************/
+    *******************************************************************************************************************/
     public enum ArtefactType
     {
         //cc                                                                                                                                                                                                                                                    range,                                  afterShotDelayMS,   useNeedsKeyRelease, shotsTillKeyReleaseRequired     offsetForFireFX                 zoom                        mesh                item                                            crosshair               breaks walls

@@ -9,9 +9,9 @@
     import  de.christopherstock.shooter.level.*;
     import  de.christopherstock.shooter.ui.hud.HUDMessageManager;
 
-    /**************************************************************************************
+    /*******************************************************************************************************************
     *   An event being invoked - not only by picking up items but on level start etc.
-    **************************************************************************************/
+    *******************************************************************************************************************/
     public enum ItemEvent implements GameEvent
     {
         EGainAmmo20Bullet9mm,

@@ -9,9 +9,9 @@
     import  de.christopherstock.shooter.ShooterSettings.Fonts;
     import  de.christopherstock.shooter.ShooterSettings.Path;
 
-    /**************************************************************************************
+    /*******************************************************************************************************************
     *   The application's main thread. Start this thread to run the application.
-    **************************************************************************************/
+    *******************************************************************************************************************/
     public class MainStatePreloader
     {
         public      static          MainStatePreloader       singleton                   = null;

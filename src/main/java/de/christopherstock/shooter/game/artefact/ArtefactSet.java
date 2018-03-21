@@ -6,9 +6,9 @@
     import  de.christopherstock.shooter.*;
     import  de.christopherstock.shooter.game.artefact.gadget.Gadget;
 
-    /**************************************************************************************
+    /*******************************************************************************************************************
     *   Manages a set of artefacts being holded by the player, a bot or a device.
-    **************************************************************************************/
+    *******************************************************************************************************************/
     public class ArtefactSet
     {
         /** The currently equipped artefact. */

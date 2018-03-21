@@ -8,9 +8,9 @@
     import  de.christopherstock.lib.game.*;
     import  de.christopherstock.lib.math.*;
 
-    /**************************************************************************************
+    /*******************************************************************************************************************
     *   Represents a collection of meshes.
-    **************************************************************************************/
+    *******************************************************************************************************************/
     abstract class MeshCollection implements LibGeomObject, Serializable
     {
         private     static  final   long        serialVersionUID            = -5269079453567674781L;
@@ -34,13 +34,13 @@
             iMeshes  = aMeshes;
         }
 
-        /*******************************************************************************************************************
+        /***************************************************************************************************************
         *   Sets/updates anchor.
         *
         *   @param  newAnchor                   The new anchor vertex point.
         *   @param  performTranslationOnFaces   Determines if the faces shall be translated
         *                                       by the new anchor.
-        ******************************************************************************************/
+        ***************************************************************************************************************/
         public void setNewAnchor( LibVertex newAnchor, boolean performTranslationOnFaces, LibTransformationMode transformationMode )
         {
             iAnchor = newAnchor;

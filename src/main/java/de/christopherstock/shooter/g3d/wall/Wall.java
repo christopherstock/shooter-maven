@@ -24,9 +24,9 @@
     import  de.christopherstock.shooter.io.sound.*;
     import  de.christopherstock.shooter.level.*;
 
-    /**************************************************************************************
+    /*******************************************************************************************************************
     *   Represents a mesh with all faces collision enabled.
-    **************************************************************************************/
+    *******************************************************************************************************************/
     public class Wall extends Mesh implements LibGameObject, LibClimbable
     {
         private     static  final   long    serialVersionUID        = -7616653567459799140L;

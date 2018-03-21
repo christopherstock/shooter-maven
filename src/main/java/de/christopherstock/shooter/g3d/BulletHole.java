@@ -18,9 +18,9 @@
     import  de.christopherstock.shooter.g3d.wall.Wall;
     import  de.christopherstock.shooter.game.objects.*;
 
-    /**************************************************************************************
+    /*******************************************************************************************************************
     *   Represents a bullet-hole on a wall or an object.
-    **************************************************************************************/
+    *******************************************************************************************************************/
     public class BulletHole
     {
         private     static          Vector<BulletHole>      bulletHoles                                     = new Vector<BulletHole>();
