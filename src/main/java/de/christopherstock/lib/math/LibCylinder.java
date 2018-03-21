@@ -4,9 +4,9 @@
     import  java.awt.geom.*;
     import  de.christopherstock.lib.g3d.face.*;
 
-    /**************************************************************************************
+    /*******************************************************************************************************************
     *   Simple math-wrapper-class.
-    **************************************************************************************/
+    *******************************************************************************************************************/
     public abstract interface LibCylinder
     {
         public abstract boolean checkCollisionHorzLines( LibFaceTriangle face, boolean useBottomToleranceZ, boolean invertBottomTolerance  );

@@ -22,12 +22,12 @@
         public                      float               iLimbSpeed              = 0.0f;
         public                      Vector<Rotation>    iTargetPitch            = new Vector<Rotation>();
 
-        /**************************************************************************************
+        /***************************************************************************************************************
         *   Constructs a new mesh with the specified properties.
         *
         *   @param  aFaces              All faces this mesh shall consist of.
         *   @param  aAnchor             The meshes' anchor point.
-        **************************************************************************************/
+        ***************************************************************************************************************/
         public BotMesh( LibFaceTriangle[] aFaces, LibVertex aAnchor, float aInitRotZ, float aInitScale, LibGameObject aParentGameObject, float aDamageMultiplier )
         {
             super( aFaces, aAnchor, aInitRotZ, aInitScale, Invert.ENo, aParentGameObject, LibTransformationMode.EOriginalsToTransformed, DrawMethod.EAlwaysDraw );
@@ -112,12 +112,12 @@
             return reached;
         }
 
-        /**************************************************************************************
+        /***************************************************************************************************************
         *   Represents a mesh.
         *
         *   @deprecated     This calculation is wrong!
         *                   The anchor point of the child limb has to be rotated like the parent child!
-        **************************************************************************************/
+        ***************************************************************************************************************/
         @Deprecated
         public final LibVertex transformAroundOtherLimb( Offset trans, BotMesh otherLimb, BotMesh ownLimb, LibVertex otherAnk )
         {

@@ -11,9 +11,9 @@
     import  de.christopherstock.lib.io.*;
     import  de.christopherstock.lib.math.*;
 
-    /**************************************************************************************
+    /*******************************************************************************************************************
     *   The Image-Loader.
-    **************************************************************************************/
+    *******************************************************************************************************************/
     public class LibImage
     {
         public static final byte[] getBytesFromImg( BufferedImage aBufferedImage, LibDebug debug )
@@ -136,9 +136,9 @@
             return baos.toByteArray();
         }
 
-        /**************************************************************************************
+        /***************************************************************************************************************
         *   Flips all bytes in the stream.
-        **************************************************************************************/
+        ***************************************************************************************************************/
         public static final byte[] flipBytesTest( byte[] original )
         {
             ByteArrayOutputStream baos = new ByteArrayOutputStream( original.length );
@@ -180,12 +180,12 @@
             return scaledImage;
         }
 
-        /**************************************************************************************
+        /***************************************************************************************************************
         *   Flips all columns of this BufferedImage
         *   so its byte-array is returned horizontal mirrored.
         *
         *   @param  original    The bitmap's bytes - length must be a multiple of 4.
-        **************************************************************************************/
+        ***************************************************************************************************************/
         @Deprecated
         public static final byte[] flipBytesHorzARGB( byte[] original )
         {
@@ -206,14 +206,14 @@
             return flipped;
         }
 
-        /**************************************************************************************
+        /***************************************************************************************************************
         *   Flips all columns of this BufferedImage
         *   so its byte-array is returned horizontal mirrored.
         *
         *   @param  original    The bitmap's bytes - length must be a multiple of 4.
         *   @param  rowLength   The number of pixels (ARGB values) per row
         *   @deprecated         Replaced by {@link #flipVert(BufferedImage)}
-        **************************************************************************************/
+        ***************************************************************************************************************/
         @Deprecated
         public static final byte[] flipBytesVertARGB( byte[] original, int rowLength )
         {

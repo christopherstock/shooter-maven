@@ -10,9 +10,9 @@
     import  de.christopherstock.lib.math.*;
     import  de.christopherstock.lib.ui.*;
 
-    /**************************************************************************************
+    /*******************************************************************************************************************
     *   Represents a face with an anchor and a various number of vertices that define the polygon.
-    **************************************************************************************/
+    *******************************************************************************************************************/
     public abstract class LibFace implements LibGLFace, LibGeomObject, Serializable
     {
         private     static  final   long                serialVersionUID                    = 3855014449381203086L;
@@ -30,7 +30,7 @@
             ;
         }
 
-        public                      LibDebug            iDebug                      = null;
+        public                      LibDebug            iDebug                              = null;
 
         private                     LibVertex           iAnchor                             = null;
         private                     LibGLTexture        iTexture                            = null;
@@ -47,13 +47,13 @@
         public                      float               iAlpha                              = 1.0f;
         public                      float               iDarkenOpacity                             = 1.0f;
 
-        /**************************************************************************************
+        /***************************************************************************************************************
         *   Constructs a new face.
         *
         *   @param  aAnchor      The anchor for this face.
         *   @param  aTexture   The texture to use. May be <code>null</code>.
         *   @param  aColor   The color for this face. May be <code>null</code>.
-        **************************************************************************************/
+        ***************************************************************************************************************/
         public LibFace( LibDebug aDebug, LibVertex aAnchor, LibGLTexture aTexture, LibColors aColor, LibVertex aFaceNormal )
         {
             iDebug          = aDebug;
@@ -108,13 +108,13 @@
             }
         }
 
-        /***********************************************************************
+        /***************************************************************************************************************
         *   Translates the ORIGINAL vertices setting the TRANSFORMED vertices.
         *
         *   @param  tX  The x-modification value to translate all original vertices for.
         *   @param  tY  The y-modification value to translate all original vertices for.
         *   @param  tZ  The z-modification value to translate all original vertices for.
-        ***********************************************************************/
+        ***************************************************************************************************************/
         public void translate( float tX, float tY, float  tZ, LibTransformationMode transformationMode )
         {
             LibVertex[] newTransformedVertices  = new LibVertex[ iOriginalVertices.length ];
@@ -174,7 +174,7 @@
             updateCollisionValues();
         }
 
-        /***********************************************************************
+        /***************************************************************************************************************
         *   Rotates the TRANSFORMED vertices setting the TRANSFORMED vertices.
         *   Rotation operations shall always be performed after translation operations.
         *
@@ -182,7 +182,7 @@
         *   @param  tX              The amount to translate this vertex on the x-axis.
         *   @param  tY              The amount to translate this vertex on the y-axis.
         *   @param  tZ              The amount to translate this vertex on the z-axis.
-        ***********************************************************************/
+        ***************************************************************************************************************/
         public void translateAndRotateXYZ( LibMatrix transMatrix, float tX, float tY, float tZ, LibTransformationMode transformationMode, LibVertex alternateAnchor )
         {
             //translate all original vertices
@@ -201,11 +201,11 @@
             updateCollisionValues();
         }
 
-        /***********************************************************************
+        /***************************************************************************************************************
         *   Translates the ORIGINAL vertices setting the TRANSFORMED vertices.
         *
         *   @param  scaleFactor     1.0 performs scalation to equal.
-        ***********************************************************************/
+        ***************************************************************************************************************/
         public void scale( float scaleFactor, boolean performOnOriginals )
         {
             //prune old transformed vertices
@@ -235,11 +235,11 @@
             updateCollisionValues();
         }
 
-        /***********************************************************************
+        /***************************************************************************************************************
         *   Translates the ORIGINAL vertices setting the TRANSFORMED vertices.
         *
         *   @param  scaleFactor     1.0 performs scalation to equal.
-        ***********************************************************************/
+        ***************************************************************************************************************/
         public void invert()
         {
             boolean performOnOriginals = true;

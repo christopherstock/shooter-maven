@@ -6,29 +6,28 @@
     /*******************************************************************************************************************
     *   The main class.
     *
-    *   TODO            Fix all multilined docblocks to single lines!
-    *   TODO            Maven Goal for creating JNLP file.
-    *   TODO            Remove author and version tag.
-    *   TODO            make new subclass:  Wearpon that derives from ArtefactKind!!
     *   TODO            Maven Goal for signing JAR.
-    *   TODO            Move all CloseCombat constants to settings!
+    *   TODO            Maven Goal for creating JNLP file.
+    *   TODO            Fix all multilined docblocks to single lines!
     *   TODO            Remove all linter warnings!
     *   TODO            Setup, copy and prune 'dist'.
     *   TODO            Setup, copy and prune '_ASSETS'.
+    *   TODO            Turn static field Level.player to non-static!!
+    *   TODO            Remove ALL static fields!
     *   TODO            Copy and prune 'MayDay' folder.
     *   TODO            Unify all docblocks (length 120), imports and all coding style!
+    *   TODO            Fix all code lints.
     *   TODO            Mayflower preloader and textures ( posters ).
-    *   TODO            Remove all prefixes.
     *   TODO            Revise menu.
-    *   TODO            Create example test!
-    *   TODO            Different heights for particle effects.
     *   TODO            Revise preloader!
     *   TODO            Revise level.
-    *   TODO            Remove ALL static fields!
-    *   TODO            Turn static field Level.player to non-static!!
-    *   TODO            Fix all code lints.
+    *
+    *   TODO            Move all CloseCombat constants to settings!
+    *   TODO            make new subclass:  Wearpon that derives from ArtefactKind!!
+    *   TODO            Remove all prefixes.
+    *   TODO            Create example test!
+    *   TODO            Different heights for particle effects.
     *   TODO            Cleanup game initialization.
-    *   TODO            Prune all static fields!!
     *   TODO            Revise level design.
     *   TODO            Update Eclipse.
     *   TODO            Zoom Auto Shotgun.
@@ -41,25 +40,25 @@
     *   TODO            Optimize fields in ArtefactType!
     *
     *   TODO            let random assign different topping positions for ShooterWallCollection.createDeskOffice
-    *   TODO HIGH       slow panning for zoomed view?
+    *   TODO            slow panning for zoomed view?
     *   TODO            Refactor the Artefact-System.
     *   TODO            Simple switch for lighting?
     *   TODO            Prefix 'Shooter' only for main and base classes!
     *   TODO            WearponKind.java - remove iParentKind ?
     *   TODO            enum GiveTakeAnim to Gadget?
     *   TODO            Own class for FireFxOffset ?? (use Point2D or Distance-class?)
-    *   TODO ASAP       Stop sounds when the game is quit!
-    *   TODO ASAP       suitable door textures
-    *   TODO ASAP       different wall heights?
-    *   TODO HIGH       new textures from http://www.cgtextures.com/
-    *   TODO HIGH       wall type "two glassed wall-windows with one socket in the middle"
-    *   TODO HIGH       door sockets have wrong tiling
-    *   TODO INIT       sprites for bot fire ( muzzle flash )!
-    *   TODO LOW        let bot drop multiple items on being killed
-    *   TODO WEAK       improve collisions? ( make player collisions via ray casting? )
-    *   TODO WEAK       bsp engine / algo
-    *   TODO WEAK       create cool story level data
-    *   TODO WEAK       create double-handed bots or artefacts? - 2 x iCurrentArtefact?
+    *   TODO            suitable door textures
+    *   TODO            different wall heights?
+    *   TODO            new textures from http://www.cgtextures.com/
+    *   TODO            wall type "two glassed wall-windows with one socket in the middle"
+    *   TODO            door sockets have wrong tiling
+    *   TODO            sprites for bot fire ( muzzle flash )!
+    *   TODO            let bot drop multiple items on being killed
+    *   TODO            improve collisions? ( make player collisions via ray casting? )
+    *   TODO            bsp engine / algo
+    *   TODO            Stop sounds when the game is quit!
+    *   TODO            create cool story level data
+    *   TODO            create double-handed bots or artefacts? - 2 x iCurrentArtefact?
     *
     *   DONE            Removed runme and turn to maven goal etc.!
     *   DONE            Fixed the sound gap on the two looped bg sounds!
@@ -86,17 +85,17 @@
     *   DONE            fixed hit point ( bullet hole ) gaps,
     *   DONE            dismissed: separate bullet holes to section or global,
     *   DONE            main level change,
-    *******************************************************************************************/
+    *******************************************************************************************************************/
     public class Shooter
     {
         public      static          ShooterMainThread       mainThread          = null;
 
-        /**************************************************************************************
+        /***************************************************************************************************************
         *   The Project's main-method launched on the application's startup.
         *   The job is to instanciate and to start the {@link ShooterMainThread}.
         *
         *   @param  args    Via space separated arguments transfered from the command-line.
-        **************************************************************************************/
+        ***************************************************************************************************************/
         public static void main( String[] args )
         {
             //acclaim

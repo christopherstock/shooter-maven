@@ -253,14 +253,14 @@
             }
         }
 
-        /**************************************************************************************
+        /***************************************************************************************************************
         *   Return the nearest available position z for the given point.
         *
         *   @param      floorsToCheck   All floors to check.
         *   @param      maxClimbDistZ   The maximum climbing distance z from the anchor's z-position.
         *   @return                     The nearest floor's z-position or <code>null</code> if non-existent.
         *   @deprecated                 May be useful one day.
-        **************************************************************************************/
+        ***************************************************************************************************************/
         @Deprecated
         public final Float getNearestFloor( Vector<Float> floorsToCheck, float maxClimbDistZ )
         {
@@ -383,12 +383,12 @@
             update( startX, startY, startZ, newHeight );
         }
 
-        /**************************************************************************************
+        /***************************************************************************************************************
          *   Check collision with the given cylinder.
          *
          *    @param circle  Circle to check horizontal collision with.
          *    @return        <code>true</code> if collision appears. Otherwise <code>false</code>.
-         **************************************************************************************/
+         ***************************************************************************************************************/
          public final boolean checkCollision( float z )
          {
              //check collision of 2 circles ( easy  task.. )
@@ -399,12 +399,12 @@
              );
          }
 
-        /**************************************************************************************
+        /***************************************************************************************************************
         *   Check collision with the given cylinder.
         *
         *    @param circle  Circle to check horizontal collision with.
         *    @return        <code>true</code> if collision appears. Otherwise <code>false</code>.
-        **************************************************************************************/
+        ***************************************************************************************************************/
         public final boolean checkCollision( Ellipse2D.Float circle )
         {
             //check collision of 2 circles ( easy  task.. )
@@ -438,12 +438,12 @@
             return false;
         }
 
-        /**************************************************************************************
+        /***************************************************************************************************************
         *   Check collision with the given cylinder.
         *
         *    @param c   Cylinder to check collision with.
         *    @return    <code>true</code> if collision appears. Otherwise <code>false</code>.
-        **************************************************************************************/
+        ***************************************************************************************************************/
         public final boolean checkCollisionHorz( LibCylinder c )
         {
             //check horizontal and vertical intersection
@@ -456,12 +456,12 @@
             return false;
         }
 
-        /**************************************************************************************
+        /***************************************************************************************************************
         *   Check collision with the given cylinder.
         *
         *    @param c   Cylinder to check collision with.
         *    @return    <code>true</code> if collision appears. Otherwise <code>false</code>.
-        **************************************************************************************/
+        ***************************************************************************************************************/
         public final Vector<Float> checkCollisionVert( LibCylinder c, Object exclude )
         {
             Vector<Float> v = new Vector<Float>();
@@ -520,7 +520,7 @@
             );
         }
 
-        /**************************************************************************************
+        /***************************************************************************************************************
         *   Check horizontal collision of the face and the player's center point.
         *
         *   @param  x1      rect x1.
@@ -529,7 +529,7 @@
         *   @param  y2      rect y2.
         *   @return         <code>true</code> if the cylinder's center point is in the rect.
         *   @deprecated     replaced by j2se api.
-        **************************************************************************************/
+        ***************************************************************************************************************/
 /*
         @Deprecated
         public final boolean checkHorzCenterCollision( float x1, float y1, float x2, float y2 )

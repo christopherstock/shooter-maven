@@ -14,9 +14,9 @@
         public      static          LibGLPanel          panel                           = null;
         public      static          LibGLForm           form                            = null;
 
-        /**************************************************************************************
+        /***************************************************************************************************************
         *   A flag being set to true if the init() method of the glView-singleton has been performed.
-        **************************************************************************************/
+        ***************************************************************************************************************/
         public      static          boolean         glPanelInitialized              = false;
 
         public static final void init

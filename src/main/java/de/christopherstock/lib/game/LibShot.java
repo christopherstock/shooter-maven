@@ -11,9 +11,9 @@
     import  de.christopherstock.lib.math.*;
     import  de.christopherstock.lib.ui.*;
 
-    /**************************************************************************************
+    /*******************************************************************************************************************
     *   All calculations for one shot.
-    **************************************************************************************/
+    *******************************************************************************************************************/
     public class LibShot
     {
         public static interface ShotSpender
@@ -54,7 +54,7 @@
         public                      float                   iSliverAngleMod             = 0.0f;
         public                      int                     iDamage                     = 0;
         public                      boolean                 iWallBreakingAmmo           = false;
-        public                      LibD3dsFile                iProjectile                 = null;
+        public                      LibD3dsFile             iProjectile                 = null;
         private                     float                   iRotZ                       = 0.0f;
         private                     Point2D.Float           iEndPointHorz               = null;
         private                     Point2D.Float           iEndPointVert               = null;

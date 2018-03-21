@@ -12,9 +12,9 @@
     import  de.christopherstock.lib.math.*;
     import  de.christopherstock.lib.ui.*;
 
-    /**************************************************************************************
+    /*******************************************************************************************************************
     *   Represents a triangle face.
-    **************************************************************************************/
+    *******************************************************************************************************************/
     public class LibFaceTriangle extends LibFace
     {
         private static  final   long                serialVersionUID            = 2087454746463598047L;
@@ -35,9 +35,9 @@
         public                  int                 iFadeOutFacesTicks          = 0;
         private                 int                 iEllipseSegments            = 0;
 
-        /**************************************************************************************
+        /***************************************************************************************************************
         *   Copy constructor.
-        **************************************************************************************/
+        ***************************************************************************************************************/
         public LibFaceTriangle( LibDebug aDebug, LibMaxTriangle maxTriangle, LibGLTexture tex, LibTexture aDefaultTexture, int aFadeOutFacesTicks, int aEllipseSegments )
         {
             this
@@ -134,7 +134,7 @@
             iCollisionLineHorz3 = new Line2D.Float( ph2.x, ph2.y, ph3.x, ph3.y );
         }
 
-        /***********************************************************************************
+        /***************************************************************************************************************
         *   Kai's algo.
         *
         *   @param  shot    The shot to be fired on this mesh.
@@ -142,7 +142,7 @@
         *                   or <code>null</code> if no hit-point was found.
         *
         *   @deprecated     unlinked
-        ***********************************************************************************/
+        ***************************************************************************************************************/
         @Deprecated
         public LibHitPoint launchShotKai( LibShot shot )
         {
@@ -226,13 +226,13 @@
             return null;
         }
 
-        /***********************************************************************************
+        /***************************************************************************************************************
         *   Using new raycast algo. ( incomplete? )
         *
         *   @param  shot    The shot to be fired on this mesh.
         *   @return         The nearest hit-point with lots of additional information
         *                   or <code>null</code> if no hit-point was found.
-        ***********************************************************************************/
+        ***************************************************************************************************************/
         public LibHitPoint launchShotNew( LibShot shot )
         {
             //only visible faces can be hit
@@ -315,13 +315,13 @@
             return null;
         }
 
-        /***********************************************************************************
+        /***************************************************************************************************************
         *   Only suitable for faces that have collision lines specified!
         *
         *   @param  shot    The shot to be fired on this mesh.
         *   @return         The nearest hit-point with lots of additional information
         *                   or <code>null</code> if no hit-point was found.
-        ***********************************************************************************/
+        ***************************************************************************************************************/
         //@Deprecated
         public LibHitPoint launchShotOld( LibShot shot )
         {

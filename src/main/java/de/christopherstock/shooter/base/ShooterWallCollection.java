@@ -87,9 +87,9 @@
             );
         }
 
-        /**************************************************************************************
+        /***************************************************************************************************************
         *   Creates a room with maximum possibilities for adjustments.
-        **************************************************************************************/
+        ***************************************************************************************************************/
         public static final WallCollection createWall( LibD3dsFile file, float x, float y, float z, float rotZ, int sizeX, LibTexture doorTex, WallHealth doorHealth )
         {
             Vector<Wall> allWalls = new Vector<Wall>();
@@ -398,9 +398,9 @@
             );
         }
 
-        /**************************************************************************************
+        /***************************************************************************************************************
         *   Creates a room with maximum possibilities for adjustments.
-        **************************************************************************************/
+        ***************************************************************************************************************/
         public static final WallCollection createRoom( float x, float y, float z, float rotZ, int sizeX, int sizeY, WallStyle left, WallStyle top, WallStyle right, WallStyle bottom, LibTexture doorTex, WallHealth doorHealth, WallAction doorAction, DoorStyle doorStyle, int doorOffset, LibTexture wallTex, LibTexture floorTex, LibTexture ceilingTex, Wall[] furniture, int[] gapTop, int[] gapBottom, int[] gapLeft, int[] gapRight )
         {
             Vector<Wall> allWalls = new Vector<Wall>();

@@ -1,9 +1,9 @@
 
     package de.christopherstock.shooter;
 
-    /**************************************************************************************
+    /*******************************************************************************************************************
     *   The current version enumeration.
-    **************************************************************************************/
+    *******************************************************************************************************************/
     enum ShooterVersion
     {
         V_0_3_11(   "0.3.11",   "29.03.2012 00:51:41 GMT+2", "baseZ for dropped items is player's base z, mute sound system on 1st OutOfMemoryError, shoot tranquilized bots, improved mouse system ( grab ), get base point for each sliver fx, random cc direction, player hit sounds & bot hit sounds, no movement while player is falling, baseZ for dropped items and explosions, completed main menu, embed own fonts, reset level data on new game, improved sliver angle ( distant from wall ), solved ObjectOutputStream and ObjectInputStream for loading and saving object data, solved view and bot reset on starting a new game," ),

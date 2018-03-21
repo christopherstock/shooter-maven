@@ -31,12 +31,12 @@
             this( aFaces, aAnchor, 0.0f, 1.0f, Invert.ENo, null, LibTransformationMode.EOriginalsToOriginals, DrawMethod.EAlwaysDraw );
         }
 
-        /**************************************************************************************
+        /***************************************************************************************************************
         *   Constructs a new mesh with the specified properties.
         *
         *   @param  aFaces              All faces this mesh shall consist of.
         *   @param  aAnchor             The meshes' anchor point.
-        **************************************************************************************/
+        ***************************************************************************************************************/
         public Mesh( LibFaceTriangle[] aFaces, LibVertex aAnchor, float aInitRotZ, float aInitScale, Invert aInvert, LibGameObject aParentGameObject, LibTransformationMode transformationMode, DrawMethod aDrawMethod )
         {
             iFaces = aFaces;
@@ -59,7 +59,7 @@
             return iFaces;
         }
 
-        /******************************************************************************************
+        /*******************************************************************************************************************
         *   Sets/updates anchor.
         *
         *   @param  newAnchor                   The new anchor vertex point.
@@ -118,13 +118,13 @@
             }
         }
 
-        /**************************************************************************************
+        /***************************************************************************************************************
         *   Translates all faces.
         *
         *   @param  tX  The translation for axis x.
         *   @param  tY  The translation for axis y.
         *   @param  tZ  The translation for axis z.
-        **************************************************************************************/
+        ***************************************************************************************************************/
         public void translate( float tX, float tY, float tZ, LibTransformationMode transformationMode )
         {
             //translate all faces ( resetting the rotation! )
@@ -135,7 +135,7 @@
             }
         }
 
-        /**************************************************************************************
+        /***************************************************************************************************************
         *   Rotates all faces of this mesh.
         *
         *   @param  tX          The amount to translate this vertex on the x-axis.
@@ -144,7 +144,7 @@
         *   @param  rotX        The x-axis-angle to turn all vertices around.
         *   @param  rotY        The y-axis-angle to turn all vertices around.
         *   @param  rotZ        The z-axis-angle to turn all vertices around.
-        **************************************************************************************/
+        ***************************************************************************************************************/
         public void translateAndRotateXYZ( float tX, float tY, float tZ, float rotX, float rotY, float rotZ, LibVertex alternateAnchor, LibTransformationMode transformationMode )
         {
             LibMatrix transformationMatrix = new LibMatrix( rotX, rotY, rotZ );
@@ -166,9 +166,9 @@
             }
         }
 
-        /**************************************************************************************
+        /***************************************************************************************************************
         *   Draws the mesh.
-        **************************************************************************************/
+        ***************************************************************************************************************/
         public void draw()
         {
             //draw all faces

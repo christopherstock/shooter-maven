@@ -186,11 +186,11 @@
         public                      ArmsPosition        iCurrentArmsPosition                = null;
         public                      LegsPosition        iCurrentLegsPosition                = null;
 
-        /**************************************************************************************
+        /***************************************************************************************************************
         *   Constructs a new mesh with the specified properties.
         *
         *   @param  aAnchor             The meshes' anchor point.
-        **************************************************************************************/
+        ***************************************************************************************************************/
         public BotMeshes( BotPattern aTemp, LibVertex aAnchor, LibGameObject aParentGameObject, Items itemLeft, Items itemRight )
         {
             //assign template

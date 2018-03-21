@@ -5,19 +5,19 @@
     import  javax.vecmath.*;
     import  de.christopherstock.lib.*;
 
-    /**************************************************************************************
+    /*******************************************************************************************************************
     *   A collection of static geometry utility methods.
-    **************************************************************************************/
+    *******************************************************************************************************************/
     public final class LibMathGeometry
     {
-        /**************************************************************************************
+        /***************************************************************************************************************
         *   Find the intersection of this circle with the line defined by point p1 & p2.
         *
         *   @param      line        The line to check collision with the specified circle.
         *   @param      circle      The circle to check collision with the specified line.
         *   @return                 The NEARER point of intersection seen from Line2D.Float.getP1().
         *                           <code>null</code> if no intersection occured.
-        **************************************************************************************/
+        ***************************************************************************************************************/
         public static Point2D.Float findLineCircleIntersection( Line2D.Float line, Ellipse2D.Float circle )
         {
             Point2D.Float p1 = (Point2D.Float)line.getP1();
@@ -77,14 +77,14 @@
 
         }
 
-        /**************************************************************************************
+        /***************************************************************************************************************
         *   Checks if two line-segments intersect and returns the point of intersection.
         *
         *   @param  line1   Line-segment 1.
         *   @param  line2   Line-segment 2.
         *   @return         The point of intersection.
         *                   <code>null</code> if the lines to not intersect.
-        **************************************************************************************/
+        ***************************************************************************************************************/
         public static Point2D.Float findLineSegmentIntersection( Line2D.Float line1, Line2D.Float line2, LibDebug debug )
         {
             double[]    intersectionCoords  = new double[ 2 ];
@@ -108,7 +108,7 @@
 
         }
 
-        /*********************************************************************************
+        /***************************************************************************************************************
         *   Compute the length of the line from (x0,y0) to (x1,y1).
         *
         *   @param      x0  First  line end point x.
@@ -116,7 +116,7 @@
         *   @param      x1  Second line end point x.
         *   @param      y1  Second line end point y.
         *   @return         Length of line from (x0,y0) to (x1,y1).
-        ***********************************************************************************/
+        ***************************************************************************************************************/
         private static double length( double x0, double y0, double x1, double y1 )
         {
             double dx = x1 - x0;
@@ -125,7 +125,7 @@
             return Math.sqrt ( dx*dx + dy*dy );
         }
 
-        /**************************************************************************************
+        /***************************************************************************************************************
         *   Compute the intersection between two line segments, or two lines
         *   of infinite length.
         *
@@ -142,7 +142,7 @@
         *           -2              if lines are parallel and overlapping (x, y center)
         *           0               if intesrection outside segments (x,y set)
         *          +1               if segments intersect (x,y set)
-        **************************************************************************************/
+        ***************************************************************************************************************/
         private static int findLineSegmentIntersection
         (
             double x0, double y0,
@@ -271,7 +271,7 @@
             );
         }
 
-        /**************************************************************************************
+        /***************************************************************************************************************
         *   Checks if a line-segment intersects the given circle.
         *
         *   @param  line    The line-segment to check for intersection with circle.
@@ -279,7 +279,7 @@
         *   @return         <code>true</code> if the line intersects the circle in one ( tangent )
         *                   or two ( secant ) points. Otherwise <code>false</code>.
         *   @deprecated     can be replaced by native api.
-        **************************************************************************************/
+        ***************************************************************************************************************/
         @Deprecated
         public static final boolean isLineIntersectingCircle( Line2D.Float line, Ellipse2D.Float circle )
         {
@@ -454,11 +454,11 @@
             return distance;
         }
 
-        /**************************************************************************************
+        /***************************************************************************************************************
         *   Delivers the distant 3d point from another point.
         *
         *   Gosh! That was hard work!
-        **************************************************************************************/
+        ***************************************************************************************************************/
         public static final Point3d getDistantPoint( Point3d src, float distance3D, float rotX, float rotZ )
         {
             Point3d iEndPoint3d = null;
