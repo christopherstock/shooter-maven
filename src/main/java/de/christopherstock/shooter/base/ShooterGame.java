@@ -21,28 +21,18 @@
         public                      HUD                     hud                         = null;
         public                      LibFPS                  fps                         = null;
 
-        /***************************************************************************************************************
-        *   The application's current main state.
-        ***************************************************************************************************************/
+        /** The application's current main state. */
         private                     MainState               mainState                   = MainState.EPreloader;
 
-        /***************************************************************************************************************
-        *   The application's main state to enter the next tick.
-        ***************************************************************************************************************/
+        /** The application's main state to enter the next tick. */
         private                     MainState               mainStateToChangeTo         = null;
 
-        /***************************************************************************************************************
-        *   A flag being set to true if a closing-event on the main form is invoked.
-        ***************************************************************************************************************/
+        /** A flag being set to true if a closing-event on the main form is invoked. */
         private                     boolean                 destroyed                   = false;
-        private                     long                    tickStart                   = 0;
-        private                     long                    tickTime                    = 0;
+        /*
         private                     boolean                 tickDelaying                = false;
-        private                     long                    tickDelay                   = 0;
-
-        /***************************************************************************************************************
-        *   The game's main-thread run-method performing and endless loop of ticks.
-        ***************************************************************************************************************/
+*/
+        /** The game's main-thread run-method performing and endless loop of ticks. */
         @Override
         public void run()
         {
@@ -54,7 +44,7 @@
             while ( !destroyed )
             {
                 //meassure tick time
-                tickStart = System.currentTimeMillis();
+                long tickStart = System.currentTimeMillis();
 
                 //only perform game-loop if 3d-canvas is fully initialized
                 if ( LibGL3D.glPanelInitialized )
@@ -137,30 +127,33 @@
                 //meassure tick time and set delay if desired
                 if ( ShooterSettings.Performance.ENABLE_DELAY )
                 {
-                    tickTime = ( System.currentTimeMillis() - tickStart);
+                    long tickTime = (System.currentTimeMillis() - tickStart);
+                    long tickDelay = 0;
                     if ( tickTime < ShooterSettings.Performance.MIN_THREAD_DELAY )
                     {
                         tickDelay = ShooterSettings.Performance.MIN_THREAD_DELAY - tickTime;
-
+/*
                         if ( !tickDelaying)
                         {
                             tickDelaying = true;
                             //ShooterDebug.mainThreadDelay.out( "start delaying main thread [" + tickDelay + "]" );
                         }
+*/
                     }
                     else
                     {
                         tickDelay = 0;
-
+/*
                         if (tickDelaying)
                         {
                             tickDelaying = false;
                             //ShooterDebug.mainThreadDelay.out( "stop delaying main thread" );
                         }
+*/
                     }
 
                     //delay for specified delay time
-                    Lib.delay( tickDelay );
+                    Lib.delay(tickDelay);
                 }
 
                 //ShooterDebug.bugfix.out( "ticktime: [" + tickTime + "] delay: [" + tickDelay + "]" );
