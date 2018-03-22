@@ -13,6 +13,8 @@
     *   TODO            Remove all linter warnings!
     *   TODO            Setup, copy and prune 'dist'.
     *   TODO            Setup, copy and prune '_ASSETS'.
+    *   TODO            Turn ShooterInit not static.
+    *   TODO            Outsource ShooterGame to shooter main thread.
     *   TODO            Turn static field Level.player to non-static!!
     *   TODO            Revise menu.
     *   TODO            Mayflower preloader and textures ( posters ).
@@ -78,7 +80,7 @@
         public static void main( String[] args )
         {
             //acclaim
-            ShooterDebug.major.out( "Welcome to the Shooter project, [" + ShooterVersion.getCurrentVersionDesc() + "] Debug Mode is [" + ShooterDebug.DEBUG_MODE + "]" );
+            ShooterDebug.major.out( "Welcome to the Shooter project [" + ShooterVersion.getCurrentVersionDesc() + "]" );
 
             //start shooter's main thread
             game = new ShooterGame();

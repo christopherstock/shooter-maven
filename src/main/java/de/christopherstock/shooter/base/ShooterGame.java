@@ -3,9 +3,9 @@
 
     import  de.christopherstock.lib.*;
     import  de.christopherstock.lib.gl.*;
-    import  de.christopherstock.lib.gl.LibGLFrame.GLCallbackForm;
+    import  de.christopherstock.lib.gl.LibGLFrame.*;
     import  de.christopherstock.lib.gl.LibGLPanel.*;
-    import  de.christopherstock.lib.ui.LibFPS;
+    import  de.christopherstock.lib.ui.*;
     import  de.christopherstock.shooter.*;
     import  de.christopherstock.shooter.io.hid.lwjgl.*;
     import  de.christopherstock.shooter.io.sound.*;
@@ -51,7 +51,7 @@
             ShooterInit.initRest();
 
             //main thread ticks until the app is destroyed
-            while ( !destroyed)
+            while ( !destroyed )
             {
                 //meassure tick time
                 tickStart = System.currentTimeMillis();
@@ -210,14 +210,14 @@
 
         public final void draw3D()
         {
-            //draw loading screen if not initialized
+            // only draw if gl panel is initialized
             if ( LibGL3D.glPanelInitialized )
             {
                 //clear face queue from last tick
                 LibGL3D.view.clearFaceQueue();
 
                 //draw 3d according to main state
-                switch (mainState)
+                switch ( mainState )
                 {
                     case EPreloader:
                     {
@@ -246,7 +246,7 @@
 
         public final void onFormDestroyed()
         {
-          //ShooterDebug.major.out( "Main Form was closed - Shooter is destroyed" );
+            ShooterDebug.major.out( "Main Form was closed - Shooter is destroyed" );
             destroyed = true;
         }
 
