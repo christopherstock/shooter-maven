@@ -58,7 +58,7 @@
         public final void draw2D()
         {
             //draw FPS
-            Shooter.mainThread.hud.draw2D();
+            Shooter.game.hud.draw2D();
 
             if ( iLogoY <= TARGET_APPEARING_Y )
             {
@@ -140,7 +140,7 @@
             if ( Keys.toggleMainMenu.iLaunchAction )
             {
                 Keys.toggleMainMenu.iLaunchAction = false;
-                Shooter.mainThread.orderMainStateChangeTo( MainState.EIngame );
+                Shooter.game.orderMainStateChangeTo( MainState.EIngame );
             }
         }
     }

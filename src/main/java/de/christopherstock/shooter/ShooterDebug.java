@@ -44,8 +44,8 @@
         public      static  final   boolean         NO                                  = false;
 
         /***************************************************************************************************************
-         *   The global debug switch that disables all debug outputs.
-         **************************************************************************************************************/
+        *   The global debug switch that disables all debug outputs.
+        ***************************************************************************************************************/
         public      static  final   boolean         DEBUG_MODE                          = YES;
 
         public      static  final   boolean         DEBUG_DRAW_PLAYER_CIRCLE            = YES;

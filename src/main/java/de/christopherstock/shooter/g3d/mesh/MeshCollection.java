@@ -44,17 +44,15 @@
         public void setNewAnchor( LibVertex newAnchor, boolean performTranslationOnFaces, LibTransformationMode transformationMode )
         {
             iAnchor = newAnchor;
-            for ( int i = 0; i < iMeshes.length; ++i )
-            {
-                iMeshes[ i ].setNewAnchor( newAnchor, performTranslationOnFaces, transformationMode );
+            for (Mesh iMesh : iMeshes) {
+                iMesh.setNewAnchor(newAnchor, performTranslationOnFaces, transformationMode);
             }
         }
 
         public void assignParentOnFaces( LibGameObject aParentGameObject )
         {
-            for ( int i = 0; i < iMeshes.length; ++i )
-            {
-                iMeshes[ i ].assignParentOnFaces( aParentGameObject );
+            for (Mesh iMesh : iMeshes) {
+                iMesh.assignParentOnFaces(aParentGameObject);
             }
         }
 

@@ -99,9 +99,9 @@
             int     modY    = ( -(int)( 10 * p.getWalkingAngleCarriedModifierY() ) );
 
             //hide/show animation?
-            if ( Shooter.mainThread.hud.animationActive() )
+            if ( Shooter.game.hud.animationActive() )
             {
-                switch ( Shooter.mainThread.hud.iAnimationState )
+                switch ( Shooter.game.hud.iAnimationState )
                 {
                     case EAnimationNone:
                     {
@@ -109,12 +109,12 @@
                     }
                     case EAnimationHide:
                     {
-                        modY -= iArtefactType.getArtefactImage().height - Shooter.mainThread.hud.getAnimationRightHand() * iArtefactType.getArtefactImage().height / ShooterSettings.Performance.TICKS_WEARPON_HIDE_SHOW;
+                        modY -= iArtefactType.getArtefactImage().height - Shooter.game.hud.getAnimationRightHand() * iArtefactType.getArtefactImage().height / ShooterSettings.Performance.TICKS_WEARPON_HIDE_SHOW;
                         break;
                     }
                     case EAnimationShow:
                     {
-                        modY -= Shooter.mainThread.hud.getAnimationRightHand() * iArtefactType.getArtefactImage().height / ShooterSettings.Performance.TICKS_WEARPON_HIDE_SHOW;
+                        modY -= Shooter.game.hud.getAnimationRightHand() * iArtefactType.getArtefactImage().height / ShooterSettings.Performance.TICKS_WEARPON_HIDE_SHOW;
                         break;
                     }
                 }
@@ -163,7 +163,7 @@
             }
 
             //draw artefact
-            if ( !Shooter.mainThread.hud.iHideWearpon )
+            if ( !Shooter.game.hud.iHideWearpon )
             {
                 LibGL3D.view.drawOrthoBitmapBytes
                 (
@@ -200,7 +200,7 @@
                     if ( reloadAnimationRequired )
                     {
                         //start reload animation
-                        Shooter.mainThread.hud.startHandAnimation( LibAnimation.EAnimationHide, ChangeAction.EActionReload );
+                        Shooter.game.hud.startHandAnimation( LibAnimation.EAnimationHide, ChangeAction.EActionReload );
                     }
                     else
                     {

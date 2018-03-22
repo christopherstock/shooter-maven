@@ -70,25 +70,22 @@
         {
             //assign new anchor for this mesh and for all it's faces - translate all faces by the new anchor!
             iAnchor = newAnchor;
-            for ( int i = 0; i < iFaces.length; ++i )
-            {
-                iFaces[ i ].setNewAnchor( iAnchor, performTranslationOnFaces, transformationMode );
+            for (LibFaceTriangle iFace : iFaces) {
+                iFace.setNewAnchor(iAnchor, performTranslationOnFaces, transformationMode);
             }
         }
 
         protected void assignParentOnFaces( LibGameObject aParentGameObject )
         {
-            for ( int i = 0; i < iFaces.length; ++i )
-            {
-                iFaces[ i ].assignParentGameObject( aParentGameObject );
+            for (LibFaceTriangle iFace : iFaces) {
+                iFace.assignParentGameObject(aParentGameObject);
             }
         }
 
         protected void assignDrawMethodOnFaces( DrawMethod aDrawMethod )
         {
-            for ( int i = 0; i < iFaces.length; ++i )
-            {
-                iFaces[ i ].setDrawMethod( aDrawMethod );
+            for (LibFaceTriangle iFace : iFaces) {
+                iFace.setDrawMethod(aDrawMethod);
             }
         }
 
@@ -96,25 +93,22 @@
         {
             LibMatrix transformationMatrix = new LibMatrix( 0.0f, 0.0f, aRotZ );
 
-            for ( int i = 0; i < iFaces.length; ++i )
-            {
-                iFaces[ i ].translateAndRotateXYZ( transformationMatrix, 0.0f, 0.0f, 0.0f, LibTransformationMode.EOriginalsToOriginals, null );
+            for (LibFaceTriangle iFace : iFaces) {
+                iFace.translateAndRotateXYZ(transformationMatrix, 0.0f, 0.0f, 0.0f, LibTransformationMode.EOriginalsToOriginals, null);
             }
         }
 
         private void performOriginalScalationOnFaces( float aScale )
         {
-            for ( int i = 0; i < iFaces.length; ++i )
-            {
-                iFaces[ i ].scale( aScale, true );
+            for (LibFaceTriangle iFace : iFaces) {
+                iFace.scale(aScale, true);
             }
         }
 
         private void performOriginalInvertOnFaces()
         {
-            for ( int i = 0; i < iFaces.length; ++i )
-            {
-                iFaces[ i ].invert();
+            for (LibFaceTriangle iFace : iFaces) {
+                iFace.invert();
             }
         }
 
@@ -298,8 +292,8 @@
             {
                 for ( LibVertex v : f.getVerticesToDraw() )
                 {
-                    if ( lowestZ  == null || v.z < lowestZ.floatValue()  ) lowestZ  = new Float( v.z );
-                    if ( highestZ == null || v.z > highestZ.floatValue() ) highestZ = new Float( v.z );
+                    if ( lowestZ  == null || v.z < lowestZ) lowestZ  = new Float( v.z );
+                    if ( highestZ == null || v.z > highestZ) highestZ = new Float( v.z );
                 }
             }
 
@@ -308,7 +302,7 @@
                 return 0.0f;
             }
 
-            return ( lowestZ.floatValue() + ( highestZ.floatValue() - lowestZ.floatValue() ) / 2 );
+            return (lowestZ + (highestZ - lowestZ) / 2 );
         }
 
         public final Point2D.Float getCenterPointXY()
@@ -322,10 +316,10 @@
             {
                 for ( LibVertex v : f.getOriginalVertices() )
                 {
-                    if ( lowestX  == null || v.x < lowestX.floatValue()  ) lowestX  = new Float( v.x );
-                    if ( lowestY  == null || v.y < lowestY.floatValue()  ) lowestY  = new Float( v.y );
-                    if ( highestX == null || v.x > highestX.floatValue() ) highestX = new Float( v.x );
-                    if ( highestY == null || v.y > highestY.floatValue() ) highestY = new Float( v.y );
+                    if ( lowestX  == null || v.x < lowestX) lowestX  = new Float( v.x );
+                    if ( lowestY  == null || v.y < lowestY) lowestY  = new Float( v.y );
+                    if ( highestX == null || v.x > highestX) highestX = new Float( v.x );
+                    if ( highestY == null || v.y > highestY) highestY = new Float( v.y );
                 }
             }
 
@@ -336,8 +330,8 @@
 
             return new Point2D.Float
             (
-                lowestX.floatValue() + ( highestX.floatValue() - lowestX.floatValue() ) / 2,
-                lowestY.floatValue() + ( highestY.floatValue() - lowestY.floatValue() ) / 2
+                    lowestX + (highestX - lowestX) / 2,
+                    lowestY + (highestY - lowestY) / 2
             );
         }
 

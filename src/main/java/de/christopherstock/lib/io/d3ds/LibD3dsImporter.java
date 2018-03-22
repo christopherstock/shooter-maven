@@ -18,13 +18,13 @@
         *   All vertex-coordinates from the .ase-file are DIVIDED
         *   by this factor during import.
         ***************************************************************************************************************/
-        public      static  final   int                 POINTS_SCALATION            = 10;
+        private     static  final   int                 POINTS_SCALATION            = 10;
 
         /***************************************************************************************************************
         *   Warning on loading d3ds-files if the ase file specifies more than this number of faces.
         *   No more low poly model.
         ***************************************************************************************************************/
-        public      static  final   int                 MAX_FACES                   = 3000;
+        private     static  final   int                 MAX_FACES                   = 3000;
 
         private                     String              iFilename                   = null;
         private                     LibDebug            iDebug                      = null;
@@ -85,7 +85,8 @@
                 {
                     String l = inStream.readLine();
                     if ( l == null ) break;
-                    sb.append( l + "\n" );
+                    sb.append( l     );
+                    sb.append(  "\n" );
                 }
                 String ret = sb.toString();
                 inStream.close();
@@ -96,6 +97,7 @@
                 iDebug.err( "ERROR loading 3ds max file [" + iFilename + "]" );
                 iDebug.trace( ioe );
                 System.exit( 0 );
+
                 return null;
             }
         }

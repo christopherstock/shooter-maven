@@ -103,7 +103,7 @@
             HUDFx.drawHUDEffects();
 
             //draw frames per second last
-            Shooter.mainThread.fps.draw( OffsetsOrtho.EBorderHudX, OffsetsOrtho.EBorderHudY );
+            Shooter.game.fps.draw( OffsetsOrtho.EBorderHudX, OffsetsOrtho.EBorderHudY );
 
             //draw debug logs
             //Level.currentPlayer().drawDebugLog(      g );
@@ -114,7 +114,7 @@
             Artefact currentWearpon = Level.currentPlayer().iArtefactSet.getArtefact();
 
             //only if this is a reloadable wearpon
-            if ( currentWearpon.iArtefactType.isFireArm() /* && Shooter.mainThread.hud.iAnimationState == LibAnimation.EAnimationNone */ )
+            if ( currentWearpon.iArtefactType.isFireArm() /* && Shooter.game.hud.iAnimationState == LibAnimation.EAnimationNone */ )
             {
                 //create current ammo string
                 iCurrentAmmoStringMagazineAmmo  = currentWearpon.getCurrentAmmoStringMagazineAmmo();

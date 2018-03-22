@@ -199,7 +199,7 @@
                             Float baseZF = Level.currentSection().getHighestFloor( new Cylinder( null, new LibVertex( xy.x, xy.y, z ), 0.1f, 0.1f, 0, ShooterDebug.floorChange, false, 0.01f, 0.01f, ShooterSettings.Performance.ELLIPSE_SEGMENTS, Material.EHumanFlesh ), this );
                             if ( baseZF != null )
                             {
-                                baseZ = baseZF.floatValue();
+                                baseZ = baseZF;
                             }
                             else
                             {
@@ -208,7 +208,7 @@
                             iBaseZ = new Float( baseZ );
                         }
 
-                        if ( f.iHighestZ - distanceFromFloor - ( ( f.iHighestZ - f.iLowestZ ) / 2 ) < iBaseZ.floatValue() )
+                        if ( f.iHighestZ - distanceFromFloor - ( ( f.iHighestZ - f.iLowestZ ) / 2 ) < iBaseZ)
                         {
                             f.continueDestroyAnim = false;
                         }
@@ -412,7 +412,7 @@
                 Float baseZF    = Level.currentSection().getHighestFloor( new Cylinder( null, new LibVertex( xy.x, xy.y, z ), 0.05f, 0.01f, 0, ShooterDebug.floorChange, false, 0.01f, 0.01f, ShooterSettings.Performance.ELLIPSE_SEGMENTS, Material.EHumanFlesh ), this );
                 if ( baseZF != null )
                 {
-                    baseZ = baseZF.floatValue();
+                    baseZ = baseZF;
                 }
                 baseZ += 0.05f;
 

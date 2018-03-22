@@ -270,7 +270,7 @@
             iEyesOpen       = true;
             setNextEyeChange();
 
-            //animate 1st tick? .. triggers onRun :/ not required!
+            //animate 1st tick? .. triggers render :/ not required!
             boolean deprecatedAnimateOnCreate = false;
             if ( deprecatedAnimateOnCreate ) animate();
         }

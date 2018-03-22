@@ -8,6 +8,7 @@
     /*******************************************************************************************************************
     *   Simple math-wrapper-class.
     *******************************************************************************************************************/
+    @SuppressWarnings("PointlessBitwiseExpression")
     public abstract class LibMath
     {
         /***************************************************************************************************************
@@ -68,19 +69,19 @@
 
         public static float[] col2f3(int col )
         {
-            float r = ( col & 0xff0000 )  >>  16;
-            float g = ( col & 0x00ff00 )  >>  8;
-            float b = ( col & 0x0000ff )  >>  0;
+            float r = ( col & 0xff0000 ) >> 16;
+            float g = ( col & 0x00ff00 ) >> 8;
+            float b = ( col & 0x0000ff ) >> 0;
 
             return new float[] { r / 255, g / 255, b / 255 };
         }
 
         public static float[] col2f4(int col )
         {
-            float a = ( col & 0xff000000 )  >>  24;
-            float r = ( col & 0x00ff0000 )  >>  16;
-            float g = ( col & 0x0000ff00 )  >>  8;
-            float b = ( col & 0x000000ff )  >>  0;
+            float a = ( col & 0xff000000 ) >> 24;
+            float r = ( col & 0x00ff0000 ) >> 16;
+            float g = ( col & 0x0000ff00 ) >> 8;
+            float b = ( col & 0x000000ff ) >> 0;
 
             return new float[] { r / 255, g / 255, b / 255, a / 255 };
         }
@@ -162,12 +163,12 @@
         {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
-            for ( int i = 0; i < ints.length; ++i )
+            for ( int anInt : ints )
             {
-                baos.write( ( ints[ i ] >> 0  ) & 0xff );
-                baos.write( ( ints[ i ] >> 8  ) & 0xff );
-                baos.write( ( ints[ i ] >> 16 ) & 0xff );
-                baos.write( ( ints[ i ] >> 24 ) & 0xff );
+                baos.write( ( anInt >> 0  ) & 0xff);
+                baos.write( ( anInt >> 8  ) & 0xff);
+                baos.write( ( anInt >> 16 ) & 0xff);
+                baos.write( ( anInt >> 24 ) & 0xff);
             }
 
             return baos.toByteArray();

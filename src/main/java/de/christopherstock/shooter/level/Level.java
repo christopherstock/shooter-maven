@@ -106,7 +106,7 @@
             }
 
             //reset HUD-animation so change to 1st artefact can occur
-            Shooter.mainThread.hud.resetAnimation();
+            Shooter.game.hud.resetAnimation();
 
             //change to 1st artefact
             player.orderWearponOrGadget( ChangeAction.EActionNext );
@@ -523,7 +523,7 @@
             return LevelCurrent.currentSectionConfigData[ iCurrentSectionIndex ].iBgCol;
         }
 
-        public final void onRun()
+        public final void render()
         {
             boolean runPlayer = false;
             boolean runLevel  = false;
@@ -575,7 +575,7 @@
             //run player
             if ( runPlayer )
             {
-                player.onRun();
+                player.render();
             }
 
             //run level
@@ -592,7 +592,7 @@
 
                 //animate particle systems and HUD
                 LibFXManager.onRun();
-                Shooter.mainThread.hud.onRun();
+                Shooter.game.hud.onRun();
             }
         }
 

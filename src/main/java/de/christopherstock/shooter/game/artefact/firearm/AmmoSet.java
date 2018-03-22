@@ -22,19 +22,19 @@
 
         public int getAmmo( AmmoType at )
         {
-            return ammo.get( at ).intValue();
+            return ammo.get(at);
         }
 
         public void substractAmmo( AmmoType at, int substraction )
         {
-            int oldAmmo = ammo.get( at ).intValue();
+            int oldAmmo = ammo.get(at);
             oldAmmo -= substraction;
             ammo.put( at, new Integer( oldAmmo ) );
         }
 
         public void addAmmo( AmmoType at, int addition )
         {
-            int oldAmmo = ammo.get( at ).intValue();
+            int oldAmmo = ammo.get(at);
             oldAmmo += addition;
             if ( oldAmmo > at.iMaxAmmo ) oldAmmo = at.iMaxAmmo;
             ammo.put( at, new Integer( oldAmmo ) );

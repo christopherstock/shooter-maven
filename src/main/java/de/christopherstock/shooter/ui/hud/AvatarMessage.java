@@ -208,10 +208,10 @@
 
             //draw text
             int y = iDrawY;
-            for ( int i = 0; i < textLines.length; ++i )
+            for ( LibGLImage textLine : textLines )
             {
-                LibGL3D.view.drawOrthoBitmapBytes( textLines[ i ], iDrawX, y, alphaAvatarImg );
-                y -= textLines[ i ].height;
+                LibGL3D.view.drawOrthoBitmapBytes(textLine, iDrawX, y, alphaAvatarImg);
+                y -= textLine.height;
             }
         }
 

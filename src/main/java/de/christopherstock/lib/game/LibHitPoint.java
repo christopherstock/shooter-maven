@@ -195,7 +195,7 @@
             Float baseZF    = floorStack.getHighestFloor( null, sliverVertex, 0.05f, SIZE, 0, iDebug, false, SIZE, SIZE, iEllipseSegments, exclude );
             if ( baseZF != null )
             {
-                baseZ = baseZF.floatValue();
+                baseZ = baseZF;
             }
             baseZ += SIZE;
 

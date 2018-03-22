@@ -55,8 +55,8 @@
                 ShooterSettings.Form.FORM_WIDTH,
                 ShooterSettings.Form.FORM_HEIGHT,
                 ShooterSettings.Form.FORM_TITLE,
-                Shooter.mainThread,
-                Shooter.mainThread,
+                Shooter.game,
+                Shooter.game,
                 iconImage,
                 bgImage,
                 ShooterDebug.init
@@ -99,8 +99,8 @@
 
             //init hud
             MainStatePreloader.getSingleton().increase( "Initing HUD and sound" );
-            Shooter.mainThread.hud = new HUD();
-            Shooter.mainThread.fps = new LibFPS( Fonts.EFps, ShooterSettings.Colors.EFpsFg.colABGR, ShooterSettings.Colors.EFpsOutline.colABGR, ShooterDebug.glImage );
+            Shooter.game.hud = new HUD();
+            Shooter.game.fps = new LibFPS( Fonts.EFps, ShooterSettings.Colors.EFpsFg.colABGR, ShooterSettings.Colors.EFpsOutline.colABGR, ShooterDebug.glImage );
 
             //init HUD fx
             HUDFx.init();
@@ -122,7 +122,7 @@
             //ShooterGameLevel.init();
 
             //reset and change to startup main state
-            Shooter.mainThread.orderMainStateChangeTo( ShooterSettings.Startup.STARTUP_STATE_AFTER_PRELOADER );
+            Shooter.game.orderMainStateChangeTo( ShooterSettings.Startup.STARTUP_STATE_AFTER_PRELOADER );
             LevelChange.orderLevelChange( Startup.STARTUP_LEVEL_MAIN, Startup.STARTUP_LEVEL_SECTION, true );
 
             ShooterDebug.init.out( "initUi 10" );

@@ -14,6 +14,7 @@
     /*******************************************************************************************************************
     *   The Image-Loader.
     *******************************************************************************************************************/
+    @SuppressWarnings("PointlessArithmeticExpression")
     public class LibImage
     {
         public static byte[] getBytesFromImg(BufferedImage aBufferedImage, LibDebug debug )

@@ -60,7 +60,7 @@
         public final void extractArtefact( Object toDraw )
         {
             ( (Gadget)toDraw ).stopGiveAnim();
-            Shooter.mainThread.hud.stopHandAnimation();
+            Shooter.game.hud.stopHandAnimation();
 
             //change to hands if this artefact is holded
             if ( toDraw == iCurrentArtefact.iArtefactType.iArtefactKind )
@@ -103,13 +103,13 @@
                         //animate only if more than one wearpon is available!
                         if ( iArtefacts.size() > 1 && byPlayer )
                         {
-                            Shooter.mainThread.hud.startHandAnimation( LibAnimation.EAnimationShow, null );
+                            Shooter.game.hud.startHandAnimation( LibAnimation.EAnimationShow, null );
                         }
                     }
                     else
                     {
                         setArtefact( iArtefacts.elementAt( previousIndex ) );
-                        if ( byPlayer ) Shooter.mainThread.hud.startHandAnimation( LibAnimation.EAnimationShow, null );
+                        if ( byPlayer ) Shooter.game.hud.startHandAnimation( LibAnimation.EAnimationShow, null );
                     }
                     break;
                 }
@@ -138,13 +138,13 @@
                         //animate only if more than one wearpon is available!
                         if ( iArtefacts.size() > 1 && byPlayer )
                         {
-                            Shooter.mainThread.hud.startHandAnimation( LibAnimation.EAnimationShow, null );
+                            Shooter.game.hud.startHandAnimation( LibAnimation.EAnimationShow, null );
                         }
                     }
                     else
                     {
                         setArtefact( iArtefacts.elementAt( nextIndex ) );
-                        if ( byPlayer ) Shooter.mainThread.hud.startHandAnimation( LibAnimation.EAnimationShow, null );
+                        if ( byPlayer ) Shooter.game.hud.startHandAnimation( LibAnimation.EAnimationShow, null );
                     }
                     break;
                 }

@@ -86,7 +86,7 @@
             //ShooterDebug.bugfix.out( "Reset player view!" );
 
             iAmmoSet                = new AmmoSet();
-            iHealthChangeCallback   = Shooter.mainThread.hud;
+            iHealthChangeCallback   = Shooter.game.hud;
             iDisableGravity         = aDisableGravity;
             iArtefactSet            = new ArtefactSet();
         }
@@ -291,7 +291,7 @@
             //ShooterDebug.bugfix.out( "highestZ: " + highestZ );
 
             //check if the player is falling - if no highest point or highest point is too far away
-            if ( highestZ == null || highestZ.floatValue() < iCylinder.getAnchor().z - PlayerSettings.MAX_CLIMBING_UP_Z / 2  )
+            if ( highestZ == null || highestZ < iCylinder.getAnchor().z - PlayerSettings.MAX_CLIMBING_UP_Z / 2  )
             {
                 if ( iCurrentSpeedFalling > SPEED_FALLING_MAX ) iCurrentSpeedFalling = SPEED_FALLING_MAX;
 
@@ -303,7 +303,7 @@
             {
                 //assign face's z
                 iCurrentSpeedFalling    = SPEED_FALLING_MIN;
-                iCylinder.getAnchor().z = highestZ.floatValue();
+                iCylinder.getAnchor().z = highestZ;
                 iFalling                = false;
             }
 
@@ -404,7 +404,7 @@
             //if no animation is active and no gadget is given
             if
             (
-                    !Shooter.mainThread.hud.animationActive()
+                    !Shooter.game.hud.animationActive()
                 &&
                     (
                             !( iArtefactSet.iCurrentArtefact.iArtefactType.iArtefactKind instanceof Gadget )
@@ -412,7 +412,7 @@
                     )
             )
             {
-                Shooter.mainThread.hud.startHandAnimation( LibAnimation.EAnimationHide, changeAction );
+                Shooter.game.hud.startHandAnimation( LibAnimation.EAnimationHide, changeAction );
             }
         }
 
@@ -422,8 +422,7 @@
         ***************************************************************************************************************/
         public final float getWalkingAngleModifier()
         {
-            boolean disable = General.DISABLE_PLAYER_WALKING_ANGLE_Y;
-            return ( disable ? 0.0f : LibMath.sinDeg( iWalkingAngleY ) );
+            return ( General.DISABLE_PLAYER_WALKING_ANGLE_Y ? 0.0f : LibMath.sinDeg( iWalkingAngleY ) );
         }
         public final float getWalkingAngleCarriedModifierX()
         {
@@ -436,8 +435,7 @@
 
         public final void hurt( int descent )
         {
-            boolean invincible = PlayerSettings.INVINCIBILITY;
-            if ( invincible ) return;
+            if ( PlayerSettings.INVINCIBILITY ) return;
 
             //player can only lose energy if he is not dying
             if ( !iDead && iHealth > 0 )
@@ -620,7 +618,7 @@
             SoundFg.EPlayerHit1.playGlobalFx( 120  );
 
             //lower wearpon
-            Shooter.mainThread.hud.startHandAnimation( LibAnimation.EAnimationHide, ChangeAction.EActionDie );
+            Shooter.game.hud.startHandAnimation( LibAnimation.EAnimationHide, ChangeAction.EActionDie );
         }
 
         public final boolean isDead()
@@ -643,7 +641,7 @@
             return iView;
         }
 
-        public final void moveToNewPosition()
+        private final void moveToNewPosition()
         {
             getCylinder().moveToTargetPosition( getView().iDepthTotal, General.DISABLE_PLAYER_TO_WALL_COLLISIONS, General.DISABLE_PLAYER_TO_BOT_COLLISIONS );
         }
@@ -653,7 +651,7 @@
             return HitPointCarrier.EPlayer;
         }
 
-        public final void onRun()
+        public final void render()
         {
             getCylinder().setAnchorAsTargetPosition();  //set current position as the target-position
             handleKeys();                               //handle all game keys for the player
@@ -663,7 +661,7 @@
             performFloorChange();                       //move player according to map collision ( floors )
 
             //handle artefact ( fire, reload, give ) if no HUD anim is running
-            if ( !Shooter.mainThread.hud.animationActive() )
+            if ( !Shooter.game.hud.animationActive() )
             {
                 if ( iArtefactSet.iCurrentArtefact != null )
                 {

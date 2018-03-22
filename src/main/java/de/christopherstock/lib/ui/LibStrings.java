@@ -269,16 +269,13 @@
             while( startIndex < aString.length() && aString.charAt( startIndex ) == ' ' ) ++startIndex;
 
             //browse all linebreak-chars
-            for ( int i = 0; i < LINEBREAK_CHARS.length; ++i )
+            for ( char LINEBREAK_CHAR : LINEBREAK_CHARS )
             {
                 //check if this linebreak-char was found
-                int foundIndex = aString.substring( startIndex ).indexOf( LINEBREAK_CHARS[ i ] );
-                if ( foundIndex == -1 )
-                {
+                int foundIndex = aString.substring(startIndex).indexOf(LINEBREAK_CHAR);
+                if (foundIndex == -1) {
                     //linebreak char was not found
-                }
-                else if ( endIndex == -1 || startIndex + foundIndex < endIndex )
-                {
+                } else if (endIndex == -1 || startIndex + foundIndex < endIndex) {
                     endIndex = startIndex + foundIndex;
                 }
             }
@@ -289,9 +286,9 @@
         public static void debugLineBreaks(Graphics2D g2d, LibDebug debug, Font font )
         {
             String[] lines = LibStrings.breakLinesOptimized( g2d, "123456789-abcdefgh\nijklmnopqrstuvwxyzAnnodinio comes up      with a.gamethatwicgdfgfggfgfgdfdggerrtetetkedandwhacked\n\n\n\ntesttest2test3test4students can play between php and pear sessions\n 123456789abc\n o \n \ndefghijklmnopqrstuvwxyz Mauris porttitor sodales congue. Integer venenatis sem vel libero vehicula hendrerit. Ut in tincidunt felis. Aenean nec mattis magna. Suspendisse enim nisl, euismod quis suscipit vel, porttitor egestas elit. Suspendisse facilisis scelerisque mi, ut pharetra felis porta eget. Proin ultrices molestie ornare. Morbi hendrerit orci eu mauris blandit ut dapibus lacus pulvinar. Proin tempor auctor nisl, quis blandit lacus mollis vel. Curabitur mollis diam quis massa commodo vestibulum. Maecenas in nunc vitae sem vestibulum commodo. In congue elit non sem ornare congue. Aliquam ac purus nibh, id imperdiet neque. Aenean consectetur dictum dictum. Curabitur gravida posuere sodales. Nam augue odio, convallis quis volutpat id, accumsan aliquet turpis. Nullam imperdiet dignissim dui, sed fermentum libero convallis in. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla tempus fringilla lorem, non euismod libero lobortis at. Suspendisse aliquet, nunc ut porta ornare, risus leo placerat leo, eget varius magna dui ac massa. ", font, 106 );
-            for ( int i = 0; i < lines.length; ++i )
+            for ( String line : lines )
             {
-                debug.out( "LINEBREAK TEST: [" + lines[ i ] + "]" );
+                debug.out("LINEBREAK TEST: [" + line + "]");
             }
         }
 

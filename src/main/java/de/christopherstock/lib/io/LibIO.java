@@ -75,15 +75,11 @@
 
             try
             {
-                //isn't there an other way?
-                while ( true )
+                while ( ois.available() > 0 )
                 {
                     Object o = ois.readObject();
                     ret.add( o );
                 }
-            }
-            catch ( EOFException eof )
-            {
             }
             finally
             {

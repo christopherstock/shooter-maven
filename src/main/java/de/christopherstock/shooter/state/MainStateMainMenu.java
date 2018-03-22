@@ -70,7 +70,7 @@
         public final void draw2D()
         {
             //draw hud
-            Shooter.mainThread.hud.draw2D();
+            Shooter.game.hud.draw2D();
 
             //draw black pane
             LibGL3D.view.drawOrthoBitmapBytes( blackPane,               0,   0,   0.5f );
@@ -119,21 +119,21 @@
                     case EStartNewGameFacility:
                     {
                         LevelChange.orderLevelChange( new LevelSetupTestFacility(), ShooterSettings.Startup.STARTUP_LEVEL_SECTION, true );
-                        Shooter.mainThread.orderMainStateChangeTo( MainState.EIngame );
+                        Shooter.game.orderMainStateChangeTo( MainState.EIngame );
                         break;
                     }
 
                     case EStartNewGameTestOffice:
                     {
                         LevelChange.orderLevelChange( new LevelSetupTestOfficeCasino(), ShooterSettings.Startup.STARTUP_LEVEL_SECTION, true );
-                        Shooter.mainThread.orderMainStateChangeTo( MainState.EIngame );
+                        Shooter.game.orderMainStateChangeTo( MainState.EIngame );
                         break;
                     }
 
                     case EContinueGame:
                     {
                         //ShooterGameLevel.orderLevelChange( ShooterSettings.General.STARTUP_LEVEL, true );
-                        Shooter.mainThread.orderMainStateChangeTo( MainState.EIngame );
+                        Shooter.game.orderMainStateChangeTo( MainState.EIngame );
                         break;
                     }
 
@@ -231,7 +231,7 @@
             if ( Keys.toggleMainMenu.iLaunchAction )
             {
                 Keys.toggleMainMenu.iLaunchAction = false;
-                Shooter.mainThread.orderMainStateChangeTo( MainState.EIngame );
+                Shooter.game.orderMainStateChangeTo( MainState.EIngame );
             }
 
             //change current main menu item

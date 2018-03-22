@@ -15,6 +15,7 @@
     /*******************************************************************************************************************
     *   A close-combat Wearpon.
     *******************************************************************************************************************/
+    @SuppressWarnings("PointlessArithmeticExpression")
     public final class Gadget extends ArtefactKind
     {
         private                 int                     iGiveTakeAnim               = 0;

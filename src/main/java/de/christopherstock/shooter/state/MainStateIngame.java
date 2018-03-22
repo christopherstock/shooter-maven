@@ -33,7 +33,7 @@
         public final void draw2D()
         {
             //draw hud
-            Shooter.mainThread.hud.draw2D();
+            Shooter.game.hud.draw2D();
         }
 
         public final void draw3D()
@@ -82,7 +82,7 @@
             if ( Keys.toggleMainMenu.iLaunchAction )
             {
                 Keys.toggleMainMenu.iLaunchAction = false;
-                Shooter.mainThread.orderMainStateChangeTo( MainState.EMainMenu );
+                Shooter.game.orderMainStateChangeTo( MainState.EMainMenu );
             }
 
             //launch test exploisions?

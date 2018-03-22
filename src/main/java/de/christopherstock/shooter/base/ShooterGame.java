@@ -16,7 +16,7 @@
     /*******************************************************************************************************************
     *   The application's main thread. Start this thread to run the application.
     *******************************************************************************************************************/
-    public class ShooterMainThread extends Thread implements GLDrawCallback, GLCallbackForm
+    public class ShooterGame extends Thread implements GLDrawCallback, GLCallbackForm
     {
         public                      HUD                     hud                         = null;
         public                      LibFPS                  fps                         = null;
@@ -117,7 +117,7 @@
                             if ( Level.currentSection() != null )
                             {
                                 //animate level
-                                Level.currentSection().onRun();
+                                Level.currentSection().render();
                             }
 
                             //maintain sounds

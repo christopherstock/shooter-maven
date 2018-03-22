@@ -163,8 +163,7 @@
 
                     //check collision on standing up
                     iParentPlayer.getCylinder().iHeight = iDepthTotal;
-                    boolean disableWallCollisions = ShooterSettings.General.DISABLE_PLAYER_TO_WALL_COLLISIONS;
-                    if ( !disableWallCollisions && Level.currentSection().checkCollisionOnWalls( iParentPlayer.getCylinder() ) )
+                    if ( !ShooterSettings.General.DISABLE_PLAYER_TO_WALL_COLLISIONS && Level.currentSection().checkCollisionOnWalls( iParentPlayer.getCylinder() ) )
                     {
                         iDepthEye  -= SPEED_CROUCH_TOGGLE;
                         iDepthHand -= SPEED_CROUCH_TOGGLE;

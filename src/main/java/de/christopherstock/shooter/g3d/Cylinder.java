@@ -275,7 +275,7 @@
             for ( int i = 0; i < floorsToCheck.size(); ++i )
             {
                 //assign 1st point - check if the distance is nearer
-                float thisDistance = Math.abs( iAnchor.z - floorsToCheck.elementAt( i ).floatValue() );
+                float thisDistance = Math.abs( iAnchor.z - floorsToCheck.elementAt(i));
                 if
                 (
                         ( nearestIndex == -1 )
@@ -285,12 +285,12 @@
                     //check if the point is under the player or, if lower, not too high to climb up to!
                     if
                     (
-                            floorsToCheck.elementAt( i ).floatValue() < iAnchor.z
+                            floorsToCheck.elementAt(i) < iAnchor.z
                         ||  thisDistance <= maxClimbDistZ
                     )
                     {
                         nearestIndex    = i;
-                        nearestDistance = floorsToCheck.elementAt( i ).floatValue();
+                        nearestDistance = floorsToCheck.elementAt(i);
 
                     }
                 }
@@ -312,19 +312,19 @@
             for ( int i = 0; i < floorsToCheck.size(); ++i )
             {
                 //assign 1st point - check if the distance is nearer
-                float thisDistance = Math.abs( iAnchor.z - floorsToCheck.elementAt( i ).floatValue() );
+                float thisDistance = Math.abs( iAnchor.z - floorsToCheck.elementAt(i));
 
                 //only pick faces that..
                 if
                 (
                         //..are lower than the player
-                        floorsToCheck.elementAt( i ).floatValue() < iAnchor.z
+                        floorsToCheck.elementAt(i) < iAnchor.z
                         //..are not too high
                     ||  thisDistance <= iBottomCollisionToleranceZ
                 )
                 {
                     //assign if higher
-                    if ( highestZ == null || floorsToCheck.elementAt( i ).floatValue() > highestZ.floatValue() )
+                    if ( highestZ == null || floorsToCheck.elementAt(i) > highestZ)
                     {
                         highestZ = floorsToCheck.elementAt( i );
                     }
