@@ -24,16 +24,16 @@
         protected LibFXExplosion( LibDebug aDebug, LibVertex aAnchor, FXSize aSize, FXTime aTime, int lifetime, float aBaseZ, int aFadeOutTicks )
         {
             super( aDebug, aAnchor, lifetime, aFadeOutTicks );
-            iSize   = aSize;
-            iTime   = aTime;
-            iBaseZ  = aBaseZ;
+            this.iSize = aSize;
+            this.iTime = aTime;
+            this.iBaseZ = aBaseZ;
         }
 
         protected final void launch()
         {
             int numParticlesPerWave     = 0;
             int numWaves                = 0;
-            switch ( iSize )
+            switch (this.iSize)
             {
                 case ESmall:
                 {
@@ -54,7 +54,7 @@
                 }
             }
 
-            switch ( iTime )
+            switch (this.iTime)
             {
                 case EShort:
                 {
@@ -86,19 +86,19 @@
                     (
                         new LibFXPoint
                         (
-                            iDebug,
-                            iBaseZ,
+                                this.iDebug,
+                                this.iBaseZ,
                             FXType.EExplosion,
                             EXPLOSION_COLORS[ LibMath.getRandom( 0, EXPLOSION_COLORS.length - 1 ) ],
                             angle,
-                            iAnchor.x + radius * LibMath.sinDeg( angle ),
-                            iAnchor.y + radius * LibMath.cosDeg( angle ),
-                            iAnchor.z,
-                            iSize,
+                                this.iAnchor.x + radius * LibMath.sinDeg( angle ),
+                                this.iAnchor.y + radius * LibMath.cosDeg( angle ),
+                                this.iAnchor.z,
+                                this.iSize,
                             wave,
-                            iLifetime,
+                                this.iLifetime,
                             FXGravity.ENormal,
-                            iFadeOutTicks,
+                                this.iFadeOutTicks,
                             null //new Sprite( Others.ESprite1, new LibVertex( iPoint.x, iPoint.y, iPoint.z ), Scalation.ELowerThreeQuarters, WallCollidable.ENo, WallTex.ESliver1 )
                         )
                     );

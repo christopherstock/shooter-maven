@@ -37,13 +37,13 @@
 
             private MainMenuItem( String label )
             {
-                unselected = LibGLImage.getFromString( label,   Fonts.EMainMenu, LibColors.EBlack.colABGR,  null, LibColors.EWhite.colABGR, ShooterDebug.glImage );
-                selected   = LibGLImage.getFromString( label,   Fonts.EMainMenu, LibColors.EWhite.colABGR,  null, null,                     ShooterDebug.glImage );
+                this.unselected = LibGLImage.getFromString( label,   Fonts.EMainMenu, LibColors.EBlack.colABGR,  null, LibColors.EWhite.colABGR, ShooterDebug.glImage );
+                this.selected = LibGLImage.getFromString( label,   Fonts.EMainMenu, LibColors.EWhite.colABGR,  null, null,                     ShooterDebug.glImage );
             }
 
             public void draw( int x, int y, MainMenuItem selectedItem )
             {
-                LibGL3D.view.drawOrthoBitmapBytes( ( this == selectedItem ? selected : unselected ), x, y, 1.0f );
+                LibGL3D.view.drawOrthoBitmapBytes( ( this == selectedItem ? this.selected : this.unselected), x, y, 1.0f );
             }
         }
 
@@ -57,7 +57,7 @@
 
         private MainStateMainMenu()
         {
-            blackPane = LibGLImage.getFullOpaque( LibColors.EBlack.colABGR, LibGL3D.panel.width, LibGL3D.panel.height, ShooterDebug.glImage );
+            this.blackPane = LibGLImage.getFullOpaque( LibColors.EBlack.colABGR, LibGL3D.panel.width, LibGL3D.panel.height, ShooterDebug.glImage );
 
         }
 
@@ -73,7 +73,7 @@
             Shooter.game.hud.draw2D();
 
             //draw black pane
-            LibGL3D.view.drawOrthoBitmapBytes( blackPane,               0,   0,   0.5f );
+            LibGL3D.view.drawOrthoBitmapBytes(this.blackPane,               0,   0,   0.5f );
 
             //draw main menu
             for ( MainMenuItem m : MainMenuItem.values() )
@@ -84,12 +84,12 @@
 
         public final void previousItem()
         {
-            if ( menuChangeBlocker == 0 )
+            if (this.menuChangeBlocker == 0 )
             {
                 if ( currentMainMenuItem.ordinal() > 0 )
                 {
                     currentMainMenuItem = MainMenuItem.values()[ currentMainMenuItem.ordinal() - 1 ];
-                    menuChangeBlocker = HUDSettings.TICKS_MAIN_MENU_BLOCKER;
+                    this.menuChangeBlocker = HUDSettings.TICKS_MAIN_MENU_BLOCKER;
                     SoundFg.ELocked1.playGlobalFx();
                 }
             }
@@ -97,12 +97,12 @@
 
         public final void nextItem()
         {
-            if ( menuChangeBlocker == 0 )
+            if (this.menuChangeBlocker == 0 )
             {
                 if ( currentMainMenuItem.ordinal() < MainMenuItem.values().length - 1 )
                 {
                     currentMainMenuItem = MainMenuItem.values()[ currentMainMenuItem.ordinal() + 1 ];
-                    menuChangeBlocker = HUDSettings.TICKS_MAIN_MENU_BLOCKER;
+                    this.menuChangeBlocker = HUDSettings.TICKS_MAIN_MENU_BLOCKER;
                     SoundFg.ELocked1.playGlobalFx();
                 }
             }
@@ -110,9 +110,9 @@
 
         public final void selectItem()
         {
-            if ( menuChangeBlocker == 0 )
+            if (this.menuChangeBlocker == 0 )
             {
-                menuChangeBlocker = HUDSettings.TICKS_MAIN_MENU_BLOCKER;
+                this.menuChangeBlocker = HUDSettings.TICKS_MAIN_MENU_BLOCKER;
                 SoundFg.ELocked1.playGlobalFx();
                 switch ( currentMainMenuItem )
                 {
@@ -206,7 +206,7 @@
 
         public final void onRun()
         {
-            if ( menuChangeBlocker > 0 ) --menuChangeBlocker;
+            if (this.menuChangeBlocker > 0 ) --this.menuChangeBlocker;
 
             //check enter press
             Keys.enterKey.checkLaunchingAction();

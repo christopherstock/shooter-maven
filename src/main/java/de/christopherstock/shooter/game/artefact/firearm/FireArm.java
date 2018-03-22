@@ -34,22 +34,22 @@
         
         public FireArm( AmmoType aAmmoType, int aMagazineSize, int aWearponIrregularityDepth, int aWearponIrregularityAngle, int aShotCount, int aShotCountRandomMod, SoundFg aUseSound, SoundFg aReloadSound, SoundFg aBulletShellSound, LibD3dsFile aProjectile )
         {
-            iMagazineSize               = aMagazineSize;
-            iAmmoType                   = aAmmoType;
-            iWearponIrregularityVert    = aWearponIrregularityDepth;
-            iWearponIrregularityHorz    = aWearponIrregularityAngle;
-            iShotCount                  = aShotCount;
-            iShotCountRandomMod         = aShotCountRandomMod;
-            iSoundFire                  = aUseSound;
-            iSoundReload                = aReloadSound;
-            iSoundBulletShell           = aBulletShellSound;
-            iProjectile                 = aProjectile;
+            this.iMagazineSize = aMagazineSize;
+            this.iAmmoType = aAmmoType;
+            this.iWearponIrregularityVert = aWearponIrregularityDepth;
+            this.iWearponIrregularityHorz = aWearponIrregularityAngle;
+            this.iShotCount = aShotCount;
+            this.iShotCountRandomMod = aShotCountRandomMod;
+            this.iSoundFire = aUseSound;
+            this.iSoundReload = aReloadSound;
+            this.iSoundBulletShell = aBulletShellSound;
+            this.iProjectile = aProjectile;
         }
 
         @Override
         public int getDamage()
         {
-            return iAmmoType.getDamage();
+            return this.iAmmoType.getDamage();
         }
 
         @Override
@@ -66,33 +66,33 @@
                 a.iMagazineAmmo -= 1;
 
                 //launch shot-sound-fx
-                if ( iSoundFire != null )
+                if (this.iSoundFire != null )
                 {
                     if ( shooterXY == null )
                     {
-                        iSoundFire.playGlobalFx();
+                        this.iSoundFire.playGlobalFx();
                     }
                     else
                     {
-                        iSoundFire.playDistancedFx( shooterXY );
+                        this.iSoundFire.playDistancedFx( shooterXY );
                     }
                 }
 
                 //launch bullet shell sound-fx
-                if ( iSoundBulletShell != null )
+                if (this.iSoundBulletShell != null )
                 {
                     if ( shooterXY == null )
                     {
-                        iSoundBulletShell.playGlobalFx( 8 );
+                        this.iSoundBulletShell.playGlobalFx( 8 );
                     }
                     else
                     {
-                        iSoundBulletShell.playDistancedFx( shooterXY, 8 );
+                        this.iSoundBulletShell.playDistancedFx( shooterXY, 8 );
                     }
                 }
 
                 //launch number of shots this gun fires
-                int shotsToFire = getCurrentShotCount();
+                int shotsToFire = this.getCurrentShotCount();
                 for ( int i = 0; i < shotsToFire; ++i )
                 {
                     //clear all debug fx points before firing!
@@ -113,51 +113,51 @@
 
         public final int getCurrentShotCount()
         {
-            return iShotCount + LibMath.getRandom( -iShotCountRandomMod, iShotCountRandomMod );
+            return this.iShotCount + LibMath.getRandom( -this.iShotCountRandomMod, this.iShotCountRandomMod);
         }
 
         public final float getCurrentIrregularityVert()
         {
             //return modifier-z for the current wearpon
-            return ( LibMath.getRandom( -iWearponIrregularityVert, iWearponIrregularityVert ) * 0.01f );
+            return ( LibMath.getRandom( -this.iWearponIrregularityVert, this.iWearponIrregularityVert) * 0.01f );
         }
 
         public final float getCurrentIrregularityHorz()
         {
             //return modifier-z for the current wearpon
-            return ( LibMath.getRandom( -iWearponIrregularityHorz, iWearponIrregularityHorz ) * 0.01f );
+            return ( LibMath.getRandom( -this.iWearponIrregularityHorz, this.iWearponIrregularityHorz) * 0.01f );
         }
 
         public final LibGLImage getAmmoTypeImage()
         {
-            return iAmmoType.getImage();
+            return this.iAmmoType.getImage();
         }
 
         @Override
         public final Lib.ParticleQuantity getSliverParticleQuantity()
         {
-            return iAmmoType.iSliverParticleQuantity;
+            return this.iAmmoType.iSliverParticleQuantity;
         }
 
         @Override
         public final FXSize getSliverParticleSize()
         {
-            return iAmmoType.iSliverParticleSize;
+            return this.iAmmoType.iSliverParticleSize;
         }
 
         @Override
         public final LibHoleSize getBulletHoleSize()
         {
-            return iAmmoType.iBulletHoleSize;
+            return this.iAmmoType.iBulletHoleSize;
         }
 
         public final SoundFg getReloadSound()
         {
-            return iSoundReload;
+            return this.iSoundReload;
         }
         
         public final LibD3dsFile getProjectile()
         {
-            return iProjectile;
+            return this.iProjectile;
         }
     }

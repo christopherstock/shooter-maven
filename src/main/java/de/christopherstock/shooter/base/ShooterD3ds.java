@@ -28,12 +28,12 @@
 
             public final void initFile( LibD3dsImporter aD3dsfile )
             {
-                iD3dsfile = aD3dsfile;
+                this.iD3dsfile = aD3dsfile;
             }
 
             public final LibD3dsImporter getFile()
             {
-                return iD3dsfile;
+                return this.iD3dsfile;
             }
         }
 
@@ -126,12 +126,12 @@
 
             public final void initFile( LibD3dsImporter aD3dsfile )
             {
-                iD3dsfile = aD3dsfile;
+                this.iD3dsfile = aD3dsfile;
             }
 
             public final LibD3dsImporter getFile()
             {
-                return iD3dsfile;
+                return this.iD3dsfile;
             }
         }
 
@@ -173,12 +173,12 @@
 
             public final void initFile( LibD3dsImporter aD3dsfile )
             {
-                iD3dsfile = aD3dsfile;
+                this.iD3dsfile = aD3dsfile;
             }
 
             public final  LibD3dsImporter getFile()
             {
-                return iD3dsfile;
+                return this.iD3dsfile;
             }
         }
 
@@ -201,12 +201,12 @@
 
             public final void initFile( LibD3dsImporter aD3dsfile )
             {
-                iD3dsfile = aD3dsfile;
+                this.iD3dsfile = aD3dsfile;
             }
 
             public final LibD3dsImporter getFile()
             {
-                return iD3dsfile;
+                return this.iD3dsfile;
             }
         }
 

@@ -26,7 +26,7 @@
 
         public EditorCanvas()
         {
-            setPreferredSize( new Dimension( CANVAS_WIDTH, CANVAS_HEIGHT ) );
+            this.setPreferredSize( new Dimension( CANVAS_WIDTH, CANVAS_HEIGHT ) );
         }
 
         @Override

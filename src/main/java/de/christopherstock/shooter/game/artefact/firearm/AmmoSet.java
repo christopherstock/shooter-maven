@@ -12,32 +12,32 @@
 
         public AmmoSet()
         {
-            ammo    = new Hashtable<AmmoType,Integer>();
+            this.ammo = new Hashtable<AmmoType,Integer>();
 
             for ( AmmoType at : AmmoType.values() )
             {
-                ammo.put( at, new Integer( 0 ) );
+                this.ammo.put( at, new Integer( 0 ) );
             }
         }
 
         public int getAmmo( AmmoType at )
         {
-            return ammo.get(at);
+            return this.ammo.get(at);
         }
 
         public void substractAmmo( AmmoType at, int substraction )
         {
-            int oldAmmo = ammo.get(at);
+            int oldAmmo = this.ammo.get(at);
             oldAmmo -= substraction;
-            ammo.put( at, new Integer( oldAmmo ) );
+            this.ammo.put( at, new Integer( oldAmmo ) );
         }
 
         public void addAmmo( AmmoType at, int addition )
         {
-            int oldAmmo = ammo.get(at);
+            int oldAmmo = this.ammo.get(at);
             oldAmmo += addition;
             if ( oldAmmo > at.iMaxAmmo ) oldAmmo = at.iMaxAmmo;
-            ammo.put( at, new Integer( oldAmmo ) );
+            this.ammo.put( at, new Integer( oldAmmo ) );
         }
 
         public static void loadImages()

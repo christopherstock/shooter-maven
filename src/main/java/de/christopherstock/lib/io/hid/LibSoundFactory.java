@@ -19,31 +19,31 @@
 
         public LibSoundFactory( InputStream aInputStream, LibDebug aDebug ) throws Throwable
         {
-            iDebug  = aDebug;
+            this.iDebug = aDebug;
 
             try
             {
                 if ( aInputStream == null ) throw new FileNotFoundException( "sound is null!" );
 
                 AudioInputStream    audioInputStream    = AudioSystem.getAudioInputStream( aInputStream );
-                                    iAudioFormat        = audioInputStream.getFormat();
-                int                 size                = (int) ( iAudioFormat.getFrameSize() * audioInputStream.getFrameLength() );
+                this.iAudioFormat = audioInputStream.getFormat();
+                int                 size                = (int) (this.iAudioFormat.getFrameSize() * audioInputStream.getFrameLength() );
 
-                iInfo   = new DataLine.Info( Clip.class, iAudioFormat, size );
-                iBytes  = new byte[ size ];
-                audioInputStream.read( iBytes, 0, size );
+                this.iInfo = new DataLine.Info( Clip.class, this.iAudioFormat, size );
+                this.iBytes = new byte[ size ];
+                audioInputStream.read(this.iBytes, 0, size );
                 audioInputStream.close();
             }
             catch ( Throwable t )
             {
-                iDebug.trace( t );
+                this.iDebug.trace( t );
                 throw t;
             }
         }
 
         public final LibSoundClip getInstancedClip( float volume, float balance, int delay, Point2D.Float aDistantLocation )
         {
-            LibSoundClip sound = new LibSoundClip( iDebug, this, volume, balance, delay, aDistantLocation );
+            LibSoundClip sound = new LibSoundClip(this.iDebug, this, volume, balance, delay, aDistantLocation );
             //if ( aDistantLocation != null ) sound.updateDistancedSound();
             return sound;
         }

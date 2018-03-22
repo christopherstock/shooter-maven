@@ -23,7 +23,7 @@
         /***************************************************************************************************************
         *   Inits the ui.
         ***************************************************************************************************************/
-        protected static void initUi()
+        protected void initUi()
         {
             ShooterDebug.init.out( "initUi 1" );
 
@@ -36,8 +36,10 @@
                 iconImage   = ImageIO.read( LibIO.preStreamJarResource( ShooterSettings.Path.EScreen.iUrl + "icon.png" ) );
                 bgImage     = ImageIO.read( LibIO.preStreamJarResource( ShooterSettings.Path.EScreen.iUrl + "bg.jpg"   ) );
 
-                MainStatePreloader.getSingleton().preloaderImage  = new LibGLImage( iconImage, LibGLImage.ImageUsage.EOrtho, ShooterDebug.glImage, false );
-                MainStatePreloader.getSingleton().bgImage         = new LibGLImage( bgImage,   LibGLImage.ImageUsage.EOrtho, ShooterDebug.glImage, true );
+                Shooter.game.preloader = new Preloader();
+
+                Shooter.game.preloader.preloaderImage  = new LibGLImage( iconImage, LibGLImage.ImageUsage.EOrtho, ShooterDebug.glImage, false );
+                Shooter.game.preloader.bgImage         = new LibGLImage( bgImage,   LibGLImage.ImageUsage.EOrtho, ShooterDebug.glImage, true );
             }
             catch ( IOException ioe )
             {
@@ -68,7 +70,7 @@
         /***************************************************************************************************************
         *   Inits the rest.
         ***************************************************************************************************************/
-        protected static void initRest()
+        protected void initRest()
         {
             ShooterDebug.init.out( "initUi 5" );
 
@@ -76,29 +78,29 @@
             LWJGLMouse.init();
 
             //init fonts
-            MainStatePreloader.getSingleton().initFonts();
+            Shooter.game.preloader.initFonts();
 
 
             //load texture images and perform repaint
-            MainStatePreloader.getSingleton().increase( "Loading textures" );
+            Shooter.game.preloader.increase( "Loading textures" );
             ShooterTexture.loadImages();
 
             ShooterDebug.init.out( "initUi 6" );
 
             //assign textures and perform repaint
-            MainStatePreloader.getSingleton().increase( "Assigning textures" );
+            Shooter.game.preloader.increase( "Assigning textures" );
             LibGL3D.view.initTextures( ShooterTexture.getAllTextureImages() );
 
             ShooterDebug.init.out( "initUi 7" );
 
             //init 3d studio max objects and perform repaint
-            MainStatePreloader.getSingleton().increase( "Loading 3dsmax files" );
+            Shooter.game.preloader.increase( "Loading 3dsmax files" );
             ShooterD3ds.init( ShooterDebug.d3ds );
 
             ShooterDebug.init.out( "initUi 8" );
 
             //init hud
-            MainStatePreloader.getSingleton().increase( "Initing HUD and sound" );
+            Shooter.game.preloader.increase( "Initing HUD and sound" );
             Shooter.game.hud = new HUD();
             Shooter.game.fps = new LibFPS( Fonts.EFps, ShooterSettings.Colors.EFpsFg.colABGR, ShooterSettings.Colors.EFpsOutline.colABGR, ShooterDebug.glImage );
 
@@ -112,7 +114,7 @@
             ShooterDebug.init.out( "initUi 9" );
 
             //switch main state to 'game' and order change to level 1
-            MainStatePreloader.getSingleton().increase( "Init main menu and launch game" );
+            Shooter.game.preloader.increase( "Init main menu and launch game" );
 
             //init main menu
             MainStateMainMenu.init();

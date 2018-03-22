@@ -20,7 +20,7 @@
         ***************************************************************************************************************/
         public LibIOSeekableStream(ByteBuffer byteBuffer)
         {
-            inputBuffer = byteBuffer;
+            this.inputBuffer = byteBuffer;
             this.seek(0); // set the ByteBuffer to to beginning
         }
 
@@ -31,7 +31,7 @@
         ***************************************************************************************************************/
         public boolean endOfStream()
         {
-            return ( !inputBuffer.hasRemaining() );
+            return ( !this.inputBuffer.hasRemaining() );
         }
 
         /***************************************************************************************************************
@@ -51,7 +51,7 @@
         ***************************************************************************************************************/
         public long getContentLength()
         {
-            return inputBuffer.capacity();
+            return this.inputBuffer.capacity();
         }
 
         /***************************************************************************************************************
@@ -128,7 +128,7 @@
                 return 0;
             try
             {
-                inputBuffer.get(buffer,offset,length);
+                this.inputBuffer.get(buffer,offset,length);
                 return length;
             }
             catch ( BufferUnderflowException E )
@@ -151,7 +151,7 @@
         {
             try
             {
-                inputBuffer.position((int)(where));
+                this.inputBuffer.position((int)(where));
                 return where;
             }
             catch (IllegalArgumentException E)
@@ -165,7 +165,7 @@
         ***************************************************************************************************************/
         public long tell()
         {
-            return inputBuffer.position();
+            return this.inputBuffer.position();
         }
 
         /***************************************************************************************************************
@@ -176,6 +176,6 @@
         ***************************************************************************************************************/
         public boolean willReadBlock()
         {
-           return ( inputBuffer.remaining() == 0 );
+           return (this.inputBuffer.remaining() == 0 );
         }
     }

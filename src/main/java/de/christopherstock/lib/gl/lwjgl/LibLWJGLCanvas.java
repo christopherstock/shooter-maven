@@ -17,12 +17,12 @@
 
         public LibLWJGLCanvas( BufferedImage aBgImage )
         {
-            iBgImage = aBgImage;
+            this.iBgImage = aBgImage;
 
             //set focusable so lwjgl display will regain the focus
-            setFocusable( true );
+            this.setFocusable( true );
 
-            addFocusListener( this );
+            this.addFocusListener( this );
         }
 
         @Override
@@ -39,10 +39,10 @@
 
             //draw black rect
             g2d.setColor( LibColors.EBlack.colARGB );
-            g2d.fillRect( 0, 0, getWidth(), getHeight() );
+            g2d.fillRect( 0, 0, this.getWidth(), this.getHeight() );
 
             //draw bg image centered
-            g2d.drawImage( iBgImage, ( getWidth() - iBgImage.getWidth() ) / 2, ( getHeight() -iBgImage.getHeight() ) / 2, null );
+            g2d.drawImage(this.iBgImage, (this.getWidth() - this.iBgImage.getWidth() ) / 2, (this.getHeight() - this.iBgImage.getHeight() ) / 2, null );
         }
 
         public void focusGained( FocusEvent f )

@@ -56,23 +56,23 @@
         ***************************************************************************************************************/
         public LibFace( LibDebug aDebug, LibVertex aAnchor, LibGLTexture aTexture, LibColors aColor, LibVertex aFaceNormal )
         {
-            iDebug          = aDebug;
-            iAnchor         = aAnchor;
-            iTexture        = aTexture; //( aTexture == null ? Default.EStones1.iTexture : aTexture  );
-            iColor          = ( aColor == null ? LibColors.EWhite : aColor );
+            this.iDebug = aDebug;
+            this.iAnchor = aAnchor;
+            this.iTexture = aTexture; //( aTexture == null ? Default.EStones1.iTexture : aTexture  );
+            this.iColor = ( aColor == null ? LibColors.EWhite : aColor );
 
-            iNormal     = aFaceNormal;
+            this.iNormal = aFaceNormal;
 
-            iDrawMethod     = DrawMethod.EAlwaysDraw;
+            this.iDrawMethod = DrawMethod.EAlwaysDraw;
         }
 
         protected void updateCollisionValues()
         {
             //update normal
-            updateFaceNormal();
+            this.updateFaceNormal();
 
             //call specific implementation
-            setCollisionValues();
+            this.setCollisionValues();
         }
 
         private void updateFaceNormal()
@@ -82,29 +82,29 @@
             LibVertex b = new LibVertex( 0.0f, 0.0f, 0.0f );
 
             //calculate the vectors A and B - note that v[3] is defined with counterclockwise winding in mind (?)
-            a.x = iTransformedVertices[ 0 ].x - iTransformedVertices[ 1 ].x;
-            a.y = iTransformedVertices[ 0 ].y - iTransformedVertices[ 1 ].y;
-            a.z = iTransformedVertices[ 0 ].z - iTransformedVertices[ 1 ].z;
+            a.x = this.iTransformedVertices[ 0 ].x - this.iTransformedVertices[ 1 ].x;
+            a.y = this.iTransformedVertices[ 0 ].y - this.iTransformedVertices[ 1 ].y;
+            a.z = this.iTransformedVertices[ 0 ].z - this.iTransformedVertices[ 1 ].z;
 
-            b.x = iTransformedVertices[ 1 ].x - iTransformedVertices[ 2 ].x;
-            b.y = iTransformedVertices[ 1 ].y - iTransformedVertices[ 2 ].y;
-            b.z = iTransformedVertices[ 1 ].z - iTransformedVertices[ 2 ].z;
+            b.x = this.iTransformedVertices[ 1 ].x - this.iTransformedVertices[ 2 ].x;
+            b.y = this.iTransformedVertices[ 1 ].y - this.iTransformedVertices[ 2 ].y;
+            b.z = this.iTransformedVertices[ 1 ].z - this.iTransformedVertices[ 2 ].z;
 
             //calculate the cross product and place the resulting vector into the address specified by vertex_t *normal
-            iNormal   = new LibVertex( 0.0f, 0.0f, 0.0f );
-            iNormal.x = ( a.y * b.z ) - ( a.z * b.y );
-            iNormal.y = ( a.z * b.x ) - ( a.x * b.z );
-            iNormal.z = ( a.x * b.y ) - ( a.y * b.x );
+            this.iNormal = new LibVertex( 0.0f, 0.0f, 0.0f );
+            this.iNormal.x = ( a.y * b.z ) - ( a.z * b.y );
+            this.iNormal.y = ( a.z * b.x ) - ( a.x * b.z );
+            this.iNormal.z = ( a.x * b.y ) - ( a.y * b.x );
         }
 
         protected abstract void setCollisionValues();
 
         public final void setNewAnchor( LibVertex newAnchor, boolean performTranslationOnFaces, LibTransformationMode transformationMode )
         {
-            iAnchor = newAnchor;
+            this.iAnchor = newAnchor;
             if ( performTranslationOnFaces )
             {
-                translate( iAnchor.x, iAnchor.y, iAnchor.z, transformationMode );
+                this.translate(this.iAnchor.x, this.iAnchor.y, this.iAnchor.z, transformationMode );
             }
         }
 
@@ -117,7 +117,7 @@
         ***************************************************************************************************************/
         public void translate( float tX, float tY, float  tZ, LibTransformationMode transformationMode )
         {
-            LibVertex[] newTransformedVertices  = new LibVertex[ iOriginalVertices.length ];
+            LibVertex[] newTransformedVertices  = new LibVertex[this.iOriginalVertices.length ];
             LibVertex[] srcVertices             = null;
 
             //choose source
@@ -125,7 +125,7 @@
             {
                 case ETransformedToTransformed:
                 {
-                    srcVertices = iTransformedVertices;
+                    srcVertices = this.iTransformedVertices;
                     break;
                 }
 
@@ -133,7 +133,7 @@
                 case EOriginalsToTransformed:
                 default:
                 {
-                    srcVertices = iOriginalVertices;
+                    srcVertices = this.iOriginalVertices;
                     break;
                 }
             }
@@ -157,21 +157,21 @@
             {
                 case EOriginalsToOriginals:
                 {
-                    iOriginalVertices       = newTransformedVertices;
-                    iTransformedVertices    = newTransformedVertices;
+                    this.iOriginalVertices = newTransformedVertices;
+                    this.iTransformedVertices = newTransformedVertices;
                     break;
                 }
 
                 case EOriginalsToTransformed:
                 case ETransformedToTransformed:
                 {
-                    iTransformedVertices    = newTransformedVertices;
+                    this.iTransformedVertices = newTransformedVertices;
                     break;
                 }
             }
 
             //update collision values
-            updateCollisionValues();
+            this.updateCollisionValues();
         }
 
         /***************************************************************************************************************
@@ -186,19 +186,19 @@
         public void translateAndRotateXYZ( LibMatrix transMatrix, float tX, float tY, float tZ, LibTransformationMode transformationMode, LibVertex alternateAnchor )
         {
             //translate all original vertices
-            translate( tX, tY, tZ, transformationMode );
+            this.translate( tX, tY, tZ, transformationMode );
 
             //rotate all transformed vertices
-            transMatrix.transformVertices( iTransformedVertices, ( alternateAnchor == null ? iAnchor : alternateAnchor ) );
+            transMatrix.transformVertices(this.iTransformedVertices, ( alternateAnchor == null ? this.iAnchor : alternateAnchor ) );
 
             //alter originals?
             if ( transformationMode == LibTransformationMode.EOriginalsToOriginals )
             {
-                iOriginalVertices = iTransformedVertices;
+                this.iOriginalVertices = this.iTransformedVertices;
             }
 
             //update collision values
-            updateCollisionValues();
+            this.updateCollisionValues();
         }
 
         /***************************************************************************************************************
@@ -209,30 +209,30 @@
         public void scale( float scaleFactor, boolean performOnOriginals )
         {
             //prune old transformed vertices
-            iTransformedVertices = new LibVertex[ iOriginalVertices.length ];
+            this.iTransformedVertices = new LibVertex[this.iOriginalVertices.length ];
 
             //translate all original vertices
-            for ( int i = 0; i < iOriginalVertices.length; ++i )
+            for (int i = 0; i < this.iOriginalVertices.length; ++i )
             {
                 //remember to copy u and v and to make a new object!
-                iTransformedVertices[ i ] = new LibVertex
+                this.iTransformedVertices[ i ] = new LibVertex
                 (
-                    iOriginalVertices[ i ].x * scaleFactor,
-                    iOriginalVertices[ i ].y * scaleFactor,
-                    iOriginalVertices[ i ].z * scaleFactor,
-                    iOriginalVertices[ i ].u,
-                    iOriginalVertices[ i ].v
+                        this.iOriginalVertices[ i ].x * scaleFactor,
+                        this.iOriginalVertices[ i ].y * scaleFactor,
+                        this.iOriginalVertices[ i ].z * scaleFactor,
+                        this.iOriginalVertices[ i ].u,
+                        this.iOriginalVertices[ i ].v
                 );
             }
 
             //alter originals?
             if ( performOnOriginals )
             {
-                iOriginalVertices   = iTransformedVertices;
+                this.iOriginalVertices = this.iTransformedVertices;
             }
 
             //update collision values
-            updateCollisionValues();
+            this.updateCollisionValues();
         }
 
         /***************************************************************************************************************
@@ -245,72 +245,72 @@
             boolean performOnOriginals = true;
 
             //prune old transformed vertices
-            iTransformedVertices = new LibVertex[ iOriginalVertices.length ];
+            this.iTransformedVertices = new LibVertex[this.iOriginalVertices.length ];
 
             //invert all original vertices
-            for ( int i = 0; i < iOriginalVertices.length; ++i )
+            for (int i = 0; i < this.iOriginalVertices.length; ++i )
             {
                 //remember to copy u and v and to make a new object!
-                iTransformedVertices[ i ] = new LibVertex
+                this.iTransformedVertices[ i ] = new LibVertex
                 (
-                    iOriginalVertices[ i ].x * -1,
-                    iOriginalVertices[ i ].y,
-                    iOriginalVertices[ i ].z,
-                    iOriginalVertices[ i ].u * -1,
-                    iOriginalVertices[ i ].v
+                        this.iOriginalVertices[ i ].x * -1,
+                        this.iOriginalVertices[ i ].y,
+                        this.iOriginalVertices[ i ].z,
+                        this.iOriginalVertices[ i ].u * -1,
+                        this.iOriginalVertices[ i ].v
                 );
             }
 
             //alter originals?
             if ( performOnOriginals )
             {
-                iOriginalVertices   = iTransformedVertices;
+                this.iOriginalVertices = this.iTransformedVertices;
             }
 
             //update collision values
-            updateCollisionValues();
+            this.updateCollisionValues();
         }
 
         protected final void setFaceAngleHorz( float aFaceAngleHorz )
         {
-            iFaceAngleHorz = aFaceAngleHorz;
+            this.iFaceAngleHorz = aFaceAngleHorz;
         }
 
         protected final void setFaceAngleVert( float aFaceAngleVert )
         {
-            iFaceAngleVert = aFaceAngleVert;
+            this.iFaceAngleVert = aFaceAngleVert;
         }
 
         public final void setOriginalVertices( LibVertex[] vertices )
         {
-            iOriginalVertices    = vertices;
-            iTransformedVertices = vertices;
+            this.iOriginalVertices = vertices;
+            this.iTransformedVertices = vertices;
         }
 
         public final void mirror( boolean x, boolean y, boolean z )
         {
             //mirror all originals
-            for ( int i = 0; i < iOriginalVertices.length; ++i )
+            for (int i = 0; i < this.iOriginalVertices.length; ++i )
             {
                 //remember to copy u and v and to make a new object!
-                iOriginalVertices[ i ] = new LibVertex
+                this.iOriginalVertices[ i ] = new LibVertex
                 (
-                    ( x ? -1 : 1 ) * iOriginalVertices[ i ].x,
-                    ( y ? -1 : 1 ) * iOriginalVertices[ i ].y,
-                    ( z ? -1 : 1 ) * iOriginalVertices[ i ].z,
-                    iOriginalVertices[ i ].u,
-                    iOriginalVertices[ i ].v
+                    ( x ? -1 : 1 ) * this.iOriginalVertices[ i ].x,
+                    ( y ? -1 : 1 ) * this.iOriginalVertices[ i ].y,
+                    ( z ? -1 : 1 ) * this.iOriginalVertices[ i ].z,
+                        this.iOriginalVertices[ i ].u,
+                        this.iOriginalVertices[ i ].v
                 );
             }
 
             //assign to transformed too !
-            iTransformedVertices = iOriginalVertices;
+            this.iTransformedVertices = this.iOriginalVertices;
         }
 
         public final void draw()
         {
             boolean draw = false;
-            switch ( iDrawMethod )
+            switch (this.iDrawMethod)
             {
                 case EAlwaysDraw:
                 {
@@ -341,72 +341,72 @@
 
         public final LibVertex getFaceNormal()
         {
-            return iNormal; //iTransformedNormal; inoperative :(
+            return this.iNormal; //iTransformedNormal; inoperative :(
         }
 
         public final LibGLTexture getTexture()
         {
-            return iTexture;
+            return this.iTexture;
         }
 
         public final float[] getColor3f()
         {
-            return iColor.f3;
+            return this.iColor.f3;
         }
 
         public final LibColors getColor()
         {
-            return iColor;
+            return this.iColor;
         }
 
         public final LibVertex[] getVerticesToDraw()
         {
-            return iTransformedVertices;
+            return this.iTransformedVertices;
         }
 
         public final LibVertex[] getOriginalVertices()
         {
-            return iOriginalVertices;
+            return this.iOriginalVertices;
         }
 
         public final LibVertex getAnchor()
         {
-            return iAnchor;
+            return this.iAnchor;
         }
 
         public void changeTexture( LibGLTexture oldTex, LibGLTexture newTex )
         {
-            if ( iTexture == oldTex )
+            if (this.iTexture == oldTex )
             {
-                iTexture = newTex;
+                this.iTexture = newTex;
             }
         }
 
         public void setDrawMethod( DrawMethod aDrawMethod )
         {
-            iDrawMethod = aDrawMethod;
+            this.iDrawMethod = aDrawMethod;
         }
 
         public void fadeOut( float delta )
         {
-            iAlpha -= delta;
-            if ( iAlpha < 0.0f ) iAlpha = 0.0f;
+            this.iAlpha -= delta;
+            if (this.iAlpha < 0.0f ) this.iAlpha = 0.0f;
         }
 
         public void darken( float opacity )
         {
-            iDarkenOpacity = opacity;
-            if ( iDarkenOpacity > 1.0f ) iDarkenOpacity = 1.0f;
-            if ( iDarkenOpacity < 0.0f ) iDarkenOpacity = 0.0f;
+            this.iDarkenOpacity = opacity;
+            if (this.iDarkenOpacity > 1.0f ) this.iDarkenOpacity = 1.0f;
+            if (this.iDarkenOpacity < 0.0f ) this.iDarkenOpacity = 0.0f;
         }
 
         public final float getAlpha()
         {
-            return iAlpha;
+            return this.iAlpha;
         }
 
         public final float getDarkenOpacity()
         {
-            return iDarkenOpacity;
+            return this.iDarkenOpacity;
         }
     }

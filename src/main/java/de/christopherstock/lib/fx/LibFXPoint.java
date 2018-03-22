@@ -40,25 +40,25 @@
 
         protected LibFXPoint( LibDebug aDebug, float aBaseZ, FXType aType, LibColors aColor, float aStartAngle, float aX, float aY, float aZ, FXSize size, int aDelayTicks, int aLifetime, FXGravity aGravity, int aFadeOutTicks, LibSprite aSprite )
         {
-            iDebug              = aDebug;
-            iBaseZ              = aBaseZ;
-            iType               = aType;
-            iPoint              = new LibVertex( aX, aY, aZ, 0.0f, 1.0f );
-            iColor              = aColor;
-            iStartAngle         = aStartAngle;
-            iCurrentTick        = 0;
-            iLifetime           = aLifetime;
-            iDelayTicksBefore   = aDelayTicks;
-            iGravity            = aGravity;
-            iAlign3D            = Align3D.values()[ LibMath.getRandom( 0, Align3D.values().length - 1 )  ];
-            iRotationAlign      = Align3D.values()[ LibMath.getRandom( 0, Align3D.values().length - 1 )  ];
-            iFadeOutTicks       = aFadeOutTicks;
+            this.iDebug = aDebug;
+            this.iBaseZ = aBaseZ;
+            this.iType = aType;
+            this.iPoint = new LibVertex( aX, aY, aZ, 0.0f, 1.0f );
+            this.iColor = aColor;
+            this.iStartAngle = aStartAngle;
+            this.iCurrentTick = 0;
+            this.iLifetime = aLifetime;
+            this.iDelayTicksBefore = aDelayTicks;
+            this.iGravity = aGravity;
+            this.iAlign3D = Align3D.values()[ LibMath.getRandom( 0, Align3D.values().length - 1 )  ];
+            this.iRotationAlign = Align3D.values()[ LibMath.getRandom( 0, Align3D.values().length - 1 )  ];
+            this.iFadeOutTicks = aFadeOutTicks;
 
             //assign Sprite
-            iSprite             = aSprite;
-            if ( iSprite != null )
+            this.iSprite = aSprite;
+            if (this.iSprite != null )
             {
-                iSprite.translate( 0.0f, 0.0f, -( iSprite.getCenterZ() - iPoint.z ), LibTransformationMode.EOriginalsToOriginals );
+                this.iSprite.translate( 0.0f, 0.0f, -(this.iSprite.getCenterZ() - this.iPoint.z ), LibTransformationMode.EOriginalsToOriginals );
             }
 
             //switch type specific
@@ -66,32 +66,32 @@
             {
                 case EStaticDebugPoint:
                 {
-                    iPointSize      = 0.01f;    //debug point size
+                    this.iPointSize = 0.01f;    //debug point size
                     break;
                 }
 
                 case ESliver:
                 {
-                    iSpeedModified   = 0.0f;
+                    this.iSpeedModified = 0.0f;
 
-                    switch ( iGravity )
+                    switch (this.iGravity)
                     {
                         case ELow:
                         {
-                            iSpeedZ         = 0.00001f * LibMath.getRandom( 1, 3 );
-                            iSpeedXY        = 0.0015f  * LibMath.getRandom( 2, 25 );
+                            this.iSpeedZ = 0.00001f * LibMath.getRandom( 1, 3 );
+                            this.iSpeedXY = 0.0015f  * LibMath.getRandom( 2, 25 );
                             break;
                         }
                         case ENormal:
                         {
-                            iSpeedZ         = 0.00008f * LibMath.getRandom( 1, 3 );
-                            iSpeedXY        = 0.0030f  * LibMath.getRandom( 2, 25 );
+                            this.iSpeedZ = 0.00008f * LibMath.getRandom( 1, 3 );
+                            this.iSpeedXY = 0.0030f  * LibMath.getRandom( 2, 25 );
                             break;
                         }
                         case EHigh:
                         {
-                            iSpeedZ         = 0.00012f * LibMath.getRandom( 1, 3 );
-                            iSpeedXY        = 0.0045f  * LibMath.getRandom( 2, 25 );
+                            this.iSpeedZ = 0.00012f * LibMath.getRandom( 1, 3 );
+                            this.iSpeedXY = 0.0045f  * LibMath.getRandom( 2, 25 );
                             break;
                         }
                     }
@@ -100,17 +100,17 @@
                     {
                         case ESmall:
                         {
-                            iPointSize       = 0.003f * LibMath.getRandom( 8, 12 );
+                            this.iPointSize = 0.003f * LibMath.getRandom( 8, 12 );
                             break;
                         }
                         case EMedium:
                         {
-                            iPointSize       = 0.003f * LibMath.getRandom( 10, 15 );
+                            this.iPointSize = 0.003f * LibMath.getRandom( 10, 15 );
                             break;
                         }
                         case ELarge:
                         {
-                            iPointSize       = 0.003f * LibMath.getRandom( 12, 18 );
+                            this.iPointSize = 0.003f * LibMath.getRandom( 12, 18 );
                             break;
                         }
                     }
@@ -124,26 +124,26 @@
                     {
                         case ESmall:
                         {
-                            iSpeedXY        = 0.0001f    * LibMath.getRandom( 1,  5  );
-                            iSpeedModified  = 0.00001f   * LibMath.getRandom( 5,  45 );
-                            iSpeedZ         = 0.000001f  * LibMath.getRandom( 10, 90 );
-                            iPointSize      = 0.001f     * LibMath.getRandom( 5,  15 );
+                            this.iSpeedXY = 0.0001f    * LibMath.getRandom( 1,  5  );
+                            this.iSpeedModified = 0.00001f   * LibMath.getRandom( 5,  45 );
+                            this.iSpeedZ = 0.000001f  * LibMath.getRandom( 10, 90 );
+                            this.iPointSize = 0.001f     * LibMath.getRandom( 5,  15 );
                             break;
                         }
                         case EMedium:
                         {
-                            iSpeedXY        = 0.0003f    * LibMath.getRandom( 1,  5  );
-                            iSpeedModified  = 0.00001f   * LibMath.getRandom( 5,  45 );
-                            iSpeedZ         = 0.000002f  * LibMath.getRandom( 10, 90 );
-                            iPointSize      = 0.001f     * LibMath.getRandom( 10, 20 );
+                            this.iSpeedXY = 0.0003f    * LibMath.getRandom( 1,  5  );
+                            this.iSpeedModified = 0.00001f   * LibMath.getRandom( 5,  45 );
+                            this.iSpeedZ = 0.000002f  * LibMath.getRandom( 10, 90 );
+                            this.iPointSize = 0.001f     * LibMath.getRandom( 10, 20 );
                             break;
                         }
                         case ELarge:
                         {
-                            iSpeedXY        = 0.0008f    * LibMath.getRandom( 1,  5  );
-                            iSpeedModified  = 0.00001f   * LibMath.getRandom( 5,  45 );
-                            iSpeedZ         = 0.000003f  * LibMath.getRandom( 10, 90 );
-                            iPointSize      = 0.001f     * LibMath.getRandom( 15, 25 );
+                            this.iSpeedXY = 0.0008f    * LibMath.getRandom( 1,  5  );
+                            this.iSpeedModified = 0.00001f   * LibMath.getRandom( 5,  45 );
+                            this.iSpeedZ = 0.000003f  * LibMath.getRandom( 10, 90 );
+                            this.iPointSize = 0.001f     * LibMath.getRandom( 15, 25 );
                             break;
                         }
                     }
@@ -154,17 +154,17 @@
 
         protected final void animate()
         {
-            if ( iDelayTicksBefore > 0)
+            if (this.iDelayTicksBefore > 0)
             {
-                --iDelayTicksBefore;
+                --this.iDelayTicksBefore;
             }
             else
             {
-                switch( iType )
+                switch(this.iType)
                 {
                     case EStaticDebugPoint:
                     {
-                        ++iCurrentTick;
+                        ++this.iCurrentTick;
 
 
                         break;
@@ -172,24 +172,24 @@
 
                     case ESliver:
                     {
-                        if ( iPoint.z <= iBaseZ && iCurrentTick > iLifetime / 10 )
+                        if (this.iPoint.z <= this.iBaseZ && this.iCurrentTick > this.iLifetime / 10 )
                         {
-                            iPoint.z = iBaseZ;
+                            this.iPoint.z = this.iBaseZ;
                         }
                         else
                         {
-                            float zbase = iCurrentTick; // - FxSettings.LIVETIME_SLIVER / 10 );
-                            iPoint.x -= iSpeedXY * LibMath.sinDeg( iStartAngle );
-                            iPoint.y -= iSpeedXY * LibMath.cosDeg( iStartAngle );
-                            iPoint.z -= zbase * zbase * iSpeedZ;
+                            float zbase = this.iCurrentTick; // - FxSettings.LIVETIME_SLIVER / 10 );
+                            this.iPoint.x -= this.iSpeedXY * LibMath.sinDeg(this.iStartAngle);
+                            this.iPoint.y -= this.iSpeedXY * LibMath.cosDeg(this.iStartAngle);
+                            this.iPoint.z -= zbase * zbase * this.iSpeedZ;
 
-                            iRotation     += 5.0f;
-                            if ( iRotation >= 360.0f ) iRotation = 0.0f;
+                            this.iRotation += 5.0f;
+                            if (this.iRotation >= 360.0f ) this.iRotation = 0.0f;
 
                             //clip z on the floor!
-                            if ( iPoint.z <= iBaseZ )
+                            if (this.iPoint.z <= this.iBaseZ)
                             {
-                                iPoint.z = iBaseZ;
+                                this.iPoint.z = this.iBaseZ;
 
                                 //playing sound on dropping to the floor will lag the game (solve!) :/
                                 //Sound toPlay = Sound.values()[ LibMath.getRandom( Sound.ERubble1.ordinal(), Sound.ERubble3.ordinal() ) ];
@@ -198,48 +198,48 @@
                         }
 
                         //increase tick-counter, current speed and rotation
-                        ++iCurrentTick;
-                        iSpeedXY += iSpeedModified;
+                        ++this.iCurrentTick;
+                        this.iSpeedXY += this.iSpeedModified;
 
                         break;
                     }
 
                     case EExplosion:
                     {
-                        if ( iCurrentTick < iLifetime / 5 )
+                        if (this.iCurrentTick < this.iLifetime / 5 )
                         {
                             //raise
-                            float x = iLifetime / 5 - iCurrentTick;
-                            iPoint.x += iSpeedXY * LibMath.sinDeg( iStartAngle );
-                            iPoint.y += iSpeedXY * LibMath.cosDeg( iStartAngle );
-                            iPoint.z += x * x * iSpeedZ;
+                            float x = this.iLifetime / 5 - this.iCurrentTick;
+                            this.iPoint.x += this.iSpeedXY * LibMath.sinDeg(this.iStartAngle);
+                            this.iPoint.y += this.iSpeedXY * LibMath.cosDeg(this.iStartAngle);
+                            this.iPoint.z += x * x * this.iSpeedZ;
 
-                            iRotation     += 10.0f;
-                            if ( iRotation >= 360.0f ) iRotation = 0.0f;
+                            this.iRotation += 10.0f;
+                            if (this.iRotation >= 360.0f ) this.iRotation = 0.0f;
                         }
                         else
                         {
                             //fall
-                            if ( iPoint.z <= iBaseZ )
+                            if (this.iPoint.z <= this.iBaseZ)
                             {
-                                iPoint.z = iBaseZ;
+                                this.iPoint.z = this.iBaseZ;
                             }
                             else
                             {
-                                float x = iCurrentTick - iLifetime / 5;
-                                iPoint.x += iSpeedXY * LibMath.sinDeg( iStartAngle );
-                                iPoint.y += iSpeedXY * LibMath.cosDeg( iStartAngle );
-                                iPoint.z -= x * x * iSpeedZ;
+                                float x = this.iCurrentTick - this.iLifetime / 5;
+                                this.iPoint.x += this.iSpeedXY * LibMath.sinDeg(this.iStartAngle);
+                                this.iPoint.y += this.iSpeedXY * LibMath.cosDeg(this.iStartAngle);
+                                this.iPoint.z -= x * x * this.iSpeedZ;
 
                                 //clip z on the floor!
-                                iRotation     += 5.0f;
-                                if ( iRotation >= 360.0f ) iRotation = 0.0f;
+                                this.iRotation += 5.0f;
+                                if (this.iRotation >= 360.0f ) this.iRotation = 0.0f;
                             }
                         }
 
                         //increase tick-counter, current speed and rotation
-                        ++iCurrentTick;
-                        iSpeedXY += iSpeedModified;
+                        ++this.iCurrentTick;
+                        this.iSpeedXY += this.iSpeedModified;
 
                         break;
 
@@ -260,11 +260,11 @@
             }
             */
 
-            if ( iSprite != null )
+            if (this.iSprite != null )
             {
-                if ( iLastPoint != null )
+                if (this.iLastPoint != null )
                 {
-                    iSprite.translate( iPoint.x - iLastPoint.x, iPoint.y - iLastPoint.y, iPoint.z - iLastPoint.z, LibTransformationMode.EOriginalsToOriginals );
+                    this.iSprite.translate(this.iPoint.x - this.iLastPoint.x, this.iPoint.y - this.iLastPoint.y, this.iPoint.z - this.iLastPoint.z, LibTransformationMode.EOriginalsToOriginals );
                 }
             }
 
@@ -276,13 +276,13 @@
                 {
                     face = new LibFaceQuad
                     (
-                        iDebug,
-                        new LibVertex( iPoint.x, iPoint.y, iPoint.z ),
-                        new LibVertex( iPoint.x - iPointSize, iPoint.y - iPointSize, iPoint.z ),
-                        new LibVertex( iPoint.x - iPointSize, iPoint.y + iPointSize, iPoint.z ),
-                        new LibVertex( iPoint.x + iPointSize, iPoint.y + iPointSize, iPoint.z ),
-                        new LibVertex( iPoint.x + iPointSize, iPoint.y - iPointSize, iPoint.z ),
-                        iColor
+                            this.iDebug,
+                        new LibVertex(this.iPoint.x, this.iPoint.y, this.iPoint.z ),
+                        new LibVertex(this.iPoint.x - this.iPointSize, this.iPoint.y - this.iPointSize, this.iPoint.z ),
+                        new LibVertex(this.iPoint.x - this.iPointSize, this.iPoint.y + this.iPointSize, this.iPoint.z ),
+                        new LibVertex(this.iPoint.x + this.iPointSize, this.iPoint.y + this.iPointSize, this.iPoint.z ),
+                        new LibVertex(this.iPoint.x + this.iPointSize, this.iPoint.y - this.iPointSize, this.iPoint.z ),
+                            this.iColor
                     );
                     break;
                 }
@@ -291,13 +291,13 @@
                 {
                     face = new LibFaceQuad
                     (
-                        iDebug,
-                        new LibVertex( iPoint.x, iPoint.y, iPoint.z ),
-                        new LibVertex( iPoint.x, iPoint.y - iPointSize, iPoint.z - iPointSize ),
-                        new LibVertex( iPoint.x, iPoint.y + iPointSize, iPoint.z - iPointSize ),
-                        new LibVertex( iPoint.x, iPoint.y + iPointSize, iPoint.z + iPointSize ),
-                        new LibVertex( iPoint.x, iPoint.y - iPointSize, iPoint.z + iPointSize ),
-                        iColor
+                            this.iDebug,
+                        new LibVertex(this.iPoint.x, this.iPoint.y, this.iPoint.z ),
+                        new LibVertex(this.iPoint.x, this.iPoint.y - this.iPointSize, this.iPoint.z - this.iPointSize),
+                        new LibVertex(this.iPoint.x, this.iPoint.y + this.iPointSize, this.iPoint.z - this.iPointSize),
+                        new LibVertex(this.iPoint.x, this.iPoint.y + this.iPointSize, this.iPoint.z + this.iPointSize),
+                        new LibVertex(this.iPoint.x, this.iPoint.y - this.iPointSize, this.iPoint.z + this.iPointSize),
+                            this.iColor
                     );
                     break;
                 }
@@ -307,47 +307,47 @@
                 {
                     face = new LibFaceQuad
                     (
-                        iDebug,
-                        new LibVertex( iPoint.x, iPoint.y, iPoint.z ),
-                        new LibVertex( iPoint.x - iPointSize, iPoint.y, iPoint.z - iPointSize ),
-                        new LibVertex( iPoint.x + iPointSize, iPoint.y, iPoint.z - iPointSize ),
-                        new LibVertex( iPoint.x + iPointSize, iPoint.y, iPoint.z + iPointSize ),
-                        new LibVertex( iPoint.x - iPointSize, iPoint.y, iPoint.z + iPointSize ),
-                        iColor
+                            this.iDebug,
+                        new LibVertex(this.iPoint.x, this.iPoint.y, this.iPoint.z ),
+                        new LibVertex(this.iPoint.x - this.iPointSize, this.iPoint.y, this.iPoint.z - this.iPointSize),
+                        new LibVertex(this.iPoint.x + this.iPointSize, this.iPoint.y, this.iPoint.z - this.iPointSize),
+                        new LibVertex(this.iPoint.x + this.iPointSize, this.iPoint.y, this.iPoint.z + this.iPointSize),
+                        new LibVertex(this.iPoint.x - this.iPointSize, this.iPoint.y, this.iPoint.z + this.iPointSize),
+                            this.iColor
                     );
                     break;
                 }
             }
 
-            switch ( iRotationAlign )
+            switch (this.iRotationAlign)
             {
                 case AXIS_X:
                 {
-                    face.translateAndRotateXYZ( new LibMatrix( iRotation, 0.0f, 0.0f ), 0.0f, 0.0f, 0.0f, LibTransformationMode.EOriginalsToOriginals, null );
+                    face.translateAndRotateXYZ( new LibMatrix(this.iRotation, 0.0f, 0.0f ), 0.0f, 0.0f, 0.0f, LibTransformationMode.EOriginalsToOriginals, null );
                     break;
                 }
 
                 case AXIS_Y:
                 {
-                    face.translateAndRotateXYZ( new LibMatrix( 0.0f, iRotation, 0.0f ), 0.0f, 0.0f, 0.0f, LibTransformationMode.EOriginalsToOriginals, null );
+                    face.translateAndRotateXYZ( new LibMatrix( 0.0f, this.iRotation, 0.0f ), 0.0f, 0.0f, 0.0f, LibTransformationMode.EOriginalsToOriginals, null );
                     break;
                 }
 
                 case AXIS_Z:
                 {
-                    face.translateAndRotateXYZ( new LibMatrix( 0.0f, 0.0f, iRotation ), 0.0f, 0.0f, 0.0f, LibTransformationMode.EOriginalsToOriginals, null );
+                    face.translateAndRotateXYZ( new LibMatrix( 0.0f, 0.0f, this.iRotation), 0.0f, 0.0f, 0.0f, LibTransformationMode.EOriginalsToOriginals, null );
                     break;
                 }
             }
 
             //fade out
-            if ( iCurrentTick > iLifetime - iFadeOutTicks )
+            if (this.iCurrentTick > this.iLifetime - this.iFadeOutTicks)
             {
               //ShooterDebug.bugfix.out( "FADE OUT FACE POINT .. [" + iCurrentTick + "]" );
               //face.fadeOut( 0.5f ); //1.0f / iLifetime - iFadeOutTicks );
 
-                float a = iCurrentTick - ( iLifetime - iFadeOutTicks );
-                float b = iFadeOutTicks;
+                float a = this.iCurrentTick - (this.iLifetime - this.iFadeOutTicks);
+                float b = this.iFadeOutTicks;
 
                 face.fadeOut( ( a / b ) );
             }
@@ -356,26 +356,26 @@
             face.draw();
 
             //draw sprite ..
-            if ( iSprite != null )
+            if (this.iSprite != null )
             {
-                iSprite.animateSprite( null );
-                iSprite.draw();
-                iLastPoint = new LibVertex( iPoint );
+                this.iSprite.animateSprite( null );
+                this.iSprite.draw();
+                this.iLastPoint = new LibVertex(this.iPoint);
             }
         }
 
         protected boolean isLifetimeOver()
         {
-            return ( iCurrentTick >= iLifetime );
+            return (this.iCurrentTick >= this.iLifetime);
         }
 
         protected boolean isDelayedBefore()
         {
-            return ( iDelayTicksBefore > 0 );
+            return (this.iDelayTicksBefore > 0 );
         }
 
         protected FXType getType()
         {
-            return iType;
+            return this.iType;
         }
     }

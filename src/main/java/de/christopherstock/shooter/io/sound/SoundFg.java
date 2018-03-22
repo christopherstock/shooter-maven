@@ -7,7 +7,6 @@
     import  de.christopherstock.lib.io.*;
     import  de.christopherstock.lib.io.hid.*;
     import  de.christopherstock.shooter.*;
-    import  de.christopherstock.shooter.ShooterSettings.General;
     import  de.christopherstock.shooter.ShooterSettings.Sounds;
     import  de.christopherstock.shooter.level.*;
 
@@ -103,7 +102,7 @@
 
         private void loadBytes()
         {
-            String uri = ShooterSettings.Path.ESoundsFg.iUrl + toString() + LibExtension.wav.getSpecifier();
+            String uri = ShooterSettings.Path.ESoundsFg.iUrl + this.toString() + LibExtension.wav.getSpecifier();
 
             try
             {
@@ -111,7 +110,7 @@
                 ByteArrayInputStream bais = LibIO.preStreamJarResource( uri );
 
                 //store all bytes
-                factory = new LibSoundFactory( bais, ShooterDebug.sound );
+                this.factory = new LibSoundFactory( bais, ShooterDebug.sound );
 
                 //release the stream
                 bais.close();
@@ -126,7 +125,7 @@
 
         public final void playDistancedFx( Point2D.Float distantLocation )
         {
-            playDistancedFx( distantLocation, 0 );
+            this.playDistancedFx( distantLocation, 0 );
         }
 
         /***************************************************************************************************************
@@ -145,12 +144,12 @@
 
             //ShooterDebug.bugfix.out( "play distanced fx with volume [" + volume + "]" );
 
-            playFx( volume, LibSoundClip.BALANCE_BOTH, delay, distantLocation );
+            this.playFx( volume, LibSoundClip.BALANCE_BOTH, delay, distantLocation );
         }
 
         public final void playGlobalFx()
         {
-            playGlobalFx( 0 );
+            this.playGlobalFx( 0 );
         }
 
         /***************************************************************************************************************
@@ -158,7 +157,7 @@
         ***************************************************************************************************************/
         public final void playGlobalFx( int delay )
         {
-            playFx( LibSoundClip.VOLUME_MAX, LibSoundClip.BALANCE_BOTH, delay, null );
+            this.playFx( LibSoundClip.VOLUME_MAX, LibSoundClip.BALANCE_BOTH, delay, null );
         }
 
         /***************************************************************************************************************
@@ -167,14 +166,13 @@
         private void playFx(float volume, float balance, int delay, Point2D.Float distantLocation )
         {
             //break on disabled system
-            boolean disableSoundFx = General.DISABLE_SOUND_FX;
-            if ( disableSoundFx ) return;
+            if ( ShooterDebug.DISABLE_SOUNDS ) return;
 
             //break on low memory
             //if ( LibSoundClip.disabledByMemory ) return;
 
             //reference sound fx
-            LibSoundClip sound = factory.getInstancedClip( volume, balance, delay, distantLocation );
+            LibSoundClip sound = this.factory.getInstancedClip( volume, balance, delay, distantLocation );
 
             try
             {

@@ -22,11 +22,11 @@
 
         private WallHealth( int aHealth )
         {
-            iHealth = aHealth;
+            this.iHealth = aHealth;
         }
 
         public int getHealth()
         {
-            return iHealth;
+            return this.iHealth;
         }
     }

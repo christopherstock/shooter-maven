@@ -43,7 +43,10 @@
                         HUDFx.disableAllFx();
 
                         //start according bg music
-                        SoundBg.startSound( LevelCurrent.currentLevelConfig.iBgSound );
+                        if ( !ShooterDebug.DISABLE_SOUNDS )
+                        {
+                            SoundBg.startSound( LevelCurrent.currentLevelConfig.iBgSound );
+                        }
                     }
 
                     //show HUD message

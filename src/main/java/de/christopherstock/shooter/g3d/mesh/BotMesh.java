@@ -39,13 +39,13 @@
 
         public final LibVertex translateLimb( Offset trans )
         {
-            LibVertex   limbAnk = getAnchor().copy();
+            LibVertex   limbAnk = this.getAnchor().copy();
 
             limbAnk.x += trans.x;
             limbAnk.y += trans.y;
             limbAnk.z += trans.z;
 
-            translateAndRotateXYZ(  limbAnk.x,  limbAnk.y,  limbAnk.z,  0.0f,    0.0f,       0.0f,       limbAnk,    LibTransformationMode.EOriginalsToTransformed      );
+            this.translateAndRotateXYZ(  limbAnk.x,  limbAnk.y,  limbAnk.z,  0.0f,    0.0f,       0.0f,       limbAnk,    LibTransformationMode.EOriginalsToTransformed      );
 
             return limbAnk;
         }
@@ -53,14 +53,14 @@
         public final LibVertex translateAndRotateLimb( Offset trans )
         {
             //rotate
-            LibVertex   limbAnk = getAnchor().copy();
+            LibVertex   limbAnk = this.getAnchor().copy();
 
                         limbAnk.x += trans.x;
                         limbAnk.y += trans.y;
                         limbAnk.z += trans.z;
 
             //translate and turn around x, y and z axis sequentially is no more necessary!?
-            translateAndRotateXYZ(  limbAnk.x,  limbAnk.y,  limbAnk.z,  iPitch.x,    iPitch.y,       iPitch.z,       limbAnk,    LibTransformationMode.EOriginalsToTransformed      );
+            this.translateAndRotateXYZ(  limbAnk.x,  limbAnk.y,  limbAnk.z, this.iPitch.x, this.iPitch.y, this.iPitch.z,       limbAnk,    LibTransformationMode.EOriginalsToTransformed      );
 
             return limbAnk;
         }
@@ -68,25 +68,25 @@
         public final void rotateAroundAnchor( LibVertex anchor, Rotation pitch )
         {
             //translate and turn around x, y and z axis sequentially is no more necessary!?
-            translateAndRotateXYZ( 0.0f, 0.0f, 0.0f, pitch.x, pitch.y, pitch.z, anchor, LibTransformationMode.ETransformedToTransformed );
+            this.translateAndRotateXYZ( 0.0f, 0.0f, 0.0f, pitch.x, pitch.y, pitch.z, anchor, LibTransformationMode.ETransformedToTransformed );
         }
 
         public final void transformOwn( Offset trans, float rotX, float rotY, float rotZ )
         {
             //rotate
-            LibVertex   limbAnk = getAnchor().copy();
+            LibVertex   limbAnk = this.getAnchor().copy();
 
                         limbAnk.x += trans.x;
                         limbAnk.y += trans.y;
                         limbAnk.z += trans.z;
 
             //translate and turn around x, y and z axis sequentially is no more necessary!?
-            translateAndRotateXYZ(  limbAnk.x,  limbAnk.y,  limbAnk.z,  rotX,    rotY,       rotZ,       limbAnk,    LibTransformationMode.EOriginalsToTransformed      );
+            this.translateAndRotateXYZ(  limbAnk.x,  limbAnk.y,  limbAnk.z,  rotX,    rotY,       rotZ,       limbAnk,    LibTransformationMode.EOriginalsToTransformed      );
         }
 
         public final void setTargetPitchs( Rotation[] targetPitchs )
         {
-            iTargetPitch = new Vector<Rotation>( Arrays.asList( targetPitchs ) );
+            this.iTargetPitch = new Vector<Rotation>( Arrays.asList( targetPitchs ) );
         }
 
         public final boolean reachToTargetPitch( int currentTargetPitch )
@@ -94,9 +94,9 @@
             //check if the target pitch is already reached
             boolean skipReach = false;
             boolean reached   = false;
-            if ( iPitch.equalRounded( iTargetPitch.elementAt( currentTargetPitch ) ) )
+            if (this.iPitch.equalRounded(this.iTargetPitch.elementAt( currentTargetPitch ) ) )
             {
-                if ( iTargetPitch.size() == 1 )
+                if (this.iTargetPitch.size() == 1 )
                 {
                     skipReach = true;
                 }
@@ -106,7 +106,7 @@
 
             if ( !skipReach )
             {
-                iPitch.reachToAbsolute( iTargetPitch.elementAt( currentTargetPitch ), iTargetPitch.elementAt( currentTargetPitch ).iSpeed );
+                this.iPitch.reachToAbsolute(this.iTargetPitch.elementAt( currentTargetPitch ), this.iTargetPitch.elementAt( currentTargetPitch ).iSpeed );
             }
 
             return reached;
@@ -128,7 +128,7 @@
                         ownAnk.y += trans.y;
                         ownAnk.z += trans.z;
 
-                        translateAndRotateXYZ(  ownAnk.x,   ownAnk.y,   ownAnk.z,   0.0f,                   0.0f,                   0.0f,                   ownAnk, LibTransformationMode.EOriginalsToTransformed      );
+            this.translateAndRotateXYZ(  ownAnk.x,   ownAnk.y,   ownAnk.z,   0.0f,                   0.0f,                   0.0f,                   ownAnk, LibTransformationMode.EOriginalsToTransformed      );
 
             //pitch around all axis sequentially is necessary!
             ownAnk.rotateXYZ( otherLimb.iPitch.x,       0.0f,                       0.0f,                   otherAnk    );
@@ -139,9 +139,9 @@
 
             //translate and pitch around all axis sequentially
 
-            translateAndRotateXYZ(  0.0f,       0.0f,       0.0f,       ownLimb.iPitch.x,       0.0f,                   0.0f,                   ownAnk, LibTransformationMode.ETransformedToTransformed    );
-            translateAndRotateXYZ(  0.0f,       0.0f,       0.0f,       0.0f,                   ownLimb.iPitch.y,       0.0f,                   ownAnk, LibTransformationMode.ETransformedToTransformed    );
-            translateAndRotateXYZ(  0.0f,       0.0f,       0.0f,       0.0f,                   0.0f,                   ownLimb.iPitch.z,       ownAnk, LibTransformationMode.ETransformedToTransformed    );
+            this.translateAndRotateXYZ(  0.0f,       0.0f,       0.0f,       ownLimb.iPitch.x,       0.0f,                   0.0f,                   ownAnk, LibTransformationMode.ETransformedToTransformed    );
+            this.translateAndRotateXYZ(  0.0f,       0.0f,       0.0f,       0.0f,                   ownLimb.iPitch.y,       0.0f,                   ownAnk, LibTransformationMode.ETransformedToTransformed    );
+            this.translateAndRotateXYZ(  0.0f,       0.0f,       0.0f,       0.0f,                   0.0f,                   ownLimb.iPitch.z,       ownAnk, LibTransformationMode.ETransformedToTransformed    );
 
             return ownAnk;
         }

@@ -30,8 +30,8 @@
         ***************************************************************************************************************/
         public MeshCollection( LibVertex aAnchor, Mesh[] aMeshes )
         {
-            iAnchor  = aAnchor;
-            iMeshes  = aMeshes;
+            this.iAnchor = aAnchor;
+            this.iMeshes = aMeshes;
         }
 
         /***************************************************************************************************************
@@ -43,15 +43,15 @@
         ***************************************************************************************************************/
         public void setNewAnchor( LibVertex newAnchor, boolean performTranslationOnFaces, LibTransformationMode transformationMode )
         {
-            iAnchor = newAnchor;
-            for (Mesh iMesh : iMeshes) {
+            this.iAnchor = newAnchor;
+            for (Mesh iMesh : this.iMeshes) {
                 iMesh.setNewAnchor(newAnchor, performTranslationOnFaces, transformationMode);
             }
         }
 
         public void assignParentOnFaces( LibGameObject aParentGameObject )
         {
-            for (Mesh iMesh : iMeshes) {
+            for (Mesh iMesh : this.iMeshes) {
                 iMesh.assignParentOnFaces(aParentGameObject);
             }
         }
@@ -66,7 +66,7 @@
         public void translate( float tX, float tY, float tZ, LibTransformationMode transformationMode )
         {
             //translate all faces ( resetting the rotation! )
-            for ( Mesh mesh : iMeshes )
+            for ( Mesh mesh : this.iMeshes)
             {
                 //translate and init this face
                 mesh.translate( tX, tY, tZ, transformationMode );
@@ -86,7 +86,7 @@
         public void translateAndRotateXYZ( float tX, float tY, float tZ, float rotX, float rotY, float rotZ, LibVertex alternateAnchor, LibTransformationMode transformationMode )
         {
             //rotate all faces
-            for ( Mesh mesh : iMeshes )
+            for ( Mesh mesh : this.iMeshes)
             {
                 //translate and init this face
                 mesh.translateAndRotateXYZ( tX, tY, tZ, rotX, rotY, rotZ, alternateAnchor, transformationMode );
@@ -99,7 +99,7 @@
         public final void draw()
         {
             //draw all faces
-            for ( Mesh mesh : iMeshes )
+            for ( Mesh mesh : this.iMeshes)
             {
                 mesh.draw();
             }
@@ -108,7 +108,7 @@
         public final boolean checkCollisionHorz( LibCylinder cylinder )
         {
             //check all meshes
-            for ( Mesh mesh : iMeshes )
+            for ( Mesh mesh : this.iMeshes)
             {
                 boolean b = mesh.checkCollisionHorz( cylinder );
                 if ( b ) return true;
@@ -122,7 +122,7 @@
             Vector<Float> vecZ = new Vector<Float>();
 
             //check all meshes
-            for ( Mesh mesh : iMeshes )
+            for ( Mesh mesh : this.iMeshes)
             {
                 vecZ.addAll( mesh.checkCollisionVert( cylinder, exclude ) );
             }
@@ -135,7 +135,7 @@
             Vector<LibHitPoint> hitPoints = new Vector<LibHitPoint>();
 
             //fire all faces and collect all hit-points
-            for ( Mesh mesh : iMeshes )
+            for ( Mesh mesh : this.iMeshes)
             {
                 hitPoints.addAll( mesh.launchShot( shot ) );
             }
@@ -145,6 +145,6 @@
 
         public final LibVertex getAnchor()
         {
-            return iAnchor;
+            return this.iAnchor;
         }
     }

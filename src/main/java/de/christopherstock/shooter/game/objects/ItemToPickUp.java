@@ -48,19 +48,19 @@
 
         public ItemToPickUp( ItemKind aKind, Artefact aArtefact, float x, float y, float z, float aRotZ, Lib.Rotating aIsRotating )
         {
-            iKind       = aKind;
-            iArtefact   = aArtefact;
-            iAnchor     = new LibVertex( x, y, z );
-            iStartRotZ  = aRotZ;
-            iIsRotating = aIsRotating;
+            this.iKind = aKind;
+            this.iArtefact = aArtefact;
+            this.iAnchor = new LibVertex( x, y, z );
+            this.iStartRotZ = aRotZ;
+            this.iIsRotating = aIsRotating;
         }
 
         public final void draw()
         {
-            if ( iKind.iMeshFile != null )
+            if (this.iKind.iMeshFile != null )
             {
                 //draw mesh
-                iMesh.draw();
+                this.iMesh.draw();
             }
             else
             {
@@ -68,14 +68,14 @@
                 if ( drawDebugCircle )
                 {
                     //draw debug shape
-                    switch ( iKind.iType )
+                    switch (this.iKind.iType )
                     {
                         case ECircle:
                         {
                             if ( ShooterDebug.DEBUG_DRAW_ITEM_CIRCLE )
                             {
                                 //Debug.item.out( "drawing item .." );
-                                new LibFaceEllipseFloor( ShooterDebug.face, null, DEBUG_COLOR, iAnchor.x, iAnchor.y, iAnchor.z, iKind.iRadius, iKind.iRadius, ShooterSettings.Performance.ELLIPSE_SEGMENTS ).draw();
+                                new LibFaceEllipseFloor( ShooterDebug.face, null, DEBUG_COLOR, this.iAnchor.x, this.iAnchor.y, this.iAnchor.z, this.iKind.iRadius, this.iKind.iRadius, ShooterSettings.Performance.ELLIPSE_SEGMENTS ).draw();
                             }
                             break;
                         }
@@ -86,64 +86,64 @@
 
         public final boolean shallBeRemoved()
         {
-            return iRemove;
+            return this.iRemove;
         }
 
         public final void animate()
         {
-            if ( iMesh != null )
+            if (this.iMesh != null )
             {
                 //rotate if desired
-                if ( iIsRotating == Lib.Rotating.EYes )
+                if (this.iIsRotating == Lib.Rotating.EYes )
                 {
-                    iMesh.translateAndRotateXYZ( iAnchor.x, iAnchor.y, iAnchor.z, 0.0f, 0.0f, iRotationZ, null, LibTransformationMode.EOriginalsToTransformed );
-                    iRotationZ += ItemSettings.SPEED_ROTATING;
+                    this.iMesh.translateAndRotateXYZ(this.iAnchor.x, this.iAnchor.y, this.iAnchor.z, 0.0f, 0.0f, this.iRotationZ, null, LibTransformationMode.EOriginalsToTransformed );
+                    this.iRotationZ += ItemSettings.SPEED_ROTATING;
                 }
 
                 //drop if desired
-                if ( iDropBegin > iDropTarget )
+                if (this.iDropBegin > this.iDropTarget)
                 {
-                    iDropBegin -= ItemSettings.SPEED_FALLING;
+                    this.iDropBegin -= ItemSettings.SPEED_FALLING;
 
                     //clip on target
-                    if ( iDropBegin <= iDropTarget )
+                    if (this.iDropBegin <= this.iDropTarget)
                     {
-                        iDropBegin = iDropTarget;
+                        this.iDropBegin = this.iDropTarget;
 
                         //turn to lying item
-                        loadD3ds();
+                        this.loadD3ds();
                     }
                     else
                     {
-                        iMesh.translateAndRotateXYZ( 0.0f, 0.0f, -ItemSettings.SPEED_FALLING, 0.0f, 0.0f, 0.0f, null, LibTransformationMode.EOriginalsToOriginals );
+                        this.iMesh.translateAndRotateXYZ( 0.0f, 0.0f, -ItemSettings.SPEED_FALLING, 0.0f, 0.0f, 0.0f, null, LibTransformationMode.EOriginalsToOriginals );
                     }
                 }
             }
 
             //check if collected by player
-            checkPlayerCollision();
+            this.checkPlayerCollision();
         }
 
         private void checkPlayerCollision()
         {
             //check collision of 2 circles ( easy  task.. )
             Area player = new Area( Level.currentPlayer().getCylinder().getCircle() );
-            Ellipse2D.Float itemCircle = new Ellipse2D.Float( iAnchor.x - iKind.iRadius, iAnchor.y - iKind.iRadius, 2 * iKind.iRadius, 2 * iKind.iRadius );
+            Ellipse2D.Float itemCircle = new Ellipse2D.Float(this.iAnchor.x - this.iKind.iRadius, this.iAnchor.y - this.iKind.iRadius, 2 * this.iKind.iRadius, 2 * this.iKind.iRadius );
             Area item   = new Area( itemCircle );
             player.intersect( item );
             if
             (
                     !player.isEmpty()
-                &&  Level.currentPlayer().getCylinder().checkCollision( iAnchor.z )
+                &&  Level.currentPlayer().getCylinder().checkCollision(this.iAnchor.z )
             )
             {
-                if ( !iCollisionWithPlayer )
+                if ( !this.iCollisionWithPlayer)
                 {
                     boolean assignAmmoToNewArtefact = false;
                     //check if player already holds this artefact
-                    if ( iArtefact != null )
+                    if (this.iArtefact != null )
                     {
-                        if ( !Level.currentPlayer().iArtefactSet.contains( iArtefact ) )
+                        if ( !Level.currentPlayer().iArtefactSet.contains(this.iArtefact) )
                         {
                             //ShooterDebug.major.out( "player has not this item" );
                             assignAmmoToNewArtefact = true;
@@ -151,83 +151,83 @@
                     }
 
                     //perform item event
-                    for ( GameEvent event : iKind.iItemEvents )
+                    for ( GameEvent event : this.iKind.iItemEvents )
                     {
                         event.perform( null );
                     }
 
                     //play sound fx
-                    if ( iKind.iPickupSound != null )
+                    if (this.iKind.iPickupSound != null )
                     {
-                        iKind.iPickupSound.playGlobalFx();
+                        this.iKind.iPickupSound.playGlobalFx();
                     }
 
                     //give magazine ammo to player
-                    if ( iArtefact != null )
+                    if (this.iArtefact != null )
                     {
                         if ( assignAmmoToNewArtefact )
                         {
                             //give ammo to new artefact
                             //ShooterDebug.major.out( "firearm has ammo " + iArtefact.iMagazineAmmo );
-                            Level.currentPlayer().iArtefactSet.assignMagazine( iArtefact );
+                            Level.currentPlayer().iArtefactSet.assignMagazine(this.iArtefact);
                         }
                         else
                         {
-                            if ( iArtefact.iArtefactType.iArtefactKind instanceof FireArm )
+                            if (this.iArtefact.iArtefactType.iArtefactKind instanceof FireArm )
                             {
                                 //give ammo from magazine to stack
-                                Level.currentPlayer().iAmmoSet.addAmmo( ( (FireArm)iArtefact.iArtefactType.iArtefactKind ).iAmmoType, iArtefact.iMagazineAmmo );
+                                Level.currentPlayer().iAmmoSet.addAmmo( ( (FireArm) this.iArtefact.iArtefactType.iArtefactKind ).iAmmoType, this.iArtefact.iMagazineAmmo );
                             }
                         }
                     }
 
                     //show hud message
-                    if ( iKind.iHudMessage != null )
+                    if (this.iKind.iHudMessage != null )
                     {
                         //ShooterDebug.bugfix.out( "hud message launching" );
-                        HUDMessageManager.getSingleton().showMessage( iKind.iHudMessage );
+                        HUDMessageManager.getSingleton().showMessage(this.iKind.iHudMessage );
                     }
                 }
 
                 //mark as collected
-                iCollisionWithPlayer = true;
+                this.iCollisionWithPlayer = true;
 
                 //check if single event
-                if ( iKind.iSingleEvent )
+                if (this.iKind.iSingleEvent )
                 {
-                    iRemove = true;
+                    this.iRemove = true;
                 }
             }
             else
             {
                 //release collision ( for repeated items )
-                iCollisionWithPlayer = false;
+                this.iCollisionWithPlayer = false;
             }
         }
 
         public final void loadD3ds()
         {
-            if ( iKind.iMeshFile != null )
+            if (this.iKind.iMeshFile != null )
             {
-                iMesh = new Mesh( ShooterD3ds.getFaces( iKind.iMeshFile ), iAnchor, iStartRotZ, 1.0f, Invert.ENo, this, LibTransformationMode.EOriginalsToTransformed, DrawMethod.EAlwaysDraw );
+                this.iMesh = new Mesh( ShooterD3ds.getFaces(this.iKind.iMeshFile ), this.iAnchor, this.iStartRotZ, 1.0f, Invert.ENo, this, LibTransformationMode.EOriginalsToTransformed, DrawMethod.EAlwaysDraw );
 
                 //translate rotating items to the meshe's center in order to rotate around the (fixed) anchor
-                if ( iIsRotating == Lib.Rotating.EYes )
+                if (this.iIsRotating == Lib.Rotating.EYes )
                 {
-                    Point2D.Float center = iMesh.getCenterPointXY();
-                    iMesh.translate( -center.x, -center.y, 0.0f, LibTransformationMode.EOriginalsToOriginals );
+                    Point2D.Float center = this.iMesh.getCenterPointXY();
+                    this.iMesh.translate( -center.x, -center.y, 0.0f, LibTransformationMode.EOriginalsToOriginals );
                 }
             }
         }
 
         public final void assignMesh( Mesh mesh )
         {
-            iMesh = mesh; //new Mesh( mesh.getFaces(), iAnchor, iStartRotZ, 1.0f, Invert.ENo, this, LibTransformationMode.EOriginalsToTransformed, DrawMethod.EAlwaysDraw );
+            this.iMesh = mesh; //new Mesh( mesh.getFaces(), iAnchor, iStartRotZ, 1.0f, Invert.ENo, this, LibTransformationMode.EOriginalsToTransformed, DrawMethod.EAlwaysDraw );
         }
 
         public final LibVertex getAnchor()
         {
-            return iAnchor;
+            return this.iAnchor;
         }
 
         public final float getCarriersFaceAngle()

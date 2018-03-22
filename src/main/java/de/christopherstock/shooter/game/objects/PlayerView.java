@@ -56,30 +56,30 @@
 
         public PlayerView( Player aParent, Rotation aRot )
         {
-            iParentPlayer   = aParent;
-            iRot            = aRot.copy();
+            this.iParentPlayer = aParent;
+            this.iRot = aRot.copy();
         }
 
         protected final void handleKeysForView()
         {
             float speedMultiplier = 1.0f;
-            if ( iParentPlayer.iZoom != 0.0f )
+            if (this.iParentPlayer.iZoom != 0.0f )
             {
-                speedMultiplier -= ( iParentPlayer.iScaleFactor * 0.9f );
+                speedMultiplier -= (this.iParentPlayer.iScaleFactor * 0.9f );
             }
 
             //turn left
             if ( Keys.keyHoldTurnLeft && !Keys.keyHoldAlternate )
             {
-                iRot.z += SPEED_TURNING_Z * speedMultiplier;
-                iRot.z = iRot.z >= 360.0f ? iRot.z - 360.0f : iRot.z;
+                this.iRot.z += SPEED_TURNING_Z * speedMultiplier;
+                this.iRot.z = this.iRot.z >= 360.0f ? this.iRot.z - 360.0f : this.iRot.z;
             }
 
             //turn right
             if ( Keys.keyHoldTurnRight && !Keys.keyHoldAlternate )
             {
-                iRot.z -= SPEED_TURNING_Z * speedMultiplier;
-                iRot.z = iRot.z < 0.0f ? iRot.z + 360.0f : iRot.z;
+                this.iRot.z -= SPEED_TURNING_Z * speedMultiplier;
+                this.iRot.z = this.iRot.z < 0.0f ? this.iRot.z + 360.0f : this.iRot.z;
             }
 
             //check mouse movement
@@ -87,9 +87,9 @@
             {
                 //ShooterDebug.mouse.out( "HANDLE: mouse movement X ["+MouseInput.mouseMovementX+"]" );
 
-                iRot.z -= MouseInput.mouseMovementX * speedMultiplier;
-                iRot.z = iRot.z < 0.0f ? iRot.z + 360.0f : iRot.z;
-                iRot.z = iRot.z >= 360.0f ? iRot.z - 360.0f : iRot.z;
+                this.iRot.z -= MouseInput.mouseMovementX * speedMultiplier;
+                this.iRot.z = this.iRot.z < 0.0f ? this.iRot.z + 360.0f : this.iRot.z;
+                this.iRot.z = this.iRot.z >= 360.0f ? this.iRot.z - 360.0f : this.iRot.z;
 
                 MouseInput.mouseMovementX = 0;
             }
@@ -97,51 +97,51 @@
             //check x-looking-centering via keys
             if ( Keys.keyHoldLookUp )
             {
-                iRot.x -= SPEED_LOOKING_X * speedMultiplier;
-                iRot.x = iRot.x < -MAX_LOOKING_X ? -MAX_LOOKING_X : iRot.x;
+                this.iRot.x -= SPEED_LOOKING_X * speedMultiplier;
+                this.iRot.x = this.iRot.x < -MAX_LOOKING_X ? -MAX_LOOKING_X : this.iRot.x;
             }
             else if ( Keys.keyHoldLookDown )
             {
-                iRot.x += SPEED_LOOKING_X * speedMultiplier;
-                iRot.x = iRot.x > MAX_LOOKING_X ? MAX_LOOKING_X : iRot.x;
+                this.iRot.x += SPEED_LOOKING_X * speedMultiplier;
+                this.iRot.x = this.iRot.x > MAX_LOOKING_X ? MAX_LOOKING_X : this.iRot.x;
             }
             else if ( Keys.keyHoldWalkUp || Keys.keyHoldWalkDown )
             {
                 //center back on walking
-                if ( !General.DISABLE_LOOK_CENTERING_X ) iCenterLookXthisTick = true;
+                if ( !General.DISABLE_LOOK_CENTERING_X ) this.iCenterLookXthisTick = true;
             }
 
             //check x-looking-centering via mouse
             if ( MouseInput.mouseMovementY != 0 )
             {
-                iRot.x -= MouseInput.mouseMovementY * speedMultiplier;
-                iRot.x = iRot.x < -MAX_LOOKING_X ? -MAX_LOOKING_X : iRot.x;
-                iRot.x = iRot.x > MAX_LOOKING_X  ? MAX_LOOKING_X  : iRot.x;
+                this.iRot.x -= MouseInput.mouseMovementY * speedMultiplier;
+                this.iRot.x = this.iRot.x < -MAX_LOOKING_X ? -MAX_LOOKING_X : this.iRot.x;
+                this.iRot.x = this.iRot.x > MAX_LOOKING_X  ? MAX_LOOKING_X  : this.iRot.x;
 
                 MouseInput.mouseMovementY = 0;
             }
 
             if ( Keys.keyHoldCenterView )
             {
-                iCenterLookX = true;
+                this.iCenterLookX = true;
             }
 
-            if ( iParentPlayer.iCrouching )
+            if (this.iParentPlayer.iCrouching )
             {
                 //only move if required
                 if
                 (
-                        iDepthEye   > DEPTH_EYE_CROUCHING
-                    ||  iDepthHand  > DEPTH_HAND_CROUCHING
-                    ||  iDepthTotal > DEPTH_TOTAL_CROUCHING
+                        this.iDepthEye > DEPTH_EYE_CROUCHING
+                    || this.iDepthHand > DEPTH_HAND_CROUCHING
+                    || this.iDepthTotal > DEPTH_TOTAL_CROUCHING
                 )
                 {
-                    iDepthEye  -= SPEED_CROUCH_TOGGLE;
-                    iDepthHand -= SPEED_CROUCH_TOGGLE;
-                    iDepthTotal = DEPTH_TOTAL_CROUCHING;
+                    this.iDepthEye -= SPEED_CROUCH_TOGGLE;
+                    this.iDepthHand -= SPEED_CROUCH_TOGGLE;
+                    this.iDepthTotal = DEPTH_TOTAL_CROUCHING;
 
-                    if ( iDepthEye  < DEPTH_EYE_CROUCHING  ) iDepthEye  = DEPTH_EYE_CROUCHING;
-                    if ( iDepthHand < DEPTH_HAND_CROUCHING ) iDepthHand = DEPTH_HAND_CROUCHING;
+                    if (this.iDepthEye < DEPTH_EYE_CROUCHING  ) this.iDepthEye = DEPTH_EYE_CROUCHING;
+                    if (this.iDepthHand < DEPTH_HAND_CROUCHING ) this.iDepthHand = DEPTH_HAND_CROUCHING;
                 }
             }
             else
@@ -149,29 +149,29 @@
                 //only move if required
                 if
                 (
-                        iDepthEye   < DEPTH_EYE_STANDING
-                    ||  iDepthHand  < DEPTH_HAND_STANDING
-                    ||  iDepthTotal < DEPTH_TOTAL_STANDING
+                        this.iDepthEye < DEPTH_EYE_STANDING
+                    || this.iDepthHand < DEPTH_HAND_STANDING
+                    || this.iDepthTotal < DEPTH_TOTAL_STANDING
                 )
                 {
-                    iDepthEye  += SPEED_CROUCH_TOGGLE;
-                    iDepthHand += SPEED_CROUCH_TOGGLE;
-                    iDepthTotal = DEPTH_TOTAL_STANDING;
+                    this.iDepthEye += SPEED_CROUCH_TOGGLE;
+                    this.iDepthHand += SPEED_CROUCH_TOGGLE;
+                    this.iDepthTotal = DEPTH_TOTAL_STANDING;
 
-                    if ( iDepthEye  > DEPTH_EYE_STANDING  ) iDepthEye  = DEPTH_EYE_STANDING;
-                    if ( iDepthHand > DEPTH_HAND_STANDING ) iDepthHand = DEPTH_HAND_STANDING;
+                    if (this.iDepthEye > DEPTH_EYE_STANDING  ) this.iDepthEye = DEPTH_EYE_STANDING;
+                    if (this.iDepthHand > DEPTH_HAND_STANDING ) this.iDepthHand = DEPTH_HAND_STANDING;
 
                     //check collision on standing up
-                    iParentPlayer.getCylinder().iHeight = iDepthTotal;
-                    if ( !ShooterSettings.General.DISABLE_PLAYER_TO_WALL_COLLISIONS && Level.currentSection().checkCollisionOnWalls( iParentPlayer.getCylinder() ) )
+                    this.iParentPlayer.getCylinder().iHeight = this.iDepthTotal;
+                    if ( !ShooterSettings.General.DISABLE_PLAYER_TO_WALL_COLLISIONS && Level.currentSection().checkCollisionOnWalls(this.iParentPlayer.getCylinder() ) )
                     {
-                        iDepthEye  -= SPEED_CROUCH_TOGGLE;
-                        iDepthHand -= SPEED_CROUCH_TOGGLE;
-                        iDepthTotal = DEPTH_TOTAL_CROUCHING;
-                        iParentPlayer.getCylinder().iHeight = iDepthTotal;
+                        this.iDepthEye -= SPEED_CROUCH_TOGGLE;
+                        this.iDepthHand -= SPEED_CROUCH_TOGGLE;
+                        this.iDepthTotal = DEPTH_TOTAL_CROUCHING;
+                        this.iParentPlayer.getCylinder().iHeight = this.iDepthTotal;
 
                         //crouch the player
-                        iParentPlayer.iCrouching = true;
+                        this.iParentPlayer.iCrouching = true;
                     }
                 }
             }
@@ -180,25 +180,25 @@
         public final void centerVerticalLook()
         {
             //center rot.x?
-            if ( iCenterLookX || iCenterLookXthisTick )
+            if (this.iCenterLookX || this.iCenterLookXthisTick)
             {
-                iCenterLookXthisTick = false;
-                if ( iRot.x > 0.0f )
+                this.iCenterLookXthisTick = false;
+                if (this.iRot.x > 0.0f )
                 {
-                    iRot.x -= SPEED_CENTERING_X;
-                    if ( iRot.x <= 0.0f )
+                    this.iRot.x -= SPEED_CENTERING_X;
+                    if (this.iRot.x <= 0.0f )
                     {
-                        iRot.x = 0.0f;
-                        iCenterLookX = false;
+                        this.iRot.x = 0.0f;
+                        this.iCenterLookX = false;
                     }
                 }
-                else if ( iRot.x < 0.0f )
+                else if (this.iRot.x < 0.0f )
                 {
-                    iRot.x += SPEED_CENTERING_X;
-                    if ( iRot.x >= 0.0f )
+                    this.iRot.x += SPEED_CENTERING_X;
+                    if (this.iRot.x >= 0.0f )
                     {
-                        iRot.x = 0.0f;
-                        iCenterLookX = false;
+                        this.iRot.x = 0.0f;
+                        this.iCenterLookX = false;
                     }
                 }
             }
@@ -207,91 +207,91 @@
         public final void animateDying()
         {
             //only if player is dead
-            if ( iParentPlayer.isDead() )
+            if (this.iParentPlayer.isDead() )
             {
-                switch ( iDyingState )
+                switch (this.iDyingState)
                 {
                     case EFallingDown:
                     {
                         //shake player's head
-                        iDieModX -= ROTATION_DYING / 10;
-                        iDieModY += ROTATION_DYING;
-                        iDieModZ += ROTATION_DYING;  // * UMath.getRandom( 0, 10 ) / 10;
+                        this.iDieModX -= ROTATION_DYING / 10;
+                        this.iDieModY += ROTATION_DYING;
+                        this.iDieModZ += ROTATION_DYING;  // * UMath.getRandom( 0, 10 ) / 10;
 
                         //let player sink
-                        iDieModTransZ += SPEED_DYING_SINKING;
-                        if ( iDieModTransZ >= iDepthEye ) iDieModTransZ = iDepthEye;
+                        this.iDieModTransZ += SPEED_DYING_SINKING;
+                        if (this.iDieModTransZ >= this.iDepthEye) this.iDieModTransZ = this.iDepthEye;
 
                         //start anim each x ticks
-                        if ( ( iDyingAnimation++ ) % 5 == 0 ) HUDFx.launchDamageFX( 6 );
+                        if ( (this.iDyingAnimation++ ) % 5 == 0 ) HUDFx.launchDamageFX( 6 );
 
                         //check change to next dying state
-                        if ( iDieModTransZ >= iDepthEye )
+                        if (this.iDieModTransZ >= this.iDepthEye)
                         {
-                            iDyingAnimation = 0;
-                            iDyingState     = DyingState.EBleeding;
+                            this.iDyingAnimation = 0;
+                            this.iDyingState = DyingState.EBleeding;
                         }
                         break;
                     }
 
                     case EBleeding:
                     {
-                        if ( ++iDyingAnimation < 5 )
+                        if ( ++this.iDyingAnimation < 5 )
                         {
                             HUDFx.launchDamageFX( 15 );
                         }
                         else
                         {
-                            iDyingAnimation = 0;
-                            iDyingState = DyingState.ELying;
+                            this.iDyingAnimation = 0;
+                            this.iDyingState = DyingState.ELying;
                         }
                         break;
                     }
 
                     case ELying:
                     {
-                        if ( ++iDyingAnimation < ShooterSettings.Performance.MAX_TICKS_DAMAGE_FX )
+                        if ( ++this.iDyingAnimation < ShooterSettings.Performance.MAX_TICKS_DAMAGE_FX )
                         {
                         }
                         else
                         {
-                            iDyingAnimation = 0;
-                            iDyingState = DyingState.EDying;
+                            this.iDyingAnimation = 0;
+                            this.iDyingState = DyingState.EDying;
                         }
                         break;
                     }
 
                     case EDying:
                     {
-                        if ( ++iDyingAnimation < ShooterSettings.Performance.TICKS_DYING_FX )
+                        if ( ++this.iDyingAnimation < ShooterSettings.Performance.TICKS_DYING_FX )
                         {
                             HUDFx.launchDyingFX();
                         }
                         else
                         {
-                            iDyingAnimation = 0;
-                            iDyingState = DyingState.ERelief;
+                            this.iDyingAnimation = 0;
+                            this.iDyingState = DyingState.ERelief;
                         }
                         break;
                     }
 
                     case ERelief:
                     {
-                        if ( ++iDyingAnimation < ShooterSettings.Performance.TICKS_DEAD_FX )
+                        if ( ++this.iDyingAnimation < ShooterSettings.Performance.TICKS_DEAD_FX )
                         {
                             HUDFx.launchDeadFX();
                         }
                         else
                         {
-                            iDyingAnimation = 0;
-                            iDyingState = DyingState.EReincarnation;
+                            this.iDyingAnimation = 0;
+                            this.iDyingState = DyingState.EReincarnation;
                         }
                         break;
                     }
 
                     case EReincarnation:
                     {
-                        if ( ++iDyingAnimation < ShooterSettings.Performance.TICKS_REINCARNATION_FX )
+                        if ( ++this.iDyingAnimation < ShooterSettings.Performance.TICKS_REINCARNATION_FX )
                         {
                             HUDFx.launchReincarnationFX();
                         }
@@ -309,6 +309,6 @@
 
         public final boolean dyingAnimationOver()
         {
-            return ( iDyingState != DyingState.EFallingDown );
+            return (this.iDyingState != DyingState.EFallingDown );
         }
     }

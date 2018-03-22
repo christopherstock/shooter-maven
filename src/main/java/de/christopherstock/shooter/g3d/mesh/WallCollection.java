@@ -28,7 +28,7 @@
         public WallCollection( Wall aAnchorWall, Wall[] aWalls, LibVertex anchorWallPostTrans, LibVertex anchorWallPostRot, boolean propagadeDestroyToChilds )
         {
             if ( aWalls == null ) aWalls = new Wall[] {};
-            iMeshes = aWalls;
+            this.iMeshes = aWalls;
 
             //translate all walls by anchorWall if specified
             if ( aAnchorWall != null )
@@ -70,7 +70,7 @@
                     //ShooterDebug.bugfix.out("new ank: ["+newAnk+"]");
                     newWalls.add( wall );
                 }
-                iMeshes = newWalls.toArray( iMeshes );
+                this.iMeshes = newWalls.toArray(this.iMeshes);
                 //ShooterDebug.bugfix.out("new wc: ["+walls.length+"]");
 
                 //perform post-translation on anchor wall
@@ -96,7 +96,7 @@
         public final void launchAction( Cylinder cylinder, Gadget gadget, float faceAngle )
         {
             //launch action on all meshes
-            for ( Mesh wall : iMeshes )
+            for ( Mesh wall : this.iMeshes)
             {
                 ( (Wall)wall ).launchAction( cylinder, gadget, faceAngle );
             }
@@ -105,7 +105,7 @@
         public final void animate()
         {
             //animate all meshes
-            for ( Mesh wall : iMeshes )
+            for ( Mesh wall : this.iMeshes)
             {
                 ( (Wall)wall ).animate();
             }

@@ -28,7 +28,7 @@
         public void animateSprite( LibVertex trans )
         {
             //get wall's 2d center point and player's 2d point
-            Point2D.Float spriteAnk2d = getCenterPointXY();
+            Point2D.Float spriteAnk2d = this.getCenterPointXY();
             Point2D.Float playerAnk2d = Level.currentPlayer().getCylinder().getCenterHorz();
 
             //get angles
@@ -38,7 +38,7 @@
             //ShooterDebug.bugfix.out( "angleSpriteToPlayer: [" + angleSpriteToPlayer + "]" );
             //angleSpriteToPlayer = (int)angleSpriteToPlayer;
 
-            LibVertex     ank   = new LibVertex( spriteAnk2d.x, spriteAnk2d.y, getAnchor().z );
+            LibVertex     ank   = new LibVertex( spriteAnk2d.x, spriteAnk2d.y, this.getAnchor().z );
 
             //ShooterDebug.bugfix.out( "buggy ank is [" + ank + "]" );
 
@@ -46,7 +46,7 @@
 
             //LibVertex ank = getAnchor();
 
-            translateAndRotateXYZ
+            this.translateAndRotateXYZ
             (
                 ( trans == null ? 0.0f : trans.x ),
                 ( trans == null ? 0.0f : trans.y ),

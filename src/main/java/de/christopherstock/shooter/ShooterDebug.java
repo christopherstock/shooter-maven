@@ -52,17 +52,18 @@
         public      static  final   boolean         DEBUG_DRAW_ITEM_CIRCLE              = YES;
         public      static  final   boolean         DEBUG_DRAW_BOT_CIRCLES              = NO;
         public      static  final   boolean         DEBUG_SHOW_FPS                      = YES;
+        public      static  final   boolean         DISABLE_SOUNDS                      = YES;
 
         private                     boolean         iDebugEnabled                       = false;
 
         private ShooterDebug( boolean aDebugEnabled )
         {
-            iDebugEnabled = aDebugEnabled;
+            this.iDebugEnabled = aDebugEnabled;
         }
 
         public final void out( Object obj )
         {
-            if ( DEBUG_MODE && iDebugEnabled    ) System.out.println( "[" + LibStringFormat.getSingleton().formatDateTime() + "] " + obj );
+            if ( DEBUG_MODE && this.iDebugEnabled) System.out.println( "[" + LibStringFormat.getSingleton().formatDateTime() + "] " + obj );
         }
 
         public final void err( Object obj )
@@ -77,13 +78,13 @@
 
         public final void mem()
         {
-            if ( DEBUG_MODE && iDebugEnabled )
+            if ( DEBUG_MODE && this.iDebugEnabled)
             {
                 Runtime r = Runtime.getRuntime();
-                out( "========================================================"                         );
-                out( " free:  [" + LibStringFormat.getSingleton().formatNumber( r.freeMemory()  ) + "]" );
-                out( " total: [" + LibStringFormat.getSingleton().formatNumber( r.totalMemory() ) + "]" );
-                out( "  max:  [" + LibStringFormat.getSingleton().formatNumber( r.maxMemory()   ) + "]" );
+                this.out( "========================================================"                         );
+                this.out( " free:  [" + LibStringFormat.getSingleton().formatNumber( r.freeMemory()  ) + "]" );
+                this.out( " total: [" + LibStringFormat.getSingleton().formatNumber( r.totalMemory() ) + "]" );
+                this.out( "  max:  [" + LibStringFormat.getSingleton().formatNumber( r.maxMemory()   ) + "]" );
             }
         }
     }

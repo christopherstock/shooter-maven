@@ -13,21 +13,21 @@
 
         public KeyControl( int aDelayAfterReload )
         {
-            iDelayAfterReload = aDelayAfterReload;
+            this.iDelayAfterReload = aDelayAfterReload;
         }
 
         public void checkLaunchingAction()
         {
-            if ( iKeyHold )
+            if (this.iKeyHold)
             {
                 //check reload blocker
-                if ( iNextMillis <= System.currentTimeMillis() )
+                if (this.iNextMillis <= System.currentTimeMillis() )
                 {
                     //set timestamp for next allowed player action
-                    iNextMillis = System.currentTimeMillis() + iDelayAfterReload;
+                    this.iNextMillis = System.currentTimeMillis() + this.iDelayAfterReload;
 
                     //trigger the action
-                    iLaunchAction = true;
+                    this.iLaunchAction = true;
                 }
             }
         }

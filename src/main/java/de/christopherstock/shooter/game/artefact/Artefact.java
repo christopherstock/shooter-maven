@@ -31,34 +31,34 @@
 
         public Artefact( ArtefactType aArtefactType )
         {
-            iArtefactType           = aArtefactType;
+            this.iArtefactType = aArtefactType;
         }
 
         public final void fire( ShotSpender ss, Point2D.Float shooterXY )
         {
             //check if delay after use is still active
-            if ( iCurrentDelayAfterUse > System.currentTimeMillis() )
+            if (this.iCurrentDelayAfterUse > System.currentTimeMillis() )
             {
                 //delay after wearpon use
             }
             //try to fire wearpon
-            else if ( iArtefactType.iArtefactKind.use( this, ss, shooterXY ) )
+            else if (this.iArtefactType.iArtefactKind.use( this, ss, shooterXY ) )
             {
                 //draw fire fx
-                iDrawFireFXtick = true;
+                this.iDrawFireFXtick = true;
 
                 //set delay after this shot
-                iCurrentDelayAfterUse = System.currentTimeMillis() + iArtefactType.iDelayAfterUse;
+                this.iCurrentDelayAfterUse = System.currentTimeMillis() + this.iArtefactType.iDelayAfterUse;
 
                 //increase number of shots since last key release
-                ++iCurrentShotsWithoutKeyRelease;
+                ++this.iCurrentShotsWithoutKeyRelease;
             }
         }
 
         public final void handleArtefact( ShotSpender ss, boolean doFire, AmmoSet ammoSet )
         {
             //check artefact actions
-            if ( iCurrentDelayAfterUse > System.currentTimeMillis() )
+            if (this.iCurrentDelayAfterUse > System.currentTimeMillis() )
             {
                 //delay after artefact use
             }
@@ -72,22 +72,22 @@
                     MouseInput.mouseHoldReload  = false;
 
                     //if the wearpon has ammo
-                    if ( iArtefactType.isFireArm() )
+                    if (this.iArtefactType.isFireArm() )
                     {
-                        reload( ammoSet, true, true, null );
+                        this.reload( ammoSet, true, true, null );
                     }
                 }
                 //shoot
                 else if ( doFire )
                 {
-                    fire( ss, null );
+                    this.fire( ss, null );
                 }
             }
 
             //animate start / give anim
-            if ( iArtefactType.iArtefactKind instanceof Gadget )
+            if (this.iArtefactType.iArtefactKind instanceof Gadget )
             {
-                ( (Gadget)iArtefactType.iArtefactKind ).handleGadget();
+                ( (Gadget) this.iArtefactType.iArtefactKind ).handleGadget();
             }
         }
         public final void drawOrtho()
@@ -109,12 +109,12 @@
                     }
                     case EAnimationHide:
                     {
-                        modY -= iArtefactType.getArtefactImage().height - Shooter.game.hud.getAnimationRightHand() * iArtefactType.getArtefactImage().height / ShooterSettings.Performance.TICKS_WEARPON_HIDE_SHOW;
+                        modY -= this.iArtefactType.getArtefactImage().height - Shooter.game.hud.getAnimationRightHand() * this.iArtefactType.getArtefactImage().height / ShooterSettings.Performance.TICKS_WEARPON_HIDE_SHOW;
                         break;
                     }
                     case EAnimationShow:
                     {
-                        modY -= Shooter.game.hud.getAnimationRightHand() * iArtefactType.getArtefactImage().height / ShooterSettings.Performance.TICKS_WEARPON_HIDE_SHOW;
+                        modY -= Shooter.game.hud.getAnimationRightHand() * this.iArtefactType.getArtefactImage().height / ShooterSettings.Performance.TICKS_WEARPON_HIDE_SHOW;
                         break;
                     }
                 }
@@ -122,36 +122,36 @@
 
             //give/take animation?
             int[] modGiveTake = new int[] { 0, 0, };
-            if ( iArtefactType.iArtefactKind instanceof Gadget )
+            if (this.iArtefactType.iArtefactKind instanceof Gadget )
             {
-                modGiveTake = ( (Gadget)iArtefactType.iArtefactKind ).getGiveTakeDrawMod();
+                modGiveTake = ( (Gadget) this.iArtefactType.iArtefactKind ).getGiveTakeDrawMod();
             }
 
             //zoom animation?
             if ( p.iZoom != 0.0f )
             {
-                modX += iArtefactType.getArtefactImage().width  * 0.75f * p.iScaleFactor * 2;
-                modY -= iArtefactType.getArtefactImage().height * 0.5f  * p.iScaleFactor / 2;
+                modX += this.iArtefactType.getArtefactImage().width  * 0.75f * p.iScaleFactor * 2;
+                modY -= this.iArtefactType.getArtefactImage().height * 0.5f  * p.iScaleFactor / 2;
             }
 
             //draw fire fx behind artefact
-            if ( iDrawFireFXtick && iArtefactType.iArtefactKind instanceof FireArm )
+            if (this.iDrawFireFXtick && this.iArtefactType.iArtefactKind instanceof FireArm )
             {
                 //no random translation!
                 int         randomX     = 0; //LibMath.getRandom( -5, 5 );
                 int         randomY     = 0; //LibMath.getRandom( -5, 5 );
 
                 //only draw if fx image could be read
-                if ( iArtefactType.iFXImages.length > 1 )
+                if (this.iArtefactType.iFXImages.length > 1 )
                 {
-                    int         randomIndex = LibMath.getRandom( 0, iArtefactType.iFXImages.length - 1 );
-                    LibGLImage  fxImage     = iArtefactType.iFXImages[ randomIndex ];
+                    int         randomIndex = LibMath.getRandom( 0, this.iArtefactType.iFXImages.length - 1 );
+                    LibGLImage  fxImage     = this.iArtefactType.iFXImages[ randomIndex ];
 
                     LibGL3D.view.drawOrthoBitmapBytes
                     (
                         fxImage,
-                        randomX + modX + modGiveTake[ 0 ] + LibGL3D.panel.width - iArtefactType.iFXOffset.x,
-                        randomY + modY + modGiveTake[ 1 ] + iArtefactType.iFXOffset.y,
+                        randomX + modX + modGiveTake[ 0 ] + LibGL3D.panel.width - this.iArtefactType.iFXOffset.x,
+                        randomY + modY + modGiveTake[ 1 ] + this.iArtefactType.iFXOffset.y,
                         1.0f,
                         1.0f + p.iScaleFactor * 1.5f,
                         1.0f + p.iScaleFactor * 1.5f,
@@ -159,7 +159,7 @@
                     );
                 }
 
-                iDrawFireFXtick = false;
+                this.iDrawFireFXtick = false;
             }
 
             //draw artefact
@@ -167,9 +167,9 @@
             {
                 LibGL3D.view.drawOrthoBitmapBytes
                 (
-                    iArtefactType.getArtefactImage(),
-                    modX + modGiveTake[ 0 ] + LibGL3D.panel.width - iArtefactType.getArtefactImage().width,
-                    modY + modGiveTake[ 1 ] - iArtefactType.getArtefactImage().height / 8,
+                        this.iArtefactType.getArtefactImage(),
+                    modX + modGiveTake[ 0 ] + LibGL3D.panel.width - this.iArtefactType.getArtefactImage().width,
+                    modY + modGiveTake[ 1 ] - this.iArtefactType.getArtefactImage().height / 8,
                     1.0f,
                     1.0f + p.iScaleFactor * 1.5f,
                     1.0f + p.iScaleFactor * 1.5f,
@@ -180,21 +180,21 @@
 
         public final String getCurrentAmmoStringMagazineAmmo()
         {
-            return String.valueOf( iMagazineAmmo );
+            return String.valueOf(this.iMagazineAmmo);
         }
 
         public final String getCurrentAmmoStringTotalAmmo( AmmoSet ammoSet )
         {
-            return String.valueOf( ammoSet.getAmmo( ( (FireArm)iArtefactType.iArtefactKind ).iAmmoType ) );
+            return String.valueOf( ammoSet.getAmmo( ( (FireArm) this.iArtefactType.iArtefactKind ).iAmmoType ) );
         }
 
         public void reload( AmmoSet ammoSet, boolean reloadAnimationRequired, boolean playSound, Point2D.Float reloaderXY )
         {
             //if ammo to reload is available
-            if ( ammoSet.getAmmo( ( (FireArm)iArtefactType.iArtefactKind ).iAmmoType ) > 0 )
+            if ( ammoSet.getAmmo( ( (FireArm) this.iArtefactType.iArtefactKind ).iAmmoType ) > 0 )
             {
                 //if the wearpon is not fully loaded
-                if ( ( (FireArm)iArtefactType.iArtefactKind ).iMagazineSize != iMagazineAmmo )
+                if ( ( (FireArm) this.iArtefactType.iArtefactKind ).iMagazineSize != this.iMagazineAmmo)
                 {
                     //start HUD-animation 'hide' only if required
                     if ( reloadAnimationRequired )
@@ -205,7 +205,7 @@
                     else
                     {
                         //perform reload
-                        performReload( ammoSet, playSound, reloaderXY, false );
+                        this.performReload( ammoSet, playSound, reloaderXY, false );
                     }
                 }
             }
@@ -213,10 +213,10 @@
 
         public final void performReload( AmmoSet ammoSet, boolean playSound, Point2D.Float reloaderXY, boolean freeAmmo )
         {
-            FireArm fireArm = ( (FireArm)iArtefactType.iArtefactKind );
+            FireArm fireArm = ( (FireArm) this.iArtefactType.iArtefactKind );
 
             //put unused ammo back onto the stack!
-            ammoSet.addAmmo( fireArm.iAmmoType, iMagazineAmmo );
+            ammoSet.addAmmo( fireArm.iAmmoType, this.iMagazineAmmo);
 
             //check ammo stock
             int ammo = ammoSet.getAmmo( fireArm.iAmmoType );
@@ -225,7 +225,7 @@
             if ( freeAmmo ) ammoToReload = fireArm.iMagazineSize;
 
             //load ammoToReload into the magazine and substract it from the ammo stock
-            iMagazineAmmo = ammoToReload;
+            this.iMagazineAmmo = ammoToReload;
             ammoSet.substractAmmo( fireArm.iAmmoType, ammoToReload );
 
             //play reload sound
@@ -244,8 +244,8 @@
 
         public final ItemToPickUp getPickUpItem( LibVertex ank )
         {
-            if ( iArtefactType.iPickUpItemKind == null ) return null;
-            return new ItemToPickUp( iArtefactType.iPickUpItemKind, this, ank.x, ank.y, ank.z, LibMath.getRandom( 0, 360 ), Lib.Rotating.ENo );
+            if (this.iArtefactType.iPickUpItemKind == null ) return null;
+            return new ItemToPickUp(this.iArtefactType.iPickUpItemKind, this, ank.x, ank.y, ank.z, LibMath.getRandom( 0, 360 ), Lib.Rotating.ENo );
         }
 
         /***************************************************************************************************************

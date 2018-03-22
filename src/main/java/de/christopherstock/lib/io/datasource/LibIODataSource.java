@@ -29,11 +29,11 @@
         ***************************************************************************************************************/
         public LibIODataSource(ByteBuffer input, String contentType)
         {
-            anInput = input;
+            this.anInput = input;
             this.contentType = new ContentDescriptor( contentType );
 
-            sources = new LibIOSeekableStream [ 1 ];
-            sources[ 0 ] = new LibIOSeekableStream( anInput );
+            this.sources = new LibIOSeekableStream [ 1 ];
+            this.sources[ 0 ] = new LibIOSeekableStream(this.anInput);
         }
 
         /***************************************************************************************************************
@@ -59,7 +59,7 @@
         @Override
         public void disconnect()
         {
-            sources[ 0 ].close();
+            this.sources[ 0 ].close();
         }
 
         /***************************************************************************************************************
@@ -74,7 +74,7 @@
         @Override
         public String getContentType()
         {
-            return contentType.getContentType();
+            return this.contentType.getContentType();
         }
 
         @Override
@@ -107,7 +107,7 @@
         @Override
         public javax.media.protocol.PullSourceStream[] getStreams()
         {
-            return sources;
+            return this.sources;
         }
 
         /***************************************************************************************************************

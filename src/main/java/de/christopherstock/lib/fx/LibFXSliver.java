@@ -21,41 +21,41 @@
         {
             super( aDebug, aAnchor, aLifetime, aFadeOutTicks );
 
-            iSliverColors   = aSliverColors;
-            iAngleMod       = aAngleMod;
-            iSize           = aSize;
-            iGravity        = aGravity;
-            iBaseZ          = aBaseZ;
+            this.iSliverColors = aSliverColors;
+            this.iAngleMod = aAngleMod;
+            this.iSize = aSize;
+            this.iGravity = aGravity;
+            this.iBaseZ = aBaseZ;
 
             switch ( particleQuantity )
             {
                 case ETiny:
                 {
-                    iParticlesToLaunch = LibMath.getRandom( 1, 3 );
+                    this.iParticlesToLaunch = LibMath.getRandom( 1, 3 );
                     break;
                 }
 
                 case ELow:
                 {
-                    iParticlesToLaunch = LibMath.getRandom( 3, 6 );
+                    this.iParticlesToLaunch = LibMath.getRandom( 3, 6 );
                     break;
                 }
 
                 case EMedium:
                 {
-                    iParticlesToLaunch = LibMath.getRandom( 6, 12 );
+                    this.iParticlesToLaunch = LibMath.getRandom( 6, 12 );
                     break;
                 }
 
                 case EHigh:
                 {
-                    iParticlesToLaunch = LibMath.getRandom( 10, 20 );
+                    this.iParticlesToLaunch = LibMath.getRandom( 10, 20 );
                     break;
                 }
 
                 case EMassive:
                 {
-                    iParticlesToLaunch = LibMath.getRandom( 15, 30 );
+                    this.iParticlesToLaunch = LibMath.getRandom( 15, 30 );
                     break;
                 }
             }
@@ -63,28 +63,28 @@
 
         protected final void launch( float angle )
         {
-            for ( int i = 0; i < iParticlesToLaunch; ++i )
+            for (int i = 0; i < this.iParticlesToLaunch; ++i )
             {
                 float radius    = 0.01f * LibMath.getRandom( 1, 30 );
-                float angleMod  = ( i * iAngleMod * 2 / iParticlesToLaunch ) - iAngleMod;
+                float angleMod  = ( i * this.iAngleMod * 2 / this.iParticlesToLaunch) - this.iAngleMod;
 
                 LibFXManager.start
                 (
                     new LibFXPoint
                     (
-                        iDebug,
-                        iBaseZ,
+                            this.iDebug,
+                            this.iBaseZ,
                         FXType.ESliver,
-                        iSliverColors[ LibMath.getRandom( 0, iSliverColors.length - 1 ) ],
+                            this.iSliverColors[ LibMath.getRandom( 0, this.iSliverColors.length - 1 ) ],
                         angle + angleMod,
-                        iAnchor.x + radius * LibMath.sinDeg( angle ),
-                        iAnchor.y + radius * LibMath.cosDeg( angle ),
-                        iAnchor.z,
-                        iSize,
+                            this.iAnchor.x + radius * LibMath.sinDeg( angle ),
+                            this.iAnchor.y + radius * LibMath.cosDeg( angle ),
+                            this.iAnchor.z,
+                            this.iSize,
                         0,
-                        iLifetime,
-                        iGravity,
-                        iFadeOutTicks,
+                            this.iLifetime,
+                            this.iGravity,
+                            this.iFadeOutTicks,
                         null //new Sprite( Others.ESprite1, new LibVertex( iPoint.x, iPoint.y, iPoint.z ), Scalation.ELowerThreeQuarters, WallCollidable.ENo, WallTex.ESliver1 )
                     )
                 );

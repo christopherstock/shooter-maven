@@ -13,7 +13,7 @@
 
         public EditorScrollPane()
         {
-           setPreferredSize( new Dimension( 924, 700 ) );
+            this.setPreferredSize( new Dimension( 924, 700 ) );
 
         }
     }

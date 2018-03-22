@@ -21,48 +21,48 @@
 
         public LibFPS( Font aFont, Color aColFont, Color aColOutline, LibDebug aDebug )
         {
-            iFont       = aFont;
-            iColFont    = aColFont;
-            iColOutline = aColOutline;
-            iDebug      = aDebug;
+            this.iFont = aFont;
+            this.iColFont = aColFont;
+            this.iColOutline = aColOutline;
+            this.iDebug = aDebug;
         }
 
         public final void finishedDrawing()
         {
             //init fps-counter
-            if ( iStartMeassuringMillis == 0 )
+            if (this.iStartMeassuringMillis == 0 )
             {
-                iFramesDrawn             = 0;
-                iStartMeassuringMillis   = System.currentTimeMillis();
+                this.iFramesDrawn = 0;
+                this.iStartMeassuringMillis = System.currentTimeMillis();
             }
             else
             {
                 //increase number of drawn frames
-                ++iFramesDrawn;
+                ++this.iFramesDrawn;
 
                 //check if 1 sec is over
-                if ( System.currentTimeMillis() - iStartMeassuringMillis >= Lib.MILLIS_PER_SECOND )
+                if ( System.currentTimeMillis() - this.iStartMeassuringMillis >= Lib.MILLIS_PER_SECOND )
                 {
-                    iCurrentFps = LibGLImage.getFromString
+                    this.iCurrentFps = LibGLImage.getFromString
                     (
-                        iFramesDrawn + " fps",
-                        iFont,
-                        iColFont,
+                            this.iFramesDrawn + " fps",
+                            this.iFont,
+                            this.iColFont,
                         null,
-                        iColOutline,
-                        iDebug
+                            this.iColOutline,
+                            this.iDebug
                     );
-                    iFramesDrawn             = 0;
-                    iStartMeassuringMillis   = System.currentTimeMillis();
+                    this.iFramesDrawn = 0;
+                    this.iStartMeassuringMillis = System.currentTimeMillis();
                 }
             }
         }
 
         public final void draw( int offX, int offY )
         {
-            if ( iCurrentFps != null )
+            if (this.iCurrentFps != null )
             {
-                LibGL3D.view.drawOrthoBitmapBytes( iCurrentFps, LibGL3D.panel.width - offX - iCurrentFps.width, LibGL3D.panel.height - offY - iCurrentFps.height );
+                LibGL3D.view.drawOrthoBitmapBytes(this.iCurrentFps, LibGL3D.panel.width - offX - this.iCurrentFps.width, LibGL3D.panel.height - offY - this.iCurrentFps.height );
             }
         }
     }

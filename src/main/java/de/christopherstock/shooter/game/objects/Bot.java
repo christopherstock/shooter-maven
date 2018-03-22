@@ -128,7 +128,7 @@
 
             private BotHealth( int aEnergy )
             {
-                iEnergy = aEnergy;
+                this.iEnergy = aEnergy;
             }
         }
 
@@ -149,7 +149,7 @@
 
             public BotUseAction( BotEvent aEvent )
             {
-                iEvent = aEvent;
+                this.iEvent = aEvent;
             }
         }
 
@@ -160,8 +160,8 @@
 
             public BotGiveAction( ArtefactType aKey, BotEvent aEvent )
             {
-                iKey = aKey;
-                iEvent = aEvent;
+                this.iKey = aKey;
+                this.iEvent = aEvent;
             }
         }
 
@@ -214,77 +214,77 @@
 
         public Bot( BotPattern aTemplate, BotType aType, LibVertex aStartPosition, Point2D.Float[] aWayPoints, BotJob aJob, Artefact[] aArtefacts, float aFacingAngle, BotAction[] aActions, BotHealth aBotHealth, int aID, BotHanded aBotHanded )
         {
-            iType           = aType;
-            iStartPosition  = aStartPosition.copy();
-            iCylinder       = new Cylinder( this, iStartPosition, aTemplate.iBase.iRadius, aTemplate.iBase.iHeight, 0, ShooterDebug.bot, ShooterDebug.DEBUG_DRAW_BOT_CIRCLES, 0.0f, 0.0f, ShooterSettings.Performance.ELLIPSE_SEGMENTS, Material.EHumanFlesh );
-            iWayPoints      = aWayPoints;
-            iJobs           = new Vector<BotJob>();
-            iJobs.add(      aJob );
-            iHealth         = aBotHealth.iEnergy;
-            iTemplate       = aTemplate;
-            iActions        = aActions;
-            iID             = aID;
-            iHanded         = aBotHanded;
-            iAliveState     = BotAliveState.EAlive;
+            this.iType = aType;
+            this.iStartPosition = aStartPosition.copy();
+            this.iCylinder = new Cylinder( this, this.iStartPosition, aTemplate.iBase.iRadius, aTemplate.iBase.iHeight, 0, ShooterDebug.bot, ShooterDebug.DEBUG_DRAW_BOT_CIRCLES, 0.0f, 0.0f, ShooterSettings.Performance.ELLIPSE_SEGMENTS, Material.EHumanFlesh );
+            this.iWayPoints = aWayPoints;
+            this.iJobs = new Vector<BotJob>();
+            this.iJobs.add(      aJob );
+            this.iHealth = aBotHealth.iEnergy;
+            this.iTemplate = aTemplate;
+            this.iActions = aActions;
+            this.iID = aID;
+            this.iHanded = aBotHanded;
+            this.iAliveState = BotAliveState.EAlive;
 
             //set startup facing angle
-            iFacingAngle    = aFacingAngle;
+            this.iFacingAngle = aFacingAngle;
 
-            iAmmoSet        = new AmmoSet();
-            iArtefactSet    = new ArtefactSet();
+            this.iAmmoSet = new AmmoSet();
+            this.iArtefactSet = new ArtefactSet();
 
             //deliver all artefacts if given
             if ( aArtefacts != null )
             {
                 for ( Artefact a : aArtefacts )
                 {
-                    iArtefactSet.deliverArtefact( a );
+                    this.iArtefactSet.deliverArtefact( a );
                 }
 
-                iArtefactSet.chooseNextWearponOrGadget( false );
-                iArtefactSet.iCurrentArtefact.reload( iAmmoSet, false, false, null );
+                this.iArtefactSet.chooseNextWearponOrGadget( false );
+                this.iArtefactSet.iCurrentArtefact.reload(this.iAmmoSet, false, false, null );
             }
 
             Items leftItem  = null;
             Items rightItem = null;
 
-            switch ( iHanded )
+            switch (this.iHanded)
             {
                 case ELeftHanded:
                 {
-                    leftItem = iArtefactSet.iCurrentArtefact.iArtefactType.iItemMesh;
+                    leftItem = this.iArtefactSet.iCurrentArtefact.iArtefactType.iItemMesh;
                     break;
                 }
 
                 case ERightHanded:
                 {
-                    rightItem = iArtefactSet.iCurrentArtefact.iArtefactType.iItemMesh;
+                    rightItem = this.iArtefactSet.iCurrentArtefact.iArtefactType.iItemMesh;
                     break;
                 }
             }
 
             //init mesh-collection
-            iBotMeshes      = new BotMeshes( iTemplate, iStartPosition, this, leftItem, rightItem );
+            this.iBotMeshes = new BotMeshes(this.iTemplate, this.iStartPosition, this, leftItem, rightItem );
 
             //set next eye blink
-            iEyesOpen       = true;
-            setNextEyeChange();
+            this.iEyesOpen = true;
+            this.setNextEyeChange();
 
             //animate 1st tick? .. triggers render :/ not required!
             boolean deprecatedAnimateOnCreate = false;
-            if ( deprecatedAnimateOnCreate ) animate();
+            if ( deprecatedAnimateOnCreate ) this.animate();
         }
 
         private void setNextEyeChange()
         {
             //only if not dead
-            if ( iAliveState == BotAliveState.EAlive )
+            if (this.iAliveState == BotAliveState.EAlive )
             {
-                iNextEyeChange =
+                this.iNextEyeChange =
                 (
                         System.currentTimeMillis()
                     +   (
-                                iEyesOpen
+                                this.iEyesOpen
                             ?   LibMath.getRandom( BotSettings.EYE_BLINK_INTERVAL_MIN, BotSettings.EYE_BLINK_INTERVAL_MAX )
                             :   BotSettings.EYE_CLOSED_INTERVAL
                         )
@@ -294,18 +294,18 @@
 
         public final boolean checkCollision( Cylinder aCylinder )
         {
-            return ( iAliveState == BotAliveState.EAlive ? iCylinder.checkCollisionHorz( aCylinder ) : false );
+            return (this.iAliveState == BotAliveState.EAlive ? this.iCylinder.checkCollisionHorz( aCylinder ) : false );
         }
 
         public final void launchAction( LibCylinder aCylinder, Object artefact, float faceAngle )
         {
             //only if alive
-            if ( iAliveState == BotAliveState.EAlive )
+            if (this.iAliveState == BotAliveState.EAlive )
             {
                 //check if collision appears
-                if ( iCylinder.checkCollisionHorz( aCylinder ) )
+                if (this.iCylinder.checkCollisionHorz( aCylinder ) )
                 {
-                    float anglePlayerToWall = LibMath.getAngleCorrect( Level.currentPlayer().getCylinder().getCenterHorz(), iCylinder.getCenterHorz() );
+                    float anglePlayerToWall = LibMath.getAngleCorrect( Level.currentPlayer().getCylinder().getCenterHorz(), this.iCylinder.getCenterHorz() );
                     anglePlayerToWall = LibMath.normalizeAngle( -anglePlayerToWall );
                     float angleDistance     = LibMath.getAngleDistanceAbsolute( faceAngle, anglePlayerToWall );
 
@@ -320,9 +320,9 @@
                             ShooterDebug.playerAction.out( "launch action on bot" );
 
                             //LAUNCH all USE-actions
-                            if ( iActions != null )
+                            if (this.iActions != null )
                             {
-                                for ( BotAction action : iActions )
+                                for ( BotAction action : this.iActions)
                                 {
                                     if ( action instanceof BotUseAction )
                                     {
@@ -337,9 +337,9 @@
                             ShooterDebug.playerAction.out( "launch gadget-action on bot" );
 
                             //CHECK all GIVE-actions
-                            if ( iActions != null )
+                            if (this.iActions != null )
                             {
-                                for ( BotAction action : iActions )
+                                for ( BotAction action : this.iActions)
                                 {
                                     if ( action instanceof BotGiveAction )
                                     {
@@ -362,12 +362,12 @@
 
         protected final boolean checkCollision( Ellipse2D.Float aEllipse )
         {
-            return ( iAliveState == BotAliveState.EAlive ? iCylinder.checkCollision( aEllipse ) : false );
+            return (this.iAliveState == BotAliveState.EAlive ? this.iCylinder.checkCollision( aEllipse ) : false );
         }
 
         public final Point2D.Float getCenterHorz()
         {
-            return iCylinder.getCenterHorz();
+            return this.iCylinder.getCenterHorz();
         }
 
         protected final void drawDebugCircles()
@@ -376,33 +376,33 @@
             {
                 //Debug.bot.out( "drawing bot .." );
                 int VERTICAL_SLICES = 4;
-                LibVertex ank = getAnchor();
+                LibVertex ank = this.getAnchor();
                 LibColors col = null;
-                switch ( iType )
+                switch (this.iType)
                 {
                     case ETypeFriend:   col = LibColors.EBlueLight;    break;
                     case ETypeEnemy:    col = LibColors.EBlueDark;      break;
                 }
                 for ( int i = 0; i <= VERTICAL_SLICES; ++i )
                 {
-                    new LibFaceEllipseFloor( ShooterDebug.face, null, col, ank.x, ank.y, ank.z + ( i * iCylinder.getHeight() / VERTICAL_SLICES ), iCylinder.getRadius(), iCylinder.getRadius(), ShooterSettings.Performance.ELLIPSE_SEGMENTS ).draw();
+                    new LibFaceEllipseFloor( ShooterDebug.face, null, col, ank.x, ank.y, ank.z + ( i * this.iCylinder.getHeight() / VERTICAL_SLICES ), this.iCylinder.getRadius(), this.iCylinder.getRadius(), ShooterSettings.Performance.ELLIPSE_SEGMENTS ).draw();
                 }
             }
         }
 
         protected final float getHeight()
         {
-            return iCylinder.getHeight();
+            return this.iCylinder.getHeight();
         }
 
         protected final void setCenterHorz( float newX, float newY )
         {
-            iCylinder.setNewAnchor( new LibVertex( newX, newY, iCylinder.getAnchor().z ), false, null );
+            this.iCylinder.setNewAnchor( new LibVertex( newX, newY, this.iCylinder.getAnchor().z ), false, null );
         }
 
         public final Cylinder getCylinder()
         {
-            return iCylinder;
+            return this.iCylinder;
         }
 
         protected final boolean checkCollisionsToOtherBots()
@@ -413,7 +413,7 @@
                 if ( this == bot ) continue;
 
                 //check bot-collision with other bot
-                if ( bot.checkCollision( iCylinder ) )
+                if ( bot.checkCollision(this.iCylinder) )
                 {
                     ShooterDebug.bot.out( "own bot touched" );
                     return true;
@@ -429,7 +429,7 @@
         protected final boolean checkCollisionsToPlayer()
         {
             //check bot-collision with player
-            if ( checkCollision( Level.currentPlayer().getCylinder().getCircle() ) )
+            if (this.checkCollision( Level.currentPlayer().getCylinder().getCircle() ) )
             {
                 ShooterDebug.bot.out( "player touched" );
                 return true;
@@ -445,7 +445,7 @@
         {
             boolean playerMoved         = false;
 
-            switch ( iType )
+            switch (this.iType)
             {
                 case ETypeEnemy:
                 case ETypeFriend:
@@ -454,14 +454,14 @@
                     //Debug.bot.out( "angle player to bot is: " + anglePlayerToBot );
                     //Debug.bot.out( "angle bot to player is: " + angleBotToPlayer );
 
-                    Point2D.Float bot = getCenterHorz();
+                    Point2D.Float bot = this.getCenterHorz();
 
                     float   nextPosX            = 0.0f;
                     float   nextPosY            = 0.0f;
-                            iFaceAngleChanged   = false;
+                    this.iFaceAngleChanged = false;
 
                     //check the bot's current job
-                    switch ( iJobs.elementAt( 0 ) )
+                    switch (this.iJobs.elementAt( 0 ) )
                     {
                         case ELeadPlayerToLastWaypoint:
                         {
@@ -469,57 +469,57 @@
                             Point2D.Float   player           = Level.currentPlayer().getCylinder().getCenterHorz();
 
                             //check distance from player to next waypoint and from bot to next waypoint
-                            float   distancePlayerToNextWaypoint = (float)player.distance( iWayPoints[ iCurrentWayPointIndex ] );
-                            float   distanceBotToNextWaypoint    = (float)bot.distance(    iWayPoints[ iCurrentWayPointIndex ] );
+                            float   distancePlayerToNextWaypoint = (float)player.distance(this.iWayPoints[this.iCurrentWayPointIndex] );
+                            float   distanceBotToNextWaypoint    = (float)bot.distance(this.iWayPoints[this.iCurrentWayPointIndex] );
                             boolean playerOutOfBotReach          = ( (float)player.distance( bot ) > ShooterSettings.BotSettings.MAX_LEADING_DISTANCE_TO_PLAYER );
 
                             //wait for player if he is out of reach and farer from the next waypoint than the bot
                             if ( playerOutOfBotReach && distancePlayerToNextWaypoint > distanceBotToNextWaypoint )
                             {
                                 //wait for player
-                                iState = BotState.EWatchPlayer;
+                                this.iState = BotState.EWatchPlayer;
                             }
                             else
                             {
                                 //walk to next waypoint
-                                iState = BotState.EWalkToNextWayPoint;
+                                this.iState = BotState.EWalkToNextWayPoint;
                             }
                             break;
                         }
 
                         case EWalkWaypoints:
                         {
-                            iState = BotState.EWalkToNextWayPoint;
+                            this.iState = BotState.EWalkToNextWayPoint;
                             break;
                         }
 
                         case EWatchPlayer:
                         {
-                            iState = BotState.EWatchPlayer;
+                            this.iState = BotState.EWatchPlayer;
                             break;
                         }
 
                         case EStandStill:
                         {
-                            iState = BotState.EStandStill;
+                            this.iState = BotState.EStandStill;
                             break;
                         }
 
                         case EDying:
                         {
-                            iState = BotState.EDying;
+                            this.iState = BotState.EDying;
                             break;
                         }
 
                         case EAttackPlayerReload:
                         {
-                            iState = BotState.EStandStill;
+                            this.iState = BotState.EStandStill;
 
 //                            iArtefactSet.iCurrentArtefact.reload( iAmmoSet, false, true, iCylinder.getCenterHorz() );
-                            iArtefactSet.iCurrentArtefact.performReload( iAmmoSet, true, iCylinder.getCenterHorz(), true );
+                            this.iArtefactSet.iCurrentArtefact.performReload(this.iAmmoSet, true, this.iCylinder.getCenterHorz(), true );
 
                             //init reload action
-                            setNewJobQueue
+                            this.setNewJobQueue
                             (
                                 new BotJob[]
                                 {
@@ -535,19 +535,19 @@
 
                         case EAttackPlayerFire:
                         {
-                            iState = BotState.EWatchPlayer;
+                            this.iState = BotState.EWatchPlayer;
 
                             //check if bot's wearpon is delayed
-                            if ( iArtefactSet.isWearponDelayed() )
+                            if (this.iArtefactSet.isWearponDelayed() )
                             {
                                 //do nothing if the wearpon is delayed
 
                             }
                             //check if bot's wearpon is empty
-                            else if ( iArtefactSet.isMagazineEmpty() )
+                            else if (this.iArtefactSet.isMagazineEmpty() )
                             {
                                 //perform reload animation
-                                setNewJobQueue
+                                this.setNewJobQueue
                                 (
                                     new BotJob[]
                                     {
@@ -570,32 +570,32 @@
                                 //ShooterDebug.bugfix.out( "attacking bot holds " + iArtefactSet.iCurrentArtefact.iArtefactType );
 
                                 //check if bot looks into player's direction
-                                if ( Math.abs( angleBotToPlayer - iFacingAngle ) <= BotSettings.TARGET_TURNING_TOLERANCE )
+                                if ( Math.abs( angleBotToPlayer - this.iFacingAngle) <= BotSettings.TARGET_TURNING_TOLERANCE )
                                 {
-                                    if ( iBotMeshes.isAssignedArmsPosition( ( iHanded == BotHanded.ELeftHanded ? ArmsPosition.EAimHighLeft : ArmsPosition.EAimHighRight ) ) )
+                                    if (this.iBotMeshes.isAssignedArmsPosition( (this.iHanded == BotHanded.ELeftHanded ? ArmsPosition.EAimHighLeft : ArmsPosition.EAimHighRight ) ) )
                                     {
                                         if
                                         (
-                                                ( iBotMeshes.completedTargetPitchesLeftArm  && iHanded == BotHanded.ELeftHanded  )
-                                            ||  ( iBotMeshes.completedTargetPitchesRightArm && iHanded == BotHanded.ERightHanded )
+                                                (this.iBotMeshes.completedTargetPitchesLeftArm  && this.iHanded == BotHanded.ELeftHanded  )
+                                            ||  (this.iBotMeshes.completedTargetPitchesRightArm && this.iHanded == BotHanded.ERightHanded )
                                         )
                                         {
                                             //fire if bot sees the player and player is alive
                                             if
                                             (
                                                     !Level.currentPlayer().isDeadAnimationOver()
-                                                &&  botSeesThePlayer()
+                                                && this.botSeesThePlayer()
                                             )
                                             {
                                                 //fire
-                                                iArtefactSet.iCurrentArtefact.fire( this, iCylinder.getCenterHorz() );
+                                                this.iArtefactSet.iCurrentArtefact.fire( this, this.iCylinder.getCenterHorz() );
                                             }
                                         }
                                     }
                                     else
                                     {
                                         //assign
-                                        iBotMeshes.assignArmsPosition( ( iHanded == BotHanded.ELeftHanded ? ArmsPosition.EAimHighLeft : ArmsPosition.EAimHighRight ) );
+                                        this.iBotMeshes.assignArmsPosition( (this.iHanded == BotHanded.ELeftHanded ? ArmsPosition.EAimHighLeft : ArmsPosition.EAimHighRight ) );
                                     }
                                 }
                             }
@@ -604,16 +604,16 @@
 
                         case ESequenceDelay:
                         {
-                            if ( iInterAnimationsDelay <= 0 )
+                            if (this.iInterAnimationsDelay <= 0 )
                             {
-                                iInterAnimationsDelay = BotSettings.INTER_ANIMATIONS_DELAY;
+                                this.iInterAnimationsDelay = BotSettings.INTER_ANIMATIONS_DELAY;
                             }
                             else
                             {
-                                if ( --iInterAnimationsDelay <= 0 )
+                                if ( --this.iInterAnimationsDelay <= 0 )
                                 {
-                                    iInterAnimationsDelay = 0;
-                                    iJobs.remove( 0 );
+                                    this.iInterAnimationsDelay = 0;
+                                    this.iJobs.remove( 0 );
                                 }
                             }
                             break;
@@ -622,7 +622,7 @@
                         case ESequenceTurnToPlayer:
                         {
                             //turn to player
-                            iState = BotState.EWatchPlayer;
+                            this.iState = BotState.EWatchPlayer;
 
                             //check if bot sees the player now
                             Point2D.Float   player           = Level.currentPlayer().getCylinder().getCenterHorz();
@@ -630,9 +630,9 @@
                             float           angleBotToPlayer = LibMath.normalizeAngle( anglePlayerToBot - 180.0f ); //checked normalizing - also works wothout :)
 
                             //check if bot looks into player's direction
-                            if ( Math.abs( angleBotToPlayer - iFacingAngle ) <= BotSettings.TARGET_TURNING_TOLERANCE )
+                            if ( Math.abs( angleBotToPlayer - this.iFacingAngle) <= BotSettings.TARGET_TURNING_TOLERANCE )
                             {
-                                iJobs.remove( 0 );
+                                this.iJobs.remove( 0 );
                             }
                             break;
                         }
@@ -640,18 +640,18 @@
                         case ESequenceNodOnce:
                         {
                             //check if assigned
-                            if ( iBotMeshes.isAssignedHeadPosition( HeadPosition.ENodOnce ) )
+                            if (this.iBotMeshes.isAssignedHeadPosition( HeadPosition.ENodOnce ) )
                             {
-                                if ( iBotMeshes.completedTargetPitchesHead )
+                                if (this.iBotMeshes.completedTargetPitchesHead )
                                 {
-                                    iBotMeshes.assignHeadPosition( HeadPosition.EStill );
-                                    iJobs.remove( 0 );
+                                    this.iBotMeshes.assignHeadPosition( HeadPosition.EStill );
+                                    this.iJobs.remove( 0 );
                                 }
                             }
                             else
                             {
                                 //assign
-                                iBotMeshes.assignHeadPosition( HeadPosition.ENodOnce );
+                                this.iBotMeshes.assignHeadPosition( HeadPosition.ENodOnce );
                             }
                             break;
                         }
@@ -659,18 +659,18 @@
                         case ESequenceNodTwice:
                         {
                             //check if assigned
-                            if ( iBotMeshes.isAssignedHeadPosition( HeadPosition.ENodTwice ) )
+                            if (this.iBotMeshes.isAssignedHeadPosition( HeadPosition.ENodTwice ) )
                             {
-                                if ( iBotMeshes.completedTargetPitchesHead )
+                                if (this.iBotMeshes.completedTargetPitchesHead )
                                 {
-                                    iBotMeshes.assignHeadPosition( HeadPosition.EStill );
-                                    iJobs.remove( 0 );
+                                    this.iBotMeshes.assignHeadPosition( HeadPosition.EStill );
+                                    this.iJobs.remove( 0 );
                                 }
                             }
                             else
                             {
                                 //assign
-                                iBotMeshes.assignHeadPosition( HeadPosition.ENodTwice );
+                                this.iBotMeshes.assignHeadPosition( HeadPosition.ENodTwice );
                             }
                             break;
                         }
@@ -678,17 +678,17 @@
                         case ESequenceGrabSpringRight:
                         {
                             //check if assigned
-                            if ( iBotMeshes.isAssignedArmsPosition( ArmsPosition.EPickUpRight ) )
+                            if (this.iBotMeshes.isAssignedArmsPosition( ArmsPosition.EPickUpRight ) )
                             {
-                                if ( iBotMeshes.completedTargetPitchesRightArm )
+                                if (this.iBotMeshes.completedTargetPitchesRightArm )
                                 {
-                                    iJobs.remove( 0 );
+                                    this.iJobs.remove( 0 );
                                 }
                             }
                             else
                             {
                                 //assign
-                                iBotMeshes.assignArmsPosition( ArmsPosition.EPickUpRight );
+                                this.iBotMeshes.assignArmsPosition( ArmsPosition.EPickUpRight );
                             }
                             break;
                         }
@@ -696,10 +696,10 @@
                         case ESequenceFlushRightEquippedItem:
                         {
                             //draw item to bot
-                            iBotMeshes.setItem( Arm.ERight, null,  getAnchor(), this );
+                            this.iBotMeshes.setItem( Arm.ERight, null, this.getAnchor(), this );
 
                             //next job
-                            iJobs.remove( 0 );
+                            this.iJobs.remove( 0 );
 
                             break;
                         }
@@ -707,10 +707,10 @@
                         case ESequenceDeliverRightEquippedItem:
                         {
                             //give item to bot
-                            iBotMeshes.setItem( Arm.ERight, iNextItemToDeliverRightHand,  getAnchor(), this );
+                            this.iBotMeshes.setItem( Arm.ERight, this.iNextItemToDeliverRightHand, this.getAnchor(), this );
 
                             //next job
-                            iJobs.remove( 0 );
+                            this.iJobs.remove( 0 );
 
                             break;
                         }
@@ -718,17 +718,17 @@
                         case ESequenceGrabBackDownRight:
                         {
                             //check if assigned
-                            if ( iBotMeshes.isAssignedArmsPosition( ArmsPosition.EBackDownRight ) )
+                            if (this.iBotMeshes.isAssignedArmsPosition( ArmsPosition.EBackDownRight ) )
                             {
-                                if ( iBotMeshes.completedTargetPitchesRightArm )
+                                if (this.iBotMeshes.completedTargetPitchesRightArm )
                                 {
-                                    iJobs.remove( 0 );
+                                    this.iJobs.remove( 0 );
                                 }
                             }
                             else
                             {
                                 //assign
-                                iBotMeshes.assignArmsPosition( ArmsPosition.EBackDownRight );
+                                this.iBotMeshes.assignArmsPosition( ArmsPosition.EBackDownRight );
                             }
                             break;
                         }
@@ -736,17 +736,17 @@
                         case ESequenceGrabSpringLeft:
                         {
                             //check if assigned
-                            if ( iBotMeshes.isAssignedArmsPosition( ArmsPosition.EPickUpLeft ) )
+                            if (this.iBotMeshes.isAssignedArmsPosition( ArmsPosition.EPickUpLeft ) )
                             {
-                                if ( iBotMeshes.completedTargetPitchesLeftArm )
+                                if (this.iBotMeshes.completedTargetPitchesLeftArm )
                                 {
-                                    iJobs.remove( 0 );
+                                    this.iJobs.remove( 0 );
                                 }
                             }
                             else
                             {
                                 //assign
-                                iBotMeshes.assignArmsPosition( ArmsPosition.EPickUpLeft );
+                                this.iBotMeshes.assignArmsPosition( ArmsPosition.EPickUpLeft );
                             }
                             break;
                         }
@@ -754,10 +754,10 @@
                         case ESequenceFlushLeftEquippedItem:
                         {
                             //draw item to bot
-                            iBotMeshes.setItem( Arm.ELeft, null,  getAnchor(), this );
+                            this.iBotMeshes.setItem( Arm.ELeft, null, this.getAnchor(), this );
 
                             //next job
-                            iJobs.remove( 0 );
+                            this.iJobs.remove( 0 );
 
                             break;
                         }
@@ -765,10 +765,10 @@
                         case ESequenceDeliverLeftEquippedItem:
                         {
                             //give item to bot
-                            iBotMeshes.setItem( Arm.ELeft, iNextItemToDeliverLeftHand,  getAnchor(), this );
+                            this.iBotMeshes.setItem( Arm.ELeft, this.iNextItemToDeliverLeftHand, this.getAnchor(), this );
 
                             //next job
-                            iJobs.remove( 0 );
+                            this.iJobs.remove( 0 );
 
                             break;
                         }
@@ -776,72 +776,72 @@
                         case ESequenceGrabBackDownLeft:
                         {
                             //check if assigned
-                            if ( iBotMeshes.isAssignedArmsPosition( ArmsPosition.EBackDownLeft ) )
+                            if (this.iBotMeshes.isAssignedArmsPosition( ArmsPosition.EBackDownLeft ) )
                             {
-                                if ( iBotMeshes.completedTargetPitchesLeftArm )
+                                if (this.iBotMeshes.completedTargetPitchesLeftArm )
                                 {
-                                    iJobs.remove( 0 );
+                                    this.iJobs.remove( 0 );
                                 }
                             }
                             else
                             {
                                 //assign
-                                iBotMeshes.assignArmsPosition( ArmsPosition.EBackDownLeft );
+                                this.iBotMeshes.assignArmsPosition( ArmsPosition.EBackDownLeft );
                             }
                             break;
                         }
 
                         case ESequenceReloadHandUp:
                         {
-                            iState = BotState.EStandStill;
+                            this.iState = BotState.EStandStill;
 
                             //check if assigned
-                            if ( iBotMeshes.isAssignedArmsPosition( ( iHanded == BotHanded.ELeftHanded ? ArmsPosition.EReloadLeftUp : ArmsPosition.EReloadRightUp ) ) )
+                            if (this.iBotMeshes.isAssignedArmsPosition( (this.iHanded == BotHanded.ELeftHanded ? ArmsPosition.EReloadLeftUp : ArmsPosition.EReloadRightUp ) ) )
                             {
-                                if ( iHanded == BotHanded.ELeftHanded && iBotMeshes.completedTargetPitchesLeftArm )
+                                if (this.iHanded == BotHanded.ELeftHanded && this.iBotMeshes.completedTargetPitchesLeftArm )
                                 {
-                                    iJobs.remove( 0 );
+                                    this.iJobs.remove( 0 );
                                 }
-                                else if ( iHanded == BotHanded.ERightHanded && iBotMeshes.completedTargetPitchesRightArm )
+                                else if (this.iHanded == BotHanded.ERightHanded && this.iBotMeshes.completedTargetPitchesRightArm )
                                 {
-                                    iJobs.remove( 0 );
+                                    this.iJobs.remove( 0 );
                                 }
                             }
                             else
                             {
                                 //assign
-                                iBotMeshes.assignArmsPosition( ( iHanded == BotHanded.ELeftHanded ? ArmsPosition.EReloadLeftUp : ArmsPosition.EReloadRightUp ) );
+                                this.iBotMeshes.assignArmsPosition( (this.iHanded == BotHanded.ELeftHanded ? ArmsPosition.EReloadLeftUp : ArmsPosition.EReloadRightUp ) );
                             }
                             break;
                         }
 
                         case ESequenceReloadHandDown:
                         {
-                            iState = BotState.EStandStill;
+                            this.iState = BotState.EStandStill;
 
                             //check if assigned
-                            if ( iBotMeshes.isAssignedArmsPosition( ( iHanded == BotHanded.ELeftHanded ? ArmsPosition.EReloadLeftDown : ArmsPosition.EReloadRightDown ) ) )
+                            if (this.iBotMeshes.isAssignedArmsPosition( (this.iHanded == BotHanded.ELeftHanded ? ArmsPosition.EReloadLeftDown : ArmsPosition.EReloadRightDown ) ) )
                             {
-                                if ( iHanded == BotHanded.ELeftHanded && iBotMeshes.completedTargetPitchesLeftArm )
+                                if (this.iHanded == BotHanded.ELeftHanded && this.iBotMeshes.completedTargetPitchesLeftArm )
                                 {
-                                    iJobs.remove( 0 );
+                                    this.iJobs.remove( 0 );
                                 }
-                                else if ( iHanded == BotHanded.ERightHanded && iBotMeshes.completedTargetPitchesRightArm )
+                                else if (this.iHanded == BotHanded.ERightHanded && this.iBotMeshes.completedTargetPitchesRightArm )
                                 {
-                                    iJobs.remove( 0 );
+                                    this.iJobs.remove( 0 );
                                 }
                             }
                             else
                             {
                                 //assign
-                                iBotMeshes.assignArmsPosition( ( iHanded == BotHanded.ELeftHanded ? ArmsPosition.EReloadLeftDown : ArmsPosition.EReloadRightDown ) );
+                                this.iBotMeshes.assignArmsPosition( (this.iHanded == BotHanded.ELeftHanded ? ArmsPosition.EReloadLeftDown : ArmsPosition.EReloadRightDown ) );
                             }
                             break;
                         }
                     }
 
                     //perform action according to current state
-                    switch ( iState )
+                    switch (this.iState)
                     {
                         case EStandStill:
                         {
@@ -889,9 +889,9 @@
                             final float MAX_BOT_WATCH_RADIUS = 10.0f;
 
                             float botDistanceToPlayer = (float)player.distance( bot );
-                            if ( angleBotToPlayer != iFacingAngle && botDistanceToPlayer < MAX_BOT_WATCH_RADIUS )
+                            if ( angleBotToPlayer != this.iFacingAngle && botDistanceToPlayer < MAX_BOT_WATCH_RADIUS )
                             {
-                                rotateBotTo( angleBotToPlayer );
+                                this.rotateBotTo( angleBotToPlayer );
                             }
                             break;
                         }
@@ -906,41 +906,41 @@
                             //bot walks towards the player - turning to him
                             nextPosX = bot.x - LibMath.sinDeg( -angleBotToPlayer ) * BotSettings.SPEED_WALKING;
                             nextPosY = bot.y - LibMath.cosDeg( -angleBotToPlayer ) * BotSettings.SPEED_WALKING;
-                            if ( angleBotToPlayer != iFacingAngle ) iFaceAngleChanged = true;
-                            iFacingAngle = angleBotToPlayer;
+                            if ( angleBotToPlayer != this.iFacingAngle) this.iFaceAngleChanged = true;
+                            this.iFacingAngle = angleBotToPlayer;
                             break;
                         }
 
                         case EWalkToNextWayPoint:
                         {
                             //shouldn't have been initialized without wayPoints ..
-                            if ( iWayPoints != null )
+                            if (this.iWayPoints != null )
                             {
                                 //check if the current wayPoint has been reached?
-                                if ( checkCollision( new Ellipse2D.Float( iWayPoints[ iCurrentWayPointIndex ].x - BotSettings.WAY_POINT_RADIUS, iWayPoints[ iCurrentWayPointIndex ].y - BotSettings.WAY_POINT_RADIUS, 2 * BotSettings.WAY_POINT_RADIUS, 2 * BotSettings.WAY_POINT_RADIUS ) ) )
+                                if (this.checkCollision( new Ellipse2D.Float(this.iWayPoints[this.iCurrentWayPointIndex].x - BotSettings.WAY_POINT_RADIUS, this.iWayPoints[this.iCurrentWayPointIndex].y - BotSettings.WAY_POINT_RADIUS, 2 * BotSettings.WAY_POINT_RADIUS, 2 * BotSettings.WAY_POINT_RADIUS ) ) )
                                 {
                                     //wayPoint has been reached
                                     //Debug.info( "wayPoint reached" );
 
                                     //target next wayPoint
-                                    ++iCurrentWayPointIndex;
+                                    ++this.iCurrentWayPointIndex;
 
                                     //begin with 1st waypoint
-                                    if ( iCurrentWayPointIndex >= iWayPoints.length ) iCurrentWayPointIndex = 0;
+                                    if (this.iCurrentWayPointIndex >= this.iWayPoints.length ) this.iCurrentWayPointIndex = 0;
                                 }
 
                                 //set arms and legs walking
-                                if ( !iBotMeshes.isAssignedLegsPosition( LegsPosition.EWalk ) )
+                                if ( !this.iBotMeshes.isAssignedLegsPosition( LegsPosition.EWalk ) )
                                 {
-                                    iBotMeshes.assignLegsPosition( LegsPosition.EWalk );
+                                    this.iBotMeshes.assignLegsPosition( LegsPosition.EWalk );
                                 }
-                                if ( !iBotMeshes.isAssignedArmsPosition( ArmsPosition.EWalk ) )
+                                if ( !this.iBotMeshes.isAssignedArmsPosition( ArmsPosition.EWalk ) )
                                 {
-                                    iBotMeshes.assignArmsPosition( ArmsPosition.EWalk );
+                                    this.iBotMeshes.assignArmsPosition( ArmsPosition.EWalk );
                                 }
 
                                 //move player towards current waypoint
-                                Point2D.Float currentWayPoint = iWayPoints[ iCurrentWayPointIndex ];
+                                Point2D.Float currentWayPoint = this.iWayPoints[this.iCurrentWayPointIndex];
 
                                 //move bot towards the wayPoint
                                 float angleWaypointToBot = LibMath.getAngleCorrect( currentWayPoint, bot );
@@ -953,7 +953,7 @@
                                 nextPosY = bot.y - LibMath.cosDeg( -angleBotToWayPoint ) * BotSettings.SPEED_WALKING;
 
                                 //order rotation to
-                                rotateBotTo( angleBotToWayPoint );
+                                this.rotateBotTo( angleBotToWayPoint );
                             }
 /*
                             //check if this bot sees the player
@@ -967,26 +967,26 @@
                     }
 
                     //check collisions
-                    float oldPosX = getCenterHorz().x;
-                    float oldPosY = getCenterHorz().y;
+                    float oldPosX = this.getCenterHorz().x;
+                    float oldPosY = this.getCenterHorz().y;
 
                     //set to new position ( if position changed! )
                     if ( oldPosX != nextPosX || oldPosY != nextPosY )
                     {
-                        setCenterHorz( nextPosX, nextPosY );
+                        this.setCenterHorz( nextPosX, nextPosY );
 
                         //check collisions to other bots
-                        if ( checkCollisionsToOtherBots() )
+                        if (this.checkCollisionsToOtherBots() )
                         {
                             //set back to old position
-                            setCenterHorz( oldPosX, oldPosY );
+                            this.setCenterHorz( oldPosX, oldPosY );
                             playerMoved = false;
                         }
                         //check collisions to player
-                        else if ( checkCollisionsToPlayer() )
+                        else if (this.checkCollisionsToPlayer() )
                         {
                             //undo setting to new position
-                            setCenterHorz( oldPosX, oldPosY );
+                            this.setCenterHorz( oldPosX, oldPosY );
                             playerMoved = false;
                         }
                         else
@@ -1000,9 +1000,9 @@
                     }
 
                     //rotate if faceAngle changed
-                    if ( iFaceAngleChanged )
+                    if (this.iFaceAngleChanged)
                     {
-                        BulletHole.rotateForBot( this, iFacingAngle );
+                        BulletHole.rotateForBot( this, this.iFacingAngle);
                     }
                     break;
                 }
@@ -1011,27 +1011,27 @@
             //perform transformations here
 
             //let eyes blink ( or close on dying )
-            blinkEyes();
+            this.blinkEyes();
 
             //translate and rotate the bot's mesh
-            LibVertex botAnchor = getAnchor().copy();
+            LibVertex botAnchor = this.getAnchor().copy();
 
             //translate anchor if desired
-            botAnchor.z += iOffsetZ;
+            botAnchor.z += this.iOffsetZ;
 
             //set anchors for all meshes!
-            iBotMeshes.setNewAnchor( botAnchor, false, null );
+            this.iBotMeshes.setNewAnchor( botAnchor, false, null );
 
             //animate dying
-            animateDying();
+            this.animateDying();
 
             //transform bot's limbs
-            iBotMeshes.transformLimbs( iFacingAngle, iDyingAngle, iFaceAngleChanged, playerMoved );
+            this.iBotMeshes.transformLimbs(this.iFacingAngle, this.iDyingAngle, this.iFaceAngleChanged, playerMoved );
         }
 
         public final void draw()
         {
-            switch ( iType )
+            switch (this.iType)
             {
                 case ETypeEnemy:
                 case ETypeFriend:
@@ -1039,10 +1039,10 @@
                     //turn bullet holes?? :(
 
                     //draw bot's mesh
-                    iBotMeshes.draw();
+                    this.iBotMeshes.draw();
 
                     //draw bot's debug-circles
-                    drawDebugCircles();
+                    this.drawDebugCircles();
 
                     break;
                 }
@@ -1059,10 +1059,10 @@
                 LibMath.getRandom( -10, 10 ) + modZ,       // 0.0f,   //irregularityHorz
                 LibMath.getRandom( -2,  2  ),       // 0.0f,   //irregularityVert
 
-                getAnchor().x,
-                getAnchor().y,
-                getAnchor().z + PlayerSettings.DEPTH_HAND_STANDING,   // take hand height from player
-                180.0f + ( 180.0f - iFacingAngle ),     //rotZ
+                    this.getAnchor().x,
+                    this.getAnchor().y,
+                    this.getAnchor().z + PlayerSettings.DEPTH_HAND_STANDING,   // take hand height from player
+                180.0f + ( 180.0f - this.iFacingAngle),     //rotZ
                 0.0f,                                   //rotX
                 BotSettings.SHOT_RANGE,    // bot has constant shot range ???
                 LibHoleSize.E44mm,   // bot always fires 9mm    ??
@@ -1085,10 +1085,10 @@
                 LibShot.ShotOrigin.EEnemies,
                 0.0f,   //irregularityHorz
                 0.0f,   //irregularityVert
-                getAnchor().x,
-                getAnchor().y,
-                getAnchor().z + ( getHeight() * 3 / 4 ),
-                180.0f + ( 180.0f - iFacingAngle ),     //rotZ
+                    this.getAnchor().x,
+                    this.getAnchor().y,
+                    this.getAnchor().z + (this.getHeight() * 3 / 4 ),
+                180.0f + ( 180.0f - this.iFacingAngle),     //rotZ
                 0.0f,                                   //rotX
                 BotSettings.VIEW_RANGE,
                 LibHoleSize.ENone,
@@ -1106,7 +1106,7 @@
         public final boolean botSeesThePlayer()
         {
             //check if this enemy bot sees the player - copy current angle
-            LibShot       shot     = getViewShot();
+            LibShot       shot     = this.getViewShot();
             LibHitPoint[] hitPoint = Level.currentSection().launchShot( shot );
 
             //draw view shot line
@@ -1117,22 +1117,22 @@
 
         public final LibVertex getAnchor()
         {
-            return iCylinder.getAnchor();
+            return this.iCylinder.getAnchor();
         }
 
         public final float getCarriersFaceAngle()
         {
-            return iFacingAngle;
+            return this.iFacingAngle;
         }
 
         public final Vector<LibHitPoint> launchShot( LibShot shot )
         {
-            return iBotMeshes.launchShot( shot );
+            return this.iBotMeshes.launchShot( shot );
         }
 
         public final boolean isDead()
         {
-            return ( iAliveState == BotAliveState.EDead );
+            return (this.iAliveState == BotAliveState.EDead );
         }
 
         public HitPointCarrier getHitPointCarrier()
@@ -1143,7 +1143,7 @@
         private void rotateBotTo( float targetAngle )
         {
             //get the rotation of the bot
-            float angleDistance   = LibMath.getAngleDistanceRelative( iFacingAngle, targetAngle );
+            float angleDistance   = LibMath.getAngleDistanceRelative(this.iFacingAngle, targetAngle );
             float turningDistance = Math.abs( angleDistance );
 
             if ( turningDistance >= BotSettings.SPEED_TURNING_MIN )
@@ -1153,72 +1153,72 @@
 
                 //ShooterDebug.bot.out( "turning bot, src ["+iFacingAngle+"] target ["+targetAngle+"] distance is [" + angleDistance + "]" );
 
-                iFaceAngleChanged = true;
+                this.iFaceAngleChanged = true;
 
                 if ( angleDistance < 0 )
                 {
-                    iFacingAngle = LibMath.normalizeAngle( iFacingAngle - turningDistance );
+                    this.iFacingAngle = LibMath.normalizeAngle(this.iFacingAngle - turningDistance );
                 }
                 else if ( angleDistance > 0 )
                 {
-                    iFacingAngle = LibMath.normalizeAngle( iFacingAngle + turningDistance );
+                    this.iFacingAngle = LibMath.normalizeAngle(this.iFacingAngle + turningDistance );
                 }
             }
         }
 
         public void makeDistancedSound( SoundFg fx )
         {
-            fx.playDistancedFx( getCenterHorz() );
+            fx.playDistancedFx(this.getCenterHorz() );
         }
 
         private void blinkEyes()
         {
-            if ( iAliveState != BotAliveState.EAlive )
+            if (this.iAliveState != BotAliveState.EAlive )
             {
-                if ( iEyesOpen )
+                if (this.iEyesOpen)
                 {
-                    iBotMeshes.changeFaceTexture( iBotMeshes.iTemplate.iTexFaceEyesOpen.getTexture(), iBotMeshes.iTemplate.iTexFaceEyesShut.getTexture() );
-                    iEyesOpen = false;
+                    this.iBotMeshes.changeFaceTexture(this.iBotMeshes.iTemplate.iTexFaceEyesOpen.getTexture(), this.iBotMeshes.iTemplate.iTexFaceEyesShut.getTexture() );
+                    this.iEyesOpen = false;
                 }
             }
             //let eyes blink
-            else if ( System.currentTimeMillis() >= iNextEyeChange )
+            else if ( System.currentTimeMillis() >= this.iNextEyeChange)
             {
-                iEyesOpen = !iEyesOpen;
-                if ( iEyesOpen )
+                this.iEyesOpen = !this.iEyesOpen;
+                if (this.iEyesOpen)
                 {
-                    iBotMeshes.changeFaceTexture( iBotMeshes.iTemplate.iTexFaceEyesShut.getTexture(), iBotMeshes.iTemplate.iTexFaceEyesOpen.getTexture() );
+                    this.iBotMeshes.changeFaceTexture(this.iBotMeshes.iTemplate.iTexFaceEyesShut.getTexture(), this.iBotMeshes.iTemplate.iTexFaceEyesOpen.getTexture() );
                 }
                 else
                 {
-                    iBotMeshes.changeFaceTexture( iBotMeshes.iTemplate.iTexFaceEyesOpen.getTexture(), iBotMeshes.iTemplate.iTexFaceEyesShut.getTexture() );
+                    this.iBotMeshes.changeFaceTexture(this.iBotMeshes.iTemplate.iTexFaceEyesOpen.getTexture(), this.iBotMeshes.iTemplate.iTexFaceEyesShut.getTexture() );
                 }
-                setNextEyeChange();
+                this.setNextEyeChange();
             }
         }
 
         public void fallAsleep()
         {
-            if ( iAliveState == BotAliveState.EAlive )
+            if (this.iAliveState == BotAliveState.EAlive )
             {
-                killOrTranquilize( BotAliveState.ETranquilized );
+                this.killOrTranquilize( BotAliveState.ETranquilized );
             }
         }
 
         public void hurt( int damage )
         {
-            iHealth -= damage;
+            this.iHealth -= damage;
 
             //bot dies?
-            if ( iAliveState != BotAliveState.EDead && iHealth <= 0 )
+            if (this.iAliveState != BotAliveState.EDead && this.iHealth <= 0 )
             {
-                killOrTranquilize( BotAliveState.EDead );
+                this.killOrTranquilize( BotAliveState.EDead );
             }
         }
 
         private void animateDying()
         {
-            switch ( iAliveState )
+            switch (this.iAliveState)
             {
                 case EAlive:
                 {
@@ -1228,54 +1228,54 @@
                 case ETranquilized:
                 case EDead:
                 {
-                    switch ( iDyingDirection )
+                    switch (this.iDyingDirection)
                     {
                         case EFront:
                         {
-                            if ( iDyingAngle < 10.0f  )
+                            if (this.iDyingAngle < 10.0f  )
                             {
-                                iDyingAngle += 1.0f;
+                                this.iDyingAngle += 1.0f;
 
-                                if ( iOffsetZ < iTargetOffsetZ )
+                                if (this.iOffsetZ < this.iTargetOffsetZ)
                                 {
-                                    iOffsetZ += iTargetOffsetZ / 45;
+                                    this.iOffsetZ += this.iTargetOffsetZ / 45;
                                 }
                             }
                             else
                             {
-                                iDyingAngle += 10.0f;
+                                this.iDyingAngle += 10.0f;
 
-                                if ( iOffsetZ < iTargetOffsetZ )
+                                if (this.iOffsetZ < this.iTargetOffsetZ)
                                 {
-                                    iOffsetZ += iTargetOffsetZ / 9;
+                                    this.iOffsetZ += this.iTargetOffsetZ / 9;
                                 }
                             }
 
-                            if ( iDyingAngle >= 90.0f ) iDyingAngle = 90.0f;
+                            if (this.iDyingAngle >= 90.0f ) this.iDyingAngle = 90.0f;
                             break;
                         }
 
                         case EBack:
                         {
-                            if ( iDyingAngle > -10.0f  )
+                            if (this.iDyingAngle > -10.0f  )
                             {
-                                iDyingAngle -= 1.0f;
+                                this.iDyingAngle -= 1.0f;
 
-                                if ( iOffsetZ < iTargetOffsetZ )
+                                if (this.iOffsetZ < this.iTargetOffsetZ)
                                 {
-                                    iOffsetZ += iTargetOffsetZ / 45;
+                                    this.iOffsetZ += this.iTargetOffsetZ / 45;
                                 }
                             }
                             else
                             {
-                                iDyingAngle -= 10.0f;
+                                this.iDyingAngle -= 10.0f;
 
-                                if ( iOffsetZ < iTargetOffsetZ )
+                                if (this.iOffsetZ < this.iTargetOffsetZ)
                                 {
-                                    iOffsetZ += iTargetOffsetZ / 9;
+                                    this.iOffsetZ += this.iTargetOffsetZ / 9;
                                 }
                             }
-                            if ( iDyingAngle <= -90.0f ) iDyingAngle = -90.0f;
+                            if (this.iDyingAngle <= -90.0f ) this.iDyingAngle = -90.0f;
                             break;
                         }
                     }
@@ -1285,73 +1285,73 @@
 
         public void killOrTranquilize( BotAliveState newState )
         {
-            if ( iAliveState != BotAliveState.ETranquilized )
+            if (this.iAliveState != BotAliveState.ETranquilized )
             {
                 //start disappear timer ( will only count for dead bots ) - only if bot was
-                iDisappearTimer = FxSettings.LIFETIME_CORPSE;
-                iDyingDirection = DyingDirection.values()[ LibMath.getRandom( 0, DyingDirection.values().length - 1 ) ];
-                iBotMeshes.assignArmsPosition( ArmsPosition.EDownBoth           );
-                iBotMeshes.assignLegsPosition( LegsPosition.EStandSpreadLegged  );
-                iBotMeshes.assignHeadPosition( HeadPosition.EStill              );
-                switch ( iDyingDirection )
+                this.iDisappearTimer = FxSettings.LIFETIME_CORPSE;
+                this.iDyingDirection = DyingDirection.values()[ LibMath.getRandom( 0, DyingDirection.values().length - 1 ) ];
+                this.iBotMeshes.assignArmsPosition( ArmsPosition.EDownBoth           );
+                this.iBotMeshes.assignLegsPosition( LegsPosition.EStandSpreadLegged  );
+                this.iBotMeshes.assignHeadPosition( HeadPosition.EStill              );
+                switch (this.iDyingDirection)
                 {
                     case EBack:
                     {
-                        iTargetOffsetZ = 0.05f;
+                        this.iTargetOffsetZ = 0.05f;
                         break;
                     }
                     case EFront:
                     {
-                        iTargetOffsetZ = 0.15f;
+                        this.iTargetOffsetZ = 0.15f;
                         break;
                     }
                 }
             }
 
             //let bot die
-            iHealth         = 0;
-            iAliveState     = newState;
+            this.iHealth = 0;
+            this.iAliveState = newState;
 
             //drop all artefacts and set dying
-            dropAllArtefacts();
-            setNewJobQueue( new BotJob[] { BotJob.EDying } );
+            this.dropAllArtefacts();
+            this.setNewJobQueue( new BotJob[] { BotJob.EDying } );
         }
 
         public void setNewJobQueue( BotJob[] newJobs )
         {
-            iJobs.removeAllElements();
-            iJobs.addAll( Arrays.asList( newJobs ) );
+            this.iJobs.removeAllElements();
+            this.iJobs.addAll( Arrays.asList( newJobs ) );
         }
 
         public void fadeOutAllFaces()
         {
-            iBotMeshes.fadeOutAllFaces();
+            this.iBotMeshes.fadeOutAllFaces();
         }
 
         public final int getHealth()
         {
-            return iHealth;
+            return this.iHealth;
         }
 
         public final void dropAllArtefacts()
         {
             //turn artefacts to pickable items
-            for ( Artefact toDrop : iArtefactSet.iArtefacts )
+            for ( Artefact toDrop : this.iArtefactSet.iArtefacts )
             {
-                ItemToPickUp p = toDrop.getPickUpItem( getAnchor() );
+                ItemToPickUp p = toDrop.getPickUpItem(this.getAnchor() );
                 if ( p != null )
                 {
                     //p.loadD3ds(); //old solution
-                    iBotMeshes.iEquippedItemRight.setTranslatedAsOriginalVertices();
-                    p.assignMesh( iBotMeshes.iEquippedItemRight );
-                    p.iDropTarget = getAnchor().z;
-                    p.iDropBegin  = iBotMeshes.iEquippedItemRight.getCenterZ();
+                    this.iBotMeshes.iEquippedItemRight.setTranslatedAsOriginalVertices();
+                    p.assignMesh(this.iBotMeshes.iEquippedItemRight );
+                    p.iDropTarget = this.getAnchor().z;
+                    p.iDropBegin  = this.iBotMeshes.iEquippedItemRight.getCenterZ();
                     Level.currentSection().addItem( p );
                 }
             }
 
             //strip off artefacts
-            iBotMeshes.setItem( Arm.ERight, null,  getAnchor(), this );
-            iBotMeshes.setItem( Arm.ELeft,  null,  getAnchor(), this );
+            this.iBotMeshes.setItem( Arm.ERight, null, this.getAnchor(), this );
+            this.iBotMeshes.setItem( Arm.ELeft,  null, this.getAnchor(), this );
         }
     }

@@ -47,7 +47,7 @@
             }
 
             //set original vertices
-            setOriginalVertices( ret );
+            this.setOriginalVertices( ret );
         }
 
         @Override

@@ -22,7 +22,7 @@
             super( aDebug, aAnchor, null, aColor, null );
 
             //set vertices
-            setOriginalVertices( new LibVertex[] { aA, aB, aC, aD, } );
+            this.setOriginalVertices( new LibVertex[] { aA, aB, aC, aD, } );
         }
 
         public boolean checkCollisionHorz( LibCylinder cylinder )

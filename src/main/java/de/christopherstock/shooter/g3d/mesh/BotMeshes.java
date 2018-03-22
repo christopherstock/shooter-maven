@@ -194,198 +194,198 @@
         public BotMeshes( BotPattern aTemp, LibVertex aAnchor, LibGameObject aParentGameObject, Items itemLeft, Items itemRight )
         {
             //assign template
-            iTemplate = aTemp;
+            this.iTemplate = aTemp;
 
             BotPatternBase aTemplate = aTemp.iBase;
 
             if ( aTemp.iHat != null )
             {
-                iHat = new BotMesh( ShooterD3ds.getFaces( aTemp.iHat ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.0f );
-                iHat.changeTexture(             WallTex.ETest.getTexture(),          aTemp.iTexHat.getTexture()                  );
+                this.iHat = new BotMesh( ShooterD3ds.getFaces( aTemp.iHat ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.0f );
+                this.iHat.changeTexture(             WallTex.ETest.getTexture(),          aTemp.iTexHat.getTexture()                  );
             }
 
             if ( aTemp.iGlasses != null )
             {
-                iGlasses = new BotMesh( ShooterD3ds.getFaces( aTemp.iGlasses ), aAnchor, 0.0f, 1.0f, aParentGameObject, -1.0f );
-                iGlasses.changeTexture(             WallTex.ETest.getTexture(),         aTemp.iTexGlassesGlass.getTexture()         );
-                iGlasses.changeTexture(             BotTex.EHairBlonde.getTexture(),    aTemp.iTexGlassesHolder.getTexture()        );
+                this.iGlasses = new BotMesh( ShooterD3ds.getFaces( aTemp.iGlasses ), aAnchor, 0.0f, 1.0f, aParentGameObject, -1.0f );
+                this.iGlasses.changeTexture(             WallTex.ETest.getTexture(),         aTemp.iTexGlassesGlass.getTexture()         );
+                this.iGlasses.changeTexture(             BotTex.EHairBlonde.getTexture(),    aTemp.iTexGlassesHolder.getTexture()        );
             }
 
             //assign limbs
-            iHead           = new BotMesh( ShooterD3ds.getFaces( aTemp.iHead               ), aAnchor, 0.0f, 1.0f, aParentGameObject, -1.0f );
-            iFace           = new BotMesh( ShooterD3ds.getFaces( aTemp.iFace               ), aAnchor, 0.0f, 1.0f, aParentGameObject, -1.0f );
-            iRightUpperArm  = new BotMesh( ShooterD3ds.getFaces( aTemp.iRightUpperArm      ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
-            iRightLowerArm  = new BotMesh( ShooterD3ds.getFaces( aTemp.iRightLowerArm      ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
-            iTorso          = new BotMesh( ShooterD3ds.getFaces( aTemp.iTorso              ), aAnchor, 0.0f, 1.0f, aParentGameObject, 1.0f  );
-            iNeck           = new BotMesh( ShooterD3ds.getFaces( aTemp.iNeck               ), aAnchor, 0.0f, 1.0f, aParentGameObject, -1.0f  );
-            iLeftUpperArm   = new BotMesh( ShooterD3ds.getFaces( aTemp.iLeftUpperArm       ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
-            iLeftLowerArm   = new BotMesh( ShooterD3ds.getFaces( aTemp.iLeftLowerArm       ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
-            iRightHand      = new BotMesh( ShooterD3ds.getFaces( aTemp.iRightHand          ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
-            iLeftHand       = new BotMesh( ShooterD3ds.getFaces( aTemp.iLeftHand           ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
-            iRightUpperLeg  = new BotMesh( ShooterD3ds.getFaces( aTemp.iRightUpperLeg      ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.5f  );
-            iLeftUpperLeg   = new BotMesh( ShooterD3ds.getFaces( aTemp.iLeftUpperLeg       ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.5f  );
-            iRightLowerLeg  = new BotMesh( ShooterD3ds.getFaces( aTemp.iRightLowerLeg      ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.5f  );
-            iLeftLowerLeg   = new BotMesh( ShooterD3ds.getFaces( aTemp.iLeftLowerLeg       ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.5f  );
-            iRightFoot      = new BotMesh( ShooterD3ds.getFaces( aTemp.iRightFoot          ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
-            iLeftFoot       = new BotMesh( ShooterD3ds.getFaces( aTemp.iLeftFoot           ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
+            this.iHead = new BotMesh( ShooterD3ds.getFaces( aTemp.iHead               ), aAnchor, 0.0f, 1.0f, aParentGameObject, -1.0f );
+            this.iFace = new BotMesh( ShooterD3ds.getFaces( aTemp.iFace               ), aAnchor, 0.0f, 1.0f, aParentGameObject, -1.0f );
+            this.iRightUpperArm = new BotMesh( ShooterD3ds.getFaces( aTemp.iRightUpperArm      ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
+            this.iRightLowerArm = new BotMesh( ShooterD3ds.getFaces( aTemp.iRightLowerArm      ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
+            this.iTorso = new BotMesh( ShooterD3ds.getFaces( aTemp.iTorso              ), aAnchor, 0.0f, 1.0f, aParentGameObject, 1.0f  );
+            this.iNeck = new BotMesh( ShooterD3ds.getFaces( aTemp.iNeck               ), aAnchor, 0.0f, 1.0f, aParentGameObject, -1.0f  );
+            this.iLeftUpperArm = new BotMesh( ShooterD3ds.getFaces( aTemp.iLeftUpperArm       ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
+            this.iLeftLowerArm = new BotMesh( ShooterD3ds.getFaces( aTemp.iLeftLowerArm       ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
+            this.iRightHand = new BotMesh( ShooterD3ds.getFaces( aTemp.iRightHand          ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
+            this.iLeftHand = new BotMesh( ShooterD3ds.getFaces( aTemp.iLeftHand           ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
+            this.iRightUpperLeg = new BotMesh( ShooterD3ds.getFaces( aTemp.iRightUpperLeg      ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.5f  );
+            this.iLeftUpperLeg = new BotMesh( ShooterD3ds.getFaces( aTemp.iLeftUpperLeg       ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.5f  );
+            this.iRightLowerLeg = new BotMesh( ShooterD3ds.getFaces( aTemp.iRightLowerLeg      ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.5f  );
+            this.iLeftLowerLeg = new BotMesh( ShooterD3ds.getFaces( aTemp.iLeftLowerLeg       ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.5f  );
+            this.iRightFoot = new BotMesh( ShooterD3ds.getFaces( aTemp.iRightFoot          ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
+            this.iLeftFoot = new BotMesh( ShooterD3ds.getFaces( aTemp.iLeftFoot           ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
 
             //assign textures for bot meshes
-            iRightUpperLeg.changeTexture(   WallTex.ETest.getTexture(),          ( aTemplate.iTexRightUpperLeg == null ? aTemp.iSkin.getTexture() : aTemplate.iTexRightUpperLeg .getTexture()  )         );
-            iLeftUpperLeg.changeTexture(    WallTex.ETest.getTexture(),          ( aTemplate.iTexLeftUpperLeg  == null ? aTemp.iSkin.getTexture() : aTemplate.iTexLeftUpperLeg  .getTexture()  )         );
-            iRightLowerLeg.changeTexture(   WallTex.ETest.getTexture(),          ( aTemplate.iTexRightLowerLeg == null ? aTemp.iSkin.getTexture() : aTemplate.iTexRightLowerLeg .getTexture()  )         );
-            iLeftLowerLeg.changeTexture(    WallTex.ETest.getTexture(),          ( aTemplate.iTexLeftLowerLeg  == null ? aTemp.iSkin.getTexture() : aTemplate.iTexLeftLowerLeg  .getTexture()  )         );
-            iLeftFoot.changeTexture(        WallTex.ETest.getTexture(),          ( aTemplate.iTexLeftFoot      == null ? aTemp.iSkin.getTexture() : aTemplate.iTexLeftFoot      .getTexture()  )         );
-            iRightFoot.changeTexture(       WallTex.ETest.getTexture(),          ( aTemplate.iTexRightFoot     == null ? aTemp.iSkin.getTexture() : aTemplate.iTexRightFoot     .getTexture()  )         );
-            iLeftUpperArm.changeTexture(    WallTex.ETest.getTexture(),          ( aTemplate.iTexLeftUpperArm  == null ? aTemp.iSkin.getTexture() : aTemplate.iTexLeftUpperArm  .getTexture()  )         );
-            iRightUpperArm.changeTexture(   WallTex.ETest.getTexture(),          ( aTemplate.iTexRightUpperArm == null ? aTemp.iSkin.getTexture() : aTemplate.iTexRightUpperArm .getTexture()  )         );
-            iLeftLowerArm.changeTexture(    WallTex.ETest.getTexture(),          ( aTemplate.iTexLeftLowerArm  == null ? aTemp.iSkin.getTexture() : aTemplate.iTexLeftLowerArm  .getTexture()  )         );
-            iRightLowerArm.changeTexture(   WallTex.ETest.getTexture(),          ( aTemplate.iTexRightLowerArm == null ? aTemp.iSkin.getTexture() : aTemplate.iTexRightLowerArm .getTexture()  )         );
-            iLeftHand.changeTexture(        WallTex.ETest.getTexture(),          ( aTemplate.iTexLeftHand      == null ? aTemp.iSkin.getTexture() : aTemplate.iTexLeftHand      .getTexture()  )         );
-            iRightHand.changeTexture(       WallTex.ETest.getTexture(),          ( aTemplate.iTexRightHand     == null ? aTemp.iSkin.getTexture() : aTemplate.iTexRightHand     .getTexture()  )         );
-            iNeck.changeTexture(            WallTex.ETest.getTexture(),          ( aTemplate.iTexNeck          == null ? aTemp.iSkin.getTexture() : aTemplate.iTexNeck          .getTexture()  )         );
-            iTorso.changeTexture(           WallTex.ETest.getTexture(),          ( aTemplate.iTexTorso    == null ? aTemp.iSkin.getTexture() : aTemplate.iTexTorso    .getTexture()  )         );
+            this.iRightUpperLeg.changeTexture(   WallTex.ETest.getTexture(),          ( aTemplate.iTexRightUpperLeg == null ? aTemp.iSkin.getTexture() : aTemplate.iTexRightUpperLeg .getTexture()  )         );
+            this.iLeftUpperLeg.changeTexture(    WallTex.ETest.getTexture(),          ( aTemplate.iTexLeftUpperLeg  == null ? aTemp.iSkin.getTexture() : aTemplate.iTexLeftUpperLeg  .getTexture()  )         );
+            this.iRightLowerLeg.changeTexture(   WallTex.ETest.getTexture(),          ( aTemplate.iTexRightLowerLeg == null ? aTemp.iSkin.getTexture() : aTemplate.iTexRightLowerLeg .getTexture()  )         );
+            this.iLeftLowerLeg.changeTexture(    WallTex.ETest.getTexture(),          ( aTemplate.iTexLeftLowerLeg  == null ? aTemp.iSkin.getTexture() : aTemplate.iTexLeftLowerLeg  .getTexture()  )         );
+            this.iLeftFoot.changeTexture(        WallTex.ETest.getTexture(),          ( aTemplate.iTexLeftFoot      == null ? aTemp.iSkin.getTexture() : aTemplate.iTexLeftFoot      .getTexture()  )         );
+            this.iRightFoot.changeTexture(       WallTex.ETest.getTexture(),          ( aTemplate.iTexRightFoot     == null ? aTemp.iSkin.getTexture() : aTemplate.iTexRightFoot     .getTexture()  )         );
+            this.iLeftUpperArm.changeTexture(    WallTex.ETest.getTexture(),          ( aTemplate.iTexLeftUpperArm  == null ? aTemp.iSkin.getTexture() : aTemplate.iTexLeftUpperArm  .getTexture()  )         );
+            this.iRightUpperArm.changeTexture(   WallTex.ETest.getTexture(),          ( aTemplate.iTexRightUpperArm == null ? aTemp.iSkin.getTexture() : aTemplate.iTexRightUpperArm .getTexture()  )         );
+            this.iLeftLowerArm.changeTexture(    WallTex.ETest.getTexture(),          ( aTemplate.iTexLeftLowerArm  == null ? aTemp.iSkin.getTexture() : aTemplate.iTexLeftLowerArm  .getTexture()  )         );
+            this.iRightLowerArm.changeTexture(   WallTex.ETest.getTexture(),          ( aTemplate.iTexRightLowerArm == null ? aTemp.iSkin.getTexture() : aTemplate.iTexRightLowerArm .getTexture()  )         );
+            this.iLeftHand.changeTexture(        WallTex.ETest.getTexture(),          ( aTemplate.iTexLeftHand      == null ? aTemp.iSkin.getTexture() : aTemplate.iTexLeftHand      .getTexture()  )         );
+            this.iRightHand.changeTexture(       WallTex.ETest.getTexture(),          ( aTemplate.iTexRightHand     == null ? aTemp.iSkin.getTexture() : aTemplate.iTexRightHand     .getTexture()  )         );
+            this.iNeck.changeTexture(            WallTex.ETest.getTexture(),          ( aTemplate.iTexNeck          == null ? aTemp.iSkin.getTexture() : aTemplate.iTexNeck          .getTexture()  )         );
+            this.iTorso.changeTexture(           WallTex.ETest.getTexture(),          ( aTemplate.iTexTorso    == null ? aTemp.iSkin.getTexture() : aTemplate.iTexTorso    .getTexture()  )         );
 
-            iHead.changeTexture(            BotTex.EHairBlonde.getTexture(),     aTemp.iTexHair.getTexture()                            );
-            iFace.changeTexture(            WallTex.ETest.getTexture(),          aTemp.iTexFaceEyesOpen.getTexture()                    );
+            this.iHead.changeTexture(            BotTex.EHairBlonde.getTexture(),     aTemp.iTexHair.getTexture()                            );
+            this.iFace.changeTexture(            WallTex.ETest.getTexture(),          aTemp.iTexFaceEyesOpen.getTexture()                    );
 
             //assign initial arm position
-            assignArmsPosition( ArmsPosition.ERestInHip             );
-            assignLegsPosition( LegsPosition.EStandSpreadLegged     );
-            assignHeadPosition( HeadPosition.EStill                 );
+            this.assignArmsPosition( ArmsPosition.ERestInHip             );
+            this.assignLegsPosition( LegsPosition.EStandSpreadLegged     );
+            this.assignHeadPosition( HeadPosition.EStill                 );
 
             Vector<Mesh> newMeshes = new Vector<Mesh>();
-            newMeshes.add( iHead            );
-            newMeshes.add( iFace            );
-            newMeshes.add( iRightUpperArm   );
-            newMeshes.add( iRightLowerArm   );
-            newMeshes.add( iRightHand       );
-            newMeshes.add( iLeftUpperArm    );
-            newMeshes.add( iLeftLowerArm    );
-            newMeshes.add( iLeftHand        );
-            newMeshes.add( iTorso           );
-            newMeshes.add( iNeck            );
-            newMeshes.add( iRightUpperLeg   );
-            newMeshes.add( iRightLowerLeg   );
-            newMeshes.add( iLeftLowerLeg    );
-            newMeshes.add( iLeftUpperLeg    );
-            newMeshes.add( iRightFoot       );
-            newMeshes.add( iLeftFoot        );
+            newMeshes.add(this.iHead);
+            newMeshes.add(this.iFace);
+            newMeshes.add(this.iRightUpperArm);
+            newMeshes.add(this.iRightLowerArm);
+            newMeshes.add(this.iRightHand);
+            newMeshes.add(this.iLeftUpperArm);
+            newMeshes.add(this.iLeftLowerArm);
+            newMeshes.add(this.iLeftHand);
+            newMeshes.add(this.iTorso);
+            newMeshes.add(this.iNeck);
+            newMeshes.add(this.iRightUpperLeg);
+            newMeshes.add(this.iRightLowerLeg);
+            newMeshes.add(this.iLeftLowerLeg);
+            newMeshes.add(this.iLeftUpperLeg);
+            newMeshes.add(this.iRightFoot);
+            newMeshes.add(this.iLeftFoot);
 
-            if ( iGlasses           != null ) newMeshes.add( iGlasses           );
-            if ( iHat               != null ) newMeshes.add( iHat               );
-            if ( iEquippedItemLeft  != null ) newMeshes.add( iEquippedItemLeft  );
-            if ( iEquippedItemRight != null ) newMeshes.add( iEquippedItemRight );
+            if (this.iGlasses != null ) newMeshes.add(this.iGlasses);
+            if (this.iHat != null ) newMeshes.add(this.iHat);
+            if (this.iEquippedItemLeft != null ) newMeshes.add(this.iEquippedItemLeft);
+            if (this.iEquippedItemRight != null ) newMeshes.add(this.iEquippedItemRight);
 
-            iMeshes = newMeshes.toArray( new Mesh[] {} );
+            this.iMeshes = newMeshes.toArray( new Mesh[] {} );
 
             //assign items
-            setItem( Arm.ELeft,  itemLeft,  aAnchor, aParentGameObject );
-            setItem( Arm.ERight, itemRight, aAnchor, aParentGameObject );
+            this.setItem( Arm.ELeft,  itemLeft,  aAnchor, aParentGameObject );
+            this.setItem( Arm.ERight, itemRight, aAnchor, aParentGameObject );
         }
 
         public void assignArmsPosition( ArmsPosition newArmsPosition )
         {
-            iCurrentArmsPosition = newArmsPosition;
+            this.iCurrentArmsPosition = newArmsPosition;
             switch ( newArmsPosition )
             {
                 case EPickUpRight:
                 {
-                    assignArmTargets( Arm.ERight, new ArmTarget[] { ArmTarget.EPickUp,    }, false );
+                    this.assignArmTargets( Arm.ERight, new ArmTarget[] { ArmTarget.EPickUp,    }, false );
                     break;
                 }
 
                 case EPickUpLeft:
                 {
-                    assignArmTargets( Arm.ELeft,  new ArmTarget[] { ArmTarget.EPickUp,      }, false );
+                    this.assignArmTargets( Arm.ELeft,  new ArmTarget[] { ArmTarget.EPickUp,      }, false );
                     break;
                 }
 
                 case EBackDownRight:
                 {
-                    assignArmTargets( Arm.ERight, new ArmTarget[] { ArmTarget.EHangDown,    }, false );
+                    this.assignArmTargets( Arm.ERight, new ArmTarget[] { ArmTarget.EHangDown,    }, false );
                     break;
                 }
 
                 case EBackDownLeft:
                 {
-                    assignArmTargets( Arm.ELeft,  new ArmTarget[] { ArmTarget.EHangDown,    }, false );
+                    this.assignArmTargets( Arm.ELeft,  new ArmTarget[] { ArmTarget.EHangDown,    }, false );
                     break;
                 }
 
                 case EDownBoth:
                 {
-                    assignArmTargets( Arm.ELeft,  new ArmTarget[] { ArmTarget.EHangDown,     }, false );
-                    assignArmTargets( Arm.ERight, new ArmTarget[] { ArmTarget.EHangDown,     }, false );
+                    this.assignArmTargets( Arm.ELeft,  new ArmTarget[] { ArmTarget.EHangDown,     }, false );
+                    this.assignArmTargets( Arm.ERight, new ArmTarget[] { ArmTarget.EHangDown,     }, false );
                     break;
                 }
 
                 case EReloadLeftUp:
                 {
-                    assignArmTargets( Arm.ELeft,  new ArmTarget[] { ArmTarget.EReloadPrimaryHandUp,         }, false );
-                    assignArmTargets( Arm.ERight, new ArmTarget[] { ArmTarget.EReloadSecondaryHandUp,       }, false );
+                    this.assignArmTargets( Arm.ELeft,  new ArmTarget[] { ArmTarget.EReloadPrimaryHandUp,         }, false );
+                    this.assignArmTargets( Arm.ERight, new ArmTarget[] { ArmTarget.EReloadSecondaryHandUp,       }, false );
                     break;
                 }
 
                 case EReloadRightUp:
                 {
-                    assignArmTargets( Arm.ELeft,  new ArmTarget[] { ArmTarget.EReloadSecondaryHandUp,       }, false );
-                    assignArmTargets( Arm.ERight, new ArmTarget[] { ArmTarget.EReloadPrimaryHandUp,         }, false );
+                    this.assignArmTargets( Arm.ELeft,  new ArmTarget[] { ArmTarget.EReloadSecondaryHandUp,       }, false );
+                    this.assignArmTargets( Arm.ERight, new ArmTarget[] { ArmTarget.EReloadPrimaryHandUp,         }, false );
                     break;
                 }
 
                 case EReloadLeftDown:
                 {
-                    assignArmTargets( Arm.ELeft,  new ArmTarget[] { ArmTarget.EReloadPrimaryHandDown,       }, false );
-                    assignArmTargets( Arm.ERight, new ArmTarget[] { ArmTarget.EReloadSecondaryHandDown,     }, false );
+                    this.assignArmTargets( Arm.ELeft,  new ArmTarget[] { ArmTarget.EReloadPrimaryHandDown,       }, false );
+                    this.assignArmTargets( Arm.ERight, new ArmTarget[] { ArmTarget.EReloadSecondaryHandDown,     }, false );
                     break;
                 }
 
                 case EReloadRightDown:
                 {
-                    assignArmTargets( Arm.ELeft,  new ArmTarget[] { ArmTarget.EReloadSecondaryHandDown,     }, false );
-                    assignArmTargets( Arm.ERight, new ArmTarget[] { ArmTarget.EReloadPrimaryHandDown,       }, false );
+                    this.assignArmTargets( Arm.ELeft,  new ArmTarget[] { ArmTarget.EReloadSecondaryHandDown,     }, false );
+                    this.assignArmTargets( Arm.ERight, new ArmTarget[] { ArmTarget.EReloadPrimaryHandDown,       }, false );
                     break;
                 }
 
                 case ETest1:
                 {
-                    assignArmTargets( Arm.ELeft,  new ArmTarget[] { ArmTarget.EPointToSide,  }, false );
-                    assignArmTargets( Arm.ERight, new ArmTarget[] { ArmTarget.EPointToSide,  }, false );
+                    this.assignArmTargets( Arm.ELeft,  new ArmTarget[] { ArmTarget.EPointToSide,  }, false );
+                    this.assignArmTargets( Arm.ERight, new ArmTarget[] { ArmTarget.EPointToSide,  }, false );
                     break;
                 }
 
                 case EWalk:
                 {
-                    assignArmTargets( Arm.ELeft,  new ArmTarget[] { ArmTarget.EWalk1, ArmTarget.EWalk2, }, true );
-                    assignArmTargets( Arm.ERight, new ArmTarget[] { ArmTarget.EWalk2, ArmTarget.EWalk1, }, true );
+                    this.assignArmTargets( Arm.ELeft,  new ArmTarget[] { ArmTarget.EWalk1, ArmTarget.EWalk2, }, true );
+                    this.assignArmTargets( Arm.ERight, new ArmTarget[] { ArmTarget.EWalk2, ArmTarget.EWalk1, }, true );
                     break;
                 }
 
                 case ERestInHip:
                 {
-                    assignArmTargets( Arm.ELeft,  new ArmTarget[] { ArmTarget.ERestInHip, }, false );
-                    assignArmTargets( Arm.ERight, new ArmTarget[] { ArmTarget.ERestInHip, }, false );
+                    this.assignArmTargets( Arm.ELeft,  new ArmTarget[] { ArmTarget.ERestInHip, }, false );
+                    this.assignArmTargets( Arm.ERight, new ArmTarget[] { ArmTarget.ERestInHip, }, false );
                     break;
                 }
 
                 case EAimHighRight:
                 {
-                    assignArmTargets( Arm.ELeft,  new ArmTarget[] { ArmTarget.EHangDown,  }, false );
-                    assignArmTargets( Arm.ERight, new ArmTarget[] { ArmTarget.EAimHigh,   }, false );
+                    this.assignArmTargets( Arm.ELeft,  new ArmTarget[] { ArmTarget.EHangDown,  }, false );
+                    this.assignArmTargets( Arm.ERight, new ArmTarget[] { ArmTarget.EAimHigh,   }, false );
                     break;
                 }
 
                 case EAimHighLeft:
                 {
-                    assignArmTargets( Arm.ELeft,  new ArmTarget[] { ArmTarget.EAimHigh,  }, false );
-                    assignArmTargets( Arm.ERight, new ArmTarget[] { ArmTarget.EHangDown,     }, false );
+                    this.assignArmTargets( Arm.ELeft,  new ArmTarget[] { ArmTarget.EAimHigh,  }, false );
+                    this.assignArmTargets( Arm.ERight, new ArmTarget[] { ArmTarget.EHangDown,     }, false );
                     break;
                 }
 
                 case EAimHighBoth:
                 {
-                    assignArmTargets( Arm.ELeft,  new ArmTarget[] { ArmTarget.EAimHigh,  }, false );
-                    assignArmTargets( Arm.ERight, new ArmTarget[] { ArmTarget.EAimHigh,  }, false );
+                    this.assignArmTargets( Arm.ELeft,  new ArmTarget[] { ArmTarget.EAimHigh,  }, false );
+                    this.assignArmTargets( Arm.ERight, new ArmTarget[] { ArmTarget.EAimHigh,  }, false );
                     break;
                 }
             }
@@ -393,34 +393,34 @@
 
         public boolean isAssignedArmsPosition( ArmsPosition toCheck )
         {
-            return ( iCurrentArmsPosition == toCheck );
+            return (this.iCurrentArmsPosition == toCheck );
         }
 
         public boolean isAssignedLegsPosition( LegsPosition toCheck )
         {
-            return ( iCurrentLegsPosition == toCheck );
+            return (this.iCurrentLegsPosition == toCheck );
         }
 
         private void assignArmTargets( Arm arm, ArmTarget[] newArmTargets, boolean repeat )
         {
-            limbsStandStill = false;
+            this.limbsStandStill = false;
 
             //reset current arm targets
             switch ( arm )
             {
                 case ELeft:
                 {
-                    currentTargetPitchLeftArm     = 0;
-                    repeatTargetPitchesLeftArm    = repeat;
-                    completedTargetPitchesLeftArm = false;
+                    this.currentTargetPitchLeftArm = 0;
+                    this.repeatTargetPitchesLeftArm = repeat;
+                    this.completedTargetPitchesLeftArm = false;
                     break;
                 }
 
                 case ERight:
                 {
-                    currentTargetPitchRightArm      = 0;
-                    repeatTargetPitchesRightArm     = repeat;
-                    completedTargetPitchesRightArm  = false;
+                    this.currentTargetPitchRightArm = 0;
+                    this.repeatTargetPitchesRightArm = repeat;
+                    this.completedTargetPitchesRightArm = false;
                     break;
                 }
             }
@@ -431,9 +431,9 @@
 
             for ( int i = 0; i < newArmTargets.length; ++i )
             {
-                upperArmPitch[ i ] = getNewArmPosition( arm, newArmTargets[ i ] )[ 0 ];
-                lowerArmPitch[ i ] = getNewArmPosition( arm, newArmTargets[ i ] )[ 1 ];
-                handPitch[     i ] = getNewArmPosition( arm, newArmTargets[ i ] )[ 2 ];
+                upperArmPitch[ i ] = this.getNewArmPosition( arm, newArmTargets[ i ] )[ 0 ];
+                lowerArmPitch[ i ] = this.getNewArmPosition( arm, newArmTargets[ i ] )[ 1 ];
+                handPitch[     i ] = this.getNewArmPosition( arm, newArmTargets[ i ] )[ 2 ];
             }
 
             //assign to specified arm
@@ -441,22 +441,22 @@
             {
                 case ELeft:
                 {
-                    iLeftUpperArm.setTargetPitchs(   upperArmPitch );
-                    iLeftLowerArm.setTargetPitchs(   lowerArmPitch );
-                    iLeftHand.setTargetPitchs(       handPitch );
+                    this.iLeftUpperArm.setTargetPitchs(   upperArmPitch );
+                    this.iLeftLowerArm.setTargetPitchs(   lowerArmPitch );
+                    this.iLeftHand.setTargetPitchs(       handPitch );
 
-                    if ( iEquippedItemLeft != null ) iEquippedItemLeft.setTargetPitchs(   handPitch );
+                    if (this.iEquippedItemLeft != null ) this.iEquippedItemLeft.setTargetPitchs(   handPitch );
 
                     break;
                 }
 
                 case ERight:
                 {
-                    iRightUpperArm.setTargetPitchs(  upperArmPitch );
-                    iRightLowerArm.setTargetPitchs(  lowerArmPitch );
-                    iRightHand.setTargetPitchs(      handPitch );
+                    this.iRightUpperArm.setTargetPitchs(  upperArmPitch );
+                    this.iRightLowerArm.setTargetPitchs(  lowerArmPitch );
+                    this.iRightHand.setTargetPitchs(      handPitch );
 
-                    if ( iEquippedItemRight != null ) iEquippedItemRight.setTargetPitchs(  handPitch );
+                    if (this.iEquippedItemRight != null ) this.iEquippedItemRight.setTargetPitchs(  handPitch );
 
                     break;
                 }
@@ -628,54 +628,54 @@
 
         public void assignLegsPosition( LegsPosition newLegsPosition )
         {
-            iCurrentLegsPosition = newLegsPosition;
+            this.iCurrentLegsPosition = newLegsPosition;
 
             //reset current leg targets
-            currentTargetPitchLeftLeg   = 0;
-            currentTargetPitchRightLeg  = 0;
+            this.currentTargetPitchLeftLeg = 0;
+            this.currentTargetPitchRightLeg = 0;
 
             //reset current leg target if the position has changed
             switch ( newLegsPosition )
             {
                 case EWalk:
                 {
-                    assignLegTargets( Leg.ELeft,   new LegTarget[] { LegTarget.EWalk1, LegTarget.EWalk2,   }   );
-                    assignLegTargets( Leg.ERight,  new LegTarget[] { LegTarget.EWalk2, LegTarget.EWalk1,   }   );
+                    this.assignLegTargets( Leg.ELeft,   new LegTarget[] { LegTarget.EWalk1, LegTarget.EWalk2,   }   );
+                    this.assignLegTargets( Leg.ERight,  new LegTarget[] { LegTarget.EWalk2, LegTarget.EWalk1,   }   );
                     break;
                 }
 
                 case EStandSpreadLegged:
                 {
-                    assignLegTargets( Leg.ELeft,   new LegTarget[] { LegTarget.EStandingSpreadLegged, }   );
-                    assignLegTargets( Leg.ERight,  new LegTarget[] { LegTarget.EStandingSpreadLegged, }   );
+                    this.assignLegTargets( Leg.ELeft,   new LegTarget[] { LegTarget.EStandingSpreadLegged, }   );
+                    this.assignLegTargets( Leg.ERight,  new LegTarget[] { LegTarget.EStandingSpreadLegged, }   );
                     break;
                 }
 
                 case EKickRight:
                 {
-                    assignLegTargets( Leg.ELeft,   new LegTarget[] { LegTarget.EStandingSpreadLegged,   }   );
-                    assignLegTargets( Leg.ERight,  new LegTarget[] { LegTarget.EKicking,                }   );
+                    this.assignLegTargets( Leg.ELeft,   new LegTarget[] { LegTarget.EStandingSpreadLegged,   }   );
+                    this.assignLegTargets( Leg.ERight,  new LegTarget[] { LegTarget.EKicking,                }   );
                     break;
                 }
 
                 case EKickLeft:
                 {
-                    assignLegTargets( Leg.ELeft,   new LegTarget[] { LegTarget.EKicking,                }   );
-                    assignLegTargets( Leg.ERight,  new LegTarget[] { LegTarget.EStandingSpreadLegged,   }   );
+                    this.assignLegTargets( Leg.ELeft,   new LegTarget[] { LegTarget.EKicking,                }   );
+                    this.assignLegTargets( Leg.ERight,  new LegTarget[] { LegTarget.EStandingSpreadLegged,   }   );
                     break;
                 }
 
                 case EKickRightHigh:
                 {
-                    assignLegTargets( Leg.ELeft,   new LegTarget[] { LegTarget.EKickingHigh,            }   );
-                    assignLegTargets( Leg.ERight,  new LegTarget[] { LegTarget.EStandingSpreadLegged,   }   );
+                    this.assignLegTargets( Leg.ELeft,   new LegTarget[] { LegTarget.EKickingHigh,            }   );
+                    this.assignLegTargets( Leg.ERight,  new LegTarget[] { LegTarget.EStandingSpreadLegged,   }   );
                     break;
                 }
 
                 case EKickLeftHigh:
                 {
-                    assignLegTargets( Leg.ELeft,   new LegTarget[] { LegTarget.EStandingSpreadLegged,   }   );
-                    assignLegTargets( Leg.ERight,  new LegTarget[] { LegTarget.EKickingHigh,                }   );
+                    this.assignLegTargets( Leg.ELeft,   new LegTarget[] { LegTarget.EStandingSpreadLegged,   }   );
+                    this.assignLegTargets( Leg.ERight,  new LegTarget[] { LegTarget.EKickingHigh,                }   );
                     break;
                 }
             }
@@ -683,11 +683,11 @@
 
         private void assignLegTargets( Leg leg, LegTarget[] newLegTargets )
         {
-            limbsStandStill = false;
+            this.limbsStandStill = false;
 
             //reset current leg targets
-            currentTargetPitchLeftLeg   = 0;
-            currentTargetPitchRightLeg  = 0;
+            this.currentTargetPitchLeftLeg = 0;
+            this.currentTargetPitchRightLeg = 0;
 
             Rotation[] upperLegPitch      = new Rotation[ newLegTargets.length ];
             Rotation[] lowerLegPitch      = new Rotation[ newLegTargets.length ];
@@ -695,9 +695,9 @@
 
             for ( int i = 0; i < newLegTargets.length; ++i )
             {
-                upperLegPitch[ i ] = getNewLegPosition( leg, newLegTargets[ i ] )[ 0 ];
-                lowerLegPitch[ i ] = getNewLegPosition( leg, newLegTargets[ i ] )[ 1 ];
-                footPitch[     i ] = getNewLegPosition( leg, newLegTargets[ i ] )[ 2 ];
+                upperLegPitch[ i ] = this.getNewLegPosition( leg, newLegTargets[ i ] )[ 0 ];
+                lowerLegPitch[ i ] = this.getNewLegPosition( leg, newLegTargets[ i ] )[ 1 ];
+                footPitch[     i ] = this.getNewLegPosition( leg, newLegTargets[ i ] )[ 2 ];
             }
 
             //assign to specified leg
@@ -707,17 +707,17 @@
                 {
                     //flip y axis for left leg!
 
-                    iLeftUpperLeg.setTargetPitchs(   upperLegPitch );
-                    iLeftLowerLeg.setTargetPitchs(   lowerLegPitch );
-                    iLeftFoot.setTargetPitchs(       footPitch );
+                    this.iLeftUpperLeg.setTargetPitchs(   upperLegPitch );
+                    this.iLeftLowerLeg.setTargetPitchs(   lowerLegPitch );
+                    this.iLeftFoot.setTargetPitchs(       footPitch );
                     break;
                 }
 
                 case ERight:
                 {
-                    iRightUpperLeg.setTargetPitchs(  upperLegPitch );
-                    iRightLowerLeg.setTargetPitchs(  lowerLegPitch );
-                    iRightFoot.setTargetPitchs(      footPitch );
+                    this.iRightUpperLeg.setTargetPitchs(  upperLegPitch );
+                    this.iRightLowerLeg.setTargetPitchs(  lowerLegPitch );
+                    this.iRightFoot.setTargetPitchs(      footPitch );
 
                     break;
                 }
@@ -726,24 +726,24 @@
 
         public void assignHeadPosition( HeadPosition newHeadPosition )
         {
-            iCurrentHeadPosition = newHeadPosition;
-            switch ( iCurrentHeadPosition )
+            this.iCurrentHeadPosition = newHeadPosition;
+            switch (this.iCurrentHeadPosition)
             {
                 case EStill:
                 {
-                    assignHeadTargets( new HeadTarget[] { HeadTarget.EDefault, }, false );
+                    this.assignHeadTargets( new HeadTarget[] { HeadTarget.EDefault, }, false );
                     break;
                 }
 
                 case ENodOnce:
                 {
-                    assignHeadTargets( new HeadTarget[] { HeadTarget.EDefault, HeadTarget.EAcceptDown, HeadTarget.EDefault, }, false );
+                    this.assignHeadTargets( new HeadTarget[] { HeadTarget.EDefault, HeadTarget.EAcceptDown, HeadTarget.EDefault, }, false );
                     break;
                 }
 
                 case ENodTwice:
                 {
-                    assignHeadTargets( new HeadTarget[] { HeadTarget.EDefault, HeadTarget.EAcceptDown, HeadTarget.EDefault, HeadTarget.EAcceptDown, HeadTarget.EDefault, }, false );
+                    this.assignHeadTargets( new HeadTarget[] { HeadTarget.EDefault, HeadTarget.EAcceptDown, HeadTarget.EDefault, HeadTarget.EAcceptDown, HeadTarget.EDefault, }, false );
                     break;
                 }
             }
@@ -751,30 +751,30 @@
 
         public boolean isAssignedHeadPosition( HeadPosition toCheck )
         {
-            return ( iCurrentHeadPosition == toCheck );
+            return (this.iCurrentHeadPosition == toCheck );
         }
 
         private void assignHeadTargets( HeadTarget[] newHeadTargets, boolean repeat )
         {
-            limbsStandStill = false;
+            this.limbsStandStill = false;
 
             //reset current head targets
-            currentTargetPitchHead      = 0;
-            repeatTargetPitchesHead     = repeat;
-            completedTargetPitchesHead  = false;
+            this.currentTargetPitchHead = 0;
+            this.repeatTargetPitchesHead = repeat;
+            this.completedTargetPitchesHead = false;
 
             Rotation[] headPitch        = new Rotation[ newHeadTargets.length ];
 
             for ( int i = 0; i < newHeadTargets.length; ++i )
             {
-                headPitch[     i ] = getNewHeadPosition( newHeadTargets[ i ] );
+                headPitch[     i ] = this.getNewHeadPosition( newHeadTargets[ i ] );
             }
 
-            iHead.setTargetPitchs(      headPitch );
-            iFace.setTargetPitchs(      headPitch );
+            this.iHead.setTargetPitchs(      headPitch );
+            this.iFace.setTargetPitchs(      headPitch );
 
-            if ( iHat     != null ) iHat.setTargetPitchs(       headPitch );
-            if ( iGlasses != null ) iGlasses.setTargetPitchs(   headPitch );
+            if (this.iHat != null ) this.iHat.setTargetPitchs(       headPitch );
+            if (this.iGlasses != null ) this.iGlasses.setTargetPitchs(   headPitch );
         }
 
         private Rotation[] getNewLegPosition(Leg leg, LegTarget newLegPosition )
@@ -882,36 +882,36 @@
         {
             boolean dying = ( dyingAngle != 0.0f );
 
-            if ( !limbsStandStill || dying || equipmentChanged || playerMoved )
+            if ( !this.limbsStandStill || dying || this.equipmentChanged || playerMoved )
             {
                 //ShooterDebug.bot.out( "performance-intensive setTargetPitches .." );
 
                 //cache the bot!
-                limbsStandStill = setTargetPitches();
+                this.limbsStandStill = this.setTargetPitches();
             }
 
             //set target pitches
-            if ( !limbsStandStill || faceAngleChanged || dying || equipmentChanged || playerMoved )
+            if ( !this.limbsStandStill || faceAngleChanged || dying || this.equipmentChanged || playerMoved )
             {
                 //ShooterDebug.bot.out( "performance-intensive transformAllLimbs .." );
 
                 //perform transformations on limbs - this costs lots of performance :(
-                transformAllLimbs();
+                this.transformAllLimbs();
             }
 
             //turn all faces x around bot's anchor
             if ( dying )
             {
-                turnAllLimbsX( getAnchor(), dyingAngle );
+                this.turnAllLimbsX(this.getAnchor(), dyingAngle );
             }
 
             //turn all faces around bot's anchor
-            if ( !limbsStandStill || faceAngleChanged || dying || equipmentChanged || playerMoved )
+            if ( !this.limbsStandStill || faceAngleChanged || dying || this.equipmentChanged || playerMoved )
             {
-                if ( facingAngle != 0.0f ) turnAllLimbsZ( getAnchor(), facingAngle );
+                if ( facingAngle != 0.0f ) this.turnAllLimbsZ(this.getAnchor(), facingAngle );
             }
 
-            equipmentChanged = false;
+            this.equipmentChanged = false;
         }
 
         private boolean setTargetPitches()
@@ -919,42 +919,42 @@
             boolean noLimbMoved = true;
 
             //head
-            boolean h = iHead.reachToTargetPitch(       currentTargetPitchHead );
-                        iFace.reachToTargetPitch(       currentTargetPitchHead );
-                        if ( iHat     != null ) iHat.reachToTargetPitch(        currentTargetPitchHead );
-                        if ( iGlasses != null ) iGlasses.reachToTargetPitch(    currentTargetPitchHead );
+            boolean h = this.iHead.reachToTargetPitch(this.currentTargetPitchHead);
+            this.iFace.reachToTargetPitch(this.currentTargetPitchHead);
+                        if (this.iHat != null ) this.iHat.reachToTargetPitch(this.currentTargetPitchHead);
+                        if (this.iGlasses != null ) this.iGlasses.reachToTargetPitch(this.currentTargetPitchHead);
 
             //check if all limbs of the head reached finish
             if ( h )
             {
-                if ( iHead.iTargetPitch.size() > 1 )
+                if (this.iHead.iTargetPitch.size() > 1 )
                 {
                     //repeat ?
-                    if ( repeatTargetPitchesHead )
+                    if (this.repeatTargetPitchesHead)
                     {
                         noLimbMoved = false;
-                        ++currentTargetPitchHead;
-                        if ( currentTargetPitchHead >= iHead.iTargetPitch.size() )
+                        ++this.currentTargetPitchHead;
+                        if (this.currentTargetPitchHead >= this.iHead.iTargetPitch.size() )
                         {
-                            currentTargetPitchHead = 0;
+                            this.currentTargetPitchHead = 0;
                         }
                     }
                     else
                     {
-                        if ( currentTargetPitchHead < iHead.iTargetPitch.size() - 1 )
+                        if (this.currentTargetPitchHead < this.iHead.iTargetPitch.size() - 1 )
                         {
                             noLimbMoved = false;
-                            ++currentTargetPitchHead;
+                            ++this.currentTargetPitchHead;
                         }
                         else
                         {
-                            completedTargetPitchesHead = true;
+                            this.completedTargetPitchesHead = true;
                         }
                     }
                 }
                 else
                 {
-                    completedTargetPitchesHead = true;
+                    this.completedTargetPitchesHead = true;
                 }
             }
             else
@@ -963,40 +963,40 @@
             }
 
             //right arm
-            boolean ra1 = iRightUpperArm.reachToTargetPitch( currentTargetPitchRightArm );
-            boolean ra2 = iRightLowerArm.reachToTargetPitch( currentTargetPitchRightArm );
-            boolean ra3 = iRightHand.reachToTargetPitch(     currentTargetPitchRightArm );
-                          if ( iEquippedItemRight != null ) iEquippedItemRight.reachToTargetPitch(  currentTargetPitchRightArm );
+            boolean ra1 = this.iRightUpperArm.reachToTargetPitch(this.currentTargetPitchRightArm);
+            boolean ra2 = this.iRightLowerArm.reachToTargetPitch(this.currentTargetPitchRightArm);
+            boolean ra3 = this.iRightHand.reachToTargetPitch(this.currentTargetPitchRightArm);
+                          if (this.iEquippedItemRight != null ) this.iEquippedItemRight.reachToTargetPitch(this.currentTargetPitchRightArm);
             //check if all limbs of the left arm reached finish
             if ( ra1 & ra2 & ra3 )
             {
-                if ( iRightUpperArm.iTargetPitch.size() > 1 )
+                if (this.iRightUpperArm.iTargetPitch.size() > 1 )
                 {
-                    if ( repeatTargetPitchesRightArm )
+                    if (this.repeatTargetPitchesRightArm)
                     {
                         noLimbMoved = false;
-                        ++currentTargetPitchRightArm;
-                        if ( currentTargetPitchRightArm >= iRightUpperArm.iTargetPitch.size() )
+                        ++this.currentTargetPitchRightArm;
+                        if (this.currentTargetPitchRightArm >= this.iRightUpperArm.iTargetPitch.size() )
                         {
-                            currentTargetPitchRightArm = 0;
+                            this.currentTargetPitchRightArm = 0;
                         }
                     }
                     else
                     {
-                        if ( currentTargetPitchRightArm < iRightUpperArm.iTargetPitch.size() - 1 )
+                        if (this.currentTargetPitchRightArm < this.iRightUpperArm.iTargetPitch.size() - 1 )
                         {
                             noLimbMoved = false;
-                            ++currentTargetPitchRightArm;
+                            ++this.currentTargetPitchRightArm;
                         }
                         else
                         {
-                            completedTargetPitchesRightArm = true;
+                            this.completedTargetPitchesRightArm = true;
                         }
                     }
                 }
                 else
                 {
-                    completedTargetPitchesRightArm = true;
+                    this.completedTargetPitchesRightArm = true;
                 }
             }
             else
@@ -1005,40 +1005,40 @@
             }
 
             //left arm
-            boolean la1 = iLeftUpperArm.reachToTargetPitch( currentTargetPitchLeftArm );
-            boolean la2 = iLeftLowerArm.reachToTargetPitch( currentTargetPitchLeftArm );
-            boolean la3 = iLeftHand.reachToTargetPitch(     currentTargetPitchLeftArm );
-                          if ( iEquippedItemLeft != null ) iEquippedItemLeft.reachToTargetPitch(  currentTargetPitchLeftArm );
+            boolean la1 = this.iLeftUpperArm.reachToTargetPitch(this.currentTargetPitchLeftArm);
+            boolean la2 = this.iLeftLowerArm.reachToTargetPitch(this.currentTargetPitchLeftArm);
+            boolean la3 = this.iLeftHand.reachToTargetPitch(this.currentTargetPitchLeftArm);
+                          if (this.iEquippedItemLeft != null ) this.iEquippedItemLeft.reachToTargetPitch(this.currentTargetPitchLeftArm);
             //check if all limbs of the left arm reached finish
             if ( la1 & la2 & la3 )
             {
-                if ( iLeftUpperArm.iTargetPitch.size() > 1 )
+                if (this.iLeftUpperArm.iTargetPitch.size() > 1 )
                 {
-                    if ( repeatTargetPitchesLeftArm )
+                    if (this.repeatTargetPitchesLeftArm)
                     {
                         noLimbMoved = false;
-                        ++currentTargetPitchLeftArm;
-                        if ( currentTargetPitchLeftArm >= iLeftUpperArm.iTargetPitch.size() )
+                        ++this.currentTargetPitchLeftArm;
+                        if (this.currentTargetPitchLeftArm >= this.iLeftUpperArm.iTargetPitch.size() )
                         {
-                            currentTargetPitchLeftArm = 0;
+                            this.currentTargetPitchLeftArm = 0;
                         }
                     }
                     else
                     {
-                        if ( currentTargetPitchLeftArm < iLeftUpperArm.iTargetPitch.size() - 1 )
+                        if (this.currentTargetPitchLeftArm < this.iLeftUpperArm.iTargetPitch.size() - 1 )
                         {
                             noLimbMoved = false;
-                            ++currentTargetPitchLeftArm;
+                            ++this.currentTargetPitchLeftArm;
                         }
                         else
                         {
-                            completedTargetPitchesLeftArm = true;
+                            this.completedTargetPitchesLeftArm = true;
                         }
                     }
                 }
                 else
                 {
-                    completedTargetPitchesLeftArm = true;
+                    this.completedTargetPitchesLeftArm = true;
                 }
             }
             else
@@ -1047,18 +1047,19 @@
             }
 
             //right leg
-            boolean rl1 = iRightUpperLeg.reachToTargetPitch( currentTargetPitchRightLeg );
-            boolean rl2 = iRightLowerLeg.reachToTargetPitch( currentTargetPitchRightLeg );
-            boolean rl3 = iRightFoot.reachToTargetPitch(     currentTargetPitchRightLeg );
+            boolean rl1 = this.iRightUpperLeg.reachToTargetPitch(this.currentTargetPitchRightLeg);
+            boolean rl2 = this.iRightLowerLeg.reachToTargetPitch(this.currentTargetPitchRightLeg);
+            boolean rl3 = this.iRightFoot.reachToTargetPitch(this.currentTargetPitchRightLeg);
             //check if all limbs of the right leg reached finish
             if ( rl1 & rl2 & rl3 )
             {
-                if ( iRightUpperLeg.iTargetPitch.size() > 1 )
+                if (this.iRightUpperLeg.iTargetPitch.size() > 1 )
                 {
                     noLimbMoved = false;
 
-                    ++currentTargetPitchRightLeg;
-                    if ( currentTargetPitchRightLeg >= iRightUpperLeg.iTargetPitch.size() ) currentTargetPitchRightLeg = 0;
+                    ++this.currentTargetPitchRightLeg;
+                    if (this.currentTargetPitchRightLeg >= this.iRightUpperLeg.iTargetPitch.size() )
+                        this.currentTargetPitchRightLeg = 0;
                 }
             }
             else
@@ -1067,18 +1068,18 @@
             }
 
             //left leg
-            boolean ll1 = iLeftUpperLeg.reachToTargetPitch( currentTargetPitchLeftLeg );
-            boolean ll2 = iLeftLowerLeg.reachToTargetPitch( currentTargetPitchLeftLeg );
-            boolean ll3 = iLeftFoot.reachToTargetPitch(     currentTargetPitchLeftLeg );
+            boolean ll1 = this.iLeftUpperLeg.reachToTargetPitch(this.currentTargetPitchLeftLeg);
+            boolean ll2 = this.iLeftLowerLeg.reachToTargetPitch(this.currentTargetPitchLeftLeg);
+            boolean ll3 = this.iLeftFoot.reachToTargetPitch(this.currentTargetPitchLeftLeg);
             //check if all limbs of the left leg reached finish
             if ( ll1 & ll2 & ll3 )
             {
-                if ( iLeftUpperLeg.iTargetPitch.size() > 1 )
+                if (this.iLeftUpperLeg.iTargetPitch.size() > 1 )
                 {
                     noLimbMoved = false;
 
-                    ++currentTargetPitchLeftLeg;
-                    if ( currentTargetPitchLeftLeg >= iLeftUpperLeg.iTargetPitch.size() ) currentTargetPitchLeftLeg = 0;
+                    ++this.currentTargetPitchLeftLeg;
+                    if (this.currentTargetPitchLeftLeg >= this.iLeftUpperLeg.iTargetPitch.size() ) this.currentTargetPitchLeftLeg = 0;
                 }
             }
             else
@@ -1094,83 +1095,83 @@
         private void transformAllLimbs()
         {
             //transform head
-            iHead.translateAndRotateLimb(                               BotMeshes.OFFSET_ABSOLUTE_HEAD                                                                          );
-            iFace.translateAndRotateLimb(                               BotMeshes.OFFSET_ABSOLUTE_HEAD                                                                          );
-            if ( iHat     != null ) iHat.translateAndRotateLimb(        BotMeshes.OFFSET_ABSOLUTE_HEAD                                                                          );
-            if ( iGlasses != null ) iGlasses.translateAndRotateLimb(    BotMeshes.OFFSET_ABSOLUTE_HEAD                                                                          );
+            this.iHead.translateAndRotateLimb(                               BotMeshes.OFFSET_ABSOLUTE_HEAD                                                                          );
+            this.iFace.translateAndRotateLimb(                               BotMeshes.OFFSET_ABSOLUTE_HEAD                                                                          );
+            if (this.iHat != null ) this.iHat.translateAndRotateLimb(        BotMeshes.OFFSET_ABSOLUTE_HEAD                                                                          );
+            if (this.iGlasses != null ) this.iGlasses.translateAndRotateLimb(    BotMeshes.OFFSET_ABSOLUTE_HEAD                                                                          );
 
             //right arm
-            LibVertex rightUpperArmAnk = iRightUpperArm.translateLimb(            BotMeshes.OFFSET_ABSOLUTE_RIGHT_UPPER_ARM );
-            LibVertex rightLowerArmAnk = iRightLowerArm.translateLimb(            BotMeshes.OFFSET_ABSOLUTE_RIGHT_LOWER_ARM );
-            LibVertex rightHandArmAnk  = iRightHand.translateLimb(                BotMeshes.OFFSET_ABSOLUTE_RIGHT_HAND      );
-            if ( iEquippedItemRight != null ) iEquippedItemRight.translateLimb(   BotMeshes.OFFSET_ABSOLUTE_RIGHT_HAND      );
-            iRightUpperArm.rotateAroundAnchor( rightUpperArmAnk, iRightUpperArm.iPitch );
-            iRightLowerArm.rotateAroundAnchor( rightUpperArmAnk, iRightUpperArm.iPitch );
-            iRightHand.rotateAroundAnchor(     rightUpperArmAnk, iRightUpperArm.iPitch );
-            if ( iEquippedItemRight != null ) iEquippedItemRight.rotateAroundAnchor(     rightUpperArmAnk, iRightUpperArm.iPitch );
-            rightLowerArmAnk.rotateXYZ( iRightUpperArm.iPitch.x, iRightUpperArm.iPitch.y, iRightUpperArm.iPitch.z, rightUpperArmAnk );
-            rightHandArmAnk.rotateXYZ(  iRightUpperArm.iPitch.x, iRightUpperArm.iPitch.y, iRightUpperArm.iPitch.z, rightUpperArmAnk );
-            iRightLowerArm.rotateAroundAnchor( rightLowerArmAnk, iRightLowerArm.iPitch );
-            iRightHand.rotateAroundAnchor(     rightLowerArmAnk, iRightLowerArm.iPitch );
-            if ( iEquippedItemRight != null ) iEquippedItemRight.rotateAroundAnchor(     rightLowerArmAnk, iRightLowerArm.iPitch );
-            rightHandArmAnk.rotateXYZ(  iRightLowerArm.iPitch.x, iRightLowerArm.iPitch.y, iRightLowerArm.iPitch.z, rightLowerArmAnk );
-            iRightHand.rotateAroundAnchor(     rightHandArmAnk, iRightHand.iPitch );
-            if ( iEquippedItemRight != null ) iEquippedItemRight.rotateAroundAnchor(     rightHandArmAnk, iRightHand.iPitch );
+            LibVertex rightUpperArmAnk = this.iRightUpperArm.translateLimb(            BotMeshes.OFFSET_ABSOLUTE_RIGHT_UPPER_ARM );
+            LibVertex rightLowerArmAnk = this.iRightLowerArm.translateLimb(            BotMeshes.OFFSET_ABSOLUTE_RIGHT_LOWER_ARM );
+            LibVertex rightHandArmAnk  = this.iRightHand.translateLimb(                BotMeshes.OFFSET_ABSOLUTE_RIGHT_HAND      );
+            if (this.iEquippedItemRight != null ) this.iEquippedItemRight.translateLimb(   BotMeshes.OFFSET_ABSOLUTE_RIGHT_HAND      );
+            this.iRightUpperArm.rotateAroundAnchor( rightUpperArmAnk, this.iRightUpperArm.iPitch );
+            this.iRightLowerArm.rotateAroundAnchor( rightUpperArmAnk, this.iRightUpperArm.iPitch );
+            this.iRightHand.rotateAroundAnchor(     rightUpperArmAnk, this.iRightUpperArm.iPitch );
+            if (this.iEquippedItemRight != null ) this.iEquippedItemRight.rotateAroundAnchor(     rightUpperArmAnk, this.iRightUpperArm.iPitch );
+            rightLowerArmAnk.rotateXYZ(this.iRightUpperArm.iPitch.x, this.iRightUpperArm.iPitch.y, this.iRightUpperArm.iPitch.z, rightUpperArmAnk );
+            rightHandArmAnk.rotateXYZ(this.iRightUpperArm.iPitch.x, this.iRightUpperArm.iPitch.y, this.iRightUpperArm.iPitch.z, rightUpperArmAnk );
+            this.iRightLowerArm.rotateAroundAnchor( rightLowerArmAnk, this.iRightLowerArm.iPitch );
+            this.iRightHand.rotateAroundAnchor(     rightLowerArmAnk, this.iRightLowerArm.iPitch );
+            if (this.iEquippedItemRight != null ) this.iEquippedItemRight.rotateAroundAnchor(     rightLowerArmAnk, this.iRightLowerArm.iPitch );
+            rightHandArmAnk.rotateXYZ(this.iRightLowerArm.iPitch.x, this.iRightLowerArm.iPitch.y, this.iRightLowerArm.iPitch.z, rightLowerArmAnk );
+            this.iRightHand.rotateAroundAnchor(     rightHandArmAnk, this.iRightHand.iPitch );
+            if (this.iEquippedItemRight != null ) this.iEquippedItemRight.rotateAroundAnchor(     rightHandArmAnk, this.iRightHand.iPitch );
 
             //left arm
-            LibVertex leftUpperArmAnk = iLeftUpperArm.translateLimb(            BotMeshes.OFFSET_ABSOLUTE_LEFT_UPPER_ARM );
-            LibVertex leftLowerArmAnk = iLeftLowerArm.translateLimb(            BotMeshes.OFFSET_ABSOLUTE_LEFT_LOWER_ARM );
-            LibVertex leftHandArmAnk  = iLeftHand.translateLimb(                BotMeshes.OFFSET_ABSOLUTE_LEFT_HAND      );
-            if ( iEquippedItemLeft != null ) iEquippedItemLeft.translateLimb(   BotMeshes.OFFSET_ABSOLUTE_LEFT_HAND      );
-            iLeftUpperArm.rotateAroundAnchor( leftUpperArmAnk, iLeftUpperArm.iPitch );
-            iLeftLowerArm.rotateAroundAnchor( leftUpperArmAnk, iLeftUpperArm.iPitch );
-            iLeftHand.rotateAroundAnchor(     leftUpperArmAnk, iLeftUpperArm.iPitch );
-            if ( iEquippedItemLeft != null ) iEquippedItemLeft.rotateAroundAnchor(     leftUpperArmAnk, iLeftUpperArm.iPitch );
-            leftLowerArmAnk.rotateXYZ( iLeftUpperArm.iPitch.x, iLeftUpperArm.iPitch.y, iLeftUpperArm.iPitch.z, leftUpperArmAnk );
-            leftHandArmAnk.rotateXYZ(  iLeftUpperArm.iPitch.x, iLeftUpperArm.iPitch.y, iLeftUpperArm.iPitch.z, leftUpperArmAnk );
-            iLeftLowerArm.rotateAroundAnchor( leftLowerArmAnk, iLeftLowerArm.iPitch );
-            iLeftHand.rotateAroundAnchor(     leftLowerArmAnk, iLeftLowerArm.iPitch );
-            if ( iEquippedItemLeft != null ) iEquippedItemLeft.rotateAroundAnchor(     leftLowerArmAnk, iLeftLowerArm.iPitch );
-            leftHandArmAnk.rotateXYZ(  iLeftLowerArm.iPitch.x, iLeftLowerArm.iPitch.y, iLeftLowerArm.iPitch.z, leftLowerArmAnk );
-            iLeftHand.rotateAroundAnchor(     leftHandArmAnk, iLeftHand.iPitch );
-            if ( iEquippedItemLeft != null ) iEquippedItemLeft.rotateAroundAnchor(     leftHandArmAnk, iLeftHand.iPitch );
+            LibVertex leftUpperArmAnk = this.iLeftUpperArm.translateLimb(            BotMeshes.OFFSET_ABSOLUTE_LEFT_UPPER_ARM );
+            LibVertex leftLowerArmAnk = this.iLeftLowerArm.translateLimb(            BotMeshes.OFFSET_ABSOLUTE_LEFT_LOWER_ARM );
+            LibVertex leftHandArmAnk  = this.iLeftHand.translateLimb(                BotMeshes.OFFSET_ABSOLUTE_LEFT_HAND      );
+            if (this.iEquippedItemLeft != null ) this.iEquippedItemLeft.translateLimb(   BotMeshes.OFFSET_ABSOLUTE_LEFT_HAND      );
+            this.iLeftUpperArm.rotateAroundAnchor( leftUpperArmAnk, this.iLeftUpperArm.iPitch );
+            this.iLeftLowerArm.rotateAroundAnchor( leftUpperArmAnk, this.iLeftUpperArm.iPitch );
+            this.iLeftHand.rotateAroundAnchor(     leftUpperArmAnk, this.iLeftUpperArm.iPitch );
+            if (this.iEquippedItemLeft != null ) this.iEquippedItemLeft.rotateAroundAnchor(     leftUpperArmAnk, this.iLeftUpperArm.iPitch );
+            leftLowerArmAnk.rotateXYZ(this.iLeftUpperArm.iPitch.x, this.iLeftUpperArm.iPitch.y, this.iLeftUpperArm.iPitch.z, leftUpperArmAnk );
+            leftHandArmAnk.rotateXYZ(this.iLeftUpperArm.iPitch.x, this.iLeftUpperArm.iPitch.y, this.iLeftUpperArm.iPitch.z, leftUpperArmAnk );
+            this.iLeftLowerArm.rotateAroundAnchor( leftLowerArmAnk, this.iLeftLowerArm.iPitch );
+            this.iLeftHand.rotateAroundAnchor(     leftLowerArmAnk, this.iLeftLowerArm.iPitch );
+            if (this.iEquippedItemLeft != null ) this.iEquippedItemLeft.rotateAroundAnchor(     leftLowerArmAnk, this.iLeftLowerArm.iPitch );
+            leftHandArmAnk.rotateXYZ(this.iLeftLowerArm.iPitch.x, this.iLeftLowerArm.iPitch.y, this.iLeftLowerArm.iPitch.z, leftLowerArmAnk );
+            this.iLeftHand.rotateAroundAnchor(     leftHandArmAnk, this.iLeftHand.iPitch );
+            if (this.iEquippedItemLeft != null ) this.iEquippedItemLeft.rotateAroundAnchor(     leftHandArmAnk, this.iLeftHand.iPitch );
 
             //right leg
-            LibVertex rightUpperLegAnk = iRightUpperLeg.translateLimb(            BotMeshes.OFFSET_ABSOLUTE_RIGHT_UPPER_LEG );
-            LibVertex rightLowerLegAnk = iRightLowerLeg.translateLimb(            BotMeshes.OFFSET_ABSOLUTE_RIGHT_LOWER_LEG );
-            LibVertex rightfootLegAnk  = iRightFoot.translateLimb(                BotMeshes.OFFSET_ABSOLUTE_RIGHT_FOOT      );
-            iRightUpperLeg.rotateAroundAnchor( rightUpperLegAnk, iRightUpperLeg.iPitch );
-            iRightLowerLeg.rotateAroundAnchor( rightUpperLegAnk, iRightUpperLeg.iPitch );
-            iRightFoot.rotateAroundAnchor(     rightUpperLegAnk, iRightUpperLeg.iPitch );
-            rightLowerLegAnk.rotateXYZ( iRightUpperLeg.iPitch.x, iRightUpperLeg.iPitch.y, iRightUpperLeg.iPitch.z, rightUpperLegAnk );
-            rightfootLegAnk.rotateXYZ(  iRightUpperLeg.iPitch.x, iRightUpperLeg.iPitch.y, iRightUpperLeg.iPitch.z, rightUpperLegAnk );
-            iRightLowerLeg.rotateAroundAnchor( rightLowerLegAnk, iRightLowerLeg.iPitch );
-            iRightFoot.rotateAroundAnchor(     rightLowerLegAnk, iRightLowerLeg.iPitch );
-            rightfootLegAnk.rotateXYZ(  iRightLowerLeg.iPitch.x, iRightLowerLeg.iPitch.y, iRightLowerLeg.iPitch.z, rightLowerLegAnk );
-            iRightFoot.rotateAroundAnchor(     rightfootLegAnk, iRightFoot.iPitch );
+            LibVertex rightUpperLegAnk = this.iRightUpperLeg.translateLimb(            BotMeshes.OFFSET_ABSOLUTE_RIGHT_UPPER_LEG );
+            LibVertex rightLowerLegAnk = this.iRightLowerLeg.translateLimb(            BotMeshes.OFFSET_ABSOLUTE_RIGHT_LOWER_LEG );
+            LibVertex rightfootLegAnk  = this.iRightFoot.translateLimb(                BotMeshes.OFFSET_ABSOLUTE_RIGHT_FOOT      );
+            this.iRightUpperLeg.rotateAroundAnchor( rightUpperLegAnk, this.iRightUpperLeg.iPitch );
+            this.iRightLowerLeg.rotateAroundAnchor( rightUpperLegAnk, this.iRightUpperLeg.iPitch );
+            this.iRightFoot.rotateAroundAnchor(     rightUpperLegAnk, this.iRightUpperLeg.iPitch );
+            rightLowerLegAnk.rotateXYZ(this.iRightUpperLeg.iPitch.x, this.iRightUpperLeg.iPitch.y, this.iRightUpperLeg.iPitch.z, rightUpperLegAnk );
+            rightfootLegAnk.rotateXYZ(this.iRightUpperLeg.iPitch.x, this.iRightUpperLeg.iPitch.y, this.iRightUpperLeg.iPitch.z, rightUpperLegAnk );
+            this.iRightLowerLeg.rotateAroundAnchor( rightLowerLegAnk, this.iRightLowerLeg.iPitch );
+            this.iRightFoot.rotateAroundAnchor(     rightLowerLegAnk, this.iRightLowerLeg.iPitch );
+            rightfootLegAnk.rotateXYZ(this.iRightLowerLeg.iPitch.x, this.iRightLowerLeg.iPitch.y, this.iRightLowerLeg.iPitch.z, rightLowerLegAnk );
+            this.iRightFoot.rotateAroundAnchor(     rightfootLegAnk, this.iRightFoot.iPitch );
 
             //left leg
-            LibVertex leftUpperLegAnk = iLeftUpperLeg.translateLimb(            BotMeshes.OFFSET_ABSOLUTE_LEFT_UPPER_LEG );
-            LibVertex leftLowerLegAnk = iLeftLowerLeg.translateLimb(            BotMeshes.OFFSET_ABSOLUTE_LEFT_LOWER_LEG );
-            LibVertex leftfootLegAnk  = iLeftFoot.translateLimb(                BotMeshes.OFFSET_ABSOLUTE_LEFT_FOOT      );
-            iLeftUpperLeg.rotateAroundAnchor( leftUpperLegAnk, iLeftUpperLeg.iPitch );
-            iLeftLowerLeg.rotateAroundAnchor( leftUpperLegAnk, iLeftUpperLeg.iPitch );
-            iLeftFoot.rotateAroundAnchor(     leftUpperLegAnk, iLeftUpperLeg.iPitch );
-            leftLowerLegAnk.rotateXYZ( iLeftUpperLeg.iPitch.x, iLeftUpperLeg.iPitch.y, iLeftUpperLeg.iPitch.z, leftUpperLegAnk );
-            leftfootLegAnk.rotateXYZ(  iLeftUpperLeg.iPitch.x, iLeftUpperLeg.iPitch.y, iLeftUpperLeg.iPitch.z, leftUpperLegAnk );
-            iLeftLowerLeg.rotateAroundAnchor( leftLowerLegAnk, iLeftLowerLeg.iPitch );
-            iLeftFoot.rotateAroundAnchor(     leftLowerLegAnk, iLeftLowerLeg.iPitch );
-            leftfootLegAnk.rotateXYZ(  iLeftLowerLeg.iPitch.x, iLeftLowerLeg.iPitch.y, iLeftLowerLeg.iPitch.z, leftLowerLegAnk );
-            iLeftFoot.rotateAroundAnchor(     leftfootLegAnk, iLeftFoot.iPitch );
+            LibVertex leftUpperLegAnk = this.iLeftUpperLeg.translateLimb(            BotMeshes.OFFSET_ABSOLUTE_LEFT_UPPER_LEG );
+            LibVertex leftLowerLegAnk = this.iLeftLowerLeg.translateLimb(            BotMeshes.OFFSET_ABSOLUTE_LEFT_LOWER_LEG );
+            LibVertex leftfootLegAnk  = this.iLeftFoot.translateLimb(                BotMeshes.OFFSET_ABSOLUTE_LEFT_FOOT      );
+            this.iLeftUpperLeg.rotateAroundAnchor( leftUpperLegAnk, this.iLeftUpperLeg.iPitch );
+            this.iLeftLowerLeg.rotateAroundAnchor( leftUpperLegAnk, this.iLeftUpperLeg.iPitch );
+            this.iLeftFoot.rotateAroundAnchor(     leftUpperLegAnk, this.iLeftUpperLeg.iPitch );
+            leftLowerLegAnk.rotateXYZ(this.iLeftUpperLeg.iPitch.x, this.iLeftUpperLeg.iPitch.y, this.iLeftUpperLeg.iPitch.z, leftUpperLegAnk );
+            leftfootLegAnk.rotateXYZ(this.iLeftUpperLeg.iPitch.x, this.iLeftUpperLeg.iPitch.y, this.iLeftUpperLeg.iPitch.z, leftUpperLegAnk );
+            this.iLeftLowerLeg.rotateAroundAnchor( leftLowerLegAnk, this.iLeftLowerLeg.iPitch );
+            this.iLeftFoot.rotateAroundAnchor(     leftLowerLegAnk, this.iLeftLowerLeg.iPitch );
+            leftfootLegAnk.rotateXYZ(this.iLeftLowerLeg.iPitch.x, this.iLeftLowerLeg.iPitch.y, this.iLeftLowerLeg.iPitch.z, leftLowerLegAnk );
+            this.iLeftFoot.rotateAroundAnchor(     leftfootLegAnk, this.iLeftFoot.iPitch );
 
             //torso and neck are not transformed neither translated
-            iTorso.translateLimb( new Offset( 0.0f, 0.0f, 0.0f ) );
-            iNeck.translateLimb(  new Offset( 0.0f, 0.0f, 0.0f ) );
+            this.iTorso.translateLimb( new Offset( 0.0f, 0.0f, 0.0f ) );
+            this.iNeck.translateLimb(  new Offset( 0.0f, 0.0f, 0.0f ) );
         }
 
         public void turnAllLimbsX( LibVertex botAnchor, float angleX )
         {
-            for ( Mesh mesh : iMeshes )
+            for ( Mesh mesh : this.iMeshes)
             {
                 mesh.translateAndRotateXYZ( 0.0f, 0.0f, 0.0f, angleX, 0.0f, 0.0f, botAnchor, LibTransformationMode.ETransformedToTransformed );
             }
@@ -1178,7 +1179,7 @@
 
         public void turnAllLimbsZ( LibVertex botAnchor, float facingAngle )
         {
-            for ( Mesh mesh : iMeshes )
+            for ( Mesh mesh : this.iMeshes)
             {
                 mesh.translateAndRotateXYZ( 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, facingAngle, botAnchor, LibTransformationMode.ETransformedToTransformed );
             }
@@ -1186,31 +1187,31 @@
 
         public void changeFaceTexture( LibGLTexture oldTex, LibGLTexture newTex )
         {
-            iFace.changeTexture( oldTex, newTex );
+            this.iFace.changeTexture( oldTex, newTex );
         }
 
         public void fadeOutAllFaces()
         {
-            if ( iGlasses           != null ) iGlasses          .fadeOutAllFaces();
-            if ( iHat               != null ) iHat              .fadeOutAllFaces();
-            if ( iHead              != null ) iHead             .fadeOutAllFaces();
-            if ( iFace              != null ) iFace             .fadeOutAllFaces();
-            if ( iRightUpperArm     != null ) iRightUpperArm    .fadeOutAllFaces();
-            if ( iRightLowerArm     != null ) iRightLowerArm    .fadeOutAllFaces();
-            if ( iTorso             != null ) iTorso            .fadeOutAllFaces();
-            if ( iNeck              != null ) iNeck             .fadeOutAllFaces();
-            if ( iLeftUpperArm      != null ) iLeftUpperArm     .fadeOutAllFaces();
-            if ( iLeftLowerArm      != null ) iLeftLowerArm     .fadeOutAllFaces();
-            if ( iRightHand         != null ) iRightHand        .fadeOutAllFaces();
-            if ( iLeftHand          != null ) iLeftHand         .fadeOutAllFaces();
-            if ( iRightUpperLeg     != null ) iRightUpperLeg    .fadeOutAllFaces();
-            if ( iLeftUpperLeg      != null ) iLeftUpperLeg     .fadeOutAllFaces();
-            if ( iRightLowerLeg     != null ) iRightLowerLeg    .fadeOutAllFaces();
-            if ( iLeftLowerLeg      != null ) iLeftLowerLeg     .fadeOutAllFaces();
-            if ( iRightFoot         != null ) iRightFoot        .fadeOutAllFaces();
-            if ( iLeftFoot          != null ) iLeftFoot         .fadeOutAllFaces();
-            if ( iEquippedItemLeft  != null ) iEquippedItemLeft .fadeOutAllFaces();
-            if ( iEquippedItemRight != null ) iEquippedItemRight.fadeOutAllFaces();
+            if (this.iGlasses != null ) this.iGlasses.fadeOutAllFaces();
+            if (this.iHat != null ) this.iHat.fadeOutAllFaces();
+            if (this.iHead != null ) this.iHead.fadeOutAllFaces();
+            if (this.iFace != null ) this.iFace.fadeOutAllFaces();
+            if (this.iRightUpperArm != null ) this.iRightUpperArm.fadeOutAllFaces();
+            if (this.iRightLowerArm != null ) this.iRightLowerArm.fadeOutAllFaces();
+            if (this.iTorso != null ) this.iTorso.fadeOutAllFaces();
+            if (this.iNeck != null ) this.iNeck.fadeOutAllFaces();
+            if (this.iLeftUpperArm != null ) this.iLeftUpperArm.fadeOutAllFaces();
+            if (this.iLeftLowerArm != null ) this.iLeftLowerArm.fadeOutAllFaces();
+            if (this.iRightHand != null ) this.iRightHand.fadeOutAllFaces();
+            if (this.iLeftHand != null ) this.iLeftHand.fadeOutAllFaces();
+            if (this.iRightUpperLeg != null ) this.iRightUpperLeg.fadeOutAllFaces();
+            if (this.iLeftUpperLeg != null ) this.iLeftUpperLeg.fadeOutAllFaces();
+            if (this.iRightLowerLeg != null ) this.iRightLowerLeg.fadeOutAllFaces();
+            if (this.iLeftLowerLeg != null ) this.iLeftLowerLeg.fadeOutAllFaces();
+            if (this.iRightFoot != null ) this.iRightFoot.fadeOutAllFaces();
+            if (this.iLeftFoot != null ) this.iLeftFoot.fadeOutAllFaces();
+            if (this.iEquippedItemLeft != null ) this.iEquippedItemLeft.fadeOutAllFaces();
+            if (this.iEquippedItemRight != null ) this.iEquippedItemRight.fadeOutAllFaces();
         }
 
         public void setItem( Arm arm, Items newItem, LibVertex anchor, LibGameObject aParentGameObject )
@@ -1218,18 +1219,18 @@
             //ShooterDebug.bugfix.out( "Set item [" + newItem + "] on arm [" + arm + "]" );
 
             Vector<Mesh> newMeshes = new Vector<Mesh>();
-            newMeshes.addAll( Arrays.asList( iMeshes ) );
+            newMeshes.addAll( Arrays.asList(this.iMeshes) );
 
             switch ( arm )
             {
                 case ELeft:
                 {
                     //remove old item
-                    if ( iEquippedItemLeft != null )
+                    if (this.iEquippedItemLeft != null )
                     {
-                        newMeshes.remove( iEquippedItemLeft );
-                        equipmentChanged = true;
-                        iEquippedItemLeft = null;
+                        newMeshes.remove(this.iEquippedItemLeft);
+                        this.equipmentChanged = true;
+                        this.iEquippedItemLeft = null;
                     }
                     if ( newItem != null )
                     {
@@ -1237,12 +1238,12 @@
                         Mesh item = new Mesh( ShooterD3ds.getFaces( newItem ), new LibVertex( 0.0f, 0.0f, 0.0f ) );
                         item.translateAndRotateXYZ( 0.0f, 0.0f, 0.0f, 270.0f, 0.0f, 90.0f, null, LibTransformationMode.EOriginalsToOriginals );
 
-                        iEquippedItemLeft  = new BotMesh( item.getFaces(), anchor, 0.0f, 1.0f, aParentGameObject, 0.0f );
-                        iEquippedItemLeft.mirrorFaces( true, false, false );
+                        this.iEquippedItemLeft = new BotMesh( item.getFaces(), anchor, 0.0f, 1.0f, aParentGameObject, 0.0f );
+                        this.iEquippedItemLeft.mirrorFaces( true, false, false );
 
-                        iEquippedItemLeft.setTargetPitchs( iHead.iTargetPitch.toArray( new Rotation[] {} ) );
-                        newMeshes.add( iEquippedItemLeft  );
-                        equipmentChanged = true;
+                        this.iEquippedItemLeft.setTargetPitchs(this.iHead.iTargetPitch.toArray( new Rotation[] {} ) );
+                        newMeshes.add(this.iEquippedItemLeft);
+                        this.equipmentChanged = true;
                     }
                     break;
                 }
@@ -1250,11 +1251,11 @@
                 case ERight:
                 {
                     //remove old item
-                    if ( iEquippedItemRight != null )
+                    if (this.iEquippedItemRight != null )
                     {
-                        newMeshes.remove( iEquippedItemRight );
-                        equipmentChanged = true;
-                        iEquippedItemRight = null;
+                        newMeshes.remove(this.iEquippedItemRight);
+                        this.equipmentChanged = true;
+                        this.iEquippedItemRight = null;
                     }
                     if ( newItem != null )
                     {
@@ -1262,17 +1263,17 @@
                         Mesh item = new Mesh( ShooterD3ds.getFaces( newItem ), new LibVertex( 0.0f, 0.0f, 0.0f ) );
                         item.translateAndRotateXYZ( 0.0f, 0.0f, 0.0f, 270.0f, 0.0f, 90.0f, null, LibTransformationMode.EOriginalsToOriginals );
 
-                        iEquippedItemRight = new BotMesh( item.getFaces(), anchor, 0.0f, 1.0f, aParentGameObject, 0.0f );
+                        this.iEquippedItemRight = new BotMesh( item.getFaces(), anchor, 0.0f, 1.0f, aParentGameObject, 0.0f );
 
-                        iEquippedItemRight.setTargetPitchs( iHead.iTargetPitch.toArray( new Rotation[] {} ) );
-                        newMeshes.add( iEquippedItemRight );
-                        equipmentChanged = true;
+                        this.iEquippedItemRight.setTargetPitchs(this.iHead.iTargetPitch.toArray( new Rotation[] {} ) );
+                        newMeshes.add(this.iEquippedItemRight);
+                        this.equipmentChanged = true;
                     }
                     break;
                 }
             }
 
             //return as array
-            iMeshes = newMeshes.toArray( new Mesh[] {} );
+            this.iMeshes = newMeshes.toArray( new Mesh[] {} );
         }
     }

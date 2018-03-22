@@ -21,7 +21,7 @@
 
         public LibGLFrame( BufferedImage aBgImage )
         {
-            iBgImage = aBgImage;
+            this.iBgImage = aBgImage;
         }
 
         @Override
@@ -33,11 +33,11 @@
             //cast to 2d
             Graphics2D g2d = (Graphics2D)g;
 
-            if ( iBgImage != null )
+            if (this.iBgImage != null )
             {
                 //draw bg image
                 g2d.setClip( 0, 0, Integer.MAX_VALUE, Integer.MAX_VALUE );
-                g2d.drawImage( iBgImage, 0, 0, null );
+                g2d.drawImage(this.iBgImage, 0, 0, null );
 
                 //call super-paint here in order to draw gl stuff!
                 super.paint( g );

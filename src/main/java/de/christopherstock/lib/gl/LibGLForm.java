@@ -20,38 +20,38 @@
 
         public LibGLForm( GLCallbackForm aForm, String aTitle, Component contentPane, int width, int height, BufferedImage aIconImage, BufferedImage aBgImage )
         {
-            iForm       = aForm;
-            iIconImage  = aIconImage;
-            iBgImage    = aBgImage;
+            this.iForm = aForm;
+            this.iIconImage = aIconImage;
+            this.iBgImage = aBgImage;
 
             //instanciate JFrame
-            iNativeForm = new LibGLFrame( iBgImage );
+            this.iNativeForm = new LibGLFrame(this.iBgImage);
 
             //get screen environment
             Point centerPoint   = GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint();
 
-            iNativeForm.setIconImage(                iIconImage                      );
-            iNativeForm.setTitle(                    aTitle                          );
-            iNativeForm.setDefaultCloseOperation(    JFrame.EXIT_ON_CLOSE            );
-            iNativeForm.setLocation(                 (int)centerPoint.getX() - width / 2, (int)centerPoint.getY() - height / 2 );
-            iNativeForm.setSize(                     width, height                   );
-            iNativeForm.setResizable(                false                           );
-            iNativeForm.setUndecorated(              true                            );
+            this.iNativeForm.setIconImage(this.iIconImage);
+            this.iNativeForm.setTitle(                    aTitle                          );
+            this.iNativeForm.setDefaultCloseOperation(    JFrame.EXIT_ON_CLOSE            );
+            this.iNativeForm.setLocation(                 (int)centerPoint.getX() - width / 2, (int)centerPoint.getY() - height / 2 );
+            this.iNativeForm.setSize(                     width, height                   );
+            this.iNativeForm.setResizable(                false                           );
+            this.iNativeForm.setUndecorated(              true                            );
 
             //add listener
-            iNativeForm.addWindowListener(           this                            );
-            iNativeForm.addFocusListener(            this                            );
+            this.iNativeForm.addWindowListener(           this                            );
+            this.iNativeForm.addFocusListener(            this                            );
 
             //set canvas as content pane
-            iNativeForm.getContentPane().add(        contentPane                     );
+            this.iNativeForm.getContentPane().add(        contentPane                     );
 
             //show form
-            iNativeForm.setVisible(                  true                            );
+            this.iNativeForm.setVisible(                  true                            );
 
             //stick in foreground ( may raise a SucurityException )
             try
             {
-                iNativeForm.setAlwaysOnTop(          true                            );
+                this.iNativeForm.setAlwaysOnTop(          true                            );
             }
             catch ( SecurityException se )
             {
@@ -62,7 +62,7 @@
         public void windowClosing( WindowEvent arg0 )
         {
             //( (LibGLFrame)nativeForm ).iBgImage = null;
-            iForm.onFormDestroyed();
+            this.iForm.onFormDestroyed();
         }
 
         public void windowOpened(       WindowEvent arg0 )

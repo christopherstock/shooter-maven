@@ -13,9 +13,9 @@
 
         public LibMaxFace( LibMaxVertex aFaceNormal, LibMaxVertex initVertex1, LibMaxVertex initVertex2, LibMaxVertex initVertex3 )
         {
-            iFaceNormal = aFaceNormal;
-            vertex1     = new LibMaxVertex( initVertex1 );
-            vertex2     = new LibMaxVertex( initVertex2 );
-            vertex3     = new LibMaxVertex( initVertex3 );
+            this.iFaceNormal = aFaceNormal;
+            this.vertex1 = new LibMaxVertex( initVertex1 );
+            this.vertex2 = new LibMaxVertex( initVertex2 );
+            this.vertex3 = new LibMaxVertex( initVertex3 );
         }
     }

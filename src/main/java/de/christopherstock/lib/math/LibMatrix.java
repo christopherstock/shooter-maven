@@ -25,16 +25,16 @@
         {
           //double[][] transformationMatrix =                     getTranslationMatrix( 0.0f, 0.0f, 0.0f );
 
-            matrix  =                     getAxisRotXMatrix( angleX );
-            matrix  = LibMatrix.multiply( getAxisRotYMatrix( angleY ), matrix );
-            matrix  = LibMatrix.multiply( getAxisRotZMatrix( angleZ ), matrix );
+            this.matrix =                     getAxisRotXMatrix( angleX );
+            this.matrix = LibMatrix.multiply( getAxisRotYMatrix( angleY ), this.matrix);
+            this.matrix = LibMatrix.multiply( getAxisRotZMatrix( angleZ ), this.matrix);
         }
 
         public final void transformVertices( LibVertex[] va, LibVertex ank )
         {
             for ( int i = 0; i < va.length; ++i )
             {
-                va[ i ] = transformVertexF( va[ i ], ank );
+                va[ i ] = this.transformVertexF( va[ i ], ank );
             }
         }
 
@@ -49,9 +49,9 @@
             double oldX = vertex.x;
             double oldY = vertex.y;
             double oldZ = vertex.z;
-            vertex.x = (float)( oldX * matrix[ 0 ][ 0 ] + oldY * matrix[ 1 ][ 0 ] + oldZ * matrix[  2 ][ 0 ] + matrix[  3 ][ 0 ] );
-            vertex.y = (float)( oldX * matrix[ 0 ][ 1 ] + oldY * matrix[ 1 ][ 1 ] + oldZ * matrix[  2 ][ 1 ] + matrix[  3 ][ 1 ] );
-            vertex.z = (float)( oldX * matrix[ 0 ][ 2 ] + oldY * matrix[ 1 ][ 2 ] + oldZ * matrix[  2 ][ 2 ] + matrix[  3 ][ 2 ] );
+            vertex.x = (float)( oldX * this.matrix[ 0 ][ 0 ] + oldY * this.matrix[ 1 ][ 0 ] + oldZ * this.matrix[  2 ][ 0 ] + this.matrix[  3 ][ 0 ] );
+            vertex.y = (float)( oldX * this.matrix[ 0 ][ 1 ] + oldY * this.matrix[ 1 ][ 1 ] + oldZ * this.matrix[  2 ][ 1 ] + this.matrix[  3 ][ 1 ] );
+            vertex.z = (float)( oldX * this.matrix[ 0 ][ 2 ] + oldY * this.matrix[ 1 ][ 2 ] + oldZ * this.matrix[  2 ][ 2 ] + this.matrix[  3 ][ 2 ] );
 
             //translate back by anchor
             vertex.x += ank.x;
@@ -72,9 +72,9 @@
             double oldX = vertex.x;
             double oldY = vertex.y;
             double oldZ = vertex.z;
-            vertex.x = (float)( oldX * matrix[ 0 ][ 0 ] + oldY * matrix[ 1 ][ 0 ] + oldZ * matrix[  2 ][ 0 ] + matrix[  3 ][ 0 ] );
-            vertex.y = (float)( oldX * matrix[ 0 ][ 1 ] + oldY * matrix[ 1 ][ 1 ] + oldZ * matrix[  2 ][ 1 ] + matrix[  3 ][ 1 ] );
-            vertex.z = (float)( oldX * matrix[ 0 ][ 2 ] + oldY * matrix[ 1 ][ 2 ] + oldZ * matrix[  2 ][ 2 ] + matrix[  3 ][ 2 ] );
+            vertex.x = (float)( oldX * this.matrix[ 0 ][ 0 ] + oldY * this.matrix[ 1 ][ 0 ] + oldZ * this.matrix[  2 ][ 0 ] + this.matrix[  3 ][ 0 ] );
+            vertex.y = (float)( oldX * this.matrix[ 0 ][ 1 ] + oldY * this.matrix[ 1 ][ 1 ] + oldZ * this.matrix[  2 ][ 1 ] + this.matrix[  3 ][ 1 ] );
+            vertex.z = (float)( oldX * this.matrix[ 0 ][ 2 ] + oldY * this.matrix[ 1 ][ 2 ] + oldZ * this.matrix[  2 ][ 2 ] + this.matrix[  3 ][ 2 ] );
 
             //translate back by anchor
             vertex.x += ank.x;

@@ -142,7 +142,7 @@
                     //casino
                     ShooterWallCollection.createRoom
                     (
-                        iOffsetX + 0.0f,   iOffsetY + 0.0f,   iOffsetZ + 2.5f,   0.0f,   9,  14,
+                            this.iOffsetX + 0.0f, this.iOffsetY + 0.0f, this.iOffsetZ + 2.5f,   0.0f,   9,  14,
                         WallStyle.ENoWall, WallStyle.ESolidWall, WallStyle.ENoWall, WallStyle.EWindowsAndCeilingWindows,
                         WallTex.EGlass1, WallHealth.ESolidGlass, WallAction.EDoorSlideLeft,
                         DoorStyle.EAnchorDefault, 6,
@@ -167,7 +167,7 @@
                     //big office
                     ShooterWallCollection.createRoom
                     (
-                        iOffsetX - 8.0f,   iOffsetY - 6.0f,   iOffsetZ + 2.5f,   0.0f,   8, 14,
+                            this.iOffsetX - 8.0f, this.iOffsetY - 6.0f, this.iOffsetZ + 2.5f,   0.0f,   8, 14,
                         WallStyle.EWindows, WallStyle.EWindowsAndCeilingWindows, WallStyle.EWindows, WallStyle.ENoWall,
                         WallTex.EGlass1, WallHealth.ESolidGlass, WallAction.EDoorSlideRight,
                         DoorStyle.ENoDoor, 0,
@@ -184,7 +184,7 @@
                     //right hallway
                     ShooterWallCollection.createRoom
                     (
-                        iOffsetX + 0.0f,   iOffsetY - 12.0f,   iOffsetZ + 2.5f,   0.0f,   4,  6,
+                            this.iOffsetX + 0.0f, this.iOffsetY - 12.0f, this.iOffsetZ + 2.5f,   0.0f,   4,  6,
                         WallStyle.EWindowsAndCeilingWindows, WallStyle.ESolidWall, WallStyle.ENoWall, WallStyle.ENoWall,
                         WallTex.EGlass1, WallHealth.ESolidGlass, WallAction.EDoorSwingCounterClockwise,
                         DoorStyle.ENoDoor, 0,
@@ -200,7 +200,7 @@
                     ShooterWallCollection.createRoom
                     (
 
-                        iOffsetX + 4.0f,   iOffsetY + 10.0f,   iOffsetZ + 2.0f,   0.0f,   5,  5,
+                            this.iOffsetX + 4.0f, this.iOffsetY + 10.0f, this.iOffsetZ + 2.0f,   0.0f,   5,  5,
 
                         WallStyle.ESolidWall, WallStyle.ESolidWall, WallStyle.ESolidWall, WallStyle.EWindowsAndCeilingWindows,
                         WallTex.EWood1, WallHealth.EUnbreakale, WallAction.EDoorSwingClockwise,
@@ -222,7 +222,7 @@
                     //office desk ( must be a separate wallCollection! .. cannot be applied to small office?
                     new WallCollection
                     (
-                        new Wall(       Others.EDeskOffice1,    new LibVertex(  iOffsetX + 7.5f,   iOffsetY + 10.0f,  iOffsetZ + 2.5f    ), 0.0f,   Scalation.ENone,        Invert.ENo, WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EWood1, new LibTexture[] { WallTex.EScreen2, }, 0, WallHealth.ESolidWood, FXSize.ESmall, null   ),
+                        new Wall(       Others.EDeskOffice1,    new LibVertex(this.iOffsetX + 7.5f, this.iOffsetY + 10.0f, this.iOffsetZ + 2.5f    ), 0.0f,   Scalation.ENone,        Invert.ENo, WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EWood1, new LibTexture[] { WallTex.EScreen2, }, 0, WallHealth.ESolidWood, FXSize.ESmall, null   ),
                         new Wall[]
                         {
                             new Wall(   Others.EKeyboard1,      new LibVertex(  -0.25f,  0.0f,   0.8f    ), 180.0f,    Scalation.ENone,        Invert.EYes, WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EWood1, new LibTexture[] { WallTex.EScreen2, }, 0, WallHealth.EElectricalDevice, FXSize.ESmall, null   ),
@@ -233,7 +233,7 @@
                     //left hallway
                     ShooterWallCollection.createRoom
                     (
-                        iOffsetX + 0.0f,   iOffsetY + 8.0f,   iOffsetZ + 2.5f,   0.0f,   4,  5,
+                            this.iOffsetX + 0.0f, this.iOffsetY + 8.0f, this.iOffsetZ + 2.5f,   0.0f,   4,  5,
                         WallStyle.ENoWall, WallStyle.ESolidWall, WallStyle.ENoWall, WallStyle.ENoWall,
                         WallTex.EGlass1, WallHealth.ESolidGlass, WallAction.EDoorSwingCounterClockwise,
                         DoorStyle.ENoDoor, 0,
@@ -315,7 +315,7 @@
                     //normal office
                     ShooterWallCollection.createRoom
                     (
-                        iOffsetX + 6.0f,   iOffsetY + 2.0f,   iOffsetZ + 0.0f,   90.0f,   5,  5,
+                            this.iOffsetX + 6.0f, this.iOffsetY + 2.0f, this.iOffsetZ + 0.0f,   90.0f,   5,  5,
                         WallStyle.ESolidWall, WallStyle.ESolidWall, WallStyle.ESolidWall, WallStyle.EWindowsAndCeilingWindows,
                         WallTex.EGlass1, WallHealth.ESolidGlass, WallAction.EDoorSlideRight,
                         DoorStyle.EAnchorDefault, 2,

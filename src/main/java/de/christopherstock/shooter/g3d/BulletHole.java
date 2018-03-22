@@ -35,24 +35,24 @@
 
         public BulletHole( LibHitPoint aHitPoint, LibD3dsFile aProjectile )
         {
-            iHitPoint           = aHitPoint;
-            iProjectileTemplate = aProjectile;
+            this.iHitPoint = aHitPoint;
+            this.iProjectileTemplate = aProjectile;
 
-            if ( iProjectileTemplate != null )
+            if (this.iProjectileTemplate != null )
             {
-                float rotZ = iHitPoint.iHorzShotAngle + 90.0f;
+                float rotZ = this.iHitPoint.iHorzShotAngle + 90.0f;
 
                 //only set once .. :/
-                iProjectile = new Mesh( ShooterD3ds.getFaces( iProjectileTemplate ), iHitPoint.iVertex, 0.0f, 1.0f, Invert.ENo, iHitPoint.iCarrier, LibTransformationMode.EOriginalsToOriginals, DrawMethod.EAlwaysDraw );
-                iProjectile.translateAndRotateXYZ
+                this.iProjectile = new Mesh( ShooterD3ds.getFaces(this.iProjectileTemplate), this.iHitPoint.iVertex, 0.0f, 1.0f, Invert.ENo, this.iHitPoint.iCarrier, LibTransformationMode.EOriginalsToOriginals, DrawMethod.EAlwaysDraw );
+                this.iProjectile.translateAndRotateXYZ
                 (
                     0.0f,
                     0.0f,
                     0.0f,
-                     LibMath.sinDeg( rotZ ) * iHitPoint.iShot.iRotX,
-                    -LibMath.cosDeg( rotZ ) * iHitPoint.iShot.iRotX,    //lucky punch
+                     LibMath.sinDeg( rotZ ) * this.iHitPoint.iShot.iRotX,
+                    -LibMath.cosDeg( rotZ ) * this.iHitPoint.iShot.iRotX,    //lucky punch
                     LibMath.normalizeAngle( rotZ ),
-                    iProjectile.iAnchor,
+                        this.iProjectile.iAnchor,
                     LibTransformationMode.EOriginalsToTransformed
                 );
 
@@ -61,11 +61,11 @@
 
            //ShooterDebug.bugfix.out( "Vert face angle set to [" + iVertFaceAngle + "]" );
 
-            ShooterDebug.bulletHole.out( "new bullet hole: face-angle h [" + iHitPoint.iHorzFaceAngle + "] v [" + iHitPoint.iVertFaceAngle + "]" );
+            ShooterDebug.bulletHole.out( "new bullet hole: face-angle h [" + this.iHitPoint.iHorzFaceAngle + "] v [" + this.iHitPoint.iVertFaceAngle + "]" );
 
             //get suitable distance to avoid overlapping bullet-holes
-            float distanceHorzFromFace  = getSuitableDistanceFromHorzFace();
-            float distanceVertFromFace  = getSuitableDistanceFromVertFace();
+            float distanceHorzFromFace  = this.getSuitableDistanceFromHorzFace();
+            float distanceVertFromFace  = this.getSuitableDistanceFromVertFace();
             float distX                 = -distanceHorzFromFace * -LibMath.cosDeg( aHitPoint.iHorzFaceAngle );
             float distY                 =  distanceHorzFromFace *  LibMath.sinDeg( aHitPoint.iHorzFaceAngle );
             float distZ                 = -distanceVertFromFace *  LibMath.sinDeg( aHitPoint.iVertFaceAngle );
@@ -103,33 +103,33 @@
             //ShooterDebug.bugfix.out( "dis v: "  + distZ );
 
             //assign the position of the Bullet Hole
-            iOriginalPosition  = new LibVertex( nearerHolePointHorz.x, nearerHolePointHorz.y, nearerHolePointVert.y );
-            iPosition          = new LibVertex( nearerHolePointHorz.x, nearerHolePointHorz.y, nearerHolePointVert.y );
+            this.iOriginalPosition = new LibVertex( nearerHolePointHorz.x, nearerHolePointHorz.y, nearerHolePointVert.y );
+            this.iPosition = new LibVertex( nearerHolePointHorz.x, nearerHolePointHorz.y, nearerHolePointVert.y );
 
             //check distance to Carrier if any
             if ( aHitPoint.iCarrier != null )
             {
-                iCarriersLastFaceAngle = aHitPoint.iCarrier.getCarriersFaceAngle();
+                this.iCarriersLastFaceAngle = aHitPoint.iCarrier.getCarriersFaceAngle();
             }
 
             //setup the face
-            updateFace( true );
+            this.updateFace( true );
         }
 
         private void updateFace(boolean newRandomTexRot )
         {
-            iFace = new LibFaceEllipseWall
+            this.iFace = new LibFaceEllipseWall
             (
                 ShooterDebug.face,
-                iHitPoint.iBulletHoleTexture,
-                iHitPoint.iHorzFaceAngle,
-                iHitPoint.iVertFaceAngle,
-                iPosition.x,
-                iPosition.y,
-                iPosition.z,
-                iHitPoint.iShot.iBulletHoleSize.size,
-                iHitPoint.iShot.iBulletHoleSize.size,
-                ( newRandomTexRot ?  LibMath.getRandom( 0, 360 ) : iFace.iTextureRotation ),
+                    this.iHitPoint.iBulletHoleTexture,
+                    this.iHitPoint.iHorzFaceAngle,
+                    this.iHitPoint.iVertFaceAngle,
+                    this.iPosition.x,
+                    this.iPosition.y,
+                    this.iPosition.z,
+                    this.iHitPoint.iShot.iBulletHoleSize.size,
+                    this.iHitPoint.iShot.iBulletHoleSize.size,
+                ( newRandomTexRot ?  LibMath.getRandom( 0, 360 ) : this.iFace.iTextureRotation ),
                 ShooterSettings.Performance.ELLIPSE_SEGMENTS
             );
         }
@@ -257,7 +257,7 @@
 
         private void darken(float opacity )
         {
-            iFace.darken( opacity );
+            this.iFace.darken( opacity );
             //if ( iProjectile != null ) iProjectile.darkenAllFaces( opacity, useRandomSubstract, useRandomAdd, maxSubstract, maxAdd );
         }
 
@@ -269,7 +269,7 @@
             for ( BulletHole bulletHole : BulletHole.bulletHoles )
             {
                 //should be distance3d :/
-                if ( new Point2D.Float( bulletHole.iHitPoint.iVertex.x, bulletHole.iHitPoint.iVertex.y ).distance( new Point2D.Float( iHitPoint.iVertex.x, iHitPoint.iVertex.y ) ) < BulletHoles.MIN_POINT_DISTANCE_FOR_SAME_LAYER_MULTIPLIER * iHitPoint.iShot.iBulletHoleSize.size )
+                if ( new Point2D.Float( bulletHole.iHitPoint.iVertex.x, bulletHole.iHitPoint.iVertex.y ).distance( new Point2D.Float(this.iHitPoint.iVertex.x, this.iHitPoint.iVertex.y ) ) < BulletHoles.MIN_POINT_DISTANCE_FOR_SAME_LAYER_MULTIPLIER * this.iHitPoint.iShot.iBulletHoleSize.size )
                 {
                     dis += BulletHoles.STEP_DISTANCE_FROM_FACE;
                 }
@@ -286,7 +286,7 @@
             for ( BulletHole bulletHole : BulletHole.bulletHoles )
             {
                 //should be distance3d :/
-                if ( Math.abs( bulletHole.iHitPoint.iVertex.z - iHitPoint.iVertex.z ) < BulletHoles.MIN_POINT_DISTANCE_FOR_SAME_LAYER_MULTIPLIER * iHitPoint.iShot.iBulletHoleSize.size )
+                if ( Math.abs( bulletHole.iHitPoint.iVertex.z - this.iHitPoint.iVertex.z ) < BulletHoles.MIN_POINT_DISTANCE_FOR_SAME_LAYER_MULTIPLIER * this.iHitPoint.iShot.iBulletHoleSize.size )
                 {
                     dis += BulletHoles.STEP_DISTANCE_FROM_FACE;
                 }
@@ -302,17 +302,17 @@
 
             //transform
             LibMatrix transformationMatrix = new LibMatrix( rotX, rotY, rotZ );
-            LibVertex translatedHitPoint   = transformationMatrix.transformVertexF( iPosition, vertex );
+            LibVertex translatedHitPoint   = transformationMatrix.transformVertexF(this.iPosition, vertex );
 
             //increase face angle for rotZ
-            iHitPoint.iHorzFaceAngle += rotZ;
-            ShooterDebug.bulletHole.out( " setting bullet hole angle to [" + iHitPoint.iHorzFaceAngle + "]" );
+            this.iHitPoint.iHorzFaceAngle += rotZ;
+            ShooterDebug.bulletHole.out( " setting bullet hole angle to [" + this.iHitPoint.iHorzFaceAngle + "]" );
 
             //asssign new hit-point and update face
-            iPosition = translatedHitPoint;
+            this.iPosition = translatedHitPoint;
 
             //update the bullet hole
-            updateFace( false );
+            this.updateFace( false );
 /*
             //projectile
             if ( iProjectile != null )

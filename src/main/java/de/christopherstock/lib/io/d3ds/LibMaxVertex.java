@@ -19,15 +19,15 @@
         ***************************************************************************************************************/
         public LibMaxVertex( LibMaxVertex aV )
         {
-            x = aV.x;
-            y = aV.y;
-            z = aV.z;
+            this.x = aV.x;
+            this.y = aV.y;
+            this.z = aV.z;
         }
 
         public LibMaxVertex( float initX, float initY, float initZ )
         {
-            x = initX;
-            y = initY;
-            z = initZ;
+            this.x = initX;
+            this.y = initY;
+            this.z = initZ;
         }
     }

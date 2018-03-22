@@ -11,7 +11,7 @@
 
         public FireArmFXOffset( int aX, int aY )
         {
-            x = aX;
-            y = aY;
+            this.x = aX;
+            this.y = aY;
         }
     }

@@ -8,6 +8,8 @@
     *
     *   TODO            Maven Goal for signing JAR.
     *   TODO            Maven Goal for creating JNLP file.
+    *   TODO            Maven Goal: documentation.
+    *   TODO            Maven Profiles for debug prod ?
     *
     *   TODO            Fix all multilined docblocks to single lines!
     *   TODO            Remove all linter warnings!
@@ -68,14 +70,14 @@
     *******************************************************************************************************************/
     public class Shooter
     {
-        /** The static singleton instance of the shooter game. */
+        /** The static preloader instance of the shooter game. */
         public      static                  ShooterGame                         game                = null;
 
         /***************************************************************************************************************
         *   The Project's main-method launched on the application's startup.
         *   The job is to instanciate and to start the {@link ShooterGame}.
         *
-        *   @param  args    Via space separated arguments transfered from the command-line.
+        *   @param  args    Arguments from the command-line.
         ***************************************************************************************************************/
         public static void main( String[] args )
         {

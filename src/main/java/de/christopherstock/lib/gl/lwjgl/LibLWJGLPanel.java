@@ -17,15 +17,15 @@
 
         public LibLWJGLPanel( GLDrawCallback aDrawCallback, BufferedImage aBgImage )
         {
-            drawCallback  = aDrawCallback;
-            iBgImage    = aBgImage;
+            this.drawCallback = aDrawCallback;
+            this.iBgImage = aBgImage;
 
             try
             {
-                canvas  = new LibLWJGLCanvas( iBgImage );
+                this.canvas = new LibLWJGLCanvas(this.iBgImage);
 
                 //set canvas focusable
-                canvas.setFocusable( true );
+                this.canvas.setFocusable( true );
             }
             catch ( Exception e )
             {
@@ -36,7 +36,7 @@
         @Override
         public final Component getNativePanel()
         {
-            return canvas;
+            return this.canvas;
         }
 
         @Override
@@ -46,10 +46,10 @@
             if ( LibGL3D.glPanelInitialized )
             {
                 //invoke callback 3d drawing
-                drawCallback.draw3D();
+                this.drawCallback.draw3D();
 
                 //invoke callback 2d drawing
-                drawCallback.draw2D();
+                this.drawCallback.draw2D();
 
                 //update native LWJGL Display each tick
                 Display.update();

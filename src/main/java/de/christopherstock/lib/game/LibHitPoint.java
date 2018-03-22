@@ -58,32 +58,32 @@
             int                     aEllipseSegments
         )
         {
-            iShot                   = aShot;
+            this.iShot = aShot;
 
-            iCarrier                = aCarrier;
-            iBulletHoleTexture      = aBulletHoleTexture;
-            iWallTexture            = aWallTexture;
-            iSliverColors           = aSliverColors;
+            this.iCarrier = aCarrier;
+            this.iBulletHoleTexture = aBulletHoleTexture;
+            this.iWallTexture = aWallTexture;
+            this.iSliverColors = aSliverColors;
 
-            iVertex                 = aVertex;
+            this.iVertex = aVertex;
 
-            iHorzShotAngle          = aHorzShotAngle;
-            iHorzInvertedShotAngle  = aHorzInvertedShotAngle;
-            iHorzSliverAngle        = aHorzSliverAngle;
-            iHorzFaceAngle          = aHorzFaceAngle;
-            iHorzDistance           = aHorzDistance;
+            this.iHorzShotAngle = aHorzShotAngle;
+            this.iHorzInvertedShotAngle = aHorzInvertedShotAngle;
+            this.iHorzSliverAngle = aHorzSliverAngle;
+            this.iHorzFaceAngle = aHorzFaceAngle;
+            this.iHorzDistance = aHorzDistance;
 
-            iVertShotAngle          = LibMath.getAngleCorrect( iShot.iSrcPointVert, new Point2D.Float( (float)iShot.iSrcPointHorz.distance( new Point2D.Float( iVertex.x, iVertex.y ) ), iVertex.z ) );
-            iVertFaceAngle          = aVertFaceAngle;
-            iDamageMultiplier       = aDamageMultiplier;
+            this.iVertShotAngle = LibMath.getAngleCorrect(this.iShot.iSrcPointVert, new Point2D.Float( (float) this.iShot.iSrcPointHorz.distance( new Point2D.Float(this.iVertex.x, this.iVertex.y ) ), this.iVertex.z ) );
+            this.iVertFaceAngle = aVertFaceAngle;
+            this.iDamageMultiplier = aDamageMultiplier;
 
           //iVertDistance           = aVertDistance;
           //iVertInvertedShotAngle  = 360.0f - ( iVertShotAngle - 180.0f  );
 
-            iVertSliverAngle        = LibMath.normalizeAngle( 180.0f - iVertShotAngle );
+            this.iVertSliverAngle = LibMath.normalizeAngle( 180.0f - this.iVertShotAngle);
 
-            iFadeOutTicks           = aFadeOutTicks;
-            iEllipseSegments        = aEllipseSegments;
+            this.iFadeOutTicks = aFadeOutTicks;
+            this.iEllipseSegments = aEllipseSegments;
         }
 
         public static LibHitPoint[] getAffectedHitPoints(Vector<LibHitPoint> hitPoints )
@@ -158,17 +158,17 @@
                 {
                     LibFXManager.launchStaticPoint
                     (
-                        iDebug,
+                            this.iDebug,
                         new LibVertex
                         (
-                            iVertex.x - LibMath.sinDeg( iHorzSliverAngle         ) * distance,
-                            iVertex.y - LibMath.cosDeg( iHorzSliverAngle         ) * distance,
-                            iVertex.z - LibMath.sinDeg( iVertSliverAngle - 90.0f ) * distance
+                                this.iVertex.x - LibMath.sinDeg(this.iHorzSliverAngle) * distance,
+                                this.iVertex.y - LibMath.cosDeg(this.iHorzSliverAngle) * distance,
+                                this.iVertex.z - LibMath.sinDeg(this.iVertSliverAngle - 90.0f ) * distance
                         ),
                         LibColors.ERed,
                         SIZE,
                         lifetime,
-                        iFadeOutTicks
+                            this.iFadeOutTicks
                     );
                 }
             }
@@ -185,14 +185,14 @@
             //get sliver vertex ( translate a bit to shot source in order to distance it from walls )
             LibVertex sliverVertex = new LibVertex
             (
-                iVertex.x - ( LibMath.sinDeg( iHorzInvertedShotAngle ) * 0.1f ),
-                iVertex.y - ( LibMath.cosDeg( iHorzInvertedShotAngle ) * 0.1f ),
-                iVertex.z
+                    this.iVertex.x - ( LibMath.sinDeg(this.iHorzInvertedShotAngle) * 0.1f ),
+                    this.iVertex.y - ( LibMath.cosDeg(this.iHorzInvertedShotAngle) * 0.1f ),
+                    this.iVertex.z
             );
 
             //launch sliver fx on this hole
             float baseZ     = Float.MIN_VALUE;
-            Float baseZF    = floorStack.getHighestFloor( null, sliverVertex, 0.05f, SIZE, 0, iDebug, false, SIZE, SIZE, iEllipseSegments, exclude );
+            Float baseZF    = floorStack.getHighestFloor( null, sliverVertex, 0.05f, SIZE, 0, this.iDebug, false, SIZE, SIZE, this.iEllipseSegments, exclude );
             if ( baseZF != null )
             {
                 baseZ = baseZF;
@@ -203,24 +203,24 @@
 
             LibFXManager.launchSliver
             (
-                iDebug,
+                    this.iDebug,
                 sliverVertex,
-                iSliverColors,
-                iHorzSliverAngle,
+                    this.iSliverColors,
+                    this.iHorzSliverAngle,
                 sliverQuantity,
                 angleMod,
                 lifetime,
                 size,
                 gravity,
                 baseZ,
-                iFadeOutTicks
+                    this.iFadeOutTicks
             );
         }
 
         public final int compareTo( LibHitPoint otherHP )
         {
-            if ( iHorzDistance == otherHP.iHorzDistance ) return 0;
-            if ( iHorzDistance > otherHP.iHorzDistance  ) return 1;
+            if (this.iHorzDistance == otherHP.iHorzDistance ) return 0;
+            if (this.iHorzDistance > otherHP.iHorzDistance  ) return 1;
             return -1;
         }
     }

@@ -76,20 +76,20 @@
                 if ( Level.currentPlayer().iArtefactSet.showAmmoInHUD() )
                 {
                     //draw ammo
-                    drawAmmo();
+                    this.drawAmmo();
 
                     //draw crosshair if placer aims
                     if ( Level.currentPlayer().iAiming )
                     {
-                        drawCrosshair();
+                        this.drawCrosshair();
                     }
                 }
 
                 //draw health if currently changed
                 boolean drawHealthWarning = Level.currentPlayer().isHealthLow();
-                if ( iHealthShowTimer > 0 || drawHealthWarning )
+                if (this.iHealthShowTimer > 0 || drawHealthWarning )
                 {
-                    drawHealth( drawHealthWarning );
+                    this.drawHealth( drawHealthWarning );
                 }
             }
 
@@ -117,26 +117,26 @@
             if ( currentWearpon.iArtefactType.isFireArm() /* && Shooter.game.hud.iAnimationState == LibAnimation.EAnimationNone */ )
             {
                 //create current ammo string
-                iCurrentAmmoStringMagazineAmmo  = currentWearpon.getCurrentAmmoStringMagazineAmmo();
-                iCurrentAmmoStringTotalAmmo     = currentWearpon.getCurrentAmmoStringTotalAmmo( Level.currentPlayer().iAmmoSet );
+                this.iCurrentAmmoStringMagazineAmmo = currentWearpon.getCurrentAmmoStringMagazineAmmo();
+                this.iCurrentAmmoStringTotalAmmo = currentWearpon.getCurrentAmmoStringTotalAmmo( Level.currentPlayer().iAmmoSet );
 
                 //recreate ammo image if changed
-                if ( iDisplayAmmoStringMagazineAmmo == null || !iDisplayAmmoStringTotalAmmo.equals( iCurrentAmmoStringTotalAmmo ) || !iDisplayAmmoStringMagazineAmmo.equals( iCurrentAmmoStringMagazineAmmo ) )
+                if (this.iDisplayAmmoStringMagazineAmmo == null || !this.iDisplayAmmoStringTotalAmmo.equals(this.iCurrentAmmoStringTotalAmmo) || !this.iDisplayAmmoStringMagazineAmmo.equals(this.iCurrentAmmoStringMagazineAmmo) )
                 {
-                    iDisplayAmmoStringMagazineAmmo = iCurrentAmmoStringMagazineAmmo;
-                    iDisplayAmmoStringTotalAmmo    = iCurrentAmmoStringTotalAmmo;
-                    iAmmoImageMagazineAmmo = LibGLImage.getFromString
+                    this.iDisplayAmmoStringMagazineAmmo = this.iCurrentAmmoStringMagazineAmmo;
+                    this.iDisplayAmmoStringTotalAmmo = this.iCurrentAmmoStringTotalAmmo;
+                    this.iAmmoImageMagazineAmmo = LibGLImage.getFromString
                     (
-                        iDisplayAmmoStringMagazineAmmo,
+                            this.iDisplayAmmoStringMagazineAmmo,
                         Fonts.EAmmo,
                         Colors.EFpsFg.colARGB,
                         null,
                         Colors.EFpsOutline.colARGB,
                         ShooterDebug.glImage
                     );
-                    iAmmoImageTotalAmmo = LibGLImage.getFromString
+                    this.iAmmoImageTotalAmmo = LibGLImage.getFromString
                     (
-                        iDisplayAmmoStringTotalAmmo,
+                            this.iDisplayAmmoStringTotalAmmo,
                         Fonts.EAmmo,
                         Colors.EFpsFg.colARGB,
                         null,
@@ -149,31 +149,31 @@
                 LibGL3D.view.drawOrthoBitmapBytes( ( (FireArm)currentWearpon.iArtefactType.iArtefactKind ).getAmmoTypeImage(), LibGL3D.panel.width - OffsetsOrtho.EBorderHudX - 50, OffsetsOrtho.EBorderHudY );
 
                 //draw magazine ammo
-                LibGL3D.view.drawOrthoBitmapBytes( iAmmoImageMagazineAmmo, LibGL3D.panel.width - OffsetsOrtho.EBorderHudX - 50 - ( (FireArm)currentWearpon.iArtefactType.iArtefactKind ).getAmmoTypeImage().width - iAmmoImageMagazineAmmo.width, OffsetsOrtho.EBorderHudY );
+                LibGL3D.view.drawOrthoBitmapBytes(this.iAmmoImageMagazineAmmo, LibGL3D.panel.width - OffsetsOrtho.EBorderHudX - 50 - ( (FireArm)currentWearpon.iArtefactType.iArtefactKind ).getAmmoTypeImage().width - this.iAmmoImageMagazineAmmo.width, OffsetsOrtho.EBorderHudY );
 
                 //draw total ammo
-                LibGL3D.view.drawOrthoBitmapBytes( iAmmoImageTotalAmmo, LibGL3D.panel.width - OffsetsOrtho.EBorderHudX - iAmmoImageTotalAmmo.width, OffsetsOrtho.EBorderHudY );
+                LibGL3D.view.drawOrthoBitmapBytes(this.iAmmoImageTotalAmmo, LibGL3D.panel.width - OffsetsOrtho.EBorderHudX - this.iAmmoImageTotalAmmo.width, OffsetsOrtho.EBorderHudY );
             }
         }
 
         public final void healthChanged()
         {
-            iHealthShowTimer = HUDSettings.TICKS_SHOW_HEALTH_AFTER_CHANGE;
+            this.iHealthShowTimer = HUDSettings.TICKS_SHOW_HEALTH_AFTER_CHANGE;
         }
 
         private void drawHealth( boolean drawHealthWarning )
         {
             //draw player health
-            iCurrentHealthString = String.valueOf( Level.currentPlayer().getHealth() );
+            this.iCurrentHealthString = String.valueOf( Level.currentPlayer().getHealth() );
 
             //recreate ammo image if changed
-            if ( iDisplayHealthString == null || !iDisplayHealthString.equals( iCurrentHealthString ) )
+            if (this.iDisplayHealthString == null || !this.iDisplayHealthString.equals(this.iCurrentHealthString) )
             {
-                iDisplayHealthString = iCurrentHealthString;
+                this.iDisplayHealthString = this.iCurrentHealthString;
 
-                iHealthImage = LibGLImage.getFromString
+                this.iHealthImage = LibGLImage.getFromString
                 (
-                    iDisplayHealthString,
+                        this.iDisplayHealthString,
                     Fonts.EHealth,
                     ( drawHealthWarning ? Colors.EHealthFgWarning.colABGR : Colors.EHealthFgNormal.colABGR ),
                     null,
@@ -184,15 +184,15 @@
 
             //fade last displayed ticks ( not for health warning )
             float alpha = 1.0f;
-            if ( iHealthShowTimer < HUDSettings.TICKS_FADE_OUT_HEALTH && !drawHealthWarning )
+            if (this.iHealthShowTimer < HUDSettings.TICKS_FADE_OUT_HEALTH && !drawHealthWarning )
             {
-                alpha = iHealthShowTimer / (float)HUDSettings.TICKS_FADE_OUT_HEALTH;
+                alpha = this.iHealthShowTimer / (float)HUDSettings.TICKS_FADE_OUT_HEALTH;
             }
 
             //if ( iHealthShowTimer <  )
 
             //draw health image
-            LibGL3D.view.drawOrthoBitmapBytes( iHealthImage, OffsetsOrtho.EBorderHudX, OffsetsOrtho.EBorderHudY, alpha );
+            LibGL3D.view.drawOrthoBitmapBytes(this.iHealthImage, OffsetsOrtho.EBorderHudX, OffsetsOrtho.EBorderHudY, alpha );
         }
 
         public final void drawCrosshair()
@@ -207,23 +207,23 @@
         {
             HUDFx.animateEffects();                         //animate hud-effects
             AvatarMessage.animate();                        //animate avatar msgs
-            animateHUDScores();                             //animate health timer etc.
-            animateRightHand();                             //animate right hand
+            this.animateHUDScores();                             //animate health timer etc.
+            this.animateRightHand();                             //animate right hand
             HUDMessageManager.getSingleton().animateAll();  //animate hud msgs
         }
 
         private void animateHUDScores()
         {
             //animate HUD-effects
-            if ( iHealthShowTimer > 0 ) --iHealthShowTimer;
+            if (this.iHealthShowTimer > 0 ) --this.iHealthShowTimer;
         }
 
         private void animateRightHand()
         {
             //animate right hand
-            if ( iAnimationPlayerRightHand > 0 )
+            if (this.iAnimationPlayerRightHand > 0 )
             {
-                switch ( iAnimationState )
+                switch (this.iAnimationState)
                 {
                     case EAnimationNone:
                     {
@@ -232,24 +232,24 @@
 
                     case EAnimationShow:
                     {
-                        --iAnimationPlayerRightHand;
+                        --this.iAnimationPlayerRightHand;
 
                         //check if animation is over
-                        if ( iAnimationPlayerRightHand == 0 )
+                        if (this.iAnimationPlayerRightHand == 0 )
                         {
-                            iAnimationState = LibAnimation.EAnimationNone;
+                            this.iAnimationState = LibAnimation.EAnimationNone;
                         }
                         break;
                     }
 
                     case EAnimationHide:
                     {
-                        --iAnimationPlayerRightHand;
+                        --this.iAnimationPlayerRightHand;
 
                         //check if animation is over
-                        if ( iAnimationPlayerRightHand == 0 )
+                        if (this.iAnimationPlayerRightHand == 0 )
                         {
-                            switch ( iActionAfterHide )
+                            switch (this.iActionAfterHide)
                             {
                                 case EActionNext:
                                 {
@@ -268,8 +268,8 @@
                                     //reload ammo
                                     Level.currentPlayer().iArtefactSet.getArtefact().performReload( Level.currentPlayer().iAmmoSet, true, null, false );
 
-                                    iAnimationState = LibAnimation.EAnimationShow;
-                                    iAnimationPlayerRightHand = ShooterSettings.Performance.TICKS_WEARPON_HIDE_SHOW;
+                                    this.iAnimationState = LibAnimation.EAnimationShow;
+                                    this.iAnimationPlayerRightHand = ShooterSettings.Performance.TICKS_WEARPON_HIDE_SHOW;
                                     break;
                                 }
 
@@ -290,29 +290,29 @@
 
         public final void startHandAnimation( LibAnimation newAnimationState, ChangeAction newActionAfterHide )
         {
-            iAnimationPlayerRightHand    = ShooterSettings.Performance.TICKS_WEARPON_HIDE_SHOW;
-            iAnimationState              = newAnimationState;
-            iActionAfterHide             = newActionAfterHide;
+            this.iAnimationPlayerRightHand = ShooterSettings.Performance.TICKS_WEARPON_HIDE_SHOW;
+            this.iAnimationState = newAnimationState;
+            this.iActionAfterHide = newActionAfterHide;
         }
 
         public final void stopHandAnimation()
         {
-            iAnimationPlayerRightHand    = 0;
-            iAnimationState              = LibAnimation.EAnimationNone;
+            this.iAnimationPlayerRightHand = 0;
+            this.iAnimationState = LibAnimation.EAnimationNone;
         }
 
         public final boolean animationActive()
         {
-            return ( iAnimationPlayerRightHand != 0 );
+            return (this.iAnimationPlayerRightHand != 0 );
         }
 
         public final int getAnimationRightHand()
         {
-            return iAnimationPlayerRightHand;
+            return this.iAnimationPlayerRightHand;
         }
 
         public void resetAnimation()
         {
-            iAnimationPlayerRightHand = 0;
+            this.iAnimationPlayerRightHand = 0;
         }
     }

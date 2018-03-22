@@ -18,9 +18,9 @@
 
             public Offset( float aX, float aY, float aZ )
             {
-                x = aX;
-                y = aY;
-                z = aZ;
+                this.x = aX;
+                this.y = aY;
+                this.z = aZ;
             }
         }
 
@@ -42,53 +42,53 @@
 
             public Rotation()
             {
-                set( 0.0f, 0.0f, 0.0f, 0.0f );
+                this.set( 0.0f, 0.0f, 0.0f, 0.0f );
             }
 
             public Rotation( float aX, float aY, float aZ )
             {
-                set( aX, aY, aZ, 0.0f );
+                this.set( aX, aY, aZ, 0.0f );
             }
 
             public void set( float aX, float aY, float aZ, float aSpeed )
             {
-                x = aX;
-                y = aY;
-                z = aZ;
-                iSpeed = aSpeed;
+                this.x = aX;
+                this.y = aY;
+                this.z = aZ;
+                this.iSpeed = aSpeed;
             }
 
             public void reachToAbsolute( Rotation targetPitch, float absoluteDistance )
             {
-                x = LibMath.reachToAbsolute( x, targetPitch.x, absoluteDistance );
-                y = LibMath.reachToAbsolute( y, targetPitch.y, absoluteDistance );
-                z = LibMath.reachToAbsolute( z, targetPitch.z, absoluteDistance );
+                this.x = LibMath.reachToAbsolute(this.x, targetPitch.x, absoluteDistance );
+                this.y = LibMath.reachToAbsolute(this.y, targetPitch.y, absoluteDistance );
+                this.z = LibMath.reachToAbsolute(this.z, targetPitch.z, absoluteDistance );
             }
 
             public Rotation copy()
             {
-                return new Rotation( x, y, z );
+                return new Rotation(this.x, this.y, this.z);
             }
 
             public boolean equal( Rotation r )
             {
-                return ( r.x == x && r.y == y && r.z == z );
+                return ( r.x == this.x && r.y == this.y && r.z == this.z);
             }
 
             public boolean equalRounded( Rotation other )
             {
                 return
                 (
-                        Math.round( x ) == Math.round( other.x )
-                    &&  Math.round( y ) == Math.round( other.y )
-                    &&  Math.round( z ) == Math.round( other.z )
+                        Math.round(this.x) == Math.round( other.x )
+                    &&  Math.round(this.y) == Math.round( other.y )
+                    &&  Math.round(this.z) == Math.round( other.z )
                 );
             }
 
             @Override
             public String toString()
             {
-                return "[" + x + "," + y + "," + z + "]";
+                return "[" + this.x + "," + this.y + "," + this.z + "]";
             }
         }
 
@@ -102,8 +102,8 @@
 
             public ViewSet( float aPosX, float aPosY, float aPosZ, float aRotX, float aRotY, float aRotZ )
             {
-                pos = new Offset(   aPosX, aPosY, aPosZ );
-                rot = new Rotation( aRotX, aRotY, aRotZ );
+                this.pos = new Offset(   aPosX, aPosY, aPosZ );
+                this.rot = new Rotation( aRotX, aRotY, aRotZ );
             }
         }
 
@@ -141,12 +141,12 @@
 
             private Scalation( float aScaleFactor )
             {
-                iScaleFactor = aScaleFactor;
+                this.iScaleFactor = aScaleFactor;
             }
 
             public final float getScaleFactor()
             {
-                return iScaleFactor;
+                return this.iScaleFactor;
             }
         }
 

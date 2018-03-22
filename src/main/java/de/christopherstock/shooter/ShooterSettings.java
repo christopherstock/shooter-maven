@@ -38,9 +38,6 @@
 
         public static final class General
         {
-            public      static  final   boolean     DISABLE_SOUND_FX                    = ShooterDebug.NO;
-            public      static  final   boolean     DISABLE_SOUND_BG                    = ShooterDebug.YES;
-
             public      static  final   boolean     DISABLE_PLAYER_WALKING_ANGLE_Y      = ShooterDebug.YES;
             public      static  final   boolean     DISABLE_PLAYER_TO_WALL_COLLISIONS   = ShooterDebug.NO;
             public      static  final   boolean     DISABLE_PLAYER_TO_BOT_COLLISIONS    = ShooterDebug.NO;
@@ -402,13 +399,13 @@
 
             private Path( String aUrl )
             {
-                iUrl = aUrl;
+                this.iUrl = aUrl;
 
                 //assert leading slash
-                if ( !iUrl.startsWith( "/" ) ) iUrl = "/" + iUrl;
+                if ( !this.iUrl.startsWith( "/" ) ) this.iUrl = "/" + this.iUrl;
 
                 //assert trailing slash
-                if ( !iUrl.endsWith(   "/" ) ) iUrl = iUrl + "/";
+                if ( !this.iUrl.endsWith(   "/" ) ) this.iUrl = this.iUrl + "/";
             }
         }
     }

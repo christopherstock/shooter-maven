@@ -55,11 +55,11 @@
         ***************************************************************************************************************/
         public LibVertex( LibVertex aVertex )
         {
-            x = aVertex.x;
-            y = aVertex.y;
-            z = aVertex.z;
-            u = aVertex.u;
-            v = aVertex.v;
+            this.x = aVertex.x;
+            this.y = aVertex.y;
+            this.z = aVertex.z;
+            this.u = aVertex.u;
+            this.v = aVertex.v;
         }
 
         /***************************************************************************************************************
@@ -67,11 +67,11 @@
         ***************************************************************************************************************/
         public LibVertex( float aX, float aY, float aZ, float aU, float aV )
         {
-            x = aX;
-            y = aY;
-            z = aZ;
-            u = aU;
-            v = aV;
+            this.x = aX;
+            this.y = aY;
+            this.z = aZ;
+            this.u = aU;
+            this.v = aV;
         }
 
         /***************************************************************************************************************
@@ -81,26 +81,26 @@
         {
             return new LibVertex
             (
-                x,
-                y,
-                z,
-                u,
-                v
+                    this.x,
+                    this.y,
+                    this.z,
+                    this.u,
+                    this.v
             );
         }
 
         public void translate( float transX, float transY, float transZ )
         {
-            x += transX;
-            y += transY;
-            z += transZ;
+            this.x += transX;
+            this.y += transY;
+            this.z += transZ;
         }
 
         public void translate( Point3f by )
         {
-            x += by.x;
-            y += by.y;
-            z += by.z;
+            this.x += by.x;
+            this.y += by.y;
+            this.z += by.z;
         }
 
         public void rotateXYZ( float rotX, float rotY, float rotZ, LibVertex alternateAnchor )
@@ -112,6 +112,6 @@
         @Override
         public String toString()
         {
-            return "[" + x + "," + y + "," + z + "]";
+            return "[" + this.x + "," + this.y + "," + this.z + "]";
         }
     }

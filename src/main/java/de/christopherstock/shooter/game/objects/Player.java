@@ -80,25 +80,25 @@
         public Player( ViewSet aStartPosition, boolean aDisableGravity )
         {
             //init and set cylinder
-            iCylinder               = new Cylinder( this, new LibVertex( aStartPosition.pos.x, aStartPosition.pos.y, aStartPosition.pos.z ), RADIUS_BODY, DEPTH_TOTAL_STANDING, ShooterSettings.Performance.COLLISION_CHECKING_STEPS, ShooterDebug.playerCylinder, false, PlayerSettings.MAX_CLIMBING_UP_Z, PlayerSettings.MIN_CLIMBING_UP_Z, ShooterSettings.Performance.ELLIPSE_SEGMENTS, Material.EHumanFlesh );
-            iView                   = new PlayerView(     this, aStartPosition.rot );
+            this.iCylinder = new Cylinder( this, new LibVertex( aStartPosition.pos.x, aStartPosition.pos.y, aStartPosition.pos.z ), RADIUS_BODY, DEPTH_TOTAL_STANDING, ShooterSettings.Performance.COLLISION_CHECKING_STEPS, ShooterDebug.playerCylinder, false, PlayerSettings.MAX_CLIMBING_UP_Z, PlayerSettings.MIN_CLIMBING_UP_Z, ShooterSettings.Performance.ELLIPSE_SEGMENTS, Material.EHumanFlesh );
+            this.iView = new PlayerView(     this, aStartPosition.rot );
 
             //ShooterDebug.bugfix.out( "Reset player view!" );
 
-            iAmmoSet                = new AmmoSet();
-            iHealthChangeCallback   = Shooter.game.hud;
-            iDisableGravity         = aDisableGravity;
-            iArtefactSet            = new ArtefactSet();
+            this.iAmmoSet = new AmmoSet();
+            this.iHealthChangeCallback = Shooter.game.hud;
+            this.iDisableGravity = aDisableGravity;
+            this.iArtefactSet = new ArtefactSet();
         }
 
         private void handleKeys()
         {
             //only if alive
-            if ( !iDead )
+            if ( !this.iDead)
             {
-                handleKeysForMovement();        //handle game keys to specify player's new position
-                handleKeysForActions();         //handle game keys to invoke actions
-                iView.handleKeysForView();      //handle game keys to specify player's new view
+                this.handleKeysForMovement();        //handle game keys to specify player's new position
+                this.handleKeysForActions();         //handle game keys to invoke actions
+                this.iView.handleKeysForView();      //handle game keys to specify player's new view
             }
         }
 
@@ -114,44 +114,44 @@
             Keys.ticksKeyPageDownHold = ( Keys.keyPageDownHold ? Keys.ticksKeyPageDownHold + 1 : 0 );
 */
             //not if player is falling
-            if ( !iFalling )
+            if ( !this.iFalling)
             {
                 //forewards
                 if ( Keys.keyHoldWalkUp )
                 {
                     //change character's position
-                    iCylinder.getTarget().x = iCylinder.getTarget().x - LibMath.sinDeg( iView.iRot.z ) * SPEED_WALKING;
-                    iCylinder.getTarget().y = iCylinder.getTarget().y - LibMath.cosDeg( iView.iRot.z ) * SPEED_WALKING;
+                    this.iCylinder.getTarget().x = this.iCylinder.getTarget().x - LibMath.sinDeg(this.iView.iRot.z ) * SPEED_WALKING;
+                    this.iCylinder.getTarget().y = this.iCylinder.getTarget().y - LibMath.cosDeg(this.iView.iRot.z ) * SPEED_WALKING;
 
                     //increase walkY-axis-angles
-                    iWalkingAngleY          += SPEED_WALKING_ANGLE_Y;
-                    iWalkingAngleWearponX   += SPEED_WALKING_ANGLE_WEARPON_X;
-                    iWalkingAngleWearponY   += SPEED_WALKING_ANGLE_WEARPON_Y;
-                    iWalkingAngleY          = iWalkingAngleY        > 360.0f ? iWalkingAngleY - 360.0f        : iWalkingAngleY;
-                    iWalkingAngleWearponX   = iWalkingAngleWearponX > 360.0f ? iWalkingAngleWearponX - 360.0f : iWalkingAngleWearponX;
-                    iWalkingAngleWearponY   = iWalkingAngleWearponY > 360.0f ? iWalkingAngleWearponY - 360.0f : iWalkingAngleWearponY;
+                    this.iWalkingAngleY += SPEED_WALKING_ANGLE_Y;
+                    this.iWalkingAngleWearponX += SPEED_WALKING_ANGLE_WEARPON_X;
+                    this.iWalkingAngleWearponY += SPEED_WALKING_ANGLE_WEARPON_Y;
+                    this.iWalkingAngleY = this.iWalkingAngleY > 360.0f ? this.iWalkingAngleY - 360.0f        : this.iWalkingAngleY;
+                    this.iWalkingAngleWearponX = this.iWalkingAngleWearponX > 360.0f ? this.iWalkingAngleWearponX - 360.0f : this.iWalkingAngleWearponX;
+                    this.iWalkingAngleWearponY = this.iWalkingAngleWearponY > 360.0f ? this.iWalkingAngleWearponY - 360.0f : this.iWalkingAngleWearponY;
                 }
 
                 //backwards
                 if ( Keys.keyHoldWalkDown )
                 {
                     //change character's position
-                    iCylinder.getTarget().x = iCylinder.getTarget().x + LibMath.sinDeg( iView.iRot.z ) * SPEED_WALKING;
-                    iCylinder.getTarget().y = iCylinder.getTarget().y + LibMath.cosDeg( iView.iRot.z ) * SPEED_WALKING;
+                    this.iCylinder.getTarget().x = this.iCylinder.getTarget().x + LibMath.sinDeg(this.iView.iRot.z ) * SPEED_WALKING;
+                    this.iCylinder.getTarget().y = this.iCylinder.getTarget().y + LibMath.cosDeg(this.iView.iRot.z ) * SPEED_WALKING;
 
                     //increase walkY-axis-angles
                     //walkingAngle1 += CHARACTER_WALKING_ANGLE_1_SPEED;
-                    iWalkingAngleWearponX += SPEED_WALKING_ANGLE_WEARPON_X;
-                    iWalkingAngleWearponY += SPEED_WALKING_ANGLE_WEARPON_Y;
+                    this.iWalkingAngleWearponX += SPEED_WALKING_ANGLE_WEARPON_X;
+                    this.iWalkingAngleWearponY += SPEED_WALKING_ANGLE_WEARPON_Y;
                     //walkingAngle1 = walkingAngle1 > 360.0f ? walkingAngle1 - 360.0f : walkingAngle1;
-                    iWalkingAngleWearponX = iWalkingAngleWearponX > 360.0f ? iWalkingAngleWearponX - 360.0f : iWalkingAngleWearponX;
-                    iWalkingAngleWearponY = iWalkingAngleWearponY > 360.0f ? iWalkingAngleWearponY - 360.0f : iWalkingAngleWearponY;
+                    this.iWalkingAngleWearponX = this.iWalkingAngleWearponX > 360.0f ? this.iWalkingAngleWearponX - 360.0f : this.iWalkingAngleWearponX;
+                    this.iWalkingAngleWearponY = this.iWalkingAngleWearponY > 360.0f ? this.iWalkingAngleWearponY - 360.0f : this.iWalkingAngleWearponY;
 
                     //decrease walkY-axis-angle
-                    iWalkingAngleY -= SPEED_WALKING_ANGLE_Y;
+                    this.iWalkingAngleY -= SPEED_WALKING_ANGLE_Y;
                     //walkingAngle2 -= CHARACTER_WALKING_ANGLE_2_SPEED;
                     //walkingAngle3 -= CHARACTER_WALKING_ANGLE_3_SPEED;
-                    iWalkingAngleY = iWalkingAngleY < 0.0f ? iWalkingAngleY + 360.0f : iWalkingAngleY;
+                    this.iWalkingAngleY = this.iWalkingAngleY < 0.0f ? this.iWalkingAngleY + 360.0f : this.iWalkingAngleY;
                     //walkingAngle2 = walkingAngle2 < 0.0f ? walkingAngle2 + 360.0f : walkingAngle2;
                     //walkingAngle3 = walkingAngle3 < 0.0f ? walkingAngle3 + 360.0f : walkingAngle3;
                 }
@@ -161,8 +161,8 @@
                 {
                     if ( Keys.keyHoldAlternate || Keys.keyHoldStrafeLeft )
                     {
-                        iCylinder.getTarget().x = iCylinder.getTarget().x - LibMath.cosDeg( iView.iRot.z ) * SPEED_STRAFING;
-                        iCylinder.getTarget().y = iCylinder.getTarget().y + LibMath.sinDeg( iView.iRot.z ) * SPEED_STRAFING;
+                        this.iCylinder.getTarget().x = this.iCylinder.getTarget().x - LibMath.cosDeg(this.iView.iRot.z ) * SPEED_STRAFING;
+                        this.iCylinder.getTarget().y = this.iCylinder.getTarget().y + LibMath.sinDeg(this.iView.iRot.z ) * SPEED_STRAFING;
                     }
                 }
 
@@ -171,8 +171,8 @@
                 {
                     if ( Keys.keyHoldAlternate  || Keys.keyHoldStrafeRight )
                     {
-                        iCylinder.getTarget().x = iCylinder.getTarget().x + LibMath.cosDeg( iView.iRot.z ) * SPEED_STRAFING;
-                        iCylinder.getTarget().y = iCylinder.getTarget().y - LibMath.sinDeg( iView.iRot.z ) * SPEED_STRAFING;
+                        this.iCylinder.getTarget().x = this.iCylinder.getTarget().x + LibMath.cosDeg(this.iView.iRot.z ) * SPEED_STRAFING;
+                        this.iCylinder.getTarget().y = this.iCylinder.getTarget().y - LibMath.sinDeg(this.iView.iRot.z ) * SPEED_STRAFING;
                     }
                 }
             }
@@ -187,18 +187,18 @@
                 if ( Keys.keyHoldFireMustBeReleased )
                 {
                     //stop launching the shot
-                    iLaunchShot = false;
+                    this.iLaunchShot = false;
                 }
                 else
                 {
                     //launch the shot!
-                    iLaunchShot = true;
+                    this.iLaunchShot = true;
 
                     //release the key if the gun requires this
-                    if ( iArtefactSet.getArtefactType().getCurrentShotNeedsKeyRelease() )
+                    if (this.iArtefactSet.getArtefactType().getCurrentShotNeedsKeyRelease() )
                     {
                         //force release after number of shots withput release is reached
-                        if ( iArtefactSet.iCurrentArtefact.iCurrentShotsWithoutKeyRelease >= iArtefactSet.getArtefactType().iShotsTillKeyReleaseRequired )
+                        if (this.iArtefactSet.iCurrentArtefact.iCurrentShotsWithoutKeyRelease >= this.iArtefactSet.getArtefactType().iShotsTillKeyReleaseRequired )
                         {
                             //key-release required before next shot will be launched :)
                             Keys.keyHoldFireMustBeReleased = true;
@@ -209,13 +209,13 @@
             else
             {
                 //reset wearpon's shots withput key release
-                iArtefactSet.iCurrentArtefact.iCurrentShotsWithoutKeyRelease = 0;
+                this.iArtefactSet.iCurrentArtefact.iCurrentShotsWithoutKeyRelease = 0;
 
                 //reset
                 Keys.keyHoldFireMustBeReleased = false;
 
                 //stop launching the shot
-                iLaunchShot = false;
+                this.iLaunchShot = false;
             }
 
             //cycle through artefacts
@@ -233,17 +233,17 @@
             //check zooming
             if ( MouseInput.mouseHoldZoom || Keys.keyHoldZoom )
             {
-                iAiming = true;
-                iZoom += General.SPEED_ZOOM;
-                if ( iZoom > iArtefactSet.getArtefactType().getZoom() ) iZoom = iArtefactSet.getArtefactType().getZoom();
-                iScaleFactor = Level.currentPlayer().iZoom / General.MAX_ZOOM;
+                this.iAiming = true;
+                this.iZoom += General.SPEED_ZOOM;
+                if (this.iZoom > this.iArtefactSet.getArtefactType().getZoom() ) this.iZoom = this.iArtefactSet.getArtefactType().getZoom();
+                this.iScaleFactor = Level.currentPlayer().iZoom / General.MAX_ZOOM;
             }
             else
             {
-                iAiming = false;
-                iZoom -= General.SPEED_ZOOM;
-                if ( iZoom < 0.0f ) iZoom = 0.0f;
-                iScaleFactor = Level.currentPlayer().iZoom / General.MAX_ZOOM;
+                this.iAiming = false;
+                this.iZoom -= General.SPEED_ZOOM;
+                if (this.iZoom < 0.0f ) this.iZoom = 0.0f;
+                this.iScaleFactor = Level.currentPlayer().iZoom / General.MAX_ZOOM;
             }
 
             //launch crouching
@@ -270,41 +270,41 @@
 
         public final Cylinder getCylinder()
         {
-            return iCylinder;
+            return this.iCylinder;
         }
 
         public final void toggleCrouching()
         {
-            iCrouching = !iCrouching;
+            this.iCrouching = !this.iCrouching;
         }
 
         private void performFloorChange()
         {
             //no gravity no floor change
-            if ( iDisableGravity ) return;
+            if (this.iDisableGravity) return;
 
             //browse all faces and set the player to the highest
 
             //try algo with cylinder first
-            Float highestZ = Level.currentSection().getHighestFloor( iCylinder, null  );
+            Float highestZ = Level.currentSection().getHighestFloor(this.iCylinder, null  );
 
             //ShooterDebug.bugfix.out( "highestZ: " + highestZ );
 
             //check if the player is falling - if no highest point or highest point is too far away
-            if ( highestZ == null || highestZ < iCylinder.getAnchor().z - PlayerSettings.MAX_CLIMBING_UP_Z / 2  )
+            if ( highestZ == null || highestZ < this.iCylinder.getAnchor().z - PlayerSettings.MAX_CLIMBING_UP_Z / 2  )
             {
-                if ( iCurrentSpeedFalling > SPEED_FALLING_MAX ) iCurrentSpeedFalling = SPEED_FALLING_MAX;
+                if (this.iCurrentSpeedFalling > SPEED_FALLING_MAX ) this.iCurrentSpeedFalling = SPEED_FALLING_MAX;
 
-                iCylinder.getAnchor().z -= iCurrentSpeedFalling;
-                iCurrentSpeedFalling    *= SPEED_FALLING_MULTIPLIER;
-                iFalling                = true;
+                this.iCylinder.getAnchor().z -= this.iCurrentSpeedFalling;
+                this.iCurrentSpeedFalling *= SPEED_FALLING_MULTIPLIER;
+                this.iFalling = true;
             }
             else
             {
                 //assign face's z
-                iCurrentSpeedFalling    = SPEED_FALLING_MIN;
-                iCylinder.getAnchor().z = highestZ;
-                iFalling                = false;
+                this.iCurrentSpeedFalling = SPEED_FALLING_MIN;
+                this.iCylinder.getAnchor().z = highestZ;
+                this.iFalling = false;
             }
 
             //ShooterDebug.bugfix.out( "z: " + iCylinder.getAnchor().z );
@@ -312,7 +312,7 @@
             //check if current level has an invisible z-0-layer
             if ( Level.currentSection().hasInvisibleZLayer() )
             {
-                if ( iCylinder.getAnchor().z < 0.0f ) iCylinder.getAnchor().z = 0.0f;
+                if (this.iCylinder.getAnchor().z < 0.0f ) this.iCylinder.getAnchor().z = 0.0f;
             }
         }
 /*
@@ -336,7 +336,7 @@
 */
         public final LibShot getShot( float modHorzCC )
         {
-            boolean isFirearm = ( iArtefactSet.getArtefactType().iArtefactKind instanceof FireArm );
+            boolean isFirearm = (this.iArtefactSet.getArtefactType().iArtefactKind instanceof FireArm );
             return
             (
                     isFirearm
@@ -344,22 +344,22 @@
                     (
                         ShotType.ESharpAmmo,
                         LibShot.ShotOrigin.EPlayer,
-                        ( (FireArm)( iArtefactSet.getArtefactType().iArtefactKind ) ).getCurrentIrregularityHorz(),
-                        ( (FireArm)( iArtefactSet.getArtefactType().iArtefactKind ) ).getCurrentIrregularityVert(),
-                        iCylinder.getAnchor().x    + ( LibMath.sinDeg( iView.iRot.z + 90.0f ) * iView.iHandTransX ) - ( LibMath.sinDeg( iView.iRot.z ) * iView.iHandTransY ),
-                        iCylinder.getAnchor().y    + ( LibMath.cosDeg( iView.iRot.z + 90.0f ) * iView.iHandTransX ) - ( LibMath.cosDeg( iView.iRot.z ) * iView.iHandTransY ),
-                        iCylinder.getAnchor().z + iView.iDepthHand,
-                        iView.iRot.z,
-                        iView.iRot.x,
-                        iArtefactSet.getArtefactType().getShotRange(),
-                        iArtefactSet.getArtefactType().iArtefactKind.getBulletHoleSize(),
+                        ( (FireArm)(this.iArtefactSet.getArtefactType().iArtefactKind ) ).getCurrentIrregularityHorz(),
+                        ( (FireArm)(this.iArtefactSet.getArtefactType().iArtefactKind ) ).getCurrentIrregularityVert(),
+                            this.iCylinder.getAnchor().x    + ( LibMath.sinDeg(this.iView.iRot.z + 90.0f ) * this.iView.iHandTransX ) - ( LibMath.sinDeg(this.iView.iRot.z ) * this.iView.iHandTransY ),
+                            this.iCylinder.getAnchor().y    + ( LibMath.cosDeg(this.iView.iRot.z + 90.0f ) * this.iView.iHandTransX ) - ( LibMath.cosDeg(this.iView.iRot.z ) * this.iView.iHandTransY ),
+                            this.iCylinder.getAnchor().z + this.iView.iDepthHand,
+                            this.iView.iRot.z,
+                            this.iView.iRot.x,
+                            this.iArtefactSet.getArtefactType().getShotRange(),
+                            this.iArtefactSet.getArtefactType().iArtefactKind.getBulletHoleSize(),
                         ShooterDebug.shotAndHit,
-                        iArtefactSet.getArtefactType().iArtefactKind.getSliverParticleQuantity(),
+                            this.iArtefactSet.getArtefactType().iArtefactKind.getSliverParticleQuantity(),
                         FxSettings.SLIVER_ANGLE_MOD,
-                        iArtefactSet.getArtefactType().getDamage(),
-                        iArtefactSet.getArtefactType().iArtefactKind.getSliverParticleSize(),
-                        iArtefactSet.getArtefactType().getBreaksWalls(),
-                        ( (FireArm)iArtefactSet.getArtefactType().iArtefactKind ).getProjectile(),
+                            this.iArtefactSet.getArtefactType().getDamage(),
+                            this.iArtefactSet.getArtefactType().iArtefactKind.getSliverParticleSize(),
+                            this.iArtefactSet.getArtefactType().getBreaksWalls(),
+                        ( (FireArm) this.iArtefactSet.getArtefactType().iArtefactKind ).getProjectile(),
                         General.FADE_OUT_FACES_TOTAL_TICKS
                     )
                 :   new LibShot
@@ -368,19 +368,19 @@
                         LibShot.ShotOrigin.EPlayer,
                         modHorzCC,
                         0.0f,
-                        iCylinder.getAnchor().x,
-                        iCylinder.getAnchor().y,
-                        iCylinder.getAnchor().z + iView.iDepthHand,
-                        iView.iRot.z,
-                        iView.iRot.x,
-                        iArtefactSet.getArtefactType().getShotRange(),
-                        iArtefactSet.getArtefactType().iArtefactKind.getBulletHoleSize(),
+                            this.iCylinder.getAnchor().x,
+                            this.iCylinder.getAnchor().y,
+                            this.iCylinder.getAnchor().z + this.iView.iDepthHand,
+                            this.iView.iRot.z,
+                            this.iView.iRot.x,
+                            this.iArtefactSet.getArtefactType().getShotRange(),
+                            this.iArtefactSet.getArtefactType().iArtefactKind.getBulletHoleSize(),
                         ShooterDebug.shotAndHit,
-                        iArtefactSet.getArtefactType().iArtefactKind.getSliverParticleQuantity(),
+                            this.iArtefactSet.getArtefactType().iArtefactKind.getSliverParticleQuantity(),
                         FxSettings.SLIVER_ANGLE_MOD,
-                        iArtefactSet.getArtefactType().getDamage(),
-                        iArtefactSet.getArtefactType().iArtefactKind.getSliverParticleSize(),
-                        iArtefactSet.getArtefactType().getBreaksWalls(),
+                            this.iArtefactSet.getArtefactType().getDamage(),
+                            this.iArtefactSet.getArtefactType().iArtefactKind.getSliverParticleSize(),
+                            this.iArtefactSet.getArtefactType().getBreaksWalls(),
                         null,
                         General.FADE_OUT_FACES_TOTAL_TICKS
                     )
@@ -407,8 +407,8 @@
                     !Shooter.game.hud.animationActive()
                 &&
                     (
-                            !( iArtefactSet.iCurrentArtefact.iArtefactType.iArtefactKind instanceof Gadget )
-                        ||  ( (Gadget)iArtefactSet.iCurrentArtefact.iArtefactType.iArtefactKind ).iGiveTakeAnimState == GiveTakeAnim.ENone
+                            !(this.iArtefactSet.iCurrentArtefact.iArtefactType.iArtefactKind instanceof Gadget )
+                        ||  ( (Gadget) this.iArtefactSet.iCurrentArtefact.iArtefactType.iArtefactKind ).iGiveTakeAnimState == GiveTakeAnim.ENone
                     )
             )
             {
@@ -422,15 +422,15 @@
         ***************************************************************************************************************/
         public final float getWalkingAngleModifier()
         {
-            return ( General.DISABLE_PLAYER_WALKING_ANGLE_Y ? 0.0f : LibMath.sinDeg( iWalkingAngleY ) );
+            return ( General.DISABLE_PLAYER_WALKING_ANGLE_Y ? 0.0f : LibMath.sinDeg(this.iWalkingAngleY) );
         }
         public final float getWalkingAngleCarriedModifierX()
         {
-            return LibMath.sinDeg( iWalkingAngleWearponX );
+            return LibMath.sinDeg(this.iWalkingAngleWearponX);
         }
         public final float getWalkingAngleCarriedModifierY()
         {
-            return LibMath.sinDeg( iWalkingAngleWearponY );
+            return LibMath.sinDeg(this.iWalkingAngleWearponY);
         }
 
         public final void hurt( int descent )
@@ -438,13 +438,13 @@
             if ( PlayerSettings.INVINCIBILITY ) return;
 
             //player can only lose energy if he is not dying
-            if ( !iDead && iHealth > 0 )
+            if ( !this.iDead && this.iHealth > 0 )
             {
                 //play hurt sound
                 SoundFg.EPlayerHit1.playGlobalFx( 20 );
 
                 //substract damage - clip rock bottom
-                setHealth( iHealth - descent );
+                this.setHealth(this.iHealth - descent );
 
                 //start red screen anim
                 //HUDFx.launchDamageFX( descent );
@@ -460,10 +460,10 @@
         public final void heal( int gainer )
         {
             //player can only be healed if it is not too late
-            if ( !iDead && iHealth < MAX_HEALTH )
+            if ( !this.iDead && this.iHealth < MAX_HEALTH )
             {
                 //substract damage - clip rock bottom
-                setHealth( iHealth + gainer );
+                this.setHealth(this.iHealth + gainer );
 
                 //start healing screen anim
                 HUDFx.launchHealthFX( gainer );
@@ -482,7 +482,7 @@
             else
             {
                 //launch an action using the actionCylinder!
-                Cylinder actionCylinder = iCylinder.copy();
+                Cylinder actionCylinder = this.iCylinder.copy();
 
                 if ( gadget == null )
                 {
@@ -494,13 +494,13 @@
                 }
 
                 //launch the action on the level
-                Level.currentSection().launchAction( actionCylinder, gadget, iView.iRot.z );
+                Level.currentSection().launchAction( actionCylinder, gadget, this.iView.iRot.z );
             }
         }
 
         public final LibVertex getAnchor()
         {
-            return iCylinder.getAnchor();
+            return this.iCylinder.getAnchor();
         }
 
         public final float getCarriersFaceAngle()
@@ -510,73 +510,73 @@
 
         public final Vector<LibHitPoint> launchShot( LibShot shot )
         {
-            return getCylinder().launchShot( shot );
+            return this.getCylinder().launchShot( shot );
         }
 
         public final void drawStandingCircle()
         {
-            iCylinder.drawStandingCircle();
+            this.iCylinder.drawStandingCircle();
         }
 
         public final int getHealth()
         {
-            return iHealth;
+            return this.iHealth;
         }
 
         private void setHealth(int health )
         {
-            iHealth = health;
+            this.iHealth = health;
 
             //clip roof
-            if ( iHealth > MAX_HEALTH )
+            if (this.iHealth > MAX_HEALTH )
             {
-                iHealth = MAX_HEALTH;
+                this.iHealth = MAX_HEALTH;
             }
 
             //clip ceiling - kill if player falls to death
-            if ( iHealth <= 0 )
+            if (this.iHealth <= 0 )
             {
-                iHealth = 0;
-                kill();
+                this.iHealth = 0;
+                this.kill();
             }
 
             //health changed
-            iHealthChangeCallback.healthChanged();
+            this.iHealthChangeCallback.healthChanged();
         }
 
         public final ViewSet getCameraPositionAndRotation()
         {
             //3rd person camera?
-            float modX = ( ! General.ENABLE_3RD_PERSON_CAMERA ? 0.0f : LibMath.sinDeg( iView.iRot.z ) * 2.0f );
-            float modY = ( ! General.ENABLE_3RD_PERSON_CAMERA ? 0.0f : LibMath.cosDeg( iView.iRot.z ) * 2.0f );
-            float modZ = iView.iDepthEye + getWalkingAngleModifier() * PlayerSettings.AMP_WALKING_Z;
+            float modX = ( ! General.ENABLE_3RD_PERSON_CAMERA ? 0.0f : LibMath.sinDeg(this.iView.iRot.z ) * 2.0f );
+            float modY = ( ! General.ENABLE_3RD_PERSON_CAMERA ? 0.0f : LibMath.cosDeg(this.iView.iRot.z ) * 2.0f );
+            float modZ = this.iView.iDepthEye + this.getWalkingAngleModifier() * PlayerSettings.AMP_WALKING_Z;
 
             float posX = 0.0f;
             float posY = 0.0f;
             float posZ = 0.0f;
 
             //check if user is dying
-            if ( iDead )
+            if (this.iDead)
             {
-                posX = -iCylinder.getAnchor().x;
-                posZ = -iCylinder.getAnchor().z - PlayerSettings.DEPTH_DEATH - ( iView.iDepthEye - iView.iDieModTransZ );
-                posY = -iCylinder.getAnchor().y;
+                posX = -this.iCylinder.getAnchor().x;
+                posZ = -this.iCylinder.getAnchor().z - PlayerSettings.DEPTH_DEATH - (this.iView.iDepthEye - this.iView.iDieModTransZ );
+                posY = -this.iCylinder.getAnchor().y;
             }
             else
             {
-                posX = -iCylinder.getAnchor().x - modX;
-                posZ = -iCylinder.getAnchor().z - modZ - iView.iDieModTransZ;
-                posY = -iCylinder.getAnchor().y - modY;
+                posX = -this.iCylinder.getAnchor().x - modX;
+                posZ = -this.iCylinder.getAnchor().z - modZ - this.iView.iDieModTransZ;
+                posY = -this.iCylinder.getAnchor().y - modY;
             }
 
             //zoom
-            if ( iZoom != 0.0f )
+            if (this.iZoom != 0.0f )
             {
                 //calc new player pos was hard work but is unused :(
                 boolean calcNewPlayerPos_HardWork = false;
                 if ( calcNewPlayerPos_HardWork )
                 {
-                    Point3d iEndPoint3d = LibMathGeometry.getDistantPoint( new Point3d( posX, posY, posZ ), -iZoom, iView.iRot.x, iView.iRot.z );
+                    Point3d iEndPoint3d = LibMathGeometry.getDistantPoint( new Point3d( posX, posY, posZ ), -this.iZoom, this.iView.iRot.x, this.iView.iRot.z );
 
                     posX = (float)iEndPoint3d.x;
                     posY = (float)iEndPoint3d.y;
@@ -584,7 +584,7 @@
                 }
 
                 //set glu perspective zoom
-                LibGL3D.view.setNewGluFaceAngle( LibGLView.VIEW_ANGLE - iZoom );
+                LibGL3D.view.setNewGluFaceAngle( LibGLView.VIEW_ANGLE - this.iZoom);
 
                 //enter matrix mode modelview
                 GL11.glMatrixMode( GL11.GL_MODELVIEW );
@@ -595,9 +595,9 @@
                 posX,
                 posY,
                 posZ,
-                iView.iRot.x + iView.iDieModX,
-                iView.iRot.y + iView.iDieModY,
-                iView.iRot.z - iView.iDieModZ
+                    this.iView.iRot.x + this.iView.iDieModX,
+                    this.iView.iRot.y + this.iView.iDieModY,
+                    this.iView.iRot.z - this.iView.iDieModZ
             );
         }
 
@@ -606,9 +606,9 @@
         ***********************************************************************************/
         public final void kill()
         {
-            iHealth             = 0;
-            iDead               = true;
-            iView.iDyingState   = DyingState.EFallingDown;
+            this.iHealth = 0;
+            this.iDead = true;
+            this.iView.iDyingState   = DyingState.EFallingDown;
 
             //play hit sound
             SoundFg.EPlayerHit1.playGlobalFx( 40   );
@@ -623,27 +623,27 @@
 
         public final boolean isDead()
         {
-            return iDead;
+            return this.iDead;
         }
 
         public final boolean isDeadAnimationOver()
         {
-            return ( iDead && iView.dyingAnimationOver() );
+            return (this.iDead && this.iView.dyingAnimationOver() );
         }
 
         public final AmmoSet getAmmoSet()
         {
-            return iAmmoSet;
+            return this.iAmmoSet;
         }
 
         public final PlayerView getView()
         {
-            return iView;
+            return this.iView;
         }
 
         private final void moveToNewPosition()
         {
-            getCylinder().moveToTargetPosition( getView().iDepthTotal, General.DISABLE_PLAYER_TO_WALL_COLLISIONS, General.DISABLE_PLAYER_TO_BOT_COLLISIONS );
+            this.getCylinder().moveToTargetPosition(this.getView().iDepthTotal, General.DISABLE_PLAYER_TO_WALL_COLLISIONS, General.DISABLE_PLAYER_TO_BOT_COLLISIONS );
         }
 
         public HitPointCarrier getHitPointCarrier()
@@ -653,19 +653,19 @@
 
         public final void render()
         {
-            getCylinder().setAnchorAsTargetPosition();  //set current position as the target-position
-            handleKeys();                               //handle all game keys for the player
-            getView().centerVerticalLook();             //change vertical camera
-            getView().animateDying();                   //animate dying
-            moveToNewPosition();                        //move player to new position ( collisions may influence new position )
-            performFloorChange();                       //move player according to map collision ( floors )
+            this.getCylinder().setAnchorAsTargetPosition();  //set current position as the target-position
+            this.handleKeys();                               //handle all game keys for the player
+            this.getView().centerVerticalLook();             //change vertical camera
+            this.getView().animateDying();                   //animate dying
+            this.moveToNewPosition();                        //move player to new position ( collisions may influence new position )
+            this.performFloorChange();                       //move player according to map collision ( floors )
 
             //handle artefact ( fire, reload, give ) if no HUD anim is running
             if ( !Shooter.game.hud.animationActive() )
             {
-                if ( iArtefactSet.iCurrentArtefact != null )
+                if (this.iArtefactSet.iCurrentArtefact != null )
                 {
-                    iArtefactSet.iCurrentArtefact.handleArtefact( this, iLaunchShot, iAmmoSet );
+                    this.iArtefactSet.iCurrentArtefact.handleArtefact( this, this.iLaunchShot, this.iAmmoSet);
                 }
             }
         }
@@ -673,12 +673,12 @@
         public final boolean getLaunchShot()
         {
             //operate synchronous
-            return iLaunchShot;
+            return this.iLaunchShot;
         }
 
         public final boolean isHealthLow()
         {
-            return ( iHealth <= HUDSettings.PLAYER_LOW_HEALTH_WARNING_PERCENT );
+            return (this.iHealth <= HUDSettings.PLAYER_LOW_HEALTH_WARNING_PERCENT );
         }
 
         public final void launchAction( LibCylinder aCylinder, Object gadget, float faceAngle )

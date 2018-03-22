@@ -31,30 +31,30 @@
 
         public final void loadImage()
         {
-            BufferedImage bufferedImage = LibImage.load( ShooterSettings.Path.EBackGrounds.iUrl + toString() + LibExtension.jpg.getSpecifier(), ShooterDebug.glImage, false );
-            bgImage = new LibGLImage( bufferedImage, ImageUsage.EOrtho, ShooterDebug.glImage, true );
+            BufferedImage bufferedImage = LibImage.load( ShooterSettings.Path.EBackGrounds.iUrl + this.toString() + LibExtension.jpg.getSpecifier(), ShooterDebug.glImage, false );
+            this.bgImage = new LibGLImage( bufferedImage, ImageUsage.EOrtho, ShooterDebug.glImage, true );
         }
 
         public final void drawOrtho( float playerRotX, float playerRotZ )
         {
             //translate left/right
-            int x = (int)( bgImage.width * playerRotZ / 360 );
+            int x = (int)(this.bgImage.width * playerRotZ / 360 );
 
             //translate up/down
-            int y = -bgImage.height / 4;
+            int y = -this.bgImage.height / 4;
             if ( playerRotX > 0 )
             {
-                y += (int)( bgImage.height / 4 * playerRotX / PlayerSettings.MAX_LOOKING_X );
+                y += (int)(this.bgImage.height / 4 * playerRotX / PlayerSettings.MAX_LOOKING_X );
             }
             else if ( playerRotX < 0 )
             {
-                y += (int)( bgImage.height / 4 * playerRotX / PlayerSettings.MAX_LOOKING_X );
+                y += (int)(this.bgImage.height / 4 * playerRotX / PlayerSettings.MAX_LOOKING_X );
             }
 
             //Debug.bugfix.out( "x: [" + x + "] rotZ [" + playerRotZ + "] rotY [" + playerRotX + "]" );
 
-            LibGL3D.view.drawOrthoBitmapBytes( bgImage, x, LibGL3D.panel.height - bgImage.height / 2 + y );
-            x -= bgImage.width;
-            LibGL3D.view.drawOrthoBitmapBytes( bgImage, x, LibGL3D.panel.height - bgImage.height / 2 + y );
+            LibGL3D.view.drawOrthoBitmapBytes(this.bgImage, x, LibGL3D.panel.height - this.bgImage.height / 2 + y );
+            x -= this.bgImage.width;
+            LibGL3D.view.drawOrthoBitmapBytes(this.bgImage, x, LibGL3D.panel.height - this.bgImage.height / 2 + y );
         }
     }

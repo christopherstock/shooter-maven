@@ -17,11 +17,11 @@
 
         public LibMaxMaterial( String aName, LibColors aColor, float aOffsetU, float aOffsetV, float aTilingU, float aTilingV )
         {
-            name       = aName;
-            color      = aColor;
-            offsetU    = aOffsetU;
-            offsetV    = aOffsetV;
-            tilingU    = aTilingU;
-            tilingV    = aTilingV;
+            this.name = aName;
+            this.color = aColor;
+            this.offsetU = aOffsetU;
+            this.offsetV = aOffsetV;
+            this.tilingU = aTilingU;
+            this.tilingV = aTilingV;
         }
     }

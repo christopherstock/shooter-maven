@@ -39,26 +39,26 @@
 
         private AmmoType( LibHoleSize aBulletHoleSize, int aMaxAmmo, Lib.ParticleQuantity aSliverParticleQuantity, int aDamage, FXSize aSliverParticleSize )
         {
-            iBulletHoleSize         = aBulletHoleSize;
-            iMaxAmmo                = aMaxAmmo;
-            iSliverParticleQuantity = aSliverParticleQuantity;
-            iDamage                 = aDamage;
-            iSliverParticleSize     = aSliverParticleSize;
+            this.iBulletHoleSize = aBulletHoleSize;
+            this.iMaxAmmo = aMaxAmmo;
+            this.iSliverParticleQuantity = aSliverParticleQuantity;
+            this.iDamage = aDamage;
+            this.iSliverParticleSize = aSliverParticleSize;
         }
 
         protected final void loadImage()
         {
-            BufferedImage bufferedImage = LibImage.load( ShooterSettings.Path.EShells.iUrl + toString() + LibExtension.png.getSpecifier(), ShooterDebug.glImage, false );
-            iHUDAmmoImage = new LibGLImage( bufferedImage, ImageUsage.EOrtho, ShooterDebug.glImage, true );
+            BufferedImage bufferedImage = LibImage.load( ShooterSettings.Path.EShells.iUrl + this.toString() + LibExtension.png.getSpecifier(), ShooterDebug.glImage, false );
+            this.iHUDAmmoImage = new LibGLImage( bufferedImage, ImageUsage.EOrtho, ShooterDebug.glImage, true );
         }
 
         protected final LibGLImage getImage()
         {
-            return iHUDAmmoImage;
+            return this.iHUDAmmoImage;
         }
 
         protected final int getDamage()
         {
-            return iDamage;
+            return this.iDamage;
         }
     }

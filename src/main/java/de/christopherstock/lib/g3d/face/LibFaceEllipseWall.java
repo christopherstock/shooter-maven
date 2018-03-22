@@ -27,13 +27,13 @@
             //call super-construct
             super( aDebug, new LibVertex( aX, aY, aZ, 0.0f, 0.0f ), aTextureID, LibColors.EWhite, null );
 
-            iTextureRotation = textureRotation;
+            this.iTextureRotation = textureRotation;
 
             //substract 90° from the horz faceAngle ! ( not from vert ! )
 
             //assign face angle
-            setFaceAngleHorz( aHorzFaceAngle - 90.0f );
-            setFaceAngleVert( aVertFaceAngle );
+            this.setFaceAngleHorz( aHorzFaceAngle - 90.0f );
+            this.setFaceAngleVert( aVertFaceAngle );
 
             //calculate vertices
             LibVertex[] ret = new LibVertex[ aEllipseSegments ];
@@ -59,16 +59,16 @@
                 //ve.rotateXYZ( aVertFaceAngle * LibMath.sinDeg( aHorzFaceAngle ), aVertFaceAngle * LibMath.cosDeg( aHorzFaceAngle ), aHorzFaceAngle, new LibVertex( aX, aY, aZ ) );
 
                 //rotate x ( vert face angle )
-                ve.rotateXYZ( iFaceAngleVert, 0.0f, 0.0f, new LibVertex( aX, aY, aZ ) );
+                ve.rotateXYZ(this.iFaceAngleVert, 0.0f, 0.0f, new LibVertex( aX, aY, aZ ) );
 
                 //rotate z ( horz face angle )
-                ve.rotateXYZ( 0.0f, 0.0f, iFaceAngleHorz, new LibVertex( aX, aY, aZ ) );
+                ve.rotateXYZ( 0.0f, 0.0f, this.iFaceAngleHorz, new LibVertex( aX, aY, aZ ) );
 
                 ret[ i ] = ve;
             }
 
             //set original vertices
-            setOriginalVertices( ret );
+            this.setOriginalVertices( ret );
         }
 
         @Override

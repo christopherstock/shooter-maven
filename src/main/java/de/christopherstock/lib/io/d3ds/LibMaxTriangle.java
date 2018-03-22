@@ -19,12 +19,12 @@
 
         public LibMaxTriangle( LibVertex aAnchor, String aTextureName, LibColors aCol, LibVertex aA, LibVertex aB, LibVertex aC, LibVertex aFaceNormal )
         {
-            iAnchor         = aAnchor;
-            iTextureName    = aTextureName;
-            iCol            = aCol;
-            iA              = aA;
-            iB              = aB;
-            iC              = aC;
-            iFaceNormal     = aFaceNormal;
+            this.iAnchor = aAnchor;
+            this.iTextureName = aTextureName;
+            this.iCol = aCol;
+            this.iA = aA;
+            this.iB = aB;
+            this.iC = aC;
+            this.iFaceNormal = aFaceNormal;
         }
     }

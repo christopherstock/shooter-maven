@@ -11,7 +11,7 @@
 
         public LibMaxTextureVertex( float initU, float initV )
         {
-            u = initU;
-            v = initV;
+            this.u = initU;
+            this.v = initV;
         }
     }

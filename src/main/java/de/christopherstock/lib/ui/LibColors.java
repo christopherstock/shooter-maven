@@ -81,11 +81,11 @@
 
         private LibColors( int aArgb )
         {
-            rgb     =                   aArgb;
-            f3      = LibMath.col2f3(   aArgb       );
-            f4      = LibMath.col2f4(   aArgb       );
-            colARGB = new Color(        aArgb, true );
-            colABGR = new Color( colARGB.getBlue(), colARGB.getGreen(), colARGB.getRed(), colARGB.getAlpha() );
+            this.rgb =                   aArgb;
+            this.f3 = LibMath.col2f3(   aArgb       );
+            this.f4 = LibMath.col2f4(   aArgb       );
+            this.colARGB = new Color(        aArgb, true );
+            this.colABGR = new Color(this.colARGB.getBlue(), this.colARGB.getGreen(), this.colARGB.getRed(), this.colARGB.getAlpha() );
         }
 
         public static LibColors getByName(String name )

@@ -80,46 +80,46 @@
         public Wall( LibD3dsFile aD3dsFile, LibVertex aAnchor, float aStartupRotZ, Lib.Scalation aScalation, Invert aInvert, Wall.WallCollidable aCollisionEnabled, Wall.WallAction aWallAction, WallClimbable aClimbable, DrawMethod aDrawMethod, LibTexture aChangeTexture1, LibTexture[] aChangeTexture2, int aChangeTexture2Delay, WallHealth aWallHealth, FXSize aExplosionSize, SoundFg aExplosionSound )
         {
             super(              ShooterD3ds.getFaces( aD3dsFile ), aAnchor, ( aWallAction == Wall.WallAction.ESprite ? 0.0f : aStartupRotZ ), aScalation.getScaleFactor(), aInvert, null, LibTransformationMode.EOriginalsToOriginals, aDrawMethod );
-            assignParentOnFaces( this );
-            assignDrawMethodOnFaces( aDrawMethod );
-            iCollisionEnabled   = aCollisionEnabled;
-            iWallAction         = aWallAction;
-            iStartupRotZ        = aStartupRotZ;
-            iClimbable          = aClimbable;
-            iEnergy             = new WallEnergy( aWallHealth, aExplosionSize, aExplosionSound );
+            this.assignParentOnFaces( this );
+            this.assignDrawMethodOnFaces( aDrawMethod );
+            this.iCollisionEnabled = aCollisionEnabled;
+            this.iWallAction = aWallAction;
+            this.iStartupRotZ = aStartupRotZ;
+            this.iClimbable = aClimbable;
+            this.iEnergy = new WallEnergy( aWallHealth, aExplosionSize, aExplosionSound );
 
             //change texture if desired
-            if ( aChangeTexture1 != null ) changeTexture( WallTex.ETest.getTexture(),   aChangeTexture1.getTexture() );
+            if ( aChangeTexture1 != null ) this.changeTexture( WallTex.ETest.getTexture(),   aChangeTexture1.getTexture() );
             if ( aChangeTexture2 != null )
             {
-                changeTexture( WallTex.ETest2.getTexture(),  aChangeTexture2[ 0 ].getTexture() );
-                iChangeTexture2         = aChangeTexture2;
-                iChangeTexture2Delay    = aChangeTexture2Delay;
+                this.changeTexture( WallTex.ETest2.getTexture(),  aChangeTexture2[ 0 ].getTexture() );
+                this.iChangeTexture2 = aChangeTexture2;
+                this.iChangeTexture2Delay = aChangeTexture2Delay;
             }
 
             //translate sprites to center point
-            if ( iWallAction == Wall.WallAction.ESprite )
+            if (this.iWallAction == Wall.WallAction.ESprite )
             {
-                Point2D.Float transToCenterXY = getCenterPointXY();
-                translate( aAnchor.x - transToCenterXY.x, aAnchor.y - transToCenterXY.y, 0.0f, LibTransformationMode.EOriginalsToOriginals );
+                Point2D.Float transToCenterXY = this.getCenterPointXY();
+                this.translate( aAnchor.x - transToCenterXY.x, aAnchor.y - transToCenterXY.y, 0.0f, LibTransformationMode.EOriginalsToOriginals );
             }
 
             //darken all destroyable faces for a more realistic effect
-            if ( aWallHealth != WallHealth.EUnbreakale ) darkenAllFaces( 0.9f, true, true, 0.1f, 0.1f );
+            if ( aWallHealth != WallHealth.EUnbreakale ) this.darkenAllFaces( 0.9f, true, true, 0.1f, 0.1f );
         }
 
         public void assignChildWallsToDestroy( Wall[] childWalls )
         {
-            iChildWalls = childWalls;
+            this.iChildWalls = childWalls;
         }
 
         public final void animate()
         {
             //animate if not destroyed
-            if ( !iEnergy.iDestroyed )
+            if ( !this.iEnergy.iDestroyed )
             {
                 //check if this mesh is associated with an action
-                switch ( iWallAction )
+                switch (this.iWallAction)
                 {
                     case ESprite:
                     {
@@ -149,38 +149,38 @@
                 }
 
                 //animate textures
-                if (  iChangeTexture2 != null && iChangeTexture2.length > 1 )
+                if (this.iChangeTexture2 != null && this.iChangeTexture2.length > 1 )
                 {
                     //tick till delay
-                    if ( ++iChangeTexture2Animation >= iChangeTexture2Delay )
+                    if ( ++this.iChangeTexture2Animation >= this.iChangeTexture2Delay)
                     {
                         //reset animation
-                        iChangeTexture2Animation = 0;
+                        this.iChangeTexture2Animation = 0;
 
                         //remember current index
-                        int currentIndex = iChangeTexture2Index;
+                        int currentIndex = this.iChangeTexture2Index;
 
                         //next index - reset if required
-                        ++iChangeTexture2Index;
-                        if ( iChangeTexture2Index >= iChangeTexture2.length ) iChangeTexture2Index = 0;
+                        ++this.iChangeTexture2Index;
+                        if (this.iChangeTexture2Index >= this.iChangeTexture2.length ) this.iChangeTexture2Index = 0;
 
                         //change texture
-                        changeTexture( iChangeTexture2[ currentIndex ].getTexture(), iChangeTexture2[ iChangeTexture2Index ].getTexture() );
+                        this.changeTexture(this.iChangeTexture2[ currentIndex ].getTexture(), this.iChangeTexture2[this.iChangeTexture2Index].getTexture() );
                     }
                 }
             }
 
             //animate if destroyed
-            if ( iEnergy.iDestroyed )
+            if (this.iEnergy.iDestroyed )
             {
                 //int animatedFaces = 0;
-                ++iEnergy.iCurrentDyingTick;
-                iEnergy.iDyingTransZ = -( ( iEnergy.iCurrentDyingTick * iEnergy.iCurrentDyingTick ) * 0.002f );
+                ++this.iEnergy.iCurrentDyingTick;
+                this.iEnergy.iDyingTransZ = -( (this.iEnergy.iCurrentDyingTick * this.iEnergy.iCurrentDyingTick ) * 0.002f );
 
                 //remove all bullet holes this wall carries
                 BulletHole.removeForWall( this );
 
-                for ( LibFaceTriangle f : getFaces() )
+                for ( LibFaceTriangle f : this.getFaces() )
                 {
                     if ( f.continueDestroyAnim )
                     {
@@ -190,11 +190,11 @@
                         float distanceFromFloor = ( LibMath.getRandom( 1, 100 ) * 0.3f / 100 ); // -0.1f
 
                         //init base z on 1st animation tick
-                        if ( iBaseZ == null )
+                        if (this.iBaseZ == null )
                         {
                             float           baseZ   = Float.MIN_VALUE;
-                            Point2D.Float   xy      = getCenterPointXY();
-                            float           z       = getCenterZ();
+                            Point2D.Float   xy      = this.getCenterPointXY();
+                            float           z       = this.getCenterZ();
 
                             Float baseZF = Level.currentSection().getHighestFloor( new Cylinder( null, new LibVertex( xy.x, xy.y, z ), 0.1f, 0.1f, 0, ShooterDebug.floorChange, false, 0.01f, 0.01f, ShooterSettings.Performance.ELLIPSE_SEGMENTS, Material.EHumanFlesh ), this );
                             if ( baseZF != null )
@@ -205,10 +205,10 @@
                             {
                                 baseZ = Level.currentPlayer().getAnchor().z;
                             }
-                            iBaseZ = new Float( baseZ );
+                            this.iBaseZ = new Float( baseZ );
                         }
 
-                        if ( f.iHighestZ - distanceFromFloor - ( ( f.iHighestZ - f.iLowestZ ) / 2 ) < iBaseZ)
+                        if ( f.iHighestZ - distanceFromFloor - ( ( f.iHighestZ - f.iLowestZ ) / 2 ) < this.iBaseZ)
                         {
                             f.continueDestroyAnim = false;
                         }
@@ -217,9 +217,9 @@
                             //translate
                             f.translate
                             (
-                                LibMath.sinDeg( iEnergy.iKillAngleHorz ) * 0.01f + LibMath.getRandom( -15, +15 ) * 0.005f,
-                                LibMath.cosDeg( iEnergy.iKillAngleHorz ) * 0.01f + LibMath.getRandom( -15, +15 ) * 0.005f,
-                                iEnergy.iDyingTransZ,
+                                LibMath.sinDeg(this.iEnergy.iKillAngleHorz ) * 0.01f + LibMath.getRandom( -15, +15 ) * 0.005f,
+                                LibMath.cosDeg(this.iEnergy.iKillAngleHorz ) * 0.01f + LibMath.getRandom( -15, +15 ) * 0.005f,
+                                    this.iEnergy.iDyingTransZ,
                                 LibTransformationMode.ETransformedToTransformed
                             );
                         }
@@ -237,15 +237,15 @@
         public final void launchAction( LibCylinder cylinder, Object gadget, float faceAngle )
         {
             //only if not destroyed
-            if ( !iEnergy.iDestroyed )
+            if ( !this.iEnergy.iDestroyed )
             {
                 //only launch an action if this mesh has an according action
-                if ( iWallAction != Wall.WallAction.ENone )
+                if (this.iWallAction != Wall.WallAction.ENone )
                 {
                     //perform an action if this mesh is affected
-                    if ( checkAction( cylinder, true, false ) )
+                    if (this.checkAction( cylinder, true, false ) )
                     {
-                        float anglePlayerToWall = LibMath.getAngleCorrect( cylinder.getCenterHorz(), getCenterPointXY() );
+                        float anglePlayerToWall = LibMath.getAngleCorrect( cylinder.getCenterHorz(), this.getCenterPointXY() );
                         anglePlayerToWall = LibMath.normalizeAngle( -anglePlayerToWall );
                         float angleDistance     = LibMath.getAngleDistanceAbsolute( faceAngle, anglePlayerToWall );
 
@@ -255,7 +255,7 @@
                         //clip angle distance
                         if ( angleDistance < PlayerSettings.MAX_ACTION_VIEW_ANGLE )
                         {
-                            switch ( iWallAction )
+                            switch (this.iWallAction)
                             {
                                 case ENone:
                                 {
@@ -317,7 +317,7 @@
             Vector<LibHitPoint> hitPoints = new Vector<LibHitPoint>();
 
             //only launch shot on faces if collision is active and this is not a sprite
-            if ( iCollisionEnabled == Wall.WallCollidable.EYes && iWallAction != Wall.WallAction.ESprite )
+            if (this.iCollisionEnabled == Wall.WallCollidable.EYes && this.iWallAction != Wall.WallAction.ESprite )
             {
                 hitPoints.addAll( super.launchShot( shot ) );
             }
@@ -329,9 +329,9 @@
         public final boolean checkCollisionHorz( LibCylinder cylinder )
         {
             //only check collisions  if collision is active
-            if ( iCollisionEnabled == Wall.WallCollidable.EYes )
+            if (this.iCollisionEnabled == Wall.WallCollidable.EYes )
             {
-                return super.checkCollisionHorz( cylinder, iClimbable );
+                return super.checkCollisionHorz( cylinder, this.iClimbable);
             }
 
             return false;
@@ -341,7 +341,7 @@
         public final Vector<Float> checkCollisionVert( LibCylinder cylinder, Object exclude )
         {
             //only check collisions  if collision is active AND this wall shall not be excluded
-            if ( iClimbable == WallClimbable.EYes && exclude != this )
+            if (this.iClimbable == WallClimbable.EYes && exclude != this )
             {
                 return super.checkCollisionVert( cylinder, exclude );
             }
@@ -371,24 +371,24 @@
         public void hurt( int h, float shotAngleHorz )
         {
             //only if destroyable
-            if ( iEnergy.iHealthCurrent > 0 )
+            if (this.iEnergy.iHealthCurrent > 0 )
             {
                 //lower current health
-                iEnergy.iHealthCurrent -= h;
+                this.iEnergy.iHealthCurrent -= h;
 
-                float opacity = ShooterSettings.FxSettings.MIN_DARKEN_FACES + ( 1.0f - ShooterSettings.FxSettings.MIN_DARKEN_FACES ) * ( ( (float)iEnergy.iHealthCurrent / (float)iEnergy.iHealthStart ) );
+                float opacity = ShooterSettings.FxSettings.MIN_DARKEN_FACES + ( 1.0f - ShooterSettings.FxSettings.MIN_DARKEN_FACES ) * ( ( (float) this.iEnergy.iHealthCurrent / (float) this.iEnergy.iHealthStart ) );
 
                 //darken faces
-                darkenAllFaces( opacity , true, false, 0.1f, 0.0f );
+                this.darkenAllFaces( opacity , true, false, 0.1f, 0.0f );
 
                 //darken all bullet holes for this wall
                 BulletHole.darkenAll( this, opacity );
 
                 //check if killed
-                if ( iEnergy.iHealthCurrent <= 0 )
+                if (this.iEnergy.iHealthCurrent <= 0 )
                 {
                     //kill wall
-                    kill( shotAngleHorz );
+                    this.kill( shotAngleHorz );
                 }
             }
         }
@@ -397,17 +397,17 @@
         {
             //ShooterDebug.major.out( "wall-mesh destroyed!" );
 
-            iEnergy.iHealthCurrent      = 0;
-            iEnergy.iDestroyed          = true;
-            iCollisionEnabled           = Wall.WallCollidable.ENo;
-            iEnergy.iKillAngleHorz      = shotAngleHorz;
+            this.iEnergy.iHealthCurrent      = 0;
+            this.iEnergy.iDestroyed          = true;
+            this.iCollisionEnabled = Wall.WallCollidable.ENo;
+            this.iEnergy.iKillAngleHorz      = shotAngleHorz;
 
             //get mesh's center and launch explosion from there
-            if ( iEnergy.iExplosionSize != null )
+            if (this.iEnergy.iExplosionSize != null )
             {
                 //launch sliver fx on this hole
-                Point2D.Float xy = getCenterPointXY();
-                float z = getCenterZ();
+                Point2D.Float xy = this.getCenterPointXY();
+                float z = this.getCenterZ();
                 float baseZ     = Float.MIN_VALUE;
                 Float baseZF    = Level.currentSection().getHighestFloor( new Cylinder( null, new LibVertex( xy.x, xy.y, z ), 0.05f, 0.01f, 0, ShooterDebug.floorChange, false, 0.01f, 0.01f, ShooterSettings.Performance.ELLIPSE_SEGMENTS, Material.EHumanFlesh ), this );
                 if ( baseZF != null )
@@ -418,25 +418,25 @@
 
                 //ShooterDebug.bugfix.out( "z> " + baseZ );
 
-                LibFXManager.launchExplosion( ShooterDebug.face, new LibVertex( xy.x, xy.y, baseZ ), iEnergy.iExplosionSize, FXTime.EMedium, FxSettings.LIFETIME_EXPLOSION, baseZ, General.FADE_OUT_FACES_TOTAL_TICKS );
+                LibFXManager.launchExplosion( ShooterDebug.face, new LibVertex( xy.x, xy.y, baseZ ), this.iEnergy.iExplosionSize, FXTime.EMedium, FxSettings.LIFETIME_EXPLOSION, baseZ, General.FADE_OUT_FACES_TOTAL_TICKS );
             }
 
             //lower opacity to 0
-            darkenAllFaces( ShooterSettings.FxSettings.MIN_DARKEN_FACES, false, true, 0.0f, 0.1f );
+            this.darkenAllFaces( ShooterSettings.FxSettings.MIN_DARKEN_FACES, false, true, 0.0f, 0.1f );
 
             //kill all child walls if any
-            if ( iChildWalls != null )
+            if (this.iChildWalls != null )
             {
-                for ( Wall w : iChildWalls )
+                for ( Wall w : this.iChildWalls)
                 {
                     w.kill( shotAngleHorz );
                 }
             }
 
             //play explosion sound if specified
-            if ( iEnergy.iExplosionSound != null )
+            if (this.iEnergy.iExplosionSound != null )
             {
-                iEnergy.iExplosionSound.playDistancedFx( new Point2D.Float( iAnchor.x, iAnchor.y ) );
+                this.iEnergy.iExplosionSound.playDistancedFx( new Point2D.Float(this.iAnchor.x, this.iAnchor.y ) );
             }
         }
 
@@ -449,6 +449,6 @@
 
         public final boolean isClimbable()
         {
-            return ( iClimbable == WallClimbable.EYes );
+            return (this.iClimbable == WallClimbable.EYes );
         }
     }

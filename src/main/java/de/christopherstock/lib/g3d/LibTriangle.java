@@ -12,8 +12,8 @@
 
         public LibTriangle( LibVertex aA, LibVertex aB, LibVertex aC )
         {
-            a   = aA;
-            b   = aB;
-            c   = aC;
+            this.a = aA;
+            this.b = aB;
+            this.c = aC;
         }
     }

@@ -16,9 +16,9 @@
 
         public LibGLLight( LibVertex aAnk, float aRotZ, float aSpotCutoff, LibColors aColDiffuse )
         {
-            iAnk        = aAnk;
-            iRotZ       = aRotZ;
-            iSpotCutoff = aSpotCutoff;
-            iColDiffuse = aColDiffuse;
+            this.iAnk = aAnk;
+            this.iRotZ = aRotZ;
+            this.iSpotCutoff = aSpotCutoff;
+            this.iColDiffuse = aColDiffuse;
         }
     }

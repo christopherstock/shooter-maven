@@ -49,9 +49,9 @@
 
         public LibFX( LibDebug aDebug, LibVertex aAnchor, int aLifetime, int aFadeOutTicks )
         {
-            iDebug          = aDebug;
-            iAnchor         = aAnchor;
-            iLifetime       = aLifetime;
-            iFadeOutTicks   = aFadeOutTicks;
+            this.iDebug = aDebug;
+            this.iAnchor = aAnchor;
+            this.iLifetime = aLifetime;
+            this.iFadeOutTicks = aFadeOutTicks;
         }
     }

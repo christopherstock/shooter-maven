@@ -12,37 +12,25 @@
     /*******************************************************************************************************************
     *   The application's main thread. Start this thread to run the application.
     *******************************************************************************************************************/
-    public class MainStatePreloader
+    public class Preloader
     {
-        public      static          MainStatePreloader       singleton                   = null;
+        public                      LibGLImage              bgImage                     = null;
+        public                      LibGLImage              preloaderImage              = null;
 
-        public                      int             preloaderTest               = 0;
-        public                      String          preloaderMsg                = null;
-        public                      LibGLImage      bgImage                     = null;
-        public                      LibGLImage      preloaderImage              = null;
-
-        private MainStatePreloader()
-        {
-            //singleton constructor
-        }
-
-        public static MainStatePreloader getSingleton()
-        {
-            if ( singleton == null ) singleton = new MainStatePreloader();
-            return singleton;
-        }
+        private                     int                     preloaderTest               = 0;
+        private                     String                  preloaderMsg                = null;
 
         public final void draw2D()
         {
             try
             {
                 //create preloader image if not done yet
-                LibGL3D.view.drawOrthoBitmapBytes( bgImage, 0, 0 );
+                LibGL3D.view.drawOrthoBitmapBytes(this.bgImage, 0, 0 );
 
-                LibGL3D.view.drawOrthoBitmapBytes( preloaderImage, LibGL3D.panel.width / 2 - preloaderImage.width / 2,                       LibGL3D.panel.height / 2 + preloaderImage.height / 2 + 50 );
-                LibGL3D.view.drawOrthoBitmapBytes( preloaderImage, LibGL3D.panel.width / 2 - preloaderImage.width / 2 - 100 + preloaderTest, LibGL3D.panel.height / 2 + preloaderImage.height / 2      );
+                LibGL3D.view.drawOrthoBitmapBytes(this.preloaderImage, LibGL3D.panel.width / 2 - this.preloaderImage.width / 2,                       LibGL3D.panel.height / 2 + this.preloaderImage.height / 2 + 50 );
+                LibGL3D.view.drawOrthoBitmapBytes(this.preloaderImage, LibGL3D.panel.width / 2 - this.preloaderImage.width / 2 - 100 + this.preloaderTest, LibGL3D.panel.height / 2 + this.preloaderImage.height / 2      );
 
-                LibGLImage text = LibGLImage.getFromString( preloaderMsg + " [ " + preloaderTest + " / 100 ]", Fonts.EAmmo, LibColors.EBlack.colABGR, null, LibColors.EGrey.colABGR, ShooterDebug.glImage );
+                LibGLImage text = LibGLImage.getFromString(this.preloaderMsg + " [ " + this.preloaderTest + " / 100 ]", Fonts.EAmmo, LibColors.EBlack.colABGR, null, LibColors.EGrey.colABGR, ShooterDebug.glImage );
                 LibGL3D.view.drawOrthoBitmapBytes( text, LibGL3D.panel.width / 2, LibGL3D.panel.height / 4 + text.height / 2 );
             }
             catch ( Exception e )
@@ -60,8 +48,8 @@
         {
             ShooterDebug.init.out( "preloader increase [" + msg + "]" );
 
-            preloaderMsg = msg;
-            preloaderTest += 20;
+            this.preloaderMsg = msg;
+            this.preloaderTest += 20;
 
             ShooterDebug.init.out( "display ?" );
             LibGL3D.panel.display();

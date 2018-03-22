@@ -19,10 +19,10 @@
 
         public LevelConfigSection( String aDesc, LibColors aBgCol, BackGround aBg, ItemToPickUp[] aItems, BotFactory[] aStartupBots )
         {
-            iDescSection        = aDesc;
-            iBgCol              = aBgCol;
-            iBg                 = aBg;
-            iItems              = aItems;
-            iBots               = aStartupBots;
+            this.iDescSection = aDesc;
+            this.iBgCol = aBgCol;
+            this.iBg = aBg;
+            this.iItems = aItems;
+            this.iBots = aStartupBots;
         }
     }

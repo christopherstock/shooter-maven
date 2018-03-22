@@ -21,17 +21,17 @@
 
         protected HUDMessage( String aText )
         {
-            iAnimState  = AnimState.EPopUp;
-            iAnim       = HUDSettings.MSG_TICKS_POP_UP - 1;
-            iText       = aText;
+            this.iAnimState = AnimState.EPopUp;
+            this.iAnim = HUDSettings.MSG_TICKS_POP_UP - 1;
+            this.iText = aText;
         }
 
         public final void show()
         {
             //init img and add this message to the queue
-            iTextImg       = LibGLImage.getFromString
+            this.iTextImg = LibGLImage.getFromString
             (
-                iText,
+                    this.iText,
                 Fonts.EAvatarMessage,
                 ShooterSettings.Colors.EHudMsgFg.colARGB,
                 null,
@@ -49,24 +49,24 @@
         protected boolean animate()
         {
             //next animation-tick!
-            if ( iAnim > -1 ) --iAnim;
+            if (this.iAnim > -1 ) --this.iAnim;
 
-            if ( iAnim == -1 )
+            if (this.iAnim == -1 )
             {
                 //check next state
-                switch ( iAnimState )
+                switch (this.iAnimState)
                 {
                     case EPopUp:
                     {
-                        iAnim        = HUDSettings.MSG_TICKS_STILL - 1;
-                        iAnimState   = AnimState.EStill;
+                        this.iAnim = HUDSettings.MSG_TICKS_STILL - 1;
+                        this.iAnimState = AnimState.EStill;
                         return false;
                     }
 
                     case EStill:
                     {
-                        iAnim        = HUDSettings.MSG_TICKS_POP_DOWN - 1;
-                        iAnimState   = AnimState.EPopDown;
+                        this.iAnim = HUDSettings.MSG_TICKS_POP_DOWN - 1;
+                        this.iAnimState = AnimState.EPopDown;
                         return false;
                     }
 
@@ -83,15 +83,15 @@
         protected final void draw( int drawY )
         {
             //only draw if an avatar-animation is active
-            if ( iAnim > -1 )
+            if (this.iAnim > -1 )
             {
                 //get panel's current alpha
                 float     alphaFg = 0;
-                switch ( iAnimState )
+                switch (this.iAnimState)
                 {
                     case EPopUp:
                     {
-                        alphaFg     = HUDSettings.MSG_OPACITY - HUDSettings.MSG_OPACITY * iAnim / HUDSettings.MSG_TICKS_POP_UP;
+                        alphaFg     = HUDSettings.MSG_OPACITY - HUDSettings.MSG_OPACITY * this.iAnim / HUDSettings.MSG_TICKS_POP_UP;
                         break;
                     }
                     case EStill:
@@ -101,19 +101,19 @@
                     }
                     case EPopDown:
                     {
-                        alphaFg     = HUDSettings.MSG_OPACITY * iAnim / HUDSettings.MSG_TICKS_POP_DOWN;
+                        alphaFg     = HUDSettings.MSG_OPACITY * this.iAnim / HUDSettings.MSG_TICKS_POP_DOWN;
                         break;
                     }
                 }
 
                 //draw text
-                int x = LibGL3D.panel.width  - OffsetsOrtho.EBorderHudX - iTextImg.width;
-                LibGL3D.view.drawOrthoBitmapBytes( iTextImg, x, drawY, alphaFg );
+                int x = LibGL3D.panel.width  - OffsetsOrtho.EBorderHudX - this.iTextImg.width;
+                LibGL3D.view.drawOrthoBitmapBytes(this.iTextImg, x, drawY, alphaFg );
             }
         }
 
         protected int getTexImgHeight()
         {
-            return iTextImg.height;
+            return this.iTextImg.height;
         }
     }

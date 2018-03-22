@@ -33,36 +33,36 @@
 
         public LibD3dsImporter( String aFilename, LibDebug aDebug )
         {
-            iFilename   = aFilename;
-            iDebug      = aDebug;
+            this.iFilename = aFilename;
+            this.iDebug = aDebug;
 
-            iDebug.out( "=======================================" );
-            iDebug.out( "Parsing 3dsmax-file [" + iFilename + "]" );
+            this.iDebug.out( "=======================================" );
+            this.iDebug.out( "Parsing 3dsmax-file [" + this.iFilename + "]" );
 
             //open the AsciiSceneImport-file and the output-file
             try
             {
                 //read the file
-                String      fileSrc = readAse();
+                String      fileSrc = this.readAse();
 
                 //pick and parse materials
                 String      chunkMaterialList   = LibStrings.getViaRegEx( fileSrc, "\\*MATERIAL_LIST \\{.+?\\n\\}" )[ 0 ];
-                parseMaterials( chunkMaterialList );
+                this.parseMaterials( chunkMaterialList );
 
                 //pick and parse meshes
                 String[]    chunksGeomObjects   = LibStrings.getViaRegEx( fileSrc, "\\*GEOMOBJECT \\{.+?\\n\\}"    );
-                parseMeshes( chunksGeomObjects );
+                this.parseMeshes( chunksGeomObjects );
 
                 //warning if more than max faces
-                if ( iFaces.length > MAX_FACES )
+                if (this.iFaces.length > MAX_FACES )
                 {
-                    iDebug.err( "WARNING! 3dsmax-file [" + iFilename + "] specifies more than [" + MAX_FACES + "] faces - [" + iFaces.length + "] faces defined" );
+                    this.iDebug.err( "WARNING! 3dsmax-file [" + this.iFilename + "] specifies more than [" + MAX_FACES + "] faces - [" + this.iFaces.length + "] faces defined" );
                 }
             }
             catch( Exception e )
             {
-                iDebug.err( "ERROR on loading d3ds resource [" + iFilename + "]" );
-                iDebug.trace( e );
+                this.iDebug.err( "ERROR on loading d3ds resource [" + this.iFilename + "]" );
+                this.iDebug.trace( e );
                 System.exit( 0 );
             }
         }
@@ -71,12 +71,12 @@
         {
             try
             {
-                InputStream is = LibIO.preStreamJarResource( iFilename );
+                InputStream is = LibIO.preStreamJarResource(this.iFilename);
 
                 //check if file could be found
                 if ( is == null )
                 {
-                    throw new IOException( "FATAL! resource [" + iFilename + "] not found" );
+                    throw new IOException( "FATAL! resource [" + this.iFilename + "] not found" );
                 }
 
                 BufferedReader  inStream = new BufferedReader( new InputStreamReader( is ) );
@@ -94,8 +94,8 @@
             }
             catch ( Exception ioe )
             {
-                iDebug.err( "ERROR loading 3ds max file [" + iFilename + "]" );
-                iDebug.trace( ioe );
+                this.iDebug.err( "ERROR loading 3ds max file [" + this.iFilename + "]" );
+                this.iDebug.trace( ioe );
                 System.exit( 0 );
 
                 return null;
@@ -109,7 +109,7 @@
             if ( chunksMaterials != null )
             {
                 //browse all material-chunks and assign all materials
-                iMaterials3ds = new LibMaxMaterial[ chunksMaterials.length ];
+                this.iMaterials3ds = new LibMaxMaterial[ chunksMaterials.length ];
                 for ( int i = 0; i < chunksMaterials.length; ++i )
                 {
                     //get material name ( mandatory )
@@ -130,15 +130,15 @@
                     float       materialTilingV   = ( materialTilingVaa == null ? 1.0f : Float.parseFloat( materialTilingVaa[ 0 ][ 0 ] ) );
 
                     //assign material
-                    iMaterials3ds[ i ] = new LibMaxMaterial( materialName, materialColor, materialOffsetU, materialOffsetV, materialTilingU, materialTilingV  );
-                    iDebug.out( "Material [" + i + "]: [" + iMaterials3ds[ i ].name + "][" + iMaterials3ds[ i ].offsetU + "][" + iMaterials3ds[ i ].offsetV + "][" + iMaterials3ds[ i ].tilingU + "][" + iMaterials3ds[ i ].tilingV + "]" );
+                    this.iMaterials3ds[ i ] = new LibMaxMaterial( materialName, materialColor, materialOffsetU, materialOffsetV, materialTilingU, materialTilingV  );
+                    this.iDebug.out( "Material [" + i + "]: [" + this.iMaterials3ds[ i ].name + "][" + this.iMaterials3ds[ i ].offsetU + "][" + this.iMaterials3ds[ i ].offsetV + "][" + this.iMaterials3ds[ i ].tilingU + "][" + this.iMaterials3ds[ i ].tilingV + "]" );
                 }
             }
         }
 
         private void parseMeshes(String[] meshesSrc )
         {
-            iDebug.out( "meshes to parse: ["+meshesSrc.length+"]" );
+            this.iDebug.out( "meshes to parse: ["+meshesSrc.length+"]" );
 
             Vector<LibMaxTriangle>      allFaces                = new Vector<LibMaxTriangle>();
             LibMaxVertex[]              vertices3ds             = null;
@@ -153,29 +153,29 @@
 
                 //next texture!
                 ++cur;
-                iDebug.out( "\nImporting mesh # [" + cur + "]" );
+                this.iDebug.out( "\nImporting mesh # [" + cur + "]" );
 
                 //get number of vertices
                 String[][]  numVerticesAA   = LibStrings.getViaRegExGrouped( meshSrc, 1, "\\*MESH_NUMVERTEX (\\d+)" );
                 int         numVertices     = Integer.parseInt( numVerticesAA[ 0 ][ 0 ] );
                             vertices3ds     = new LibMaxVertex[ numVertices ];
-                iDebug.out( "number of vertices: [" + numVertices + "]" );
+                this.iDebug.out( "number of vertices: [" + numVertices + "]" );
 
                 //get number of faces
                 String[][]  numFacesAA      = LibStrings.getViaRegExGrouped( meshSrc, 1, "\\*MESH_NUMFACES (\\d+)" );
                 int         numFaces        = Integer.parseInt( numFacesAA[ 0 ][ 0 ] );
                             faces3ds        = new LibMaxFace[ numFaces ];
-                iDebug.out( "number of faces: [" + numFaces + "]" );
+                this.iDebug.out( "number of faces: [" + numFaces + "]" );
 
                 //get number of texture-vertices
                 String[][]  numTVerticesAA      = LibStrings.getViaRegExGrouped( meshSrc, 1, "\\*MESH_NUMTVERTEX (\\d+)" );
                 int         numTVertices        = Integer.parseInt( numTVerticesAA[ 0 ][ 0 ] );
                             textureVertices3ds  = new LibMaxTextureVertex[ numTVertices ];
-                iDebug.out( "number of texture-vertices: [" + numTVertices + "]" );
+                this.iDebug.out( "number of texture-vertices: [" + numTVertices + "]" );
 
                 //read all vertices
                 String[][]  verticesAA      = LibStrings.getViaRegExGrouped( meshSrc, 3, "\\*MESH_VERTEX\\s+\\d+\\s+([\\d\\.\\-]+)\\s+([\\d\\.\\-]+)\\s+([\\d\\.\\-]+)\\n" );
-                iDebug.out( "parsing [" + verticesAA.length + "] vertices.." );
+                this.iDebug.out( "parsing [" + verticesAA.length + "] vertices.." );
                 //assign them
                 for ( int i = 0; i < verticesAA.length; ++i )
                 {
@@ -206,12 +206,12 @@
                         );
                     }
 
-                    iDebug.out( "parsed [" + facesNormalsAA.length + "] face-normals" );
+                    this.iDebug.out( "parsed [" + facesNormalsAA.length + "] face-normals" );
                 }
 
                 //read all faces
                 String[][]  facesAA         = LibStrings.getViaRegExGrouped( meshSrc, 4, "\\*MESH_FACE\\s+(\\d+)\\:\\s+A\\:\\s+([\\d\\.\\-]+)\\s+B\\:\\s+([\\d\\.\\-]+)\\s+C\\:\\s+([\\d\\.\\-]+)" );
-                iDebug.out( "parsing [" + facesAA.length + "] faces.." );
+                this.iDebug.out( "parsing [" + facesAA.length + "] faces.." );
                 //assign them
                 for ( int i = 0; i < facesAA.length; ++i )
                 {
@@ -229,7 +229,7 @@
                 String[][]  textureVerticesAA      = LibStrings.getViaRegExGrouped( meshSrc, 3, "\\*MESH_TVERT\\s+\\d+\\s+([\\d\\.\\-]+)\\s+([\\d\\.\\-]+)\\s+([\\d\\.\\-]+)\\n" );
                 if ( textureVerticesAA != null )
                 {
-                    iDebug.out( "parsing [" + textureVerticesAA.length + "] texture-vertices.." );
+                    this.iDebug.out( "parsing [" + textureVerticesAA.length + "] texture-vertices.." );
                     //assign them
                     for ( int i = 0; i < textureVerticesAA.length; ++i )
                     {
@@ -247,7 +247,7 @@
                 String[][]  textureFacesAA         = LibStrings.getViaRegExGrouped( meshSrc, 3, "\\*MESH_TFACE\\s+\\d+\\s+([\\d\\.\\-]+)\\s+([\\d\\.\\-]+)\\s+([\\d\\.\\-]+)\\n" );
                 if ( textureFacesAA != null )
                 {
-                    iDebug.out( "parsing [" + textureFacesAA.length + "] texture-faces.." );
+                    this.iDebug.out( "parsing [" + textureFacesAA.length + "] texture-faces.." );
                     for ( int currentTextureFace = 0; currentTextureFace < faces3ds.length; ++currentTextureFace )
                     {
                         //assign all texture-faces
@@ -268,15 +268,15 @@
                 if ( materialRefAA != null )
                 {
                     int         materialRef         = Integer.parseInt( materialRefAA[ 0 ][ 0 ] );
-                    material = iMaterials3ds[ materialRef ];
-                    iDebug.out( "material ref is: [" + materialRef + "]" );
+                    material = this.iMaterials3ds[ materialRef ];
+                    this.iDebug.out( "material ref is: [" + materialRef + "]" );
                 }
                 else
                 {
-                    iDebug.out( "This mesh has no material." );
+                    this.iDebug.out( "This mesh has no material." );
                 }
 
-                iDebug.out( "picked texture: " + material.name );
+                this.iDebug.out( "picked texture: " + material.name );
 
                 //add all faces to the vector
                 for( LibMaxFace face : faces3ds )
@@ -299,21 +299,21 @@
                     }
                     catch ( Exception ioe )
                     {
-                        iDebug.err( "I/O Exception on writing parsed ASE-File!" );
-                        iDebug.trace( ioe );
+                        this.iDebug.err( "I/O Exception on writing parsed ASE-File!" );
+                        this.iDebug.trace( ioe );
                     }
                 }
             }
 
             //convert all faces from vector to array
-            iFaces = allFaces.toArray( new LibMaxTriangle[] {} );
+            this.iFaces = allFaces.toArray( new LibMaxTriangle[] {} );
 
             //done
-            iDebug.out( "done" );
+            this.iDebug.out( "done" );
         }
 
         public final LibMaxTriangle[] getFaces()
         {
-            return iFaces;
+            return this.iFaces;
         }
     }

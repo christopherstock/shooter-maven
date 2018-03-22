@@ -32,19 +32,19 @@
         {
             BufferedImage bufferedImage = aBufferedImage;
 
-            width   = bufferedImage.getWidth();
-            height  = bufferedImage.getHeight();
+            this.width = bufferedImage.getWidth();
+            this.height = bufferedImage.getHeight();
 
             //detect pixel format
             if ( bufferedImage.getColorModel().hasAlpha() )
             {
                 debug.out( "format is RGB-A" );
-                srcPixelFormat = SrcPixelFormat.ERGBA;
+                this.srcPixelFormat = SrcPixelFormat.ERGBA;
             }
             else
             {
                 debug.out( "format is RGB" );
-                srcPixelFormat = SrcPixelFormat.ERGB;
+                this.srcPixelFormat = SrcPixelFormat.ERGB;
             }
 
             //flip buffered image horizontally
@@ -62,13 +62,13 @@
             {
                 case EOrtho:
                 {
-                    bytes   = getByteBuffer( bufferedImage, debug, flipAllBytes );
+                    this.bytes = getByteBuffer( bufferedImage, debug, flipAllBytes );
                     break;
                 }
 
                 case ETexture:
                 {
-                    bytes   = getByteBuffer( bufferedImage, debug, flipAllBytes );
+                    this.bytes = getByteBuffer( bufferedImage, debug, flipAllBytes );
                     break;
                 }
             }

@@ -102,24 +102,24 @@
 
         private ArtefactType( ArtefactKind aArtefactKind, float aRange, int aDelayAfterUse, boolean aUseNeedsKeyRelease, int aShotsTillKeyReleaseRequired, FireArmFXOffset aFXOffset, float aZoom, Items aItemMesh, ItemKind aPickUpItemKind, CrossHair aCrossHair, boolean aBreaksWalls )
         {
-            iArtefactKind                   = aArtefactKind;
-            iDelayAfterUse                  = aDelayAfterUse;
-            iUseNeedsKeyRelease             = aUseNeedsKeyRelease;
-            iRange                          = aRange;
-            iShotsTillKeyReleaseRequired    = aShotsTillKeyReleaseRequired;
-            iFXOffset                       = aFXOffset;
-            iZoom                           = aZoom;
-            iItemMesh                       = aItemMesh;
-            iPickUpItemKind                 = aPickUpItemKind;
-            iCrossHair                      = aCrossHair;
-            iBreaksWalls                    = aBreaksWalls;
+            this.iArtefactKind = aArtefactKind;
+            this.iDelayAfterUse = aDelayAfterUse;
+            this.iUseNeedsKeyRelease = aUseNeedsKeyRelease;
+            this.iRange = aRange;
+            this.iShotsTillKeyReleaseRequired = aShotsTillKeyReleaseRequired;
+            this.iFXOffset = aFXOffset;
+            this.iZoom = aZoom;
+            this.iItemMesh = aItemMesh;
+            this.iPickUpItemKind = aPickUpItemKind;
+            this.iCrossHair = aCrossHair;
+            this.iBreaksWalls = aBreaksWalls;
 
-            iArtefactKind.setParent( this );
+            this.iArtefactKind.setParent( this );
         }
 
         public int getDamage()
         {
-            return iArtefactKind.getDamage();
+            return this.iArtefactKind.getDamage();
         }
 
         public static void loadImages()
@@ -132,16 +132,16 @@
 
         public final void loadImage()
         {
-            BufferedImage bufferedImage   = LibImage.load( ShooterSettings.Path.EArtefact.iUrl + toString() + LibExtension.png.getSpecifier(), ShooterDebug.glImage, false );
-            iArtefactImage = new LibGLImage( bufferedImage,   ImageUsage.EOrtho, ShooterDebug.glImage, true );
+            BufferedImage bufferedImage   = LibImage.load( ShooterSettings.Path.EArtefact.iUrl + this.toString() + LibExtension.png.getSpecifier(), ShooterDebug.glImage, false );
+            this.iArtefactImage = new LibGLImage( bufferedImage,   ImageUsage.EOrtho, ShooterDebug.glImage, true );
             Vector<LibGLImage> fxImages = new Vector<LibGLImage>();
             while ( true )
             {
                 String ext = ( fxImages.size() > 0 ? String.valueOf( fxImages.size() + 1 ) : "" );
-                String url = ShooterSettings.Path.EArtefactMuzzleFlash.iUrl + toString() + ext + LibExtension.png.getSpecifier();
+                String url = ShooterSettings.Path.EArtefactMuzzleFlash.iUrl + this.toString() + ext + LibExtension.png.getSpecifier();
 
                 //break if file does not exist ( allows desired different flashes )
-                if ( getClass().getResourceAsStream( url ) == null )
+                if (this.getClass().getResourceAsStream( url ) == null )
                 {
                     break;
                 }
@@ -150,41 +150,41 @@
                 fxImages.add( new LibGLImage( bufferedImageFX, ImageUsage.EOrtho, ShooterDebug.glImage, true ) );
             }
 
-            iFXImages = fxImages.toArray( new LibGLImage[] {} );
+            this.iFXImages = fxImages.toArray( new LibGLImage[] {} );
         }
 
         public final boolean getCurrentShotNeedsKeyRelease()
         {
-            return iUseNeedsKeyRelease;
+            return this.iUseNeedsKeyRelease;
         }
 
         public final float getShotRange()
         {
-            return iRange;
+            return this.iRange;
         }
 
         public final boolean isFireArm()
         {
-            return ( iArtefactKind instanceof FireArm );
+            return (this.iArtefactKind instanceof FireArm );
         }
 
         public final float getZoom()
         {
-            return iZoom;
+            return this.iZoom;
         }
 
         public final CrossHair getCrossHair()
         {
-            return iCrossHair;
+            return this.iCrossHair;
         }
 
         public final boolean getBreaksWalls()
         {
-            return iBreaksWalls;
+            return this.iBreaksWalls;
         }
 
         public final LibGLImage getArtefactImage()
         {
-            return iArtefactImage;
+            return this.iArtefactImage;
         }
     }

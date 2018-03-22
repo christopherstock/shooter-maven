@@ -60,50 +60,50 @@
         {
             super( aDebug, ank, texture, col, aFaceNormal );
 
-            iEllipseSegments = aEllipseSegments;
+            this.iEllipseSegments = aEllipseSegments;
 
             //assign default texture
-            iDefaultTexture = aDefaultTexture;
+            this.iDefaultTexture = aDefaultTexture;
 
             //assign fade out ticks for faces
-            iFadeOutFacesTicks = aFadeOutFacesTicks;
+            this.iFadeOutFacesTicks = aFadeOutFacesTicks;
 
             //set vertices
-            setOriginalVertices( new LibVertex[] { a, b, c, } );
+            this.setOriginalVertices( new LibVertex[] { a, b, c, } );
 
             //init all values
-            updateCollisionValues();
+            this.updateCollisionValues();
         }
 
         public final void assignParentGameObject( LibGameObject aParentGameObject )
         {
             //connect to parent mesh
-            iParentGameObject = aParentGameObject;
+            this.iParentGameObject = aParentGameObject;
         }
 
         @Override
         protected final void setCollisionValues()
         {
             //set collission values
-            float x1 = iTransformedVertices[ 0 ].x;
-            float x2 = iTransformedVertices[ 1 ].x;
-            float x3 = iTransformedVertices[ 2 ].x;
+            float x1 = this.iTransformedVertices[ 0 ].x;
+            float x2 = this.iTransformedVertices[ 1 ].x;
+            float x3 = this.iTransformedVertices[ 2 ].x;
 
-            float y1 = iTransformedVertices[ 0 ].y;
-            float y2 = iTransformedVertices[ 1 ].y;
-            float y3 = iTransformedVertices[ 2 ].y;
+            float y1 = this.iTransformedVertices[ 0 ].y;
+            float y2 = this.iTransformedVertices[ 1 ].y;
+            float y3 = this.iTransformedVertices[ 2 ].y;
 
-            float z1 = iTransformedVertices[ 0 ].z;
-            float z2 = iTransformedVertices[ 1 ].z;
-            float z3 = iTransformedVertices[ 2 ].z;
+            float z1 = this.iTransformedVertices[ 0 ].z;
+            float z2 = this.iTransformedVertices[ 1 ].z;
+            float z3 = this.iTransformedVertices[ 2 ].z;
 
             //get minimum and maximum X Y and Z
-            iLowestX  = (float)LibMath.min( x1, x2, x3 );
-            iLowestY  = (float)LibMath.min( y1, y2, y3 );
-            iLowestZ  = (float)LibMath.min( z1, z2, z3 );
-            iHighestX = (float)LibMath.max( x1, x2, x3 );
-            iHighestY = (float)LibMath.max( y1, y2, y3 );
-            iHighestZ = (float)LibMath.max( z1, z2, z3 );
+            this.iLowestX = (float)LibMath.min( x1, x2, x3 );
+            this.iLowestY = (float)LibMath.min( y1, y2, y3 );
+            this.iLowestZ = (float)LibMath.min( z1, z2, z3 );
+            this.iHighestX = (float)LibMath.max( x1, x2, x3 );
+            this.iHighestY = (float)LibMath.max( y1, y2, y3 );
+            this.iHighestZ = (float)LibMath.max( z1, z2, z3 );
 
             //get all horizontal vertices in 2d-system
             Point2D.Float   ph1              = new Point2D.Float( x1, y1 );
@@ -111,7 +111,7 @@
             Point2D.Float   ph3              = new Point2D.Float( x3, y3 );
 
             //calculate angle horz - why is the simplest min-max distance operative now?
-            float   angleHorz       = LibMath.getAngleCorrect( new Point2D.Float( iLowestX, iLowestY ), new Point2D.Float( iHighestX, iHighestY ) );
+            float   angleHorz       = LibMath.getAngleCorrect( new Point2D.Float(this.iLowestX, this.iLowestY), new Point2D.Float(this.iHighestX, this.iHighestY) );
 
             //angle vert is 0°
             float   angleVert       = 0.0f;
@@ -125,13 +125,13 @@
            //angleVert           = LibMath.getAngleCorrect( new Point2D.Float( 0.0f, iLowestZ ), new Point2D.Float( 1.0f, iHighestZ ) );
 
             //assign angles and collision lines
-            setFaceAngleHorz( angleHorz );
-            setFaceAngleVert( angleVert );
+            this.setFaceAngleHorz( angleHorz );
+            this.setFaceAngleVert( angleVert );
 
             //assign XY collision lines between the three vertices
-            iCollisionLineHorz1 = new Line2D.Float( ph1.x, ph1.y, ph2.x, ph2.y );
-            iCollisionLineHorz2 = new Line2D.Float( ph1.x, ph1.y, ph3.x, ph3.y );
-            iCollisionLineHorz3 = new Line2D.Float( ph2.x, ph2.y, ph3.x, ph3.y );
+            this.iCollisionLineHorz1 = new Line2D.Float( ph1.x, ph1.y, ph2.x, ph2.y );
+            this.iCollisionLineHorz2 = new Line2D.Float( ph1.x, ph1.y, ph3.x, ph3.y );
+            this.iCollisionLineHorz3 = new Line2D.Float( ph2.x, ph2.y, ph3.x, ph3.y );
         }
 
         /***************************************************************************************************************
@@ -147,7 +147,7 @@
         public LibHitPoint launchShotKai( LibShot shot )
         {
             //only visible faces can be hit
-            switch ( iDrawMethod )
+            switch (this.iDrawMethod)
             {
                 case EInvisible:
                 {
@@ -157,7 +157,7 @@
                 case EAlwaysDraw:
               //case EHideIfTooDistant:
                 {
-                    LibVertex[] vertices = getVerticesToDraw();
+                    LibVertex[] vertices = this.getVerticesToDraw();
 
                     Point3d p1 = new Point3d( vertices[ 0 ].x, vertices[ 0 ].y, vertices[ 0 ].z );
                     Point3d p2 = new Point3d( vertices[ 1 ].x, vertices[ 1 ].y, vertices[ 1 ].z );
@@ -178,7 +178,7 @@
                     float           exactDistanceHorz     = (float)shot.iSrcPointHorz.distance( intersectionPointHorz  );                //get exact distance
                     float           shotAngleHorz         = LibMath.getAngleCorrect( shot.iSrcPointHorz, intersectionPointHorz );       //get angle between player and hit-point
                     float           invertedShotAngleHorz = 360.0f - ( shotAngleHorz - 180.0f  );                                       //get opposite direction of shot
-                    float           sliverAngleHorz       = shotAngleHorz - iFaceAngleHorz * 2;                                         //get Sliver angle
+                    float           sliverAngleHorz       = shotAngleHorz - this.iFaceAngleHorz * 2;                                         //get Sliver angle
 
                     //iDebug.shotAndHit.out( "exactDistanceHorz:     [" + exactDistanceHorz + "]" );
                     //iDebug.shotAndHit.out( "shotAngleHorz:         [" + shotAngleHorz + "]" );
@@ -190,13 +190,13 @@
                     //get vertical values ( unused with new collision algo )
                   //float exactDistanceVert = (float)shot.iSrcPointVert.distance( intersectionPointVert );       //get exact distance
 
-                    LibGLTexture    faceTexture   = getTexture();
-                    LibMaterial     faceMaterial  = ( faceTexture == null ? iDefaultTexture.getTexture().getMaterial() : faceTexture.getMaterial() );
+                    LibGLTexture    faceTexture   = this.getTexture();
+                    LibMaterial     faceMaterial  = ( faceTexture == null ? this.iDefaultTexture.getTexture().getMaterial() : faceTexture.getMaterial() );
 
                     //iDebug.bugfix.out( "DISTANCE [" + intersectionPoint.distance( shot.iSrcPoint3d ) + "] HIT ! shot ["+shot.iSrcPoint3d+"] to ["+shot.iEndPoint3d+"] FACE is ["+face1+"]["+face2+"]["+face3+"]" );
                     //FX.launchDebugPoint( new LibVertex( (float)intersectionPoint.x, (float)intersectionPoint.y, (float)intersectionPoint.z ), LibColors.EPink, 150, 0.03f );
 
-                    if ( iLowestZ == iHighestZ )
+                    if (this.iLowestZ == this.iHighestZ)
                     {
                         sliverAngleHorz = LibMath.normalizeAngle( 360.0f - shotAngleHorz );
                     }
@@ -205,20 +205,20 @@
                     return new LibHitPoint
                     (
                         shot,
-                        iParentGameObject,
+                            this.iParentGameObject,
                         faceMaterial.getBulletHoleTexture().getTexture(),
-                        getTexture(),
+                            this.getTexture(),
                         faceMaterial.getSliverColors(),
                         new LibVertex( (float)intersectionPoint.x, (float)intersectionPoint.y, (float)intersectionPoint.z ),
                         exactDistanceHorz,
                         shotAngleHorz,
                         invertedShotAngleHorz,
                         sliverAngleHorz,
-                        iFaceAngleHorz,
-                        iFaceAngleVert,
-                        iDamageMultiplier,
-                        iFadeOutFacesTicks,
-                        iEllipseSegments
+                            this.iFaceAngleHorz,
+                            this.iFaceAngleVert,
+                            this.iDamageMultiplier,
+                            this.iFadeOutFacesTicks,
+                            this.iEllipseSegments
                     );
                 }
             }
@@ -236,7 +236,7 @@
         public LibHitPoint launchShotNew( LibShot shot )
         {
             //only visible faces can be hit
-            switch ( iDrawMethod )
+            switch (this.iDrawMethod)
             {
                 case EInvisible:
                 {
@@ -246,7 +246,7 @@
                 case EAlwaysDraw:
                 //case EHideIfTooDistant:
                 {
-                    LibVertex[] vertices = getVerticesToDraw();
+                    LibVertex[] vertices = this.getVerticesToDraw();
 
                     Point3d p1 = new Point3d( vertices[ 0 ].x, vertices[ 0 ].y, vertices[ 0 ].z );
                     Point3d p2 = new Point3d( vertices[ 1 ].x, vertices[ 1 ].y, vertices[ 1 ].z );
@@ -267,7 +267,7 @@
                     float           exactDistanceHorz     = (float)shot.iSrcPointHorz.distance( intersectionPointHorz  );                //get exact distance
                     float           shotAngleHorz         = LibMath.getAngleCorrect( shot.iSrcPointHorz, intersectionPointHorz );       //get angle between player and hit-point
                     float           invertedShotAngleHorz = 360.0f - ( shotAngleHorz - 180.0f  );                                       //get opposite direction of shot
-                    float           sliverAngleHorz       = shotAngleHorz - iFaceAngleHorz * 2;                                         //get Sliver angle
+                    float           sliverAngleHorz       = shotAngleHorz - this.iFaceAngleHorz * 2;                                         //get Sliver angle
 
                     //iDebug.shotAndHit.out( "exactDistanceHorz:     [" + exactDistanceHorz + "]" );
                     //iDebug.shotAndHit.out( "shotAngleHorz:         [" + shotAngleHorz + "]" );
@@ -279,13 +279,13 @@
                     //get vertical values ( unused with new collision algo )
                   //float exactDistanceVert = (float)shot.iSrcPointVert.distance( intersectionPointVert );       //get exact distance
 
-                    LibGLTexture    faceTexture   = getTexture();
-                    LibMaterial     faceMaterial  = ( faceTexture == null ? iDefaultTexture.getTexture().getMaterial() : faceTexture.getMaterial() );
+                    LibGLTexture    faceTexture   = this.getTexture();
+                    LibMaterial     faceMaterial  = ( faceTexture == null ? this.iDefaultTexture.getTexture().getMaterial() : faceTexture.getMaterial() );
 
                     //iDebug.bugfix.out( "DISTANCE [" + intersectionPoint.distance( shot.iSrcPoint3d ) + "] HIT ! shot ["+shot.iSrcPoint3d+"] to ["+shot.iEndPoint3d+"] FACE is ["+face1+"]["+face2+"]["+face3+"]" );
                     //FX.launchDebugPoint( new LibVertex( (float)intersectionPoint.x, (float)intersectionPoint.y, (float)intersectionPoint.z ), LibColors.EPink, 150, 0.03f );
 
-                    if ( iLowestZ == iHighestZ )
+                    if (this.iLowestZ == this.iHighestZ)
                     {
                         sliverAngleHorz = LibMath.normalizeAngle( 360.0f - shotAngleHorz );
                     }
@@ -294,20 +294,20 @@
                     return new LibHitPoint
                     (
                         shot,
-                        iParentGameObject,
+                            this.iParentGameObject,
                         faceMaterial.getBulletHoleTexture().getTexture(),
-                        getTexture(),
+                            this.getTexture(),
                         faceMaterial.getSliverColors(),
                         new LibVertex( (float)intersectionPoint.x, (float)intersectionPoint.y, (float)intersectionPoint.z ),
                         exactDistanceHorz,
                         shotAngleHorz,
                         invertedShotAngleHorz,
                         sliverAngleHorz,
-                        iFaceAngleHorz,
-                        iFaceAngleVert,
-                        iDamageMultiplier,
-                        iFadeOutFacesTicks,
-                        iEllipseSegments
+                            this.iFaceAngleHorz,
+                            this.iFaceAngleVert,
+                            this.iDamageMultiplier,
+                            this.iFadeOutFacesTicks,
+                            this.iEllipseSegments
                     );
                 }
             }
@@ -326,7 +326,7 @@
         public LibHitPoint launchShotOld( LibShot shot )
         {
             //only visible faces can be hit
-            switch ( iDrawMethod )
+            switch (this.iDrawMethod)
             {
                 case EInvisible:
                 {
@@ -337,43 +337,43 @@
                 //case EHideIfTooDistant:
                 {
                     //horizontal collission lines have to be present
-                    if ( iCollisionLineHorz1 == null || iCollisionLineHorz2 == null || iCollisionLineHorz3 == null ) return null;
+                    if (this.iCollisionLineHorz1 == null || this.iCollisionLineHorz2 == null || this.iCollisionLineHorz3 == null ) return null;
 
                     Point2D.Float intersectionPointHorz = null;
 
                     //we could check if face's z are equal - but the new shot algo is better! :-)
 
                     //check horizontal collision
-                    if ( shot.iLineShotHorz.intersectsLine( iCollisionLineHorz1  ) )
+                    if ( shot.iLineShotHorz.intersectsLine(this.iCollisionLineHorz1) )
                     {
                         //get intersection point horz
                         //iDebug.shotAndHit.out( "==============\nHORZ FACE HIT!" );
-                        intersectionPointHorz = LibMathGeometry.findLineSegmentIntersection( shot.iLineShotHorz, iCollisionLineHorz1, iDebug );
+                        intersectionPointHorz = LibMathGeometry.findLineSegmentIntersection( shot.iLineShotHorz, this.iCollisionLineHorz1, this.iDebug);
                         if ( intersectionPointHorz == null )
                         {
-                            iDebug.err( "Intersection Point not calculated due to buggy external API." );
+                            this.iDebug.err( "Intersection Point not calculated due to buggy external API." );
                             return null;
                         }
                     }
-                    else if ( shot.iLineShotHorz.intersectsLine( iCollisionLineHorz2  ) )
+                    else if ( shot.iLineShotHorz.intersectsLine(this.iCollisionLineHorz2) )
                     {
                         //get intersection point horz
                         //iDebug.shotAndHit.out( "==============\nHORZ FACE HIT!" );
-                        intersectionPointHorz = LibMathGeometry.findLineSegmentIntersection( shot.iLineShotHorz, iCollisionLineHorz2, iDebug );
+                        intersectionPointHorz = LibMathGeometry.findLineSegmentIntersection( shot.iLineShotHorz, this.iCollisionLineHorz2, this.iDebug);
                         if ( intersectionPointHorz == null )
                         {
-                            iDebug.err( "Intersection Point not calculated due to buggy external API." );
+                            this.iDebug.err( "Intersection Point not calculated due to buggy external API." );
                             return null;
                         }
                     }
-                    else if ( shot.iLineShotHorz.intersectsLine( iCollisionLineHorz3 ) )
+                    else if ( shot.iLineShotHorz.intersectsLine(this.iCollisionLineHorz3) )
                     {
                         //get intersection point horz
                         //iDebug.shotAndHit.out( "==============\nHORZ FACE HIT!" );
-                        intersectionPointHorz = LibMathGeometry.findLineSegmentIntersection( shot.iLineShotHorz, iCollisionLineHorz3, iDebug );
+                        intersectionPointHorz = LibMathGeometry.findLineSegmentIntersection( shot.iLineShotHorz, this.iCollisionLineHorz3, this.iDebug);
                         if ( intersectionPointHorz == null )
                         {
-                            iDebug.err( "Intersection Point not calculated due to buggy external API." );
+                            this.iDebug.err( "Intersection Point not calculated due to buggy external API." );
                             return null;
                         }
                     }
@@ -386,7 +386,7 @@
                     float           exactDistanceHorz     = (float)shot.iSrcPointHorz.distance( intersectionPointHorz );                //get exact distance
                     float           shotAngleHorz         = LibMath.getAngleCorrect( shot.iSrcPointHorz, intersectionPointHorz );       //get angle between player and hit-point
                     float           invertedShotAngleHorz = 360.0f - ( shotAngleHorz - 180.0f  );                                       //get opposite direction of shot
-                    float           sliverAngleHorz       = shotAngleHorz - iFaceAngleHorz * 2;                                         //get Sliver angle
+                    float           sliverAngleHorz       = shotAngleHorz - this.iFaceAngleHorz * 2;                                         //get Sliver angle
 /*
                     iDebug.shotAndHit.out( "exactDistanceHorz:     [" + exactDistanceHorz + "]" );
                     iDebug.shotAndHit.out( "shotAngleHorz:         [" + shotAngleHorz + "]" );
@@ -394,7 +394,7 @@
                     iDebug.shotAndHit.out( "SliverAngleHorz:       [" + sliverAngleHorz + "]" );
 */
                     //calculate face's vertical collision line ( if we assume that this is a straight vertical face! )
-                    Line2D.Float collisionLineVert = new Line2D.Float( new Point2D.Float( exactDistanceHorz, iLowestZ ), new Point2D.Float( exactDistanceHorz, iHighestZ ) );
+                    Line2D.Float collisionLineVert = new Line2D.Float( new Point2D.Float( exactDistanceHorz, this.iLowestZ), new Point2D.Float( exactDistanceHorz, this.iHighestZ) );
                     //iDebug.shotAndHit.out( "face's collision line vert is: [" + collisionLineVert + "]" );
 
                     if ( !shot.iLineShotVert.intersectsLine( collisionLineVert ) )
@@ -405,7 +405,7 @@
 
                     //get then intersection point for the vertical axis
                     //iDebug.shotAndHit.out( "VERTICAL FACE HIT!" );
-                    Point2D.Float   intersectionPointVert   = LibMathGeometry.findLineSegmentIntersection( shot.iLineShotVert, collisionLineVert, iDebug );
+                    Point2D.Float   intersectionPointVert   = LibMathGeometry.findLineSegmentIntersection( shot.iLineShotVert, collisionLineVert, this.iDebug);
                     float           z                       = intersectionPointVert.y;
                     //iDebug.shotAndHit.out( ">> INTERSECTION POINT VERT: " + intersectionPointVert );
 
@@ -416,10 +416,10 @@
 //                  iDebug.shot.out( ">> SHOT-ANGLE-VERT: " + shotAngleVert );
 //                  iDebug.shot.out( ">> SLIVER-ANGLE-VERT: " + SliverAngleVert );
 
-                    LibGLTexture    faceTexture   = getTexture();
-                    LibMaterial     faceMaterial  = ( faceTexture == null ? iDefaultTexture.getTexture().getMaterial() : faceTexture.getMaterial() );
+                    LibGLTexture    faceTexture   = this.getTexture();
+                    LibMaterial     faceMaterial  = ( faceTexture == null ? this.iDefaultTexture.getTexture().getMaterial() : faceTexture.getMaterial() );
 
-                    if ( iLowestZ == iHighestZ )
+                    if (this.iLowestZ == this.iHighestZ)
                     {
                         sliverAngleHorz = shotAngleHorz;
                     }
@@ -428,20 +428,20 @@
                     return new LibHitPoint
                     (
                         shot,
-                        iParentGameObject,
+                            this.iParentGameObject,
                         faceMaterial.getBulletHoleTexture().getTexture(),
-                        getTexture(),
+                            this.getTexture(),
                         faceMaterial.getSliverColors(),
                         new LibVertex( intersectionPointHorz.x, intersectionPointHorz.y, z ),
                         exactDistanceHorz,
                         shotAngleHorz,
                         invertedShotAngleHorz,
                         sliverAngleHorz,
-                        iFaceAngleHorz,
-                        iFaceAngleVert,
-                        iDamageMultiplier,
-                        iFadeOutFacesTicks,
-                        iEllipseSegments
+                            this.iFaceAngleHorz,
+                            this.iFaceAngleVert,
+                            this.iDamageMultiplier,
+                            this.iFadeOutFacesTicks,
+                            this.iEllipseSegments
                     );
                 }
             }
@@ -451,24 +451,24 @@
 
         public final LibFaceTriangle copy()
         {
-            LibVertex ankCopy  = getAnchor().copy();
-            LibVertex aCopy    = new LibVertex( iOriginalVertices[ 0 ] );
-            LibVertex bCopy    = new LibVertex( iOriginalVertices[ 1 ] );
-            LibVertex cCopy    = new LibVertex( iOriginalVertices[ 2 ] );
-            LibVertex normCopy = ( iNormal == null ? null : iNormal.copy() );
+            LibVertex ankCopy  = this.getAnchor().copy();
+            LibVertex aCopy    = new LibVertex(this.iOriginalVertices[ 0 ] );
+            LibVertex bCopy    = new LibVertex(this.iOriginalVertices[ 1 ] );
+            LibVertex cCopy    = new LibVertex(this.iOriginalVertices[ 2 ] );
+            LibVertex normCopy = (this.iNormal == null ? null : this.iNormal.copy() );
             return new LibFaceTriangle
             (
-                iDebug,
+                    this.iDebug,
                 ankCopy,
-                getTexture(),
-                getColor(),
+                    this.getTexture(),
+                    this.getColor(),
                 aCopy,
                 bCopy,
                 cCopy,
                 normCopy,
-                iDefaultTexture,
-                iFadeOutFacesTicks,
-                iEllipseSegments
+                    this.iDefaultTexture,
+                    this.iFadeOutFacesTicks,
+                    this.iEllipseSegments
             );
         }
 
@@ -479,7 +479,7 @@
             //cylinders will not collide on floors
             //if ( face.iLowestZ == face.iHighestZ ) return false;
 
-            return checkCollisionHorz( cylinder, true, false );
+            return this.checkCollisionHorz( cylinder, true, false );
         }
 
         public boolean checkCollisionHorz( LibCylinder cylinder, boolean useBottomToleranceZ, boolean invertBottomTolerance   )
@@ -494,13 +494,13 @@
             Vector<Float> v = new Vector<Float>();
 
             //check horz intersection
-            if ( cylinder.getCircle().intersects( new Rectangle2D.Float( iLowestX, iLowestY, iHighestX - iLowestX, iHighestY - iLowestY ) ) )
+            if ( cylinder.getCircle().intersects( new Rectangle2D.Float(this.iLowestX, this.iLowestY, this.iHighestX - this.iLowestX, this.iHighestY - this.iLowestY) ) )
             {
                 //do not check heights intersection !
                 // if ( cylinder.heightsIntersect( iLowestZ, iHighestZ, false ) )
                 {
                     //iDebug.bugfix.out("INTERSECT - return float with z [" + iHighestZ + "]");
-                    v.add( new Float( iHighestZ ) );
+                    v.add( new Float(this.iHighestZ) );
                 }
             }
 
@@ -509,7 +509,7 @@
 
         public void setDamageMultiplier( float aDamageMultiplier )
         {
-            iDamageMultiplier = aDamageMultiplier;
+            this.iDamageMultiplier = aDamageMultiplier;
         }
 /*
         public final Float checkCollision( Point2D.Float point )

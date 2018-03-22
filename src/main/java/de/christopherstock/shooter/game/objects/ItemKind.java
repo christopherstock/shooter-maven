@@ -48,12 +48,12 @@
 
         private ItemKind( ItemType aType, float aRadius, LibD3dsFile aMeshFile, String aHudMessage, SoundFg aPickupSound, GameEvent[] aItemEvents, boolean aSingleEvent )
         {
-            iType                   = aType;
-            iRadius                 = aRadius;
-            iMeshFile               = aMeshFile;
-            iHudMessage             = aHudMessage;
-            iPickupSound            = aPickupSound;
-            iItemEvents             = aItemEvents;
-            iSingleEvent            = aSingleEvent;
+            this.iType = aType;
+            this.iRadius = aRadius;
+            this.iMeshFile = aMeshFile;
+            this.iHudMessage = aHudMessage;
+            this.iPickupSound = aPickupSound;
+            this.iItemEvents = aItemEvents;
+            this.iSingleEvent = aSingleEvent;
         }
     }

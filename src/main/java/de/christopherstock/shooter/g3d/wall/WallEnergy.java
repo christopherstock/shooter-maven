@@ -23,14 +23,14 @@
 
         protected WallEnergy( WallHealth aWallHealth, FXSize aExplosionSize, SoundFg aExplosionSound )
         {
-            iHealthStart        = aWallHealth.getHealth();
-            iHealthCurrent      = aWallHealth.getHealth();
-            iExplosionSize      = aExplosionSize;
-            iExplosionSound     = aExplosionSound;
+            this.iHealthStart = aWallHealth.getHealth();
+            this.iHealthCurrent = aWallHealth.getHealth();
+            this.iExplosionSize = aExplosionSize;
+            this.iExplosionSound = aExplosionSound;
         }
 
         public void reset()
         {
-            iHealthCurrent = iHealthStart;
+            this.iHealthCurrent = this.iHealthStart;
         }
     }

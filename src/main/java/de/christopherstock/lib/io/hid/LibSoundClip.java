@@ -35,17 +35,17 @@
 
         public LibSoundClip( LibDebug aDebug, LibSoundFactory aFactory, float aVolume, float aBalance, int aDelay, Point2D.Float aDistantLocation )
         {
-            iDebug   = aDebug;
-            iFactory = aFactory;
+            this.iDebug = aDebug;
+            this.iFactory = aFactory;
 
-            iVolume  = aVolume;
-            iBalance = aBalance;
-            iDelay   = aDelay;
+            this.iVolume = aVolume;
+            this.iBalance = aBalance;
+            this.iDelay = aDelay;
 
-            iDistantLocation = aDistantLocation;
+            this.iDistantLocation = aDistantLocation;
 
-            clipVolume();
-            clipBalance();
+            this.clipVolume();
+            this.clipBalance();
         }
 
         @Override
@@ -62,18 +62,18 @@
             try
             {
                 //create clip
-                iClip = (Clip)AudioSystem.getLine( iFactory.iInfo );
+                this.iClip = (Clip)AudioSystem.getLine(this.iFactory.iInfo );
 
                 try
                 {
-                    iClip.open( iFactory.iAudioFormat, iFactory.iBytes, 0, iFactory.iBytes.length );
+                    this.iClip.open(this.iFactory.iAudioFormat, this.iFactory.iBytes, 0, this.iFactory.iBytes.length );
 
                     //iDebug.out( "Initialized sound clip! Memory info is:" );
                     //iDebug.mem();
                 }
                 catch ( OutOfMemoryError oome )
                 {
-                    iDebug.err( "Caught OutOfMemoryError on initing sound clip" );
+                    this.iDebug.err( "Caught OutOfMemoryError on initing sound clip" );
 /*
                     //disable sound system
                     disabledByMemory    = true;
@@ -83,8 +83,8 @@
                 }
 
                 //volume control
-                iVolumeControl = (FloatControl)iClip.getControl( FloatControl.Type.MASTER_GAIN );
-                setVolume( iVolume );
+                this.iVolumeControl = (FloatControl) this.iClip.getControl( FloatControl.Type.MASTER_GAIN );
+                this.setVolume(this.iVolume);
 
                 //ignore balance for now!
 /*
@@ -100,61 +100,61 @@
                 }
 */
                 //add listener
-                iClip.addLineListener( this );
+                this.iClip.addLineListener( this );
 
                 //start clip from the beginning
-                iClip.setMicrosecondPosition( 0 );
-                iClip.start();
+                this.iClip.setMicrosecondPosition( 0 );
+                this.iClip.start();
             }
             catch ( Throwable t )
             {
-                iDebug.err( "Exception on playing java player\n" + t );
-                iSoundHasFinished = true;
+                this.iDebug.err( "Exception on playing java player\n" + t );
+                this.iSoundHasFinished = true;
             }
         }
 
         public void setVolume( float aVolume )
         {
-            iVolume = aVolume;
-            clipVolume();
+            this.iVolume = aVolume;
+            this.clipVolume();
 
-            if ( iVolumeControl != null )
+            if (this.iVolumeControl != null )
             {
               //float dB = (float)( Math.log( iVolume ) / Math.log( 10.0f ) * 20.0f );
-                float dB = iVolumeControl.getMinimum() + ( ( iVolumeControl.getMaximum() - iVolumeControl.getMinimum() ) * aVolume );
+                float dB = this.iVolumeControl.getMinimum() + ( (this.iVolumeControl.getMaximum() - this.iVolumeControl.getMinimum() ) * aVolume );
 
                 //ShooterDebug.bugfix.out( "setVolume [" + iVolume + "] db [" + dB + "]  min [" + iVolumeControl.getMinimum() + "] max [" + iVolumeControl.getMaximum() + "]" );
 
-                iVolumeControl.setValue( dB );
+                this.iVolumeControl.setValue( dB );
             }
         }
 
         public void setBalance( float aBalance )
         {
-            iBalance = aBalance;
-            clipBalance();
+            this.iBalance = aBalance;
+            this.clipBalance();
 
-            if ( iBalanceControl != null )
+            if (this.iBalanceControl != null )
             {
-                iBalanceControl.setValue( iBalance );
+                this.iBalanceControl.setValue(this.iBalance);
             }
         }
 
         public void clipVolume()
         {
-            if ( iVolume < VOLUME_MUTE ) iVolume = VOLUME_MUTE;
-            if ( iVolume > VOLUME_MAX  ) iVolume = VOLUME_MAX;
+            if (this.iVolume < VOLUME_MUTE ) this.iVolume = VOLUME_MUTE;
+            if (this.iVolume > VOLUME_MAX  ) this.iVolume = VOLUME_MAX;
         }
 
         public void clipBalance()
         {
-            if ( iBalance < BALANCE_ONLY_LEFT  ) iBalance = BALANCE_ONLY_LEFT;
-            if ( iBalance > BALANCE_ONLY_RIGHT ) iBalance = BALANCE_ONLY_RIGHT;
+            if (this.iBalance < BALANCE_ONLY_LEFT  ) this.iBalance = BALANCE_ONLY_LEFT;
+            if (this.iBalance > BALANCE_ONLY_RIGHT ) this.iBalance = BALANCE_ONLY_RIGHT;
         }
 
         public boolean hasSoundFinished()
         {
-            return iSoundHasFinished;
+            return this.iSoundHasFinished;
         }
 
         public void update( LineEvent le )
@@ -170,13 +170,13 @@
                 le.getLine().close();
 
                 //mark finished
-                iSoundHasFinished = true;
+                this.iSoundHasFinished = true;
             }
         }
 
         public boolean isDistanced()
         {
-            return ( iDistantLocation != null );
+            return (this.iDistantLocation != null );
         }
 
         public void updateDistancedSound( float newVolume )
@@ -185,12 +185,12 @@
             if ( newVolume < LibSoundClip.VOLUME_MUTE ) newVolume = LibSoundClip.VOLUME_MUTE;
             if ( newVolume > LibSoundClip.VOLUME_MAX  ) newVolume = LibSoundClip.VOLUME_MAX;
 
-            setVolume( newVolume );
+            this.setVolume( newVolume );
             //iDebug.out( "update volume to:  volume [" + volume + "]"  );
         }
 
         public final Point2D.Float getDistantLocation()
         {
-            return iDistantLocation;
+            return this.iDistantLocation;
         }
     }

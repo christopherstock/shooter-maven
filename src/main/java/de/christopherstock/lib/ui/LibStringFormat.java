@@ -27,17 +27,17 @@
         ***************************************************************************************************************/
         public final String formatNumber( long value )
         {
-            return formatNumber.format( value );
+            return this.formatNumber.format( value );
         }
 
         public final String formatPercent( float value )
         {
-            return formatPercent.format( value );
+            return this.formatPercent.format( value );
         }
 
         public final String formatiereDateTime( long millis )
         {
-            return formatDateTime( new Date( millis ) );
+            return this.formatDateTime( new Date( millis ) );
         }
 
         /***************************************************************************************************************
@@ -48,7 +48,7 @@
         ***************************************************************************************************************/
         public final String formatDateTime( Date date )
         {
-            return formatDateTime.format( date );
+            return this.formatDateTime.format( date );
         }
 
         /***************************************************************************************************************
@@ -61,7 +61,7 @@
             Date   date   = new Date();
             String millis = String.valueOf( System.currentTimeMillis() );
 
-            return formatDateTime.format( date ) + "," + millis.substring( millis.length() - 3 );
+            return this.formatDateTime.format( date ) + "," + millis.substring( millis.length() - 3 );
         }
 
         /***************************************************************************************************************
@@ -72,7 +72,7 @@
         ***************************************************************************************************************/
         public final String formatDate( long millis )
         {
-            return formatDate( new Date( millis ) );
+            return this.formatDate( new Date( millis ) );
         }
 
         /***************************************************************************************************************
@@ -83,6 +83,6 @@
         ***************************************************************************************************************/
         public final String formatDate( Date date )
         {
-            return formatDate.format( date );
+            return this.formatDate.format( date );
         }
     }

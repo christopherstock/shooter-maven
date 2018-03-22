@@ -28,30 +28,30 @@
 
         public LibGLTexture( int aId, Translucency aTranslucency, LibMaterial aMaterial, Integer aMaskId )
         {
-            id              = aId;
-            translucency    = aTranslucency;
-            material        = aMaterial;
-            maskId          = aMaskId;
+            this.id = aId;
+            this.translucency = aTranslucency;
+            this.material = aMaterial;
+            this.maskId = aMaskId;
         }
 
         public final int getId()
         {
-            return id;
+            return this.id;
         }
 
         public final LibMaterial getMaterial()
         {
-            return material;
+            return this.material;
         }
 
         public final Translucency getTranslucency()
         {
-            return translucency;
+            return this.translucency;
         }
 
         public final int getMaskId()
         {
-            return maskId;
+            return this.maskId;
         }
 
         public static int getNextFreeID()

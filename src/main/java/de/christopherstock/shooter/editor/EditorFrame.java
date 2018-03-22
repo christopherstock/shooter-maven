@@ -23,22 +23,22 @@
             Point centerPoint   = GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint();
 
           //form.setIconImage(                  iIconImage                          );
-            setTitle(                      "Shooter Level Editor"              );
-            setDefaultCloseOperation(      JFrame.EXIT_ON_CLOSE                );
-            setLocation(                   (int)centerPoint.getX() - width / 2, (int)centerPoint.getY() - height / 2 );
-            setSize(                       width, height                       );
-            setResizable(                  false                               );
-            setUndecorated(                false                               );
+            this.setTitle(                      "Shooter Level Editor"              );
+            this.setDefaultCloseOperation(      JFrame.EXIT_ON_CLOSE                );
+            this.setLocation(                   (int)centerPoint.getX() - width / 2, (int)centerPoint.getY() - height / 2 );
+            this.setSize(                       width, height                       );
+            this.setResizable(                  false                               );
+            this.setUndecorated(                false                               );
 
-            getContentPane().add( content );
-            pack();
-            setLocationByPlatform( true );
-            setVisible( true );
+            this.getContentPane().add( content );
+            this.pack();
+            this.setLocationByPlatform( true );
+            this.setVisible( true );
 
             //stick in foreground ( may raise a SucurityException )
             try
             {
-                setAlwaysOnTop(            true                                );
+                this.setAlwaysOnTop(            true                                );
             }
             catch ( SecurityException se )
             {

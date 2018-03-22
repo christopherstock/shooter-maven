@@ -39,10 +39,10 @@
 
         private MainStateIntroLogo()
         {
-            iLogoY      = START_APPEARING_Y;
-            iLogo       = new Wall( Menu.ELogoIpco, new LibVertex( 0.0f, 0.0f, 0.0f ), 0.0f, Scalation.ENone, Invert.ENo, Wall.WallCollidable.EYes,  Wall.WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, null, null, 0, WallHealth.EUnbreakale, null, null );
-            iTextTop    = LibGLImage.getFromString( "Brought to you by the members of", Fonts.EIntro, LibColors.EGreyDark.colARGB, null, null, ShooterDebug.glImage );
-            iTextBottom = LibGLImage.getFromString( "The International PC Owners",      Fonts.EIntro, LibColors.EGreyDark.colARGB, null, null, ShooterDebug.glImage );
+            this.iLogoY = START_APPEARING_Y;
+            this.iLogo = new Wall( Menu.ELogoIpco, new LibVertex( 0.0f, 0.0f, 0.0f ), 0.0f, Scalation.ENone, Invert.ENo, Wall.WallCollidable.EYes,  Wall.WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, null, null, 0, WallHealth.EUnbreakale, null, null );
+            this.iTextTop = LibGLImage.getFromString( "Brought to you by the members of", Fonts.EIntro, LibColors.EGreyDark.colARGB, null, null, ShooterDebug.glImage );
+            this.iTextBottom = LibGLImage.getFromString( "The International PC Owners",      Fonts.EIntro, LibColors.EGreyDark.colARGB, null, null, ShooterDebug.glImage );
         }
 
         public static MainStateIntroLogo getSingleton()
@@ -60,13 +60,13 @@
             //draw FPS
             Shooter.game.hud.draw2D();
 
-            if ( iLogoY <= TARGET_APPEARING_Y )
+            if (this.iLogoY <= TARGET_APPEARING_Y )
             {
                 //draw total ammo
-                LibGL3D.view.drawOrthoBitmapBytes( iTextTop,    ( LibGL3D.panel.width - iTextTop.width    ) / 2, 500, iAlphaText );
-                LibGL3D.view.drawOrthoBitmapBytes( iTextBottom, ( LibGL3D.panel.width - iTextBottom.width ) / 2, 150, iAlphaText );
-                iAlphaText += 0.005f;
-                if ( iAlphaText > 1.0f ) iAlphaText = 1.0f;
+                LibGL3D.view.drawOrthoBitmapBytes(this.iTextTop,    ( LibGL3D.panel.width - this.iTextTop.width    ) / 2, 500, this.iAlphaText);
+                LibGL3D.view.drawOrthoBitmapBytes(this.iTextBottom, ( LibGL3D.panel.width - this.iTextBottom.width ) / 2, 150, this.iAlphaText);
+                this.iAlphaText += 0.005f;
+                if (this.iAlphaText > 1.0f ) this.iAlphaText = 1.0f;
             }
         }
 
@@ -94,7 +94,7 @@
             LibGL3D.view.setLightsOn( lights, LibColors.ELightIntroLogoAmbient );
 
             //draw logo
-            iLogo.draw();
+            this.iLogo.draw();
 
             //draw debug cross in front of the logo
           //new Wall(   Others.ECross,              new LibVertex( 0.0f,    1.0f,   0.0f    ), 0.0f, Scalation.ENone, WallCollidable.ENo, WallAction.ENone, WallDestroyable.ENo, WallClimbable.ENo, DrawMethod.EAlwaysDraw              ).draw();
@@ -108,25 +108,25 @@
 
         public final void onRun()
         {
-            iLogo.translateAndRotateXYZ( 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, iZ,    null, LibTransformationMode.EOriginalsToTransformed   );
-            iLogo.translateAndRotateXYZ( 0.0f, iLogoY, 0.0f, 0.0f, 0.0f, 0.0f, null, LibTransformationMode.ETransformedToTransformed );
+            this.iLogo.translateAndRotateXYZ( 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, this.iZ,    null, LibTransformationMode.EOriginalsToTransformed   );
+            this.iLogo.translateAndRotateXYZ( 0.0f, this.iLogoY, 0.0f, 0.0f, 0.0f, 0.0f, null, LibTransformationMode.ETransformedToTransformed );
 
-            if ( iLogoY > TARGET_APPEARING_Y )
+            if (this.iLogoY > TARGET_APPEARING_Y )
             {
-                iLogoY -= SPEED_APPEARING_Y;
+                this.iLogoY -= SPEED_APPEARING_Y;
 /*
                 float diffY = ( logoY - TARGET_APPEARING_Y  ) / 4;
                 if ( diffY < 0.1f ) diffY = 0.1f;
                 logoY -= diffY; //TARGET_APPEARING_Y SPEED_APPEARING_Y;
 */
-                iZ = LibMath.normalizeAngle( iZ + SPEED_ROTATION_APPEARING );
+                this.iZ = LibMath.normalizeAngle(this.iZ + SPEED_ROTATION_APPEARING );
             }
             else
             {
                 //turn till next 0° position
-                if ( iZ != 0.0f )
+                if (this.iZ != 0.0f )
                 {
-                    iZ = LibMath.normalizeAngle( iZ + SPEED_ROTATION );
+                    this.iZ = LibMath.normalizeAngle(this.iZ + SPEED_ROTATION );
                 }
             }
         }

@@ -21,11 +21,11 @@
 
         public LevelConfigMain( String aDesc, ViewSet aStartPosition, ArtefactType[] aStartupWearpons, ItemEvent[] aStartupItems, InvisibleZeroLayerZ aHasInvisibleZLayer, SoundBg aBgSound )
         {
-            iDescLevel          = aDesc;
-            iStartPosition      = aStartPosition;
-            iStartupWearpons    = aStartupWearpons;
-            iStartupItems       = aStartupItems;
-            iHasInvisibleZLayer = aHasInvisibleZLayer;
-            iBgSound            = aBgSound;
+            this.iDescLevel = aDesc;
+            this.iStartPosition = aStartPosition;
+            this.iStartupWearpons = aStartupWearpons;
+            this.iStartupItems = aStartupItems;
+            this.iHasInvisibleZLayer = aHasInvisibleZLayer;
+            this.iBgSound = aBgSound;
         }
     }

@@ -21,7 +21,7 @@
 
         private MainStateIngame()
         {
-            //singleton constructor
+            //preloader constructor
         }
 
         public static MainStateIngame getSingleton()

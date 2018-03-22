@@ -32,9 +32,9 @@
 
         private Material( boolean aPenetrable, LibColors[] aSliverColors, SoundFg aBulletSound )
         {
-            iPenetrable     = aPenetrable;
-            iSliverColors   = aSliverColors;
-            iBulletImpactSound    = aBulletSound;
+            this.iPenetrable = aPenetrable;
+            this.iSliverColors = aSliverColors;
+            this.iBulletImpactSound = aBulletSound;
         }
 
         /***************************************************************************************************************
@@ -62,16 +62,16 @@
 
         public LibColors[] getSliverColors()
         {
-            return iSliverColors;
+            return this.iSliverColors;
         }
 
         public boolean isPenetrable()
         {
-            return iPenetrable;
+            return this.iPenetrable;
         }
 
         public LibSound getBulletImpactSound()
         {
-            return iBulletImpactSound;
+            return this.iBulletImpactSound;
         }
     }

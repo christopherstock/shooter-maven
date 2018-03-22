@@ -30,11 +30,11 @@
 
         private void loadImage()
         {
-            iImg = new LibGLImage( LibImage.load( ShooterSettings.Path.ECrossHair.iUrl + toString() + LibExtension.png.getSpecifier(), ShooterDebug.glImage, false ), ImageUsage.EOrtho, ShooterDebug.glImage, true );
+            this.iImg = new LibGLImage( LibImage.load( ShooterSettings.Path.ECrossHair.iUrl + this.toString() + LibExtension.png.getSpecifier(), ShooterDebug.glImage, false ), ImageUsage.EOrtho, ShooterDebug.glImage, true );
         }
 
         public final LibGLImage getImage()
         {
-            return iImg;
+            return this.iImg;
         }
     }

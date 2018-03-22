@@ -30,11 +30,11 @@
 
         private LibExtension( String aSpecifier )
         {
-            iSpecifier = aSpecifier;
+            this.iSpecifier = aSpecifier;
         }
 
         public String getSpecifier()
         {
-            return iSpecifier;
+            return this.iSpecifier;
         }
     }

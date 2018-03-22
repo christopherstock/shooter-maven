@@ -43,7 +43,7 @@
                         &&  currentBpp  == dm.getBitsPerPixel()
                     )
                     {
-                        iDebug.out( "picked display mode [" + dm.getWidth() + "][" + dm.getHeight() + "][" + dm.getBitsPerPixel() + "]" );
+                        this.iDebug.out( "picked display mode [" + dm.getWidth() + "][" + dm.getHeight() + "][" + dm.getBitsPerPixel() + "]" );
                         displayMode = dm;
                         break;
                     }
@@ -52,43 +52,43 @@
                 // if can't find a mode, notify the user the give up
                 if ( displayMode == null )
                 {
-                    iDebug.err( "Display mode not available!" );
+                    this.iDebug.err( "Display mode not available!" );
                     return;
                 }
 
                 // configure and create the LWJGL display
-                iDebug.out( "Setting display mode.." );
+                this.iDebug.out( "Setting display mode.." );
                 Display.setDisplayMode( displayMode );
-                iDebug.out( "Setting display mode Ok" );
+                this.iDebug.out( "Setting display mode Ok" );
                 Display.setFullscreen(  false       );
-                iDebug.out( "setting fullscreen false Ok" );
+                this.iDebug.out( "setting fullscreen false Ok" );
 
                 //((Canvas)panel.getNativePanel() ).setFocusable(false);
 
                 //set native canvas as parent displayable
                 Display.setParent( (Canvas)panel.getNativePanel() );
-                iDebug.out( "setting native Canvas Ok" );
+                this.iDebug.out( "setting native Canvas Ok" );
 
                 //create the display
                 Display.create();
-                iDebug.out( "Display creation Ok" );
+                this.iDebug.out( "Display creation Ok" );
 
                 //request focus ( hangs?? )
               //panel.getNativePanel().requestFocus();
-                iDebug.out( "Requesting focus Ok" );
+                this.iDebug.out( "Requesting focus Ok" );
             }
             catch ( LWJGLException e)
             {
-                iDebug.trace( e );
+                this.iDebug.trace( e );
             }
 
-            iDebug.out( "invoked init-method of LWJGLView" );
+            this.iDebug.out( "invoked init-method of LWJGLView" );
 
             //assign the panel's dimensions and parse its offsets
             panel.width  = Display.getParent().getWidth();
             panel.height = Display.getParent().getHeight();
 
-            iDebug.out( "assigned panel dimensions [" + LibGL3D.panel.width + "]x[" + LibGL3D.panel.height + "]" );
+            this.iDebug.out( "assigned panel dimensions [" + LibGL3D.panel.width + "]x[" + LibGL3D.panel.height + "]" );
 
             //run through some based OpenGL capability settings
 
@@ -96,7 +96,7 @@
             // GL11.glEnable(GL11.GL_CULL_FACE);
 
             //switch to projection-matrix-mode and set view ratio
-            setNewGluFaceAngle( VIEW_ANGLE );
+            this.setNewGluFaceAngle( VIEW_ANGLE );
 /*
             GL11.glMatrixMode(      GL11.GL_PROJECTION                                      );
             GL11.glLoadIdentity();
@@ -181,7 +181,7 @@
                 //draw all vertices
                 for ( LibVertex currentVertex : verticesToDraw )
                 {
-                    drawVertex( currentVertex );
+                    this.drawVertex( currentVertex );
                 }
                 GL11.glEnd();
 
@@ -203,11 +203,11 @@
 
                         //texture
                         GL11.glEnable(      GL11.GL_TEXTURE_2D                              );      //enable texture-mapping
-                        if ( iLastOpaqueTexture == null || iLastOpaqueTexture.getId() != texture.getId() )
+                        if (this.iLastOpaqueTexture == null || this.iLastOpaqueTexture.getId() != texture.getId() )
                         {
                             GL11.glBindTexture( GL11.GL_TEXTURE_2D, texture.getId()             );      //bind face's texture
                         }
-                        iLastOpaqueTexture = texture;
+                        this.iLastOpaqueTexture = texture;
 
                         //set glass color
                         GL11.glColor4f(     0.5f, 0.5f, 0.5f, 0.5f                          );
@@ -221,7 +221,7 @@
                         //draw all vertices
                         for ( LibVertex currentVertex : verticesToDraw )
                         {
-                            drawTexturedVertex( currentVertex );
+                            this.drawTexturedVertex( currentVertex );
                         }
                         GL11.glEnd();
 
@@ -257,7 +257,7 @@
                         //draw all vertices
                         for ( LibVertex currentVertex : verticesToDraw )
                         {
-                            drawTexturedVertex( currentVertex );
+                            this.drawTexturedVertex( currentVertex );
                         }
                         GL11.glEnd();
 
@@ -274,14 +274,14 @@
                         //draw all vertices
                         for ( LibVertex currentVertex : verticesToDraw )
                         {
-                            drawTexturedVertex( currentVertex );
+                            this.drawTexturedVertex( currentVertex );
                         }
                         GL11.glEnd();
 
                         //disable blending
                         GL11.glDisable(         GL11.GL_BLEND                                   );
 
-                        iLastOpaqueTexture = null;
+                        this.iLastOpaqueTexture = null;
 
                         break;
                     }
@@ -294,11 +294,11 @@
                         GL11.glEnable(          GL11.GL_TEXTURE_2D                        );      //enable texture-mapping
 
                         //cache last texture setting
-                        if ( iLastOpaqueTexture == null || iLastOpaqueTexture.getId() != texture.getId() )
+                        if (this.iLastOpaqueTexture == null || this.iLastOpaqueTexture.getId() != texture.getId() )
                         {
                             GL11.glBindTexture(     GL11.GL_TEXTURE_2D, texture.getId()       );      //bind face's texture
                         }
-                        iLastOpaqueTexture = texture;
+                        this.iLastOpaqueTexture = texture;
 
                         //set face color ( should be white ! )
                         GL11.glColor3f( col[ 0 ], col[ 1 ], col[ 2 ] );
@@ -326,7 +326,7 @@
                         //draw all vertices
                         for ( LibVertex currentVertex : verticesToDraw )
                         {
-                            drawTexturedVertex( currentVertex );
+                            this.drawTexturedVertex( currentVertex );
                         }
                         GL11.glEnd();
 
@@ -345,7 +345,7 @@
         {
             for ( LibVertex vertex : vertices )
             {
-                drawVertex( vertex );
+                this.drawVertex( vertex );
             }
         }
 
@@ -363,13 +363,13 @@
         @Override
         public final void initTextures( LibGLImage[] texImages )
         {
-            iTextureImages = texImages;
+            this.iTextureImages = texImages;
             GL11.glGenTextures();
 
-            for ( int i = 0; i < iTextureImages.length; ++i )
+            for (int i = 0; i < this.iTextureImages.length; ++i )
             {
                 GL11.glBindTexture( GL11.GL_TEXTURE_2D, i );
-                makeRGBTexture( iTextureImages[ i ] );
+                this.makeRGBTexture(this.iTextureImages[ i ] );
 
                 //this line disabled the lights on textures ! do NOT uncomment it !!
                 //GL11.glTexEnvf(         GL11.GL_TEXTURE_ENV,  GL11.GL_TEXTURE_ENV_MODE,     GL11.GL_REPLACE   );
@@ -385,7 +385,7 @@
             //bind texture to gl
             GL11.glTexParameteri( GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_LINEAR ); // GL_NEAREST is also possible ..
             GL11.glTexParameteri( GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_LINEAR );
-            GL11.glTexImage2D(    GL11.GL_TEXTURE_2D, 0, getSrcPixelFormat( img.srcPixelFormat ), img.width, img.height, 0, getSrcPixelFormat( img.srcPixelFormat ), GL11.GL_UNSIGNED_BYTE, img.bytes );
+            GL11.glTexImage2D(    GL11.GL_TEXTURE_2D, 0, this.getSrcPixelFormat( img.srcPixelFormat ), img.width, img.height, 0, this.getSrcPixelFormat( img.srcPixelFormat ), GL11.GL_UNSIGNED_BYTE, img.bytes );
         }
 
         @Override
@@ -407,7 +407,7 @@
         public void drawOrthoBitmapBytes( LibGLImage glImage, int x, int y, float alpha, float scaleX, float scaleY, boolean translateAnk )
         {
             //prepare rendering 2D
-            setOrthoOn();
+            this.setOrthoOn();
 
             //be sure to disable texturing - bytes will not be drawn otherwise
             GL11.glDisable( GL11.GL_TEXTURE_2D );
@@ -442,13 +442,13 @@
             GL11.glRasterPos2f( 0, 0 );
             GL11.glBitmap( 0, 0, 0, 0, x, y, glImage.bytes );
             GL11.glPixelZoom( scaleX, scaleY );
-            GL11.glDrawPixels( glImage.width, glImage.height, getSrcPixelFormat( glImage.srcPixelFormat ), GL11.GL_UNSIGNED_BYTE, glImage.bytes );
+            GL11.glDrawPixels( glImage.width, glImage.height, this.getSrcPixelFormat( glImage.srcPixelFormat ), GL11.GL_UNSIGNED_BYTE, glImage.bytes );
 
             //disable blending
             GL11.glDisable( GL11.GL_BLEND );
 
             //restore previous perspective and model views
-            setOrthoOff();
+            this.setOrthoOff();
         }
 
         @Override
@@ -500,7 +500,7 @@
                 }
 
                 GL11.glEnable( lightKey );
-                setLight( lightKey, lights[ i ] );
+                this.setLight( lightKey, lights[ i ] );
             }
 
             //set ambient light
@@ -592,6 +592,6 @@
         {
             GL11.glMatrixMode( GL11.GL_PROJECTION );
             GL11.glLoadIdentity();
-            GLU.gluPerspective( faceAngle, iAspectRatio, VIEW_MIN, VIEW_MAX );
+            GLU.gluPerspective( faceAngle, this.iAspectRatio, VIEW_MIN, VIEW_MAX );
         }
     }

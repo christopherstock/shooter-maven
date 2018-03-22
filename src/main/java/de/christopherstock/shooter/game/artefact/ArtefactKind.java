@@ -16,7 +16,7 @@
 
         public void setParent( ArtefactType aParent )
         {
-            iParentKind = aParent;
+            this.iParentKind = aParent;
         }
 
         public abstract LibHoleSize getBulletHoleSize();

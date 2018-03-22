@@ -25,7 +25,7 @@
 
         public CloseCombat( int aDamage )
         {
-            iDamage = aDamage;
+            this.iDamage = aDamage;
         }
 
         @Override
@@ -34,15 +34,15 @@
             //ShooterDebug.bugfix.out( "LAUNCH CC - damage is [" + iDamage + "]" );
 
             //launch use-sound-fx
-            if ( iUseSound != null )
+            if (this.iUseSound != null )
             {
                 if ( shooterXY == null )
                 {
-                    iUseSound.playGlobalFx();
+                    this.iUseSound.playGlobalFx();
                 }
                 else
                 {
-                    iUseSound.playDistancedFx( shooterXY );
+                    this.iUseSound.playDistancedFx( shooterXY );
                 }
             }
 
@@ -91,7 +91,7 @@
         @Override
         public int getDamage()
         {
-            return iDamage;
+            return this.iDamage;
         }
 
         @Override

@@ -31,8 +31,8 @@
 
         private ShooterVersion( String aVersion, String aDate )
         {
-            version = aVersion;
-            date    = aDate;
+            this.version = aVersion;
+            this.date = aDate;
         }
 
         public static String getCurrentVersionDesc()

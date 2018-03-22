@@ -52,14 +52,14 @@
 
         protected LibGLView( float aAspectRatio, LibDebug aDebug )
         {
-            iAspectRatio    = aAspectRatio;
-            iDebug          = aDebug;
+            this.iAspectRatio = aAspectRatio;
+            this.iDebug = aDebug;
         }
 
         public void clearFaceQueue()
         {
-            iDefaultFaceDrawingQueue.clear();
-            iFirstPrioDrawingQueue.clear();
+            this.iDefaultFaceDrawingQueue.clear();
+            this.iFirstPrioDrawingQueue.clear();
         }
 
         public void enqueueFaceToQueue( LibGLFace aFace )
@@ -68,19 +68,19 @@
             if ( aFace.getTexture() == null || aFace.getTexture().getTranslucency() == Translucency.EOpaque )
             {
                 //immediate draw for opaque faces
-                drawFace( aFace.getVerticesToDraw(), aFace.getFaceNormal(), aFace.getTexture(), aFace.getColor3f(), aFace.getAlpha(), aFace.getDarkenOpacity() );
+                this.drawFace( aFace.getVerticesToDraw(), aFace.getFaceNormal(), aFace.getTexture(), aFace.getColor3f(), aFace.getAlpha(), aFace.getDarkenOpacity() );
             }
             //1st prio ( masked faces )
             else if ( aFace.getTexture().getTranslucency() == Translucency.EHasMaskBulletHole )
             {
                 //add to masked face queue
-                iFirstPrioDrawingQueue.addElement( aFace );
+                this.iFirstPrioDrawingQueue.addElement( aFace );
             }
             //default queue ( masked faces & glass )
             else
             {
                 //add to glass face queue
-                iDefaultFaceDrawingQueue.addElement( aFace );
+                this.iDefaultFaceDrawingQueue.addElement( aFace );
             }
         }
 
@@ -89,11 +89,11 @@
           //ShooterDebugSystem.bugfix.out( "draw faces: ["+faceDrawingQueueOpaque.size()+"] opaque ["+faceDrawingQueueMasked.size()+"] masked ["+faceDrawingQueue.size()+" translucent]" );
 
             //sort & draw translucent faces according to distance
-            sortAndDrawAllFaces( iDefaultFaceDrawingQueue,  aCameraViewpoint );
-            sortAndDrawAllFaces( iFirstPrioDrawingQueue,    aCameraViewpoint );
+            this.sortAndDrawAllFaces(this.iDefaultFaceDrawingQueue,  aCameraViewpoint );
+            this.sortAndDrawAllFaces(this.iFirstPrioDrawingQueue,    aCameraViewpoint );
 
             //flushing gl forces an immediate draw
-            flushGL();
+            this.flushGL();
         }
 
         private void sortAndDrawAllFaces( Vector<LibGLFace> aFaceDrawingQueue, LibVertex aCameraViewpoint )
@@ -104,7 +104,7 @@
                 for ( LibGLFace faceTranslucent : faceDrawingQueue )
                 {
                     //draw
-                    drawFace( faceTranslucent.getVerticesToDraw(), faceTranslucent.getFaceNormal(), faceTranslucent.getTexture(), faceTranslucent.getColor3f(), faceTranslucent.getAlpha(), faceTranslucent.getDarkenOpacity() );
+                    this.drawFace( faceTranslucent.getVerticesToDraw(), faceTranslucent.getFaceNormal(), faceTranslucent.getTexture(), faceTranslucent.getColor3f(), faceTranslucent.getAlpha(), faceTranslucent.getDarkenOpacity() );
                 }
             }
         }
@@ -162,12 +162,12 @@
 
         public final void drawOrthoBitmapBytes( LibGLImage glImage, int x, int y )
         {
-            drawOrthoBitmapBytes( glImage, x, y, 1.0f );
+            this.drawOrthoBitmapBytes( glImage, x, y, 1.0f );
         }
 
         public void drawOrthoBitmapBytes( LibGLImage glImage, int x, int y, float alphaF )
         {
-            drawOrthoBitmapBytes( glImage, x, y, alphaF, 1.0f, 1.0f, true );
+            this.drawOrthoBitmapBytes( glImage, x, y, alphaF, 1.0f, 1.0f, true );
         }
 
         public abstract void drawOrthoBitmapBytes( LibGLImage glImage, int x, int y, float alphaF, float scaleX, float scaleY, boolean translateAnk );

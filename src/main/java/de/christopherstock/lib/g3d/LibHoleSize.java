@@ -18,6 +18,6 @@
 
         private LibHoleSize( float aSize )
         {
-            size = aSize;
+            this.size = aSize;
         }
     }

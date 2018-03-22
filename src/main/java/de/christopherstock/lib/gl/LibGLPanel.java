@@ -21,7 +21,7 @@
 
         public Graphics2D getGraphics()
         {
-            return (Graphics2D)getNativePanel().getGraphics();
+            return (Graphics2D) this.getNativePanel().getGraphics();
         }
 
         public abstract void display();

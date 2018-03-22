@@ -251,25 +251,25 @@
             LibTexture  aTexLeftFoot
         )
         {
-            iRadius             = aRadius;
-            iHeight             = aHeight;
+            this.iRadius = aRadius;
+            this.iHeight = aHeight;
 
-            iSkinType           = aSkinType;
-            iBodyType           = aBodyType;
+            this.iSkinType = aSkinType;
+            this.iBodyType = aBodyType;
 
-            iTexRightUpperArm   = aTexRightUpperArm ;
-            iTexRightLowerArm   = aTexRightLowerArm ;
-            iTexTorso           = aTexTorso         ;
-            iTexNeck            = aTexNeck          ;
-            iTexLeftUpperArm    = aTexLeftUpperArm  ;
-            iTexLeftLowerArm    = aTexLeftLowerArm  ;
-            iTexRightHand       = aTexRightHand     ;
-            iTexLeftHand        = aTexLeftHand      ;
-            iTexRightUpperLeg   = aTexRightUpperLeg ;
-            iTexLeftUpperLeg    = aTexLeftUpperLeg  ;
-            iTexRightLowerLeg   = aTexRightLowerLeg ;
-            iTexLeftLowerLeg    = aTexLeftLowerLeg  ;
-            iTexRightFoot       = aTexRightFoot     ;
-            iTexLeftFoot        = aTexLeftFoot      ;
+            this.iTexRightUpperArm = aTexRightUpperArm ;
+            this.iTexRightLowerArm = aTexRightLowerArm ;
+            this.iTexTorso = aTexTorso         ;
+            this.iTexNeck = aTexNeck          ;
+            this.iTexLeftUpperArm = aTexLeftUpperArm  ;
+            this.iTexLeftLowerArm = aTexLeftLowerArm  ;
+            this.iTexRightHand = aTexRightHand     ;
+            this.iTexLeftHand = aTexLeftHand      ;
+            this.iTexRightUpperLeg = aTexRightUpperLeg ;
+            this.iTexLeftUpperLeg = aTexLeftUpperLeg  ;
+            this.iTexRightLowerLeg = aTexRightLowerLeg ;
+            this.iTexLeftLowerLeg = aTexLeftLowerLeg  ;
+            this.iTexRightFoot = aTexRightFoot     ;
+            this.iTexLeftFoot = aTexLeftFoot      ;
         }
     }

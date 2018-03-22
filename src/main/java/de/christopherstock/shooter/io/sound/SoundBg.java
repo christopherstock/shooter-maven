@@ -38,10 +38,10 @@
 
         private SoundBg( long aInitNanoSecondStart, long aInitNanoSecondEnd, long aLoopNanoSecondStart, long aLoopNanoSecondEnd )
         {
-            iInitNanoSecondStart = aInitNanoSecondStart;
-            iInitNanoSecondEnd   = aInitNanoSecondEnd;
-            iLoopNanoSecondStart = aLoopNanoSecondStart;
-            iLoopNanoSecondEnd   = aLoopNanoSecondEnd;
+            this.iInitNanoSecondStart = aInitNanoSecondStart;
+            this.iInitNanoSecondEnd = aInitNanoSecondEnd;
+            this.iLoopNanoSecondStart = aLoopNanoSecondStart;
+            this.iLoopNanoSecondEnd = aLoopNanoSecondEnd;
         }
 
         public static void init()
@@ -75,11 +75,11 @@
         {
             try
             {
-                ByteArrayInputStream bais  = LibIO.preStreamJarResource( ShooterSettings.Path.ESoundsBg.iUrl + toString() + LibExtension.au.getSpecifier() );
+                ByteArrayInputStream bais  = LibIO.preStreamJarResource( ShooterSettings.Path.ESoundsBg.iUrl + this.toString() + LibExtension.au.getSpecifier() );
                 byte[]               bytes = LibIO.readStreamBuffered( bais );
                 LibIODataSource      ds    = new LibIODataSource( LibIO.createByteBufferFromByteArray( bytes ), FileTypeDescriptor.BASIC_AUDIO );
 
-                iPlayer = Manager.createPlayer( ds );
+                this.iPlayer = Manager.createPlayer( ds );
             }
             catch ( Throwable t )
             {
@@ -111,11 +111,11 @@
 
         private void start()
         {
-            if ( iPlayer != null )
+            if (this.iPlayer != null )
             {
                 //create and add the controller listener
                 final String soundName = this.toString();
-                iControllerListener = new ControllerListener()
+                this.iControllerListener = new ControllerListener()
                 {
                     public void controllerUpdate( ControllerEvent ce )
                     {
@@ -125,27 +125,27 @@
                         if ( ce instanceof RealizeCompleteEvent )
                         {
                             //set initial start and end time and play
-                            iPlayer.setMediaTime( new Time( iInitNanoSecondStart ) );
-                            iPlayer.setStopTime(  new Time( iInitNanoSecondEnd   ) );
-                            ShooterDebug.sound.out( "Play init from [" + iInitNanoSecondStart + "] to [" + iInitNanoSecondEnd + "]" );
-                            iPlayer.start();
+                            SoundBg.this.iPlayer.setMediaTime( new Time(SoundBg.this.iInitNanoSecondStart) );
+                            SoundBg.this.iPlayer.setStopTime(  new Time(SoundBg.this.iInitNanoSecondEnd) );
+                            ShooterDebug.sound.out( "Play init from [" + SoundBg.this.iInitNanoSecondStart + "] to [" + SoundBg.this.iInitNanoSecondEnd + "]" );
+                            SoundBg.this.iPlayer.start();
                         }
 
                         //being invoked when the sound is stopped
                         if ( ce instanceof StopAtTimeEvent )
                         {
                             //set initial start and end time and play
-                            iPlayer.setMediaTime( new Time( iLoopNanoSecondStart ) );
-                            iPlayer.setStopTime(  new Time( iLoopNanoSecondEnd   ) );
-                            ShooterDebug.sound.out( "Play loop from [" + iLoopNanoSecondStart + "] to [" + iLoopNanoSecondEnd + "]" );
-                            iPlayer.start();
+                            SoundBg.this.iPlayer.setMediaTime( new Time(SoundBg.this.iLoopNanoSecondStart) );
+                            SoundBg.this.iPlayer.setStopTime(  new Time(SoundBg.this.iLoopNanoSecondEnd) );
+                            ShooterDebug.sound.out( "Play loop from [" + SoundBg.this.iLoopNanoSecondStart + "] to [" + SoundBg.this.iLoopNanoSecondEnd + "]" );
+                            SoundBg.this.iPlayer.start();
                         }
                     }
                 };
-                iPlayer.addControllerListener( iControllerListener );
+                this.iPlayer.addControllerListener(this.iControllerListener);
 
                 //realize the player
-                iPlayer.realize();
+                this.iPlayer.realize();
             }
         }
     }

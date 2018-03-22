@@ -85,54 +85,54 @@
             int                     aFadeOutTicks
         )
         {
-            iType               = aType;
-            iOrigin             = aOrigin;
-            iRotZ               = aRotZ;
-            iRotX               = aRotX;
-            iShotRange          = aShotRange;
-            iBulletHoleSize     = aBulletHoleSize;
-            iDebug              = aDebug;
-            iParticleQuantity   = aParticleQuantity;
-            iSliverAngleMod     = aSliverAngleMod;
-            iDamage             = aDamage;
-            iSliverSize         = aSliverSize;
-            iWallBreakingAmmo   = aWallBreakingAmmo;
-            iProjectile         = aProjectile;
-            iFadeOutTicks       = aFadeOutTicks;
+            this.iType = aType;
+            this.iOrigin = aOrigin;
+            this.iRotZ = aRotZ;
+            this.iRotX = aRotX;
+            this.iShotRange = aShotRange;
+            this.iBulletHoleSize = aBulletHoleSize;
+            this.iDebug = aDebug;
+            this.iParticleQuantity = aParticleQuantity;
+            this.iSliverAngleMod = aSliverAngleMod;
+            this.iDamage = aDamage;
+            this.iSliverSize = aSliverSize;
+            this.iWallBreakingAmmo = aWallBreakingAmmo;
+            this.iProjectile = aProjectile;
+            this.iFadeOutTicks = aFadeOutTicks;
 
             //iDebug.out( "=======================================" );
 
             //let the wearpon affect the horz- and vert-fire-angles
-            iRotZ           += irregularityHorz;
-            iRotX           += irregularityVert;
+            this.iRotZ += irregularityHorz;
+            this.iRotX += irregularityVert;
 
-            iSrcPoint3d     = new Point3d
+            this.iSrcPoint3d = new Point3d
             (
                 startX,
                 startY,
                 startZ
             );
 
-            iEndPoint3d     = LibMathGeometry.getDistantPoint( iSrcPoint3d, iShotRange, iRotX, iRotZ );
+            this.iEndPoint3d = LibMathGeometry.getDistantPoint(this.iSrcPoint3d, this.iShotRange, this.iRotX, this.iRotZ);
 
             //calculate end point and shot-line for the horizontal axis
-            iSrcPointHorz = new Point2D.Float( (float)iSrcPoint3d.x, (float)iSrcPoint3d.y );
-            iEndPointHorz   = new Point2D.Float
+            this.iSrcPointHorz = new Point2D.Float( (float) this.iSrcPoint3d.x, (float) this.iSrcPoint3d.y );
+            this.iEndPointHorz = new Point2D.Float
             (
-                iSrcPointHorz.x - LibMath.sinDeg( iRotZ ) * iShotRange,
-                iSrcPointHorz.y - LibMath.cosDeg( iRotZ ) * iShotRange
+                    this.iSrcPointHorz.x - LibMath.sinDeg(this.iRotZ) * this.iShotRange,
+                    this.iSrcPointHorz.y - LibMath.cosDeg(this.iRotZ) * this.iShotRange
             );
-            iLineShotHorz   = new Line2D.Float( iSrcPointHorz, iEndPointHorz );
+            this.iLineShotHorz = new Line2D.Float(this.iSrcPointHorz, this.iEndPointHorz);
             //iDebug.out( "SHOT LINE HORZ [" + iSrcPoint3d.x + "," + iSrcPoint3d.y + "] to [" + iEndPointHorz.x + "," + iEndPointHorz.y + "]" );
 
             //calculate end point and shot-line for the vertical axis
-            iSrcPointVert = new Point2D.Float( 0.0f, (float)iSrcPoint3d.z );
-            iEndPointVert   = new Point2D.Float
+            this.iSrcPointVert = new Point2D.Float( 0.0f, (float) this.iSrcPoint3d.z );
+            this.iEndPointVert = new Point2D.Float
             (
-                iSrcPointVert.x + LibMath.cosDeg( iRotX ) * iShotRange,
-                iSrcPointVert.y - LibMath.sinDeg( iRotX ) * iShotRange
+                    this.iSrcPointVert.x + LibMath.cosDeg(this.iRotX) * this.iShotRange,
+                    this.iSrcPointVert.y - LibMath.sinDeg(this.iRotX) * this.iShotRange
             );
-            iLineShotVert   = new Line2D.Float( iSrcPointVert, iEndPointVert );
+            this.iLineShotVert = new Line2D.Float(this.iSrcPointVert, this.iEndPointVert);
             //iDebug.out( "SHOT LINE VERT " + iSrcPointVert + iEndPointVert );
 
             //Debug.drawLine( new Vertex( 2.0f, 1.0f, 2.0f, -1.0f, -1.0f ), new Vertex( 0.0f, 0.0f, 0.0f, -1.0f, -1.0f ) );
@@ -143,22 +143,22 @@
         public final void drawShotLine( int lifetime )
         {
             //draw shot line with own calculations
-            for ( float distance = 0.0f; distance < iShotRange; distance += 0.15f )
+            for (float distance = 0.0f; distance < this.iShotRange; distance += 0.15f )
             {
                 LibFXManager.launchStaticPoint
                 (
-                    iDebug,
+                        this.iDebug,
                     //wrong calc!!
                     new LibVertex
                     (
-                        (float)( iSrcPoint3d.x - LibMath.sinDeg( iRotZ ) * distance ),
-                        (float)( iSrcPoint3d.y - LibMath.cosDeg( iRotZ ) * distance ),
-                        (float)( iSrcPoint3d.z - LibMath.sinDeg( iRotX ) * distance )
+                        (float)(this.iSrcPoint3d.x - LibMath.sinDeg(this.iRotZ) * distance ),
+                        (float)(this.iSrcPoint3d.y - LibMath.cosDeg(this.iRotZ) * distance ),
+                        (float)(this.iSrcPoint3d.z - LibMath.sinDeg(this.iRotX) * distance )
                     ),
                     LibColors.EShotLine,
                     0.01f, //iBulletHoleSize.size / 8, //DebugSettings.DEBUG_POINT_SIZE
                     lifetime,
-                    iFadeOutTicks
+                        this.iFadeOutTicks
                 );
             }
         }

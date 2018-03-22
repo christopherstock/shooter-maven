@@ -32,18 +32,18 @@
         {
             HUDMessage hudMessage = new HUDMessage( txt );
             hudMessage.show();
-            messageQueue.add( hudMessage );
+            this.messageQueue.add( hudMessage );
         }
 
         public final void animateAll()
         {
             //browse reversed for easy pruning
-            for ( int j = messageQueue.size() - 1; j >= 0; --j )
+            for (int j = this.messageQueue.size() - 1; j >= 0; --j )
             {
                 //animate - remove if returned
-                if ( messageQueue.elementAt( j ).animate() )
+                if (this.messageQueue.elementAt( j ).animate() )
                 {
-                    messageQueue.removeElementAt( j );
+                    this.messageQueue.removeElementAt( j );
                 }
             }
         }
@@ -51,14 +51,14 @@
         public final void drawAll()
         {
             //only if messages are available
-            if ( messageQueue.size() > 0 )
+            if (this.messageQueue.size() > 0 )
             {
-                int drawY = OffsetsOrtho.EBorderHudY + ( Level.currentPlayer().iArtefactSet.showAmmoInHUD() ? 2 * messageQueue.elementAt( 0 ).getTexImgHeight() : 0 );
+                int drawY = OffsetsOrtho.EBorderHudY + ( Level.currentPlayer().iArtefactSet.showAmmoInHUD() ? 2 * this.messageQueue.elementAt( 0 ).getTexImgHeight() : 0 );
 
-                for ( int i = messageQueue.size() - 1; i >= 0; --i )
+                for (int i = this.messageQueue.size() - 1; i >= 0; --i )
                 {
-                    messageQueue.elementAt( i ).draw( drawY );
-                    drawY += messageQueue.elementAt( i ).getTexImgHeight();
+                    this.messageQueue.elementAt( i ).draw( drawY );
+                    drawY += this.messageQueue.elementAt( i ).getTexImgHeight();
                 }
             }
         }

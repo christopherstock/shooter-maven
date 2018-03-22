@@ -23,7 +23,7 @@
 
             protected TexObject( Translucency aTranslucency, Material aMaterial, LibTexture aMask )
             {
-                iTexture = new LibGLTexture
+                this.iTexture = new LibGLTexture
                 (
                     LibGLTexture.getNextFreeID(),
                     aTranslucency,
@@ -36,7 +36,7 @@
             {
                 //load all textures
                 BufferedImage bufferedImage = LibImage.load( url, ShooterDebug.glImage, false );
-                iTextureImage = new LibGLImage( bufferedImage, ImageUsage.ETexture, ShooterDebug.glImage, true );
+                this.iTextureImage = new LibGLImage( bufferedImage, ImageUsage.ETexture, ShooterDebug.glImage, true );
             }
         }
 
@@ -72,22 +72,22 @@
 
             private Mask( Translucency aTranslucency, Material aMaterial, LibTexture aMask )
             {
-                iTexObject = new TexObject( aTranslucency, aMaterial, aMask );
+                this.iTexObject = new TexObject( aTranslucency, aMaterial, aMask );
             }
 
             public final void loadImage( String url )
             {
-                iTexObject.loadImage( url );
+                this.iTexObject.loadImage( url );
             }
 
             public LibGLTexture getTexture()
             {
-                return iTexObject.iTexture;
+                return this.iTexObject.iTexture;
             }
 
             public final LibGLImage getTextureImage()
             {
-                return iTexObject.iTextureImage;
+                return this.iTexObject.iTextureImage;
             }
         }
 
@@ -122,22 +122,22 @@
 
             private BulletHoleTex( Translucency aTranslucency, Material aMaterial, LibTexture aMask )
             {
-                iTexObject = new TexObject( aTranslucency, aMaterial, aMask );
+                this.iTexObject = new TexObject( aTranslucency, aMaterial, aMask );
             }
 
             public final void loadImage( String url )
             {
-                iTexObject.loadImage( url );
+                this.iTexObject.loadImage( url );
             }
 
             public LibGLTexture getTexture()
             {
-                return iTexObject.iTexture;
+                return this.iTexObject.iTexture;
             }
 
             public final LibGLImage getTextureImage()
             {
-                return iTexObject.iTextureImage;
+                return this.iTexObject.iTextureImage;
             }
         }
 
@@ -260,22 +260,22 @@
 
             private WallTex( Translucency aTranslucency, Material aMaterial, LibTexture aMask )
             {
-                iTexObject = new TexObject( aTranslucency, aMaterial, aMask );
+                this.iTexObject = new TexObject( aTranslucency, aMaterial, aMask );
             }
 
             public final void loadImage( String url )
             {
-                iTexObject.loadImage( url );
+                this.iTexObject.loadImage( url );
             }
 
             public LibGLTexture getTexture()
             {
-                return iTexObject.iTexture;
+                return this.iTexObject.iTexture;
             }
 
             public final LibGLImage getTextureImage()
             {
-                return iTexObject.iTextureImage;
+                return this.iTexObject.iTextureImage;
             }
         }
 
@@ -377,22 +377,22 @@
 
             private BotTex( Translucency aTranslucency, Material aMaterial, LibTexture aMask )
             {
-                iTexObject = new TexObject( aTranslucency, aMaterial, aMask );
+                this.iTexObject = new TexObject( aTranslucency, aMaterial, aMask );
             }
 
             public final void loadImage( String url )
             {
-                iTexObject.loadImage( url );
+                this.iTexObject.loadImage( url );
             }
 
             public final LibGLImage getTextureImage()
             {
-                return iTexObject.iTextureImage;
+                return this.iTexObject.iTextureImage;
             }
 
             public LibGLTexture getTexture()
             {
-                return iTexObject.iTexture;
+                return this.iTexObject.iTexture;
             }
         }
 
@@ -430,22 +430,22 @@
 
             private ItemTex( Translucency aTranslucency, Material aMaterial, LibTexture aMask )
             {
-                iTexObject = new TexObject( aTranslucency, aMaterial, aMask );
+                this.iTexObject = new TexObject( aTranslucency, aMaterial, aMask );
             }
 
             public final void loadImage( String url )
             {
-                iTexObject.loadImage( url );
+                this.iTexObject.loadImage( url );
             }
 
             public LibGLTexture getTexture()
             {
-                return iTexObject.iTexture;
+                return this.iTexObject.iTexture;
             }
 
             public final LibGLImage getTextureImage()
             {
-                return iTexObject.iTextureImage;
+                return this.iTexObject.iTextureImage;
             }
         }
 
