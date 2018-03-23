@@ -14,11 +14,17 @@
     *******************************************************************************************************************/
     public class Preloader
     {
-        public                      LibGLImage              bgImage                     = null;
-        public                      LibGLImage              preloaderImage              = null;
+        private                     LibGLImage              bgImage                     = null;
+        private                     LibGLImage              preloaderImage              = null;
 
         private                     int                     preloaderTest               = 0;
         private                     String                  preloaderMsg                = null;
+
+        public Preloader( LibGLImage bgImage, LibGLImage preloaderImage )
+        {
+            this.bgImage        = bgImage;
+            this.preloaderImage = preloaderImage;
+        }
 
         public final void draw2D()
         {

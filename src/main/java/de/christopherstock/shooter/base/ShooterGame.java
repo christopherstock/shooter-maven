@@ -14,12 +14,17 @@
     import  de.christopherstock.shooter.ui.hud.*;
 
     /*******************************************************************************************************************
-    *   Represents the game engine with all required systems.
+    *   Represents the game with all components.
     *******************************************************************************************************************/
     public class ShooterGame extends Thread implements GLDrawCallback, GLCallbackForm
     {
-        /** The initialization system. */
-        private                     ShooterInit             init                        = null;
+        /** The game engine. */
+        private                     ShooterEngine           engine                      = null;
+
+        /** A flag being set to true if a closing-event on the main form is invoked. */
+        private                     boolean                 destroyed                   = false;
+
+
         /** The preloader. */
         public                      Preloader               preloader                   = null;
         /** The heads up display. */
@@ -30,12 +35,12 @@
         private                     MainState               mainState                   = MainState.EPreloader;
         /** The application's main state to enter the next tick. */
         private                     MainState               mainStateToChangeTo         = null;
-        /** A flag being set to true if a closing-event on the main form is invoked. */
-        private                     boolean                 destroyed                   = false;
+
+
 
         public ShooterGame()
         {
-            this.init = new ShooterInit();
+            this.engine = new ShooterEngine();
         }
 
         /***************************************************************************************************************
@@ -43,8 +48,10 @@
         ***************************************************************************************************************/
         private void init()
         {
-            this.init.initUi();
-            this.init.initRest();
+            this.engine.initUi();
+            this.engine.initPreloader();
+            this.engine.initGL();
+            this.engine.initRest();
         }
 
         /***************************************************************************************************************

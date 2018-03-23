@@ -18,40 +18,57 @@
     /*******************************************************************************************************************
     *   The application's main thread. Start this thread to run the application.
     *******************************************************************************************************************/
-    public class ShooterInit
+    public class ShooterEngine
     {
+        private                 BufferedImage           iconImage               = null;
+        private                 BufferedImage           bgImage                 = null;
+
         /***************************************************************************************************************
         *   Inits the ui.
         ***************************************************************************************************************/
         protected void initUi()
         {
-            ShooterDebug.init.out( "initUi 1" );
+            ShooterDebug.init.out( "init UI" );
 
-            BufferedImage iconImage = null;
-            BufferedImage bgImage   = null;
+            this.iconImage = null;
+            this.bgImage   = null;
 
             //load form utils
             try
             {
-                iconImage   = ImageIO.read( LibIO.preStreamJarResource( ShooterSettings.Path.EScreen.iUrl + "icon.png" ) );
-                bgImage     = ImageIO.read( LibIO.preStreamJarResource( ShooterSettings.Path.EScreen.iUrl + "bg.jpg"   ) );
-
-                Shooter.game.preloader = new Preloader();
-
-                Shooter.game.preloader.preloaderImage  = new LibGLImage( iconImage, LibGLImage.ImageUsage.EOrtho, ShooterDebug.glImage, false );
-                Shooter.game.preloader.bgImage         = new LibGLImage( bgImage,   LibGLImage.ImageUsage.EOrtho, ShooterDebug.glImage, true );
+                this.iconImage = ImageIO.read( LibIO.preStreamJarResource( ShooterSettings.Path.EScreen.iUrl + "icon.png" ) );
+                this.bgImage   = ImageIO.read( LibIO.preStreamJarResource( ShooterSettings.Path.EScreen.iUrl + "bg.jpg"   ) );
             }
             catch ( IOException ioe )
             {
                 ShooterDebug.error.err( "ERROR! Screen-Graphics could not be loaded!" );
             }
-            ShooterDebug.init.out( "initUi 2" );
 
             //set host-os lookAndFeel
             LibGLForm.setLookAndFeel( ShooterDebug.error );
-            ShooterDebug.init.out( "initUi 3" );
+        }
 
-            //init external gl library
+        /***************************************************************************************************************
+        *   Inits the preloader.
+        ***************************************************************************************************************/
+        protected void initPreloader()
+        {
+            ShooterDebug.init.out( "init Preloader" );
+
+            Shooter.game.preloader = new Preloader
+            (
+                new LibGLImage( this.bgImage,   LibGLImage.ImageUsage.EOrtho, ShooterDebug.glImage, true  ),
+                new LibGLImage( this.iconImage, LibGLImage.ImageUsage.EOrtho, ShooterDebug.glImage, false )
+            );
+        }
+
+        /***************************************************************************************************************
+        *   Inits the Open GL system.
+        ***************************************************************************************************************/
+        protected void initGL()
+        {
+            ShooterDebug.init.out( "init GL" );
+
             LibGL3D.init
             (
                 ShooterSettings.Form.FORM_WIDTH,
@@ -59,12 +76,10 @@
                 ShooterSettings.Form.FORM_TITLE,
                 Shooter.game,
                 Shooter.game,
-                iconImage,
-                bgImage,
+                this.iconImage,
+                this.bgImage,
                 ShooterDebug.init
             );
-
-            ShooterDebug.init.out( "initUi 4" );
         }
 
         /***************************************************************************************************************
@@ -72,7 +87,7 @@
         ***************************************************************************************************************/
         protected void initRest()
         {
-            ShooterDebug.init.out( "initUi 5" );
+            ShooterDebug.init.out( "init REST ???" );
 
             //center mouse and make it invisible
             LWJGLMouse.init();

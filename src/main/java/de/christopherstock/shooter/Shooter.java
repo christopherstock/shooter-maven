@@ -13,7 +13,7 @@
     *   TODO            Maven Goal for bundling natives in JAR.
     *   TODO            Maven Goal for creating JNLP file.
     *
-    *   TODO            Turn all elements in ShooterInit non static!
+    *   TODO            Turn all elements in ShooterEngine non static!
     *
     *   TODO            Prune onsolete ticker system!
     *   TODO            Check or prune EIntroLogo!
@@ -21,7 +21,7 @@
     *   TODO            Remove all linter warnings!
     *   TODO            Setup, copy and prune 'dist'.
     *   TODO            Setup, copy and prune '_ASSETS'.
-    *   TODO            Turn ShooterInit not static.
+    *   TODO            Turn ShooterEngine not static.
     *   TODO            Outsource ShooterGame to shooter main thread.
     *   TODO            Turn static field Level.player to non-static!!
     *   TODO            Revise menu.
