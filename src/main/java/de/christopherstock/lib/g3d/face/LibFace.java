@@ -236,9 +236,7 @@
         }
 
         /***************************************************************************************************************
-        *   Translates the ORIGINAL vertices setting the TRANSFORMED vertices.
-        *
-        *   @param  scaleFactor     1.0 performs scalation to equal.
+        *   Inverts all vertices of this face.
         ***************************************************************************************************************/
         public void invert()
         {

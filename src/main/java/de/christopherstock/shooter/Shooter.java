@@ -6,26 +6,26 @@
     /*******************************************************************************************************************
     *   The main class.
     *
-    *   TODO            Maven Profiles for debug prod ?
-    *
     *   TODO            Maven Goal for signing JAR.
     *   TODO            Maven Goal for bundling natives in JAR.
     *   TODO            Maven Goal for creating JNLP file.
     *
+    *   TODO            Maven Profiles for profiles (debug prod) ?
+    *
+    *   TODO            Setup, copy and prune 'dist'.
     *   TODO            Turn all elements in ShooterEngine non static!
     *
     *   TODO            Prune onsolete ticker system!
     *   TODO            Check or prune EIntroLogo!
     *   TODO            Fix all multilined docblocks to single lines!
     *   TODO            Remove all linter warnings!
-    *   TODO            Setup, copy and prune 'dist'.
+    *   TODO            Use Mayflower font.
     *
     *   TODO            Turn ShooterEngine not static.
     *   TODO            Outsource ShooterGame to shooter main thread.
     *   TODO            Turn static field Level.player to non-static!!
     *   TODO            Revise menu.
     *   TODO            Mayflower preloader and textures ( posters ).
-    *   TODO            Use Mayflower font.
     *   TODO            Remove ALL static fields!
     *
     *   TODO            Copy and prune 'MayDay' folder.
