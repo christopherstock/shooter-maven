@@ -29,21 +29,14 @@
             this.iNativeForm = new LibGLFrame(this.iBgImage);
 
             //get screen environment
-            Point centerPoint   = GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint();
+            Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
             this.iNativeForm.setIconImage(this.iIconImage);
             this.iNativeForm.setTitle(                    aTitle                          );
             this.iNativeForm.setDefaultCloseOperation(    WindowConstants.EXIT_ON_CLOSE            );
 
-            if (ShooterDebug.ENABLE_FULLSCREEN )
-            {
-                this.iNativeForm.setExtendedState( JFrame.MAXIMIZED_BOTH );
-            }
-            else
-            {
-                this.iNativeForm.setLocation( (int)centerPoint.getX() - width / 2, (int)centerPoint.getY() - height / 2 );
-                this.iNativeForm.setSize(     width, height                   );
-            }
+            this.iNativeForm.setLocation( ( screenSize.width - width ) / 2, ( screenSize.height - height ) / 2 );
+            this.iNativeForm.setSize( width, height );
 
             this.iNativeForm.setResizable(                false                           );
             this.iNativeForm.setUndecorated(              true                            );

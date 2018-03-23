@@ -23,8 +23,8 @@
         {
             /** The window's title string. */
             public  static  final   String          FORM_TITLE                          = "Shooter Prototype, " + ShooterVersion.getCurrentVersionDesc();
-            public  static  final   int             FORM_WIDTH                          = 1024;
-            public  static  final   int             FORM_HEIGHT                         = 768;
+            public  static          int             FORM_WIDTH                          = 1024;
+            public  static          int             FORM_HEIGHT                         = 768;
         }
 
         public static final class Startup

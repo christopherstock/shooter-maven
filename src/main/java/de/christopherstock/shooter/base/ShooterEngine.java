@@ -1,6 +1,7 @@
 
     package de.christopherstock.shooter.base;
 
+    import java.awt.*;
     import  java.awt.image.*;
     import  java.io.*;
     import  javax.imageio.*;
@@ -82,6 +83,14 @@
         protected void initGL()
         {
             ShooterDebug.init.out( "init GL" );
+
+            if ( ShooterDebug.ENABLE_FULLSCREEN && !ShooterDebug.DEBUG_MODE )
+            {
+                Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+                ShooterSettings.Form.FORM_WIDTH  = screenSize.width;
+                ShooterSettings.Form.FORM_HEIGHT = screenSize.height;
+            }
 
             LibGL3D.init
             (

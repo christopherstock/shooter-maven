@@ -62,7 +62,7 @@
                 this.iDebug.out( "Setting display mode.." );
                 Display.setDisplayMode( displayMode );
                 this.iDebug.out( "Setting display mode Ok" );
-                Display.setFullscreen( ShooterDebug.ENABLE_FULLSCREEN );
+                Display.setFullscreen( false );
                 this.iDebug.out( "setting fullscreen false Ok" );
 
                 //((Canvas)panel.getNativePanel() ).setFocusable(false);
