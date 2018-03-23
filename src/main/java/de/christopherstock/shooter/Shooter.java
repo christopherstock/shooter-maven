@@ -20,7 +20,7 @@
     *   TODO            Fix all multilined docblocks to single lines!
     *   TODO            Remove all linter warnings!
     *   TODO            Setup, copy and prune 'dist'.
-    *   TODO            Setup, copy and prune '_ASSETS'.
+    *
     *   TODO            Turn ShooterEngine not static.
     *   TODO            Outsource ShooterGame to shooter main thread.
     *   TODO            Turn static field Level.player to non-static!!
