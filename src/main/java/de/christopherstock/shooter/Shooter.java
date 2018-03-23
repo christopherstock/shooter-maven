@@ -8,7 +8,6 @@
     *
     *   TODO            Maven Profiles for debug prod ?
     *
-    *   TODO            Maven Goal: documentation.
     *   TODO            Maven Goal for signing JAR.
     *   TODO            Maven Goal for bundling natives in JAR.
     *   TODO            Maven Goal for creating JNLP file.

@@ -45,6 +45,12 @@
             <version>2.1.1e</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -105,6 +111,17 @@
                         <classpath />
                         <argument>de.christopherstock.shooter.Shooter</argument>
                     </arguments>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <show>private</show>
+                    <nohelp>false</nohelp>
                 </configuration>
             </plugin>
 
