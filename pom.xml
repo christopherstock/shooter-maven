@@ -51,6 +51,12 @@
             <version>3.0.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.maven.shared</groupId>
+            <artifactId>maven-jarsigner</artifactId>
+            <version>1.4</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -122,6 +128,26 @@
                     <encoding>UTF-8</encoding>
                     <show>private</show>
                     <nohelp>false</nohelp>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jarsigner-plugin</artifactId>
+                <version>1.4</version>
+                <executions>
+                    <execution>
+                        <id>sign</id>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <keystore>_ASSETS/certificate/keystore.jks</keystore>
+                    <alias>Shooter</alias>
+                    <storepass>chrisy</storepass>
+                    <keypass>chrisy</keypass>
                 </configuration>
             </plugin>
 
