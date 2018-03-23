@@ -106,7 +106,7 @@
             }
 
             //reset HUD-animation so change to 1st artefact can occur
-            Shooter.game.hud.resetAnimation();
+            Shooter.game.engine.hud.resetAnimation();
 
             //change to 1st artefact
             player.orderWearponOrGadget( ChangeAction.EActionNext );
@@ -592,7 +592,7 @@
 
                 //animate particle systems and HUD
                 LibFXManager.onRun();
-                Shooter.game.hud.onRun();
+                Shooter.game.engine.hud.onRun();
             }
         }
 

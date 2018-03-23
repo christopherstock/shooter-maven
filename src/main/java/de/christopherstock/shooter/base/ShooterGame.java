@@ -5,38 +5,22 @@
     import  de.christopherstock.lib.gl.*;
     import  de.christopherstock.lib.gl.LibGLFrame.*;
     import  de.christopherstock.lib.gl.LibGLPanel.*;
-    import  de.christopherstock.lib.ui.*;
     import  de.christopherstock.shooter.*;
     import  de.christopherstock.shooter.io.hid.lwjgl.*;
     import  de.christopherstock.shooter.io.sound.*;
     import  de.christopherstock.shooter.level.*;
     import  de.christopherstock.shooter.state.*;
-    import  de.christopherstock.shooter.ui.hud.*;
 
     /*******************************************************************************************************************
     *   Represents the game with all components.
     *******************************************************************************************************************/
     public class ShooterGame extends Thread implements GLDrawCallback, GLCallbackForm
     {
-        /** The game engine. */
-        private                     ShooterEngine           engine                      = null;
-
         /** A flag being set to true if a closing-event on the main form is invoked. */
         private                     boolean                 destroyed                   = false;
 
-
-        /** The preloader. */
-        public                      Preloader               preloader                   = null;
-        /** The heads up display. */
-        public                      HUD                     hud                         = null;
-        /** The FPS counter. */
-        public                      LibFPS                  fps                         = null;
-        /** The application's current main state. */
-        private                     MainState               mainState                   = MainState.EPreloader;
-        /** The application's main state to enter the next tick. */
-        private                     MainState               mainStateToChangeTo         = null;
-
-
+        /** The game engine. */
+        public                      ShooterEngine           engine                      = null;
 
         public ShooterGame()
         {
@@ -69,7 +53,7 @@
                 this.render();
 
                 //update fps
-                this.fps.update();
+                this.engine.fps.update();
 
                 //draw gl panel
                 LibGL3D.panel.display();
@@ -85,12 +69,12 @@
         public final void draw2D()
         {
             //draw loading screen
-            switch (this.mainState)
+            switch (this.engine.mainState)
             {
                 case EPreloader:
                 {
                     //draw 2d
-                    this.preloader.draw2D();
+                    this.engine.preloader.draw2D();
                     break;
                 }
 
@@ -123,18 +107,16 @@
             LibGL3D.view.clearFaceQueue();
 
             //draw 3d according to main state
-            switch (this.mainState)
+            switch ( this.engine.mainState )
             {
                 case EPreloader:
                 {
-                    //clear gl
-                    this.preloader.draw3D();
+                    this.engine.preloader.draw3D();
                     break;
                 }
 
                 case EIntroLogo:
                 {
-                    //draw 3d
                     MainStateIntroLogo.getSingleton().draw3D();
                     break;
                 }
@@ -142,7 +124,6 @@
                 case EIngame:
                 case EMainMenu:
                 {
-                    //draw 3d
                     MainStateIngame.getSingleton().draw3D();
                     break;
                 }
@@ -157,19 +138,19 @@
 
         public final void orderMainStateChangeTo( MainState aFutureMainState )
         {
-            this.mainStateToChangeTo = aFutureMainState;
+            this.engine.mainStateToChangeTo = aFutureMainState;
         }
 
         private void performMainStateChange()
         {
-            if (this.mainStateToChangeTo != null )
+            if (this.engine.mainStateToChangeTo != null )
             {
                 //center mouse for new mainstate
                 //LWJGLMouse.centerMouse();
                 //ShooterDebug.mouse.out( "Centered Mouse" );
 
-                this.mainState = this.mainStateToChangeTo;
-                this.mainStateToChangeTo = null;
+                this.engine.mainState = this.engine.mainStateToChangeTo;
+                this.engine.mainStateToChangeTo = null;
             }
         }
 
@@ -179,7 +160,7 @@
             this.performMainStateChange();
 
             //switch for mainState
-            switch (this.mainState)
+            switch ( this.engine.mainState )
             {
                 case EIntroLogo:
                 {

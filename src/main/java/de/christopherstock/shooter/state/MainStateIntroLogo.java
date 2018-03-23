@@ -58,7 +58,7 @@
         public final void draw2D()
         {
             //draw FPS
-            Shooter.game.hud.draw2D();
+            Shooter.game.engine.hud.draw2D();
 
             if (this.iLogoY <= TARGET_APPEARING_Y )
             {

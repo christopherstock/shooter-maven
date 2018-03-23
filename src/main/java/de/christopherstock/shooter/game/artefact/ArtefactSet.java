@@ -60,7 +60,7 @@
         public final void extractArtefact( Object toDraw )
         {
             ( (Gadget)toDraw ).stopGiveAnim();
-            Shooter.game.hud.stopHandAnimation();
+            Shooter.game.engine.hud.stopHandAnimation();
 
             //change to hands if this artefact is holded
             if ( toDraw == this.iCurrentArtefact.iArtefactType.iArtefactKind )
@@ -103,13 +103,13 @@
                         //animate only if more than one wearpon is available!
                         if (this.iArtefacts.size() > 1 && byPlayer )
                         {
-                            Shooter.game.hud.startHandAnimation( LibAnimation.EAnimationShow, null );
+                            Shooter.game.engine.hud.startHandAnimation( LibAnimation.EAnimationShow, null );
                         }
                     }
                     else
                     {
                         this.setArtefact(this.iArtefacts.elementAt( previousIndex ) );
-                        if ( byPlayer ) Shooter.game.hud.startHandAnimation( LibAnimation.EAnimationShow, null );
+                        if ( byPlayer ) Shooter.game.engine.hud.startHandAnimation( LibAnimation.EAnimationShow, null );
                     }
                     break;
                 }
@@ -138,13 +138,13 @@
                         //animate only if more than one wearpon is available!
                         if (this.iArtefacts.size() > 1 && byPlayer )
                         {
-                            Shooter.game.hud.startHandAnimation( LibAnimation.EAnimationShow, null );
+                            Shooter.game.engine.hud.startHandAnimation( LibAnimation.EAnimationShow, null );
                         }
                     }
                     else
                     {
                         this.setArtefact(this.iArtefacts.elementAt( nextIndex ) );
-                        if ( byPlayer ) Shooter.game.hud.startHandAnimation( LibAnimation.EAnimationShow, null );
+                        if ( byPlayer ) Shooter.game.engine.hud.startHandAnimation( LibAnimation.EAnimationShow, null );
                     }
                     break;
                 }

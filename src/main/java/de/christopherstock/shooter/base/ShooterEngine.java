@@ -16,12 +16,25 @@
     import  de.christopherstock.shooter.ui.hud.*;
 
     /*******************************************************************************************************************
-    *   The application's main thread. Start this thread to run the application.
+    *   The game engine holding all engine systems.
     *******************************************************************************************************************/
     public class ShooterEngine
     {
-        private                 BufferedImage           iconImage               = null;
-        private                 BufferedImage           bgImage                 = null;
+        /** Icon image for the frame. */
+        private                     BufferedImage           iconImage                   = null;
+        /** The bg image for the preloader. */
+        private                     BufferedImage           bgImage                     = null;
+
+        /** Preloader. */
+        public                      Preloader               preloader                   = null;
+        /** Heads up display. */
+        public                      HUD                     hud                         = null;
+        /** Frames per second counter. */
+        public                      LibFPS                  fps                         = null;
+        /** Current main state. */
+        public                      MainState               mainState                   = MainState.EPreloader;
+        /** Main state to change to. */
+        public                      MainState               mainStateToChangeTo         = null;
 
         /***************************************************************************************************************
         *   Inits the ui.
@@ -55,7 +68,7 @@
         {
             ShooterDebug.init.out( "init Preloader" );
 
-            Shooter.game.preloader = new Preloader
+            this.preloader = new Preloader
             (
                 new LibGLImage( this.bgImage,   LibGLImage.ImageUsage.EOrtho, ShooterDebug.glImage, true  ),
                 new LibGLImage( this.iconImage, LibGLImage.ImageUsage.EOrtho, ShooterDebug.glImage, false )
@@ -93,31 +106,31 @@
             LWJGLMouse.init();
 
             //init fonts
-            Shooter.game.preloader.initFonts();
+            this.preloader.initFonts();
 
 
             //load texture images and perform repaint
-            Shooter.game.preloader.increase( "Loading textures" );
+            this.preloader.increase( "Loading textures" );
             ShooterTexture.loadImages();
 
             ShooterDebug.init.out( "initUi 6" );
 
             //assign textures and perform repaint
-            Shooter.game.preloader.increase( "Assigning textures" );
+            this.preloader.increase( "Assigning textures" );
             LibGL3D.view.initTextures( ShooterTexture.getAllTextureImages() );
 
             ShooterDebug.init.out( "initUi 7" );
 
             //init 3d studio max objects and perform repaint
-            Shooter.game.preloader.increase( "Loading 3dsmax files" );
+            this.preloader.increase( "Loading 3dsmax files" );
             ShooterD3ds.init( ShooterDebug.d3ds );
 
             ShooterDebug.init.out( "initUi 8" );
 
             //init hud
-            Shooter.game.preloader.increase( "Initing HUD and sound" );
-            Shooter.game.hud = new HUD();
-            Shooter.game.fps = new LibFPS( Fonts.EFps, ShooterSettings.Colors.EFpsFg.colABGR, ShooterSettings.Colors.EFpsOutline.colABGR, ShooterDebug.glImage );
+            this.preloader.increase( "Initing HUD and sound" );
+            this.hud = new HUD();
+            this.fps = new LibFPS( Fonts.EFps, ShooterSettings.Colors.EFpsFg.colABGR, ShooterSettings.Colors.EFpsOutline.colABGR, ShooterDebug.glImage );
 
             //init HUD fx
             HUDFx.init();
@@ -129,7 +142,7 @@
             ShooterDebug.init.out( "initUi 9" );
 
             //switch main state to 'game' and order change to level 1
-            Shooter.game.preloader.increase( "Init main menu and launch game" );
+            this.preloader.increase( "Init main menu and launch game" );
 
             //init main menu
             MainStateMainMenu.init();

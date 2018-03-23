@@ -86,7 +86,7 @@
             //ShooterDebug.bugfix.out( "Reset player view!" );
 
             this.iAmmoSet = new AmmoSet();
-            this.iHealthChangeCallback = Shooter.game.hud;
+            this.iHealthChangeCallback = Shooter.game.engine.hud;
             this.iDisableGravity = aDisableGravity;
             this.iArtefactSet = new ArtefactSet();
         }
@@ -404,7 +404,7 @@
             //if no animation is active and no gadget is given
             if
             (
-                    !Shooter.game.hud.animationActive()
+                    !Shooter.game.engine.hud.animationActive()
                 &&
                     (
                             !(this.iArtefactSet.iCurrentArtefact.iArtefactType.iArtefactKind instanceof Gadget )
@@ -412,7 +412,7 @@
                     )
             )
             {
-                Shooter.game.hud.startHandAnimation( LibAnimation.EAnimationHide, changeAction );
+                Shooter.game.engine.hud.startHandAnimation( LibAnimation.EAnimationHide, changeAction );
             }
         }
 
@@ -618,7 +618,7 @@
             SoundFg.EPlayerHit1.playGlobalFx( 120  );
 
             //lower wearpon
-            Shooter.game.hud.startHandAnimation( LibAnimation.EAnimationHide, ChangeAction.EActionDie );
+            Shooter.game.engine.hud.startHandAnimation( LibAnimation.EAnimationHide, ChangeAction.EActionDie );
         }
 
         public final boolean isDead()
@@ -661,7 +661,7 @@
             this.performFloorChange();                       //move player according to map collision ( floors )
 
             //handle artefact ( fire, reload, give ) if no HUD anim is running
-            if ( !Shooter.game.hud.animationActive() )
+            if ( !Shooter.game.engine.hud.animationActive() )
             {
                 if (this.iArtefactSet.iCurrentArtefact != null )
                 {

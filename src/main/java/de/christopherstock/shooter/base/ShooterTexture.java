@@ -497,7 +497,6 @@
             ShooterDebug.init.out( "initUi 5.0" );
             for ( Mask texture : Mask.values() )
             {
-                ShooterDebug.init.out( "> load [" + ShooterSettings.Path.ETexturesMask.iUrl + texture.toString() + LibExtension.jpg.getSpecifier() + "]" );
                 texture.loadImage( ShooterSettings.Path.ETexturesMask.iUrl + texture.toString() + LibExtension.jpg.getSpecifier() );
             }
             ShooterDebug.init.out( "initUi 5.2" );

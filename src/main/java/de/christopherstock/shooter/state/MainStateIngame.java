@@ -33,7 +33,7 @@
         public final void draw2D()
         {
             //draw hud
-            Shooter.game.hud.draw2D();
+            Shooter.game.engine.hud.draw2D();
         }
 
         public final void draw3D()

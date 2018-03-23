@@ -57,9 +57,7 @@
             this.preloaderMsg = msg;
             this.preloaderTest += 20;
 
-            ShooterDebug.init.out( "display ?" );
             LibGL3D.panel.display();
-            ShooterDebug.init.out( "display ? Ok" );
         }
 
         public final void initFonts()

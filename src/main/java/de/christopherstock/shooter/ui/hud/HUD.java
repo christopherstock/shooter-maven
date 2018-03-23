@@ -103,7 +103,7 @@
             HUDFx.drawHUDEffects();
 
             //draw frames per second last
-            Shooter.game.fps.draw( OffsetsOrtho.EBorderHudX, OffsetsOrtho.EBorderHudY );
+            Shooter.game.engine.fps.draw( OffsetsOrtho.EBorderHudX, OffsetsOrtho.EBorderHudY );
 
             //draw debug logs
             //Level.currentPlayer().drawDebugLog(      g );
