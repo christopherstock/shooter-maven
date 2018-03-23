@@ -17,10 +17,8 @@
     *   TODO    Delete all 'a' and 'i' prefixes from variables.
     *   TODO    Turn all elements in ShooterEngine non static!
     *   TODO    Optimize fields in ArtefactType!
-    *   TODO    Enable Fullscreen.
     *   TODO    Create example JUnit test!
     *   TODO    Remove ALL static fields!
-    *   TODO    Revise menu.
     *   TODO    Remove all linter warnings!
     *   TODO    Turn ShooterEngine not static.
     *   TODO    Move all CloseCombat constants to settings!

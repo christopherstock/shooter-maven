@@ -19,14 +19,12 @@
             ;
         }
 
-        public      static  final   DevEnvironment  ENVIRONMENT                         = DevEnvironment.EDesktop;
-
         public static final class Form
         {
             /** The window's title string. */
             public  static  final   String          FORM_TITLE                          = "Shooter Prototype, " + ShooterVersion.getCurrentVersionDesc();
-            public  static  final   int             FORM_WIDTH                          = ( ENVIRONMENT == DevEnvironment.EDesktop ? 1024 : 800 );
-            public  static  final   int             FORM_HEIGHT                         = ( ENVIRONMENT == DevEnvironment.EDesktop ? 768  : 600 );
+            public  static  final   int             FORM_WIDTH                          = 1024;
+            public  static  final   int             FORM_HEIGHT                         = 768;
         }
 
         public static final class Startup

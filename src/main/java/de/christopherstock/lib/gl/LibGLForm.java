@@ -7,6 +7,7 @@
     import  javax.swing.*;
     import  de.christopherstock.lib.*;
     import  de.christopherstock.lib.gl.LibGLFrame.GLCallbackForm;
+    import de.christopherstock.shooter.ShooterDebug;
 
     /*******************************************************************************************************************
     *   The Form holds the gl-canvas and the preloader-view.
@@ -32,9 +33,18 @@
 
             this.iNativeForm.setIconImage(this.iIconImage);
             this.iNativeForm.setTitle(                    aTitle                          );
-            this.iNativeForm.setDefaultCloseOperation(    JFrame.EXIT_ON_CLOSE            );
-            this.iNativeForm.setLocation(                 (int)centerPoint.getX() - width / 2, (int)centerPoint.getY() - height / 2 );
-            this.iNativeForm.setSize(                     width, height                   );
+            this.iNativeForm.setDefaultCloseOperation(    WindowConstants.EXIT_ON_CLOSE            );
+
+            if (ShooterDebug.ENABLE_FULLSCREEN )
+            {
+                this.iNativeForm.setExtendedState( JFrame.MAXIMIZED_BOTH );
+            }
+            else
+            {
+                this.iNativeForm.setLocation( (int)centerPoint.getX() - width / 2, (int)centerPoint.getY() - height / 2 );
+                this.iNativeForm.setSize(     width, height                   );
+            }
+
             this.iNativeForm.setResizable(                false                           );
             this.iNativeForm.setUndecorated(              true                            );
 

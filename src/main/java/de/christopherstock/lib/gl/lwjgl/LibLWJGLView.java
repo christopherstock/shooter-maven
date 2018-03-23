@@ -3,6 +3,8 @@
 
     import  java.awt.*;
     import  java.nio.*;
+
+    import de.christopherstock.shooter.ShooterDebug;
     import  org.lwjgl.*;
     import  org.lwjgl.opengl.*;
     import  org.lwjgl.opengl.DisplayMode;
@@ -60,7 +62,7 @@
                 this.iDebug.out( "Setting display mode.." );
                 Display.setDisplayMode( displayMode );
                 this.iDebug.out( "Setting display mode Ok" );
-                Display.setFullscreen(  false       );
+                Display.setFullscreen( ShooterDebug.ENABLE_FULLSCREEN );
                 this.iDebug.out( "setting fullscreen false Ok" );
 
                 //((Canvas)panel.getNativePanel() ).setFocusable(false);

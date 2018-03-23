@@ -53,6 +53,7 @@
         public      static  final   boolean         DEBUG_DRAW_BOT_CIRCLES              = NO;
         public      static  final   boolean         DEBUG_SHOW_FPS                      = YES;
         public      static  final   boolean         DISABLE_SOUNDS                      = YES;
+        public      static  final   boolean         ENABLE_FULLSCREEN                   = NO;
 
         private                     boolean         iDebugEnabled                       = false;
 
