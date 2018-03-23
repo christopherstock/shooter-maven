@@ -27,7 +27,7 @@
             this.iDebug = aDebug;
         }
 
-        public final void finishedDrawing()
+        public final void update()
         {
             //init fps-counter
             if (this.iStartMeassuringMillis == 0 )

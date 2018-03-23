@@ -33,13 +33,16 @@
         /** A flag being set to true if a closing-event on the main form is invoked. */
         private                     boolean                 destroyed                   = false;
 
+        public ShooterGame()
+        {
+            this.init = new ShooterInit();
+        }
+
         /***************************************************************************************************************
         *   Inits the game engine.
         ***************************************************************************************************************/
         private void init()
         {
-            this.init = new ShooterInit();
-
             this.init.initUi();
             this.init.initRest();
         }
@@ -50,105 +53,22 @@
         @Override
         public void run()
         {
+            // opengl needs to be initialized in the same thread
             this.init();
 
-            //main thread ticks until the app is destroyed
+            // tick until main thread is destroyed
             while ( !this.destroyed )
             {
-                //meassure tick time
-                long tickStart = System.currentTimeMillis();
+                this.render();
 
-                //change main state if desired
-                this.performMainStateChange();
+                //update fps
+                this.fps.update();
 
-                //switch for mainState
-                switch (this.mainState)
-                {
-                    case EIntroLogo:
-                    {
-                        //check keys and mouse
-                        LWJGLKeys.checkKeys();
-                        LWJGLMouse.checkMouse();
-
-                        //check menu key events
-                        MainStateIntroLogo.getSingleton().checkIntroLogoEvents();
-
-                        //animate the intro logo
-                        MainStateIntroLogo.getSingleton().onRun();
-
-                        break;
-                    }
-
-                    case EPreloader:
-                    {
-                        //nothing to animate ?
-                        break;
-                    }
-
-                    case EMainMenu:
-                    {
-                        //check keys and mouse for lwjgl
-                        LWJGLKeys.checkKeys();
-                        LWJGLMouse.checkMouse();
-
-                        //check menu key events
-                        MainStateMainMenu.getSingleton().checkMenuKeyEvents();
-
-                        //animate main menu
-                        MainStateMainMenu.getSingleton().onRun();
-
-                        break;
-                    }
-
-                    case EIngame:
-                    {
-                        //check keys and mouse for lwjgl
-                        LWJGLKeys.checkKeys();
-                        LWJGLMouse.checkMouse();
-
-                        //perform synchronized level change
-                        LevelChange.checkChangeToSection();
-
-                        //check game key events
-                        MainStateIngame.getSingleton().checkGameKeyEvents();
-
-                        //animate player and level ( only if a level is assigned )
-                        if ( Level.currentSection() != null )
-                        {
-                            //animate level
-                            Level.currentSection().render();
-                        }
-
-                        //maintain sounds
-                        SoundFg.onRun();
-
-                        break;
-                    }
-                }
-
-                //update frames per second
-                this.fps.finishedDrawing();
-
-                //draw gl for this tick
+                //draw gl panel
                 LibGL3D.panel.display();
 
-                //meassure tick time and set delay if desired
-                if ( ShooterSettings.Performance.ENABLE_DELAY )
-                {
-                    long tickTime = (System.currentTimeMillis() - tickStart);
-                    long tickDelay = 0;
-                    if ( tickTime < ShooterSettings.Performance.MIN_THREAD_DELAY )
-                    {
-                        tickDelay = ShooterSettings.Performance.MIN_THREAD_DELAY - tickTime;
-                    }
-                    else
-                    {
-                        tickDelay = 0;
-                    }
-
-                    //delay for specified delay time
-                    Lib.delay(tickDelay);
-                }
+                //delay for specified delay time
+                Lib.delay( ShooterSettings.Performance.THREAD_DELAY );
             }
 
             //stop all bg sounds ( hangs on mac )
@@ -243,6 +163,78 @@
 
                 this.mainState = this.mainStateToChangeTo;
                 this.mainStateToChangeTo = null;
+            }
+        }
+
+        private void render()
+        {
+            // check main state change
+            this.performMainStateChange();
+
+            //switch for mainState
+            switch (this.mainState)
+            {
+                case EIntroLogo:
+                {
+                    //check keys and mouse (really?)
+
+                    LWJGLKeys.checkKeys();
+                    LWJGLMouse.checkMouse();
+
+                    //check menu key events
+                    MainStateIntroLogo.getSingleton().checkIntroLogoEvents();
+
+                    //animate the intro logo
+                    MainStateIntroLogo.getSingleton().onRun();
+
+                    break;
+                }
+
+                case EPreloader:
+                {
+                    //nothing to animate ?
+                    break;
+                }
+
+                case EMainMenu:
+                {
+                    //check keys and mouse for lwjgl
+                    LWJGLKeys.checkKeys();
+                    LWJGLMouse.checkMouse();
+
+                    //check menu key events
+                    MainStateMainMenu.getSingleton().checkMenuKeyEvents();
+
+                    //animate main menu
+                    MainStateMainMenu.getSingleton().onRun();
+
+                    break;
+                }
+
+                case EIngame:
+                {
+                    //check keys and mouse for lwjgl
+                    LWJGLKeys.checkKeys();
+                    LWJGLMouse.checkMouse();
+
+                    //perform synchronized level change
+                    LevelChange.checkChangeToSection();
+
+                    //check game key events
+                    MainStateIngame.getSingleton().checkGameKeyEvents();
+
+                    //animate player and level ( only if a level is assigned )
+                    if ( Level.currentSection() != null )
+                    {
+                        //animate level
+                        Level.currentSection().render();
+                    }
+
+                    //maintain sounds
+                    SoundFg.onRun();
+
+                    break;
+                }
             }
         }
     }

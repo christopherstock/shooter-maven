@@ -6,11 +6,17 @@
     /*******************************************************************************************************************
     *   The main class.
     *
-    *   TODO            Maven Goal for signing JAR.
-    *   TODO            Maven Goal for creating JNLP file.
-    *   TODO            Maven Goal: documentation.
     *   TODO            Maven Profiles for debug prod ?
     *
+    *   TODO            Maven Goal: documentation.
+    *   TODO            Maven Goal for signing JAR.
+    *   TODO            Maven Goal for bundling natives in JAR.
+    *   TODO            Maven Goal for creating JNLP file.
+    *
+    *   TODO            Turn all elements in ShooterInit non static!
+    *
+    *   TODO            Prune onsolete ticker system!
+    *   TODO            Check or prune EIntroLogo!
     *   TODO            Fix all multilined docblocks to single lines!
     *   TODO            Remove all linter warnings!
     *   TODO            Setup, copy and prune 'dist'.
@@ -81,10 +87,9 @@
         ***************************************************************************************************************/
         public static void main( String[] args )
         {
-            //acclaim
             ShooterDebug.major.out( "Welcome to the Shooter project [" + ShooterVersion.getCurrentVersionDesc() + "]" );
 
-            //start shooter's main thread
+            //start main game thread
             game = new ShooterGame();
             game.start();
         }
