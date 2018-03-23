@@ -6,7 +6,6 @@
     /*******************************************************************************************************************
     *   The main class.
     *
-    *   TODO    Zoom Auto Shotgun.
     *   TODO    Complete version 0.3.11 and add DONE items to History.
     *   TODO    Revise preloader!
     *   TODO    Use Mayflower font.
