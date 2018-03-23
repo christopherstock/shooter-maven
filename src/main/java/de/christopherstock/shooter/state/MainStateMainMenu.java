@@ -118,14 +118,14 @@
                 {
                     case EStartNewGameFacility:
                     {
-                        LevelChange.orderLevelChange( new LevelSetupTestFacility(), ShooterSettings.Startup.STARTUP_LEVEL_SECTION, true );
+                        LevelChange.orderLevelChange( new LevelSetupTestMayflowerOffice(), ShooterSettings.Startup.STARTUP_LEVEL_SECTION, true );
                         Shooter.game.orderMainStateChangeTo( MainState.EIngame );
                         break;
                     }
 
                     case EStartNewGameTestOffice:
                     {
-                        LevelChange.orderLevelChange( new LevelSetupTestOfficeCasino(), ShooterSettings.Startup.STARTUP_LEVEL_SECTION, true );
+                        LevelChange.orderLevelChange( new LevelSetupTestFacility(), ShooterSettings.Startup.STARTUP_LEVEL_SECTION, true );
                         Shooter.game.orderMainStateChangeTo( MainState.EIngame );
                         break;
                     }

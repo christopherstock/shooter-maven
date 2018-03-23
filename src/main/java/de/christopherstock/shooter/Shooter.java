@@ -21,7 +21,6 @@
     *   TODO    Mayflower preloader and textures ( posters ).
     *   TODO    Remove ALL static fields!
     *
-    *   TODO    Copy and prune 'MayDay' folder.
     *   TODO    All enum constants to upper case.
     *   TODO    Fix all code lints.
     *   TODO    Revise preloader!
@@ -80,10 +79,7 @@
         public static void main( String[] args )
         {
             // disable debug mode if run mode is production
-            if ( args.length > 0 && args[ 0 ].equals( "--runMode production" ) )
-            {
-                ShooterDebug.DEBUG_MODE = ShooterDebug.NO;
-            }
+            ShooterDebug.checkDebugMode( args );
 
             // acclaim
             ShooterDebug.major.out( "Welcome to the Shooter project [" + ShooterVersion.getCurrentVersionDesc() + "]" );

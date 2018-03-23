@@ -32,7 +32,7 @@
         public static final class Startup
         {
             public      static  final   MainState   STARTUP_STATE_AFTER_PRELOADER       = MainState.EIngame;
-            public      static  final   LevelSetup  STARTUP_LEVEL_MAIN                  = new LevelSetupTestFacility();
+            public      static  final   LevelSetup  STARTUP_LEVEL_MAIN                  = new LevelSetupTestMayflowerOffice();
             public      static  final   int         STARTUP_LEVEL_SECTION               = 0;
         }
 

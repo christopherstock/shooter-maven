@@ -87,4 +87,12 @@
                 this.out( "  max:  [" + LibStringFormat.getSingleton().formatNumber( r.maxMemory()   ) + "]" );
             }
         }
+
+        public static void checkDebugMode( String[] args )
+        {
+            if ( args.length > 0 && args[ 0 ].equals( "--runMode production" ) )
+            {
+                ShooterDebug.DEBUG_MODE = ShooterDebug.NO;
+            }
+        }
     }
