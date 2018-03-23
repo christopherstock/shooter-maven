@@ -3,7 +3,6 @@
 
     import  java.awt.*;
     import  java.awt.event.*;
-    import  java.awt.image.*;
     import  de.christopherstock.lib.ui.*;
 
     /*******************************************************************************************************************
@@ -13,12 +12,8 @@
     {
         private     static  final   long            serialVersionUID    = 7582941416008508760L;
 
-        public                      BufferedImage   iBgImage            = null;
-
-        public LibLWJGLCanvas( BufferedImage aBgImage )
+        public LibLWJGLCanvas()
         {
-            this.iBgImage = aBgImage;
-
             //set focusable so lwjgl display will regain the focus
             this.setFocusable( true );
 
@@ -34,15 +29,21 @@
             //cast to 2d
             Graphics2D g2d = (Graphics2D)g;
 
-            //clip
+            // g2d.setPaint( Paint.OPAQUE );
+
+            // from black bg to white bg
             g2d.setClip( 0, 0, Integer.MAX_VALUE, Integer.MAX_VALUE );
+            g2d.setColor(LibColors.EWhite.colARGB );
+            g2d.fillRect( 0, 0, this.getWidth(), this.getHeight() );
+/*
+            //clip
 
             //draw black rect
             g2d.setColor( LibColors.EBlack.colARGB );
             g2d.fillRect( 0, 0, this.getWidth(), this.getHeight() );
-
+*/
             //draw bg image centered
-            g2d.drawImage(this.iBgImage, (this.getWidth() - this.iBgImage.getWidth() ) / 2, (this.getHeight() - this.iBgImage.getHeight() ) / 2, null );
+            // g2d.drawImage(this.iBgImage, (this.getWidth() - this.iBgImage.getWidth() ) / 2, (this.getHeight() - this.iBgImage.getHeight() ) / 2, null );
         }
 
         public void focusGained( FocusEvent f )

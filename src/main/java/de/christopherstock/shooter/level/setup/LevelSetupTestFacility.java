@@ -344,7 +344,7 @@
                 new LevelConfigSection
                 (
                     "Test Offices - 1st floor",
-                    LibColors.EBlack,
+                    LibColors.EWhite,
                     BackGround.ECountry1,
                     new ItemToPickUp[]
                     {
@@ -375,7 +375,7 @@
                 new LevelConfigSection
                 (
                     "Test Offices - Basement",
-                    LibColors.EBlack,
+                    LibColors.EWhite,
                     BackGround.ENight1,
                     new ItemToPickUp[]
                     {

@@ -7,9 +7,9 @@
     *   The main class.
     *
     *   TODO    Revise preloader!
+    *   TODO    Prune all those super-confusing interfaces and abstract superclasses in LWJGL-Panel systems!
     *   TODO    Different heights for particle effects.
-    *   TODO    Revise level.
-    *   TODO    Revise level design.
+    *   TODO    Alter JFrame / app icon.
     *   TODO    Mayflower preloader and textures ( posters ).
     *   TODO    only for FireArms! Move ArtefactType.iFXImages to Firearms (Wearpons)!
     *   TODO    Cleanup game initialization.
@@ -18,6 +18,7 @@
     *   TODO    Optimize fields in ArtefactType!
     *   TODO    Create example JUnit test!
     *   TODO    Remove ALL static fields!
+    *   TODO    Revise level design.
     *   TODO    Remove all linter warnings!
     *   TODO    Turn ShooterEngine not static.
     *   TODO    Move all CloseCombat constants to settings!

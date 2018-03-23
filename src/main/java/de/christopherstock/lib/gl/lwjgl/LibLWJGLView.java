@@ -4,7 +4,6 @@
     import  java.awt.*;
     import  java.nio.*;
 
-    import de.christopherstock.shooter.ShooterDebug;
     import  org.lwjgl.*;
     import  org.lwjgl.opengl.*;
     import  org.lwjgl.opengl.DisplayMode;
@@ -394,7 +393,7 @@
         public void clearGl( LibColors clearCol )
         {
             //clear the gl
-            GL11.glClearColor(  clearCol.f3[ 0 ], clearCol.f3[ 1 ], clearCol.f3[ 2 ], 0.0f      );
+            GL11.glClearColor(  clearCol.f3[ 0 ], clearCol.f3[ 1 ], clearCol.f3[ 2 ], 0.5f      );
             GL11.glClear(       GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT             );
         }
 

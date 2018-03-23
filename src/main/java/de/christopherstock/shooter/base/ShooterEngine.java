@@ -51,10 +51,6 @@
         {
             ShooterDebug.init.out( "init UI" );
 
-            this.iconImage = null;
-            this.bgImage   = null;
-
-            //load form utils
             try
             {
                 this.iconImage = ImageIO.read( LibIO.preStreamJarResource( ShooterSettings.Path.EScreen.iUrl + "icon.png" ) );
@@ -78,8 +74,7 @@
 
             this.preloader = new Preloader
             (
-                new LibGLImage( this.bgImage,   LibGLImage.ImageUsage.EOrtho, ShooterDebug.glImage, true  ),
-                new LibGLImage( this.iconImage, LibGLImage.ImageUsage.EOrtho, ShooterDebug.glImage, false )
+                new LibGLImage( this.bgImage, LibGLImage.ImageUsage.EOrtho, ShooterDebug.glImage, true  )
             );
         }
 
@@ -106,7 +101,6 @@
                 Shooter.game,
                 Shooter.game,
                 this.iconImage,
-                this.bgImage,
                 ShooterDebug.init
             );
         }

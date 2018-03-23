@@ -16,16 +16,14 @@
         public                      GLCallbackForm  iForm                       = null;
         public                      JFrame          iNativeForm                 = null;
         private                     BufferedImage   iIconImage                  = null;
-        public                      BufferedImage   iBgImage                    = null;
 
-        public LibGLForm( GLCallbackForm aForm, String aTitle, Component contentPane, int width, int height, BufferedImage aIconImage, BufferedImage aBgImage )
+        public LibGLForm( GLCallbackForm aForm, String aTitle, Component contentPane, int width, int height, BufferedImage aIconImage )
         {
             this.iForm = aForm;
             this.iIconImage = aIconImage;
-            this.iBgImage = aBgImage;
 
             //instanciate JFrame
-            this.iNativeForm = new LibGLFrame(this.iBgImage);
+            this.iNativeForm = new LibGLFrame();
 
             //get screen environment
             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();

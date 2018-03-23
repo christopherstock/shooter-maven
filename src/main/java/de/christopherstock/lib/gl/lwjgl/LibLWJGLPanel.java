@@ -13,16 +13,14 @@
     {
         private                     Canvas                  canvas              = null;
         private                     GLDrawCallback          drawCallback        = null;
-        protected                   BufferedImage           iBgImage            = null;
 
-        public LibLWJGLPanel( GLDrawCallback aDrawCallback, BufferedImage aBgImage )
+        public LibLWJGLPanel( GLDrawCallback aDrawCallback )
         {
             this.drawCallback = aDrawCallback;
-            this.iBgImage = aBgImage;
 
             try
             {
-                this.canvas = new LibLWJGLCanvas(this.iBgImage);
+                this.canvas = new LibLWJGLCanvas();
 
                 //set canvas focusable
                 this.canvas.setFocusable( true );
@@ -43,7 +41,7 @@
         public final void display()
         {
             //only if the panel is initialized
-            if ( LibGL3D.glPanelInitialized )
+//            if ( LibGL3D.glPanelInitialized )
             {
                 //invoke callback 3d drawing
                 this.drawCallback.draw3D();

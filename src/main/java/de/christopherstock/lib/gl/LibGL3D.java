@@ -27,7 +27,6 @@
             GLDrawCallback      drawCallback,
             GLCallbackForm      callbackForm,
             BufferedImage       iconImage,
-            BufferedImage       bgImage,
             LibDebug            debug
         )
         {
@@ -36,8 +35,7 @@
             //init panel
             panel = new LibLWJGLPanel
             (
-                drawCallback,
-                bgImage
+                drawCallback
             );
 
             //show lwjgl form
@@ -48,8 +46,7 @@
                 panel.getNativePanel(),
                 formWidth,
                 formHeight,
-                iconImage,
-                bgImage
+                iconImage
             );
 
             //init lwjgl view
