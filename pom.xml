@@ -12,6 +12,29 @@
     <name>shooter-maven</name>
     <url>http://maven.apache.org</url>
 
+    <profiles>
+
+        <profile>
+            <id>development</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <runMode>development</runMode>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>production</id>
+            <activation>
+            </activation>
+            <properties>
+                <runMode>production</runMode>
+            </properties>
+        </profile>
+
+    </profiles>
+
     <dependencies>
 
         <dependency>
@@ -89,7 +112,7 @@
                     </descriptorRefs>
                 </configuration>
             </plugin>
-            
+
             <plugin>
                 <groupId>com.googlecode.mavennatives</groupId>
                 <artifactId>maven-nativedependencies-plugin</artifactId>
@@ -116,6 +139,7 @@
                         <argument>-classpath</argument>
                         <classpath />
                         <argument>de.christopherstock.shooter.Shooter</argument>
+                        <argument>--runMode ${runMode}</argument>
                     </arguments>
                 </configuration>
             </plugin>
