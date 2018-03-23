@@ -4,6 +4,7 @@
     import  java.awt.image.*;
     import  java.io.*;
     import  javax.imageio.*;
+    import  de.christopherstock.lib.*;
     import  de.christopherstock.lib.gl.*;
     import  de.christopherstock.lib.io.*;
     import  de.christopherstock.lib.ui.LibFPS;
@@ -106,8 +107,7 @@
             LWJGLMouse.init();
 
             //init fonts
-            this.preloader.initFonts();
-
+            this.initFonts();
 
             //load texture images and perform repaint
             this.preloader.increase( "Loading textures" );
@@ -156,5 +156,23 @@
             LevelChange.orderLevelChange( Startup.STARTUP_LEVEL_MAIN, Startup.STARTUP_LEVEL_SECTION, true );
 
             ShooterDebug.init.out( "initUi 10" );
+        }
+
+        private void initFonts()
+        {
+            try
+            {
+                Fonts.EAmmo          = Lib.createFont( Path.EFont.iUrl + "sourceSansPro.otf", 18.0f ); // new Font( "verdana",     Font.BOLD,  12 );
+                Fonts.EHealth        = Lib.createFont( Path.EFont.iUrl + "sourceSansPro.otf", 18.0f ); // new Font( "verdana",     Font.BOLD,  12 );
+                Fonts.EFps           = Lib.createFont( Path.EFont.iUrl + "sourceSansPro.otf", 18.0f ); // new Font( "verdana",     Font.BOLD,  12 );
+                Fonts.EAvatarMessage = Lib.createFont( Path.EFont.iUrl + "sourceSansPro.otf", 18.0f ); // new Font( "verdana",     Font.BOLD,  12 );
+
+                Fonts.EMainMenu      = Lib.createFont( Path.EFont.iUrl + "sourceSansPro.otf", 55.0f );
+            }
+            catch ( Throwable t )
+            {
+                ShooterDebug.error.trace( t );
+                System.exit( 1 );
+            }
         }
     }

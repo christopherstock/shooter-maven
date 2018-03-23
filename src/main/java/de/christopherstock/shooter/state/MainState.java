@@ -7,7 +7,6 @@
     public enum MainState
     {
         EPreloader,
-        EIntroLogo,
         EMainMenu,
         EIngame,
     }

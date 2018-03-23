@@ -184,13 +184,11 @@
 
         public static final class Fonts
         {
-            public  static          Font            EIntro                              = null;
             public  static          Font            EMainMenu                           = null;
             public  static          Font            EAmmo                               = null;
             public  static          Font            EHealth                             = null;
             public  static          Font            EFps                                = null;
             public  static          Font            EAvatarMessage                      = null;
-            public  static          Font            EDebug                              = null;
         }
 
         public static final class Sounds

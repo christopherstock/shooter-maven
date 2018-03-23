@@ -1,15 +1,11 @@
 
     package de.christopherstock.shooter.state;
 
-    import  java.util.*;
     import  de.christopherstock.lib.gl.*;
-    import  de.christopherstock.lib.io.*;
     import  de.christopherstock.lib.ui.*;
     import  de.christopherstock.shooter.*;
     import  de.christopherstock.shooter.ShooterSettings.Fonts;
     import  de.christopherstock.shooter.ShooterSettings.HUDSettings;
-    import  de.christopherstock.shooter.base.ShooterTexture.WallTex;
-    import  de.christopherstock.shooter.g3d.mesh.*;
     import  de.christopherstock.shooter.io.hid.Keys;
     import  de.christopherstock.shooter.io.sound.*;
     import  de.christopherstock.shooter.level.*;
@@ -25,10 +21,12 @@
             EStartNewGameFacility(      "START NEW GAME - FACILITY"     ),
             EStartNewGameTestOffice(    "START NEW GAME - TEST-OFFICE"  ),
             EContinueGame(              "CONTINUE GAME"                 ),
+/*
             ESaveGame(                  "SAVE GAME"                     ),
             ELoadGame(                  "LOAD GAME"                     ),
             EPreferences(               "PREFERENCES"                   ),
             ECredits(                   "CREDITS"                       ),
+*/
             EQuitGame(                  "QUIT GAME"                     ),
             ;
 
@@ -37,8 +35,8 @@
 
             private MainMenuItem( String label )
             {
-                this.unselected = LibGLImage.getFromString( label,   Fonts.EMainMenu, LibColors.EBlack.colABGR,  null, LibColors.EWhite.colABGR, ShooterDebug.glImage );
-                this.selected = LibGLImage.getFromString( label,   Fonts.EMainMenu, LibColors.EWhite.colABGR,  null, null,                     ShooterDebug.glImage );
+                this.unselected = LibGLImage.getFromString( label, Fonts.EMainMenu, LibColors.EWhite.colABGR,  null, null, ShooterDebug.glImage );
+                this.selected   = LibGLImage.getFromString( label, Fonts.EMainMenu, LibColors.EOrange.colABGR, null, null, ShooterDebug.glImage );
             }
 
             public void draw( int x, int y, MainMenuItem selectedItem )
@@ -57,7 +55,7 @@
 
         private MainStateMainMenu()
         {
-            this.blackPane = LibGLImage.getFullOpaque( LibColors.EBlack.colABGR, LibGL3D.panel.width, LibGL3D.panel.height, ShooterDebug.glImage );
+            this.blackPane = LibGLImage.getFullOpaque( LibColors.EBlackTranslucent.colABGR, LibGL3D.panel.width, LibGL3D.panel.height, ShooterDebug.glImage );
 
         }
 
@@ -73,7 +71,7 @@
             Shooter.game.engine.hud.draw2D();
 
             //draw black pane
-            LibGL3D.view.drawOrthoBitmapBytes(this.blackPane,               0,   0,   0.5f );
+            LibGL3D.view.drawOrthoBitmapBytes( this.blackPane, 0,   0,   0.1f );
 
             //draw main menu
             for ( MainMenuItem m : MainMenuItem.values() )
@@ -136,7 +134,7 @@
                         Shooter.game.orderMainStateChangeTo( MainState.EIngame );
                         break;
                     }
-
+/*
                     case ESaveGame:
                     {
                         Vector<Object> toSave = new Vector<Object>();
@@ -194,7 +192,7 @@
 
                         break;
                     }
-
+*/
                     case EQuitGame:
                     {
                         LibGL3D.destroy();

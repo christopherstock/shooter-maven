@@ -641,7 +641,7 @@
             return this.iView;
         }
 
-        private final void moveToNewPosition()
+        private void moveToNewPosition()
         {
             this.getCylinder().moveToTargetPosition(this.getView().iDepthTotal, General.DISABLE_PLAYER_TO_WALL_COLLISIONS, General.DISABLE_PLAYER_TO_BOT_COLLISIONS );
         }

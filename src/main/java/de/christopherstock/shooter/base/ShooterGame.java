@@ -78,13 +78,6 @@
                     break;
                 }
 
-                case EIntroLogo:
-                {
-                    //draw 2d
-                    MainStateIntroLogo.getSingleton().draw2D();
-                    break;
-                }
-
                 case EMainMenu:
                 {
                     //draw 2d
@@ -112,12 +105,6 @@
                 case EPreloader:
                 {
                     this.engine.preloader.draw3D();
-                    break;
-                }
-
-                case EIntroLogo:
-                {
-                    MainStateIntroLogo.getSingleton().draw3D();
                     break;
                 }
 
@@ -162,22 +149,6 @@
             //switch for mainState
             switch ( this.engine.mainState )
             {
-                case EIntroLogo:
-                {
-                    //check keys and mouse (really?)
-
-                    LWJGLKeys.checkKeys();
-                    LWJGLMouse.checkMouse();
-
-                    //check menu key events
-                    MainStateIntroLogo.getSingleton().checkIntroLogoEvents();
-
-                    //animate the intro logo
-                    MainStateIntroLogo.getSingleton().onRun();
-
-                    break;
-                }
-
                 case EPreloader:
                 {
                     //nothing to animate ?

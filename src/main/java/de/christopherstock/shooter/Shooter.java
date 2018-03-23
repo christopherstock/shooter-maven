@@ -6,13 +6,13 @@
     /*******************************************************************************************************************
     *   The main class.
     *
-    *   TODO    Revise preloader!
+    *   Check or prune EIntroLogo!
     *   TODO    Use Mayflower font.
-    *   TODO    Update Eclipse.
+    *
+    *   TODO    Revise preloader!
     *   TODO    Turn static field Level.player to non-static!!
     *   TODO    Different heights for particle effects.
     *   TODO    Revise level.
-    *   TODO    Check or prune EIntroLogo!
     *   TODO    Revise level design.
     *   TODO    Mayflower preloader and textures ( posters ).
     *   TODO    only for FireArms! Move ArtefactType.iFXImages to Firearms (Wearpons)!
@@ -28,6 +28,7 @@
     *   TODO    Turn ShooterEngine not static.
     *   TODO    Move all CloseCombat constants to settings!
     *   TODO    make new subclass:  Wearpon that derives from ArtefactKind!!
+    *   TODO    Complete version 4.0.0.
     *
     *   TODO    let random assign different topping positions for ShooterWallCollection.createDeskOffice
     *   TODO    slow panning for zoomed view?

@@ -1,7 +1,6 @@
 
     package de.christopherstock.shooter.state;
 
-    import  java.awt.*;
     import  de.christopherstock.lib.*;
     import  de.christopherstock.lib.gl.*;
     import  de.christopherstock.lib.ui.*;
@@ -58,25 +57,5 @@
             this.preloaderTest += 20;
 
             LibGL3D.panel.display();
-        }
-
-        public final void initFonts()
-        {
-            try
-            {
-                Fonts.EIntro         = new Font( "verdana",     Font.BOLD,  25 );
-                Fonts.EAmmo          = new Font( "verdana",     Font.BOLD,  12 );
-                Fonts.EHealth        = new Font( "verdana",     Font.BOLD,  12 );
-                Fonts.EFps           = new Font( "verdana",     Font.BOLD,  12 );
-                Fonts.EAvatarMessage = new Font( "verdana",     Font.BOLD,  12 );
-                Fonts.EDebug         = new Font( "courier new", Font.PLAIN, 10 );
-
-                Fonts.EMainMenu      = Lib.createFont( Path.EFont.iUrl + "chiller.ttf", 65.0f );
-            }
-            catch ( Throwable t )
-            {
-                ShooterDebug.error.trace( t );
-                System.exit( 1 );
-            }
         }
     }

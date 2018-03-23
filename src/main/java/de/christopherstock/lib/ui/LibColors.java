@@ -10,6 +10,8 @@
     public enum LibColors
     {
         EBlack(                         0xff000000      ),
+        EBlackTranslucent(              0x77000000      ),
+
         ERed(                           0xffff0000      ),
         ERedDark(                       0xff662222      ),
         ERedLight(                      0xffff6666      ),
@@ -21,7 +23,7 @@
         EWhite(                         0xffffffff      ),
 
         ESkin(                          0xfff2cec5      ),
-        EOrange(                        0xffffb300      ),
+        EOrange(                        0xffec7404      ),
 
         EBrown(                         0xffb68527      ),
         EBrownDark(                     0xff89651e      ),
@@ -67,9 +69,6 @@
 
         EShotLine(                      0xfff7f26b      ),
         ECrosshair(                     0xff6666ff      ),
-
-        ELightIntroLogoAmbient(         0xff303030      ),
-        ELightIntroLogoSpot(            0xffc0c0c0      ),
 
         ;
 
