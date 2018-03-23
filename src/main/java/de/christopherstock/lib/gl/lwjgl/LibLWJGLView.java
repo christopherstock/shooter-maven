@@ -21,7 +21,7 @@
     *******************************************************************************************************************/
     public class LibLWJGLView extends LibGLView
     {
-        public LibLWJGLView( LibGLPanel panel, LibDebug aDebug, int aFormWidth, int aFormHeight, float aAspectRatio )
+        public LibLWJGLView( LibLWJGLPanel panel, LibDebug aDebug, int aFormWidth, int aFormHeight, float aAspectRatio )
         {
             super( aAspectRatio, aDebug );
 

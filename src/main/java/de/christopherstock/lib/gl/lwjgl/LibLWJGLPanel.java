@@ -2,17 +2,24 @@
     package de.christopherstock.lib.gl.lwjgl;
 
     import  java.awt.*;
-    import  java.awt.image.*;
     import  org.lwjgl.opengl.*;
-    import  de.christopherstock.lib.gl.*;
 
     /*******************************************************************************************************************
     *   The Form.
     *******************************************************************************************************************/
-    public class LibLWJGLPanel extends LibGLPanel
+    public class LibLWJGLPanel
     {
-        private                     Canvas                  canvas              = null;
-        private                     GLDrawCallback          drawCallback        = null;
+        public interface GLDrawCallback
+        {
+            void draw2D();
+            void draw3D();
+        }
+
+        private                     Canvas                  canvas                  = null;
+        private                     GLDrawCallback          drawCallback            = null;
+
+        public                      int                     width                   = 0;
+        public                      int                     height                  = 0;
 
         public LibLWJGLPanel( GLDrawCallback aDrawCallback )
         {
@@ -31,13 +38,11 @@
             }
         }
 
-        @Override
         public final Component getNativePanel()
         {
             return this.canvas;
         }
 
-        @Override
         public final void display()
         {
             //only if the panel is initialized
@@ -52,5 +57,10 @@
                 //update native LWJGL Display each tick
                 Display.update();
             }
+        }
+
+        public Graphics2D getGraphics()
+        {
+            return (Graphics2D) this.getNativePanel().getGraphics();
         }
     }

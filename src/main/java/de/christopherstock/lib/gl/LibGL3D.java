@@ -5,13 +5,13 @@
     import  org.lwjgl.opengl.*;
     import  de.christopherstock.lib.*;
     import  de.christopherstock.lib.gl.LibGLFrame.GLCallbackForm;
-    import  de.christopherstock.lib.gl.LibGLPanel.*;
+    import  de.christopherstock.lib.gl.lwjgl.LibLWJGLPanel.*;
     import  de.christopherstock.lib.gl.lwjgl.*;
 
     public class LibGL3D
     {
         public      static          LibGLView           view                            = null;
-        public      static          LibGLPanel          panel                           = null;
+        public      static          LibLWJGLPanel       panel                           = null;
         public      static          LibGLForm           form                            = null;
 
         /***************************************************************************************************************

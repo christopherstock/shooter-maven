@@ -4,7 +4,7 @@
     import  de.christopherstock.lib.*;
     import  de.christopherstock.lib.gl.*;
     import  de.christopherstock.lib.gl.LibGLFrame.*;
-    import  de.christopherstock.lib.gl.LibGLPanel.*;
+    import  de.christopherstock.lib.gl.lwjgl.LibLWJGLPanel.*;
     import  de.christopherstock.shooter.*;
     import  de.christopherstock.shooter.io.hid.lwjgl.*;
     import  de.christopherstock.shooter.io.sound.*;
