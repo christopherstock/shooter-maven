@@ -35,8 +35,8 @@
 
             private MainMenuItem( String label )
             {
-                this.unselected = LibGLImage.getFromString( label, Fonts.EMainMenu, LibColors.EWhite.colABGR,  null, null, ShooterDebug.glImage );
-                this.selected   = LibGLImage.getFromString( label, Fonts.EMainMenu, LibColors.EOrange.colABGR, null, null, ShooterDebug.glImage );
+                this.unselected = LibGLImage.getFromString( label, Fonts.EMainMenu, LibColors.EWhite.colABGR,  null, LibColors.EBlack.colABGR, ShooterDebug.glImage );
+                this.selected   = LibGLImage.getFromString( label, Fonts.EMainMenu, LibColors.EOrange.colABGR, null, LibColors.EBlack.colABGR, ShooterDebug.glImage );
             }
 
             public void draw( int x, int y, MainMenuItem selectedItem )
@@ -76,7 +76,7 @@
             //draw main menu
             for ( MainMenuItem m : MainMenuItem.values() )
             {
-                m.draw( 100, 600 - m.ordinal() * 85, currentMainMenuItem );
+                m.draw( ( LibGL3D.panel.width - m.unselected.width ) / 2, 600 - m.ordinal() * 85, currentMainMenuItem );
             }
         }
 
