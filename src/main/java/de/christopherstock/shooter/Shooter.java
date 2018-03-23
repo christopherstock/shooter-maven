@@ -6,43 +6,30 @@
     /*******************************************************************************************************************
     *   The main class.
     *
-    *   TODO    Turn all elements in ShooterEngine non static!
-    *
-    *   TODO    Prune onsolete ticker system!
-    *   TODO    Check or prune EIntroLogo!
-    *   TODO    Fix all multilined docblocks to single lines!
-    *   TODO    Remove all linter warnings!
-    *   TODO    Use Mayflower font.
-    *
-    *   TODO    Turn ShooterEngine not static.
-    *   TODO    Outsource ShooterGame to shooter main thread.
-    *   TODO    Turn static field Level.player to non-static!!
-    *   TODO    Revise menu.
-    *   TODO    Mayflower preloader and textures ( posters ).
-    *   TODO    Remove ALL static fields!
-    *
-    *   TODO    All enum constants to upper case.
-    *   TODO    Fix all code lints.
+    *   TODO    Zoom Auto Shotgun.
+    *   TODO    Complete version 0.3.11 and add DONE items to History.
     *   TODO    Revise preloader!
+    *   TODO    Use Mayflower font.
+    *   TODO    Update Eclipse.
+    *   TODO    Turn static field Level.player to non-static!!
+    *   TODO    Different heights for particle effects.
     *   TODO    Revise level.
+    *   TODO    Check or prune EIntroLogo!
+    *   TODO    Revise level design.
+    *   TODO    Mayflower preloader and textures ( posters ).
+    *   TODO    only for FireArms! Move ArtefactType.iFXImages to Firearms (Wearpons)!
+    *   TODO    Cleanup game initialization.
     *   TODO    Delete all 'a' and 'i' prefixes from variables.
-    *
+    *   TODO    Turn all elements in ShooterEngine non static!
+    *   TODO    Optimize fields in ArtefactType!
+    *   TODO    Enable Fullscreen.
+    *   TODO    Create example JUnit test!
+    *   TODO    Remove ALL static fields!
+    *   TODO    Revise menu.
+    *   TODO    Remove all linter warnings!
+    *   TODO    Turn ShooterEngine not static.
     *   TODO    Move all CloseCombat constants to settings!
     *   TODO    make new subclass:  Wearpon that derives from ArtefactKind!!
-    *   TODO    Remove all prefixes.
-    *   TODO    Create example test!
-    *   TODO    Different heights for particle effects.
-    *   TODO    Cleanup game initialization.
-    *   TODO    Revise level design.
-    *   TODO    Update Eclipse.
-    *   TODO    Zoom Auto Shotgun.
-    *   TODO    only for FireArms! Move ArtefactType.iFXImages to Firearms (Wearpons)!
-    *   TODO    Enable Fullscreen.
-    *   TODO    Let Maven create JNLP.
-    *   TODO    Source in pom.xml to 1.8
-    *   TODO    Add assets.
-    *   TODO    Complete version 0.3.11 and add DONE items to History.
-    *   TODO    Optimize fields in ArtefactType!
     *
     *   TODO    let random assign different topping positions for ShooterWallCollection.createDeskOffice
     *   TODO    slow panning for zoomed view?
