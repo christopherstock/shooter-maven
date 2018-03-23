@@ -45,7 +45,7 @@
                 LibGL3D.view.clearGl( Level.currentSection().getBackgroundColor() );
 
                 //get camera from player's position and orientation
-                ViewSet cam = Level.currentPlayer().getCameraPositionAndRotation();
+                ViewSet cam = Shooter.game.engine.player.getCameraPositionAndRotation();
 
                 //draw scene bg
                 Level.currentSection().drawBg( cam );
@@ -60,15 +60,15 @@
                 Level.currentSection().drawAllBots();                   //draw all bots
 
                 //draw player's crosshair if the wearpon uses ammo
-              //if ( ShooterGameLevel.currentPlayer().showAmmoInHUD() ) ShooterGameLevel.currentPlayer().getCrosshair().draw();
+              //if ( ShooterGameShooter.game.engine.player.showAmmoInHUD() ) ShooterGameShooter.game.engine.player.getCrosshair().draw();
 
                 //bullet holes and fx points
                 BulletHole.drawAll();                                           //draw all bullet holes
                 LibFXManager.drawAll();                                         //draw all fx points
-                Level.currentPlayer().drawStandingCircle();          //draw circle on players bottom location
+                Shooter.game.engine.player.drawStandingCircle();          //draw circle on players bottom location
 
                 //flush face queue to force an immediate redraw
-                LibGL3D.view.flushFaceQueue( Level.currentPlayer().getAnchor() );
+                LibGL3D.view.flushFaceQueue( Shooter.game.engine.player.getAnchor() );
             }
         }
 
@@ -90,7 +90,7 @@
             {
                 Keys.explosion.iLaunchAction = false;
 /*
-                float baseZ = ShooterGameLevel.currentPlayer().getAnchor().z;
+                float baseZ = ShooterGameShooter.game.engine.player.getAnchor().z;
 
                 LibFXManager.launchExplosion( new LibVertex( 0.0f, 0.0f, 0.05f ), FXSize.ESmall,  FXTime.EShort, FxSettings.LIFETIME_EXPLOSION,  baseZ  );
                 LibFXManager.launchExplosion( new LibVertex( 2.0f, 2.0f, 0.05f ), FXSize.EMedium, FXTime.EMedium, FxSettings.LIFETIME_EXPLOSION, baseZ  );
@@ -105,14 +105,14 @@
             if ( Keys.playerAction.iLaunchAction )
             {
                 Keys.playerAction.iLaunchAction = false;
-                Level.currentPlayer().launchAction( null );
+                Shooter.game.engine.player.launchAction( null );
             }
 
             //player action?
             if ( Keys.crouching.iLaunchAction )
             {
                 Keys.crouching.iLaunchAction = false;
-                Level.currentPlayer().toggleCrouching();
+                Shooter.game.engine.player.toggleCrouching();
             }
 
             //gainHealth
@@ -121,7 +121,7 @@
                 Keys.gainHealth.iLaunchAction = false;
 
                 //heal player
-                Level.currentPlayer().heal( 10 );
+                Shooter.game.engine.player.heal( 10 );
             }
 
             //hurt
@@ -130,7 +130,7 @@
                 Keys.damageFx.iLaunchAction = false;
 
                 //hurt player
-                Level.currentPlayer().hurt( 10 );
+                Shooter.game.engine.player.hurt( 10 );
             }
 
             //launch msg?

@@ -1,7 +1,7 @@
 
     package de.christopherstock.shooter.base;
 
-    import java.awt.*;
+    import  java.awt.*;
     import  java.awt.image.*;
     import  java.io.*;
     import  javax.imageio.*;
@@ -11,6 +11,7 @@
     import  de.christopherstock.lib.ui.LibFPS;
     import  de.christopherstock.shooter.*;
     import  de.christopherstock.shooter.ShooterSettings.*;
+    import  de.christopherstock.shooter.game.objects.Player;
     import  de.christopherstock.shooter.io.hid.lwjgl.*;
     import  de.christopherstock.shooter.io.sound.*;
     import  de.christopherstock.shooter.level.*;
@@ -37,6 +38,11 @@
         public                      MainState               mainState                   = MainState.EPreloader;
         /** Main state to change to. */
         public                      MainState               mainStateToChangeTo         = null;
+
+        /***************************************************************************************************************
+        *   The global player-instance being controlled by the user.
+        ***************************************************************************************************************/
+        public                      Player                  player                      = null;
 
         /***************************************************************************************************************
         *   Inits the ui.

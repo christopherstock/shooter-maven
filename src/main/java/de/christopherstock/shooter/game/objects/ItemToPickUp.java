@@ -127,14 +127,14 @@
         private void checkPlayerCollision()
         {
             //check collision of 2 circles ( easy  task.. )
-            Area player = new Area( Level.currentPlayer().getCylinder().getCircle() );
+            Area player = new Area( Shooter.game.engine.player.getCylinder().getCircle() );
             Ellipse2D.Float itemCircle = new Ellipse2D.Float(this.iAnchor.x - this.iKind.iRadius, this.iAnchor.y - this.iKind.iRadius, 2 * this.iKind.iRadius, 2 * this.iKind.iRadius );
             Area item   = new Area( itemCircle );
             player.intersect( item );
             if
             (
                     !player.isEmpty()
-                &&  Level.currentPlayer().getCylinder().checkCollision(this.iAnchor.z )
+                &&  Shooter.game.engine.player.getCylinder().checkCollision(this.iAnchor.z )
             )
             {
                 if ( !this.iCollisionWithPlayer)
@@ -143,7 +143,7 @@
                     //check if player already holds this artefact
                     if (this.iArtefact != null )
                     {
-                        if ( !Level.currentPlayer().iArtefactSet.contains(this.iArtefact) )
+                        if ( !Shooter.game.engine.player.iArtefactSet.contains(this.iArtefact) )
                         {
                             //ShooterDebug.major.out( "player has not this item" );
                             assignAmmoToNewArtefact = true;
@@ -169,14 +169,14 @@
                         {
                             //give ammo to new artefact
                             //ShooterDebug.major.out( "firearm has ammo " + iArtefact.iMagazineAmmo );
-                            Level.currentPlayer().iArtefactSet.assignMagazine(this.iArtefact);
+                            Shooter.game.engine.player.iArtefactSet.assignMagazine(this.iArtefact);
                         }
                         else
                         {
                             if (this.iArtefact.iArtefactType.iArtefactKind instanceof FireArm )
                             {
                                 //give ammo from magazine to stack
-                                Level.currentPlayer().iAmmoSet.addAmmo( ( (FireArm) this.iArtefact.iArtefactType.iArtefactKind ).iAmmoType, this.iArtefact.iMagazineAmmo );
+                                Shooter.game.engine.player.iAmmoSet.addAmmo( ( (FireArm) this.iArtefact.iArtefactType.iArtefactKind ).iAmmoType, this.iArtefact.iMagazineAmmo );
                             }
                         }
                     }

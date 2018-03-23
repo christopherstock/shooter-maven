@@ -7,7 +7,6 @@
     *   The main class.
     *
     *   TODO    Revise preloader!
-    *   TODO    Turn static field Level.player to non-static!!
     *   TODO    Different heights for particle effects.
     *   TODO    Revise level.
     *   TODO    Revise level design.

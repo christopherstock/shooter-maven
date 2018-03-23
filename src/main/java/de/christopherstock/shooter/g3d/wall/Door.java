@@ -10,6 +10,7 @@
     import  de.christopherstock.lib.gl.*;
     import  de.christopherstock.lib.io.d3ds.LibD3dsFile;
     import  de.christopherstock.lib.math.LibMath;
+    import de.christopherstock.shooter.Shooter;
     import  de.christopherstock.shooter.ShooterDebug;
     import  de.christopherstock.shooter.ShooterSettings.DoorSettings;
     import  de.christopherstock.shooter.g3d.*;
@@ -302,7 +303,7 @@
                         {
                             //only if player stands on the elevator
                           //if ( iWallElevator.checkAction( ShooterGameLevel.currentPlayer().getCylinder(), true, true ) )
-                            if (this.iWallElevator.checkCollisionVert( Level.currentPlayer().getCylinder(), null ).size() > 0 )
+                            if (this.iWallElevator.checkCollisionVert( Shooter.game.engine.player.getCylinder(), null ).size() > 0 )
                             {
                                 //open connected elevator door
                                 this.iWallElevator.toggleWallOpenClose( null );
@@ -317,7 +318,7 @@
                         {
                             //only if player stands on the sluice floor
                           //if ( iWallSluiceFloor.checkAction( ShooterGameLevel.currentPlayer().getCylinder(), true, true ) )
-                            if (this.iWallSluiceFloor.checkCollisionVert( Level.currentPlayer().getCylinder(), null ).size() > 0 )
+                            if (this.iWallSluiceFloor.checkCollisionVert( Shooter.game.engine.player.getCylinder(), null ).size() > 0 )
                             {
                                 //open connected sluice door
                                 this.iWallSluiceDoor.toggleWallOpenClose( null );
@@ -426,7 +427,7 @@
         {
             boolean toggleDoor = false;
 
-            if (this.checkCollisionHorz( Level.currentPlayer().getCylinder() ) )
+            if (this.checkCollisionHorz( Shooter.game.engine.player.getCylinder() ) )
             {
                 //toggle door
                 toggleDoor = true;

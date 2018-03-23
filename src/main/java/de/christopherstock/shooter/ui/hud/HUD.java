@@ -70,23 +70,23 @@
             if ( Level.currentSection() != null )
             {
                 //draw player's wearpon or gadget
-                Level.currentPlayer().iArtefactSet.drawArtefactOrtho();
+                Shooter.game.engine.player.iArtefactSet.drawArtefactOrtho();
 
                 //draw ammo if the wearpon uses ammo
-                if ( Level.currentPlayer().iArtefactSet.showAmmoInHUD() )
+                if ( Shooter.game.engine.player.iArtefactSet.showAmmoInHUD() )
                 {
                     //draw ammo
                     this.drawAmmo();
 
                     //draw crosshair if placer aims
-                    if ( Level.currentPlayer().iAiming )
+                    if ( Shooter.game.engine.player.iAiming )
                     {
                         this.drawCrosshair();
                     }
                 }
 
                 //draw health if currently changed
-                boolean drawHealthWarning = Level.currentPlayer().isHealthLow();
+                boolean drawHealthWarning = Shooter.game.engine.player.isHealthLow();
                 if (this.iHealthShowTimer > 0 || drawHealthWarning )
                 {
                     this.drawHealth( drawHealthWarning );
@@ -106,19 +106,19 @@
             Shooter.game.engine.fps.draw( OffsetsOrtho.EBorderHudX, OffsetsOrtho.EBorderHudY );
 
             //draw debug logs
-            //Level.currentPlayer().drawDebugLog(      g );
+            //Shooter.game.engine.player.drawDebugLog(      g );
         }
 
         public void drawAmmo()
         {
-            Artefact currentWearpon = Level.currentPlayer().iArtefactSet.getArtefact();
+            Artefact currentWearpon = Shooter.game.engine.player.iArtefactSet.getArtefact();
 
             //only if this is a reloadable wearpon
             if ( currentWearpon.iArtefactType.isFireArm() /* && Shooter.game.hud.iAnimationState == LibAnimation.EAnimationNone */ )
             {
                 //create current ammo string
                 this.iCurrentAmmoStringMagazineAmmo = currentWearpon.getCurrentAmmoStringMagazineAmmo();
-                this.iCurrentAmmoStringTotalAmmo = currentWearpon.getCurrentAmmoStringTotalAmmo( Level.currentPlayer().iAmmoSet );
+                this.iCurrentAmmoStringTotalAmmo = currentWearpon.getCurrentAmmoStringTotalAmmo( Shooter.game.engine.player.iAmmoSet );
 
                 //recreate ammo image if changed
                 if (this.iDisplayAmmoStringMagazineAmmo == null || !this.iDisplayAmmoStringTotalAmmo.equals(this.iCurrentAmmoStringTotalAmmo) || !this.iDisplayAmmoStringMagazineAmmo.equals(this.iCurrentAmmoStringMagazineAmmo) )
@@ -164,7 +164,7 @@
         private void drawHealth( boolean drawHealthWarning )
         {
             //draw player health
-            this.iCurrentHealthString = String.valueOf( Level.currentPlayer().getHealth() );
+            this.iCurrentHealthString = String.valueOf( Shooter.game.engine.player.getHealth() );
 
             //recreate ammo image if changed
             if (this.iDisplayHealthString == null || !this.iDisplayHealthString.equals(this.iCurrentHealthString) )
@@ -198,8 +198,8 @@
         public final void drawCrosshair()
         {
             //draw crosshair
-            int   modY = 0; //(int)( ( ShooterGameLevel.currentPlayer().getView().rot.x / PlayerAttributes.MAX_LOOKING_X ) * ( LibGL3D.panel.height / 5 ) );
-            CrossHair crosshair = Level.currentPlayer().iArtefactSet.getArtefactType().getCrossHair();
+            int   modY = 0; //(int)( ( ShooterGameShooter.game.engine.player.getView().rot.x / PlayerAttributes.MAX_LOOKING_X ) * ( LibGL3D.panel.height / 5 ) );
+            CrossHair crosshair = Shooter.game.engine.player.iArtefactSet.getArtefactType().getCrossHair();
             LibGL3D.view.drawOrthoBitmapBytes( crosshair.getImage(), LibGL3D.panel.width / 2 - crosshair.getImage().width / 2, LibGL3D.panel.height / 2 - crosshair.getImage().height / 2 + modY );
         }
 
@@ -253,20 +253,20 @@
                             {
                                 case EActionNext:
                                 {
-                                    Level.currentPlayer().iArtefactSet.chooseNextWearponOrGadget( true );
+                                    Shooter.game.engine.player.iArtefactSet.chooseNextWearponOrGadget( true );
                                     break;
                                 }
 
                                 case EActionPrevious:
                                 {
-                                    Level.currentPlayer().iArtefactSet.choosePreviousWearponOrGadget( true );
+                                    Shooter.game.engine.player.iArtefactSet.choosePreviousWearponOrGadget( true );
                                     break;
                                 }
 
                                 case EActionReload:
                                 {
                                     //reload ammo
-                                    Level.currentPlayer().iArtefactSet.getArtefact().performReload( Level.currentPlayer().iAmmoSet, true, null, false );
+                                    Shooter.game.engine.player.iArtefactSet.getArtefact().performReload( Shooter.game.engine.player.iAmmoSet, true, null, false );
 
                                     this.iAnimationState = LibAnimation.EAnimationShow;
                                     this.iAnimationPlayerRightHand = ShooterSettings.Performance.TICKS_WEARPON_HIDE_SHOW;
@@ -275,7 +275,7 @@
 
                                 case EActionDie:
                                 {
-                                    Level.currentPlayer().iArtefactSet.setArtefact( Level.currentPlayer().iArtefactSet.iHands );
+                                    Shooter.game.engine.player.iArtefactSet.setArtefact( Shooter.game.engine.player.iArtefactSet.iHands );
 
                                     //iHideWearpon = true;
                                     break;

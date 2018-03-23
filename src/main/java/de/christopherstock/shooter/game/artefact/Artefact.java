@@ -14,7 +14,6 @@
     import  de.christopherstock.shooter.game.artefact.gadget.Gadget;
     import  de.christopherstock.shooter.game.objects.*;
     import  de.christopherstock.shooter.io.hid.*;
-    import  de.christopherstock.shooter.level.*;
     import  de.christopherstock.shooter.ui.hud.HUD.*;
 
     /*******************************************************************************************************************
@@ -93,7 +92,7 @@
         public final void drawOrtho()
         {
             //this is player's gun
-            Player p = Level.currentPlayer();
+            Player p = Shooter.game.engine.player;
 
             int     modX    = ( 20 + (int)(  20 * p.getWalkingAngleCarriedModifierX() ) );      //clip on right border
             int     modY    = ( -(int)( 10 * p.getWalkingAngleCarriedModifierY() ) );

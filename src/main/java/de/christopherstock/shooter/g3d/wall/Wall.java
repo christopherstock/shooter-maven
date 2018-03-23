@@ -185,7 +185,7 @@
                     if ( f.continueDestroyAnim )
                     {
                         //++animatedFaces;
-                        ShooterDebug.wallDestroy.out( "highestZ: ["+f.iHighestZ+"] ankZ: " + f.getAnchor().z + " playaZ: " + Level.currentPlayer().getAnchor().z + " faceZ: [" + f.getAnchor().z + "]" );
+                        ShooterDebug.wallDestroy.out( "highestZ: ["+f.iHighestZ+"] ankZ: " + f.getAnchor().z + " playaZ: " + Shooter.game.engine.player.getAnchor().z + " faceZ: [" + f.getAnchor().z + "]" );
 
                         float distanceFromFloor = ( LibMath.getRandom( 1, 100 ) * 0.3f / 100 ); // -0.1f
 
@@ -203,7 +203,7 @@
                             }
                             else
                             {
-                                baseZ = Level.currentPlayer().getAnchor().z;
+                                baseZ = Shooter.game.engine.player.getAnchor().z;
                             }
                             this.iBaseZ = new Float( baseZ );
                         }

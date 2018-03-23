@@ -222,12 +222,12 @@
             if ( MouseInput.mouseWheelDown )
             {
                 MouseInput.mouseWheelDown = false;
-                Level.currentPlayer().orderWearponOrGadget( ChangeAction.EActionNext );
+                Shooter.game.engine.player.orderWearponOrGadget( ChangeAction.EActionNext );
             }
             else if ( MouseInput.mouseWheelUp )
             {
                 MouseInput.mouseWheelUp = false;
-                Level.currentPlayer().orderWearponOrGadget( ChangeAction.EActionPrevious );
+                Shooter.game.engine.player.orderWearponOrGadget( ChangeAction.EActionPrevious );
             }
 
             //check zooming
@@ -236,14 +236,14 @@
                 this.iAiming = true;
                 this.iZoom += General.SPEED_ZOOM;
                 if (this.iZoom > this.iArtefactSet.getArtefactType().getZoom() ) this.iZoom = this.iArtefactSet.getArtefactType().getZoom();
-                this.iScaleFactor = Level.currentPlayer().iZoom / General.MAX_ZOOM;
+                this.iScaleFactor = Shooter.game.engine.player.iZoom / General.MAX_ZOOM;
             }
             else
             {
                 this.iAiming = false;
                 this.iZoom -= General.SPEED_ZOOM;
                 if (this.iZoom < 0.0f ) this.iZoom = 0.0f;
-                this.iScaleFactor = Level.currentPlayer().iZoom / General.MAX_ZOOM;
+                this.iScaleFactor = Shooter.game.engine.player.iZoom / General.MAX_ZOOM;
             }
 
             //launch crouching

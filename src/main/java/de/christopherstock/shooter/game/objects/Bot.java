@@ -305,7 +305,7 @@
                 //check if collision appears
                 if (this.iCylinder.checkCollisionHorz( aCylinder ) )
                 {
-                    float anglePlayerToWall = LibMath.getAngleCorrect( Level.currentPlayer().getCylinder().getCenterHorz(), this.iCylinder.getCenterHorz() );
+                    float anglePlayerToWall = LibMath.getAngleCorrect( Shooter.game.engine.player.getCylinder().getCenterHorz(), this.iCylinder.getCenterHorz() );
                     anglePlayerToWall = LibMath.normalizeAngle( -anglePlayerToWall );
                     float angleDistance     = LibMath.getAngleDistanceAbsolute( faceAngle, anglePlayerToWall );
 
@@ -349,7 +349,7 @@
                                         if ( ga.iKey == ( (Gadget)artefact ).iParentKind )
                                         {
                                             ga.iEvent.perform( this );
-                                            Level.currentPlayer().iArtefactSet.extractArtefact( artefact );
+                                            Shooter.game.engine.player.iArtefactSet.extractArtefact( artefact );
                                         }
                                     }
                                 }
@@ -429,7 +429,7 @@
         protected final boolean checkCollisionsToPlayer()
         {
             //check bot-collision with player
-            if (this.checkCollision( Level.currentPlayer().getCylinder().getCircle() ) )
+            if (this.checkCollision( Shooter.game.engine.player.getCylinder().getCircle() ) )
             {
                 ShooterDebug.bot.out( "player touched" );
                 return true;
@@ -466,7 +466,7 @@
                         case ELeadPlayerToLastWaypoint:
                         {
                             //calculate bot's angle and distance to the player
-                            Point2D.Float   player           = Level.currentPlayer().getCylinder().getCenterHorz();
+                            Point2D.Float   player           = Shooter.game.engine.player.getCylinder().getCenterHorz();
 
                             //check distance from player to next waypoint and from bot to next waypoint
                             float   distancePlayerToNextWaypoint = (float)player.distance(this.iWayPoints[this.iCurrentWayPointIndex] );
@@ -562,7 +562,7 @@
                             else
                             {
                                 //check if bot sees the player now
-                                Point2D.Float   player           = Level.currentPlayer().getCylinder().getCenterHorz();
+                                Point2D.Float   player           = Shooter.game.engine.player.getCylinder().getCenterHorz();
                                 float           anglePlayerToBot = LibMath.getAngleCorrect( player, bot );
                                 float           angleBotToPlayer = LibMath.normalizeAngle( anglePlayerToBot - 180.0f ); //checked normalizing - also works wothout :)
 
@@ -583,7 +583,7 @@
                                             //fire if bot sees the player and player is alive
                                             if
                                             (
-                                                    !Level.currentPlayer().isDeadAnimationOver()
+                                                    !Shooter.game.engine.player.isDeadAnimationOver()
                                                 && this.botSeesThePlayer()
                                             )
                                             {
@@ -625,7 +625,7 @@
                             this.iState = BotState.EWatchPlayer;
 
                             //check if bot sees the player now
-                            Point2D.Float   player           = Level.currentPlayer().getCylinder().getCenterHorz();
+                            Point2D.Float   player           = Shooter.game.engine.player.getCylinder().getCenterHorz();
                             float           anglePlayerToBot = LibMath.getAngleCorrect( player, bot );
                             float           angleBotToPlayer = LibMath.normalizeAngle( anglePlayerToBot - 180.0f ); //checked normalizing - also works wothout :)
 
@@ -861,7 +861,7 @@
                             if ( !iLeaveDeadZ )
                             {
                                //turn bot to player
-                                Point2D.Float   player           = ShooterGameLevel.currentPlayer().getCylinder().getCenterHorz();
+                                Point2D.Float   player           = ShooterGameShooter.game.engine.player.getCylinder().getCenterHorz();
                                 float           angleBotToPlayer = LibMath.getAngleCorrect( getCenterHorz(), player );
 
                                 rotateBotTo( angleBotToPlayer );
@@ -878,7 +878,7 @@
                         case EWatchPlayer:
                         {
                             //calculate bot's angle and distance to the player
-                            Point2D.Float   player           = Level.currentPlayer().getCylinder().getCenterHorz();
+                            Point2D.Float   player           = Shooter.game.engine.player.getCylinder().getCenterHorz();
                             float           anglePlayerToBot = LibMath.getAngleCorrect( player, bot );
                             float           angleBotToPlayer = LibMath.normalizeAngle( anglePlayerToBot - 180.0f ); //checked normalizing - also works wothout :)
 
@@ -899,7 +899,7 @@
                         case EWalkTowardsPlayer:
                         {
                             //calculate bot's angle and distance to the player
-                            Point2D.Float   player           = Level.currentPlayer().getCylinder().getCenterHorz();
+                            Point2D.Float   player           = Shooter.game.engine.player.getCylinder().getCenterHorz();
                             float           anglePlayerToBot = LibMath.getAngleCorrect( player, bot );
                             float           angleBotToPlayer = LibMath.normalizeAngle( anglePlayerToBot - 180.0f ); //checked normalizing - also works wothout :)
 

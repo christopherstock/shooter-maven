@@ -8,7 +8,6 @@
     import  de.christopherstock.lib.io.hid.*;
     import  de.christopherstock.shooter.*;
     import  de.christopherstock.shooter.ShooterSettings.Sounds;
-    import  de.christopherstock.shooter.level.*;
 
     /*******************************************************************************************************************
     *   The sound system.
@@ -92,7 +91,7 @@
                 //adjust volume for currently played sound
                 else if ( queuedItem.isDistanced() )
                 {
-                    float distanceToPlayer = (float)Level.currentPlayer().getCylinder().getCenterHorz().distance( queuedItem.getDistantLocation() );
+                    float distanceToPlayer = (float)Shooter.game.engine.player.getCylinder().getCenterHorz().distance( queuedItem.getDistantLocation() );
                     float volume = ( distanceToPlayer <= Sounds.SPEECH_PLAYER_DISTANCE_MAX_VOLUME ? LibSoundClip.VOLUME_MAX : ( 1.0f - ( distanceToPlayer / Sounds.SPEECH_PLAYER_DISTANCE_MUTE ) ) );
 
                     queuedItem.updateDistancedSound( volume );
@@ -134,7 +133,7 @@
         public final void playDistancedFx( Point2D.Float distantLocation, int delay )
         {
             //specify volume from distance
-            float distanceToPlayer = (float)Level.currentPlayer().getCylinder().getCenterHorz().distance( distantLocation );
+            float distanceToPlayer = (float)Shooter.game.engine.player.getCylinder().getCenterHorz().distance( distantLocation );
             float volume =
             (
                     distanceToPlayer <= Sounds.SPEECH_PLAYER_DISTANCE_MAX_VOLUME

@@ -30,11 +30,6 @@
     *******************************************************************************************************************/
     public class Level implements LibFloorStack
     {
-        /***************************************************************************************************************
-        *   The global player-instance being controlled by the user.
-        ***************************************************************************************************************/
-        private     static          Player                      player                          = null;
-
         private                     Vector<ItemToPickUp>        iItems                          = null;
         private                     Vector<Bot>                 iBots                           = null;
         private                     WallCollection[]            iWallCollections                = null;
@@ -67,7 +62,7 @@
             LibFXManager.removeAllFxPoints();
 
             //create player
-            player = new Player
+            Shooter.game.engine.player = new Player
             (
                 LevelCurrent.currentLevelConfig.iStartPosition,
                 General.DISABLE_GRAVITY
@@ -95,13 +90,13 @@
             for ( ArtefactType w : LevelCurrent.currentLevelConfig.iStartupWearpons )
             {
                 Artefact toDeliver = new Artefact( w );
-                player.iArtefactSet.deliverArtefact( toDeliver );
+                Shooter.game.engine.player.iArtefactSet.deliverArtefact( toDeliver );
 
                 //reload if firearm
                 if ( w.isFireArm() )
                 {
                     //ShooterDebug.bugfix.out( "reload initial wearpon" );
-                    toDeliver.reload( player.iAmmoSet, false, false, null );
+                    toDeliver.reload( Shooter.game.engine.player.iAmmoSet, false, false, null );
                 }
             }
 
@@ -109,7 +104,7 @@
             Shooter.game.engine.hud.resetAnimation();
 
             //change to 1st artefact
-            player.orderWearponOrGadget( ChangeAction.EActionNext );
+            Shooter.game.engine.player.orderWearponOrGadget( ChangeAction.EActionNext );
         }
 
         private void initLevel()
@@ -214,7 +209,7 @@
             //launch the shot on the player ( if not shot by the player )
             if ( s.iOrigin != ShotOrigin.EPlayer )
             {
-                allHitPoints.addAll( player.launchShot( s ) );
+                allHitPoints.addAll( Shooter.game.engine.player.launchShot( s ) );
             }
 
             //get all affected hitpoints
@@ -318,12 +313,12 @@
                         case EPlayer:
                         {
                             //only once
-                            if ( !hitObjects.contains( player ) )
+                            if ( !hitObjects.contains( Shooter.game.engine.player ) )
                             {
-                                hitObjects.add( player );
+                                hitObjects.add( Shooter.game.engine.player );
 
                                 //player loses health
-                                player.hurt( LibMath.getRandom( 1, 1 ) );
+                                Shooter.game.engine.player.hurt( LibMath.getRandom( 1, 1 ) );
 
                                 //draw sliver
                                 affectedHitPoint.launchWallSliver
@@ -430,11 +425,6 @@
         public static Level currentSection()
         {
             return LevelCurrent.currentSection;
-        }
-
-        public static Player currentPlayer()
-        {
-            return player;
         }
 
         public final void drawAllBots()
@@ -575,7 +565,7 @@
             //run player
             if ( runPlayer )
             {
-                player.render();
+                Shooter.game.engine.player.render();
             }
 
             //run level

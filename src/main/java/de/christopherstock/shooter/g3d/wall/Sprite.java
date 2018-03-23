@@ -10,8 +10,8 @@
     import  de.christopherstock.lib.g3d.face.LibFace.*;
     import  de.christopherstock.lib.io.d3ds.LibD3dsFile;
     import  de.christopherstock.lib.math.LibMath;
+    import  de.christopherstock.shooter.Shooter;
     import  de.christopherstock.shooter.base.ShooterTexture.WallTex;
-    import  de.christopherstock.shooter.level.*;
 
     /*******************************************************************************************************************
     *   Represents a mesh with all faces collision enabled.
@@ -29,7 +29,7 @@
         {
             //get wall's 2d center point and player's 2d point
             Point2D.Float spriteAnk2d = this.getCenterPointXY();
-            Point2D.Float playerAnk2d = Level.currentPlayer().getCylinder().getCenterHorz();
+            Point2D.Float playerAnk2d = Shooter.game.engine.player.getCylinder().getCenterHorz();
 
             //get angles
             float anglePlayerToSprite = LibMath.getAngleCorrect( playerAnk2d, spriteAnk2d );

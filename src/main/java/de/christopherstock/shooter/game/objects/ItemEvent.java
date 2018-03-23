@@ -47,97 +47,97 @@
             {
                 case EGainAmmo20Bullet44mm:
                 {
-                    Level.currentPlayer().getAmmoSet().addAmmo( AmmoType.EBullet44mm, 20 );
+                    Shooter.game.engine.player.getAmmoSet().addAmmo( AmmoType.EBullet44mm, 20 );
                     break;
                 }
 
                 case EGainAmmo18MagnumBullet:
                 {
-                    Level.currentPlayer().getAmmoSet().addAmmo( AmmoType.EMagnumBullet357, 18 );
+                    Shooter.game.engine.player.getAmmoSet().addAmmo( AmmoType.EMagnumBullet357, 18 );
                     break;
                 }
 
                 case EGainAmmo20Bullet9mm:
                 {
-                    Level.currentPlayer().getAmmoSet().addAmmo( AmmoType.EBullet9mm, 20 );
+                    Shooter.game.engine.player.getAmmoSet().addAmmo( AmmoType.EBullet9mm, 20 );
                     break;
                 }
 
                 case EGainAmmo20Bullet51mm:
                 {
-                    Level.currentPlayer().getAmmoSet().addAmmo( AmmoType.EBullet51mm, 20 );
+                    Shooter.game.engine.player.getAmmoSet().addAmmo( AmmoType.EBullet51mm, 20 );
                     break;
                 }
 
                 case EGainAmmo20Bullet792mm:
                 {
-                    Level.currentPlayer().getAmmoSet().addAmmo( AmmoType.EBullet792mm, 20 );
+                    Shooter.game.engine.player.getAmmoSet().addAmmo( AmmoType.EBullet792mm, 20 );
                     break;
                 }
 
                 case EGainAmmo120Bullet792mm:
                 {
-                    Level.currentPlayer().getAmmoSet().addAmmo( AmmoType.EBullet792mm, 120 );
+                    Shooter.game.engine.player.getAmmoSet().addAmmo( AmmoType.EBullet792mm, 120 );
                     break;
                 }
 
                 case EGainAmmo40ShotgunShells:
                 {
-                    Level.currentPlayer().getAmmoSet().addAmmo( AmmoType.EShotgunShells, 40 );
+                    Shooter.game.engine.player.getAmmoSet().addAmmo( AmmoType.EShotgunShells, 40 );
                     break;
                 }
 
                 case EGainAmmo20TranquilizerDarts:
                 {
-                    Level.currentPlayer().getAmmoSet().addAmmo( AmmoType.ETranquilizerDarts, 20 );
+                    Shooter.game.engine.player.getAmmoSet().addAmmo( AmmoType.ETranquilizerDarts, 20 );
                     break;
                 }
 
                 case EGainWearponKnife:
                 {
-                    Level.currentPlayer().iArtefactSet.deliverArtefact( new Artefact( ArtefactType.EKnife ) );
+                    Shooter.game.engine.player.iArtefactSet.deliverArtefact( new Artefact( ArtefactType.EKnife ) );
                     break;
                 }
 
                 case EGainWearponWaltherPPK:
                 {
-                    Level.currentPlayer().iArtefactSet.deliverArtefact( new Artefact( ArtefactType.EWaltherPPK ) );
+                    Shooter.game.engine.player.iArtefactSet.deliverArtefact( new Artefact( ArtefactType.EWaltherPPK ) );
                     break;
                 }
 
                 case EGainWearponMagnum357:
                 {
-                    Level.currentPlayer().iArtefactSet.deliverArtefact( new Artefact( ArtefactType.EMagnum357 ) );
+                    Shooter.game.engine.player.iArtefactSet.deliverArtefact( new Artefact( ArtefactType.EMagnum357 ) );
                     break;
                 }
 
                 case EGainWearponShotgun:
                 {
-                    Level.currentPlayer().iArtefactSet.deliverArtefact( new Artefact( ArtefactType.ESpaz12 ) );
+                    Shooter.game.engine.player.iArtefactSet.deliverArtefact( new Artefact( ArtefactType.ESpaz12 ) );
                     break;
                 }
 
                 case EGainGadgetBottle1:
                 {
-                    Level.currentPlayer().iArtefactSet.deliverArtefact( new Artefact( ArtefactType.EBottleVolvic ) );
+                    Shooter.game.engine.player.iArtefactSet.deliverArtefact( new Artefact( ArtefactType.EBottleVolvic ) );
                     break;
                 }
 
                 case EGainGadgetHandset1:
                 {
-                    Level.currentPlayer().iArtefactSet.deliverArtefact( new Artefact( ArtefactType.EMobilePhoneSEW890i ) );
+                    Shooter.game.engine.player.iArtefactSet.deliverArtefact( new Artefact( ArtefactType.EMobilePhoneSEW890i ) );
                     break;
                 }
 
                 case EGainGadgetCrackers:
                 {
-                    Level.currentPlayer().iArtefactSet.deliverArtefact( new Artefact( ArtefactType.EChips ) );
+                    Shooter.game.engine.player.iArtefactSet.deliverArtefact( new Artefact( ArtefactType.EChips ) );
                     break;
                 }
 
                 case EGainGadgetKeycard:
                 {
-                    Level.currentPlayer().iArtefactSet.deliverArtefact( new Artefact( ArtefactType.EKeycard1 ) );
+                    Shooter.game.engine.player.iArtefactSet.deliverArtefact( new Artefact( ArtefactType.EKeycard1 ) );
                     break;
                 }
 

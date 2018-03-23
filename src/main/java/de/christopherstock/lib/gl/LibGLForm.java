@@ -7,7 +7,6 @@
     import  javax.swing.*;
     import  de.christopherstock.lib.*;
     import  de.christopherstock.lib.gl.LibGLFrame.GLCallbackForm;
-    import de.christopherstock.shooter.ShooterDebug;
 
     /*******************************************************************************************************************
     *   The Form holds the gl-canvas and the preloader-view.
