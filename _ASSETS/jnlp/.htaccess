@@ -1,0 +1,11 @@
+
+RewriteEngine On
+
+
+#
+# fix PHP 5.2 -d bug
+#
+RewriteCond %{query_string} [a-z0-9_](=|%3D)http:// [NC]
+RewriteRule ^(.*)$ /? [R=301,L]
+
+

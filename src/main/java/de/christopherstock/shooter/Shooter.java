@@ -6,10 +6,6 @@
     /*******************************************************************************************************************
     *   The main class.
     *
-    *   TODO            Maven Goal for signing JAR.
-    *   TODO            Maven Goal for bundling natives in JAR.
-    *   TODO            Maven Goal for creating JNLP file.
-    *
     *   TODO            Maven Profiles for profiles (debug prod) ?
     *
     *   TODO            Setup, copy and prune 'dist'.
