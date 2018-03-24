@@ -6,6 +6,7 @@
     import  java.nio.*;
     import  de.christopherstock.lib.*;
     import  de.christopherstock.lib.ui.*;
+    import de.christopherstock.shooter.Shooter;
 
     public class LibGLImage
     {
@@ -103,7 +104,7 @@
 
         public static LibGLImage getFromString(String stringToDisplay, Font font, Color colFg, Color colShadow, Color colOutline, LibDebug debug )
         {
-            Graphics2D      g           = LibGL3D.panel.getGraphics();
+            Graphics2D      g           = Shooter.game.engine.gl.panel.getGraphics();
 
             int             imgWidth    = LibStrings.getStringWidth(  g, stringToDisplay, font );
             int             imgHeight   = LibStrings.getStringHeight( g, font );

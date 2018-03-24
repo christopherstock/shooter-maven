@@ -3,7 +3,6 @@
 
     import  org.lwjgl.input.*;
     import  org.lwjgl.opengl.*;
-    import  de.christopherstock.lib.gl.*;
     import  de.christopherstock.shooter.*;
     import  de.christopherstock.shooter.g3d.BulletHole;
     import  de.christopherstock.shooter.io.hid.*;
@@ -52,7 +51,7 @@
 */
             if ( Keyboard.isKeyDown( Keyboard.KEY_M ) )
             {
-                LibGL3D.destroy();
+                Shooter.game.engine.gl.destroy();
             }
 
             //check if the ALT keys are pressed
@@ -73,23 +72,10 @@
                     ShooterDebug.error.trace( t );
                 }
             }
-
-            try
-            {
 /*
-                if ( Keyboard.isKeyDown( Keyboard.KEY_1 ) ) ShooterGameLevel.orderLevelChange( ShooterLevelSectionConfig.values()[ 0 ], true );
-                if ( Keyboard.isKeyDown( Keyboard.KEY_2 ) ) ShooterGameLevel.orderLevelChange( ShooterLevelSectionConfig.values()[ 1 ], true );
-                if ( Keyboard.isKeyDown( Keyboard.KEY_3 ) ) ShooterGameLevel.orderLevelChange( ShooterLevelSectionConfig.values()[ 2 ], true );
-                if ( Keyboard.isKeyDown( Keyboard.KEY_4 ) ) ShooterGameLevel.orderLevelChange( ShooterLevelSectionConfig.values()[ 3 ], true );
-                if ( Keyboard.isKeyDown( Keyboard.KEY_5 ) ) ShooterGameLevel.orderLevelChange( ShooterLevelSectionConfig.values()[ 4 ], true );
-*/
-            }
-            catch ( ArrayIndexOutOfBoundsException aioobe ) { /* */ }
-/*
-            if ( Keyboard.isKeyDown( Keyboard.KEY_ADD ) )
-            {
-                HUDMessageManager.getSingleton().showMessage( ShooterStrings.HUDMessages.PICKED_UP_SHOTGUN_SHELLS );
-            }
+            if ( Keyboard.isKeyDown( Keyboard.KEY_1 ) ) ShooterGameLevel.orderLevelChange( ShooterLevelSectionConfig.values()[ 0 ], true );
+            if ( Keyboard.isKeyDown( Keyboard.KEY_2 ) ) ShooterGameLevel.orderLevelChange( ShooterLevelSectionConfig.values()[ 1 ], true );
+            if ( Keyboard.isKeyDown( Keyboard.KEY_3 ) ) ShooterGameLevel.orderLevelChange( ShooterLevelSectionConfig.values()[ 2 ], true );
 */
         }
     }

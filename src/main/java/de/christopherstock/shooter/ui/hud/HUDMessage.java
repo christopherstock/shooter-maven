@@ -107,8 +107,8 @@
                 }
 
                 //draw text
-                int x = LibGL3D.panel.width  - OffsetsOrtho.EBorderHudX - this.iTextImg.width;
-                LibGL3D.view.drawOrthoBitmapBytes(this.iTextImg, x, drawY, alphaFg );
+                int x = Shooter.game.engine.gl.panel.width  - OffsetsOrtho.EBorderHudX - this.iTextImg.width;
+                Shooter.game.engine.gl.view.drawOrthoBitmapBytes(this.iTextImg, x, drawY, alphaFg );
             }
         }
 

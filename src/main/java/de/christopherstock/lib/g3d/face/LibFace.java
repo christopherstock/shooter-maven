@@ -9,6 +9,7 @@
     import  de.christopherstock.lib.gl.LibGLView.LibGLFace;
     import  de.christopherstock.lib.math.*;
     import  de.christopherstock.lib.ui.*;
+    import de.christopherstock.shooter.Shooter;
 
     /*******************************************************************************************************************
     *   Represents a face with an anchor and a various number of vertices that define the polygon.
@@ -333,7 +334,7 @@
             //only draw if desired
             if ( draw )
             {
-                LibGL3D.view.enqueueFaceToQueue( this );
+                Shooter.game.engine.gl.view.enqueueFaceToQueue( this );
             }
         }
 

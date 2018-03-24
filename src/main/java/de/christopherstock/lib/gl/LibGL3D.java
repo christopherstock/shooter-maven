@@ -10,16 +10,11 @@
 
     public class LibGL3D
     {
-        public      static          LibGLView           view                            = null;
-        public      static LibGLPanel panel                           = null;
-        public      static          LibGLForm           form                            = null;
+        public                      LibGLView           view                            = null;
+        public                      LibGLPanel          panel                           = null;
+        public                      LibGLForm           form                            = null;
 
-        /***************************************************************************************************************
-        *   A flag being set to true if the init() method of the glView-preloader has been performed.
-        ***************************************************************************************************************/
-        public      static          boolean         glPanelInitialized              = false;
-
-        public static void init
+        public void init
         (
             int                 formWidth,
             int                 formHeight,
@@ -33,26 +28,26 @@
             //init gl ui components
 
             //init panel
-            panel = new LibGLPanel
+            this.panel = new LibGLPanel
             (
                 drawCallback
             );
 
             //show lwjgl form
-            form = new LibGLForm
+            this.form = new LibGLForm
             (
                 callbackForm,
                 formTitle,
-                panel.getNativePanel(),
+                this.panel.getNativePanel(),
                 formWidth,
                 formHeight,
                 iconImage
             );
 
             //init lwjgl view
-            view = new LibLWJGLView
+            this.view = new LibLWJGLView
             (
-                panel,
+                this.panel,
                 debug,
                 formWidth,
                 formHeight,
@@ -60,7 +55,7 @@
             );
         }
 
-        public static void destroy()
+        public void destroy()
         {
             //destroy the display
             Display.destroy();

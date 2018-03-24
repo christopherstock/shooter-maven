@@ -13,45 +13,45 @@
     *******************************************************************************************************************/
     public class LibGLForm implements WindowListener, FocusListener
     {
-        public                      GLCallbackForm  iForm                       = null;
-        public                      JFrame          iNativeForm                 = null;
-        private                     BufferedImage   iIconImage                  = null;
+        private                     GLCallbackForm          form                = null;
+        private                     LibGLFrame              nativeFrame         = null;
+        private                     BufferedImage           iconImage           = null;
 
         public LibGLForm( GLCallbackForm aForm, String aTitle, Component contentPane, int width, int height, BufferedImage aIconImage )
         {
-            this.iForm = aForm;
-            this.iIconImage = aIconImage;
+            this.form = aForm;
+            this.iconImage = aIconImage;
 
             //instanciate JFrame
-            this.iNativeForm = new LibGLFrame();
+            this.nativeFrame = new LibGLFrame();
 
             //get screen environment
             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
-            this.iNativeForm.setIconImage(this.iIconImage);
-            this.iNativeForm.setTitle(                    aTitle                          );
-            this.iNativeForm.setDefaultCloseOperation(    WindowConstants.EXIT_ON_CLOSE            );
+            this.nativeFrame.setIconImage(this.iconImage);
+            this.nativeFrame.setTitle(                    aTitle                          );
+            this.nativeFrame.setDefaultCloseOperation(    WindowConstants.EXIT_ON_CLOSE            );
 
-            this.iNativeForm.setLocation( ( screenSize.width - width ) / 2, ( screenSize.height - height ) / 2 );
-            this.iNativeForm.setSize( width, height );
+            this.nativeFrame.setLocation( ( screenSize.width - width ) / 2, ( screenSize.height - height ) / 2 );
+            this.nativeFrame.setSize( width, height );
 
-            this.iNativeForm.setResizable(                false                           );
-            this.iNativeForm.setUndecorated(              true                            );
+            this.nativeFrame.setResizable(                false                           );
+            this.nativeFrame.setUndecorated(              true                            );
 
             //add listener
-            this.iNativeForm.addWindowListener(           this                            );
-            this.iNativeForm.addFocusListener(            this                            );
+            this.nativeFrame.addWindowListener(           this                            );
+            this.nativeFrame.addFocusListener(            this                            );
 
             //set canvas as content pane
-            this.iNativeForm.getContentPane().add(        contentPane                     );
+            this.nativeFrame.getContentPane().add(        contentPane                     );
 
             //show form
-            this.iNativeForm.setVisible(                  true                            );
+            this.nativeFrame.setVisible(                  true                            );
 
             //stick in foreground ( may raise a SucurityException )
             try
             {
-                this.iNativeForm.setAlwaysOnTop(          true                            );
+                this.nativeFrame.setAlwaysOnTop(          true                            );
             }
             catch ( SecurityException se )
             {
@@ -62,7 +62,7 @@
         public void windowClosing( WindowEvent arg0 )
         {
             //( (LibGLFrame)nativeForm ).iBgImage = null;
-            this.iForm.onFormDestroyed();
+            this.form.onFormDestroyed();
         }
 
         public void windowOpened(       WindowEvent arg0 )

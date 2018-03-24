@@ -16,7 +16,7 @@
             void draw3D();
         }
 
-        private LibGLCanvas canvas                  = null;
+        private                     LibGLCanvas             canvas                  = null;
         private                     GLDrawCallback          drawCallback            = null;
 
         public                      int                     width                   = 0;

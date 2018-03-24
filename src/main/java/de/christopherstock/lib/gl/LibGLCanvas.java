@@ -18,9 +18,6 @@
         @Override
         public void paint( Graphics g )
         {
-            //calling super-paint here is required
-            super.paint( g );
-
             //cast to 2d
             Graphics2D g2d = (Graphics2D)g;
 
@@ -28,5 +25,8 @@
             g2d.setClip( 0, 0, Integer.MAX_VALUE, Integer.MAX_VALUE );
             g2d.setColor( LibColors.EWhite.colARGB );
             g2d.fillRect( 0, 0, this.getWidth(), this.getHeight() );
+
+            //calling super-paint here is required
+            super.paint( g );
         }
     }

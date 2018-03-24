@@ -42,7 +42,7 @@
             if ( Level.currentSection() != null )
             {
                 //reset gl
-                LibGL3D.view.clearGl( Level.currentSection().getBackgroundColor() );
+                Shooter.game.engine.gl.view.clearGl( Level.currentSection().getBackgroundColor() );
 
                 //get camera from player's position and orientation
                 LibViewSet cam = Shooter.game.engine.player.getCameraPositionAndRotation();
@@ -51,7 +51,7 @@
                 Level.currentSection().drawBg( cam );
 
                 //set player's camera
-                LibGL3D.view.setCamera( cam );
+                Shooter.game.engine.gl.view.setCamera( cam );
 
                 //this would be the right time to enable lights
                 //draw all game components
@@ -68,7 +68,7 @@
                 Shooter.game.engine.player.drawStandingCircle();          //draw circle on players bottom location
 
                 //flush face queue to force an immediate redraw
-                LibGL3D.view.flushFaceQueue( Shooter.game.engine.player.getAnchor() );
+                Shooter.game.engine.gl.view.flushFaceQueue( Shooter.game.engine.player.getAnchor() );
             }
         }
 

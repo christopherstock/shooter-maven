@@ -51,7 +51,7 @@
         public HUD()
         {
             //parse ortho offsets
-            OffsetsOrtho.parseOffsets( LibGL3D.panel.width, LibGL3D.panel.height );
+            OffsetsOrtho.parseOffsets( Shooter.game.engine.gl.panel.width, Shooter.game.engine.gl.panel.height );
 
             //load all images
             ArtefactType.loadImages();
@@ -146,13 +146,13 @@
                 }
 
                 //draw shell image
-                LibGL3D.view.drawOrthoBitmapBytes( ( (FireArm)currentWearpon.iArtefactType.iArtefactKind ).getAmmoTypeImage(), LibGL3D.panel.width - OffsetsOrtho.EBorderHudX - 50, OffsetsOrtho.EBorderHudY );
+                Shooter.game.engine.gl.view.drawOrthoBitmapBytes( ( (FireArm)currentWearpon.iArtefactType.iArtefactKind ).getAmmoTypeImage(), Shooter.game.engine.gl.panel.width - OffsetsOrtho.EBorderHudX - 50, OffsetsOrtho.EBorderHudY );
 
                 //draw magazine ammo
-                LibGL3D.view.drawOrthoBitmapBytes(this.iAmmoImageMagazineAmmo, LibGL3D.panel.width - OffsetsOrtho.EBorderHudX - 50 - ( (FireArm)currentWearpon.iArtefactType.iArtefactKind ).getAmmoTypeImage().width - this.iAmmoImageMagazineAmmo.width, OffsetsOrtho.EBorderHudY );
+                Shooter.game.engine.gl.view.drawOrthoBitmapBytes(this.iAmmoImageMagazineAmmo, Shooter.game.engine.gl.panel.width - OffsetsOrtho.EBorderHudX - 50 - ( (FireArm)currentWearpon.iArtefactType.iArtefactKind ).getAmmoTypeImage().width - this.iAmmoImageMagazineAmmo.width, OffsetsOrtho.EBorderHudY );
 
                 //draw total ammo
-                LibGL3D.view.drawOrthoBitmapBytes(this.iAmmoImageTotalAmmo, LibGL3D.panel.width - OffsetsOrtho.EBorderHudX - this.iAmmoImageTotalAmmo.width, OffsetsOrtho.EBorderHudY );
+                Shooter.game.engine.gl.view.drawOrthoBitmapBytes(this.iAmmoImageTotalAmmo, Shooter.game.engine.gl.panel.width - OffsetsOrtho.EBorderHudX - this.iAmmoImageTotalAmmo.width, OffsetsOrtho.EBorderHudY );
             }
         }
 
@@ -192,15 +192,15 @@
             //if ( iHealthShowTimer <  )
 
             //draw health image
-            LibGL3D.view.drawOrthoBitmapBytes(this.iHealthImage, OffsetsOrtho.EBorderHudX, OffsetsOrtho.EBorderHudY, alpha );
+            Shooter.game.engine.gl.view.drawOrthoBitmapBytes(this.iHealthImage, OffsetsOrtho.EBorderHudX, OffsetsOrtho.EBorderHudY, alpha );
         }
 
         public final void drawCrosshair()
         {
             //draw crosshair
-            int   modY = 0; //(int)( ( ShooterGameShooter.game.engine.player.getView().rot.x / PlayerAttributes.MAX_LOOKING_X ) * ( LibGL3D.panel.height / 5 ) );
+            int   modY = 0; //(int)( ( ShooterGameShooter.game.engine.player.getView().rot.x / PlayerAttributes.MAX_LOOKING_X ) * ( Shooter.game.engine.gl.panel.height / 5 ) );
             CrossHair crosshair = Shooter.game.engine.player.iArtefactSet.getArtefactType().getCrossHair();
-            LibGL3D.view.drawOrthoBitmapBytes( crosshair.getImage(), LibGL3D.panel.width / 2 - crosshair.getImage().width / 2, LibGL3D.panel.height / 2 - crosshair.getImage().height / 2 + modY );
+            Shooter.game.engine.gl.view.drawOrthoBitmapBytes( crosshair.getImage(), Shooter.game.engine.gl.panel.width / 2 - crosshair.getImage().width / 2, Shooter.game.engine.gl.panel.height / 2 - crosshair.getImage().height / 2 + modY );
         }
 
         public final void onRun()

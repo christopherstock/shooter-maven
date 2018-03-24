@@ -146,10 +146,10 @@
                     int         randomIndex = LibMath.getRandom( 0, this.iArtefactType.iFXImages.length - 1 );
                     LibGLImage  fxImage     = this.iArtefactType.iFXImages[ randomIndex ];
 
-                    LibGL3D.view.drawOrthoBitmapBytes
+                    Shooter.game.engine.gl.view.drawOrthoBitmapBytes
                     (
                         fxImage,
-                        randomX + modX + modGiveTake[ 0 ] + LibGL3D.panel.width - this.iArtefactType.iFXOffset.x,
+                        randomX + modX + modGiveTake[ 0 ] + Shooter.game.engine.gl.panel.width - this.iArtefactType.iFXOffset.x,
                         randomY + modY + modGiveTake[ 1 ] + this.iArtefactType.iFXOffset.y,
                         1.0f,
                         1.0f + p.iScaleFactor * 1.5f,
@@ -164,10 +164,10 @@
             //draw artefact
             if ( !Shooter.game.engine.hud.iHideWearpon )
             {
-                LibGL3D.view.drawOrthoBitmapBytes
+                Shooter.game.engine.gl.view.drawOrthoBitmapBytes
                 (
                         this.iArtefactType.getArtefactImage(),
-                    modX + modGiveTake[ 0 ] + LibGL3D.panel.width - this.iArtefactType.getArtefactImage().width,
+                    modX + modGiveTake[ 0 ] + Shooter.game.engine.gl.panel.width - this.iArtefactType.getArtefactImage().width,
                     modY + modGiveTake[ 1 ] - this.iArtefactType.getArtefactImage().height / 8,
                     1.0f,
                     1.0f + p.iScaleFactor * 1.5f,

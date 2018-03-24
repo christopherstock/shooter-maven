@@ -3,7 +3,7 @@
 
     import  java.awt.*;
     import  java.nio.*;
-
+    import  de.christopherstock.shooter.Shooter;
     import  org.lwjgl.*;
     import  org.lwjgl.opengl.*;
     import  org.lwjgl.opengl.DisplayMode;
@@ -70,6 +70,7 @@
                 this.iDebug.out( "setting native Canvas Ok" );
 
                 //create the display
+                Display.setInitialBackground( 1.0f, 1.0f, 1.0f );
                 Display.create();
                 this.iDebug.out( "Display creation Ok" );
 
@@ -88,7 +89,7 @@
             panel.width  = Display.getParent().getWidth();
             panel.height = Display.getParent().getHeight();
 
-            this.iDebug.out( "assigned panel dimensions [" + LibGL3D.panel.width + "]x[" + LibGL3D.panel.height + "]" );
+            this.iDebug.out( "assigned panel dimensions [" + Shooter.game.engine.gl.panel.width + "]x[" + Shooter.game.engine.gl.panel.height + "]" );
 
             //run through some based OpenGL capability settings
 
@@ -125,10 +126,7 @@
 //            GLU.gluPerspective( VIEW_ANGLE, ( (float)LibGL3D.panel.width / (float)LibGL3D.panel.height ), VIEW_MIN, VIEW_MAX );
 
             //init all textures HANGS ??
-            LibGL3D.panel.getNativePanel().requestFocus();
-
-            //gl fully inited
-            LibGL3D.glPanelInitialized = true;
+            Shooter.game.engine.gl.panel.getNativePanel().requestFocus();
         }
 
         @Override
@@ -459,7 +457,7 @@
             GL11.glMatrixMode( GL11.GL_PROJECTION );
             GL11.glPushMatrix();                                                        // preserve perspective view
             GL11.glLoadIdentity();                                                      // clear the perspective matrix
-            GL11.glOrtho( 0, LibGL3D.panel.width, 0, LibGL3D.panel.height, -1, 1 );     // turn on 2D
+            GL11.glOrtho( 0, Shooter.game.engine.gl.panel.width, 0, Shooter.game.engine.gl.panel.height, -1, 1 );     // turn on 2D
             GL11.glMatrixMode( GL11.GL_MODELVIEW );
             GL11.glPushMatrix();                                                        // Preserve the Modelview Matrix
             GL11.glLoadIdentity();                                                      // clear the Modelview Matrix

@@ -7,6 +7,7 @@
 
     import  de.christopherstock.lib.*;
     import  de.christopherstock.lib.gl.*;
+    import de.christopherstock.shooter.Shooter;
 
     /*******************************************************************************************************************
     *   The Frames Per Second display.
@@ -64,7 +65,7 @@
         {
             if (this.iCurrentFps != null )
             {
-                LibGL3D.view.drawOrthoBitmapBytes(this.iCurrentFps, LibGL3D.panel.width - offX - this.iCurrentFps.width, LibGL3D.panel.height - offY - this.iCurrentFps.height );
+                Shooter.game.engine.gl.view.drawOrthoBitmapBytes(this.iCurrentFps, Shooter.game.engine.gl.panel.width - offX - this.iCurrentFps.width, Shooter.game.engine.gl.panel.height - offY - this.iCurrentFps.height );
             }
         }
     }

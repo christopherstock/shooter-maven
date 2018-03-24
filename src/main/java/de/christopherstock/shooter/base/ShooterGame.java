@@ -22,6 +22,9 @@
         /** The game engine. */
         public                      ShooterEngine           engine                      = null;
 
+        /***************************************************************************************************************
+        *   Creates a new game..
+        ***************************************************************************************************************/
         public ShooterGame()
         {
             this.engine = new ShooterEngine();
@@ -56,7 +59,7 @@
                 this.engine.fps.update();
 
                 //draw gl panel
-                LibGL3D.panel.display();
+                Shooter.game.engine.gl.panel.display();
 
                 //delay for specified delay time
                 try
@@ -104,7 +107,7 @@
         public final void draw3D()
         {
             //clear face queue from last tick
-            LibGL3D.view.clearFaceQueue();
+            Shooter.game.engine.gl.view.clearFaceQueue();
 
             //draw 3d according to main state
             switch ( this.engine.mainState )

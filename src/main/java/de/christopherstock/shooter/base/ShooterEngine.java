@@ -39,10 +39,11 @@
         /** Main state to change to. */
         public                      MainState               mainStateToChangeTo         = null;
 
-        /***************************************************************************************************************
-        *   The global player-instance being controlled by the user.
-        ***************************************************************************************************************/
+        /** The global player-instance being controlled by the user. */
         public                      Player                  player                      = null;
+
+        /** The gl system. */
+        public                      LibGL3D                 gl                          = null;
 
         /***************************************************************************************************************
         *   Inits the ui.
@@ -93,7 +94,8 @@
                 ShooterSettings.Form.FORM_HEIGHT = screenSize.height;
             }
 
-            LibGL3D.init
+            this.gl = new LibGL3D();
+            this.gl.init
             (
                 ShooterSettings.Form.FORM_WIDTH,
                 ShooterSettings.Form.FORM_HEIGHT,
@@ -126,7 +128,7 @@
 
             //assign textures and perform repaint
             this.preloader.increase( "Assigning textures" );
-            LibGL3D.view.initTextures( ShooterTexture.getAllTextureImages() );
+            Shooter.game.engine.gl.view.initTextures( ShooterTexture.getAllTextureImages() );
 
             ShooterDebug.init.out( "initUi 7" );
 

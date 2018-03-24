@@ -41,7 +41,7 @@
 
             public void draw( int x, int y, MainMenuItem selectedItem )
             {
-                LibGL3D.view.drawOrthoBitmapBytes( ( this == selectedItem ? this.selected : this.unselected), x, y, 1.0f );
+                Shooter.game.engine.gl.view.drawOrthoBitmapBytes( ( this == selectedItem ? this.selected : this.unselected), x, y, 1.0f );
             }
         }
 
@@ -55,7 +55,7 @@
 
         private MainStateMainMenu()
         {
-            this.blackPane = LibGLImage.getFullOpaque( LibColors.EBlackTranslucent.colABGR, LibGL3D.panel.width, LibGL3D.panel.height, ShooterDebug.glImage );
+            this.blackPane = LibGLImage.getFullOpaque( LibColors.EBlackTranslucent.colABGR, Shooter.game.engine.gl.panel.width, Shooter.game.engine.gl.panel.height, ShooterDebug.glImage );
 
         }
 
@@ -71,12 +71,12 @@
             Shooter.game.engine.hud.draw2D();
 
             //draw black pane
-            LibGL3D.view.drawOrthoBitmapBytes( this.blackPane, 0,   0,   0.1f );
+            Shooter.game.engine.gl.view.drawOrthoBitmapBytes( this.blackPane, 0,   0,   0.1f );
 
             //draw main menu
             for ( MainMenuItem m : MainMenuItem.values() )
             {
-                m.draw( ( LibGL3D.panel.width - m.unselected.width ) / 2, 600 - m.ordinal() * 85, currentMainMenuItem );
+                m.draw( ( Shooter.game.engine.gl.panel.width - m.unselected.width ) / 2, 600 - m.ordinal() * 85, currentMainMenuItem );
             }
         }
 
@@ -195,7 +195,7 @@
 */
                     case EQuitGame:
                     {
-                        LibGL3D.destroy();
+                        Shooter.game.engine.gl.destroy();
                         break;
                     }
                 }

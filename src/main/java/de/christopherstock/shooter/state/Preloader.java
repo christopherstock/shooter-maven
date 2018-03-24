@@ -26,10 +26,10 @@
             try
             {
                 //create preloader image if not done yet
-                LibGL3D.view.drawOrthoBitmapBytes( this.bgImage, ( LibGL3D.panel.width - this.bgImage.width ) / 2, 150 );
+                Shooter.game.engine.gl.view.drawOrthoBitmapBytes( this.bgImage, ( Shooter.game.engine.gl.panel.width - this.bgImage.width ) / 2, 150 );
 
                 LibGLImage text = LibGLImage.getFromString(this.preloaderMsg + " [ " + this.preloaderTest + " / 100 ]", Fonts.EAmmo, LibColors.EBlack.colABGR, null, LibColors.EGrey.colABGR, ShooterDebug.glImage );
-                LibGL3D.view.drawOrthoBitmapBytes( text, LibGL3D.panel.width / 2, LibGL3D.panel.height / 4 + text.height / 2 );
+                Shooter.game.engine.gl.view.drawOrthoBitmapBytes( text, Shooter.game.engine.gl.panel.width / 2, Shooter.game.engine.gl.panel.height / 4 + text.height / 2 );
             }
             catch ( Exception e )
             {
@@ -39,7 +39,7 @@
 
         public final void draw3D()
         {
-            LibGL3D.view.clearGl( LibColors.EWhite );
+            Shooter.game.engine.gl.view.clearGl( LibColors.EWhite );
         }
 
         public final void increase( String msg )
@@ -49,6 +49,6 @@
             this.preloaderMsg = msg;
             this.preloaderTest += 20;
 
-            LibGL3D.panel.display();
+            Shooter.game.engine.gl.panel.display();
         }
     }

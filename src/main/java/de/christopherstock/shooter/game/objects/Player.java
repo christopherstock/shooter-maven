@@ -585,7 +585,7 @@
                 }
 
                 //set glu perspective zoom
-                LibGL3D.view.setNewGluFaceAngle( LibGLView.VIEW_ANGLE - this.iZoom);
+                Shooter.game.engine.gl.view.setNewGluFaceAngle( LibGLView.VIEW_ANGLE - this.iZoom);
 
                 //enter matrix mode modelview
                 GL11.glMatrixMode( GL11.GL_MODELVIEW );
