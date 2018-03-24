@@ -6,7 +6,6 @@
     import  de.christopherstock.lib.*;
     import  de.christopherstock.lib.gl.LibGLFrame.GLCallbackForm;
     import de.christopherstock.lib.gl.LibGLPanel.*;
-    import  de.christopherstock.lib.gl.lwjgl.*;
 
     public class LibGL3D
     {
@@ -45,7 +44,7 @@
             );
 
             //init lwjgl view
-            this.view = new LibLWJGLView
+            this.view = new LibGLView
             (
                 this.panel,
                 debug,
