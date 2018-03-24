@@ -6,7 +6,7 @@
     import  de.christopherstock.lib.fx.LibFX.*;
     import  de.christopherstock.lib.g3d.*;
     import  de.christopherstock.lib.g3d.face.*;
-    import  de.christopherstock.lib.gl.LibGLView.Align3D;
+    import de.christopherstock.lib.gl.LibAlign3D;
     import  de.christopherstock.lib.math.*;
     import  de.christopherstock.lib.ui.*;
 
@@ -26,8 +26,8 @@
         public                      LibDebug            iDebug                          = null;
         public                      float               iBaseZ                          = 0.0f;
         public                      FXType              iType                           = null;
-        public                      Align3D             iAlign3D                        = null;
-        private                     Align3D             iRotationAlign                  = null;
+        public LibAlign3D iAlign3D                        = null;
+        private LibAlign3D iRotationAlign                  = null;
         private                     float               iStartAngle                     = 0.0f;
         private                     float               iSpeedZ                         = 0.0f;
         private                     float               iSpeedModified                  = 0.0f;
@@ -50,8 +50,8 @@
             this.iLifetime = aLifetime;
             this.iDelayTicksBefore = aDelayTicks;
             this.iGravity = aGravity;
-            this.iAlign3D = Align3D.values()[ LibMath.getRandom( 0, Align3D.values().length - 1 )  ];
-            this.iRotationAlign = Align3D.values()[ LibMath.getRandom( 0, Align3D.values().length - 1 )  ];
+            this.iAlign3D = LibAlign3D.values()[ LibMath.getRandom( 0, LibAlign3D.values().length - 1 )  ];
+            this.iRotationAlign = LibAlign3D.values()[ LibMath.getRandom( 0, LibAlign3D.values().length - 1 )  ];
             this.iFadeOutTicks = aFadeOutTicks;
 
             //assign Sprite
@@ -248,7 +248,7 @@
             }
         }
 
-        public final void draw( Align3D align3D )
+        public final void draw( LibAlign3D align3D )
         {
             //if ( s == null ) s = new Sprite( Others.ESprite1, 0.0f, 0.0f, 0.0f, LibScalation.ELowerHalf, WallCollidable.ENo, WallTex.ESliver1 );
             //if ( s == null ) s = new Sprite( Others.ESprite1, iPoint.x, iPoint.y, iPoint.z, LibScalation.ELowerHalf, WallCollidable.ENo, WallTex.ESliver1 );

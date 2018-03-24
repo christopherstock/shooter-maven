@@ -5,7 +5,7 @@
     import  de.christopherstock.lib.*;
     import  de.christopherstock.lib.fx.LibFX.*;
     import  de.christopherstock.lib.g3d.*;
-    import  de.christopherstock.lib.gl.LibGLView.Align3D;
+    import de.christopherstock.lib.gl.LibAlign3D;
     import  de.christopherstock.lib.ui.*;
 
     /*******************************************************************************************************************
@@ -78,9 +78,9 @@
                 {
                     if ( fxPoint.iType == LibFX.FXType.EStaticDebugPoint )
                     {
-                        fxPoint.draw( Align3D.AXIS_X );
-                        fxPoint.draw( Align3D.AXIS_Y );
-                        fxPoint.draw( Align3D.AXIS_Z );
+                        fxPoint.draw( LibAlign3D.AXIS_X );
+                        fxPoint.draw( LibAlign3D.AXIS_Y );
+                        fxPoint.draw( LibAlign3D.AXIS_Z );
                     }
                     else
                     {

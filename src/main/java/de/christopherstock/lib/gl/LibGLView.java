@@ -14,30 +14,10 @@
     *******************************************************************************************************************/
     public abstract class LibGLView
     {
-        public interface LibGLFace
-        {
-            LibVertex    getAnchor();
-            float        getAlpha();
-            float        getDarkenOpacity();
-            LibColors    getColor();
-            float[]      getColor3f();
-            LibVertex    getFaceNormal();
-            LibGLTexture getTexture();
-            LibVertex[]  getVerticesToDraw();
-        }
-
-        public enum Align3D
-        {
-            AXIS_X,
-            AXIS_Y,
-            AXIS_Z,
-            ;
-        }
-
-        protected   static  final   float               DEPTH_BUFFER_SIZE           = 1.0f;
         public      static  final   float               VIEW_ANGLE                  = 60.0f;
-        public      static  final   float               VIEW_MIN                    = 0.1f;
-        public      static  final   float               VIEW_MAX                    = 100.0f;
+        protected   static  final   float               DEPTH_BUFFER_SIZE           = 1.0f;
+        protected   static  final   float               VIEW_MIN                    = 0.1f;
+        protected   static  final   float               VIEW_MAX                    = 100.0f;
 
         protected                   float               iAspectRatio                = 0;
         protected                   LibDebug            iDebug                      = null;
@@ -108,7 +88,7 @@
             }
         }
 
-        public static Vector<LibGLFace> sortFacesAccordingToDistance(Vector<LibGLFace> faces, LibVertex cameraViewPoint )
+        private static Vector<LibGLFace> sortFacesAccordingToDistance(Vector<LibGLFace> faces, LibVertex cameraViewPoint )
         {
             //debug.out( "sort face queue - [" + faces.size() + "] faces" );
 
@@ -122,7 +102,7 @@
                 if ( face.getFaceNormal() != null ) distance = new Float( LibMathGeometry.getDistanceXY( face.getFaceNormal(), cameraViewPoint ) );
 */
                 {
-                    distance = new Float( LibMathGeometry.getDistanceXY( face.getAnchor(), cameraViewPoint ) );
+                    distance = LibMathGeometry.getDistanceXY( face.getAnchor(), cameraViewPoint );
                 }
 
                 if ( distances.get( distance ) == null )

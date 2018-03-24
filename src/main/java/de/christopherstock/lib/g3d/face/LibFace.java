@@ -6,7 +6,7 @@
     import  de.christopherstock.lib.*;
     import  de.christopherstock.lib.g3d.*;
     import  de.christopherstock.lib.gl.*;
-    import  de.christopherstock.lib.gl.LibGLView.LibGLFace;
+    import de.christopherstock.lib.gl.LibGLFace;
     import  de.christopherstock.lib.math.*;
     import  de.christopherstock.lib.ui.*;
     import de.christopherstock.shooter.Shooter;
