@@ -7,48 +7,59 @@
     import  de.christopherstock.shooter.ShooterSettings.Fonts;
 
     /*******************************************************************************************************************
-    *   The application's main thread. Start this thread to run the application.
+    *   Represents the preloader shown in the 1st state of the game.
     *******************************************************************************************************************/
     public class Preloader
     {
+        /** The background image. */
         private                     LibGLImage              bgImage                     = null;
 
-        private                     int                     preloaderTest               = 0;
-        private                     String                  preloaderMsg                = null;
+        /** The current percentage of loaded contents. */
+        private                     int                     percentageLoaded            = 0;
 
+        /***************************************************************************************************************
+        *   Creates a new preloader.
+        *
+        *   @param bgImage The image to show in the background of the preloader screen.
+        ***************************************************************************************************************/
         public Preloader( LibGLImage bgImage )
         {
-            this.bgImage        = bgImage;
+            this.bgImage = bgImage;
         }
 
-        public final void draw2D()
+        /***************************************************************************************************************
+        *   Being invoked when the preloader should be drawn.
+        ***************************************************************************************************************/
+        public final void draw()
         {
-            try
-            {
-                //create preloader image if not done yet
-                Shooter.game.engine.gl.view.drawOrthoBitmapBytes( this.bgImage, ( Shooter.game.engine.gl.panel.width - this.bgImage.width ) / 2, 150 );
-
-                LibGLImage text = LibGLImage.getFromString(this.preloaderMsg + " [ " + this.preloaderTest + " / 100 ]", Fonts.EAmmo, LibColors.EBlack.colABGR, null, LibColors.EGrey.colABGR, ShooterDebug.glImage );
-                Shooter.game.engine.gl.view.drawOrthoBitmapBytes( text, Shooter.game.engine.gl.panel.width / 2, Shooter.game.engine.gl.panel.height / 4 + text.height / 2 );
-            }
-            catch ( Exception e )
-            {
-                ShooterDebug.error.trace( e );
-            }
-        }
-
-        public final void draw3D()
-        {
+            // clear screen
             Shooter.game.engine.gl.view.clearGl( LibColors.EWhite );
+
+            // draw bg image
+            Shooter.game.engine.gl.view.drawOrthoBitmapBytes( this.bgImage, ( Shooter.game.engine.gl.panel.width - this.bgImage.width ) / 2, Shooter.game.engine.gl.panel.height - this.bgImage.height - 100 );
+
+            // draw progress
+            LibGLImage text = LibGLImage.getFromString( this.percentageLoaded + " %", Fonts.EPreloader, LibColors.EOrangeMF.colABGR, null, null, ShooterDebug.glImage );
+            Shooter.game.engine.gl.view.drawOrthoBitmapBytes
+            (
+                text,
+                ( Shooter.game.engine.gl.panel.width  - text.width  ) / 2,
+                ( Shooter.game.engine.gl.panel.height - text.height ) / 2
+            );
         }
 
-        public final void increase( String msg )
+        /***************************************************************************************************************
+        *   Being invoked when the preloader should increase.
+        *
+        *   @param percentage The new percentage value to increase to.
+        ***************************************************************************************************************/
+        public final void increase( int percentage )
         {
-            ShooterDebug.init.out( "preloader increase [" + msg + "]" );
+            ShooterDebug.init.out( "preloader increase to [" + percentage + "]" );
 
-            this.preloaderMsg = msg;
-            this.preloaderTest += 20;
+            this.percentageLoaded = percentage;
 
+            // repaint
             Shooter.game.engine.gl.panel.display();
         }
     }

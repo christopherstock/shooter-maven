@@ -112,34 +112,25 @@
         ***************************************************************************************************************/
         protected void initRest()
         {
-            ShooterDebug.init.out( "init REST ???" );
-
-            //center mouse and make it invisible
+            this.preloader.increase( 10 );
             LWJGLMouse.init();
 
-            //init fonts
+            this.preloader.increase( 20 );
             this.initFonts();
 
-            //load texture images and perform repaint
-            this.preloader.increase( "Loading textures" );
+            this.preloader.increase( 30 );
             ShooterTexture.loadImages();
 
-            ShooterDebug.init.out( "initUi 6" );
-
             //assign textures and perform repaint
-            this.preloader.increase( "Assigning textures" );
+            this.preloader.increase( 40 );
             Shooter.game.engine.gl.view.initTextures( ShooterTexture.getAllTextureImages() );
 
-            ShooterDebug.init.out( "initUi 7" );
-
             //init 3d studio max objects and perform repaint
-            this.preloader.increase( "Loading 3dsmax files" );
+            this.preloader.increase( 50 );
             ShooterD3ds.init( ShooterDebug.d3ds );
 
-            ShooterDebug.init.out( "initUi 8" );
-
             //init hud
-            this.preloader.increase( "Initing HUD and sound" );
+            this.preloader.increase( 60 );
             this.hud = new HUD();
             this.fps = new LibFPS( Fonts.EFps, ShooterSettings.Colors.EFpsFg.colABGR, ShooterSettings.Colors.EFpsOutline.colABGR, ShooterDebug.glImage );
 
@@ -147,26 +138,23 @@
             HUDFx.init();
 
             //init sounds and bg sounds
+            this.preloader.increase( 70 );
             SoundFg.init();
+
+            this.preloader.increase( 80 );
             SoundBg.init();
 
-            ShooterDebug.init.out( "initUi 9" );
-
             //switch main state to 'game' and order change to level 1
-            this.preloader.increase( "Init main menu and launch game" );
+            this.preloader.increase( 90 );
 
             //init main menu
             MainStateMainMenu.init();
 
-            //no level init required!init all level data and game levels
-            //ShooterLevelCurrent.init( Startup.STARTUP_LEVEL_MAIN );
-            //ShooterGameLevel.init();
+            this.preloader.increase( 100 );
 
             //reset and change to startup main state
             Shooter.game.orderMainStateChangeTo( ShooterSettings.Startup.STARTUP_STATE_AFTER_PRELOADER );
             LevelChange.orderLevelChange( Startup.STARTUP_LEVEL_MAIN, Startup.STARTUP_LEVEL_SECTION, true );
-
-            ShooterDebug.init.out( "initUi 10" );
         }
 
         private void initFonts()
@@ -174,6 +162,7 @@
             try
             {
                 Fonts.EAmmo          = LibIO.createFont( Path.EFont.iUrl + "sourceSansPro.otf", 18.0f ); // new Font( "verdana",     Font.BOLD,  12 );
+                Fonts.EPreloader     = LibIO.createFont( Path.EFont.iUrl + "sourceSansPro.otf", 25.0f ); // new Font( "verdana",     Font.BOLD,  12 );
                 Fonts.EHealth        = LibIO.createFont( Path.EFont.iUrl + "sourceSansPro.otf", 18.0f ); // new Font( "verdana",     Font.BOLD,  12 );
                 Fonts.EFps           = LibIO.createFont( Path.EFont.iUrl + "sourceSansPro.otf", 18.0f ); // new Font( "verdana",     Font.BOLD,  12 );
                 Fonts.EAvatarMessage = LibIO.createFont( Path.EFont.iUrl + "sourceSansPro.otf", 18.0f ); // new Font( "verdana",     Font.BOLD,  12 );

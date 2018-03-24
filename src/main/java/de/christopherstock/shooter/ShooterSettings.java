@@ -184,6 +184,7 @@
         {
             public  static          Font            EMainMenu                           = null;
             public  static          Font            EAmmo                               = null;
+            public  static          Font            EPreloader                          = null;
             public  static          Font            EHealth                             = null;
             public  static          Font            EFps                                = null;
             public  static          Font            EAvatarMessage                      = null;

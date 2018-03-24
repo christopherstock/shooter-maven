@@ -6,8 +6,8 @@
     /*******************************************************************************************************************
     *   The main class.
     *
-    *   TODO    Revise preloader!
     *   TODO    prune LibGLView
+    *   TODO    prune GLDrawCallback
     *   TODO    Prune all those super-confusing interfaces and abstract superclasses in LWJGL-Panel systems!
     *   TODO    Different heights for particle effects.
     *   TODO    Alter JFrame / app icon.

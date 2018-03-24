@@ -84,7 +84,7 @@
                 case EPreloader:
                 {
                     //draw 2d
-                    this.engine.preloader.draw2D();
+                    this.engine.preloader.draw();
                     break;
                 }
 
@@ -114,7 +114,6 @@
             {
                 case EPreloader:
                 {
-                    this.engine.preloader.draw3D();
                     break;
                 }
 

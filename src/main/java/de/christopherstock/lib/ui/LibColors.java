@@ -23,7 +23,7 @@
         EWhite(                         0xffffffff      ),
 
         ESkin(                          0xfff2cec5      ),
-        EOrange(                        0xffec7404      ),
+        EOrangeMF(                        0xffec7404      ),
 
         EBrown(                         0xffb68527      ),
         EBrownDark(                     0xff89651e      ),

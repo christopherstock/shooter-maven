@@ -498,27 +498,22 @@
 
         public static void loadImages()
         {
-            ShooterDebug.init.out( "initUi 5.0" );
             for ( Mask texture : Mask.values() )
             {
                 texture.loadImage( ShooterSettings.Path.ETexturesMask.iUrl + texture.toString() + LibExtension.jpg.getSpecifier() );
             }
-            ShooterDebug.init.out( "initUi 5.2" );
             for ( BulletHoleTex texture : BulletHoleTex.values() )
             {
                 texture.loadImage( ShooterSettings.Path.ETexturesBulletHole.iUrl + texture.toString() + LibExtension.jpg.getSpecifier() );
             }
-            ShooterDebug.init.out( "initUi 5.3" );
             for ( WallTex texture : WallTex.values() )
             {
                 texture.loadImage( ShooterSettings.Path.ETexturesWall.iUrl + texture.toString() + LibExtension.jpg.getSpecifier() );
             }
-            ShooterDebug.init.out( "initUi 5.4" );
             for ( BotTex texture : BotTex.values() )
             {
                 texture.loadImage( ShooterSettings.Path.ETexturesBot.iUrl + texture.toString() + LibExtension.jpg.getSpecifier() );
             }
-            ShooterDebug.init.out( "initUi 5.5" );
             for ( ItemTex texture : ItemTex.values() )
             {
                 texture.loadImage( ShooterSettings.Path.ETexturesItem.iUrl + texture.toString() + LibExtension.jpg.getSpecifier() );
