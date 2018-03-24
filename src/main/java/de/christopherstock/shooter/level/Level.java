@@ -3,8 +3,9 @@
 
     import  java.awt.geom.Point2D;
     import  java.util.*;
+
     import  de.christopherstock.lib.LibDebug;
-    import  de.christopherstock.lib.Lib.ViewSet;
+    import de.christopherstock.lib.LibViewSet;
     import  de.christopherstock.lib.fx.*;
     import  de.christopherstock.lib.fx.LibFX.*;
     import  de.christopherstock.lib.g3d.*;
@@ -460,7 +461,7 @@
             return false;
         }
 
-        public final void drawBg( ViewSet cam )
+        public final void drawBg( LibViewSet cam )
         {
             if ( LevelCurrent.currentSectionConfigData[this.iCurrentSectionIndex].iBg != null ) LevelCurrent.currentSectionConfigData[this.iCurrentSectionIndex].iBg.drawOrtho( cam.rot.x, cam.rot.z );
         }

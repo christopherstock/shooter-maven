@@ -1,6 +1,7 @@
 
     package de.christopherstock.lib.io;
 
+    import java.awt.*;
     import  java.io.*;
     import  java.nio.ByteBuffer;
     import  java.util.*;
@@ -11,6 +12,8 @@
     *******************************************************************************************************************/
     public abstract class LibIO
     {
+        private     static      final       int             JAR_BUFFER_SIZE             = 0xffff;
+
         /***************************************************************************************************************
         *   Reads the given {@link InputStream} buffered and returns all read bytes as a byte-array.
         *
@@ -93,8 +96,13 @@
         {
             InputStream             in      = Thread.currentThread().getClass().getResourceAsStream( url );
             ByteArrayOutputStream   byteOut = new ByteArrayOutputStream();
-            byte[]                  buffer  = new byte[ Lib.JAR_BUFFER_SIZE ];
-            for ( int len; ( len = in.read( buffer ) ) != -1; ) byteOut.write( buffer, 0, len );
+            byte[]                  buffer  = new byte[ JAR_BUFFER_SIZE ];
+
+            for ( int len; ( len = in.read( buffer ) ) != -1; )
+            {
+                byteOut.write( buffer, 0, len );
+            }
+
             in.close();
             ByteArrayInputStream    byteIn = new ByteArrayInputStream( byteOut.toByteArray() );
             return byteIn;
@@ -104,5 +112,10 @@
         {
             // Wrap a byte array into a buffer
             return ByteBuffer.wrap(bytes);
+        }
+
+        public static Font createFont(String filename, float size ) throws Throwable
+        {
+            return Font.createFont( Font.TRUETYPE_FONT, preStreamJarResource( filename ) ).deriveFont( size );
         }
     }

@@ -2,9 +2,10 @@
     package de.christopherstock.shooter.g3d.mesh;
 
     import  java.util.*;
-    import  de.christopherstock.lib.Lib.LibTransformationMode;
-    import  de.christopherstock.lib.Lib.Offset;
-    import  de.christopherstock.lib.Lib.Rotation;
+
+    import de.christopherstock.lib.LibTransformationMode;
+    import de.christopherstock.lib.LibOffset;
+    import de.christopherstock.lib.LibRotation;
     import  de.christopherstock.lib.g3d.*;
     import  de.christopherstock.lib.game.*;
     import  de.christopherstock.lib.gl.*;
@@ -117,25 +118,25 @@
             ;
         }
 
-        public      static  final   Offset              OFFSET_ABSOLUTE_HEAD                = new Offset(   0.0f,       -0.05f,     1.225f  );
+        public      static  final LibOffset OFFSET_ABSOLUTE_HEAD                = new LibOffset(   0.0f,       -0.05f,     1.225f  );
 
-        public      static  final   Offset              OFFSET_ABSOLUTE_LEFT_UPPER_ARM      = new Offset(   -0.075f,    0.0f,       1.1f    );
-        public      static  final   Offset              OFFSET_ABSOLUTE_LEFT_LOWER_ARM      = new Offset(   -0.215f,    -0.013f,    0.95f    );
-        public      static  final   Offset              OFFSET_ABSOLUTE_LEFT_HAND           = new Offset(   -0.15f,     -0.053f,    0.8f    );
+        public      static  final LibOffset OFFSET_ABSOLUTE_LEFT_UPPER_ARM      = new LibOffset(   -0.075f,    0.0f,       1.1f    );
+        public      static  final LibOffset OFFSET_ABSOLUTE_LEFT_LOWER_ARM      = new LibOffset(   -0.215f,    -0.013f,    0.95f    );
+        public      static  final LibOffset OFFSET_ABSOLUTE_LEFT_HAND           = new LibOffset(   -0.15f,     -0.053f,    0.8f    );
 
-        public      static  final   Offset              OFFSET_ABSOLUTE_RIGHT_UPPER_ARM     = new Offset(   0.075f,     0.0f,       1.1f    );
-        public      static  final   Offset              OFFSET_ABSOLUTE_RIGHT_LOWER_ARM     = new Offset(   0.215f,     -0.013f,     0.95f    );
-        public      static  final   Offset              OFFSET_ABSOLUTE_RIGHT_HAND          = new Offset(   0.15f,      -0.053f,    0.8f    );
-      //public      static  final   Offset              OFFSET_ABSOLUTE_RIGHT_LOWER_ARM     = new Offset(   0.215f,     0.013f,     0.95f    );
-      //public      static  final   Offset              OFFSET_ABSOLUTE_RIGHT_HAND          = new Offset(   0.15f,      -0.025f,    0.8f    );
+        public      static  final LibOffset OFFSET_ABSOLUTE_RIGHT_UPPER_ARM     = new LibOffset(   0.075f,     0.0f,       1.1f    );
+        public      static  final LibOffset OFFSET_ABSOLUTE_RIGHT_LOWER_ARM     = new LibOffset(   0.215f,     -0.013f,     0.95f    );
+        public      static  final LibOffset OFFSET_ABSOLUTE_RIGHT_HAND          = new LibOffset(   0.15f,      -0.053f,    0.8f    );
+      //public      static  final   LibOffset              OFFSET_ABSOLUTE_RIGHT_LOWER_ARM     = new LibOffset(   0.215f,     0.013f,     0.95f    );
+      //public      static  final   LibOffset              OFFSET_ABSOLUTE_RIGHT_HAND          = new LibOffset(   0.15f,      -0.025f,    0.8f    );
 
-        public      static  final   Offset              OFFSET_ABSOLUTE_RIGHT_UPPER_LEG     = new Offset(   0.075f,     -0.05f,     0.68f   );
-        public      static  final   Offset              OFFSET_ABSOLUTE_RIGHT_LOWER_LEG     = new Offset(   0.135f,     -0.05f,     0.38f   );
-        public      static  final   Offset              OFFSET_ABSOLUTE_RIGHT_FOOT          = new Offset(   0.21f,      -0.03f,     0.08f   );
+        public      static  final LibOffset OFFSET_ABSOLUTE_RIGHT_UPPER_LEG     = new LibOffset(   0.075f,     -0.05f,     0.68f   );
+        public      static  final LibOffset OFFSET_ABSOLUTE_RIGHT_LOWER_LEG     = new LibOffset(   0.135f,     -0.05f,     0.38f   );
+        public      static  final LibOffset OFFSET_ABSOLUTE_RIGHT_FOOT          = new LibOffset(   0.21f,      -0.03f,     0.08f   );
 
-        public      static  final   Offset              OFFSET_ABSOLUTE_LEFT_UPPER_LEG      = new Offset(   -0.075f,    -0.05f,     0.68f   );
-        public      static  final   Offset              OFFSET_ABSOLUTE_LEFT_LOWER_LEG      = new Offset(   -0.135f,    -0.05f,     0.38f   );
-        public      static  final   Offset              OFFSET_ABSOLUTE_LEFT_FOOT           = new Offset(   -0.21f,     -0.03f,     0.08f   );
+        public      static  final LibOffset OFFSET_ABSOLUTE_LEFT_UPPER_LEG      = new LibOffset(   -0.075f,    -0.05f,     0.68f   );
+        public      static  final LibOffset OFFSET_ABSOLUTE_LEFT_LOWER_LEG      = new LibOffset(   -0.135f,    -0.05f,     0.38f   );
+        public      static  final LibOffset OFFSET_ABSOLUTE_LEFT_FOOT           = new LibOffset(   -0.21f,     -0.03f,     0.08f   );
 
         private                     boolean             limbsStandStill                       = false;
 
@@ -425,9 +426,9 @@
                 }
             }
 
-            Rotation[] upperArmPitch      = new Rotation[ newArmTargets.length ];
-            Rotation[] lowerArmPitch      = new Rotation[ newArmTargets.length ];
-            Rotation[] handPitch          = new Rotation[ newArmTargets.length ];
+            LibRotation[] upperArmPitch      = new LibRotation[ newArmTargets.length ];
+            LibRotation[] lowerArmPitch      = new LibRotation[ newArmTargets.length ];
+            LibRotation[] handPitch          = new LibRotation[ newArmTargets.length ];
 
             for ( int i = 0; i < newArmTargets.length; ++i )
             {
@@ -463,11 +464,11 @@
             }
         }
 
-        private Rotation[] getNewArmPosition( Arm arm, ArmTarget newArmPosition )
+        private LibRotation[] getNewArmPosition(Arm arm, ArmTarget newArmPosition )
         {
-            Rotation upperArmPitch      = new Rotation();
-            Rotation lowerArmPitch      = new Rotation();
-            Rotation handPitch          = new Rotation();
+            LibRotation upperArmPitch      = new LibRotation();
+            LibRotation lowerArmPitch      = new LibRotation();
+            LibRotation handPitch          = new LibRotation();
 
             //define roations
             switch ( newArmPosition )
@@ -623,7 +624,7 @@
                 }
             }
 
-            return new Rotation[] { upperArmPitch, lowerArmPitch, handPitch, };
+            return new LibRotation[] { upperArmPitch, lowerArmPitch, handPitch, };
         }
 
         public void assignLegsPosition( LegsPosition newLegsPosition )
@@ -689,9 +690,9 @@
             this.currentTargetPitchLeftLeg = 0;
             this.currentTargetPitchRightLeg = 0;
 
-            Rotation[] upperLegPitch      = new Rotation[ newLegTargets.length ];
-            Rotation[] lowerLegPitch      = new Rotation[ newLegTargets.length ];
-            Rotation[] footPitch          = new Rotation[ newLegTargets.length ];
+            LibRotation[] upperLegPitch      = new LibRotation[ newLegTargets.length ];
+            LibRotation[] lowerLegPitch      = new LibRotation[ newLegTargets.length ];
+            LibRotation[] footPitch          = new LibRotation[ newLegTargets.length ];
 
             for ( int i = 0; i < newLegTargets.length; ++i )
             {
@@ -763,7 +764,7 @@
             this.repeatTargetPitchesHead = repeat;
             this.completedTargetPitchesHead = false;
 
-            Rotation[] headPitch        = new Rotation[ newHeadTargets.length ];
+            LibRotation[] headPitch        = new LibRotation[ newHeadTargets.length ];
 
             for ( int i = 0; i < newHeadTargets.length; ++i )
             {
@@ -777,11 +778,11 @@
             if (this.iGlasses != null ) this.iGlasses.setTargetPitchs(   headPitch );
         }
 
-        private Rotation[] getNewLegPosition(Leg leg, LegTarget newLegPosition )
+        private LibRotation[] getNewLegPosition(Leg leg, LegTarget newLegPosition )
         {
-            Rotation upperLegPitch  = new Rotation();
-            Rotation lowerLegPitch  = new Rotation();
-            Rotation footPitch      = new Rotation();
+            LibRotation upperLegPitch  = new LibRotation();
+            LibRotation lowerLegPitch  = new LibRotation();
+            LibRotation footPitch      = new LibRotation();
 
             //define roations
             switch ( newLegPosition )
@@ -849,13 +850,13 @@
                 }
             }
 
-            return new Rotation[] { upperLegPitch, lowerLegPitch, footPitch, };
+            return new LibRotation[] { upperLegPitch, lowerLegPitch, footPitch, };
         }
 
 
-        private Rotation getNewHeadPosition(HeadTarget newHeadPosition )
+        private LibRotation getNewHeadPosition(HeadTarget newHeadPosition )
         {
-            Rotation headPitch      = new Rotation();
+            LibRotation headPitch      = new LibRotation();
 
             //define roations
             switch ( newHeadPosition )
@@ -1165,8 +1166,8 @@
             this.iLeftFoot.rotateAroundAnchor(     leftfootLegAnk, this.iLeftFoot.iPitch );
 
             //torso and neck are not transformed neither translated
-            this.iTorso.translateLimb( new Offset( 0.0f, 0.0f, 0.0f ) );
-            this.iNeck.translateLimb(  new Offset( 0.0f, 0.0f, 0.0f ) );
+            this.iTorso.translateLimb( new LibOffset( 0.0f, 0.0f, 0.0f ) );
+            this.iNeck.translateLimb(  new LibOffset( 0.0f, 0.0f, 0.0f ) );
         }
 
         public void turnAllLimbsX( LibVertex botAnchor, float angleX )
@@ -1241,7 +1242,7 @@
                         this.iEquippedItemLeft = new BotMesh( item.getFaces(), anchor, 0.0f, 1.0f, aParentGameObject, 0.0f );
                         this.iEquippedItemLeft.mirrorFaces( true, false, false );
 
-                        this.iEquippedItemLeft.setTargetPitchs(this.iHead.iTargetPitch.toArray( new Rotation[] {} ) );
+                        this.iEquippedItemLeft.setTargetPitchs(this.iHead.iTargetPitch.toArray( new LibRotation[] {} ) );
                         newMeshes.add(this.iEquippedItemLeft);
                         this.equipmentChanged = true;
                     }
@@ -1265,7 +1266,7 @@
 
                         this.iEquippedItemRight = new BotMesh( item.getFaces(), anchor, 0.0f, 1.0f, aParentGameObject, 0.0f );
 
-                        this.iEquippedItemRight.setTargetPitchs(this.iHead.iTargetPitch.toArray( new Rotation[] {} ) );
+                        this.iEquippedItemRight.setTargetPitchs(this.iHead.iTargetPitch.toArray( new LibRotation[] {} ) );
                         newMeshes.add(this.iEquippedItemRight);
                         this.equipmentChanged = true;
                     }

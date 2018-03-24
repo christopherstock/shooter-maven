@@ -2,7 +2,7 @@
     package de.christopherstock.lib.g3d;
 
     import  java.util.*;
-    import  de.christopherstock.lib.Lib.LibTransformationMode;
+    import de.christopherstock.lib.LibTransformationMode;
     import  de.christopherstock.lib.math.*;
 
     /*******************************************************************************************************************

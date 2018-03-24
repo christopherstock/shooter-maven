@@ -32,7 +32,7 @@
                 lifetime,
                 FXGravity.ENormal,
                 aFadeOutTicks,
-                null //new Sprite( Others.ESprite1, new LibVertex( iPoint.x, iPoint.y, iPoint.z ), Scalation.ELowerThreeQuarters, WallCollidable.ENo, WallTex.ESliver1 )
+                null //new Sprite( Others.ESprite1, new LibVertex( iPoint.x, iPoint.y, iPoint.z ), LibScalation.ELowerThreeQuarters, WallCollidable.ENo, WallTex.ESliver1 )
             );
 //          fx.iLifetime  = lifetime;
             fx.iPointSize = size;
@@ -45,7 +45,7 @@
             fx.launch();
         }
 
-        public static void launchSliver(LibDebug aDebug, LibVertex v, LibColors[] sliverColors, float angle, Lib.ParticleQuantity pq, float angleMod, int lifetime, FXSize size, FXGravity gravity, float baseZ, int aFadeoutTicks )
+        public static void launchSliver(LibDebug aDebug, LibVertex v, LibColors[] sliverColors, float angle, LibParticleQuantity pq, float angleMod, int lifetime, FXSize size, FXGravity gravity, float baseZ, int aFadeoutTicks )
         {
             LibFXSliver fx = new LibFXSliver( aDebug, v, sliverColors, pq, angleMod, lifetime, size, gravity, baseZ, aFadeoutTicks );
             fx.launch( angle );

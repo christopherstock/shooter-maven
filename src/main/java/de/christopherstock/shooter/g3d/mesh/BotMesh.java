@@ -2,10 +2,11 @@
     package de.christopherstock.shooter.g3d.mesh;
 
     import  java.util.*;
-    import  de.christopherstock.lib.Lib.Invert;
-    import  de.christopherstock.lib.Lib.LibTransformationMode;
-    import  de.christopherstock.lib.Lib.Offset;
-    import  de.christopherstock.lib.Lib.Rotation;
+
+    import de.christopherstock.lib.LibTransformationMode;
+    import de.christopherstock.lib.LibInvert;
+    import de.christopherstock.lib.LibOffset;
+    import de.christopherstock.lib.LibRotation;
     import  de.christopherstock.lib.g3d.*;
     import  de.christopherstock.lib.g3d.face.*;
     import  de.christopherstock.lib.g3d.face.LibFace.*;
@@ -18,9 +19,9 @@
     {
         private     static  final   long                serialVersionUID        = -592606625644524448L;
 
-        public                      Rotation            iPitch                  = new Rotation();
+        public LibRotation iPitch                  = new LibRotation();
         public                      float               iLimbSpeed              = 0.0f;
-        public                      Vector<Rotation>    iTargetPitch            = new Vector<Rotation>();
+        public                      Vector<LibRotation>    iTargetPitch            = new Vector<LibRotation>();
 
         /***************************************************************************************************************
         *   Constructs a new mesh with the specified properties.
@@ -30,14 +31,14 @@
         ***************************************************************************************************************/
         public BotMesh( LibFaceTriangle[] aFaces, LibVertex aAnchor, float aInitRotZ, float aInitScale, LibGameObject aParentGameObject, float aDamageMultiplier )
         {
-            super( aFaces, aAnchor, aInitRotZ, aInitScale, Invert.ENo, aParentGameObject, LibTransformationMode.EOriginalsToTransformed, DrawMethod.EAlwaysDraw );
+            super( aFaces, aAnchor, aInitRotZ, aInitScale, LibInvert.ENo, aParentGameObject, LibTransformationMode.EOriginalsToTransformed, DrawMethod.EAlwaysDraw );
             for ( LibFaceTriangle ft : aFaces )
             {
                 ft.setDamageMultiplier( aDamageMultiplier );
             }
         }
 
-        public final LibVertex translateLimb( Offset trans )
+        public final LibVertex translateLimb( LibOffset trans )
         {
             LibVertex   limbAnk = this.getAnchor().copy();
 
@@ -50,7 +51,7 @@
             return limbAnk;
         }
 
-        public final LibVertex translateAndRotateLimb( Offset trans )
+        public final LibVertex translateAndRotateLimb( LibOffset trans )
         {
             //rotate
             LibVertex   limbAnk = this.getAnchor().copy();
@@ -65,13 +66,13 @@
             return limbAnk;
         }
 
-        public final void rotateAroundAnchor( LibVertex anchor, Rotation pitch )
+        public final void rotateAroundAnchor( LibVertex anchor, LibRotation pitch )
         {
             //translate and turn around x, y and z axis sequentially is no more necessary!?
             this.translateAndRotateXYZ( 0.0f, 0.0f, 0.0f, pitch.x, pitch.y, pitch.z, anchor, LibTransformationMode.ETransformedToTransformed );
         }
 
-        public final void transformOwn( Offset trans, float rotX, float rotY, float rotZ )
+        public final void transformOwn(LibOffset trans, float rotX, float rotY, float rotZ )
         {
             //rotate
             LibVertex   limbAnk = this.getAnchor().copy();
@@ -84,9 +85,9 @@
             this.translateAndRotateXYZ(  limbAnk.x,  limbAnk.y,  limbAnk.z,  rotX,    rotY,       rotZ,       limbAnk,    LibTransformationMode.EOriginalsToTransformed      );
         }
 
-        public final void setTargetPitchs( Rotation[] targetPitchs )
+        public final void setTargetPitchs( LibRotation[] targetPitchs )
         {
-            this.iTargetPitch = new Vector<Rotation>( Arrays.asList( targetPitchs ) );
+            this.iTargetPitch = new Vector<LibRotation>( Arrays.asList( targetPitchs ) );
         }
 
         public final boolean reachToTargetPitch( int currentTargetPitch )
@@ -119,7 +120,7 @@
         *                   The anchor point of the child limb has to be rotated like the parent child!
         ***************************************************************************************************************/
         @Deprecated
-        public final LibVertex transformAroundOtherLimb( Offset trans, BotMesh otherLimb, BotMesh ownLimb, LibVertex otherAnk )
+        public final LibVertex transformAroundOtherLimb(LibOffset trans, BotMesh otherLimb, BotMesh ownLimb, LibVertex otherAnk )
         {
             //roate anchor for lower right arm and right hand
             LibVertex   ownAnk = otherAnk.copy();

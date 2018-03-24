@@ -134,7 +134,7 @@
         }
 
         @Override
-        public final Lib.ParticleQuantity getSliverParticleQuantity()
+        public final LibParticleQuantity getSliverParticleQuantity()
         {
             return this.iAmmoType.iSliverParticleQuantity;
         }

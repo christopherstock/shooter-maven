@@ -3,7 +3,6 @@
 
     import  java.util.*;
     import  de.christopherstock.lib.*;
-    import  de.christopherstock.lib.Lib.ViewSet;
     import  de.christopherstock.lib.g3d.*;
     import  de.christopherstock.lib.gl.LibGLImage.*;
     import  de.christopherstock.lib.gl.LibGLTexture.Translucency;
@@ -178,7 +177,7 @@
 
         protected abstract void flushGL();
 
-        public abstract void setCamera( ViewSet viewSet );
+        public abstract void setCamera( LibViewSet viewSet );
 
         protected abstract void setOrthoOn();
 

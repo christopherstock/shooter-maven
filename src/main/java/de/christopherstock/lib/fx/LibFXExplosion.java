@@ -99,7 +99,7 @@
                                 this.iLifetime,
                             FXGravity.ENormal,
                                 this.iFadeOutTicks,
-                            null //new Sprite( Others.ESprite1, new LibVertex( iPoint.x, iPoint.y, iPoint.z ), Scalation.ELowerThreeQuarters, WallCollidable.ENo, WallTex.ESliver1 )
+                            null //new Sprite( Others.ESprite1, new LibVertex( iPoint.x, iPoint.y, iPoint.z ), LibScalation.ELowerThreeQuarters, WallCollidable.ENo, WallTex.ESliver1 )
                         )
                     );
                 }

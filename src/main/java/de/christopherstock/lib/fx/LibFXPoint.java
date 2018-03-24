@@ -1,7 +1,7 @@
 
     package de.christopherstock.lib.fx;
 
-    import  de.christopherstock.lib.Lib.LibTransformationMode;
+    import de.christopherstock.lib.LibTransformationMode;
     import  de.christopherstock.lib.*;
     import  de.christopherstock.lib.fx.LibFX.*;
     import  de.christopherstock.lib.g3d.*;
@@ -250,8 +250,8 @@
 
         public final void draw( Align3D align3D )
         {
-            //if ( s == null ) s = new Sprite( Others.ESprite1, 0.0f, 0.0f, 0.0f, Scalation.ELowerHalf, WallCollidable.ENo, WallTex.ESliver1 );
-            //if ( s == null ) s = new Sprite( Others.ESprite1, iPoint.x, iPoint.y, iPoint.z, Scalation.ELowerHalf, WallCollidable.ENo, WallTex.ESliver1 );
+            //if ( s == null ) s = new Sprite( Others.ESprite1, 0.0f, 0.0f, 0.0f, LibScalation.ELowerHalf, WallCollidable.ENo, WallTex.ESliver1 );
+            //if ( s == null ) s = new Sprite( Others.ESprite1, iPoint.x, iPoint.y, iPoint.z, LibScalation.ELowerHalf, WallCollidable.ENo, WallTex.ESliver1 );
 
             /*
             if ( spriteAnk == null )

@@ -2,7 +2,7 @@
     package de.christopherstock.lib;
 
     /*******************************************************************************************************************
-    *   This class performs a threaded http-connection.
+    *   The interface for all debug systems.
     *******************************************************************************************************************/
     public interface LibDebug
     {

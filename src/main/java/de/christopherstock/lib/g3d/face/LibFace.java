@@ -2,7 +2,7 @@
     package de.christopherstock.lib.g3d.face;
 
     import  java.io.Serializable;
-    import  de.christopherstock.lib.Lib.LibTransformationMode;
+    import de.christopherstock.lib.LibTransformationMode;
     import  de.christopherstock.lib.*;
     import  de.christopherstock.lib.g3d.*;
     import  de.christopherstock.lib.gl.*;
@@ -176,7 +176,7 @@
 
         /***************************************************************************************************************
         *   Rotates the TRANSFORMED vertices setting the TRANSFORMED vertices.
-        *   Rotation operations shall always be performed after translation operations.
+        *   LibRotation operations shall always be performed after translation operations.
         *
         *   @param  transMatrix     The transformation-matrix to turn all vertices around.
         *   @param  tX              The amount to translate this vertex on the x-axis.

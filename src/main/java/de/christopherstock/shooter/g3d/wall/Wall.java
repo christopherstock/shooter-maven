@@ -4,8 +4,7 @@
     import  java.awt.geom.*;
     import  java.util.*;
     import  de.christopherstock.lib.*;
-    import  de.christopherstock.lib.Lib.Invert;
-    import  de.christopherstock.lib.Lib.LibTransformationMode;
+    import de.christopherstock.lib.LibTransformationMode;
     import  de.christopherstock.lib.fx.*;
     import  de.christopherstock.lib.fx.LibFX.*;
     import  de.christopherstock.lib.g3d.*;
@@ -77,7 +76,7 @@
         private                     int                 iChangeTexture2Animation        = 0;
         private                     int                 iChangeTexture2Delay            = 0;
 
-        public Wall( LibD3dsFile aD3dsFile, LibVertex aAnchor, float aStartupRotZ, Lib.Scalation aScalation, Invert aInvert, Wall.WallCollidable aCollisionEnabled, Wall.WallAction aWallAction, WallClimbable aClimbable, DrawMethod aDrawMethod, LibTexture aChangeTexture1, LibTexture[] aChangeTexture2, int aChangeTexture2Delay, WallHealth aWallHealth, FXSize aExplosionSize, SoundFg aExplosionSound )
+        public Wall(LibD3dsFile aD3dsFile, LibVertex aAnchor, float aStartupRotZ, LibScalation aScalation, LibInvert aInvert, Wall.WallCollidable aCollisionEnabled, Wall.WallAction aWallAction, WallClimbable aClimbable, DrawMethod aDrawMethod, LibTexture aChangeTexture1, LibTexture[] aChangeTexture2, int aChangeTexture2Delay, WallHealth aWallHealth, FXSize aExplosionSize, SoundFg aExplosionSound )
         {
             super(              ShooterD3ds.getFaces( aD3dsFile ), aAnchor, ( aWallAction == Wall.WallAction.ESprite ? 0.0f : aStartupRotZ ), aScalation.getScaleFactor(), aInvert, null, LibTransformationMode.EOriginalsToOriginals, aDrawMethod );
             this.assignParentOnFaces( this );

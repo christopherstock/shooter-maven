@@ -17,7 +17,7 @@
         public                      FXGravity           iGravity                    = null;
         public                      float               iBaseZ                      = 0;
 
-        protected LibFXSliver( LibDebug aDebug, LibVertex aAnchor, LibColors[] aSliverColors, Lib.ParticleQuantity particleQuantity, float aAngleMod, int aLifetime, FXSize aSize, FXGravity aGravity, float aBaseZ, int aFadeOutTicks )
+        protected LibFXSliver(LibDebug aDebug, LibVertex aAnchor, LibColors[] aSliverColors, LibParticleQuantity particleQuantity, float aAngleMod, int aLifetime, FXSize aSize, FXGravity aGravity, float aBaseZ, int aFadeOutTicks )
         {
             super( aDebug, aAnchor, aLifetime, aFadeOutTicks );
 
@@ -85,7 +85,7 @@
                             this.iLifetime,
                             this.iGravity,
                             this.iFadeOutTicks,
-                        null //new Sprite( Others.ESprite1, new LibVertex( iPoint.x, iPoint.y, iPoint.z ), Scalation.ELowerThreeQuarters, WallCollidable.ENo, WallTex.ESliver1 )
+                        null //new Sprite( Others.ESprite1, new LibVertex( iPoint.x, iPoint.y, iPoint.z ), LibScalation.ELowerThreeQuarters, WallCollidable.ENo, WallTex.ESliver1 )
                     )
                 );
             }

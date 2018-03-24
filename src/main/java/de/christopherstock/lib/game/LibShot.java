@@ -49,7 +49,7 @@
         public                      Line2D.Float            iLineShotHorz               = null;
         public                      Line2D.Float            iLineShotVert               = null;
         public                      LibHoleSize             iBulletHoleSize             = null;
-        public                      Lib.ParticleQuantity    iParticleQuantity           = null;
+        public LibParticleQuantity iParticleQuantity           = null;
         public                      FXSize                  iSliverSize                 = null;
         public                      float                   iSliverAngleMod             = 0.0f;
         public                      int                     iDamage                     = 0;
@@ -76,7 +76,7 @@
             float                   aShotRange,
             LibHoleSize             aBulletHoleSize,
             LibDebug                aDebug,
-            Lib.ParticleQuantity    aParticleQuantity,
+            LibParticleQuantity aParticleQuantity,
             float                   aSliverAngleMod,
             int                     aDamage,
             FXSize                  aSliverSize,

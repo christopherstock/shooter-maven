@@ -3,6 +3,8 @@
 
     import  java.awt.Color;
     import  java.awt.Font;
+    import java.util.concurrent.TimeUnit;
+
     import  de.christopherstock.lib.*;
     import  de.christopherstock.lib.gl.*;
 
@@ -41,7 +43,7 @@
                 ++this.iFramesDrawn;
 
                 //check if 1 sec is over
-                if ( System.currentTimeMillis() - this.iStartMeassuringMillis >= Lib.MILLIS_PER_SECOND )
+                if ( System.currentTimeMillis() - this.iStartMeassuringMillis >= TimeUnit.SECONDS.toMillis( 1 ) )
                 {
                     this.iCurrentFps = LibGLImage.getFromString
                     (

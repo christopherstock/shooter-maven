@@ -4,7 +4,7 @@
     import  java.awt.geom.*;
     import  java.util.*;
     import  de.christopherstock.lib.*;
-    import  de.christopherstock.lib.Lib.LibTransformationMode;
+    import de.christopherstock.lib.LibTransformationMode;
     import  de.christopherstock.lib.g3d.*;
     import  de.christopherstock.lib.g3d.face.*;
     import  de.christopherstock.lib.game.*;

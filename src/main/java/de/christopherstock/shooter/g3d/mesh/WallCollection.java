@@ -2,7 +2,7 @@
     package de.christopherstock.shooter.g3d.mesh;
 
     import  java.util.*;
-    import  de.christopherstock.lib.Lib.LibTransformationMode;
+    import de.christopherstock.lib.LibTransformationMode;
     import  de.christopherstock.lib.g3d.*;
     import  de.christopherstock.shooter.g3d.*;
     import  de.christopherstock.shooter.g3d.wall.Wall;

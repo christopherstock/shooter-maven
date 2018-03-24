@@ -9,7 +9,6 @@
     import  org.lwjgl.opengl.DisplayMode;
     import  org.lwjgl.util.glu.*;
     import  de.christopherstock.lib.*;
-    import  de.christopherstock.lib.Lib.ViewSet;
     import  de.christopherstock.lib.g3d.*;
     import  de.christopherstock.lib.gl.*;
     import  de.christopherstock.lib.gl.LibGLImage.*;
@@ -21,7 +20,7 @@
     *******************************************************************************************************************/
     public class LibLWJGLView extends LibGLView
     {
-        public LibLWJGLView( LibLWJGLPanel panel, LibDebug aDebug, int aFormWidth, int aFormHeight, float aAspectRatio )
+        public LibLWJGLView(LibGLPanel panel, LibDebug aDebug, int aFormWidth, int aFormHeight, float aAspectRatio )
         {
             super( aAspectRatio, aDebug );
 
@@ -133,7 +132,7 @@
         }
 
         @Override
-        public void setCamera( ViewSet viewSet )
+        public void setCamera( LibViewSet viewSet )
         {
             GL11.glLoadIdentity();                                                                      //create new identity
 

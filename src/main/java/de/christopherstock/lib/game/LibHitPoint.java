@@ -146,7 +146,7 @@
             return hitPoints.elementAt( nearestIndex );
         }
 
-        public final void launchWallSliver( Lib.ParticleQuantity sliverQuantity, float angleMod, int lifetime, FXSize size, FXGravity gravity, Object exclude, LibFloorStack floorStack )
+        public final void launchWallSliver(LibParticleQuantity sliverQuantity, float angleMod, int lifetime, FXSize size, FXGravity gravity, Object exclude, LibFloorStack floorStack )
         {
             float SIZE = 0.01f;
             boolean drawRedSliverLine = false;

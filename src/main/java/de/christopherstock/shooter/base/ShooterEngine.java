@@ -5,7 +5,7 @@
     import  java.awt.image.*;
     import  java.io.*;
     import  javax.imageio.*;
-    import  de.christopherstock.lib.*;
+
     import  de.christopherstock.lib.gl.*;
     import  de.christopherstock.lib.io.*;
     import  de.christopherstock.lib.ui.LibFPS;
@@ -171,12 +171,12 @@
         {
             try
             {
-                Fonts.EAmmo          = Lib.createFont( Path.EFont.iUrl + "sourceSansPro.otf", 18.0f ); // new Font( "verdana",     Font.BOLD,  12 );
-                Fonts.EHealth        = Lib.createFont( Path.EFont.iUrl + "sourceSansPro.otf", 18.0f ); // new Font( "verdana",     Font.BOLD,  12 );
-                Fonts.EFps           = Lib.createFont( Path.EFont.iUrl + "sourceSansPro.otf", 18.0f ); // new Font( "verdana",     Font.BOLD,  12 );
-                Fonts.EAvatarMessage = Lib.createFont( Path.EFont.iUrl + "sourceSansPro.otf", 18.0f ); // new Font( "verdana",     Font.BOLD,  12 );
+                Fonts.EAmmo          = LibIO.createFont( Path.EFont.iUrl + "sourceSansPro.otf", 18.0f ); // new Font( "verdana",     Font.BOLD,  12 );
+                Fonts.EHealth        = LibIO.createFont( Path.EFont.iUrl + "sourceSansPro.otf", 18.0f ); // new Font( "verdana",     Font.BOLD,  12 );
+                Fonts.EFps           = LibIO.createFont( Path.EFont.iUrl + "sourceSansPro.otf", 18.0f ); // new Font( "verdana",     Font.BOLD,  12 );
+                Fonts.EAvatarMessage = LibIO.createFont( Path.EFont.iUrl + "sourceSansPro.otf", 18.0f ); // new Font( "verdana",     Font.BOLD,  12 );
 
-                Fonts.EMainMenu      = Lib.createFont( Path.EFont.iUrl + "sourceSansPro.otf", 55.0f );
+                Fonts.EMainMenu      = LibIO.createFont( Path.EFont.iUrl + "sourceSansPro.otf", 55.0f );
             }
             catch ( Throwable t )
             {

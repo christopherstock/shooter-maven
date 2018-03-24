@@ -4,7 +4,7 @@
     import  de.christopherstock.lib.*;
     import  de.christopherstock.lib.gl.*;
     import  de.christopherstock.lib.gl.LibGLFrame.*;
-    import  de.christopherstock.lib.gl.lwjgl.LibLWJGLPanel.*;
+    import de.christopherstock.lib.gl.LibGLPanel.*;
     import  de.christopherstock.shooter.*;
     import  de.christopherstock.shooter.io.hid.lwjgl.*;
     import  de.christopherstock.shooter.io.sound.*;
@@ -59,7 +59,14 @@
                 LibGL3D.panel.display();
 
                 //delay for specified delay time
-                Lib.delay( ShooterSettings.Performance.THREAD_DELAY );
+                try
+                {
+                    Thread.sleep( ShooterSettings.Performance.THREAD_DELAY );
+                }
+                catch ( InterruptedException ie )
+                {
+                    ShooterDebug.error.out( ie );
+                }
             }
 
             //stop all bg sounds ( hangs on mac )

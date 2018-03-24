@@ -2,7 +2,8 @@
     package de.christopherstock.shooter.game.artefact.gadget;
 
     import  java.awt.geom.Point2D;
-    import  de.christopherstock.lib.Lib;
+
+    import de.christopherstock.lib.LibParticleQuantity;
     import  de.christopherstock.lib.fx.LibFX.FXSize;
     import  de.christopherstock.lib.g3d.LibHoleSize;
     import  de.christopherstock.lib.game.LibShot.*;
@@ -58,7 +59,7 @@
         }
 
         @Override
-        public final Lib.ParticleQuantity getSliverParticleQuantity()
+        public final LibParticleQuantity getSliverParticleQuantity()
         {
             return null;
         }

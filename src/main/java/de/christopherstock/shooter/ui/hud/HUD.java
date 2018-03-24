@@ -1,7 +1,7 @@
 
     package de.christopherstock.shooter.ui.hud;
 
-    import  de.christopherstock.lib.Lib.LibAnimation;
+    import de.christopherstock.lib.LibAnimation;
     import  de.christopherstock.lib.gl.*;
     import  de.christopherstock.shooter.*;
     import  de.christopherstock.shooter.ShooterSettings.Colors;

@@ -3,7 +3,7 @@
 
     import  java.awt.geom.Point2D;
     import  de.christopherstock.lib.*;
-    import  de.christopherstock.lib.Lib.LibAnimation;
+    import de.christopherstock.lib.LibAnimation;
     import  de.christopherstock.lib.g3d.*;
     import  de.christopherstock.lib.game.LibShot.ShotSpender;
     import  de.christopherstock.lib.gl.*;
@@ -244,7 +244,7 @@
         public final ItemToPickUp getPickUpItem( LibVertex ank )
         {
             if (this.iArtefactType.iPickUpItemKind == null ) return null;
-            return new ItemToPickUp(this.iArtefactType.iPickUpItemKind, this, ank.x, ank.y, ank.z, LibMath.getRandom( 0, 360 ), Lib.Rotating.ENo );
+            return new ItemToPickUp(this.iArtefactType.iPickUpItemKind, this, ank.x, ank.y, ank.z, LibMath.getRandom( 0, 360 ), LibRotating.ENo );
         }
 
         /***************************************************************************************************************

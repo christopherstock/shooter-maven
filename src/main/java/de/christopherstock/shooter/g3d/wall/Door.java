@@ -2,9 +2,10 @@
     package de.christopherstock.shooter.g3d.wall;
 
     import  java.util.IllegalFormatCodePointException;
-    import  de.christopherstock.lib.Lib.Invert;
-    import  de.christopherstock.lib.Lib.LibTransformationMode;
-    import  de.christopherstock.lib.Lib.Scalation;
+
+    import de.christopherstock.lib.LibInvert;
+    import de.christopherstock.lib.LibTransformationMode;
+    import de.christopherstock.lib.LibScalation;
     import  de.christopherstock.lib.g3d.*;
     import  de.christopherstock.lib.g3d.face.LibFace.*;
     import  de.christopherstock.lib.gl.*;
@@ -52,7 +53,7 @@
 
         public Door( LibD3dsFile file, float x, float y, float z, float rotZ, WallCollidable aCollidable, WallAction doorAction, WallClimbable aClimbable, LibTexture tex, WallHealth wallHealth, ArtefactType aDoorKey, boolean aAutoLock, int aAutoLockDelay )
         {
-            super( file, new LibVertex( x, y, z ), rotZ, Scalation.ENone, Invert.ENo, aCollidable, doorAction, aClimbable, DrawMethod.EAlwaysDraw, tex, null, 0, wallHealth, null, null );
+            super( file, new LibVertex( x, y, z ), rotZ, LibScalation.ENone, LibInvert.ENo, aCollidable, doorAction, aClimbable, DrawMethod.EAlwaysDraw, tex, null, 0, wallHealth, null, null );
 
             this.iDoorKey = aDoorKey;
             this.iAutoLock = aAutoLock;

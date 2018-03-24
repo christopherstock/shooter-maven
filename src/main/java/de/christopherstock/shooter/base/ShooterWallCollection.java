@@ -2,10 +2,10 @@
     package de.christopherstock.shooter.base;
 
     import  java.util.*;
-    import  de.christopherstock.lib.Lib;
-    import  de.christopherstock.lib.Lib.Invert;
-    import  de.christopherstock.lib.Lib.LibTransformationMode;
-    import  de.christopherstock.lib.Lib.Scalation;
+    import de.christopherstock.lib.util.LibUtil;
+    import de.christopherstock.lib.LibInvert;
+    import de.christopherstock.lib.LibTransformationMode;
+    import de.christopherstock.lib.LibScalation;
     import  de.christopherstock.lib.fx.LibFX.FXSize;
     import  de.christopherstock.lib.g3d.*;
     import  de.christopherstock.lib.g3d.face.LibFace.*;
@@ -79,10 +79,10 @@
                 //environment ( large meshes ) and bounds
                 new Wall[]
                 {
-                    new Wall(   Others.EFloor100x100,  new LibVertex(  0.0f,    0.0f,    z     ), 0.0f,   Scalation.ENone,  Invert.ENo, WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, tex, null, 0, WallHealth.EUnbreakale, null, null ),
-                    new Wall(   Others.EFloor100x100,  new LibVertex(  0.0f,    -100.0f, z     ), 0.0f,   Scalation.ENone,  Invert.ENo, WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, tex, null, 0, WallHealth.EUnbreakale, null, null ),
-                    new Wall(   Others.EFloor100x100,  new LibVertex(  -100.0f, 0.0f,    z     ), 0.0f,   Scalation.ENone,  Invert.ENo, WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, tex, null, 0, WallHealth.EUnbreakale, null, null ),
-                    new Wall(   Others.EFloor100x100,  new LibVertex(  -100.0f, -100.0f, z     ), 0.0f,   Scalation.ENone,  Invert.ENo, WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, tex, null, 0, WallHealth.EUnbreakale, null, null ),
+                    new Wall(   Others.EFloor100x100,  new LibVertex(  0.0f,    0.0f,    z     ), 0.0f,   LibScalation.ENone,  LibInvert.ENo, WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, tex, null, 0, WallHealth.EUnbreakale, null, null ),
+                    new Wall(   Others.EFloor100x100,  new LibVertex(  0.0f,    -100.0f, z     ), 0.0f,   LibScalation.ENone,  LibInvert.ENo, WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, tex, null, 0, WallHealth.EUnbreakale, null, null ),
+                    new Wall(   Others.EFloor100x100,  new LibVertex(  -100.0f, 0.0f,    z     ), 0.0f,   LibScalation.ENone,  LibInvert.ENo, WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, tex, null, 0, WallHealth.EUnbreakale, null, null ),
+                    new Wall(   Others.EFloor100x100,  new LibVertex(  -100.0f, -100.0f, z     ), 0.0f,   LibScalation.ENone,  LibInvert.ENo, WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, tex, null, 0, WallHealth.EUnbreakale, null, null ),
                 }
             );
         }
@@ -99,12 +99,12 @@
             {
                 if ( i == 0 )
                 {
-                    Wall w = new Wall( file,  new LibVertex(  x,   y,    z    ), rotZ,  Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, doorTex, null, 0, doorHealth, null, null );
+                    Wall w = new Wall( file,  new LibVertex(  x,   y,    z    ), rotZ,  LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, doorTex, null, 0, doorHealth, null, null );
                     anchor = w;
                 }
                 else
                 {
-                    Wall w = new Wall( file,  new LibVertex(  i * -1.0f,  0.0f,    0.0f    ), 0.0f,  Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, doorTex, null, 0, doorHealth, null, null );
+                    Wall w = new Wall( file,  new LibVertex(  i * -1.0f,  0.0f,    0.0f    ), 0.0f,  LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, doorTex, null, 0, doorHealth, null, null );
                     allWalls.add( w );
                 }
             }
@@ -124,17 +124,17 @@
             //create shaft if desired
             if ( wallTex != null )
             {
-                allWalls.add( new Wall(   Others.EWall2Solid,  new LibVertex(  0.0f,   0.0f,    0.0f    ), 270.0f, Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex, null, 0, WallHealth.EUnbreakale, null, null ) );
-                allWalls.add( new Wall(   Others.EWall2Solid,  new LibVertex(  2.0f,   0.0f,    0.0f    ), 270.0f, Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex, null, 0, WallHealth.EUnbreakale, null, null ) );
-                allWalls.add( new Wall(   Others.EWall2Solid,  new LibVertex(  0.0f,   2.0f,    0.0f    ), 180.0f, Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex, null, 0, WallHealth.EUnbreakale, null, null ) );
+                allWalls.add( new Wall(   Others.EWall2Solid,  new LibVertex(  0.0f,   0.0f,    0.0f    ), 270.0f, LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex, null, 0, WallHealth.EUnbreakale, null, null ) );
+                allWalls.add( new Wall(   Others.EWall2Solid,  new LibVertex(  2.0f,   0.0f,    0.0f    ), 270.0f, LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex, null, 0, WallHealth.EUnbreakale, null, null ) );
+                allWalls.add( new Wall(   Others.EWall2Solid,  new LibVertex(  0.0f,   2.0f,    0.0f    ), 180.0f, LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex, null, 0, WallHealth.EUnbreakale, null, null ) );
 
-                allWalls.add( new Wall(   Others.EWall2Solid,  new LibVertex(  0.0f,   0.0f,    ( action == WallAction.EElevatorUp ? 2.5f : -2.5f )    ), 270.0f, Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ) );
-                allWalls.add( new Wall(   Others.EWall2Solid,  new LibVertex(  2.0f,   0.0f,    ( action == WallAction.EElevatorUp ? 2.5f : -2.5f )    ), 270.0f, Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ) );
-                allWalls.add( new Wall(   Others.EWall2Solid,  new LibVertex(  0.0f,   2.0f,    ( action == WallAction.EElevatorUp ? 2.5f : -2.5f )    ), 180.0f, Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ) );
+                allWalls.add( new Wall(   Others.EWall2Solid,  new LibVertex(  0.0f,   0.0f,    ( action == WallAction.EElevatorUp ? 2.5f : -2.5f )    ), 270.0f, LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ) );
+                allWalls.add( new Wall(   Others.EWall2Solid,  new LibVertex(  2.0f,   0.0f,    ( action == WallAction.EElevatorUp ? 2.5f : -2.5f )    ), 270.0f, LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ) );
+                allWalls.add( new Wall(   Others.EWall2Solid,  new LibVertex(  0.0f,   2.0f,    ( action == WallAction.EElevatorUp ? 2.5f : -2.5f )    ), 180.0f, LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ) );
 
                 //door sockets
-                allWalls.add( new Wall(   Others.EWall2Door,   new LibVertex(  0.0f,    0.0f,   0.0f                                                   ), 180.0f, Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ) );
-                allWalls.add( new Wall(   Others.EWall2Door,   new LibVertex(  0.0f,    0.0f,   ( action == WallAction.EElevatorUp ? 2.5f : -2.5f )    ), 180.0f, Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ) );
+                allWalls.add( new Wall(   Others.EWall2Door,   new LibVertex(  0.0f,    0.0f,   0.0f                                                   ), 180.0f, LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ) );
+                allWalls.add( new Wall(   Others.EWall2Door,   new LibVertex(  0.0f,    0.0f,   ( action == WallAction.EElevatorUp ? 2.5f : -2.5f )    ), 180.0f, LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ) );
             }
 
             //set connected elevator for doors
@@ -190,13 +190,13 @@
                 for ( float yy = 0.0f; yy < sizeY; yy += 2.0f )
                 {
                     //walls
-                    allWalls.add( new Wall(   Others.EWall2Solid,  new LibVertex(  0.0f,   yy,    0.0f    ), 270.0f,  Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ) );
-                    allWalls.add( new Wall(   Others.EWall2Solid,  new LibVertex(  2.0f,   yy,    0.0f    ), 270.0f,  Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ) );
+                    allWalls.add( new Wall(   Others.EWall2Solid,  new LibVertex(  0.0f,   yy,    0.0f    ), 270.0f,  LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ) );
+                    allWalls.add( new Wall(   Others.EWall2Solid,  new LibVertex(  2.0f,   yy,    0.0f    ), 270.0f,  LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ) );
                 }
 
                 //door sockets
-                allWalls.add( new Wall(   Others.EWall2Door,   new LibVertex(  0.0f,    0.0f,   0.0f    ), 180.0f, Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, doorSocketTex,   null, 0, WallHealth.EUnbreakale, null, null ) );
-                allWalls.add( new Wall(   Others.EWall2Door,   new LibVertex(  0.0f,    sizeY,  0.0f    ), 180.0f, Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, doorSocketTex,   null, 0, WallHealth.EUnbreakale, null, null ) );
+                allWalls.add( new Wall(   Others.EWall2Door,   new LibVertex(  0.0f,    0.0f,   0.0f    ), 180.0f, LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, doorSocketTex,   null, 0, WallHealth.EUnbreakale, null, null ) );
+                allWalls.add( new Wall(   Others.EWall2Door,   new LibVertex(  0.0f,    sizeY,  0.0f    ), 180.0f, LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, doorSocketTex,   null, 0, WallHealth.EUnbreakale, null, null ) );
             }
 
             //create ceiling if desired
@@ -226,25 +226,25 @@
         {
             Wall[] wallsBasement = new Wall[]
             {
-                new Wall(   Others.EFloor3x3,       new LibVertex(  3.0f,   0.0f,   0.0f    ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECarpet1,   null, 0, WallHealth.EUnbreakale, null, null ),
+                new Wall(   Others.EFloor3x3,       new LibVertex(  3.0f,   0.0f,   0.0f    ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECarpet1,   null, 0, WallHealth.EUnbreakale, null, null ),
 
-                new Wall(   Others.EWall2Solid,      new LibVertex(  3.0f,   5.0f,   0.0f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                new Wall(   Others.EWall1Solid,      new LibVertex(  3.0f,   6.0f,   0.0f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                new Wall(   Others.EWall2Solid,      new LibVertex(  3.0f,   5.0f,   0.0f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                new Wall(   Others.EWall1Solid,      new LibVertex(  3.0f,   6.0f,   0.0f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
 
-                new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   2.0f,   0.0f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   2.0f,   0.0f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   4.0f,   0.0f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   4.0f,   0.0f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   6.0f,   0.0f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   6.0f,   0.0f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   8.0f,   0.0f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   8.0f,   0.0f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                new Wall(   Others.EWall1Solid,      new LibVertex(  0.0f,   9.0f,   0.0f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                new Wall(   Others.EWall1Solid,      new LibVertex(  6.0f,   9.0f,   0.0f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   2.0f,   0.0f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   2.0f,   0.0f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   4.0f,   0.0f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   4.0f,   0.0f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   6.0f,   0.0f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   6.0f,   0.0f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   8.0f,   0.0f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   8.0f,   0.0f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                new Wall(   Others.EWall1Solid,      new LibVertex(  0.0f,   9.0f,   0.0f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                new Wall(   Others.EWall1Solid,      new LibVertex(  6.0f,   9.0f,   0.0f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
 
-                new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   9.0f,   0.0f    ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                new Wall(   Others.EWall2Solid,      new LibVertex(  4.0f,   9.0f,   0.0f    ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                new Wall(   Others.EWall2Solid,      new LibVertex(  2.0f,   9.0f,   0.0f    ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   9.0f,   0.0f    ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                new Wall(   Others.EWall2Solid,      new LibVertex(  4.0f,   9.0f,   0.0f    ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                new Wall(   Others.EWall2Solid,      new LibVertex(  2.0f,   9.0f,   0.0f    ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
             };
 
             Wall[] wallsUp =
@@ -252,73 +252,73 @@
                     toUpper
                 ?   new Wall[]
                     {
-                        new Wall(   Others.EFloor3x3,       new LibVertex(  0.0f,   0.0f,   7.5f    ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECeiling1,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EFloor3x3,       new LibVertex(  3.0f,   0.0f,   7.5f    ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECeiling1,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EFloor3x3,       new LibVertex(  0.0f,   3.0f,   7.5f    ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECeiling1,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EFloor3x3,       new LibVertex(  3.0f,   3.0f,   7.5f    ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECeiling1,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EFloor3x3,       new LibVertex(  0.0f,   6.0f,   7.5f    ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECeiling1,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EFloor3x3,       new LibVertex(  3.0f,   6.0f,   7.5f    ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECeiling1,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EFloor3x3,       new LibVertex(  0.0f,   0.0f,   7.5f    ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECeiling1,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EFloor3x3,       new LibVertex(  3.0f,   0.0f,   7.5f    ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECeiling1,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EFloor3x3,       new LibVertex(  0.0f,   3.0f,   7.5f    ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECeiling1,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EFloor3x3,       new LibVertex(  3.0f,   3.0f,   7.5f    ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECeiling1,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EFloor3x3,       new LibVertex(  0.0f,   6.0f,   7.5f    ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECeiling1,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EFloor3x3,       new LibVertex(  3.0f,   6.0f,   7.5f    ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECeiling1,   null, 0, WallHealth.EUnbreakale, null, null ),
 
 
-                        new Wall(   Others.EStairs3x3,      new LibVertex(  0.0f,   3.0f,   0.0f   ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.EMarble1, new LibTexture[] { WallTex.EMarble2, }, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EStairs3x3,      new LibVertex(  6.0f,   6.0f,   2.5f   ),  180.0f, Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.EMarble1, new LibTexture[] { WallTex.EMarble2, }, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EStairs3x3,      new LibVertex(  0.0f,   3.0f,   0.0f   ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.EMarble1, new LibTexture[] { WallTex.EMarble2, }, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EStairs3x3,      new LibVertex(  6.0f,   6.0f,   2.5f   ),  180.0f, LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.EMarble1, new LibTexture[] { WallTex.EMarble2, }, 0, WallHealth.EUnbreakale, null, null ),
 
-                        new Wall(   Others.EFloor3x3,       new LibVertex(  0.0f,   6.0f,   2.5f   ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECarpet1,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EFloor3x3,       new LibVertex(  3.0f,   6.0f,   2.5f   ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECarpet1,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EFloor3x3,       new LibVertex(  0.0f,   0.0f,   5.0f   ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECarpet1,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EFloor3x3,       new LibVertex(  3.0f,   0.0f,   5.0f   ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECarpet1,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EFloor3x3,       new LibVertex(  0.0f,   6.0f,   2.5f   ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECarpet1,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EFloor3x3,       new LibVertex(  3.0f,   6.0f,   2.5f   ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECarpet1,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EFloor3x3,       new LibVertex(  0.0f,   0.0f,   5.0f   ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECarpet1,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EFloor3x3,       new LibVertex(  3.0f,   0.0f,   5.0f   ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECarpet1,   null, 0, WallHealth.EUnbreakale, null, null ),
 
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   9.0f,   2.5f    ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  4.0f,   9.0f,   2.5f    ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  2.0f,   9.0f,   2.5f    ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   9.0f,   5.0f    ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  4.0f,   9.0f,   5.0f    ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  2.0f,   9.0f,   5.0f    ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   9.0f,   2.5f    ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  4.0f,   9.0f,   2.5f    ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  2.0f,   9.0f,   2.5f    ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   9.0f,   5.0f    ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  4.0f,   9.0f,   5.0f    ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  2.0f,   9.0f,   5.0f    ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
 
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   2.0f,   2.5f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   4.0f,   2.5f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   6.0f,   2.5f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   8.0f,   2.5f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall1Solid,      new LibVertex(  0.0f,   9.0f,   2.5f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   2.0f,   2.5f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   4.0f,   2.5f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   6.0f,   2.5f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   8.0f,   2.5f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall1Solid,      new LibVertex(  0.0f,   9.0f,   2.5f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
 
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   2.0f,   2.5f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   4.0f,   2.5f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   6.0f,   2.5f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   8.0f,   2.5f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall1Solid,      new LibVertex(  6.0f,   9.0f,   2.5f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   2.0f,   2.5f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   4.0f,   2.5f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   6.0f,   2.5f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   8.0f,   2.5f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall1Solid,      new LibVertex(  6.0f,   9.0f,   2.5f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
 
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   2.0f,   5.0f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   4.0f,   5.0f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   6.0f,   5.0f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   8.0f,   5.0f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall1Solid,      new LibVertex(  0.0f,   9.0f,   5.0f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   2.0f,   5.0f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   4.0f,   5.0f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   6.0f,   5.0f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   8.0f,   5.0f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall1Solid,      new LibVertex(  0.0f,   9.0f,   5.0f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
 
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   2.0f,   5.0f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   4.0f,   5.0f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   6.0f,   5.0f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   8.0f,   5.0f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall1Solid,      new LibVertex(  6.0f,   9.0f,   5.0f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   2.0f,   5.0f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   4.0f,   5.0f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   6.0f,   5.0f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   8.0f,   5.0f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall1Solid,      new LibVertex(  6.0f,   9.0f,   5.0f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
 
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  3.0f,   5.0f,   2.5f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall1Solid,      new LibVertex(  3.0f,   6.0f,   2.5f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  3.0f,   5.0f,   5.0f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall1Solid,      new LibVertex(  3.0f,   6.0f,   5.0f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  3.0f,   5.0f,   2.5f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall1Solid,      new LibVertex(  3.0f,   6.0f,   2.5f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  3.0f,   5.0f,   5.0f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall1Solid,      new LibVertex(  3.0f,   6.0f,   5.0f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
 
-                        new Wall(   Others.EWall2WindowSocket, new LibVertex(  3.0f,   3.0f,   5.0f    ), 0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall1WindowSocket, new LibVertex(  1.0f,   3.0f,   5.0f    ), 0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2WindowSocket, new LibVertex(  3.0f,   3.0f,   5.0f    ), 0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall1WindowSocket, new LibVertex(  1.0f,   3.0f,   5.0f    ), 0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
                     }
                 :   new Wall[]
                     {
 
-                        new Wall(   Others.EFloor3x3,       new LibVertex(  0.0f,   0.0f,   2.5f    ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECeiling1,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EFloor3x3,       new LibVertex(  3.0f,   0.0f,   2.5f    ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECeiling1,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EFloor3x3,       new LibVertex(  0.0f,   3.0f,   2.5f    ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECeiling1,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EFloor3x3,       new LibVertex(  3.0f,   3.0f,   2.5f    ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECeiling1,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EFloor3x3,       new LibVertex(  0.0f,   6.0f,   2.5f    ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECeiling1,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EFloor3x3,       new LibVertex(  3.0f,   6.0f,   2.5f    ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECeiling1,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EFloor3x3,       new LibVertex(  0.0f,   0.0f,   2.5f    ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECeiling1,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EFloor3x3,       new LibVertex(  3.0f,   0.0f,   2.5f    ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECeiling1,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EFloor3x3,       new LibVertex(  0.0f,   3.0f,   2.5f    ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECeiling1,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EFloor3x3,       new LibVertex(  3.0f,   3.0f,   2.5f    ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECeiling1,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EFloor3x3,       new LibVertex(  0.0f,   6.0f,   2.5f    ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECeiling1,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EFloor3x3,       new LibVertex(  3.0f,   6.0f,   2.5f    ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECeiling1,   null, 0, WallHealth.EUnbreakale, null, null ),
 
-                        new Wall(   Others.EWall2WindowSocket, new LibVertex(  3.0f,   3.0f,   0.0f    ), 0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall1WindowSocket, new LibVertex(  1.0f,   3.0f,   0.0f    ), 0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2WindowSocket, new LibVertex(  3.0f,   3.0f,   0.0f    ), 0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall1WindowSocket, new LibVertex(  1.0f,   3.0f,   0.0f    ), 0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
                     }
             );
 
@@ -327,62 +327,62 @@
                     toLower
                 ?   new Wall[]
                     {
-                        new Wall(   Others.EStairs3x3,      new LibVertex(  6.0f,   6.0f,   -2.5f   ),  180.0f, Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.EMarble1, new LibTexture[] { WallTex.EMarble2, }, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EStairs3x3,      new LibVertex(  0.0f,   3.0f,   -5.0f   ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.EMarble1, new LibTexture[] { WallTex.EMarble2, }, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EStairs3x3,      new LibVertex(  6.0f,   6.0f,   -2.5f   ),  180.0f, LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.EMarble1, new LibTexture[] { WallTex.EMarble2, }, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EStairs3x3,      new LibVertex(  0.0f,   3.0f,   -5.0f   ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.EMarble1, new LibTexture[] { WallTex.EMarble2, }, 0, WallHealth.EUnbreakale, null, null ),
 
-                        new Wall(   Others.EFloor3x3,       new LibVertex(  0.0f,   6.0f,   -2.5f   ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECarpet1,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EFloor3x3,       new LibVertex(  3.0f,   6.0f,   -2.5f   ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECarpet1,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EFloor3x3,       new LibVertex(  0.0f,   0.0f,   -5.0f   ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECarpet1,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EFloor3x3,       new LibVertex(  3.0f,   0.0f,   -5.0f   ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECarpet1,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EFloor3x3,       new LibVertex(  0.0f,   6.0f,   -2.5f   ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECarpet1,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EFloor3x3,       new LibVertex(  3.0f,   6.0f,   -2.5f   ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECarpet1,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EFloor3x3,       new LibVertex(  0.0f,   0.0f,   -5.0f   ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECarpet1,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EFloor3x3,       new LibVertex(  3.0f,   0.0f,   -5.0f   ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECarpet1,   null, 0, WallHealth.EUnbreakale, null, null ),
 
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   9.0f,   -2.5f    ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  4.0f,   9.0f,   -2.5f    ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  2.0f,   9.0f,   -2.5f    ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   9.0f,   -5.0f    ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  4.0f,   9.0f,   -5.0f    ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  2.0f,   9.0f,   -5.0f    ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   9.0f,   -2.5f    ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  4.0f,   9.0f,   -2.5f    ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  2.0f,   9.0f,   -2.5f    ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   9.0f,   -5.0f    ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  4.0f,   9.0f,   -5.0f    ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  2.0f,   9.0f,   -5.0f    ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
 
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   2.0f,   -2.5f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   4.0f,   -2.5f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   6.0f,   -2.5f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   8.0f,   -2.5f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall1Solid,      new LibVertex(  0.0f,   9.0f,   -2.5f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   2.0f,   -2.5f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   4.0f,   -2.5f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   6.0f,   -2.5f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   8.0f,   -2.5f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall1Solid,      new LibVertex(  0.0f,   9.0f,   -2.5f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
 
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   2.0f,   -2.5f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   4.0f,   -2.5f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   6.0f,   -2.5f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   8.0f,   -2.5f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall1Solid,      new LibVertex(  6.0f,   9.0f,   -2.5f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   2.0f,   -2.5f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   4.0f,   -2.5f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   6.0f,   -2.5f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   8.0f,   -2.5f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall1Solid,      new LibVertex(  6.0f,   9.0f,   -2.5f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
 
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   2.0f,   -5.0f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   4.0f,   -5.0f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   6.0f,   -5.0f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   8.0f,   -5.0f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall1Solid,      new LibVertex(  0.0f,   9.0f,   -5.0f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   2.0f,   -5.0f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   4.0f,   -5.0f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   6.0f,   -5.0f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  0.0f,   8.0f,   -5.0f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall1Solid,      new LibVertex(  0.0f,   9.0f,   -5.0f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
 
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   2.0f,   -5.0f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   4.0f,   -5.0f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   6.0f,   -5.0f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   8.0f,   -5.0f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall1Solid,      new LibVertex(  6.0f,   9.0f,   -5.0f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   2.0f,   -5.0f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   4.0f,   -5.0f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   6.0f,   -5.0f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  6.0f,   8.0f,   -5.0f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall1Solid,      new LibVertex(  6.0f,   9.0f,   -5.0f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
 
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  3.0f,   5.0f,   -2.5f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall1Solid,      new LibVertex(  3.0f,   6.0f,   -2.5f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall2Solid,      new LibVertex(  3.0f,   5.0f,   -5.0f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall1Solid,      new LibVertex(  3.0f,   6.0f,   -5.0f    ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  3.0f,   5.0f,   -2.5f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall1Solid,      new LibVertex(  3.0f,   6.0f,   -2.5f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2Solid,      new LibVertex(  3.0f,   5.0f,   -5.0f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall1Solid,      new LibVertex(  3.0f,   6.0f,   -5.0f    ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
 
-                        new Wall(   Others.EWall2WindowSocket, new LibVertex(  6.0f,   3.0f,   -5.0f   ), 0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall1WindowSocket, new LibVertex(  4.0f,   3.0f,   -5.0f   ), 0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2WindowSocket, new LibVertex(  6.0f,   3.0f,   -5.0f   ), 0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall1WindowSocket, new LibVertex(  4.0f,   3.0f,   -5.0f   ), 0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
                     }
                 :   new Wall[]
                     {
-                        new Wall(   Others.EFloor3x3,       new LibVertex(  0.0f,   3.0f,   0.0f    ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECarpet1,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EFloor3x3,       new LibVertex(  3.0f,   3.0f,   0.0f    ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECarpet1,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EFloor3x3,       new LibVertex(  0.0f,   6.0f,   0.0f    ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECarpet1,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EFloor3x3,       new LibVertex(  3.0f,   6.0f,   0.0f    ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECarpet1,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EFloor3x3,       new LibVertex(  0.0f,   3.0f,   0.0f    ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECarpet1,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EFloor3x3,       new LibVertex(  3.0f,   3.0f,   0.0f    ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECarpet1,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EFloor3x3,       new LibVertex(  0.0f,   6.0f,   0.0f    ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECarpet1,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EFloor3x3,       new LibVertex(  3.0f,   6.0f,   0.0f    ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECarpet1,   null, 0, WallHealth.EUnbreakale, null, null ),
 
-                        new Wall(   Others.EWall2WindowSocket, new LibVertex(  6.0f,   3.0f,   0.0f    ), 0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
-                        new Wall(   Others.EWall1WindowSocket, new LibVertex(  4.0f,   3.0f,   0.0f    ), 0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall2WindowSocket, new LibVertex(  6.0f,   3.0f,   0.0f    ), 0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
+                        new Wall(   Others.EWall1WindowSocket, new LibVertex(  4.0f,   3.0f,   0.0f    ), 0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ),
                     }
             );
 
@@ -393,7 +393,7 @@
 
             return new WallCollection
             (
-                new Wall(       Others.EFloor3x3,   new LibVertex(  x,      y,      z       ),  initRotZ,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECarpet1, null, 0, WallHealth.EUnbreakale, null, null ),
+                new Wall(       Others.EFloor3x3,   new LibVertex(  x,      y,      z       ),  initRotZ,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, WallTex.ECarpet1, null, 0, WallHealth.EUnbreakale, null, null ),
                 allWallsV.toArray( new Wall[] {} )
             );
         }
@@ -413,7 +413,7 @@
                     //skip base tile
                     if ( i > 0 || j > 0 )
                     {
-                        allWalls.add( new Wall(       Others.EFloor1x1,   new LibVertex(  0.0f + i * 1.0f, 0.0f + j * 1.0f, 0.0f ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, floorTex,   null, 0, WallHealth.EUnbreakale, null, null ) );
+                        allWalls.add( new Wall(       Others.EFloor1x1,   new LibVertex(  0.0f + i * 1.0f, 0.0f + j * 1.0f, 0.0f ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, floorTex,   null, 0, WallHealth.EUnbreakale, null, null ) );
                     }
 
                     //margin celiling ( for glass ceilings )
@@ -421,7 +421,7 @@
                     {
                         if ( j > 0 && j < ( sizeY - 1 ) && i > 0 && i < ( sizeX - 1 ) )
                         {
-                            allWalls.add( new Wall(       Others.EFloor1x1,   new LibVertex(  0.0f + i * 1.0f, 0.0f + j * 1.0f, 2.5f ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, ceilingTex, null, 0, WallHealth.EUnbreakale, null, null ) );
+                            allWalls.add( new Wall(       Others.EFloor1x1,   new LibVertex(  0.0f + i * 1.0f, 0.0f + j * 1.0f, 2.5f ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, ceilingTex, null, 0, WallHealth.EUnbreakale, null, null ) );
                         }
                     }
 
@@ -430,44 +430,44 @@
                     {
                         if ( left == WallStyle.EWindowsAndCeilingWindows || top == WallStyle.EWindowsAndCeilingWindows )
                         {
-                            allWalls.add( new Wall(         Others.EFloor1x1,           new LibVertex(  0.0f, 0.0f,    2.5f       ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EGlass1, null, 0, WallHealth.EGlass, null, null ) );
+                            allWalls.add( new Wall(         Others.EFloor1x1,           new LibVertex(  0.0f, 0.0f,    2.5f       ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EGlass1, null, 0, WallHealth.EGlass, null, null ) );
                         }
                         else if ( ceilingTex != null )
                         {
-                            allWalls.add( new Wall(       Others.EFloor1x1,   new LibVertex(  0.0f, 0.0f, 2.5f ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, ceilingTex, null, 0, WallHealth.EUnbreakale, null, null ) );
+                            allWalls.add( new Wall(       Others.EFloor1x1,   new LibVertex(  0.0f, 0.0f, 2.5f ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, ceilingTex, null, 0, WallHealth.EUnbreakale, null, null ) );
                         }
                     }
                     else if ( i == sizeX - 1 && j == 0 )
                     {
                         if ( left == WallStyle.EWindowsAndCeilingWindows || bottom == WallStyle.EWindowsAndCeilingWindows )
                         {
-                            allWalls.add( new Wall(         Others.EFloor1x1,           new LibVertex(  sizeX - 1, 0.0f,    2.5f       ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EGlass1, null, 0, WallHealth.EGlass, null, null ) );
+                            allWalls.add( new Wall(         Others.EFloor1x1,           new LibVertex(  sizeX - 1, 0.0f,    2.5f       ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EGlass1, null, 0, WallHealth.EGlass, null, null ) );
                         }
                         else if ( ceilingTex != null )
                         {
-                            allWalls.add( new Wall(       Others.EFloor1x1,   new LibVertex(  sizeX - 1.0f, 0.0f, 2.5f ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, ceilingTex, null, 0, WallHealth.EUnbreakale, null, null ) );
+                            allWalls.add( new Wall(       Others.EFloor1x1,   new LibVertex(  sizeX - 1.0f, 0.0f, 2.5f ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, ceilingTex, null, 0, WallHealth.EUnbreakale, null, null ) );
                         }
                     }
                     else if ( i == sizeX - 1 && j == sizeY - 1 )
                     {
                         if ( bottom == WallStyle.EWindowsAndCeilingWindows || right == WallStyle.EWindowsAndCeilingWindows )
                         {
-                            allWalls.add( new Wall(         Others.EFloor1x1,           new LibVertex(  sizeX - 1, sizeY - 1,    2.5f       ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EGlass1, null, 0, WallHealth.EGlass, null, null ) );
+                            allWalls.add( new Wall(         Others.EFloor1x1,           new LibVertex(  sizeX - 1, sizeY - 1,    2.5f       ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EGlass1, null, 0, WallHealth.EGlass, null, null ) );
                         }
                         else if ( ceilingTex != null )
                         {
-                            allWalls.add( new Wall(       Others.EFloor1x1,   new LibVertex(  sizeX - 1, sizeY - 1, 2.5f ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, ceilingTex, null, 0, WallHealth.EUnbreakale, null, null ) );
+                            allWalls.add( new Wall(       Others.EFloor1x1,   new LibVertex(  sizeX - 1, sizeY - 1, 2.5f ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, ceilingTex, null, 0, WallHealth.EUnbreakale, null, null ) );
                         }
                     }
                     else if ( i == 0 && j == sizeY - 1 )
                     {
                         if ( top == WallStyle.EWindowsAndCeilingWindows || right == WallStyle.EWindowsAndCeilingWindows )
                         {
-                            allWalls.add( new Wall(         Others.EFloor1x1,           new LibVertex(  0.0f, sizeY - 1,    2.5f       ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EGlass1, null, 0, WallHealth.EGlass, null, null ) );
+                            allWalls.add( new Wall(         Others.EFloor1x1,           new LibVertex(  0.0f, sizeY - 1,    2.5f       ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EGlass1, null, 0, WallHealth.EGlass, null, null ) );
                         }
                         else if ( ceilingTex != null )
                         {
-                            allWalls.add( new Wall(       Others.EFloor1x1,   new LibVertex(  0.0f, sizeY - 1, 2.5f ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, ceilingTex, null, 0, WallHealth.EUnbreakale, null, null ) );
+                            allWalls.add( new Wall(       Others.EFloor1x1,   new LibVertex(  0.0f, sizeY - 1, 2.5f ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, ceilingTex, null, 0, WallHealth.EUnbreakale, null, null ) );
                         }
                     }
                 }
@@ -477,7 +477,7 @@
             for ( int i = 0; i < sizeX; ++i )
             {
                 LibTexture ct = ( i == 0 || i == sizeX - 1 ? null : ceilingTex );
-                if ( gapLeft != null && ( Lib.contains( gapLeft, i ) || Lib.contains( gapLeft, i - 1 ) ) )
+                if ( gapLeft != null && ( LibUtil.contains( gapLeft, i ) || LibUtil.contains( gapLeft, i - 1 ) ) )
                 {
                     addStyledWall( allWalls, left, i * 1.0f, 0.0f, 180.0f, null, ct );
                 }
@@ -491,7 +491,7 @@
             for ( int i = 0; i < sizeX; ++i )
             {
                 LibTexture ct = ( i == 0 || i == sizeX - 1 ? null : ceilingTex );
-                if ( gapRight != null && ( Lib.contains( gapRight, i ) || Lib.contains( gapRight, i - 1 ) ) )
+                if ( gapRight != null && ( LibUtil.contains( gapRight, i ) || LibUtil.contains( gapRight, i - 1 ) ) )
                 {
                     addStyledWall( allWalls, right, 1.0f + i * 1.0f, sizeY, 0.0f, null, ct );
                 }
@@ -506,7 +506,7 @@
             {
                 LibTexture ct = ( i == 0 || i == sizeY - 1 ? null : ceilingTex );
                 LibTexture wt = (  ( i == doorOffset || i == doorOffset + 1 ) && doorStyle != DoorStyle.ENoDoor ? null : wallTex );
-                if ( gapTop != null && ( Lib.contains( gapTop, i ) || Lib.contains( gapTop, i - 1 ) ) )
+                if ( gapTop != null && ( LibUtil.contains( gapTop, i ) || LibUtil.contains( gapTop, i - 1 ) ) )
                 {
                     addStyledWall( allWalls, top, 0.0f, 1.0f + i * 1.0f, 90.0f, null, ct );
                 }
@@ -515,7 +515,7 @@
                     addStyledWall( allWalls, top, 0.0f, 1.0f + i * 1.0f, 90.0f, wt, ct );
                     if ( wt == null && i == doorOffset )
                     {
-                        allWalls.add( new Wall( Others.EWall2Door,  new LibVertex( 0.0f, 2.0f + i * 1.0f, 0.0f ),  90.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, wallTex, null, 0, WallHealth.EUnbreakale, null, null ) );
+                        allWalls.add( new Wall( Others.EWall2Door,  new LibVertex( 0.0f, 2.0f + i * 1.0f, 0.0f ),  90.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, wallTex, null, 0, WallHealth.EUnbreakale, null, null ) );
                     }
                 }
             }
@@ -524,7 +524,7 @@
             for ( int i = 0; i < sizeY; i += 1 )
             {
                 LibTexture ct = ( i == 0 || i == sizeY - 1 ? null : ceilingTex );
-                if ( gapBottom != null && ( Lib.contains( gapBottom, i ) || Lib.contains( gapBottom, i - 1 ) ) )
+                if ( gapBottom != null && ( LibUtil.contains( gapBottom, i ) || LibUtil.contains( gapBottom, i - 1 ) ) )
                 {
                     addStyledWall( allWalls, bottom, sizeX, i * 1.0f, 270.0f, null, ct ); // wall tex is null!!
                 }
@@ -534,7 +534,7 @@
                 }
             }
 
-            //Wall tile = new Wall(       Others.EFloor2x2,     new LibVertex(  0.0f,      0.0f,      0.0f       ),  0.0f,        Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, floorTex, null, WallEnergy.WallHealth.EUnbreakale, null, null );
+            //Wall tile = new Wall(       Others.EFloor2x2,     new LibVertex(  0.0f,      0.0f,      0.0f       ),  0.0f,        LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, floorTex, null, WallEnergy.WallHealth.EUnbreakale, null, null );
 
             //add door
             //allWalls.add( tile );
@@ -548,7 +548,7 @@
                 case EAnchorDefault:
                 {
                     Door door     = new Door( Others.EDoor1, x, y, z, rotZ, WallCollidable.EYes, doorAction, WallClimbable.ENo, doorTex, doorHealth, null, true, DoorSettings.DOOR_DEFAULT_AUTO_CLOSE_DELAY );
-                    Wall baseTile = new Wall(       Others.EFloor1x1,   new LibVertex( 0.0f, 0.0f, 0.0f ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, floorTex, null, 0, WallHealth.EUnbreakale, null, null );
+                    Wall baseTile = new Wall(       Others.EFloor1x1,   new LibVertex( 0.0f, 0.0f, 0.0f ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, floorTex, null, 0, WallHealth.EUnbreakale, null, null );
                     allWalls.add( baseTile );
 
                     //translate all walls by door ..
@@ -582,7 +582,7 @@
                 {
                     Door door = new Door( Others.EDoor1, x, y, z, rotZ, WallCollidable.EYes, doorAction, WallClimbable.ENo, doorTex, doorHealth, null, true, DoorSettings.DOOR_DEFAULT_AUTO_CLOSE_DELAY );
 
-                    Wall baseTile = new Wall(       Others.EFloor1x1,   new LibVertex(  0.0f, 0.0f, 0.0f ),  0.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, floorTex, null, 0, WallHealth.EUnbreakale, null, null );
+                    Wall baseTile = new Wall(       Others.EFloor1x1,   new LibVertex(  0.0f, 0.0f, 0.0f ),  0.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, floorTex, null, 0, WallHealth.EUnbreakale, null, null );
                     allWalls.add( baseTile );
 
                     //translate all walls by door ..
@@ -615,7 +615,7 @@
                 case ENoDoor:
                 default:
                 {
-                    Wall baseTile = new Wall(       Others.EFloor1x1,   new LibVertex(  x, y, z ), rotZ,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, floorTex, null, 0, WallHealth.EUnbreakale, null, null );
+                    Wall baseTile = new Wall(       Others.EFloor1x1,   new LibVertex(  x, y, z ), rotZ,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.EYes, DrawMethod.EAlwaysDraw, floorTex, null, 0, WallHealth.EUnbreakale, null, null );
                     return new WallCollection
                     (
                         baseTile,
@@ -633,52 +633,52 @@
         {
             Vector<Wall> boxes = new Vector<Wall>();
 
-            if ( LibMath.getRandom( 0, 2 ) == 0 ) boxes.add( new Wall(   Others.ECrate1, new LibVertex( -0.6f,  0.0f, 0.5f ), 0.0f, Scalation.ENone, Invert.ENo, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ECrate1, null, 0, WallHealth.ECrate, FXSize.ESmall, null ) );
-            if ( LibMath.getRandom( 0, 2 ) == 0 ) boxes.add( new Wall(   Others.ECrate1, new LibVertex( -0.25f, 0.0f, 0.5f ), 0.0f, Scalation.ENone, Invert.ENo, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ECrate1, null, 0, WallHealth.ECrate, FXSize.ESmall, null ) );
-            if ( LibMath.getRandom( 0, 2 ) == 0 ) boxes.add( new Wall(   Others.ECrate1, new LibVertex( 0.25f,  0.0f, 0.5f ), 0.0f, Scalation.ENone, Invert.ENo, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ECrate1, null, 0, WallHealth.ECrate, FXSize.ESmall, null ) );
-            if ( LibMath.getRandom( 0, 2 ) == 0 ) boxes.add( new Wall(   Others.ECrate1, new LibVertex( 0.6f,   0.0f, 0.5f ), 0.0f, Scalation.ENone, Invert.ENo, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ECrate1, null, 0, WallHealth.ECrate, FXSize.ESmall, null ) );
+            if ( LibMath.getRandom( 0, 2 ) == 0 ) boxes.add( new Wall(   Others.ECrate1, new LibVertex( -0.6f,  0.0f, 0.5f ), 0.0f, LibScalation.ENone, LibInvert.ENo, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ECrate1, null, 0, WallHealth.ECrate, FXSize.ESmall, null ) );
+            if ( LibMath.getRandom( 0, 2 ) == 0 ) boxes.add( new Wall(   Others.ECrate1, new LibVertex( -0.25f, 0.0f, 0.5f ), 0.0f, LibScalation.ENone, LibInvert.ENo, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ECrate1, null, 0, WallHealth.ECrate, FXSize.ESmall, null ) );
+            if ( LibMath.getRandom( 0, 2 ) == 0 ) boxes.add( new Wall(   Others.ECrate1, new LibVertex( 0.25f,  0.0f, 0.5f ), 0.0f, LibScalation.ENone, LibInvert.ENo, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ECrate1, null, 0, WallHealth.ECrate, FXSize.ESmall, null ) );
+            if ( LibMath.getRandom( 0, 2 ) == 0 ) boxes.add( new Wall(   Others.ECrate1, new LibVertex( 0.6f,   0.0f, 0.5f ), 0.0f, LibScalation.ENone, LibInvert.ENo, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ECrate1, null, 0, WallHealth.ECrate, FXSize.ESmall, null ) );
 
-            if ( LibMath.getRandom( 0, 2 ) == 0 ) boxes.add( new Wall(   Others.ECrate1, new LibVertex( -0.6f,  0.0f, 0.9f ), 0.0f, Scalation.ENone, Invert.ENo, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ECrate1, null, 0, WallHealth.ECrate, FXSize.ESmall, null ) );
-            if ( LibMath.getRandom( 0, 2 ) == 0 ) boxes.add( new Wall(   Others.ECrate1, new LibVertex( -0.25f, 0.0f, 0.9f ), 0.0f, Scalation.ENone, Invert.ENo, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ECrate1, null, 0, WallHealth.ECrate, FXSize.ESmall, null ) );
-            if ( LibMath.getRandom( 0, 2 ) == 0 ) boxes.add( new Wall(   Others.ECrate1, new LibVertex( 0.25f,  0.0f, 0.9f ), 0.0f, Scalation.ENone, Invert.ENo, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ECrate1, null, 0, WallHealth.ECrate, FXSize.ESmall, null ) );
-            if ( LibMath.getRandom( 0, 2 ) == 0 ) boxes.add( new Wall(   Others.ECrate1, new LibVertex( 0.6f,   0.0f, 0.9f ), 0.0f, Scalation.ENone, Invert.ENo, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ECrate1, null, 0, WallHealth.ECrate, FXSize.ESmall, null ) );
+            if ( LibMath.getRandom( 0, 2 ) == 0 ) boxes.add( new Wall(   Others.ECrate1, new LibVertex( -0.6f,  0.0f, 0.9f ), 0.0f, LibScalation.ENone, LibInvert.ENo, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ECrate1, null, 0, WallHealth.ECrate, FXSize.ESmall, null ) );
+            if ( LibMath.getRandom( 0, 2 ) == 0 ) boxes.add( new Wall(   Others.ECrate1, new LibVertex( -0.25f, 0.0f, 0.9f ), 0.0f, LibScalation.ENone, LibInvert.ENo, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ECrate1, null, 0, WallHealth.ECrate, FXSize.ESmall, null ) );
+            if ( LibMath.getRandom( 0, 2 ) == 0 ) boxes.add( new Wall(   Others.ECrate1, new LibVertex( 0.25f,  0.0f, 0.9f ), 0.0f, LibScalation.ENone, LibInvert.ENo, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ECrate1, null, 0, WallHealth.ECrate, FXSize.ESmall, null ) );
+            if ( LibMath.getRandom( 0, 2 ) == 0 ) boxes.add( new Wall(   Others.ECrate1, new LibVertex( 0.6f,   0.0f, 0.9f ), 0.0f, LibScalation.ENone, LibInvert.ENo, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ECrate1, null, 0, WallHealth.ECrate, FXSize.ESmall, null ) );
 
-            if ( LibMath.getRandom( 0, 2 ) == 0 ) boxes.add( new Wall(   Others.ECrate1, new LibVertex( -0.6f,  0.0f, 1.29f ), 0.0f, Scalation.ENone, Invert.ENo, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ECrate1, null, 0, WallHealth.ECrate, FXSize.ESmall, null ) );
-            if ( LibMath.getRandom( 0, 2 ) == 0 ) boxes.add( new Wall(   Others.ECrate1, new LibVertex( -0.25f, 0.0f, 1.29f ), 0.0f, Scalation.ENone, Invert.ENo, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ECrate1, null, 0, WallHealth.ECrate, FXSize.ESmall, null ) );
-            if ( LibMath.getRandom( 0, 2 ) == 0 ) boxes.add( new Wall(   Others.ECrate1, new LibVertex( 0.25f,  0.0f, 1.29f ), 0.0f, Scalation.ENone, Invert.ENo, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ECrate1, null, 0, WallHealth.ECrate, FXSize.ESmall, null ) );
-            if ( LibMath.getRandom( 0, 2 ) == 0 ) boxes.add( new Wall(   Others.ECrate1, new LibVertex( 0.6f,   0.0f, 1.29f ), 0.0f, Scalation.ENone, Invert.ENo, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ECrate1, null, 0, WallHealth.ECrate, FXSize.ESmall, null ) );
+            if ( LibMath.getRandom( 0, 2 ) == 0 ) boxes.add( new Wall(   Others.ECrate1, new LibVertex( -0.6f,  0.0f, 1.29f ), 0.0f, LibScalation.ENone, LibInvert.ENo, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ECrate1, null, 0, WallHealth.ECrate, FXSize.ESmall, null ) );
+            if ( LibMath.getRandom( 0, 2 ) == 0 ) boxes.add( new Wall(   Others.ECrate1, new LibVertex( -0.25f, 0.0f, 1.29f ), 0.0f, LibScalation.ENone, LibInvert.ENo, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ECrate1, null, 0, WallHealth.ECrate, FXSize.ESmall, null ) );
+            if ( LibMath.getRandom( 0, 2 ) == 0 ) boxes.add( new Wall(   Others.ECrate1, new LibVertex( 0.25f,  0.0f, 1.29f ), 0.0f, LibScalation.ENone, LibInvert.ENo, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ECrate1, null, 0, WallHealth.ECrate, FXSize.ESmall, null ) );
+            if ( LibMath.getRandom( 0, 2 ) == 0 ) boxes.add( new Wall(   Others.ECrate1, new LibVertex( 0.6f,   0.0f, 1.29f ), 0.0f, LibScalation.ENone, LibInvert.ENo, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ECrate1, null, 0, WallHealth.ECrate, FXSize.ESmall, null ) );
 
-            if ( LibMath.getRandom( 0, 2 ) == 0 ) boxes.add( new Wall(   Others.ECrate1, new LibVertex( -0.6f,  0.0f, 1.69f ), 0.0f, Scalation.ENone, Invert.ENo, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ECrate1, null, 0, WallHealth.ECrate, FXSize.ESmall, null ) );
-            if ( LibMath.getRandom( 0, 2 ) == 0 ) boxes.add( new Wall(   Others.ECrate1, new LibVertex( -0.25f, 0.0f, 1.69f ), 0.0f, Scalation.ENone, Invert.ENo, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ECrate1, null, 0, WallHealth.ECrate, FXSize.ESmall, null ) );
-            if ( LibMath.getRandom( 0, 2 ) == 0 ) boxes.add( new Wall(   Others.ECrate1, new LibVertex( 0.25f,  0.0f, 1.69f ), 0.0f, Scalation.ENone, Invert.ENo, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ECrate1, null, 0, WallHealth.ECrate, FXSize.ESmall, null ) );
-            if ( LibMath.getRandom( 0, 2 ) == 0 ) boxes.add( new Wall(   Others.ECrate1, new LibVertex( 0.6f,   0.0f, 1.69f ), 0.0f, Scalation.ENone, Invert.ENo, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ECrate1, null, 0, WallHealth.ECrate, FXSize.ESmall, null ) );
+            if ( LibMath.getRandom( 0, 2 ) == 0 ) boxes.add( new Wall(   Others.ECrate1, new LibVertex( -0.6f,  0.0f, 1.69f ), 0.0f, LibScalation.ENone, LibInvert.ENo, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ECrate1, null, 0, WallHealth.ECrate, FXSize.ESmall, null ) );
+            if ( LibMath.getRandom( 0, 2 ) == 0 ) boxes.add( new Wall(   Others.ECrate1, new LibVertex( -0.25f, 0.0f, 1.69f ), 0.0f, LibScalation.ENone, LibInvert.ENo, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ECrate1, null, 0, WallHealth.ECrate, FXSize.ESmall, null ) );
+            if ( LibMath.getRandom( 0, 2 ) == 0 ) boxes.add( new Wall(   Others.ECrate1, new LibVertex( 0.25f,  0.0f, 1.69f ), 0.0f, LibScalation.ENone, LibInvert.ENo, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ECrate1, null, 0, WallHealth.ECrate, FXSize.ESmall, null ) );
+            if ( LibMath.getRandom( 0, 2 ) == 0 ) boxes.add( new Wall(   Others.ECrate1, new LibVertex( 0.6f,   0.0f, 1.69f ), 0.0f, LibScalation.ENone, LibInvert.ENo, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ECrate1, null, 0, WallHealth.ECrate, FXSize.ESmall, null ) );
 
             return new WallCollection
             (
-                new Wall(   Others.EShelves1, new LibVertex(  x, y, z ), rotZ, Scalation.ENone, Invert.ENo, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EWood1, null, 0, WallHealth.ESolidWood, FXSize.ELarge, null ),
+                new Wall(   Others.EShelves1, new LibVertex(  x, y, z ), rotZ, LibScalation.ENone, LibInvert.ENo, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EWood1, null, 0, WallHealth.ESolidWood, FXSize.ELarge, null ),
 
                 //boxes
                 boxes.toArray( new Wall[] {} )
             );
         }
 
-        public static Wall createCrate(float x, float y, float z, float rotZ, Scalation scalation )
+        public static Wall createCrate(float x, float y, float z, float rotZ, LibScalation scalation )
         {
-            return new Wall(   Others.ECrate1, new LibVertex( x, y, z ), rotZ, scalation, Invert.ENo, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ECrate1, null, 0, WallHealth.ECrate, FXSize.ESmall, null );
+            return new Wall(   Others.ECrate1, new LibVertex( x, y, z ), rotZ, scalation, LibInvert.ENo, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ECrate1, null, 0, WallHealth.ECrate, FXSize.ESmall, null );
         }
 
         public static WallCollection createDeskOffice(float x, float y, float z, float rotZ )
         {
             return new WallCollection
             (
-                new Wall(   Others.EDeskOffice1,    new LibVertex(  x, y, z    ), rotZ,  Scalation.ENone,        Invert.EYes, WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EWood1, new LibTexture[] { WallTex.EScreen2, }, 0, WallHealth.ESolidWood, FXSize.ESmall, null   ),
+                new Wall(   Others.EDeskOffice1,    new LibVertex(  x, y, z    ), rotZ,  LibScalation.ENone,        LibInvert.EYes, WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EWood1, new LibTexture[] { WallTex.EScreen2, }, 0, WallHealth.ESolidWood, FXSize.ESmall, null   ),
                 new Wall[]
                 {
-                  //new Wall(   Others.EKeyboard1,  new LibVertex(  -0.25f,  0.0f,    0.8f    ), 180.0f,    Scalation.ENone,        Invert.EYes, WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EWood1,        WallTex.EScreen2, WallHealth.EElectricalDevice, FXSize.ESmall, null   ),
-                  //new Wall(   Others.EScreen1,    new LibVertex(  -0.75f,  0.0f,    0.8f    ), 180.0f,    Scalation.ENone,        Invert.EYes, WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EWood1,        WallTex.EScreen2, WallHealth.EElectricalDevice, FXSize.ESmall, null   ),
+                  //new Wall(   Others.EKeyboard1,  new LibVertex(  -0.25f,  0.0f,    0.8f    ), 180.0f,    LibScalation.ENone,        LibInvert.EYes, WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EWood1,        WallTex.EScreen2, WallHealth.EElectricalDevice, FXSize.ESmall, null   ),
+                  //new Wall(   Others.EScreen1,    new LibVertex(  -0.75f,  0.0f,    0.8f    ), 180.0f,    LibScalation.ENone,        LibInvert.EYes, WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EWood1,        WallTex.EScreen2, WallHealth.EElectricalDevice, FXSize.ESmall, null   ),
 
-                    new Wall(   Others.EScreen1,    new LibVertex(  -0.70f,  -1.00f,  0.8f    ), 150.0f,    Scalation.ENone,        Invert.EYes, WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EWood1,        new LibTexture[] { WallTex.EScreen2, WallTex.EScreen3, }, Performance.TICKS_TEXTURE_ANIMATION_SLOW, WallHealth.EElectricalDevice, FXSize.ESmall, null ),
-                    new Wall(   Others.EKeyboard1,  new LibVertex(  -0.40f,  -0.65f,  0.8f    ), 160.0f,    Scalation.ENone,        Invert.EYes, WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EWood1,        new LibTexture[] { WallTex.EScreen2, }, 0, WallHealth.EElectricalDevice, FXSize.ESmall, null   ),
+                    new Wall(   Others.EScreen1,    new LibVertex(  -0.70f,  -1.00f,  0.8f    ), 150.0f,    LibScalation.ENone,        LibInvert.EYes, WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EWood1,        new LibTexture[] { WallTex.EScreen2, WallTex.EScreen3, }, Performance.TICKS_TEXTURE_ANIMATION_SLOW, WallHealth.EElectricalDevice, FXSize.ESmall, null ),
+                    new Wall(   Others.EKeyboard1,  new LibVertex(  -0.40f,  -0.65f,  0.8f    ), 160.0f,    LibScalation.ENone,        LibInvert.EYes, WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EWood1,        new LibTexture[] { WallTex.EScreen2, }, 0, WallHealth.EElectricalDevice, FXSize.ESmall, null   ),
                 }
             );
         }
@@ -689,13 +689,13 @@
 
            return new WallCollection
            (
-               new Wall(   Others.EDeskLab1,    new LibVertex(  x, y, z    ), rotZ,  Scalation.ENone,        Invert.EYes, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EBricks2, new LibTexture[] { WallTex.EPlastic1, }, 0, WallHealth.EUnbreakale, null, null ),
+               new Wall(   Others.EDeskLab1,    new LibVertex(  x, y, z    ), rotZ,  LibScalation.ENone,        LibInvert.EYes, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EBricks2, new LibTexture[] { WallTex.EPlastic1, }, 0, WallHealth.EUnbreakale, null, null ),
                new Wall[]
                {
-                 //new Wall(   Others.EKeyboard1,  new LibVertex(  -0.25f,  0.0f,    0.8f    ), 180.0f,    Scalation.ENone,        Invert.EYes, WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EWood1,        WallTex.EScreen2, WallHealth.EElectricalDevice, FXSize.ESmall, null   ),
-                 //new Wall(   Others.EScreen1,    new LibVertex(  -0.75f,  0.0f,    0.8f    ), 180.0f,    Scalation.ENone,        Invert.EYes, WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EWood1,        WallTex.EScreen2, WallHealth.EElectricalDevice, FXSize.ESmall, null   ),
-                 //new Wall(   Others.EScreen1,    new LibVertex(  -0.70f,  -1.00f,  0.8f    ), 150.0f,    Scalation.ENone,        Invert.EYes, WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EWood1,        WallTex.EScreen2, WallHealth.EElectricalDevice, FXSize.ESmall, null   ),
-                 //new Wall(   Others.EKeyboard1,  new LibVertex(  -0.40f,  -0.65f,  0.8f    ), 160.0f,    Scalation.ENone,        Invert.EYes, WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EWood1,        WallTex.EScreen2, WallHealth.EElectricalDevice, FXSize.ESmall, null   ),
+                 //new Wall(   Others.EKeyboard1,  new LibVertex(  -0.25f,  0.0f,    0.8f    ), 180.0f,    LibScalation.ENone,        LibInvert.EYes, WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EWood1,        WallTex.EScreen2, WallHealth.EElectricalDevice, FXSize.ESmall, null   ),
+                 //new Wall(   Others.EScreen1,    new LibVertex(  -0.75f,  0.0f,    0.8f    ), 180.0f,    LibScalation.ENone,        LibInvert.EYes, WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EWood1,        WallTex.EScreen2, WallHealth.EElectricalDevice, FXSize.ESmall, null   ),
+                 //new Wall(   Others.EScreen1,    new LibVertex(  -0.70f,  -1.00f,  0.8f    ), 150.0f,    LibScalation.ENone,        LibInvert.EYes, WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EWood1,        WallTex.EScreen2, WallHealth.EElectricalDevice, FXSize.ESmall, null   ),
+                 //new Wall(   Others.EKeyboard1,  new LibVertex(  -0.40f,  -0.65f,  0.8f    ), 160.0f,    LibScalation.ENone,        LibInvert.EYes, WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EWood1,        WallTex.EScreen2, WallHealth.EElectricalDevice, FXSize.ESmall, null   ),
                }
            );
         }
@@ -707,28 +707,28 @@
                 case ENoWall:
                 {
                     //just the ceiling
-                    if ( ceilingTex != null ) allWalls.add( new Wall(         Others.EFloor1x1,           new LibVertex(  x, y,    2.5f       ),  angle + 180.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, ceilingTex, null, 0, WallHealth.EUnbreakale, null, null ) );
+                    if ( ceilingTex != null ) allWalls.add( new Wall(         Others.EFloor1x1,           new LibVertex(  x, y,    2.5f       ),  angle + 180.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, ceilingTex, null, 0, WallHealth.EUnbreakale, null, null ) );
                     break;
                 }
 
                 case ESolidWall:
                 {
-                    if ( wallTex    != null ) allWalls.add( new Wall(         Others.EWall1Solid,         new LibVertex(  x, y,    0.0f       ),  angle,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex, null, 0, WallHealth.EUnbreakale, null, null ) );
-                    if ( ceilingTex != null ) allWalls.add( new Wall(         Others.EFloor1x1,           new LibVertex(  x, y,    2.5f       ),  angle + 180.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, ceilingTex, null, 0, WallHealth.EUnbreakale, null, null ) );
+                    if ( wallTex    != null ) allWalls.add( new Wall(         Others.EWall1Solid,         new LibVertex(  x, y,    0.0f       ),  angle,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex, null, 0, WallHealth.EUnbreakale, null, null ) );
+                    if ( ceilingTex != null ) allWalls.add( new Wall(         Others.EFloor1x1,           new LibVertex(  x, y,    2.5f       ),  angle + 180.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, ceilingTex, null, 0, WallHealth.EUnbreakale, null, null ) );
                     break;
                 }
                 case EWindows:
                 {
-                    if ( wallTex    != null ) allWalls.add( new Wall(         Others.EWall1WindowSocket,  new LibVertex(  x, y,    0.0f       ),  angle,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex, null, 0, WallHealth.EUnbreakale, null, null ) );
-                    if ( wallTex    != null ) allWalls.add( new Wall(         Others.EWall1WindowGlass,   new LibVertex(  x, y,    0.0f       ),  angle,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EGlass1, null, 0, WallHealth.EGlass, null, null ) );
-                    if ( ceilingTex != null ) allWalls.add( new Wall(         Others.EFloor1x1,           new LibVertex(  x, y,    2.5f       ),  angle + 180.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, ceilingTex, null, 0, WallHealth.EUnbreakale, null, null ) );
+                    if ( wallTex    != null ) allWalls.add( new Wall(         Others.EWall1WindowSocket,  new LibVertex(  x, y,    0.0f       ),  angle,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex, null, 0, WallHealth.EUnbreakale, null, null ) );
+                    if ( wallTex    != null ) allWalls.add( new Wall(         Others.EWall1WindowGlass,   new LibVertex(  x, y,    0.0f       ),  angle,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EGlass1, null, 0, WallHealth.EGlass, null, null ) );
+                    if ( ceilingTex != null ) allWalls.add( new Wall(         Others.EFloor1x1,           new LibVertex(  x, y,    2.5f       ),  angle + 180.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, ceilingTex, null, 0, WallHealth.EUnbreakale, null, null ) );
                     break;
                 }
                 case EWindowsAndCeilingWindows:
                 {
-                    if ( wallTex    != null ) allWalls.add( new Wall(         Others.EWall1WindowSocket,  new LibVertex(  x, y,    0.0f       ),  angle,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo,  DrawMethod.EAlwaysDraw, wallTex,    null, 0, WallHealth.EUnbreakale, null, null ) );
-                    if ( wallTex    != null ) allWalls.add( new Wall(         Others.EWall1WindowGlass,   new LibVertex(  x, y,    0.0f       ),  angle,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo,  DrawMethod.EAlwaysDraw, WallTex.EGlass1,    null, 0, WallHealth.EGlass, null, null ) );
-                    if ( ceilingTex != null ) allWalls.add( new Wall(         Others.EFloor1x1,           new LibVertex(  x, y,    2.5f       ),  angle + 180.0f,   Scalation.ENone, Invert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EGlass1, null, 0, WallHealth.EGlass, null, null ) );
+                    if ( wallTex    != null ) allWalls.add( new Wall(         Others.EWall1WindowSocket,  new LibVertex(  x, y,    0.0f       ),  angle,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo,  DrawMethod.EAlwaysDraw, wallTex,    null, 0, WallHealth.EUnbreakale, null, null ) );
+                    if ( wallTex    != null ) allWalls.add( new Wall(         Others.EWall1WindowGlass,   new LibVertex(  x, y,    0.0f       ),  angle,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo,  DrawMethod.EAlwaysDraw, WallTex.EGlass1,    null, 0, WallHealth.EGlass, null, null ) );
+                    if ( ceilingTex != null ) allWalls.add( new Wall(         Others.EFloor1x1,           new LibVertex(  x, y,    2.5f       ),  angle + 180.0f,   LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EGlass1, null, 0, WallHealth.EGlass, null, null ) );
                     break;
                 }
             }

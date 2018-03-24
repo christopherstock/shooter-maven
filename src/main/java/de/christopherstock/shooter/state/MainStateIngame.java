@@ -8,7 +8,7 @@
     import  de.christopherstock.shooter.io.hid.Keys;
     import  de.christopherstock.shooter.level.*;
     import  de.christopherstock.shooter.level.setup.*;
-    import  de.christopherstock.lib.Lib.ViewSet;
+    import de.christopherstock.lib.LibViewSet;
     import  de.christopherstock.lib.fx.*;
     import  de.christopherstock.lib.gl.*;
 
@@ -45,7 +45,7 @@
                 LibGL3D.view.clearGl( Level.currentSection().getBackgroundColor() );
 
                 //get camera from player's position and orientation
-                ViewSet cam = Shooter.game.engine.player.getCameraPositionAndRotation();
+                LibViewSet cam = Shooter.game.engine.player.getCameraPositionAndRotation();
 
                 //draw scene bg
                 Level.currentSection().drawBg( cam );

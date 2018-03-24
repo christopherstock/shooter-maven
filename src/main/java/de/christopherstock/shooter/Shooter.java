@@ -13,6 +13,7 @@
     *   TODO    Mayflower preloader and textures ( posters ).
     *   TODO    only for FireArms! Move ArtefactType.iFXImages to Firearms (Wearpons)!
     *   TODO    Cleanup game initialization.
+    *   TODO    Hide glPanel till completely visible? ( avoid black frame )
     *   TODO    Delete all 'a' and 'i' prefixes from variables.
     *   TODO    Turn all elements in ShooterEngine non static!
     *   TODO    Optimize fields in ArtefactType!

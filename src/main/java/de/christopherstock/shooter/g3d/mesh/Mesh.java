@@ -4,7 +4,9 @@
     import  java.awt.geom.*;
     import  java.io.*;
     import  java.util.*;
-    import  de.christopherstock.lib.Lib.*;
+
+    import de.christopherstock.lib.LibInvert;
+    import de.christopherstock.lib.LibTransformationMode;
     import  de.christopherstock.lib.g3d.*;
     import  de.christopherstock.lib.g3d.face.*;
     import  de.christopherstock.lib.g3d.face.LibFace.*;
@@ -28,7 +30,7 @@
 
         public Mesh( LibFaceTriangle[] aFaces, LibVertex aAnchor )
         {
-            this( aFaces, aAnchor, 0.0f, 1.0f, Invert.ENo, null, LibTransformationMode.EOriginalsToOriginals, DrawMethod.EAlwaysDraw );
+            this( aFaces, aAnchor, 0.0f, 1.0f, LibInvert.ENo, null, LibTransformationMode.EOriginalsToOriginals, DrawMethod.EAlwaysDraw );
         }
 
         /***************************************************************************************************************
@@ -37,14 +39,14 @@
         *   @param  aFaces              All faces this mesh shall consist of.
         *   @param  aAnchor             The meshes' anchor point.
         ***************************************************************************************************************/
-        public Mesh( LibFaceTriangle[] aFaces, LibVertex aAnchor, float aInitRotZ, float aInitScale, Invert aInvert, LibGameObject aParentGameObject, LibTransformationMode transformationMode, DrawMethod aDrawMethod )
+        public Mesh(LibFaceTriangle[] aFaces, LibVertex aAnchor, float aInitRotZ, float aInitScale, LibInvert aInvert, LibGameObject aParentGameObject, LibTransformationMode transformationMode, DrawMethod aDrawMethod )
         {
             this.iFaces = aFaces;
 
             //rotate all faces
             this.performOriginalRotationOnFaces(  aInitRotZ  );
             if ( aInitScale != 1.0f         ) this.performOriginalScalationOnFaces( aInitScale );
-            if ( aInvert    == Invert.EYes  ) this.performOriginalInvertOnFaces();
+            if ( aInvert    == LibInvert.EYes  ) this.performOriginalInvertOnFaces();
 
             //set and translate by new anchor
             this.setNewAnchor( aAnchor, true, transformationMode );

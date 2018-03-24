@@ -3,7 +3,7 @@
 
     import  java.awt.geom.Point2D;
 
-    import  de.christopherstock.lib.Lib.*;
+    import de.christopherstock.lib.LibParticleQuantity;
     import  de.christopherstock.lib.fx.*;
     import  de.christopherstock.lib.fx.LibFX.*;
     import  de.christopherstock.lib.g3d.*;
@@ -95,9 +95,9 @@
         }
 
         @Override
-        public final ParticleQuantity getSliverParticleQuantity()
+        public final LibParticleQuantity getSliverParticleQuantity()
         {
-            return ParticleQuantity.EMedium;
+            return LibParticleQuantity.EMedium;
         }
 
         @Override

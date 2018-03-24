@@ -2,9 +2,10 @@
     package de.christopherstock.shooter.g3d.wall;
 
     import  java.awt.geom.Point2D;
-    import  de.christopherstock.lib.Lib.Invert;
-    import  de.christopherstock.lib.Lib.LibTransformationMode;
-    import  de.christopherstock.lib.Lib.Scalation;
+
+    import de.christopherstock.lib.LibTransformationMode;
+    import de.christopherstock.lib.LibInvert;
+    import de.christopherstock.lib.LibScalation;
     import  de.christopherstock.lib.fx.*;
     import  de.christopherstock.lib.g3d.*;
     import  de.christopherstock.lib.g3d.face.LibFace.*;
@@ -20,9 +21,9 @@
     {
         private     static  final   long    serialVersionUID        = -8942237814400103635L;
 
-        public Sprite( LibD3dsFile file, LibVertex aAnchor, Scalation scale, WallCollidable collidable, WallTex tex )
+        public Sprite(LibD3dsFile file, LibVertex aAnchor, LibScalation scale, WallCollidable collidable, WallTex tex )
         {
-            super(   file, aAnchor, 90.0f, scale, Invert.ENo, collidable, WallAction.ESprite, WallClimbable.ENo, DrawMethod.EAlwaysDraw, tex, null, 0, WallHealth.EUnbreakale, null, null );
+            super(   file, aAnchor, 90.0f, scale, LibInvert.ENo, collidable, WallAction.ESprite, WallClimbable.ENo, DrawMethod.EAlwaysDraw, tex, null, 0, WallHealth.EUnbreakale, null, null );
         }
 
         public void animateSprite( LibVertex trans )

@@ -3,9 +3,10 @@
 
     import  java.util.*;
     import  javax.vecmath.*;
+
     import  org.lwjgl.opengl.*;
-    import  de.christopherstock.lib.Lib.LibAnimation;
-    import  de.christopherstock.lib.Lib.ViewSet;
+    import de.christopherstock.lib.LibAnimation;
+    import de.christopherstock.lib.LibViewSet;
     import  de.christopherstock.lib.g3d.*;
     import  de.christopherstock.lib.game.*;
     import  de.christopherstock.lib.game.LibShot.*;
@@ -77,7 +78,7 @@
 
         private                     boolean                 iFalling                    = false;
 
-        public Player( ViewSet aStartPosition, boolean aDisableGravity )
+        public Player(LibViewSet aStartPosition, boolean aDisableGravity )
         {
             //init and set cylinder
             this.iCylinder = new Cylinder( this, new LibVertex( aStartPosition.pos.x, aStartPosition.pos.y, aStartPosition.pos.z ), RADIUS_BODY, DEPTH_TOTAL_STANDING, ShooterSettings.Performance.COLLISION_CHECKING_STEPS, ShooterDebug.playerCylinder, false, PlayerSettings.MAX_CLIMBING_UP_Z, PlayerSettings.MIN_CLIMBING_UP_Z, ShooterSettings.Performance.ELLIPSE_SEGMENTS, Material.EHumanFlesh );
@@ -319,7 +320,7 @@
         @Deprecated
         public final void drawDebugLog( Graphics2D g )
         {
-            //int y = GLPanel.PANEL_HEIGHT - Offset.EBorderHudY;
+            //int y = GLPanel.PANEL_HEIGHT - LibOffset.EBorderHudY;
             int y = OffsetsOrtho.EBorderHudY + 90;
 
             //HUD.releaseClip( g );
@@ -544,7 +545,7 @@
             this.iHealthChangeCallback.healthChanged();
         }
 
-        public final ViewSet getCameraPositionAndRotation()
+        public final LibViewSet getCameraPositionAndRotation()
         {
             //3rd person camera?
             float modX = ( ! General.ENABLE_3RD_PERSON_CAMERA ? 0.0f : LibMath.sinDeg(this.iView.iRot.z ) * 2.0f );
@@ -590,7 +591,7 @@
                 GL11.glMatrixMode( GL11.GL_MODELVIEW );
             }
 
-            return new ViewSet
+            return new LibViewSet
             (
                 posX,
                 posY,

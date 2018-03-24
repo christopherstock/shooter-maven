@@ -3,8 +3,9 @@
 
     import  java.awt.geom.*;
     import  java.util.Vector;
-    import  de.christopherstock.lib.Lib.Invert;
-    import  de.christopherstock.lib.Lib.LibTransformationMode;
+
+    import de.christopherstock.lib.LibTransformationMode;
+    import de.christopherstock.lib.LibInvert;
     import  de.christopherstock.lib.g3d.*;
     import  de.christopherstock.lib.g3d.face.*;
     import  de.christopherstock.lib.g3d.face.LibFace.*;
@@ -43,7 +44,7 @@
                 float rotZ = this.iHitPoint.iHorzShotAngle + 90.0f;
 
                 //only set once .. :/
-                this.iProjectile = new Mesh( ShooterD3ds.getFaces(this.iProjectileTemplate), this.iHitPoint.iVertex, 0.0f, 1.0f, Invert.ENo, this.iHitPoint.iCarrier, LibTransformationMode.EOriginalsToOriginals, DrawMethod.EAlwaysDraw );
+                this.iProjectile = new Mesh( ShooterD3ds.getFaces(this.iProjectileTemplate), this.iHitPoint.iVertex, 0.0f, 1.0f, LibInvert.ENo, this.iHitPoint.iCarrier, LibTransformationMode.EOriginalsToOriginals, DrawMethod.EAlwaysDraw );
                 this.iProjectile.translateAndRotateXYZ
                 (
                     0.0f,

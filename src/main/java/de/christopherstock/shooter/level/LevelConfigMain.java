@@ -1,7 +1,7 @@
 
     package de.christopherstock.shooter.level;
 
-    import  de.christopherstock.lib.Lib.ViewSet;
+    import de.christopherstock.lib.LibViewSet;
     import  de.christopherstock.shooter.game.artefact.ArtefactType;
     import  de.christopherstock.shooter.game.objects.ItemEvent;
     import  de.christopherstock.shooter.io.sound.*;
@@ -13,13 +13,13 @@
     public class LevelConfigMain
     {
         protected               String                  iDescLevel              = null;
-        protected               ViewSet                 iStartPosition          = null;
+        protected LibViewSet iStartPosition          = null;
         protected               ArtefactType[]          iStartupWearpons        = null;
         protected               ItemEvent[]             iStartupItems           = null;
         protected               InvisibleZeroLayerZ     iHasInvisibleZLayer     = null;
         protected               SoundBg                 iBgSound                = null;
 
-        public LevelConfigMain( String aDesc, ViewSet aStartPosition, ArtefactType[] aStartupWearpons, ItemEvent[] aStartupItems, InvisibleZeroLayerZ aHasInvisibleZLayer, SoundBg aBgSound )
+        public LevelConfigMain(String aDesc, LibViewSet aStartPosition, ArtefactType[] aStartupWearpons, ItemEvent[] aStartupItems, InvisibleZeroLayerZ aHasInvisibleZLayer, SoundBg aBgSound )
         {
             this.iDescLevel = aDesc;
             this.iStartPosition = aStartPosition;

@@ -4,8 +4,7 @@
     import  java.awt.geom.*;
     import  java.util.*;
     import  de.christopherstock.lib.*;
-    import  de.christopherstock.lib.Lib.Invert;
-    import  de.christopherstock.lib.Lib.LibTransformationMode;
+    import de.christopherstock.lib.LibTransformationMode;
     import  de.christopherstock.lib.g3d.*;
     import  de.christopherstock.lib.g3d.face.*;
     import  de.christopherstock.lib.g3d.face.LibFace.*;
@@ -18,7 +17,6 @@
     import  de.christopherstock.shooter.g3d.mesh.*;
     import  de.christopherstock.shooter.game.artefact.Artefact;
     import  de.christopherstock.shooter.game.artefact.firearm.*;
-    import  de.christopherstock.shooter.level.*;
     import  de.christopherstock.shooter.ui.hud.*;
 
     /*******************************************************************************************************************
@@ -39,14 +37,14 @@
         private                     boolean             iCollisionWithPlayer    = false;
         private                     Mesh                iMesh                   = null;
         private                     float               iStartRotZ              = 0.0f;
-        private                     Lib.Rotating        iIsRotating             = null;
+        private LibRotating iIsRotating             = null;
         private                     float               iRotationZ              = 0.0f;
         protected                   boolean             iRemove                 = false;
         protected                   Artefact            iArtefact               = null;
         protected                   float               iDropTarget             = 0.0f;
         protected                   float               iDropBegin              = 0.0f;
 
-        public ItemToPickUp( ItemKind aKind, Artefact aArtefact, float x, float y, float z, float aRotZ, Lib.Rotating aIsRotating )
+        public ItemToPickUp( ItemKind aKind, Artefact aArtefact, float x, float y, float z, float aRotZ, LibRotating aIsRotating )
         {
             this.iKind = aKind;
             this.iArtefact = aArtefact;
@@ -94,7 +92,7 @@
             if (this.iMesh != null )
             {
                 //rotate if desired
-                if (this.iIsRotating == Lib.Rotating.EYes )
+                if (this.iIsRotating == LibRotating.EYes )
                 {
                     this.iMesh.translateAndRotateXYZ(this.iAnchor.x, this.iAnchor.y, this.iAnchor.z, 0.0f, 0.0f, this.iRotationZ, null, LibTransformationMode.EOriginalsToTransformed );
                     this.iRotationZ += ItemSettings.SPEED_ROTATING;
@@ -209,10 +207,10 @@
         {
             if (this.iKind.iMeshFile != null )
             {
-                this.iMesh = new Mesh( ShooterD3ds.getFaces(this.iKind.iMeshFile ), this.iAnchor, this.iStartRotZ, 1.0f, Invert.ENo, this, LibTransformationMode.EOriginalsToTransformed, DrawMethod.EAlwaysDraw );
+                this.iMesh = new Mesh( ShooterD3ds.getFaces(this.iKind.iMeshFile ), this.iAnchor, this.iStartRotZ, 1.0f, LibInvert.ENo, this, LibTransformationMode.EOriginalsToTransformed, DrawMethod.EAlwaysDraw );
 
                 //translate rotating items to the meshe's center in order to rotate around the (fixed) anchor
-                if (this.iIsRotating == Lib.Rotating.EYes )
+                if (this.iIsRotating == LibRotating.EYes )
                 {
                     Point2D.Float center = this.iMesh.getCenterPointXY();
                     this.iMesh.translate( -center.x, -center.y, 0.0f, LibTransformationMode.EOriginalsToOriginals );
@@ -222,7 +220,7 @@
 
         public final void assignMesh( Mesh mesh )
         {
-            this.iMesh = mesh; //new Mesh( mesh.getFaces(), iAnchor, iStartRotZ, 1.0f, Invert.ENo, this, LibTransformationMode.EOriginalsToTransformed, DrawMethod.EAlwaysDraw );
+            this.iMesh = mesh; //new Mesh( mesh.getFaces(), iAnchor, iStartRotZ, 1.0f, LibInvert.ENo, this, LibTransformationMode.EOriginalsToTransformed, DrawMethod.EAlwaysDraw );
         }
 
         public final LibVertex getAnchor()

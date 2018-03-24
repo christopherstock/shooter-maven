@@ -2,7 +2,8 @@
     package de.christopherstock.shooter.game.artefact;
 
     import  java.awt.geom.Point2D;
-    import  de.christopherstock.lib.Lib;
+
+    import de.christopherstock.lib.LibParticleQuantity;
     import  de.christopherstock.lib.fx.LibFX.FXSize;
     import  de.christopherstock.lib.g3d.LibHoleSize;
     import  de.christopherstock.lib.game.LibShot.ShotSpender;
@@ -21,7 +22,7 @@
 
         public abstract LibHoleSize getBulletHoleSize();
         public abstract FXSize getSliverParticleSize();
-        public abstract Lib.ParticleQuantity getSliverParticleQuantity();
+        public abstract LibParticleQuantity getSliverParticleQuantity();
 
         /***************************************************************************************************************
          *   @return <code>true</code> if the wearpon actually fired.

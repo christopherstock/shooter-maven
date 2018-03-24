@@ -1,7 +1,7 @@
 
     package de.christopherstock.lib.fx;
 
-    import  de.christopherstock.lib.Lib.LibTransformationMode;
+    import de.christopherstock.lib.LibTransformationMode;
     import  de.christopherstock.lib.g3d.*;
 
     /*******************************************************************************************************************

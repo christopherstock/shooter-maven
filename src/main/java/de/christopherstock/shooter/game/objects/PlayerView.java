@@ -1,7 +1,7 @@
 
     package de.christopherstock.shooter.game.objects;
 
-    import  de.christopherstock.lib.Lib.Rotation;
+    import de.christopherstock.lib.LibRotation;
     import  de.christopherstock.shooter.*;
     import  de.christopherstock.shooter.ShooterSettings.General;
     import  de.christopherstock.shooter.ShooterSettings.PlayerSettings;
@@ -25,7 +25,7 @@
             ;
         }
 
-        protected                   Rotation        iRot                        = null;
+        protected LibRotation iRot                        = null;
 
         /***************************************************************************************************************
         *   Force x-centering till centered.
@@ -54,7 +54,7 @@
 
         private                     int             iDyingAnimation             = 0;
 
-        public PlayerView( Player aParent, Rotation aRot )
+        public PlayerView( Player aParent, LibRotation aRot )
         {
             this.iParentPlayer = aParent;
             this.iRot = aRot.copy();

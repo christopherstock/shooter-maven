@@ -2,7 +2,7 @@
     package de.christopherstock.shooter.game.artefact;
 
     import  java.util.Vector;
-    import  de.christopherstock.lib.Lib.LibAnimation;
+    import de.christopherstock.lib.LibAnimation;
     import  de.christopherstock.shooter.*;
     import  de.christopherstock.shooter.game.artefact.gadget.Gadget;
 
