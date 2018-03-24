@@ -6,11 +6,13 @@
     /*******************************************************************************************************************
     *   The main class.
     *
-    *   TODO    prune LibGLView
-    *   TODO    prune GLDrawCallback
     *   TODO    prune LibGLFace
+    *   TODO    prune GLDrawCallback
     *   TODO    prune LibGLForm
     *   TODO    prune LibGL3D
+    *   TODO    merge draw2D and draw3D
+    *   TODO    prune GLCallbackForm
+    *   TODO    prune all serial UIDs.
     *   TODO    Prune all those super-confusing interfaces and abstract superclasses in LWJGL-Panel systems!
     *   TODO    Different heights for particle effects.
     *   TODO    Alter JFrame / app icon.

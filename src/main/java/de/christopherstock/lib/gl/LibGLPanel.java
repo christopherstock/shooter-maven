@@ -3,6 +3,7 @@
 
     import  java.awt.*;
 
+    import de.christopherstock.shooter.Shooter;
     import  org.lwjgl.opengl.*;
 
     /*******************************************************************************************************************
@@ -17,15 +18,12 @@
         }
 
         private                     LibGLCanvas             canvas                  = null;
-        private                     GLDrawCallback          drawCallback            = null;
 
         public                      int                     width                   = 0;
         public                      int                     height                  = 0;
 
-        public LibGLPanel(GLDrawCallback aDrawCallback )
+        public LibGLPanel()
         {
-            this.drawCallback = aDrawCallback;
-
             try
             {
                 this.canvas = new LibGLCanvas();
@@ -47,10 +45,10 @@
         public final void display()
         {
             //invoke callback 3d drawing
-            this.drawCallback.draw3D();
+            Shooter.game.draw3D();
 
             //invoke callback 2d drawing
-            this.drawCallback.draw2D();
+            Shooter.game.draw2D();
 
             //update native LWJGL Display each tick
             Display.update();

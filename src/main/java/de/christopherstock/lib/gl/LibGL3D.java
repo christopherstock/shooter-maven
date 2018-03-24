@@ -18,7 +18,6 @@
             int                 formWidth,
             int                 formHeight,
             String              formTitle,
-            GLDrawCallback      drawCallback,
             GLCallbackForm      callbackForm,
             BufferedImage       iconImage,
             LibDebug            debug
@@ -27,10 +26,7 @@
             //init gl ui components
 
             //init panel
-            this.panel = new LibGLPanel
-            (
-                drawCallback
-            );
+            this.panel = new LibGLPanel();
 
             //show lwjgl form
             this.form = new LibGLForm

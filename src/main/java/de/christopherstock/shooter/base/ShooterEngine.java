@@ -101,7 +101,6 @@
                 ShooterSettings.Form.FORM_HEIGHT,
                 ShooterSettings.Form.FORM_TITLE,
                 Shooter.game,
-                Shooter.game,
                 this.iconImage,
                 ShooterDebug.init
             );

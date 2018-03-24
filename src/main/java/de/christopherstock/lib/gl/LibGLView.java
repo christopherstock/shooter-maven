@@ -8,6 +8,7 @@
     import java.util.*;
     import de.christopherstock.lib.*;
     import de.christopherstock.lib.g3d.*;
+    import de.christopherstock.lib.g3d.face.LibFace;
     import de.christopherstock.lib.gl.LibGLImage.*;
     import de.christopherstock.lib.gl.LibGLTexture.Translucency;
     import de.christopherstock.lib.math.*;
@@ -34,8 +35,8 @@
         protected                   LibGLImage[]        iTextureImages              = null;
         protected                   boolean             iLightDebugPointSet         = false;
 
-        private                     Vector<LibGLFace>   iFirstPrioDrawingQueue      = new Vector<LibGLFace>();
-        private                     Vector<LibGLFace>   iDefaultFaceDrawingQueue    = new Vector<LibGLFace>();
+        private                     Vector<LibFace>     iFirstPrioDrawingQueue      = new Vector<LibFace>();
+        private                     Vector<LibFace>     iDefaultFaceDrawingQueue    = new Vector<LibFace>();
         protected                   LibGLTexture        iLastOpaqueTexture          = null;
 
         public LibGLView(LibGLPanel panel, LibDebug aDebug, int aFormWidth, int aFormHeight, float aAspectRatio )
@@ -154,7 +155,7 @@
             this.iFirstPrioDrawingQueue.clear();
         }
 
-        public void enqueueFaceToQueue( LibGLFace aFace )
+        public void enqueueFaceToQueue( LibFace aFace )
         {
             //opaque
             if ( aFace.getTexture() == null || aFace.getTexture().getTranslucency() == Translucency.EOpaque )
@@ -188,12 +189,12 @@
             this.flushGL();
         }
 
-        private void sortAndDrawAllFaces( Vector<LibGLFace> aFaceDrawingQueue, LibVertex aCameraViewpoint )
+        private void sortAndDrawAllFaces( Vector<LibFace> aFaceDrawingQueue, LibVertex aCameraViewpoint )
         {
             if ( aFaceDrawingQueue.size() > 0 )
             {
-                Vector<LibGLFace> faceDrawingQueue = sortFacesAccordingToDistance( aFaceDrawingQueue, aCameraViewpoint );
-                for ( LibGLFace faceTranslucent : faceDrawingQueue )
+                Vector<LibFace> faceDrawingQueue = sortFacesAccordingToDistance( aFaceDrawingQueue, aCameraViewpoint );
+                for ( LibFace faceTranslucent : faceDrawingQueue )
                 {
                     //draw
                     this.drawFace( faceTranslucent.getVerticesToDraw(), faceTranslucent.getFaceNormal(), faceTranslucent.getTexture(), faceTranslucent.getColor3f(), faceTranslucent.getAlpha(), faceTranslucent.getDarkenOpacity() );
@@ -201,13 +202,13 @@
             }
         }
 
-        private static Vector<LibGLFace> sortFacesAccordingToDistance(Vector<LibGLFace> faces, LibVertex cameraViewPoint )
+        private static Vector<LibFace> sortFacesAccordingToDistance(Vector<LibFace> faces, LibVertex cameraViewPoint )
         {
             //debug.out( "sort face queue - [" + faces.size() + "] faces" );
 
             //fill hashmap with all faces and their distances to the player
-            Hashtable<Float,Vector<LibGLFace>> distances = new Hashtable<Float,Vector<LibGLFace>>();
-            for ( LibGLFace face : faces )
+            Hashtable<Float,Vector<LibFace>> distances = new Hashtable<Float,Vector<LibFace>>();
+            for ( LibFace face : faces )
             {
                 Float distance = null;
 /*
@@ -220,13 +221,13 @@
 
                 if ( distances.get( distance ) == null )
                 {
-                    Vector<LibGLFace> vf = new Vector<LibGLFace>();
+                    Vector<LibFace> vf = new Vector<LibFace>();
                     vf.addElement( face );
                     distances.put( distance, vf );
                 }
                 else
                 {
-                    Vector<LibGLFace> vf = distances.get( distance );
+                    Vector<LibFace> vf = distances.get( distance );
                     vf.addElement( face );
                     distances.put( distance, vf );
                 }
@@ -238,12 +239,12 @@
             Arrays.sort( dists );
 
             //browse all distances reversed ( ordered by FAREST till LOWEST )
-            Vector<LibGLFace> ret = new Vector<LibGLFace>();
+            Vector<LibFace> ret = new Vector<LibFace>();
             for ( int i = dists.length - 1; i >= 0; --i )
             {
                 //debug.out( "distance: [" + dists[ i ] + "]" );
 
-                Vector<LibGLFace> vf2 = distances.get( dists[ i ] );
+                Vector<LibFace> vf2 = distances.get( dists[ i ] );
                 ret.addAll( vf2 );
             }
 

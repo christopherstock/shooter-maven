@@ -1,8 +1,7 @@
 
     package de.christopherstock.lib.gl;
 
-    import de.christopherstock.lib.ui.LibColors;
-
+    import  de.christopherstock.lib.ui.LibColors;
     import  java.awt.*;
     import  javax.swing.*;
 

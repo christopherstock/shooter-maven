@@ -2,19 +2,18 @@
     package de.christopherstock.lib.g3d.face;
 
     import  java.io.Serializable;
-    import de.christopherstock.lib.LibTransformationMode;
+    import  de.christopherstock.lib.LibTransformationMode;
     import  de.christopherstock.lib.*;
     import  de.christopherstock.lib.g3d.*;
     import  de.christopherstock.lib.gl.*;
-    import de.christopherstock.lib.gl.LibGLFace;
     import  de.christopherstock.lib.math.*;
     import  de.christopherstock.lib.ui.*;
-    import de.christopherstock.shooter.Shooter;
+    import  de.christopherstock.shooter.Shooter;
 
     /*******************************************************************************************************************
     *   Represents a face with an anchor and a various number of vertices that define the polygon.
     *******************************************************************************************************************/
-    public abstract class LibFace implements LibGLFace, LibGeomObject, Serializable
+    public abstract class LibFace implements LibGeomObject, Serializable
     {
         private     static  final   long                serialVersionUID                    = 3855014449381203086L;
 
