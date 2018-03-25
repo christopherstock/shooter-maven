@@ -20,8 +20,6 @@
     *******************************************************************************************************************/
     public class BotMeshes extends MeshCollection
     {
-        private     static  final   long    serialVersionUID    = 4535159050554256206L;
-
         public static enum HeadPosition
         {
             EStill,

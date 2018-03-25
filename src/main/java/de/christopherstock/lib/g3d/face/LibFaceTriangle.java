@@ -17,8 +17,6 @@
     *******************************************************************************************************************/
     public class LibFaceTriangle extends LibFace
     {
-        private static  final   long                serialVersionUID            = 2087454746463598047L;
-
         public                  LibGameObject       iParentGameObject           = null;
         public                  float               iLowestX                    = 0.0f;
         public                  float               iHighestX                   = 0.0f;

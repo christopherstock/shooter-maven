@@ -8,8 +8,6 @@
     *******************************************************************************************************************/
     public class LibGLTexture implements Serializable
     {
-        private     static  final   long                serialVersionUID    = -9176705157906845259L;
-
         public static enum Translucency
         {
             EGlass,

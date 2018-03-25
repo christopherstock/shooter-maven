@@ -11,7 +11,7 @@
     /*******************************************************************************************************************
     *   The Form holds the gl-canvas and the preloader-view.
     *******************************************************************************************************************/
-    public class LibGLForm implements WindowListener, FocusListener
+    public class LibGLForm implements WindowListener
     {
         private                     GLCallbackForm          form                = null;
         private                     LibGLFrame              nativeFrame         = null;
@@ -40,7 +40,6 @@
 
             //add listener
             this.nativeFrame.addWindowListener(           this                            );
-            this.nativeFrame.addFocusListener(            this                            );
 
             //set canvas as content pane
             this.nativeFrame.getContentPane().add(        contentPane                     );
@@ -91,16 +90,6 @@
         }
 
         public void windowDeactivated(  WindowEvent arg0 )
-        {
-            //no operations
-        }
-
-        public void focusLost( FocusEvent fe )
-        {
-            //no operations
-        }
-
-        public void focusGained( FocusEvent fe )
         {
             //no operations
         }

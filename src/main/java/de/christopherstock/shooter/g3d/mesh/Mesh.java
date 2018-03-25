@@ -22,11 +22,9 @@
     *******************************************************************************************************************/
     public class Mesh implements LibGeomObject, Serializable
     {
-        private     static  final   long                serialVersionUID            = 4360022553250020228L;
+        public                      LibVertex               iAnchor                     = null;
 
-        public                      LibVertex           iAnchor                     = null;
-
-        private                     LibFaceTriangle[]      iFaces                      = null;
+        private                     LibFaceTriangle[]       iFaces                      = null;
 
         public Mesh( LibFaceTriangle[] aFaces, LibVertex aAnchor )
         {

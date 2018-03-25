@@ -15,8 +15,6 @@
     *******************************************************************************************************************/
     public abstract class LibFace implements LibGeomObject, Serializable
     {
-        private     static  final   long                serialVersionUID                    = 3855014449381203086L;
-
         public static enum DrawMethod
         {
             /** Do not draw this face if it is too distant. */

@@ -13,8 +13,6 @@
     *******************************************************************************************************************/
     abstract class MeshCollection implements LibGeomObject, Serializable
     {
-        private     static  final   long        serialVersionUID            = -5269079453567674781L;
-
         public                      Mesh[]      iMeshes                     = null;
         private                     LibVertex   iAnchor                     = null;
 

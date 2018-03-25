@@ -17,11 +17,9 @@
     *******************************************************************************************************************/
     public class BotMesh extends Mesh
     {
-        private     static  final   long                serialVersionUID        = -592606625644524448L;
-
-        public LibRotation iPitch                  = new LibRotation();
-        public                      float               iLimbSpeed              = 0.0f;
-        public                      Vector<LibRotation>    iTargetPitch            = new Vector<LibRotation>();
+        public                      LibRotation             iPitch                  = new LibRotation();
+        public                      float                   iLimbSpeed              = 0.0f;
+        public                      Vector<LibRotation>     iTargetPitch            = new Vector<LibRotation>();
 
         /***************************************************************************************************************
         *   Constructs a new mesh with the specified properties.

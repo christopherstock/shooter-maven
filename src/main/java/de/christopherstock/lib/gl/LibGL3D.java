@@ -44,10 +44,9 @@
             (
                 this.panel,
                 debug,
-                formWidth,
-                formHeight,
                 (float)formWidth / (float)formHeight
             );
+            this.view.init( formWidth, formHeight );
         }
 
         public void destroy()

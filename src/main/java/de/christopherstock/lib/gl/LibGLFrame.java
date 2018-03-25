@@ -15,8 +15,6 @@
             void onFormDestroyed();
         }
 
-        private     static  final   long            serialVersionUID        = -4651971360551632489L;
-
         @Override
         public void paint( Graphics g )
         {

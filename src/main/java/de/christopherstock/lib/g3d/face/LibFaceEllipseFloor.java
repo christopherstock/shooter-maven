@@ -13,8 +13,6 @@
     *******************************************************************************************************************/
     public class LibFaceEllipseFloor extends LibFace
     {
-        private     static      final       long    serialVersionUID    = 7078400047554092109L;
-
         public LibFaceEllipseFloor( LibDebug aDebug, LibGLTexture aTexture, LibColors aCol, float aX, float aY, float aZ, float aRadiusX, float aRadiusY, int aEllipseSegments )
         {
             this( aDebug, aTexture, aCol, aX, aY, aZ, aRadiusX, aRadiusY,LibMath.getRandom( 0, 360 ), aEllipseSegments );

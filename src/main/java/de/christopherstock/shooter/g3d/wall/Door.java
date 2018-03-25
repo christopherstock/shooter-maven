@@ -26,8 +26,6 @@
     *******************************************************************************************************************/
     public class Door extends Wall
     {
-        private     static  final   long                serialVersionUID                    = 6679860859123677695L;
-
         private                     boolean             iDoorOpening                        = false;
         private                     boolean             iDoorLocked                         = false;
         private                     ArtefactType        iDoorKey                            = null;

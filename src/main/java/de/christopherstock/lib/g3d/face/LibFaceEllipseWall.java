@@ -13,8 +13,6 @@
     *******************************************************************************************************************/
     public class LibFaceEllipseWall extends LibFace
     {
-        private     static  final   long                serialVersionUID        = 7597942973047560428L;
-
         public                      float               iTextureRotation        = 0.0f;
 
         public LibFaceEllipseWall( LibDebug aDebug, LibGLTexture aTextureID, float aHorzFaceAngle, float aVertFaceAngle, float aX, float aY, float aZ, float aRadiusX, float aRadiusZ, int aEllipseSegments )

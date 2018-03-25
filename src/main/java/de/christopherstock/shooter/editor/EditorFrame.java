@@ -9,8 +9,6 @@
     *******************************************************************************************************************/
     public class EditorFrame extends JFrame
     {
-        private     static      final       long    serialVersionUID    = 4439350945288277113L;
-
         public      static      final       int     FRAME_WIDTH         = 800;
         public      static      final       int     FRAME_HEIGHT        = 600;
 

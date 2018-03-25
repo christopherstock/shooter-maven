@@ -15,8 +15,6 @@
     *******************************************************************************************************************/
     public class EditorCanvas extends JPanel
     {
-        private     static  final   long    serialVersionUID    = -6519827295775206010L;
-
         protected   static  final   Paint   GRADIENT_PAINT      = new GradientPaint(0, 0, Color.blue, 50, 50, Color.red, true);
 
         public      static  final   int     CANVAS_WIDTH        = 2000;

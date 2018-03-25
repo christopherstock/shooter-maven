@@ -19,8 +19,6 @@
     *******************************************************************************************************************/
     public class Sprite extends Wall implements LibSprite
     {
-        private     static  final   long    serialVersionUID        = -8942237814400103635L;
-
         public Sprite(LibD3dsFile file, LibVertex aAnchor, LibScalation scale, WallCollidable collidable, WallTex tex )
         {
             super(   file, aAnchor, 90.0f, scale, LibInvert.ENo, collidable, WallAction.ESprite, WallClimbable.ENo, DrawMethod.EAlwaysDraw, tex, null, 0, WallHealth.EUnbreakale, null, null );

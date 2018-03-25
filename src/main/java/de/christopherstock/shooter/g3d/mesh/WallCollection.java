@@ -13,8 +13,6 @@
     *******************************************************************************************************************/
     public class WallCollection extends MeshCollection
     {
-        private     static      final   long    serialVersionUID        = -4720545431322518528L;
-
         public WallCollection( Wall[] aWalls )
         {
             this( null, aWalls );

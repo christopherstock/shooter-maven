@@ -10,8 +10,6 @@
     *******************************************************************************************************************/
     public class WallEnergy implements Serializable
     {
-        private     static  final   long                serialVersionUID                = 2556328066454482916L;
-
         protected                   int                 iHealthStart                    = 0;
         protected                   boolean             iDestroyed                      = false;
         protected                   int                 iHealthCurrent                  = 0;

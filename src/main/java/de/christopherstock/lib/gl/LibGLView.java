@@ -1,49 +1,50 @@
 
     package de.christopherstock.lib.gl;
 
-    import java.awt.*;
-    import java.nio.ByteBuffer;
-    import java.nio.ByteOrder;
-    import java.nio.FloatBuffer;
-    import java.util.*;
-    import de.christopherstock.lib.*;
-    import de.christopherstock.lib.g3d.*;
-    import de.christopherstock.lib.g3d.face.LibFace;
-    import de.christopherstock.lib.gl.LibGLImage.*;
-    import de.christopherstock.lib.gl.LibGLTexture.Translucency;
-    import de.christopherstock.lib.math.*;
-    import de.christopherstock.lib.ui.*;
-    import de.christopherstock.shooter.Shooter;
-    import org.lwjgl.LWJGLException;
-    import org.lwjgl.opengl.*;
-    import org.lwjgl.opengl.DisplayMode;
-    import org.lwjgl.util.glu.*;
+    import  java.awt.*;
+    import  java.nio.ByteBuffer;
+    import  java.nio.ByteOrder;
+    import  java.nio.FloatBuffer;
+    import  java.util.*;
+    import  de.christopherstock.lib.*;
+    import  de.christopherstock.lib.g3d.*;
+    import  de.christopherstock.lib.g3d.face.LibFace;
+    import  de.christopherstock.lib.gl.LibGLImage.*;
+    import  de.christopherstock.lib.gl.LibGLTexture.Translucency;
+    import  de.christopherstock.lib.math.*;
+    import  de.christopherstock.lib.ui.*;
+    import  de.christopherstock.shooter.Shooter;
+    import  org.lwjgl.LWJGLException;
+    import  org.lwjgl.opengl.*;
+    import  org.lwjgl.opengl.DisplayMode;
+    import  org.lwjgl.util.glu.*;
 
     /*******************************************************************************************************************
     *   The GL-View.
     *******************************************************************************************************************/
-    public class LibGLView
+    public final class LibGLView
     {
-        public      static  final   float               VIEW_ANGLE                  = 60.0f;
-        protected   static  final   float               DEPTH_BUFFER_SIZE           = 1.0f;
-        protected   static  final   float               VIEW_MIN                    = 0.1f;
-        protected   static  final   float               VIEW_MAX                    = 100.0f;
+        private     static  final   float               VIEW_ANGLE                  = 60.0f;
+        private     static  final   float               DEPTH_BUFFER_SIZE           = 1.0f;
+        private     static  final   float               VIEW_MIN                    = 0.1f;
+        private     static  final   float               VIEW_MAX                    = 100.0f;
 
-        protected                   float               iAspectRatio                = 0;
-        protected                   LibDebug            iDebug                      = null;
+        private                     float               aspectRatio                 = 0.0f;
+        private                     LibDebug            debug                       = null;
+        private                     Vector<LibFace>     firstPrioDrawingQueue       = new Vector<LibFace>();
+        private                     Vector<LibFace>     defaultFaceDrawingQueue     = new Vector<LibFace>();
+        private                     LibGLTexture        lastOpaqueTexture           = null;
+        private                     LibGLPanel          panel                       = null;
 
-        protected                   LibGLImage[]        iTextureImages              = null;
-        protected                   boolean             iLightDebugPointSet         = false;
-
-        private                     Vector<LibFace>     iFirstPrioDrawingQueue      = new Vector<LibFace>();
-        private                     Vector<LibFace>     iDefaultFaceDrawingQueue    = new Vector<LibFace>();
-        protected                   LibGLTexture        iLastOpaqueTexture          = null;
-
-        public LibGLView(LibGLPanel panel, LibDebug aDebug, int aFormWidth, int aFormHeight, float aAspectRatio )
+        public LibGLView( LibGLPanel panel, LibDebug debug, float aspectRatio )
         {
-            this.iAspectRatio = aAspectRatio;
-            this.iDebug       = aDebug;
+            this.aspectRatio = aspectRatio;
+            this.debug = debug;
+            this.panel        = panel;
+        }
 
+        public void init( int aFormWidth, int aFormHeight )
+        {
             try
             {
                 // find out what the current bits per pixel of the desktop is
@@ -63,7 +64,7 @@
                         &&  currentBpp  == dm.getBitsPerPixel()
                     )
                     {
-                        this.iDebug.out( "picked display mode [" + dm.getWidth() + "][" + dm.getHeight() + "][" + dm.getBitsPerPixel() + "]" );
+                        this.debug.out( "picked display mode [" + dm.getWidth() + "][" + dm.getHeight() + "][" + dm.getBitsPerPixel() + "]" );
                         displayMode = dm;
                         break;
                     }
@@ -72,44 +73,44 @@
                 // if can't find a mode, notify the user the give up
                 if ( displayMode == null )
                 {
-                    this.iDebug.err( "Display mode not available!" );
+                    this.debug.err( "Display mode not available!" );
                     return;
                 }
 
                 // configure and create the LWJGL display
-                this.iDebug.out( "Setting display mode.." );
+                this.debug.out( "Setting display mode.." );
                 Display.setDisplayMode( displayMode );
-                this.iDebug.out( "Setting display mode Ok" );
+                this.debug.out( "Setting display mode Ok" );
                 Display.setFullscreen( false );
-                this.iDebug.out( "setting fullscreen false Ok" );
+                this.debug.out( "setting fullscreen false Ok" );
 
                 //((Canvas)panel.getNativePanel() ).setFocusable(false);
 
                 //set native canvas as parent displayable
                 Display.setParent( (Canvas) panel.getNativePanel() );
-                this.iDebug.out( "setting native Canvas Ok" );
+                this.debug.out( "setting native Canvas Ok" );
 
                 //create the display
                 Display.setInitialBackground( 1.0f, 1.0f, 1.0f );
                 Display.create();
-                this.iDebug.out( "Display creation Ok" );
+                this.debug.out( "Display creation Ok" );
 
                 //request focus ( hangs?? )
               //panel.getNativePanel().requestFocus();
-                this.iDebug.out( "Requesting focus Ok" );
+                this.debug.out( "Requesting focus Ok" );
             }
             catch ( LWJGLException e)
             {
-                this.iDebug.trace( e );
+                this.debug.trace( e );
             }
 
-            this.iDebug.out( "invoked init-method of LWJGLView" );
+            this.debug.out( "invoked init-method of LWJGLView" );
 
             //assign the panel's dimensions and parse its offsets
             panel.width  = Display.getParent().getWidth();
             panel.height = Display.getParent().getHeight();
 
-            this.iDebug.out( "assigned panel dimensions [" + Shooter.game.engine.gl.panel.width + "]x[" + Shooter.game.engine.gl.panel.height + "]" );
+            this.debug.out( "assigned panel dimensions [" + Shooter.game.engine.gl.panel.width + "]x[" + Shooter.game.engine.gl.panel.height + "]" );
 
             //run through some based OpenGL capability settings
 
@@ -151,8 +152,8 @@
 
         public void clearFaceQueue()
         {
-            this.iDefaultFaceDrawingQueue.clear();
-            this.iFirstPrioDrawingQueue.clear();
+            this.defaultFaceDrawingQueue.clear();
+            this.firstPrioDrawingQueue.clear();
         }
 
         public void enqueueFaceToQueue( LibFace aFace )
@@ -167,13 +168,13 @@
             else if ( aFace.getTexture().getTranslucency() == Translucency.EHasMaskBulletHole )
             {
                 //add to masked face queue
-                this.iFirstPrioDrawingQueue.addElement( aFace );
+                this.firstPrioDrawingQueue.addElement( aFace );
             }
             //default queue ( masked faces & glass )
             else
             {
                 //add to glass face queue
-                this.iDefaultFaceDrawingQueue.addElement( aFace );
+                this.defaultFaceDrawingQueue.addElement( aFace );
             }
         }
 
@@ -182,8 +183,8 @@
           //ShooterDebugSystem.bugfix.out( "draw faces: ["+faceDrawingQueueOpaque.size()+"] opaque ["+faceDrawingQueueMasked.size()+"] masked ["+faceDrawingQueue.size()+" translucent]" );
 
             //sort & draw translucent faces according to distance
-            this.sortAndDrawAllFaces(this.iDefaultFaceDrawingQueue,  aCameraViewpoint );
-            this.sortAndDrawAllFaces(this.iFirstPrioDrawingQueue,    aCameraViewpoint );
+            this.sortAndDrawAllFaces(this.defaultFaceDrawingQueue,  aCameraViewpoint );
+            this.sortAndDrawAllFaces(this.firstPrioDrawingQueue,    aCameraViewpoint );
 
             //flushing gl forces an immediate draw
             this.flushGL();
@@ -333,11 +334,11 @@
 
                         //texture
                         GL11.glEnable(      GL11.GL_TEXTURE_2D                              );      //enable texture-mapping
-                        if (this.iLastOpaqueTexture == null || this.iLastOpaqueTexture.getId() != texture.getId() )
+                        if (this.lastOpaqueTexture == null || this.lastOpaqueTexture.getId() != texture.getId() )
                         {
                             GL11.glBindTexture( GL11.GL_TEXTURE_2D, texture.getId()             );      //bind face's texture
                         }
-                        this.iLastOpaqueTexture = texture;
+                        this.lastOpaqueTexture = texture;
 
                         //set glass color
                         GL11.glColor4f(     0.5f, 0.5f, 0.5f, 0.5f                          );
@@ -411,7 +412,7 @@
                         //disable blending
                         GL11.glDisable(         GL11.GL_BLEND                                   );
 
-                        this.iLastOpaqueTexture = null;
+                        this.lastOpaqueTexture = null;
 
                         break;
                     }
@@ -424,11 +425,11 @@
                         GL11.glEnable(          GL11.GL_TEXTURE_2D                        );      //enable texture-mapping
 
                         //cache last texture setting
-                        if (this.iLastOpaqueTexture == null || this.iLastOpaqueTexture.getId() != texture.getId() )
+                        if (this.lastOpaqueTexture == null || this.lastOpaqueTexture.getId() != texture.getId() )
                         {
                             GL11.glBindTexture(     GL11.GL_TEXTURE_2D, texture.getId()       );      //bind face's texture
                         }
-                        this.iLastOpaqueTexture = texture;
+                        this.lastOpaqueTexture = texture;
 
                         //set face color ( should be white ! )
                         GL11.glColor3f( col[ 0 ], col[ 1 ], col[ 2 ] );
@@ -492,13 +493,12 @@
 
         public final void initTextures( LibGLImage[] texImages )
         {
-            this.iTextureImages = texImages;
             GL11.glGenTextures();
 
-            for (int i = 0; i < this.iTextureImages.length; ++i )
+            for (int i = 0; i < texImages.length; ++i )
             {
                 GL11.glBindTexture( GL11.GL_TEXTURE_2D, i );
-                this.makeRGBTexture(this.iTextureImages[ i ] );
+                this.makeRGBTexture( texImages[ i ] );
 
                 //this line disabled the lights on textures ! do NOT uncomment it !!
                 //GL11.glTexEnvf(         GL11.GL_TEXTURE_ENV,  GL11.GL_TEXTURE_ENV_MODE,     GL11.GL_REPLACE   );
@@ -711,6 +711,6 @@
         {
             GL11.glMatrixMode( GL11.GL_PROJECTION );
             GL11.glLoadIdentity();
-            GLU.gluPerspective( faceAngle, this.iAspectRatio, VIEW_MIN, VIEW_MAX );
+            GLU.gluPerspective( faceAngle, this.aspectRatio, VIEW_MIN, VIEW_MAX );
         }
     }
