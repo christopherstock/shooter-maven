@@ -1,7 +1,6 @@
 
     package de.christopherstock.shooter.base;
 
-    import  de.christopherstock.lib.gl.LibGLFrame.*;
     import  de.christopherstock.shooter.*;
     import  de.christopherstock.shooter.io.hid.lwjgl.*;
     import  de.christopherstock.shooter.io.sound.*;
@@ -11,7 +10,7 @@
     /*******************************************************************************************************************
     *   Represents the game with all components.
     *******************************************************************************************************************/
-    public class ShooterGame extends Thread implements GLCallbackForm
+    public class ShooterGame extends Thread
     {
         /** A flag being set to true if a closing-event on the main form is invoked. */
         private                     boolean                 destroyed                   = false;
@@ -102,7 +101,7 @@
             }
         }
 
-        public final void onFormDestroyed()
+        public final void quit()
         {
             ShooterDebug.major.out( "Main Form was closed - Shooter is destroyed" );
             this.destroyed = true;

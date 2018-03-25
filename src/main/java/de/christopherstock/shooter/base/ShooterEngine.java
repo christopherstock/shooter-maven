@@ -5,12 +5,11 @@
     import  java.awt.image.*;
     import  java.io.*;
     import  javax.imageio.*;
-
     import  de.christopherstock.lib.gl.*;
     import  de.christopherstock.lib.io.*;
     import  de.christopherstock.lib.ui.LibFPS;
     import  de.christopherstock.shooter.*;
-    import de.christopherstock.shooter.ShooterSetting.*;
+    import  de.christopherstock.shooter.ShooterSetting.*;
     import  de.christopherstock.shooter.game.objects.Player;
     import  de.christopherstock.shooter.io.hid.lwjgl.*;
     import  de.christopherstock.shooter.io.sound.*;
@@ -100,7 +99,6 @@
                 ShooterSetting.Form.FORM_WIDTH,
                 ShooterSetting.Form.FORM_HEIGHT,
                 ShooterSetting.Form.FORM_TITLE,
-                Shooter.game,
                 this.iconImage,
                 ShooterDebug.init
             );

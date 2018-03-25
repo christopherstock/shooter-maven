@@ -10,11 +10,6 @@
     *******************************************************************************************************************/
     public class LibGLFrame extends JFrame
     {
-        public interface GLCallbackForm
-        {
-            void onFormDestroyed();
-        }
-
         @Override
         public void paint( Graphics g )
         {

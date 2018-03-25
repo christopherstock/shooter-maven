@@ -6,20 +6,18 @@
     import  java.awt.image.*;
     import  javax.swing.*;
     import  de.christopherstock.lib.*;
-    import  de.christopherstock.lib.gl.LibGLFrame.GLCallbackForm;
+    import  de.christopherstock.shooter.Shooter;
 
     /*******************************************************************************************************************
     *   The Form holds the gl-canvas and the preloader-view.
     *******************************************************************************************************************/
     public class LibGLForm implements WindowListener
     {
-        private                     GLCallbackForm          form                = null;
         private                     LibGLFrame              nativeFrame         = null;
         private                     BufferedImage           iconImage           = null;
 
-        public LibGLForm( GLCallbackForm aForm, String aTitle, Component contentPane, int width, int height, BufferedImage aIconImage )
+        public LibGLForm( String aTitle, Component contentPane, int width, int height, BufferedImage aIconImage )
         {
-            this.form = aForm;
             this.iconImage = aIconImage;
 
             //instanciate JFrame
@@ -61,7 +59,7 @@
         public void windowClosing( WindowEvent arg0 )
         {
             //( (LibGLFrame)nativeForm ).iBgImage = null;
-            this.form.onFormDestroyed();
+            Shooter.game.quit();
         }
 
         public void windowOpened(       WindowEvent arg0 )

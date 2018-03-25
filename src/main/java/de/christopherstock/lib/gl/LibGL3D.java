@@ -4,8 +4,6 @@
     import  java.awt.image.*;
     import  org.lwjgl.opengl.*;
     import  de.christopherstock.lib.*;
-    import  de.christopherstock.lib.gl.LibGLFrame.GLCallbackForm;
-    import de.christopherstock.lib.gl.LibGLPanel.*;
 
     public class LibGL3D
     {
@@ -18,7 +16,6 @@
             int                 formWidth,
             int                 formHeight,
             String              formTitle,
-            GLCallbackForm      callbackForm,
             BufferedImage       iconImage,
             LibDebug            debug
         )
@@ -31,7 +28,6 @@
             //show lwjgl form
             this.form = new LibGLForm
             (
-                callbackForm,
                 formTitle,
                 this.panel.getNativePanel(),
                 formWidth,
