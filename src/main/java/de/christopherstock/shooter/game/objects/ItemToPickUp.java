@@ -12,7 +12,7 @@
     import  de.christopherstock.lib.math.*;
     import  de.christopherstock.lib.ui.*;
     import  de.christopherstock.shooter.*;
-    import  de.christopherstock.shooter.ShooterSettings.ItemSettings;
+    import  de.christopherstock.shooter.ShooterSetting.ItemSettings;
     import  de.christopherstock.shooter.base.*;
     import  de.christopherstock.shooter.g3d.mesh.*;
     import  de.christopherstock.shooter.game.artefact.Artefact;
@@ -73,7 +73,7 @@
                             if ( ShooterDebug.DEBUG_DRAW_ITEM_CIRCLE )
                             {
                                 //Debug.item.out( "drawing item .." );
-                                new LibFaceEllipseFloor( ShooterDebug.face, null, DEBUG_COLOR, this.iAnchor.x, this.iAnchor.y, this.iAnchor.z, this.iKind.iRadius, this.iKind.iRadius, ShooterSettings.Performance.ELLIPSE_SEGMENTS ).draw();
+                                new LibFaceEllipseFloor( ShooterDebug.face, null, DEBUG_COLOR, this.iAnchor.x, this.iAnchor.y, this.iAnchor.z, this.iKind.iRadius, this.iKind.iRadius, ShooterSetting.Performance.ELLIPSE_SEGMENTS ).draw();
                             }
                             break;
                         }

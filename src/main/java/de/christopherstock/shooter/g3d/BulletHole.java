@@ -13,7 +13,7 @@
     import  de.christopherstock.lib.io.d3ds.LibD3dsFile;
     import  de.christopherstock.lib.math.*;
     import  de.christopherstock.shooter.*;
-    import  de.christopherstock.shooter.ShooterSettings.BulletHoles;
+    import  de.christopherstock.shooter.ShooterSetting.BulletHoles;
     import  de.christopherstock.shooter.base.*;
     import  de.christopherstock.shooter.g3d.mesh.*;
     import  de.christopherstock.shooter.g3d.wall.Wall;
@@ -131,7 +131,7 @@
                     this.iHitPoint.iShot.iBulletHoleSize.size,
                     this.iHitPoint.iShot.iBulletHoleSize.size,
                 ( newRandomTexRot ?  LibMath.getRandom( 0, 360 ) : this.iFace.iTextureRotation ),
-                ShooterSettings.Performance.ELLIPSE_SEGMENTS
+                ShooterSetting.Performance.ELLIPSE_SEGMENTS
             );
         }
 
@@ -332,7 +332,7 @@
         {
             //add to bullet-hole-stack, prune stack if overflowing
             BulletHole.bulletHoles.add( new BulletHole( hitPoint, aProjectile ) );
-            if ( BulletHole.bulletHoles.size() > ShooterSettings.Performance.MAX_NUMBER_BULLET_HOLES ) BulletHole.bulletHoles.removeElementAt( 0 );
+            if ( BulletHole.bulletHoles.size() > ShooterSetting.Performance.MAX_NUMBER_BULLET_HOLES ) BulletHole.bulletHoles.removeElementAt( 0 );
 
             ShooterDebug.bulletHole.out( " new bullet hole count: [" + BulletHole.bulletHoles.size() + "]" );
         }

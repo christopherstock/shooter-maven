@@ -3,9 +3,9 @@
 
     import  de.christopherstock.lib.gl.*;
     import  de.christopherstock.shooter.*;
-    import  de.christopherstock.shooter.ShooterSettings.Fonts;
-    import  de.christopherstock.shooter.ShooterSettings.HUDSettings;
-    import  de.christopherstock.shooter.ShooterSettings.OffsetsOrtho;
+    import  de.christopherstock.shooter.ShooterSetting.Fonts;
+    import  de.christopherstock.shooter.ShooterSetting.HUDSettings;
+    import  de.christopherstock.shooter.ShooterSetting.OffsetsOrtho;
     import  de.christopherstock.shooter.ui.hud.HUDMessageManager.AnimState;
 
     /*******************************************************************************************************************
@@ -33,9 +33,9 @@
             (
                     this.iText,
                 Fonts.EAvatarMessage,
-                ShooterSettings.Colors.EHudMsgFg.colARGB,
+                ShooterSetting.Colors.EHudMsgFg.colARGB,
                 null,
-                ShooterSettings.Colors.EHudMsgOutline.colARGB,
+                ShooterSetting.Colors.EHudMsgOutline.colARGB,
                 ShooterDebug.glImage
             );
         }

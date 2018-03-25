@@ -13,7 +13,7 @@
     import  de.christopherstock.lib.gl.*;
     import  de.christopherstock.lib.math.*;
     import  de.christopherstock.shooter.*;
-    import  de.christopherstock.shooter.ShooterSettings.*;
+    import de.christopherstock.shooter.ShooterSetting.*;
     import  de.christopherstock.shooter.g3d.*;
     import  de.christopherstock.shooter.game.artefact.ArtefactSet;
     import  de.christopherstock.shooter.game.artefact.ArtefactType;
@@ -81,7 +81,7 @@
         public Player(LibViewSet aStartPosition, boolean aDisableGravity )
         {
             //init and set cylinder
-            this.iCylinder = new Cylinder( this, new LibVertex( aStartPosition.pos.x, aStartPosition.pos.y, aStartPosition.pos.z ), RADIUS_BODY, DEPTH_TOTAL_STANDING, ShooterSettings.Performance.COLLISION_CHECKING_STEPS, ShooterDebug.playerCylinder, false, PlayerSettings.MAX_CLIMBING_UP_Z, PlayerSettings.MIN_CLIMBING_UP_Z, ShooterSettings.Performance.ELLIPSE_SEGMENTS, Material.EHumanFlesh );
+            this.iCylinder = new Cylinder( this, new LibVertex( aStartPosition.pos.x, aStartPosition.pos.y, aStartPosition.pos.z ), RADIUS_BODY, DEPTH_TOTAL_STANDING, ShooterSetting.Performance.COLLISION_CHECKING_STEPS, ShooterDebug.playerCylinder, false, PlayerSettings.MAX_CLIMBING_UP_Z, PlayerSettings.MIN_CLIMBING_UP_Z, ShooterSetting.Performance.ELLIPSE_SEGMENTS, Material.EHumanFlesh );
             this.iView = new PlayerView(     this, aStartPosition.rot );
 
             //ShooterDebug.bugfix.out( "Reset player view!" );

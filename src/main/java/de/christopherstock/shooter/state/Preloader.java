@@ -4,7 +4,7 @@
     import  de.christopherstock.lib.gl.*;
     import  de.christopherstock.lib.ui.*;
     import  de.christopherstock.shooter.*;
-    import  de.christopherstock.shooter.ShooterSettings.Fonts;
+    import  de.christopherstock.shooter.ShooterSetting.Fonts;
 
     /*******************************************************************************************************************
     *   Represents the preloader shown in the 1st state of the game.

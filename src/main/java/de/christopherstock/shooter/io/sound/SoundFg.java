@@ -7,7 +7,7 @@
     import  de.christopherstock.lib.io.*;
     import  de.christopherstock.lib.io.hid.*;
     import  de.christopherstock.shooter.*;
-    import  de.christopherstock.shooter.ShooterSettings.Sounds;
+    import  de.christopherstock.shooter.ShooterSetting.Sounds;
 
     /*******************************************************************************************************************
     *   The sound system.
@@ -101,7 +101,7 @@
 
         private void loadBytes()
         {
-            String uri = ShooterSettings.Path.ESoundsFg.iUrl + this.toString() + LibExtension.wav.getSpecifier();
+            String uri = ShooterSetting.Path.ESoundsFg.iUrl + this.toString() + LibExtension.wav.getSpecifier();
 
             try
             {

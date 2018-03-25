@@ -33,12 +33,12 @@
         public  static          boolean             keyHoldZoom                     = false;
 
         //--- actions ---//
-        public  static          KeyControl          crouching                       = new KeyControl( ShooterSettings.Performance.DELAY_AFTER_CROUCHING         );
-        public  static          KeyControl          gainHealth                      = new KeyControl( ShooterSettings.Performance.DELAY_AFTER_GAIN_HEALTH       );
-        public  static          KeyControl          damageFx                        = new KeyControl( ShooterSettings.Performance.DELAY_AFTER_DAMAGE_FX         );
-        public  static          KeyControl          playerAction                    = new KeyControl( ShooterSettings.Performance.DELAY_AFTER_PLAYER_ACTION     );
-        public  static          KeyControl          reload                          = new KeyControl( ShooterSettings.Performance.DELAY_AFTER_RELOAD            );
-        public  static          KeyControl          enterKey                   = new KeyControl( ShooterSettings.Performance.DELAY_AFTER_AVATAR_MESSAGE    );
-        public  static          KeyControl          explosion                       = new KeyControl( ShooterSettings.Performance.DELAY_AFTER_EXPLOSION         );
-        public  static          KeyControl          toggleMainMenu                  = new KeyControl( ShooterSettings.Performance.DELAY_AFTER_MAIN_MENU_TOGGLE  );
+        public  static          KeyControl          crouching                       = new KeyControl( ShooterSetting.Performance.DELAY_AFTER_CROUCHING         );
+        public  static          KeyControl          gainHealth                      = new KeyControl( ShooterSetting.Performance.DELAY_AFTER_GAIN_HEALTH       );
+        public  static          KeyControl          damageFx                        = new KeyControl( ShooterSetting.Performance.DELAY_AFTER_DAMAGE_FX         );
+        public  static          KeyControl          playerAction                    = new KeyControl( ShooterSetting.Performance.DELAY_AFTER_PLAYER_ACTION     );
+        public  static          KeyControl          reload                          = new KeyControl( ShooterSetting.Performance.DELAY_AFTER_RELOAD            );
+        public  static          KeyControl          enterKey                   = new KeyControl( ShooterSetting.Performance.DELAY_AFTER_AVATAR_MESSAGE    );
+        public  static          KeyControl          explosion                       = new KeyControl( ShooterSetting.Performance.DELAY_AFTER_EXPLOSION         );
+        public  static          KeyControl          toggleMainMenu                  = new KeyControl( ShooterSetting.Performance.DELAY_AFTER_MAIN_MENU_TOGGLE  );
     }

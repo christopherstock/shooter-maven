@@ -47,7 +47,7 @@
 
             try
             {
-                reincarnationTube = ImageIO.read( LibIO.preStreamJarResource( ShooterSettings.Path.EScreen.iUrl + "reincarnation.png" ) );
+                reincarnationTube = ImageIO.read( LibIO.preStreamJarResource( ShooterSetting.Path.EScreen.iUrl + "reincarnation.png" ) );
                 gli = new LibGLImage( reincarnationTube, ImageUsage.EOrtho, ShooterDebug.glImage, true );
             }
             catch ( Exception e )
@@ -80,7 +80,7 @@
             //draw healing effect?
             if ( animationHUDHealthFX > 0 )
             {
-                float alpha = opacityHealthFx * animationHUDHealthFX / ShooterSettings.Performance.TICKS_HEALTH_FX;
+                float alpha = opacityHealthFx * animationHUDHealthFX / ShooterSetting.Performance.TICKS_HEALTH_FX;
                 Shooter.game.engine.gl.view.drawOrthoBitmapBytes( healthPane, 0, 0, alpha );
             }
 
@@ -94,14 +94,14 @@
             //draw dying effect
             if ( drawDyingFx )
             {
-                float alpha = (float)animationHUDDyingFX / (float)ShooterSettings.Performance.TICKS_DYING_FX;
+                float alpha = (float)animationHUDDyingFX / (float) ShooterSetting.Performance.TICKS_DYING_FX;
                 Shooter.game.engine.gl.view.drawOrthoBitmapBytes( damagePane, 0, 0, alpha );
             }
 
             //draw dead effect
             if ( drawDeadFx )
             {
-                float alpha = (float)animationHUDDeadFX / (float)ShooterSettings.Performance.TICKS_DEAD_FX;
+                float alpha = (float)animationHUDDeadFX / (float) ShooterSetting.Performance.TICKS_DEAD_FX;
                 Shooter.game.engine.gl.view.drawOrthoBitmapBytes( deadPane, 0, 0, alpha );
             }
 
@@ -114,7 +114,7 @@
             //draw reincarnation effect
             if ( drawReincarnationFx )
             {
-                float size = ( 5 * (float)animationHUDReincarnationFX ) / ShooterSettings.Performance.TICKS_DEAD_FX;
+                float size = ( 5 * (float)animationHUDReincarnationFX ) / ShooterSetting.Performance.TICKS_DEAD_FX;
                 Shooter.game.engine.gl.view.drawOrthoBitmapBytes( gli, (int)( ( Shooter.game.engine.gl.panel.width - gli.width * size ) / 2 ), (int)( ( Shooter.game.engine.gl.panel.height - gli.height * size ) / 2 ), 1.0f, size, size, false );
             }
         }
@@ -122,22 +122,22 @@
         public static void launchDamageFX(int descent )
         {
             //set new opacity value and clip it
-            opacityDamageFx = ShooterSettings.HUDSettings.MAX_OPACITY_DAMAGE_FX * descent / 15;
-            if ( opacityDamageFx > ShooterSettings.HUDSettings.MAX_OPACITY_DAMAGE_FX ) opacityDamageFx = ShooterSettings.HUDSettings.MAX_OPACITY_DAMAGE_FX;
+            opacityDamageFx = ShooterSetting.HUDSettings.MAX_OPACITY_DAMAGE_FX * descent / 15;
+            if ( opacityDamageFx > ShooterSetting.HUDSettings.MAX_OPACITY_DAMAGE_FX ) opacityDamageFx = ShooterSetting.HUDSettings.MAX_OPACITY_DAMAGE_FX;
 
             //start damage animation
-            animationHUDDamageFXticks   = ShooterSettings.Performance.MAX_TICKS_DAMAGE_FX * descent / 15;
+            animationHUDDamageFXticks   = ShooterSetting.Performance.MAX_TICKS_DAMAGE_FX * descent / 15;
             animationHUDDamageFX        = animationHUDDamageFXticks;
         }
 
         public static void launchHealthFX(int gain )
         {
             //set new opacity value and clip it
-            opacityHealthFx = ShooterSettings.HUDSettings.MAX_OPACITY_HEALTH_FX * gain / 15;
-            if ( opacityHealthFx > ShooterSettings.HUDSettings.MAX_OPACITY_HEALTH_FX ) opacityHealthFx = ShooterSettings.HUDSettings.MAX_OPACITY_HEALTH_FX;
+            opacityHealthFx = ShooterSetting.HUDSettings.MAX_OPACITY_HEALTH_FX * gain / 15;
+            if ( opacityHealthFx > ShooterSetting.HUDSettings.MAX_OPACITY_HEALTH_FX ) opacityHealthFx = ShooterSetting.HUDSettings.MAX_OPACITY_HEALTH_FX;
 
             //start health animation
-            animationHUDHealthFX = ShooterSettings.Performance.TICKS_HEALTH_FX;
+            animationHUDHealthFX = ShooterSetting.Performance.TICKS_HEALTH_FX;
         }
 
         public static void launchDyingFX()
@@ -177,15 +177,15 @@
 
             if ( drawDeadFx )
             {
-                if ( animationHUDDeadFX  < ShooterSettings.Performance.TICKS_DEAD_FX ) ++animationHUDDeadFX;
+                if ( animationHUDDeadFX  < ShooterSetting.Performance.TICKS_DEAD_FX ) ++animationHUDDeadFX;
             }
             if ( drawDyingFx )
             {
-                if ( animationHUDDyingFX < ShooterSettings.Performance.TICKS_DYING_FX ) ++animationHUDDyingFX;
+                if ( animationHUDDyingFX < ShooterSetting.Performance.TICKS_DYING_FX ) ++animationHUDDyingFX;
             }
             if ( drawReincarnationFx )
             {
-                if ( animationHUDReincarnationFX < ShooterSettings.Performance.TICKS_REINCARNATION_FX ) ++animationHUDReincarnationFX;
+                if ( animationHUDReincarnationFX < ShooterSetting.Performance.TICKS_REINCARNATION_FX ) ++animationHUDReincarnationFX;
             }
         }
     }

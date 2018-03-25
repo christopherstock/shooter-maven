@@ -8,7 +8,7 @@
     import  de.christopherstock.lib.g3d.LibHoleSize;
     import  de.christopherstock.lib.game.LibShot.*;
     import  de.christopherstock.shooter.Shooter;
-    import  de.christopherstock.shooter.ShooterSettings.PlayerSettings;
+    import  de.christopherstock.shooter.ShooterSetting.PlayerSettings;
     import  de.christopherstock.shooter.game.artefact.Artefact;
     import  de.christopherstock.shooter.game.artefact.ArtefactKind;
     import  de.christopherstock.shooter.game.artefact.ArtefactType.*;

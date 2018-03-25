@@ -3,8 +3,8 @@
 
     import de.christopherstock.lib.LibRotation;
     import  de.christopherstock.shooter.*;
-    import  de.christopherstock.shooter.ShooterSettings.General;
-    import  de.christopherstock.shooter.ShooterSettings.PlayerSettings;
+    import  de.christopherstock.shooter.ShooterSetting.General;
+    import  de.christopherstock.shooter.ShooterSetting.PlayerSettings;
     import  de.christopherstock.shooter.io.hid.*;
     import  de.christopherstock.shooter.level.*;
     import  de.christopherstock.shooter.ui.hud.*;
@@ -163,7 +163,7 @@
 
                     //check collision on standing up
                     this.iParentPlayer.getCylinder().iHeight = this.iDepthTotal;
-                    if ( !ShooterSettings.General.DISABLE_PLAYER_TO_WALL_COLLISIONS && Level.currentSection().checkCollisionOnWalls(this.iParentPlayer.getCylinder() ) )
+                    if ( !ShooterSetting.General.DISABLE_PLAYER_TO_WALL_COLLISIONS && Level.currentSection().checkCollisionOnWalls(this.iParentPlayer.getCylinder() ) )
                     {
                         this.iDepthEye -= SPEED_CROUCH_TOGGLE;
                         this.iDepthHand -= SPEED_CROUCH_TOGGLE;
@@ -250,7 +250,7 @@
 
                     case ELying:
                     {
-                        if ( ++this.iDyingAnimation < ShooterSettings.Performance.MAX_TICKS_DAMAGE_FX )
+                        if ( ++this.iDyingAnimation < ShooterSetting.Performance.MAX_TICKS_DAMAGE_FX )
                         {
                         }
                         else
@@ -263,7 +263,7 @@
 
                     case EDying:
                     {
-                        if ( ++this.iDyingAnimation < ShooterSettings.Performance.TICKS_DYING_FX )
+                        if ( ++this.iDyingAnimation < ShooterSetting.Performance.TICKS_DYING_FX )
                         {
                             HUDFx.launchDyingFX();
                         }
@@ -277,7 +277,7 @@
 
                     case ERelief:
                     {
-                        if ( ++this.iDyingAnimation < ShooterSettings.Performance.TICKS_DEAD_FX )
+                        if ( ++this.iDyingAnimation < ShooterSetting.Performance.TICKS_DEAD_FX )
                         {
                             HUDFx.launchDeadFX();
                         }
@@ -291,7 +291,7 @@
 
                     case EReincarnation:
                     {
-                        if ( ++this.iDyingAnimation < ShooterSettings.Performance.TICKS_REINCARNATION_FX )
+                        if ( ++this.iDyingAnimation < ShooterSetting.Performance.TICKS_REINCARNATION_FX )
                         {
                             HUDFx.launchReincarnationFX();
                         }

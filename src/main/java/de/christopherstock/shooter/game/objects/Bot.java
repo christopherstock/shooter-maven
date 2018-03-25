@@ -10,10 +10,10 @@
     import  de.christopherstock.lib.math.*;
     import  de.christopherstock.lib.ui.*;
     import  de.christopherstock.shooter.*;
-    import  de.christopherstock.shooter.ShooterSettings.BotSettings;
-    import  de.christopherstock.shooter.ShooterSettings.FxSettings;
-    import  de.christopherstock.shooter.ShooterSettings.General;
-    import  de.christopherstock.shooter.ShooterSettings.PlayerSettings;
+    import  de.christopherstock.shooter.ShooterSetting.BotSettings;
+    import  de.christopherstock.shooter.ShooterSetting.FxSettings;
+    import  de.christopherstock.shooter.ShooterSetting.General;
+    import  de.christopherstock.shooter.ShooterSetting.PlayerSettings;
     import  de.christopherstock.shooter.base.ShooterD3ds.*;
     import  de.christopherstock.shooter.g3d.*;
     import  de.christopherstock.shooter.g3d.mesh.*;
@@ -216,7 +216,7 @@
         {
             this.iType = aType;
             this.iStartPosition = aStartPosition.copy();
-            this.iCylinder = new Cylinder( this, this.iStartPosition, aTemplate.iBase.iRadius, aTemplate.iBase.iHeight, 0, ShooterDebug.bot, ShooterDebug.DEBUG_DRAW_BOT_CIRCLES, 0.0f, 0.0f, ShooterSettings.Performance.ELLIPSE_SEGMENTS, Material.EHumanFlesh );
+            this.iCylinder = new Cylinder( this, this.iStartPosition, aTemplate.iBase.iRadius, aTemplate.iBase.iHeight, 0, ShooterDebug.bot, ShooterDebug.DEBUG_DRAW_BOT_CIRCLES, 0.0f, 0.0f, ShooterSetting.Performance.ELLIPSE_SEGMENTS, Material.EHumanFlesh );
             this.iWayPoints = aWayPoints;
             this.iJobs = new Vector<BotJob>();
             this.iJobs.add(      aJob );
@@ -385,7 +385,7 @@
                 }
                 for ( int i = 0; i <= VERTICAL_SLICES; ++i )
                 {
-                    new LibFaceEllipseFloor( ShooterDebug.face, null, col, ank.x, ank.y, ank.z + ( i * this.iCylinder.getHeight() / VERTICAL_SLICES ), this.iCylinder.getRadius(), this.iCylinder.getRadius(), ShooterSettings.Performance.ELLIPSE_SEGMENTS ).draw();
+                    new LibFaceEllipseFloor( ShooterDebug.face, null, col, ank.x, ank.y, ank.z + ( i * this.iCylinder.getHeight() / VERTICAL_SLICES ), this.iCylinder.getRadius(), this.iCylinder.getRadius(), ShooterSetting.Performance.ELLIPSE_SEGMENTS ).draw();
                 }
             }
         }
@@ -471,7 +471,7 @@
                             //check distance from player to next waypoint and from bot to next waypoint
                             float   distancePlayerToNextWaypoint = (float)player.distance(this.iWayPoints[this.iCurrentWayPointIndex] );
                             float   distanceBotToNextWaypoint    = (float)bot.distance(this.iWayPoints[this.iCurrentWayPointIndex] );
-                            boolean playerOutOfBotReach          = ( (float)player.distance( bot ) > ShooterSettings.BotSettings.MAX_LEADING_DISTANCE_TO_PLAYER );
+                            boolean playerOutOfBotReach          = ( (float)player.distance( bot ) > ShooterSetting.BotSettings.MAX_LEADING_DISTANCE_TO_PLAYER );
 
                             //wait for player if he is out of reach and farer from the next waypoint than the bot
                             if ( playerOutOfBotReach && distancePlayerToNextWaypoint > distanceBotToNextWaypoint )

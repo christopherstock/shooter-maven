@@ -10,19 +10,12 @@
     /*******************************************************************************************************************
     *   All settings for the project.
     *******************************************************************************************************************/
-    public class ShooterSettings
+    public class ShooterSetting
     {
-        private static enum DevEnvironment
-        {
-            EDesktop,
-            EMacbook,
-            ;
-        }
-
         public static final class Form
         {
             /** The window's title string. */
-            public  static  final   String          FORM_TITLE                          = "Shooter Prototype, " + ShooterVersion.getCurrentVersionDesc();
+            public  static  final   String          FORM_TITLE                          = "LWJGL 3D Shooter, " + ShooterVersion.getCurrentVersionDesc();
             public  static          int             FORM_WIDTH                          = 1024;
             public  static          int             FORM_HEIGHT                         = 768;
         }

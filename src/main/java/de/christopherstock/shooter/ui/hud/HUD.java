@@ -4,10 +4,10 @@
     import de.christopherstock.lib.LibAnimation;
     import  de.christopherstock.lib.gl.*;
     import  de.christopherstock.shooter.*;
-    import  de.christopherstock.shooter.ShooterSettings.Colors;
-    import  de.christopherstock.shooter.ShooterSettings.Fonts;
-    import  de.christopherstock.shooter.ShooterSettings.HUDSettings;
-    import  de.christopherstock.shooter.ShooterSettings.OffsetsOrtho;
+    import  de.christopherstock.shooter.ShooterSetting.Colors;
+    import  de.christopherstock.shooter.ShooterSetting.Fonts;
+    import  de.christopherstock.shooter.ShooterSetting.HUDSettings;
+    import  de.christopherstock.shooter.ShooterSetting.OffsetsOrtho;
     import  de.christopherstock.shooter.game.artefact.Artefact;
     import  de.christopherstock.shooter.game.artefact.ArtefactType;
     import  de.christopherstock.shooter.game.artefact.firearm.*;
@@ -64,7 +64,7 @@
 
         }
 
-        public final void draw2D()
+        public final void draw()
         {
             //level may not be initialized
             if ( Level.currentSection() != null )
@@ -269,7 +269,7 @@
                                     Shooter.game.engine.player.iArtefactSet.getArtefact().performReload( Shooter.game.engine.player.iAmmoSet, true, null, false );
 
                                     this.iAnimationState = LibAnimation.EAnimationShow;
-                                    this.iAnimationPlayerRightHand = ShooterSettings.Performance.TICKS_WEARPON_HIDE_SHOW;
+                                    this.iAnimationPlayerRightHand = ShooterSetting.Performance.TICKS_WEARPON_HIDE_SHOW;
                                     break;
                                 }
 
@@ -290,7 +290,7 @@
 
         public final void startHandAnimation( LibAnimation newAnimationState, ChangeAction newActionAfterHide )
         {
-            this.iAnimationPlayerRightHand = ShooterSettings.Performance.TICKS_WEARPON_HIDE_SHOW;
+            this.iAnimationPlayerRightHand = ShooterSetting.Performance.TICKS_WEARPON_HIDE_SHOW;
             this.iAnimationState = newAnimationState;
             this.iActionAfterHide = newActionAfterHide;
         }

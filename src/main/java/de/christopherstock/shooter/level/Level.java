@@ -15,7 +15,7 @@
     import  de.christopherstock.lib.math.*;
     import  de.christopherstock.lib.ui.*;
     import  de.christopherstock.shooter.*;
-    import  de.christopherstock.shooter.ShooterSettings.*;
+    import de.christopherstock.shooter.ShooterSetting.*;
     import  de.christopherstock.shooter.g3d.*;
     import  de.christopherstock.shooter.g3d.mesh.*;
     import  de.christopherstock.shooter.g3d.wall.*;
@@ -594,7 +594,7 @@
 
         public final void startAdrenaline()
         {
-            this.iAdrenalineTicks = ShooterSettings.General.TICKS_ADRENALINE;
+            this.iAdrenalineTicks = ShooterSetting.General.TICKS_ADRENALINE;
         }
 
         public final Bot getBotByID( int id )

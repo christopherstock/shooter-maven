@@ -3,7 +3,7 @@
 
     import  org.lwjgl.input.*;
     import  de.christopherstock.shooter.*;
-    import  de.christopherstock.shooter.ShooterSettings.General;
+    import  de.christopherstock.shooter.ShooterSetting.General;
     import  de.christopherstock.shooter.io.hid.*;
 
     public class LWJGLMouse extends MouseInput
@@ -81,8 +81,8 @@
             int distX = Mouse.getEventDX();
             int distY = Mouse.getEventDY();
 
-            MouseInput.mouseMovementX += distX * ShooterSettings.General.MOUSE_MOVEMENT_MULTIPLIER;
-            MouseInput.mouseMovementY += distY * ShooterSettings.General.MOUSE_MOVEMENT_MULTIPLIER;
+            MouseInput.mouseMovementX += distX * ShooterSetting.General.MOUSE_MOVEMENT_MULTIPLIER;
+            MouseInput.mouseMovementY += distY * ShooterSetting.General.MOUSE_MOVEMENT_MULTIPLIER;
 
             //clip movements
             if ( MouseInput.mouseMovementX > General.MOUSE_MAX_MOVEMENT_X ) MouseInput.mouseMovementX = General.MOUSE_MAX_MOVEMENT_X;
@@ -97,7 +97,7 @@
             try
             {
                 //inoperative on mac :(
-                BufferedImage bi  = ImageIO.read( LibIO.preStreamJarResource( ShooterSettings.Path.EScreen.iUrl + "invisible.png" ) );
+                BufferedImage bi  = ImageIO.read( LibIO.preStreamJarResource( ShooterSetting.Path.EScreen.iUrl + "invisible.png" ) );
                 LibGLImage    img = new LibGLImage( bi, LibGLImage.ImageUsage.EOrtho, ShooterDebug.glimage, false );
                 Mouse.setNativeCursor( new Cursor( bi.getWidth(), bi.getHeight(), bi.getWidth() / 2, bi.getHeight() / 2, 1, img.bytes.asIntBuffer(), null ) );
 

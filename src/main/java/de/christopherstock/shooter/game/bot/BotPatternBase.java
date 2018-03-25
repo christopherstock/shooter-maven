@@ -2,7 +2,7 @@
     package de.christopherstock.shooter.game.bot;
 
     import  de.christopherstock.lib.gl.*;
-    import  de.christopherstock.shooter.ShooterSettings.*;
+    import de.christopherstock.shooter.ShooterSetting.*;
     import  de.christopherstock.shooter.base.ShooterTexture.*;
     import  de.christopherstock.shooter.game.objects.Bot.*;
 

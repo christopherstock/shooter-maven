@@ -108,12 +108,12 @@
                     }
                     case EAnimationHide:
                     {
-                        modY -= this.iArtefactType.getArtefactImage().height - Shooter.game.engine.hud.getAnimationRightHand() * this.iArtefactType.getArtefactImage().height / ShooterSettings.Performance.TICKS_WEARPON_HIDE_SHOW;
+                        modY -= this.iArtefactType.getArtefactImage().height - Shooter.game.engine.hud.getAnimationRightHand() * this.iArtefactType.getArtefactImage().height / ShooterSetting.Performance.TICKS_WEARPON_HIDE_SHOW;
                         break;
                     }
                     case EAnimationShow:
                     {
-                        modY -= Shooter.game.engine.hud.getAnimationRightHand() * this.iArtefactType.getArtefactImage().height / ShooterSettings.Performance.TICKS_WEARPON_HIDE_SHOW;
+                        modY -= Shooter.game.engine.hud.getAnimationRightHand() * this.iArtefactType.getArtefactImage().height / ShooterSetting.Performance.TICKS_WEARPON_HIDE_SHOW;
                         break;
                     }
                 }
@@ -246,27 +246,4 @@
             if (this.iArtefactType.iPickUpItemKind == null ) return null;
             return new ItemToPickUp(this.iArtefactType.iPickUpItemKind, this, ank.x, ank.y, ank.z, LibMath.getRandom( 0, 360 ), LibRotating.ENo );
         }
-
-        /***************************************************************************************************************
-        *   Draws a 3D model of the current holding wearpon in front of the player's eye.
-        ***************************************************************************************************************/
-/*
-        public final void draw3D( GL gl )
-        {
-            //float modX = Player.getWalkingAngle2Modifier()  / 20;
-            //float modY = -Player.getWalkingAngle3Modifier() / 40;
-
-            gl.glLoadIdentity();                        //new identity please
-            gl.glNormal3f( 0.0f, 0.0f, 0.0f );          //normalize
-
-            gl.glEnable(  GL.GL_BLEND       );                                  //enable Blending
-            gl.glBlendFunc( GL.GL_ONE, GL.GL_ZERO );                             //blend Screen Color With Zero (Black)
-
-            //draw the 3d-shotgun
-          //Meshes.shotgun.draw();
-
-            gl.glDisable(   GL.GL_BLEND       );                                //disnable Blending
-
-        }
-*/
     }

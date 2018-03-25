@@ -8,8 +8,8 @@
     import  de.christopherstock.lib.io.*;
     import  de.christopherstock.lib.ui.*;
     import  de.christopherstock.shooter.*;
-    import  de.christopherstock.shooter.ShooterSettings.General;
-    import  de.christopherstock.shooter.ShooterSettings.PlayerSettings;
+    import  de.christopherstock.shooter.ShooterSetting.General;
+    import  de.christopherstock.shooter.ShooterSetting.PlayerSettings;
     import  de.christopherstock.shooter.base.ShooterD3ds.Items;
     import  de.christopherstock.shooter.base.ShooterD3ds.Others;
     import  de.christopherstock.shooter.game.artefact.closecombat.CloseCombat;
@@ -132,13 +132,13 @@
 
         public final void loadImage()
         {
-            BufferedImage bufferedImage   = LibImage.load( ShooterSettings.Path.EArtefact.iUrl + this.toString() + LibExtension.png.getSpecifier(), ShooterDebug.glImage, false );
+            BufferedImage bufferedImage   = LibImage.load( ShooterSetting.Path.EArtefact.iUrl + this.toString() + LibExtension.png.getSpecifier(), ShooterDebug.glImage, false );
             this.iArtefactImage = new LibGLImage( bufferedImage,   ImageUsage.EOrtho, ShooterDebug.glImage, true );
             Vector<LibGLImage> fxImages = new Vector<LibGLImage>();
             while ( true )
             {
                 String ext = ( fxImages.size() > 0 ? String.valueOf( fxImages.size() + 1 ) : "" );
-                String url = ShooterSettings.Path.EArtefactMuzzleFlash.iUrl + this.toString() + ext + LibExtension.png.getSpecifier();
+                String url = ShooterSetting.Path.EArtefactMuzzleFlash.iUrl + this.toString() + ext + LibExtension.png.getSpecifier();
 
                 //break if file does not exist ( allows desired different flashes )
                 if (this.getClass().getResourceAsStream( url ) == null )

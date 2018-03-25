@@ -9,7 +9,7 @@
     import  de.christopherstock.lib.g3d.*;
     import  de.christopherstock.lib.game.*;
     import  de.christopherstock.lib.gl.*;
-    import  de.christopherstock.shooter.ShooterSettings.BotSettings.RotationSpeed;
+    import  de.christopherstock.shooter.ShooterSetting.BotSettings.RotationSpeed;
     import  de.christopherstock.shooter.base.*;
     import  de.christopherstock.shooter.base.ShooterD3ds.*;
     import  de.christopherstock.shooter.base.ShooterTexture.*;

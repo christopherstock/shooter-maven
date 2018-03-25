@@ -10,7 +10,6 @@
     import  de.christopherstock.shooter.level.setup.*;
     import de.christopherstock.lib.LibViewSet;
     import  de.christopherstock.lib.fx.*;
-    import  de.christopherstock.lib.gl.*;
 
     /*******************************************************************************************************************
     *   The application's main thread. Start this thread to run the application.
@@ -30,13 +29,7 @@
             return singleton;
         }
 
-        public final void draw2D()
-        {
-            //draw hud
-            Shooter.game.engine.hud.draw2D();
-        }
-
-        public final void draw3D()
+        public final void draw()
         {
             //level may be null if not set
             if ( Level.currentSection() != null )
@@ -70,6 +63,9 @@
                 //flush face queue to force an immediate redraw
                 Shooter.game.engine.gl.view.flushFaceQueue( Shooter.game.engine.player.getAnchor() );
             }
+
+            //draw hud
+            Shooter.game.engine.hud.draw();
         }
 
 

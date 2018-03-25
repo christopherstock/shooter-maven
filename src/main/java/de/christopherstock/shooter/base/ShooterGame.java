@@ -61,7 +61,7 @@
                 //delay for specified delay time
                 try
                 {
-                    Thread.sleep( ShooterSettings.Performance.THREAD_DELAY );
+                    Thread.sleep( ShooterSetting.Performance.THREAD_DELAY );
                 }
                 catch ( InterruptedException ie )
                 {
@@ -73,41 +73,7 @@
             SoundBg.stopCurrentSound();
         }
 
-        public final void draw()
-        {
-            this.draw2D();
-            this.draw3D();
-        }
-
-        private void draw2D()
-        {
-            //draw loading screen
-            switch (this.engine.mainState)
-            {
-                case EPreloader:
-                {
-                    //draw 2d
-                    this.engine.preloader.draw();
-                    break;
-                }
-
-                case EMainMenu:
-                {
-                    //draw 2d
-                    MainStateMainMenu.getSingleton().draw2D();
-                    break;
-                }
-
-                case EIngame:
-                {
-                    //draw 2d
-                    MainStateIngame.getSingleton().draw2D();
-                    break;
-                }
-            }
-        }
-
-        private void draw3D()
+        public void draw()
         {
             //clear face queue from last tick
             Shooter.game.engine.gl.view.clearFaceQueue();
@@ -117,13 +83,20 @@
             {
                 case EPreloader:
                 {
+                    this.engine.preloader.draw();
+                    break;
+                }
+
+                case EMainMenu:
+                {
+                    MainStateIngame.getSingleton().draw();
+                    MainStateMainMenu.getSingleton().draw();
                     break;
                 }
 
                 case EIngame:
-                case EMainMenu:
                 {
-                    MainStateIngame.getSingleton().draw3D();
+                    MainStateIngame.getSingleton().draw();
                     break;
                 }
             }

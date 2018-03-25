@@ -11,7 +11,7 @@
     import  de.christopherstock.lib.io.LibExtension;
     import  de.christopherstock.lib.ui.LibImage;
     import  de.christopherstock.shooter.ShooterDebug;
-    import  de.christopherstock.shooter.ShooterSettings;
+    import de.christopherstock.shooter.ShooterSetting;
 
     /*******************************************************************************************************************
     *   The type of ammunition.
@@ -49,7 +49,7 @@
 
         protected final void loadImage()
         {
-            BufferedImage bufferedImage = LibImage.load( ShooterSettings.Path.EShells.iUrl + this.toString() + LibExtension.png.getSpecifier(), ShooterDebug.glImage, false );
+            BufferedImage bufferedImage = LibImage.load( ShooterSetting.Path.EShells.iUrl + this.toString() + LibExtension.png.getSpecifier(), ShooterDebug.glImage, false );
             this.iHUDAmmoImage = new LibGLImage( bufferedImage, ImageUsage.EOrtho, ShooterDebug.glImage, true );
         }
 

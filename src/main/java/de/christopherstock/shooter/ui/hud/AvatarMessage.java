@@ -9,9 +9,9 @@
     import  de.christopherstock.lib.io.*;
     import  de.christopherstock.lib.ui.*;
     import  de.christopherstock.shooter.*;
-    import  de.christopherstock.shooter.ShooterSettings.AvatarMessages;
-    import  de.christopherstock.shooter.ShooterSettings.Fonts;
-    import  de.christopherstock.shooter.ShooterSettings.OffsetsOrtho;
+    import  de.christopherstock.shooter.ShooterSetting.AvatarMessages;
+    import  de.christopherstock.shooter.ShooterSetting.Fonts;
+    import  de.christopherstock.shooter.ShooterSetting.OffsetsOrtho;
     import  de.christopherstock.shooter.base.*;
 
     /*******************************************************************************************************************
@@ -43,7 +43,7 @@
 
             private void loadImage()
             {
-                this.img = LibImage.load( ShooterSettings.Path.EAvatar.iUrl + this.toString() + LibExtension.png.getSpecifier(), ShooterDebug.glImage, true );
+                this.img = LibImage.load( ShooterSetting.Path.EAvatar.iUrl + this.toString() + LibExtension.png.getSpecifier(), ShooterDebug.glImage, true );
             }
         }
 
@@ -83,9 +83,9 @@
             this.textLines = new LibGLImage[ textLinesS.length ];
             for (int i = 0; i < this.textLines.length; ++i )
             {
-                this.textLines[ i ] = LibGLImage.getFromString( textLinesS[ i ], this.iFont, ShooterSettings.Colors.EAvatarMessageText.colABGR, null, ShooterSettings.Colors.EAvatarMessageTextOutline.colABGR, ShooterDebug.glImage );
+                this.textLines[ i ] = LibGLImage.getFromString( textLinesS[ i ], this.iFont, ShooterSetting.Colors.EAvatarMessageText.colABGR, null, ShooterSetting.Colors.EAvatarMessageTextOutline.colABGR, ShooterDebug.glImage );
             }
-            this.blockHeight = (this.textLines.length * this.textLines[ 0 ].height ); //+ ( ( textLines.length - 1 ) * ShooterSettings.HUD.LINE_SPACING_RATIO_EMPTY_LINES ) );
+            this.blockHeight = (this.textLines.length * this.textLines[ 0 ].height ); //+ ( ( textLines.length - 1 ) * ShooterSetting.HUD.LINE_SPACING_RATIO_EMPTY_LINES ) );
             this.iDrawX = 3 * OffsetsOrtho.EAvatarMsgX + this.iImgAvatar.width;
             this.iDrawY = Shooter.game.engine.gl.panel.height - OffsetsOrtho.EAvatarMsgY - this.textLines[ 0 ].height - OffsetsOrtho.EAvatarBgPanelHeight / 2 + this.blockHeight / 2;
 
@@ -228,7 +228,7 @@
             {
                 case 0:
                 {
-                    AvatarMessage.showMessage( AvatarImage.EWoman, ShooterStrings.AvatarMessages.TUTORIAL_CYCLE_WEARPONS, ShooterSettings.Colors.EAvatarMessagePanelBgBlack.colABGR );
+                    AvatarMessage.showMessage( AvatarImage.EWoman, ShooterStrings.AvatarMessages.TUTORIAL_CYCLE_WEARPONS, ShooterSetting.Colors.EAvatarMessagePanelBgBlack.colABGR );
                     break;
                 }
 
@@ -244,25 +244,25 @@
 
                 case 3:
                 {
-                    AvatarMessage.showMessage( AvatarImage.EWoman3, ShooterStrings.AvatarMessages.TUTORIAL_CROUCH, ShooterSettings.Colors.EAvatarMessagePanelBgGrey.colABGR );
+                    AvatarMessage.showMessage( AvatarImage.EWoman3, ShooterStrings.AvatarMessages.TUTORIAL_CROUCH, ShooterSetting.Colors.EAvatarMessagePanelBgGrey.colABGR );
                     break;
                 }
 
                 case 4:
                 {
-                    AvatarMessage.showMessage( AvatarImage.EWoman4, ShooterStrings.AvatarMessages.TUTORIAL_RELOAD, ShooterSettings.Colors.EAvatarMessagePanelBgRed.colABGR );
+                    AvatarMessage.showMessage( AvatarImage.EWoman4, ShooterStrings.AvatarMessages.TUTORIAL_RELOAD, ShooterSetting.Colors.EAvatarMessagePanelBgRed.colABGR );
                     break;
                 }
 
                 case 5:
                 {
-                    AvatarMessage.showMessage( AvatarImage.EWoman5, ShooterStrings.AvatarMessages.TUTORIAL_FIRE, ShooterSettings.Colors.EAvatarMessagePanelBgYellow.colABGR );
+                    AvatarMessage.showMessage( AvatarImage.EWoman5, ShooterStrings.AvatarMessages.TUTORIAL_FIRE, ShooterSetting.Colors.EAvatarMessagePanelBgYellow.colABGR );
                     break;
                 }
 
                 case 6:
                 {
-                    AvatarMessage.showMessage( AvatarImage.EWoman6, ShooterStrings.AvatarMessages.TUTORIAL_VIEW_UP_DOWN, ShooterSettings.Colors.EAvatarMessagePanelBgRed.colABGR );
+                    AvatarMessage.showMessage( AvatarImage.EWoman6, ShooterStrings.AvatarMessages.TUTORIAL_VIEW_UP_DOWN, ShooterSetting.Colors.EAvatarMessagePanelBgRed.colABGR );
                     break;
                 }
             }

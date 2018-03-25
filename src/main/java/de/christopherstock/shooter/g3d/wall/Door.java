@@ -13,7 +13,7 @@
     import  de.christopherstock.lib.math.LibMath;
     import de.christopherstock.shooter.Shooter;
     import  de.christopherstock.shooter.ShooterDebug;
-    import  de.christopherstock.shooter.ShooterSettings.DoorSettings;
+    import  de.christopherstock.shooter.ShooterSetting.DoorSettings;
     import  de.christopherstock.shooter.g3d.*;
     import  de.christopherstock.shooter.game.artefact.ArtefactType;
     import  de.christopherstock.shooter.game.artefact.gadget.Gadget;

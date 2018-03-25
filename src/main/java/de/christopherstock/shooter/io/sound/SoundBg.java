@@ -75,7 +75,7 @@
         {
             try
             {
-                ByteArrayInputStream bais  = LibIO.preStreamJarResource( ShooterSettings.Path.ESoundsBg.iUrl + this.toString() + LibExtension.au.getSpecifier() );
+                ByteArrayInputStream bais  = LibIO.preStreamJarResource( ShooterSetting.Path.ESoundsBg.iUrl + this.toString() + LibExtension.au.getSpecifier() );
                 byte[]               bytes = LibIO.readStreamBuffered( bais );
                 LibIODataSource      ds    = new LibIODataSource( LibIO.createByteBufferFromByteArray( bytes ), FileTypeDescriptor.BASIC_AUDIO );
 

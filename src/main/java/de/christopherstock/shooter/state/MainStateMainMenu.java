@@ -4,8 +4,8 @@
     import  de.christopherstock.lib.gl.*;
     import  de.christopherstock.lib.ui.*;
     import  de.christopherstock.shooter.*;
-    import  de.christopherstock.shooter.ShooterSettings.Fonts;
-    import  de.christopherstock.shooter.ShooterSettings.HUDSettings;
+    import  de.christopherstock.shooter.ShooterSetting.Fonts;
+    import  de.christopherstock.shooter.ShooterSetting.HUDSettings;
     import  de.christopherstock.shooter.io.hid.Keys;
     import  de.christopherstock.shooter.io.sound.*;
     import  de.christopherstock.shooter.level.*;
@@ -65,10 +65,10 @@
             currentMainMenuItem = MainMenuItem.EStartNewGameFacility;
         }
 
-        public final void draw2D()
+        public final void draw()
         {
             //draw hud
-            Shooter.game.engine.hud.draw2D();
+            Shooter.game.engine.hud.draw();
 
             //draw black pane
             Shooter.game.engine.gl.view.drawOrthoBitmapBytes( this.blackPane, 0,   0,   0.1f );
@@ -116,21 +116,21 @@
                 {
                     case EStartNewGameFacility:
                     {
-                        LevelChange.orderLevelChange( new LevelSetupTestMayflowerOffice(), ShooterSettings.Startup.STARTUP_LEVEL_SECTION, true );
+                        LevelChange.orderLevelChange( new LevelSetupTestMayflowerOffice(), ShooterSetting.Startup.STARTUP_LEVEL_SECTION, true );
                         Shooter.game.orderMainStateChangeTo( MainState.EIngame );
                         break;
                     }
 
                     case EStartNewGameTestOffice:
                     {
-                        LevelChange.orderLevelChange( new LevelSetupTestFacility(), ShooterSettings.Startup.STARTUP_LEVEL_SECTION, true );
+                        LevelChange.orderLevelChange( new LevelSetupTestFacility(), ShooterSetting.Startup.STARTUP_LEVEL_SECTION, true );
                         Shooter.game.orderMainStateChangeTo( MainState.EIngame );
                         break;
                     }
 
                     case EContinueGame:
                     {
-                        //ShooterGameLevel.orderLevelChange( ShooterSettings.General.STARTUP_LEVEL, true );
+                        //ShooterGameLevel.orderLevelChange( ShooterSetting.General.STARTUP_LEVEL, true );
                         Shooter.game.orderMainStateChangeTo( MainState.EIngame );
                         break;
                     }

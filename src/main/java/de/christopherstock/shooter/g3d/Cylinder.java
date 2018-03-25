@@ -11,8 +11,8 @@
     import  de.christopherstock.lib.gl.*;
     import  de.christopherstock.lib.math.*;
     import  de.christopherstock.lib.ui.*;
-    import  de.christopherstock.shooter.ShooterSettings;
-    import  de.christopherstock.shooter.ShooterSettings.General;
+    import de.christopherstock.shooter.ShooterSetting;
+    import  de.christopherstock.shooter.ShooterSetting.General;
     import  de.christopherstock.shooter.base.ShooterTexture.BotTex;
     import  de.christopherstock.shooter.level.*;
 
@@ -183,7 +183,7 @@
                     0.0f,                    //faceAngleVert
                     1.0f,
                     General.FADE_OUT_FACES_TOTAL_TICKS,
-                    ShooterSettings.Performance.ELLIPSE_SEGMENTS
+                    ShooterSetting.Performance.ELLIPSE_SEGMENTS
                 );
             }
 
@@ -515,7 +515,7 @@
                     this.iDebugDrawBotCircles,
                     this.iBottomCollisionToleranceZ,
                     this.iMinBottomCollisionToleranceZ,
-                ShooterSettings.Performance.ELLIPSE_SEGMENTS,
+                ShooterSetting.Performance.ELLIPSE_SEGMENTS,
                     this.iMaterial
             );
         }

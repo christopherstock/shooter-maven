@@ -228,7 +228,7 @@
         {
             for ( LibFaceTriangle face : this.iFaces)
             {
-                face.fadeOut( ShooterSettings.General.FADE_OUT_FACES );
+                face.fadeOut( ShooterSetting.General.FADE_OUT_FACES );
             }
         }
 

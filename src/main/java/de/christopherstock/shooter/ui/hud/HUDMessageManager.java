@@ -4,8 +4,7 @@
     import  java.util.*;
 
     import de.christopherstock.shooter.Shooter;
-    import  de.christopherstock.shooter.ShooterSettings.OffsetsOrtho;
-    import  de.christopherstock.shooter.level.*;
+    import  de.christopherstock.shooter.ShooterSetting.OffsetsOrtho;
 
     /*******************************************************************************************************************
     *   Manages the hud-messaging-queue

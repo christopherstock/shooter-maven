@@ -9,11 +9,9 @@
     *   TODO    punre LibGLPanel
     *   TODO    prune LibGLForm
     *   TODO    prune LibGL3D
-    *   TODO    merge draw2D and draw3D
     *   TODO    prune GLCallbackForm
     *   TODO    Prune all those super-confusing interfaces and abstract superclasses in LWJGL-Panel systems!
     *   TODO    Different heights for particle effects.
-    *   TODO    Alter JFrame / app icon.
     *   TODO    Mayflower preloader and textures ( posters ).
     *   TODO    only for FireArms! Move ArtefactType.iFXImages to Firearms (Wearpons)!
     *   TODO    Cleanup game initialization.

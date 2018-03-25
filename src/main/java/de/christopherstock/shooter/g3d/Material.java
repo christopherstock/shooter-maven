@@ -4,7 +4,7 @@
     import  de.christopherstock.lib.gl.*;
     import  de.christopherstock.lib.io.hid.*;
     import  de.christopherstock.lib.ui.*;
-    import  de.christopherstock.shooter.ShooterSettings.Colors;
+    import  de.christopherstock.shooter.ShooterSetting.Colors;
     import  de.christopherstock.shooter.base.ShooterTexture.BulletHoleTex;
     import  de.christopherstock.shooter.io.sound.*;
 

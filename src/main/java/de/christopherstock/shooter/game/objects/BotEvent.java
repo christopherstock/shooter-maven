@@ -30,22 +30,22 @@
                     //low prio messages
                     if ( AvatarMessage.queueIsEmpty() )
                     {
-                        AvatarMessage.showMessage( AvatarImage.EWoman2, ShooterStrings.AvatarMessages.LEVEL1_OFFICE_PARTNER_ACCLAIM_TUTORIAL_LOOK,   ShooterSettings.Colors.EAvatarMessagePanelBgGrey.colABGR );
-                        AvatarMessage.showMessage( AvatarImage.EWoman2, ShooterStrings.AvatarMessages.LEVEL1_OFFICE_PARTNER_ACCLAIM_TUTORIAL_WALK,   ShooterSettings.Colors.EAvatarMessagePanelBgGrey.colABGR );
+                        AvatarMessage.showMessage( AvatarImage.EWoman2, ShooterStrings.AvatarMessages.LEVEL1_OFFICE_PARTNER_ACCLAIM_TUTORIAL_LOOK,   ShooterSetting.Colors.EAvatarMessagePanelBgGrey.colABGR );
+                        AvatarMessage.showMessage( AvatarImage.EWoman2, ShooterStrings.AvatarMessages.LEVEL1_OFFICE_PARTNER_ACCLAIM_TUTORIAL_WALK,   ShooterSetting.Colors.EAvatarMessagePanelBgGrey.colABGR );
                     }
                     break;
                 }
 
                 case ELevel1ExplainAction:
                 {
-                    AvatarMessage.showMessage( AvatarImage.EWoman2, ShooterStrings.AvatarMessages.LEVEL1_OFFICE_PARTNER_TUTORIAL_ACTION,   ShooterSettings.Colors.EAvatarMessagePanelBgGrey.colABGR );
+                    AvatarMessage.showMessage( AvatarImage.EWoman2, ShooterStrings.AvatarMessages.LEVEL1_OFFICE_PARTNER_TUTORIAL_ACTION,   ShooterSetting.Colors.EAvatarMessagePanelBgGrey.colABGR );
                     break;
                 }
 
                 case ETakeMobileTest:
                 {
                     //thank player
-                    AvatarMessage.showMessage( AvatarImage.EWoman2, ShooterStrings.AvatarMessages.LEVEL1_OFFICE_PARTNER_TEST_MOBILE_GIVE,   ShooterSettings.Colors.EAvatarMessagePanelBgGrey.colABGR );
+                    AvatarMessage.showMessage( AvatarImage.EWoman2, ShooterStrings.AvatarMessages.LEVEL1_OFFICE_PARTNER_TEST_MOBILE_GIVE,   ShooterSetting.Colors.EAvatarMessagePanelBgGrey.colABGR );
 
                     bot.iNextItemToDeliverRightHand = Items.EApple;
 
@@ -74,7 +74,7 @@
                 case ETakeCrackersTest:
                 {
                     //thank player
-                    AvatarMessage.showMessage( AvatarImage.EWoman2, ShooterStrings.AvatarMessages.LEVEL1_OFFICE_PARTNER_TEST_CRACKERS_TRADE, ShooterSettings.Colors.EAvatarMessagePanelBgGrey.colABGR );
+                    AvatarMessage.showMessage( AvatarImage.EWoman2, ShooterStrings.AvatarMessages.LEVEL1_OFFICE_PARTNER_TEST_CRACKERS_TRADE, ShooterSetting.Colors.EAvatarMessagePanelBgGrey.colABGR );
 
                     //give keycard
                     ItemEvent.EGiveKeycard.perform( bot );

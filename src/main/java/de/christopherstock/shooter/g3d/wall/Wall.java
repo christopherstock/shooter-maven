@@ -15,7 +15,7 @@
     import  de.christopherstock.lib.io.d3ds.LibD3dsFile;
     import  de.christopherstock.lib.math.*;
     import  de.christopherstock.shooter.*;
-    import  de.christopherstock.shooter.ShooterSettings.*;
+    import de.christopherstock.shooter.ShooterSetting.*;
     import  de.christopherstock.shooter.base.*;
     import  de.christopherstock.shooter.base.ShooterTexture.WallTex;
     import  de.christopherstock.shooter.g3d.*;
@@ -193,7 +193,7 @@
                             Point2D.Float   xy      = this.getCenterPointXY();
                             float           z       = this.getCenterZ();
 
-                            Float baseZF = Level.currentSection().getHighestFloor( new Cylinder( null, new LibVertex( xy.x, xy.y, z ), 0.1f, 0.1f, 0, ShooterDebug.floorChange, false, 0.01f, 0.01f, ShooterSettings.Performance.ELLIPSE_SEGMENTS, Material.EHumanFlesh ), this );
+                            Float baseZF = Level.currentSection().getHighestFloor( new Cylinder( null, new LibVertex( xy.x, xy.y, z ), 0.1f, 0.1f, 0, ShooterDebug.floorChange, false, 0.01f, 0.01f, ShooterSetting.Performance.ELLIPSE_SEGMENTS, Material.EHumanFlesh ), this );
                             if ( baseZF != null )
                             {
                                 baseZ = baseZF;
@@ -373,7 +373,7 @@
                 //lower current health
                 this.iEnergy.iHealthCurrent -= h;
 
-                float opacity = ShooterSettings.FxSettings.MIN_DARKEN_FACES + ( 1.0f - ShooterSettings.FxSettings.MIN_DARKEN_FACES ) * ( ( (float) this.iEnergy.iHealthCurrent / (float) this.iEnergy.iHealthStart ) );
+                float opacity = ShooterSetting.FxSettings.MIN_DARKEN_FACES + ( 1.0f - ShooterSetting.FxSettings.MIN_DARKEN_FACES ) * ( ( (float) this.iEnergy.iHealthCurrent / (float) this.iEnergy.iHealthStart ) );
 
                 //darken faces
                 this.darkenAllFaces( opacity , true, false, 0.1f, 0.0f );
@@ -406,7 +406,7 @@
                 Point2D.Float xy = this.getCenterPointXY();
                 float z = this.getCenterZ();
                 float baseZ     = Float.MIN_VALUE;
-                Float baseZF    = Level.currentSection().getHighestFloor( new Cylinder( null, new LibVertex( xy.x, xy.y, z ), 0.05f, 0.01f, 0, ShooterDebug.floorChange, false, 0.01f, 0.01f, ShooterSettings.Performance.ELLIPSE_SEGMENTS, Material.EHumanFlesh ), this );
+                Float baseZF    = Level.currentSection().getHighestFloor( new Cylinder( null, new LibVertex( xy.x, xy.y, z ), 0.05f, 0.01f, 0, ShooterDebug.floorChange, false, 0.01f, 0.01f, ShooterSetting.Performance.ELLIPSE_SEGMENTS, Material.EHumanFlesh ), this );
                 if ( baseZF != null )
                 {
                     baseZ = baseZF;
@@ -419,7 +419,7 @@
             }
 
             //lower opacity to 0
-            this.darkenAllFaces( ShooterSettings.FxSettings.MIN_DARKEN_FACES, false, true, 0.0f, 0.1f );
+            this.darkenAllFaces( ShooterSetting.FxSettings.MIN_DARKEN_FACES, false, true, 0.0f, 0.1f );
 
             //kill all child walls if any
             if (this.iChildWalls != null )

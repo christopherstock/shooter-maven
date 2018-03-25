@@ -7,7 +7,7 @@
     import  de.christopherstock.lib.io.*;
     import  de.christopherstock.lib.ui.*;
     import  de.christopherstock.shooter.*;
-    import  de.christopherstock.shooter.ShooterSettings.PlayerSettings;
+    import  de.christopherstock.shooter.ShooterSetting.PlayerSettings;
 
     /*******************************************************************************************************************
     *   The Gadgets / ( non-wearpons ) the player can hold.
@@ -31,7 +31,7 @@
 
         public final void loadImage()
         {
-            BufferedImage bufferedImage = LibImage.load( ShooterSettings.Path.EBackGrounds.iUrl + this.toString() + LibExtension.jpg.getSpecifier(), ShooterDebug.glImage, false );
+            BufferedImage bufferedImage = LibImage.load( ShooterSetting.Path.EBackGrounds.iUrl + this.toString() + LibExtension.jpg.getSpecifier(), ShooterDebug.glImage, false );
             this.bgImage = new LibGLImage( bufferedImage, ImageUsage.EOrtho, ShooterDebug.glImage, true );
         }
 

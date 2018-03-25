@@ -12,8 +12,8 @@
     import  de.christopherstock.lib.gl.*;
     import  de.christopherstock.lib.io.d3ds.LibD3dsFile;
     import  de.christopherstock.lib.math.*;
-    import  de.christopherstock.shooter.ShooterSettings.DoorSettings;
-    import  de.christopherstock.shooter.ShooterSettings.Performance;
+    import  de.christopherstock.shooter.ShooterSetting.DoorSettings;
+    import  de.christopherstock.shooter.ShooterSetting.Performance;
     import  de.christopherstock.shooter.base.ShooterTexture.WallTex;
     import  de.christopherstock.shooter.base.ShooterD3ds.*;
     import  de.christopherstock.shooter.g3d.mesh.*;

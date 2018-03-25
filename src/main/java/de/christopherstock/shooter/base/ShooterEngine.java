@@ -10,7 +10,7 @@
     import  de.christopherstock.lib.io.*;
     import  de.christopherstock.lib.ui.LibFPS;
     import  de.christopherstock.shooter.*;
-    import  de.christopherstock.shooter.ShooterSettings.*;
+    import de.christopherstock.shooter.ShooterSetting.*;
     import  de.christopherstock.shooter.game.objects.Player;
     import  de.christopherstock.shooter.io.hid.lwjgl.*;
     import  de.christopherstock.shooter.io.sound.*;
@@ -54,8 +54,8 @@
 
             try
             {
-                this.iconImage = ImageIO.read( LibIO.preStreamJarResource( ShooterSettings.Path.EScreen.iUrl + "icon.png" ) );
-                this.bgImage   = ImageIO.read( LibIO.preStreamJarResource( ShooterSettings.Path.EScreen.iUrl + "bg.jpg"   ) );
+                this.iconImage = ImageIO.read( LibIO.preStreamJarResource( ShooterSetting.Path.EScreen.iUrl + "icon.png" ) );
+                this.bgImage   = ImageIO.read( LibIO.preStreamJarResource( ShooterSetting.Path.EScreen.iUrl + "bg.jpg"   ) );
             }
             catch ( IOException ioe )
             {
@@ -90,16 +90,16 @@
             {
                 Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
-                ShooterSettings.Form.FORM_WIDTH  = screenSize.width;
-                ShooterSettings.Form.FORM_HEIGHT = screenSize.height;
+                ShooterSetting.Form.FORM_WIDTH  = screenSize.width;
+                ShooterSetting.Form.FORM_HEIGHT = screenSize.height;
             }
 
             this.gl = new LibGL3D();
             this.gl.init
             (
-                ShooterSettings.Form.FORM_WIDTH,
-                ShooterSettings.Form.FORM_HEIGHT,
-                ShooterSettings.Form.FORM_TITLE,
+                ShooterSetting.Form.FORM_WIDTH,
+                ShooterSetting.Form.FORM_HEIGHT,
+                ShooterSetting.Form.FORM_TITLE,
                 Shooter.game,
                 this.iconImage,
                 ShooterDebug.init
@@ -131,7 +131,7 @@
             //init hud
             this.preloader.increase( 60 );
             this.hud = new HUD();
-            this.fps = new LibFPS( Fonts.EFps, ShooterSettings.Colors.EFpsFg.colABGR, ShooterSettings.Colors.EFpsOutline.colABGR, ShooterDebug.glImage );
+            this.fps = new LibFPS( Fonts.EFps, ShooterSetting.Colors.EFpsFg.colABGR, ShooterSetting.Colors.EFpsOutline.colABGR, ShooterDebug.glImage );
 
             //init HUD fx
             HUDFx.init();
@@ -152,7 +152,7 @@
             this.preloader.increase( 100 );
 
             //reset and change to startup main state
-            Shooter.game.orderMainStateChangeTo( ShooterSettings.Startup.STARTUP_STATE_AFTER_PRELOADER );
+            Shooter.game.orderMainStateChangeTo( ShooterSetting.Startup.STARTUP_STATE_AFTER_PRELOADER );
             LevelChange.orderLevelChange( Startup.STARTUP_LEVEL_MAIN, Startup.STARTUP_LEVEL_SECTION, true );
         }
 
