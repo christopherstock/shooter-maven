@@ -24,7 +24,7 @@
     *******************************************************************************************************************/
     public final class LibGLView
     {
-        private     static  final   float               VIEW_ANGLE                  = 60.0f;
+        public      static  final   float               VIEW_ANGLE                  = 60.0f;
         private     static  final   float               DEPTH_BUFFER_SIZE           = 1.0f;
         private     static  final   float               VIEW_MIN                    = 0.1f;
         private     static  final   float               VIEW_MAX                    = 100.0f;

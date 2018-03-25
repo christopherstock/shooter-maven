@@ -7,16 +7,10 @@
     import  org.lwjgl.opengl.*;
 
     /*******************************************************************************************************************
-    *   The Panek.
+    *   The Panel is completely obsolete!.
     *******************************************************************************************************************/
     public class LibGLPanel
     {
-        public interface GLDrawCallback
-        {
-            void draw2D();
-            void draw3D();
-        }
-
         private                     LibGLCanvas             canvas                  = null;
 
         public                      int                     width                   = 0;
@@ -45,10 +39,7 @@
         public final void display()
         {
             //invoke callback 3d drawing
-            Shooter.game.draw3D();
-
-            //invoke callback 2d drawing
-            Shooter.game.draw2D();
+            Shooter.game.draw();
 
             //update native LWJGL Display each tick
             Display.update();

@@ -73,7 +73,13 @@
             SoundBg.stopCurrentSound();
         }
 
-        public final void draw2D()
+        public final void draw()
+        {
+            this.draw2D();
+            this.draw3D();
+        }
+
+        private void draw2D()
         {
             //draw loading screen
             switch (this.engine.mainState)
@@ -101,7 +107,7 @@
             }
         }
 
-        public final void draw3D()
+        private void draw3D()
         {
             //clear face queue from last tick
             Shooter.game.engine.gl.view.clearFaceQueue();

@@ -6,7 +6,7 @@
     /*******************************************************************************************************************
     *   The main class.
     *
-    *   TODO    prune GLDrawCallback
+    *   TODO    punre LibGLPanel
     *   TODO    prune LibGLForm
     *   TODO    prune LibGL3D
     *   TODO    merge draw2D and draw3D
