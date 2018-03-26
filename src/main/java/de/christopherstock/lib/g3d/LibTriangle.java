@@ -6,9 +6,9 @@
     *******************************************************************************************************************/
     public class LibTriangle
     {
-        public                  LibVertex              a                    = null;
-        public                  LibVertex              b                    = null;
-        public                  LibVertex              c                    = null;
+        private LibVertex              a                    = null;
+        private LibVertex              b                    = null;
+        private LibVertex              c                    = null;
 
         public LibTriangle( LibVertex a, LibVertex b, LibVertex c )
         {

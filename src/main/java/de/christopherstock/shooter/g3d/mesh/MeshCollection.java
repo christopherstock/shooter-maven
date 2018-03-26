@@ -13,7 +13,7 @@
     *******************************************************************************************************************/
     abstract class MeshCollection implements LibGeomObject, Serializable
     {
-        public                      Mesh[]      iMeshes                     = null;
+        protected Mesh[]      iMeshes                     = null;
         private                     LibVertex   iAnchor                     = null;
 
         protected MeshCollection()

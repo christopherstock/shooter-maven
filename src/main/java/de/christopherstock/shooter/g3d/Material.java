@@ -26,9 +26,9 @@
         EWood(              false,      Colors.SLIVER_COLOR_WALL,           SoundFg.EWallWood1      ),
         ;
 
-        public          boolean         iPenetrable             = false;
-        public          LibColors[]     iSliverColors           = null;
-        public          SoundFg    iBulletImpactSound      = null;
+        private boolean         iPenetrable             = false;
+        private LibColors[]     iSliverColors           = null;
+        private SoundFg    iBulletImpactSound      = null;
 
         private Material( boolean aPenetrable, LibColors[] aSliverColors, SoundFg aBulletSound )
         {

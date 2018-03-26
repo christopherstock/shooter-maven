@@ -40,7 +40,7 @@
 
         public      static      final   int         GENERAL                     = 0;
         public      static      final   int         OFFICE_PARTNER_1            = 1;
-        public      static      final   int         OFFICE_PARTNER_2            = 2;
+        private static      final   int         OFFICE_PARTNER_2            = 2;
 
         @Override
         public final LevelConfigMain createNewLevelConfig()

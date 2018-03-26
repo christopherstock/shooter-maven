@@ -363,7 +363,7 @@
             }
         }
 
-        protected void slideAsDoor( boolean open, boolean left )
+        private void slideAsDoor(boolean open, boolean left)
         {
             float transX = LibMath.cosDeg(this.iStartupRotZ - 90.0f ) * ( DoorSettings.DOOR_SLIDING_TRANSLATION_OPEN / DoorSettings.DOOR_TICKS_OPEN_CLOSE );
             float transY = LibMath.sinDeg(this.iStartupRotZ - 90.0f ) * ( DoorSettings.DOOR_SLIDING_TRANSLATION_OPEN / DoorSettings.DOOR_TICKS_OPEN_CLOSE );
@@ -384,7 +384,7 @@
             this.checkOnDoorAnimation( open );
         }
 
-        protected final void swingAsDoor( boolean open, boolean counterClockwise )
+        private void swingAsDoor(boolean open, boolean counterClockwise)
         {
             //rotate mesh
             float angle = DoorSettings.DOOR_ANGLE_OPEN * this.iDoorAnimation / DoorSettings.DOOR_TICKS_OPEN_CLOSE;
@@ -408,7 +408,7 @@
             this.checkOnDoorAnimation( open );
         }
 
-        protected final void moveAsElevator( boolean up )
+        private void moveAsElevator(boolean up)
         {
             //translate mesh and bullet hole
             this.translate( 0.0f, 0.0f, ( up ? 0.125f : -0.125f ), LibTransformationMode.EOriginalsToOriginals );
@@ -422,7 +422,7 @@
             }
         }
 
-        protected final void checkOnDoorAnimation( boolean opening )
+        private void checkOnDoorAnimation(boolean opening)
         {
             boolean toggleDoor = false;
 

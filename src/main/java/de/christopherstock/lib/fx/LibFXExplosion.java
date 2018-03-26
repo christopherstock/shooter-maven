@@ -11,7 +11,7 @@
     *******************************************************************************************************************/
     class LibFXExplosion extends LibFX
     {
-        public      static  final   LibColors[]         EXPLOSION_COLORS                = new LibColors[]
+        private static  final   LibColors[]         EXPLOSION_COLORS                = new LibColors[]
         {
             LibColors.EExplosion1,  LibColors.EExplosion2,  LibColors.EExplosion3,
             LibColors.EExplosion4,  LibColors.EExplosion5,  LibColors.EExplosion6,

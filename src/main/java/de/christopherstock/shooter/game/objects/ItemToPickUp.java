@@ -39,8 +39,8 @@
         private                     float               iStartRotZ              = 0.0f;
         private LibRotating iIsRotating             = null;
         private                     float               iRotationZ              = 0.0f;
-        protected                   boolean             iRemove                 = false;
-        protected                   Artefact            iArtefact               = null;
+        private boolean             iRemove                 = false;
+        private Artefact            iArtefact               = null;
         protected                   float               iDropTarget             = 0.0f;
         protected                   float               iDropBegin              = 0.0f;
 

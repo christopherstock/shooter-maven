@@ -81,7 +81,7 @@
             LevelCurrent.currentSections[ 0 ].initPlayer();
         }
 
-        public final void initPlayer()
+        private void initPlayer()
         {
             //handle startup items and wearpons to the player
             for ( ItemEvent i : LevelCurrent.currentLevelConfig.iStartupItems )
@@ -133,7 +133,7 @@
             }
         }
 
-        protected final void addBot( Bot botToAdd )
+        private void addBot(Bot botToAdd)
         {
             this.iBots.add( botToAdd );
             ShooterDebug.bot.out( "adding bot. capacity is now [" + this.iBots.size() + "]" );

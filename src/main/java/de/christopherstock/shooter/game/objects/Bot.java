@@ -124,7 +124,7 @@
             EPrivateSoldier(    150 ),
             ;
 
-            public      int     iEnergy     = 0;
+            protected int     iEnergy     = 0;
 
             private BotHealth( int aEnergy )
             {
@@ -145,7 +145,7 @@
 
         public static final class BotUseAction implements BotAction
         {
-            public          BotEvent        iEvent        = null;
+            protected BotEvent        iEvent        = null;
 
             public BotUseAction( BotEvent aEvent )
             {
@@ -155,8 +155,8 @@
 
         public static final class BotGiveAction implements BotAction
         {
-            public          ArtefactType        iKey        = null;
-            public          BotEvent            iEvent      = null;
+            protected ArtefactType        iKey        = null;
+            protected BotEvent            iEvent      = null;
 
             public BotGiveAction( ArtefactType aKey, BotEvent aEvent )
             {
@@ -167,9 +167,9 @@
 
         public                      BotMeshes           iBotMeshes                  = null;
 
-        public                      AmmoSet             iAmmoSet                    = null;
+        private AmmoSet             iAmmoSet                    = null;
 
-        public                      ArtefactSet         iArtefactSet                = null;
+        private ArtefactSet         iArtefactSet                = null;
 
 
         /** current facing angle ( z axis ). */
@@ -360,17 +360,17 @@
             }
         }
 
-        protected final boolean checkCollision( Ellipse2D.Float aEllipse )
+        private boolean checkCollision(Ellipse2D.Float aEllipse)
         {
             return (this.iAliveState == BotAliveState.EAlive ? this.iCylinder.checkCollision( aEllipse ) : false );
         }
 
-        public final Point2D.Float getCenterHorz()
+        private Point2D.Float getCenterHorz()
         {
             return this.iCylinder.getCenterHorz();
         }
 
-        protected final void drawDebugCircles()
+        private void drawDebugCircles()
         {
             if ( ShooterDebug.DEBUG_DRAW_BOT_CIRCLES )
             {
@@ -390,12 +390,12 @@
             }
         }
 
-        protected final float getHeight()
+        private float getHeight()
         {
             return this.iCylinder.getHeight();
         }
 
-        protected final void setCenterHorz( float newX, float newY )
+        private void setCenterHorz(float newX, float newY)
         {
             this.iCylinder.setNewAnchor( new LibVertex( newX, newY, this.iCylinder.getAnchor().z ), false, null );
         }
@@ -405,7 +405,7 @@
             return this.iCylinder;
         }
 
-        protected final boolean checkCollisionsToOtherBots()
+        private boolean checkCollisionsToOtherBots()
         {
             for ( Bot bot : Level.currentSection().getBots() )
             {
@@ -426,7 +426,7 @@
             return false;
         }
 
-        protected final boolean checkCollisionsToPlayer()
+        private boolean checkCollisionsToPlayer()
         {
             //check bot-collision with player
             if (this.checkCollision( Shooter.game.engine.player.getCylinder().getCircle() ) )
@@ -1077,7 +1077,7 @@
             );
         }
 
-        public final LibShot getViewShot()
+        private LibShot getViewShot()
         {
             return new LibShot
             (
@@ -1103,7 +1103,7 @@
             );
         }
 
-        public final boolean botSeesThePlayer()
+        private boolean botSeesThePlayer()
         {
             //check if this enemy bot sees the player - copy current angle
             LibShot       shot     = this.getViewShot();
@@ -1283,7 +1283,7 @@
             }
         }
 
-        public void killOrTranquilize( BotAliveState newState )
+        private void killOrTranquilize(BotAliveState newState)
         {
             if (this.iAliveState != BotAliveState.ETranquilized )
             {
@@ -1333,7 +1333,7 @@
             return this.iHealth;
         }
 
-        public final void dropAllArtefacts()
+        private void dropAllArtefacts()
         {
             //turn artefacts to pickable items
             for ( Artefact toDrop : this.iArtefactSet.iArtefacts )

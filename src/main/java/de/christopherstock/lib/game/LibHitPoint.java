@@ -17,7 +17,7 @@
     *******************************************************************************************************************/
     public class LibHitPoint implements Comparable<LibHitPoint>
     {
-        public                      LibDebug                iDebug                      = null;
+        private LibDebug                iDebug                      = null;
         public                      LibShot                 iShot                       = null;
         public                      LibGameObject           iCarrier                    = null;
         public                      LibVertex               iVertex                     = null;
@@ -32,7 +32,7 @@
         private                     LibColors[]             iSliverColors               = null;
         private                     float                   iHorzDistance               = 0.0f;
         private                     float                   iHorzSliverAngle            = 0.0f;
-        public                      float                   iVertShotAngle              = 0.0f;
+        private float                   iVertShotAngle              = 0.0f;
         private                     float                   iVertSliverAngle            = 0.0f;
         private                     int                     iEllipseSegments            = 0;
 

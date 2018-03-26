@@ -31,7 +31,7 @@
             EWoman7,
             ;
 
-            public          BufferedImage           img         = null;
+            protected BufferedImage           img         = null;
 
             public static void loadImages()
             {
@@ -58,7 +58,7 @@
 
         private     static          Vector<AvatarMessage>   messageQueue            = new Vector<AvatarMessage>();
 
-        public      static          int                     currentDebugMsg         = 0;
+        private static          int                     currentDebugMsg         = 0;
 
         private     static          int                     anim                    = 0;
         private     static          AnimState               animState               = AnimState.EDisabled;

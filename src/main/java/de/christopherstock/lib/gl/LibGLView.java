@@ -276,7 +276,7 @@
             GL11.glTranslatef(  viewSet.pos.x,          viewSet.pos.z,  viewSet.pos.y           );      //translate x z y
         }
 
-        public final void drawFace( LibVertex[] verticesToDraw, LibVertex faceNormal, LibGLTexture texture, float[] col, float alpha, float darken )
+        private void drawFace(LibVertex[] verticesToDraw, LibVertex faceNormal, LibGLTexture texture, float[] col, float alpha, float darken)
         {
             //draw plain color if texture is missing ( fx points or debug only )
             if ( texture == null )
@@ -479,12 +479,12 @@
             }
         }
 
-        public final void drawVertex( LibVertex v )
+        private void drawVertex(LibVertex v)
         {
             GL11.glVertex3f( v.x, v.z, v.y   );
         }
 
-        public final void drawTexturedVertex( LibVertex v )
+        private void drawTexturedVertex(LibVertex v)
         {
             GL11.glTexCoord2f( v.u, v.v );
             GL11.glVertex3f(   v.x, v.z, v.y   );
@@ -523,7 +523,7 @@
             GL11.glClear(       GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT             );
         }
 
-        public void flushGL()
+        private void flushGL()
         {
             //force all drawing
             GL11.glFlush();
@@ -576,7 +576,7 @@
             this.setOrthoOff();
         }
 
-        public void setOrthoOn()
+        private void setOrthoOn()
         {
             // prepare to render in 2D
             GL11.glDisable( GL11.GL_DEPTH_TEST );                                       // so 2D stuff stays on top of 3D scene
@@ -589,7 +589,7 @@
             GL11.glLoadIdentity();                                                      // clear the Modelview Matrix
         }
 
-        public void setOrthoOff()
+        private void setOrthoOff()
         {
             // restore the original positions and views
             GL11.glMatrixMode( GL11.GL_PROJECTION );
@@ -661,7 +661,7 @@
             GL11.glDisable( GL11.GL_COLOR_MATERIAL  );
         }
 
-        protected void setLight( int lightKey, LibGLLight light )
+        private void setLight(int lightKey, LibGLLight light)
         {
             //enable light
             GL11.glEnable( lightKey );
@@ -695,7 +695,7 @@
           //GL11.glMaterial( GL11.GL_FRONT, GL11.GL_SHININESS, 96.0f );
         }
 
-        protected int getSrcPixelFormat( SrcPixelFormat spf )
+        private int getSrcPixelFormat(SrcPixelFormat spf)
         {
             switch ( spf )
             {

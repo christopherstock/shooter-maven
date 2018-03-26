@@ -34,7 +34,7 @@
         private                     LibVertex               iPosition                                       = null;
         private                     float                   iCarriersLastFaceAngle                          = 0.0f;
 
-        public BulletHole( LibHitPoint aHitPoint, LibD3dsFile aProjectile )
+        private BulletHole(LibHitPoint aHitPoint, LibD3dsFile aProjectile)
         {
             this.iHitPoint = aHitPoint;
             this.iProjectileTemplate = aProjectile;

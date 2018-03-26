@@ -16,7 +16,7 @@
     *******************************************************************************************************************/
     public class MainStateIngame
     {
-        public      static          MainStateIngame          singleton                   = null;
+        private static          MainStateIngame          singleton                   = null;
 
         private MainStateIngame()
         {

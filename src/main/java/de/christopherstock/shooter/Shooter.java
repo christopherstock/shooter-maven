@@ -10,8 +10,9 @@
     *   TODO    prune LibGLPanel
     *
     *   TODO    Prune all those super-confusing interfaces and abstract superclasses in LWJGL-Panel systems!
+    *
     *   TODO    Different heights for particle effects.
-    *   TODO    Mayflower preloader and textures ( posters ).
+    *   TODO    Mayflower branding and textures ( posters etc. ).
     *   TODO    Delete all 'a' and 'i' prefixes from variables. ( start at LibFace )
     *
     *   TODO    only for FireArms! Move ArtefactType.iFXImages to Firearms (Wearpons)!

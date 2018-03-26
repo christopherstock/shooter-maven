@@ -61,13 +61,13 @@
 
         protected                   WallAction          iWallAction                     = null;
         private                     Wall[]              iChildWalls                     = null;
-        public                      WallClimbable       iClimbable                      = null;
+        private WallClimbable       iClimbable                      = null;
         private                     WallCollidable      iCollisionEnabled               = Wall.WallCollidable.ENo;
 
         private                     WallEnergy          iEnergy                         = null;
 
         public                      float               iStartupRotZ                    = 0.0f;
-        public                      Float               iBaseZ                          = null;
+        private Float               iBaseZ                          = null;
 
         private                     LibTexture[]        iChangeTexture2                 = null;
         private                     int                 iChangeTexture2Index            = 0;
@@ -182,7 +182,7 @@
                     if ( f.continueDestroyAnim )
                     {
                         //++animatedFaces;
-                        ShooterDebug.wallDestroy.out( "highestZ: ["+f.iHighestZ+"] ankZ: " + f.getAnchor().z + " playaZ: " + Shooter.game.engine.player.getAnchor().z + " faceZ: [" + f.getAnchor().z + "]" );
+                        ShooterDebug.wallDestroy.out( "highestZ: ["+f.highestZ +"] ankZ: " + f.getAnchor().z + " playaZ: " + Shooter.game.engine.player.getAnchor().z + " faceZ: [" + f.getAnchor().z + "]" );
 
                         float distanceFromFloor = ( LibMath.getRandom( 1, 100 ) * 0.3f / 100 ); // -0.1f
 
@@ -205,7 +205,7 @@
                             this.iBaseZ = new Float( baseZ );
                         }
 
-                        if ( f.iHighestZ - distanceFromFloor - ( ( f.iHighestZ - f.iLowestZ ) / 2 ) < this.iBaseZ)
+                        if ( f.highestZ - distanceFromFloor - ( ( f.highestZ - f.lowestZ) / 2 ) < this.iBaseZ)
                         {
                             f.continueDestroyAnim = false;
                         }

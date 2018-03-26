@@ -8,7 +8,7 @@
     *******************************************************************************************************************/
     public class AmmoSet
     {
-        public                  Hashtable<AmmoType,Integer>     ammo                    = null;
+        private Hashtable<AmmoType,Integer>     ammo                    = null;
 
         public AmmoSet()
         {

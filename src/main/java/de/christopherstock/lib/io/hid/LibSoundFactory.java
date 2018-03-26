@@ -12,7 +12,7 @@
     *******************************************************************************************************************/
     public class LibSoundFactory
     {
-        protected               LibDebug        iDebug          = null;
+        private LibDebug        iDebug          = null;
         public                  byte[]          iBytes          = null;
         public                  DataLine.Info   iInfo           = null;
         public                  AudioFormat     iAudioFormat    = null;

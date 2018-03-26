@@ -13,7 +13,7 @@
     *******************************************************************************************************************/
     public class LibIOSeekableStream implements PullSourceStream, Seekable
     {
-        protected ByteBuffer inputBuffer;
+        private ByteBuffer inputBuffer;
 
         /***************************************************************************************************************
         *   Creates a new instance of SeekableStream

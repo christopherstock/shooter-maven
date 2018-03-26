@@ -15,39 +15,39 @@
     {
         public                      float               iTextureRotation        = 0.0f;
 
-        public LibFaceEllipseWall( LibDebug aDebug, LibGLTexture aTextureID, float aHorzFaceAngle, float aVertFaceAngle, float aX, float aY, float aZ, float aRadiusX, float aRadiusZ, int aEllipseSegments )
+        public LibFaceEllipseWall( LibDebug debug, LibGLTexture textureID, float horzFaceAngle, float vertFaceAngle, float x, float y, float z, float radiusX, float radiusZ, int ellipseSegments )
         {
-            this( aDebug, aTextureID, aHorzFaceAngle, aVertFaceAngle, aX, aY, aZ, aRadiusX, aRadiusZ, LibMath.getRandom( 0, 360 ), aEllipseSegments );
+            this( debug, textureID, horzFaceAngle, vertFaceAngle, x, y, z, radiusX, radiusZ, LibMath.getRandom( 0, 360 ), ellipseSegments );
         }
 
-        public LibFaceEllipseWall( LibDebug aDebug, LibGLTexture aTextureID, float aHorzFaceAngle, float aVertFaceAngle, float aX, float aY, float aZ, float aRadiusX, float aRadiusZ, float textureRotation, int aEllipseSegments )
+        public LibFaceEllipseWall( LibDebug debug, LibGLTexture textureID, float horzFaceAngle, float vertFaceAngle, float x, float y, float z, float radiusX, float radiusZ, float textureRotation, int ellipseSegments )
         {
             //call super-construct
-            super( aDebug, new LibVertex( aX, aY, aZ, 0.0f, 0.0f ), aTextureID, LibColors.EWhite, null );
+            super( debug, new LibVertex( x, y, z, 0.0f, 0.0f ), textureID, LibColors.EWhite, null );
 
             this.iTextureRotation = textureRotation;
 
             //substract 90° from the horz faceAngle ! ( not from vert ! )
 
             //assign face angle
-            this.setFaceAngleHorz( aHorzFaceAngle - 90.0f );
-            this.setFaceAngleVert( aVertFaceAngle );
+            this.setFaceAngleHorz( horzFaceAngle - 90.0f );
+            this.setFaceAngleVert( vertFaceAngle );
 
             //calculate vertices
-            LibVertex[] ret = new LibVertex[ aEllipseSegments ];
-            for ( int i = 0; i < aEllipseSegments; ++i )
+            LibVertex[] ret = new LibVertex[ ellipseSegments ];
+            for ( int i = 0; i < ellipseSegments; ++i )
             {
-                float u = ( LibMath.sinDeg(  90.0f + textureRotation + i * 360.0f / aEllipseSegments ) + 1.0f ) / 2.0f;
-                float v = ( LibMath.cosDeg( -90.0f + textureRotation + i * 360.0f / aEllipseSegments ) + 1.0f ) / 2.0f;
+                float u = ( LibMath.sinDeg(  90.0f + textureRotation + i * 360.0f / ellipseSegments ) + 1.0f ) / 2.0f;
+                float v = ( LibMath.cosDeg( -90.0f + textureRotation + i * 360.0f / ellipseSegments ) + 1.0f ) / 2.0f;
 
                 //turn ?
                 float a = 0.0f; //LibMath.getRandom( 0, 360 ); //0.0f; //aHorzFaceAngle;
 
                 LibVertex ve = new LibVertex
                 (
-                    aX + aRadiusX * LibMath.cosDeg( a ) * LibMath.cosDeg( i * 360.0f / aEllipseSegments ),
-                    aY + aRadiusX * LibMath.sinDeg( a ) * LibMath.cosDeg( i * 360.0f / aEllipseSegments ),
-                    aZ + aRadiusZ * LibMath.sinDeg( i * 360.0f / aEllipseSegments ),
+                    x + radiusX * LibMath.cosDeg( a ) * LibMath.cosDeg( i * 360.0f / ellipseSegments ),
+                    y + radiusX * LibMath.sinDeg( a ) * LibMath.cosDeg( i * 360.0f / ellipseSegments ),
+                    z + radiusZ * LibMath.sinDeg( i * 360.0f / ellipseSegments ),
                     u,
                     v
                 );
@@ -57,10 +57,10 @@
                 //ve.rotateXYZ( aVertFaceAngle * LibMath.sinDeg( aHorzFaceAngle ), aVertFaceAngle * LibMath.cosDeg( aHorzFaceAngle ), aHorzFaceAngle, new LibVertex( aX, aY, aZ ) );
 
                 //rotate x ( vert face angle )
-                ve.rotateXYZ(this.iFaceAngleVert, 0.0f, 0.0f, new LibVertex( aX, aY, aZ ) );
+                ve.rotateXYZ(this.faceAngleVert, 0.0f, 0.0f, new LibVertex( x, y, z ) );
 
                 //rotate z ( horz face angle )
-                ve.rotateXYZ( 0.0f, 0.0f, this.iFaceAngleHorz, new LibVertex( aX, aY, aZ ) );
+                ve.rotateXYZ( 0.0f, 0.0f, this.faceAngleHorz, new LibVertex( x, y, z ) );
 
                 ret[ i ] = ve;
             }

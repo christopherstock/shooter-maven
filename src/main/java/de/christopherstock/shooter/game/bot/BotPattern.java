@@ -15,11 +15,11 @@
     public class BotPattern
     {
         public              BotPatternBase       iBase                   = null;
-        public              BotKind                     iKind                   = null;
+        private BotKind                     iKind                   = null;
 
-        public              BotSkinType                 iSkinType               = null;
+        private BotSkinType                 iSkinType               = null;
         public              LibTexture                  iSkin                   = null;
-        public              BotBodyType                 iBodyType               = null;
+        private BotBodyType                 iBodyType               = null;
 
         public              Bots                        iHat                    = null;
         public              Bots                        iGlasses                = null;

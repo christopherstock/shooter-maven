@@ -78,10 +78,10 @@
 
 
         protected                   long                iDelayAfterUse                  = 0;
-        protected                   boolean             iUseNeedsKeyRelease             = false;
+        private boolean             iUseNeedsKeyRelease             = false;
         public                      int                 iShotsTillKeyReleaseRequired    = 0;
 
-        protected                   float               iRange                          = 0.0f;
+        private float               iRange                          = 0.0f;
 
 
 
@@ -91,12 +91,12 @@
 
 
         // --- All these fields are not suitable for gadgets!
-        protected                   float               iZoom                           = 0.0f;
+        private float               iZoom                           = 0.0f;
 
         public                      Items               iItemMesh                       = null;
         public                      ItemKind            iPickUpItemKind                 = null;
-        public                      CrossHair           iCrossHair                      = null;
-        public                      boolean             iBreaksWalls                    = false;
+        private CrossHair           iCrossHair                      = null;
+        private boolean             iBreaksWalls                    = false;
 
 
 
@@ -130,7 +130,7 @@
             }
         }
 
-        public final void loadImage()
+        private void loadImage()
         {
             BufferedImage bufferedImage   = LibImage.load( ShooterSetting.Path.EArtefact.iUrl + this.toString() + LibExtension.png.getSpecifier(), ShooterDebug.glImage, false );
             this.iArtefactImage = new LibGLImage( bufferedImage,   ImageUsage.EOrtho, ShooterDebug.glImage, true );

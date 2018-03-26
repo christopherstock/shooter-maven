@@ -247,7 +247,7 @@
         {
             public  static          int             EBorderHudX                         = 0;
             public  static          int             EBorderHudY                         = 0;
-            public  static          int             EHudMsgY                            = 0;
+            protected static          int             EHudMsgY                            = 0;
             public  static          int             EAvatarBgPanelHeight                = 0;
             public  static          int             EAvatarMsgX                         = 0;
             public  static          int             EAvatarMsgY                         = 0;

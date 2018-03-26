@@ -23,7 +23,7 @@
         private                     int                 delayTicksBefore                = 0;
         private                     LibColors           color                           = null;
 
-        public                      LibDebug            debug                           = null;
+        private LibDebug            debug                           = null;
         private                     float               baseZ                           = 0.0f;
         public                      FXType              type                            = null;
         public                      LibAlign3D          align3D                         = null;

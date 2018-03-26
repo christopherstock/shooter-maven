@@ -13,32 +13,32 @@
     *******************************************************************************************************************/
     public class LibFaceEllipseFloor extends LibFace
     {
-        public LibFaceEllipseFloor( LibDebug aDebug, LibGLTexture aTexture, LibColors aCol, float aX, float aY, float aZ, float aRadiusX, float aRadiusY, int aEllipseSegments )
+        public LibFaceEllipseFloor( LibDebug debug, LibGLTexture texture, LibColors col, float x, float y, float z, float radiusX, float radiusY, int ellipseSegments )
         {
-            this( aDebug, aTexture, aCol, aX, aY, aZ, aRadiusX, aRadiusY,LibMath.getRandom( 0, 360 ), aEllipseSegments );
+            this( debug, texture, col, x, y, z, radiusX, radiusY,LibMath.getRandom( 0, 360 ), ellipseSegments );
         }
 
-        public LibFaceEllipseFloor( LibDebug aDebug, LibGLTexture aTexture, LibColors aCol, float aX, float aY, float aZ, float aRadiusX, float aRadiusY, float textureRotation, int aEllipseSegments )
+        private LibFaceEllipseFloor(LibDebug debug, LibGLTexture texture, LibColors col, float x, float y, float z, float radiusX, float radiusY, float textureRotation, int ellipseSegments)
         {
             //call super-construct
-            super( aDebug, new LibVertex( aX, aY, aZ, 0.0f, 0.0f ), aTexture, aCol, null );
+            super( debug, new LibVertex( x, y, z, 0.0f, 0.0f ), texture, col, null );
 
             //calculate vertices
-            LibVertex[] ret = new LibVertex[ aEllipseSegments ];
-            for ( int i = 0; i < aEllipseSegments; ++i )
+            LibVertex[] ret = new LibVertex[ ellipseSegments ];
+            for ( int i = 0; i < ellipseSegments; ++i )
             {
                 float u = 0.0f;
                 float v = 0.0f;
 
-                u = ( LibMath.sinDeg(  90.0f + textureRotation + i * 360.0f / aEllipseSegments ) + 1.0f ) / 2.0f;
-                v = ( LibMath.cosDeg( -90.0f + textureRotation + i * 360.0f / aEllipseSegments ) + 1.0f ) / 2.0f;
+                u = ( LibMath.sinDeg(  90.0f + textureRotation + i * 360.0f / ellipseSegments ) + 1.0f ) / 2.0f;
+                v = ( LibMath.cosDeg( -90.0f + textureRotation + i * 360.0f / ellipseSegments ) + 1.0f ) / 2.0f;
               //v = ( LibMath.cosDeg(  90.0f + i * 360.0f / aEllipseSegments ) + 1.0f ) / 2.0f;
 
                 ret[ i ] = new LibVertex
                 (
-                    aX + aRadiusX * LibMath.cosDeg( i * 360.0f / aEllipseSegments ),
-                    aY + aRadiusY * LibMath.sinDeg( i * 360.0f / aEllipseSegments ),
-                    aZ,
+                    x + radiusX * LibMath.cosDeg( i * 360.0f / ellipseSegments ),
+                    y + radiusY * LibMath.sinDeg( i * 360.0f / ellipseSegments ),
+                    z,
                     u,
                     v
                 );

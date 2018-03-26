@@ -12,7 +12,7 @@
     *******************************************************************************************************************/
     public class LevelConfigMain
     {
-        protected               String                  iDescLevel              = null;
+        private String                  iDescLevel              = null;
         protected LibViewSet iStartPosition          = null;
         protected               ArtefactType[]          iStartupWearpons        = null;
         protected               ItemEvent[]             iStartupItems           = null;

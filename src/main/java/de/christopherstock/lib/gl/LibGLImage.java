@@ -75,7 +75,7 @@
             }
         }
 
-        public static ByteBuffer getByteBuffer(BufferedImage aBufferedImage, LibDebug debug, boolean flipAllBytes )
+        private static ByteBuffer getByteBuffer(BufferedImage aBufferedImage, LibDebug debug, boolean flipAllBytes)
         {
             byte[] bytes = LibImage.getBytesFromImg( aBufferedImage, debug );
 

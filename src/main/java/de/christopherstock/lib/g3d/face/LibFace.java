@@ -28,40 +28,41 @@
             ;
         }
 
-        public                      LibDebug            iDebug                              = null;
+        protected LibDebug                debug                       = null;
 
-        private                     LibVertex           iAnchor                             = null;
-        private                     LibGLTexture        iTexture                            = null;
-        private                     LibColors           iColor                              = null;
+        private                     LibVertex               anchor                      = null;
+        private                     LibGLTexture            texture                     = null;
+        private                     LibColors               color                       = null;
 
-        protected                   LibVertex           iNormal                             = null;
+        protected                   LibVertex               normal                      = null;
 
-        public                      LibVertex[]         iOriginalVertices                   = null;
-        public                      LibVertex[]         iTransformedVertices                = null;
+        public                      LibVertex[]             originalVertices            = null;
+        public                      LibVertex[]             transformedVertices         = null;
 
-        protected                   float               iFaceAngleHorz                      = 0.0f;
-        protected                   float               iFaceAngleVert                      = 0.0f;
-        protected                   DrawMethod          iDrawMethod                         = null;
-        public                      float               iAlpha                              = 1.0f;
-        public                      float               iDarkenOpacity                             = 1.0f;
+        protected                   float                   faceAngleHorz               = 0.0f;
+        protected                   float                   faceAngleVert               = 0.0f;
+        protected                   DrawMethod              drawMethod                  = null;
+        private float                   alpha                       = 1.0f;
+        private float                   darkenOpacity               = 1.0f;
 
         /***************************************************************************************************************
         *   Constructs a new face.
         *
-        *   @param  aAnchor      The anchor for this face.
-        *   @param  aTexture   The texture to use. May be <code>null</code>.
-        *   @param  aColor   The color for this face. May be <code>null</code>.
+        *   @param  debug       The debug instance.
+        *   @param  anchor      The anchor for this face.
+        *   @param  texture     The texture to use. May be <code>null</code>.
+        *   @param  color       The color for this face. May be <code>null</code>.
         ***************************************************************************************************************/
-        public LibFace( LibDebug aDebug, LibVertex aAnchor, LibGLTexture aTexture, LibColors aColor, LibVertex aFaceNormal )
+        protected LibFace(LibDebug debug, LibVertex anchor, LibGLTexture texture, LibColors color, LibVertex faceNormal)
         {
-            this.iDebug = aDebug;
-            this.iAnchor = aAnchor;
-            this.iTexture = aTexture; //( aTexture == null ? Default.EStones1.iTexture : aTexture  );
-            this.iColor = ( aColor == null ? LibColors.EWhite : aColor );
+            this.debug = debug;
+            this.anchor = anchor;
+            this.texture = texture; //( aTexture == null ? Default.EStones1.texture : aTexture  );
+            this.color = ( color == null ? LibColors.EWhite : color );
 
-            this.iNormal = aFaceNormal;
+            this.normal = faceNormal;
 
-            this.iDrawMethod = DrawMethod.EAlwaysDraw;
+            this.drawMethod = DrawMethod.EAlwaysDraw;
         }
 
         protected void updateCollisionValues()
@@ -80,29 +81,29 @@
             LibVertex b = new LibVertex( 0.0f, 0.0f, 0.0f );
 
             //calculate the vectors A and B - note that v[3] is defined with counterclockwise winding in mind (?)
-            a.x = this.iTransformedVertices[ 0 ].x - this.iTransformedVertices[ 1 ].x;
-            a.y = this.iTransformedVertices[ 0 ].y - this.iTransformedVertices[ 1 ].y;
-            a.z = this.iTransformedVertices[ 0 ].z - this.iTransformedVertices[ 1 ].z;
+            a.x = this.transformedVertices[ 0 ].x - this.transformedVertices[ 1 ].x;
+            a.y = this.transformedVertices[ 0 ].y - this.transformedVertices[ 1 ].y;
+            a.z = this.transformedVertices[ 0 ].z - this.transformedVertices[ 1 ].z;
 
-            b.x = this.iTransformedVertices[ 1 ].x - this.iTransformedVertices[ 2 ].x;
-            b.y = this.iTransformedVertices[ 1 ].y - this.iTransformedVertices[ 2 ].y;
-            b.z = this.iTransformedVertices[ 1 ].z - this.iTransformedVertices[ 2 ].z;
+            b.x = this.transformedVertices[ 1 ].x - this.transformedVertices[ 2 ].x;
+            b.y = this.transformedVertices[ 1 ].y - this.transformedVertices[ 2 ].y;
+            b.z = this.transformedVertices[ 1 ].z - this.transformedVertices[ 2 ].z;
 
             //calculate the cross product and place the resulting vector into the address specified by vertex_t *normal
-            this.iNormal = new LibVertex( 0.0f, 0.0f, 0.0f );
-            this.iNormal.x = ( a.y * b.z ) - ( a.z * b.y );
-            this.iNormal.y = ( a.z * b.x ) - ( a.x * b.z );
-            this.iNormal.z = ( a.x * b.y ) - ( a.y * b.x );
+            this.normal = new LibVertex( 0.0f, 0.0f, 0.0f );
+            this.normal.x = ( a.y * b.z ) - ( a.z * b.y );
+            this.normal.y = ( a.z * b.x ) - ( a.x * b.z );
+            this.normal.z = ( a.x * b.y ) - ( a.y * b.x );
         }
 
         protected abstract void setCollisionValues();
 
         public final void setNewAnchor( LibVertex newAnchor, boolean performTranslationOnFaces, LibTransformationMode transformationMode )
         {
-            this.iAnchor = newAnchor;
+            this.anchor = newAnchor;
             if ( performTranslationOnFaces )
             {
-                this.translate(this.iAnchor.x, this.iAnchor.y, this.iAnchor.z, transformationMode );
+                this.translate(this.anchor.x, this.anchor.y, this.anchor.z, transformationMode );
             }
         }
 
@@ -115,7 +116,7 @@
         ***************************************************************************************************************/
         public void translate(float x, float y, float z, LibTransformationMode transformationMode )
         {
-            LibVertex[] newTransformedVertices  = new LibVertex[this.iOriginalVertices.length ];
+            LibVertex[] newTransformedVertices  = new LibVertex[this.originalVertices.length ];
             LibVertex[] srcVertices             = null;
 
             //choose source
@@ -123,7 +124,7 @@
             {
                 case ETransformedToTransformed:
                 {
-                    srcVertices = this.iTransformedVertices;
+                    srcVertices = this.transformedVertices;
                     break;
                 }
 
@@ -131,7 +132,7 @@
                 case EOriginalsToTransformed:
                 default:
                 {
-                    srcVertices = this.iOriginalVertices;
+                    srcVertices = this.originalVertices;
                     break;
                 }
             }
@@ -155,15 +156,15 @@
             {
                 case EOriginalsToOriginals:
                 {
-                    this.iOriginalVertices = newTransformedVertices;
-                    this.iTransformedVertices = newTransformedVertices;
+                    this.originalVertices = newTransformedVertices;
+                    this.transformedVertices = newTransformedVertices;
                     break;
                 }
 
                 case EOriginalsToTransformed:
                 case ETransformedToTransformed:
                 {
-                    this.iTransformedVertices = newTransformedVertices;
+                    this.transformedVertices = newTransformedVertices;
                     break;
                 }
             }
@@ -187,12 +188,12 @@
             this.translate( tX, tY, tZ, transformationMode );
 
             //rotate all transformed vertices
-            transMatrix.transformVertices(this.iTransformedVertices, ( alternateAnchor == null ? this.iAnchor : alternateAnchor ) );
+            transMatrix.transformVertices(this.transformedVertices, ( alternateAnchor == null ? this.anchor : alternateAnchor ) );
 
             //alter originals?
             if ( transformationMode == LibTransformationMode.EOriginalsToOriginals )
             {
-                this.iOriginalVertices = this.iTransformedVertices;
+                this.originalVertices = this.transformedVertices;
             }
 
             //update collision values
@@ -207,26 +208,26 @@
         public void scale( float scaleFactor, boolean performOnOriginals )
         {
             //prune old transformed vertices
-            this.iTransformedVertices = new LibVertex[this.iOriginalVertices.length ];
+            this.transformedVertices = new LibVertex[this.originalVertices.length ];
 
             //translate all original vertices
-            for (int i = 0; i < this.iOriginalVertices.length; ++i )
+            for (int i = 0; i < this.originalVertices.length; ++i )
             {
                 //remember to copy u and v and to make a new object!
-                this.iTransformedVertices[ i ] = new LibVertex
+                this.transformedVertices[ i ] = new LibVertex
                 (
-                        this.iOriginalVertices[ i ].x * scaleFactor,
-                        this.iOriginalVertices[ i ].y * scaleFactor,
-                        this.iOriginalVertices[ i ].z * scaleFactor,
-                        this.iOriginalVertices[ i ].u,
-                        this.iOriginalVertices[ i ].v
+                        this.originalVertices[ i ].x * scaleFactor,
+                        this.originalVertices[ i ].y * scaleFactor,
+                        this.originalVertices[ i ].z * scaleFactor,
+                        this.originalVertices[ i ].u,
+                        this.originalVertices[ i ].v
                 );
             }
 
             //alter originals?
             if ( performOnOriginals )
             {
-                this.iOriginalVertices = this.iTransformedVertices;
+                this.originalVertices = this.transformedVertices;
             }
 
             //update collision values
@@ -241,26 +242,26 @@
             boolean performOnOriginals = true;
 
             //prune old transformed vertices
-            this.iTransformedVertices = new LibVertex[this.iOriginalVertices.length ];
+            this.transformedVertices = new LibVertex[this.originalVertices.length ];
 
             //invert all original vertices
-            for (int i = 0; i < this.iOriginalVertices.length; ++i )
+            for (int i = 0; i < this.originalVertices.length; ++i )
             {
                 //remember to copy u and v and to make a new object!
-                this.iTransformedVertices[ i ] = new LibVertex
+                this.transformedVertices[ i ] = new LibVertex
                 (
-                        this.iOriginalVertices[ i ].x * -1,
-                        this.iOriginalVertices[ i ].y,
-                        this.iOriginalVertices[ i ].z,
-                        this.iOriginalVertices[ i ].u * -1,
-                        this.iOriginalVertices[ i ].v
+                        this.originalVertices[ i ].x * -1,
+                        this.originalVertices[ i ].y,
+                        this.originalVertices[ i ].z,
+                        this.originalVertices[ i ].u * -1,
+                        this.originalVertices[ i ].v
                 );
             }
 
             //alter originals?
             if ( performOnOriginals )
             {
-                this.iOriginalVertices = this.iTransformedVertices;
+                this.originalVertices = this.transformedVertices;
             }
 
             //update collision values
@@ -269,44 +270,44 @@
 
         protected final void setFaceAngleHorz( float aFaceAngleHorz )
         {
-            this.iFaceAngleHorz = aFaceAngleHorz;
+            this.faceAngleHorz = aFaceAngleHorz;
         }
 
         protected final void setFaceAngleVert( float aFaceAngleVert )
         {
-            this.iFaceAngleVert = aFaceAngleVert;
+            this.faceAngleVert = aFaceAngleVert;
         }
 
-        public final void setOriginalVertices( LibVertex[] vertices )
+        protected final void setOriginalVertices(LibVertex[] vertices)
         {
-            this.iOriginalVertices = vertices;
-            this.iTransformedVertices = vertices;
+            this.originalVertices = vertices;
+            this.transformedVertices = vertices;
         }
 
         public final void mirror( boolean x, boolean y, boolean z )
         {
             //mirror all originals
-            for (int i = 0; i < this.iOriginalVertices.length; ++i )
+            for (int i = 0; i < this.originalVertices.length; ++i )
             {
                 //remember to copy u and v and to make a new object!
-                this.iOriginalVertices[ i ] = new LibVertex
+                this.originalVertices[ i ] = new LibVertex
                 (
-                    ( x ? -1 : 1 ) * this.iOriginalVertices[ i ].x,
-                    ( y ? -1 : 1 ) * this.iOriginalVertices[ i ].y,
-                    ( z ? -1 : 1 ) * this.iOriginalVertices[ i ].z,
-                        this.iOriginalVertices[ i ].u,
-                        this.iOriginalVertices[ i ].v
+                    ( x ? -1 : 1 ) * this.originalVertices[ i ].x,
+                    ( y ? -1 : 1 ) * this.originalVertices[ i ].y,
+                    ( z ? -1 : 1 ) * this.originalVertices[ i ].z,
+                        this.originalVertices[ i ].u,
+                        this.originalVertices[ i ].v
                 );
             }
 
             //assign to transformed too !
-            this.iTransformedVertices = this.iOriginalVertices;
+            this.transformedVertices = this.originalVertices;
         }
 
         public final void draw()
         {
             boolean draw = false;
-            switch (this.iDrawMethod)
+            switch (this.drawMethod)
             {
                 case EAlwaysDraw:
                 {
@@ -337,72 +338,72 @@
 
         public final LibVertex getFaceNormal()
         {
-            return this.iNormal; //iTransformedNormal; inoperative :(
+            return this.normal; //iTransformedNormal; inoperative :(
         }
 
         public final LibGLTexture getTexture()
         {
-            return this.iTexture;
+            return this.texture;
         }
 
         public final float[] getColor3f()
         {
-            return this.iColor.f3;
+            return this.color.f3;
         }
 
-        public final LibColors getColor()
+        protected final LibColors getColor()
         {
-            return this.iColor;
+            return this.color;
         }
 
         public final LibVertex[] getVerticesToDraw()
         {
-            return this.iTransformedVertices;
+            return this.transformedVertices;
         }
 
         public final LibVertex[] getOriginalVertices()
         {
-            return this.iOriginalVertices;
+            return this.originalVertices;
         }
 
         public final LibVertex getAnchor()
         {
-            return this.iAnchor;
+            return this.anchor;
         }
 
         public void changeTexture( LibGLTexture oldTex, LibGLTexture newTex )
         {
-            if (this.iTexture == oldTex )
+            if (this.texture == oldTex )
             {
-                this.iTexture = newTex;
+                this.texture = newTex;
             }
         }
 
         public void setDrawMethod( DrawMethod aDrawMethod )
         {
-            this.iDrawMethod = aDrawMethod;
+            this.drawMethod = aDrawMethod;
         }
 
         public void fadeOut( float delta )
         {
-            this.iAlpha -= delta;
-            if (this.iAlpha < 0.0f ) this.iAlpha = 0.0f;
+            this.alpha -= delta;
+            if (this.alpha < 0.0f ) this.alpha = 0.0f;
         }
 
         public void darken( float opacity )
         {
-            this.iDarkenOpacity = opacity;
-            if (this.iDarkenOpacity > 1.0f ) this.iDarkenOpacity = 1.0f;
-            if (this.iDarkenOpacity < 0.0f ) this.iDarkenOpacity = 0.0f;
+            this.darkenOpacity = opacity;
+            if (this.darkenOpacity > 1.0f ) this.darkenOpacity = 1.0f;
+            if (this.darkenOpacity < 0.0f ) this.darkenOpacity = 0.0f;
         }
 
         public final float getAlpha()
         {
-            return this.iAlpha;
+            return this.alpha;
         }
 
         public final float getDarkenOpacity()
         {
-            return this.iDarkenOpacity;
+            return this.darkenOpacity;
         }
     }

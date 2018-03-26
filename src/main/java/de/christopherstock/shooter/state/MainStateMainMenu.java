@@ -39,7 +39,7 @@
                 this.selected   = LibGLImage.getFromString( label, Fonts.EMainMenu, LibColors.EOrangeMF.colABGR, null, LibColors.EBlack.colABGR, ShooterDebug.glImage );
             }
 
-            public void draw( int x, int y, MainMenuItem selectedItem )
+            protected void draw(int x, int y, MainMenuItem selectedItem)
             {
                 Shooter.game.engine.gl.view.drawOrthoBitmapBytes( ( this == selectedItem ? this.selected : this.unselected), x, y, 1.0f );
             }
@@ -80,7 +80,7 @@
             }
         }
 
-        public final void previousItem()
+        private void previousItem()
         {
             if (this.menuChangeBlocker == 0 )
             {
@@ -93,7 +93,7 @@
             }
         }
 
-        public final void nextItem()
+        private void nextItem()
         {
             if (this.menuChangeBlocker == 0 )
             {
@@ -106,7 +106,7 @@
             }
         }
 
-        public final void selectItem()
+        private void selectItem()
         {
             if (this.menuChangeBlocker == 0 )
             {

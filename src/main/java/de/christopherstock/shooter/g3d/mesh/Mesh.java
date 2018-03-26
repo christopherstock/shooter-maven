@@ -339,7 +339,7 @@
         {
             for ( LibFaceTriangle face : this.iFaces)
             {
-                face.iOriginalVertices = face.iTransformedVertices;
+                face.originalVertices = face.transformedVertices;
             }
         }
 /*

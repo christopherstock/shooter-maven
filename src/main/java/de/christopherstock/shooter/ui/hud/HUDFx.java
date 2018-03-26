@@ -24,16 +24,16 @@
         private         static          int             animationHUDHealthFX        = 0;
         private         static          int             animationHUDDamageFX        = 0;
         private         static          int             animationHUDDyingFX         = 0;
-        public          static          int             animationHUDDeadFX          = 0;
-        public          static          int             animationHUDReincarnationFX = 0;
-        public          static          int             animationHUDDamageFXticks   = 0;
+        private static          int             animationHUDDeadFX          = 0;
+        private static          int             animationHUDReincarnationFX = 0;
+        private static          int             animationHUDDamageFXticks   = 0;
 
         private         static          float           opacityHealthFx             = 0.0f;
         private         static          float           opacityDamageFx             = 0.0f;
 
-        public          static          boolean         drawDyingFx                 = false;
-        public          static          boolean         drawDeadFx                  = false;
-        public          static          boolean         drawReincarnationFx         = false;
+        private static          boolean         drawDyingFx                 = false;
+        private static          boolean         drawDeadFx                  = false;
+        private static          boolean         drawReincarnationFx         = false;
         public          static          boolean         drawAdrenalineFx            = false;
 
         public static void init()

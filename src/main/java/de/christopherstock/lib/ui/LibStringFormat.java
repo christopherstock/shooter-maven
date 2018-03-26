@@ -46,7 +46,7 @@
         *   @param  date    A date.
         *   @return         The date and time as a string ( e.g. "19.07.2010 20:11:18" )
         ***************************************************************************************************************/
-        public final String formatDateTime( Date date )
+        private String formatDateTime(Date date)
         {
             return this.formatDateTime.format( date );
         }
@@ -81,7 +81,7 @@
         *   @param  date    A date.
         *   @return         The date as string. ( e.g. "17.08.2010" )
         ***************************************************************************************************************/
-        public final String formatDate( Date date )
+        private String formatDate(Date date)
         {
             return this.formatDate.format( date );
         }

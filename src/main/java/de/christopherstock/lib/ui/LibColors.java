@@ -72,7 +72,7 @@
 
         ;
 
-        public              int         rgb             = 0;
+        private int         rgb             = 0;
         public              float[]     f4              = null;
         public              float[]     f3              = null;
         public              Color       colARGB         = null;

@@ -47,7 +47,7 @@
         protected                   FXSize              size                        = null;
         protected                   FXTime              time                        = null;
 
-        public LibFX( LibDebug debug, LibVertex anchor, int lifetime, int fadeOutTicks )
+        protected LibFX(LibDebug debug, LibVertex anchor, int lifetime, int fadeOutTicks)
         {
             this.debug        = debug;
             this.anchor       = anchor;

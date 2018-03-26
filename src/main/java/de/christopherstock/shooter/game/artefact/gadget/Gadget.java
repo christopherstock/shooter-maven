@@ -22,9 +22,9 @@
         private                 int                     iGiveTakeAnim               = 0;
         public                  GiveTakeAnim            iGiveTakeAnimState          = null;
 
-        protected               int                     iTicksAnimGive              = 0;
-        protected               int                     iTicksAnimHold              = 0;
-        protected               int                     iTicksAnimRecall            = 0;
+        private int                     iTicksAnimGive              = 0;
+        private int                     iTicksAnimHold              = 0;
+        private int                     iTicksAnimRecall            = 0;
 
         public Gadget( int aTicksAnimGive, int aTicksAnimHold, int aTicksAnimRecall )
         {
@@ -120,7 +120,7 @@
             }
         }
 
-        public final void startGiveAnim()
+        private void startGiveAnim()
         {
             this.iGiveTakeAnim = this.iTicksAnimGive;
             this.iGiveTakeAnimState = GiveTakeAnim.EOffer;

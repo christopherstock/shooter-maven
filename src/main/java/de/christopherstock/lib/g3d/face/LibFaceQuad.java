@@ -15,12 +15,12 @@
         /***************************************************************************************************************
         *   Copy constructor.
         ***************************************************************************************************************/
-        public LibFaceQuad( LibDebug aDebug, LibVertex aAnchor, LibVertex aA, LibVertex aB, LibVertex aC, LibVertex aD, LibColors aColor )
+        public LibFaceQuad( LibDebug debug, LibVertex anchor, LibVertex a, LibVertex b, LibVertex c, LibVertex d, LibColors color )
         {
-            super( aDebug, aAnchor, null, aColor, null );
+            super( debug, anchor, null, color, null );
 
             //set vertices
-            this.setOriginalVertices( new LibVertex[] { aA, aB, aC, aD, } );
+            this.setOriginalVertices( new LibVertex[] { a, b, c, d, } );
         }
 
         public boolean checkCollisionHorz( LibCylinder cylinder )

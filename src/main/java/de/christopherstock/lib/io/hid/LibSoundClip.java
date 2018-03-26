@@ -12,9 +12,9 @@
     public class LibSoundClip extends Thread implements LineListener
     {
         public      static  final       float               VOLUME_MAX              = 1.0f;
-        public      static  final       float               VOLUME_MUTE             = 0.0f;
-        public      static  final       float               BALANCE_ONLY_LEFT       = -1.0f;
-        public      static  final       float               BALANCE_ONLY_RIGHT      = 1.0f;
+        private static  final       float               VOLUME_MUTE             = 0.0f;
+        private static  final       float               BALANCE_ONLY_LEFT       = -1.0f;
+        private static  final       float               BALANCE_ONLY_RIGHT      = 1.0f;
         public      static  final       float               BALANCE_BOTH            = 0.0f;
 
       //public      static              boolean             disabledByMemory        = false;
@@ -113,7 +113,7 @@
             }
         }
 
-        public void setVolume( float aVolume )
+        private void setVolume(float aVolume)
         {
             this.iVolume = aVolume;
             this.clipVolume();
@@ -140,13 +140,13 @@
             }
         }
 
-        public void clipVolume()
+        private void clipVolume()
         {
             if (this.iVolume < VOLUME_MUTE ) this.iVolume = VOLUME_MUTE;
             if (this.iVolume > VOLUME_MAX  ) this.iVolume = VOLUME_MAX;
         }
 
-        public void clipBalance()
+        private void clipBalance()
         {
             if (this.iBalance < BALANCE_ONLY_LEFT  ) this.iBalance = BALANCE_ONLY_LEFT;
             if (this.iBalance > BALANCE_ONLY_RIGHT ) this.iBalance = BALANCE_ONLY_RIGHT;

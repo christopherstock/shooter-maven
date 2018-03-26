@@ -109,7 +109,7 @@
             //Shooter.game.engine.player.drawDebugLog(      g );
         }
 
-        public void drawAmmo()
+        private void drawAmmo()
         {
             Artefact currentWearpon = Shooter.game.engine.player.iArtefactSet.getArtefact();
 
@@ -195,7 +195,7 @@
             Shooter.game.engine.gl.view.drawOrthoBitmapBytes(this.iHealthImage, OffsetsOrtho.EBorderHudX, OffsetsOrtho.EBorderHudY, alpha );
         }
 
-        public final void drawCrosshair()
+        private void drawCrosshair()
         {
             //draw crosshair
             int   modY = 0; //(int)( ( ShooterGameShooter.game.engine.player.getView().rot.x / PlayerAttributes.MAX_LOOKING_X ) * ( Shooter.game.engine.gl.panel.height / 5 ) );

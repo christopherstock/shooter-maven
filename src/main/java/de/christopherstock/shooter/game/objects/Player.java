@@ -421,7 +421,7 @@
         *
         *   @return     A value from -1.0 to 1.0.
         ***************************************************************************************************************/
-        public final float getWalkingAngleModifier()
+        private float getWalkingAngleModifier()
         {
             return ( General.DISABLE_PLAYER_WALKING_ANGLE_Y ? 0.0f : LibMath.sinDeg(this.iWalkingAngleY) );
         }
@@ -605,7 +605,7 @@
         /***********************************************************************************
         *   What would this method possibly do to the player?
         ***********************************************************************************/
-        public final void kill()
+        private void kill()
         {
             this.iHealth = 0;
             this.iDead = true;
@@ -637,7 +637,7 @@
             return this.iAmmoSet;
         }
 
-        public final PlayerView getView()
+        private PlayerView getView()
         {
             return this.iView;
         }

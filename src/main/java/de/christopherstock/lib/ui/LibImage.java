@@ -152,7 +152,7 @@
             return baos.toByteArray();
         }
 
-        public static BufferedImage changeRGBtoBGR(BufferedImage src )
+        private static BufferedImage changeRGBtoBGR(BufferedImage src)
         {
             BufferedImage ret = src;
 

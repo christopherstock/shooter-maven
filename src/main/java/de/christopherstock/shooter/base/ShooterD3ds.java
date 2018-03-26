@@ -24,7 +24,7 @@
             ELogoIpco,
             ;
 
-            public                      LibD3dsImporter            iD3dsfile                    = null;
+            protected LibD3dsImporter            iD3dsfile                    = null;
 
             public final void initFile( LibD3dsImporter aD3dsfile )
             {
@@ -122,7 +122,7 @@
 */
             ;
 
-            public                      LibD3dsImporter            iD3dsfile                    = null;
+            protected LibD3dsImporter            iD3dsfile                    = null;
 
             public final void initFile( LibD3dsImporter aD3dsfile )
             {
@@ -169,7 +169,7 @@
             ELeftFoot,
             ;
 
-            public                      LibD3dsImporter            iD3dsfile                    = null;
+            protected LibD3dsImporter            iD3dsfile                    = null;
 
             public final void initFile( LibD3dsImporter aD3dsfile )
             {
@@ -197,7 +197,7 @@
             EApple,
             ;
 
-            public                      LibD3dsImporter            iD3dsfile                    = null;
+            protected LibD3dsImporter            iD3dsfile                    = null;
 
             public final void initFile( LibD3dsImporter aD3dsfile )
             {

@@ -11,8 +11,8 @@
     public abstract class LevelCurrent
     {
         protected   static          LevelConfigMain         currentLevelConfig              = null;
-        public      static          WallCollection[]        currentGlobalMeshData           = null;
-        protected   static          WallCollection[][]      currentSectionMeshData          = null;
+        private static          WallCollection[]        currentGlobalMeshData           = null;
+        private static          WallCollection[][]      currentSectionMeshData          = null;
         protected   static          LevelConfigSection[]    currentSectionConfigData        = null;
 
         public      static          LevelSetup              currentLevelMain                = null;

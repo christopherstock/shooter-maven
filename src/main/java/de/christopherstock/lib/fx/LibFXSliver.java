@@ -11,11 +11,11 @@
     *******************************************************************************************************************/
     class LibFXSliver extends LibFX
     {
-        public                      LibColors[]         sliverColors            = null;
-        public                      int                 particlesToLaunch       = 0;
-        public                      float               angleMod                = 0.0f;
-        public                      FXGravity           gravity                 = null;
-        public                      float               baseZ                   = 0;
+        private LibColors[]         sliverColors            = null;
+        private int                 particlesToLaunch       = 0;
+        private float               angleMod                = 0.0f;
+        private FXGravity           gravity                 = null;
+        private float               baseZ                   = 0;
 
         protected LibFXSliver(LibDebug aDebug, LibVertex aAnchor, LibColors[] aSliverColors, LibParticleQuantity particleQuantity, float aAngleMod, int aLifetime, FXSize aSize, FXGravity aGravity, float aBaseZ, int aFadeOutTicks )
         {

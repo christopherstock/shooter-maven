@@ -20,7 +20,7 @@
     *******************************************************************************************************************/
     public final class FireArm extends ArtefactKind
     {
-        public                      SoundFg             iSoundFire                      = null;
+        private SoundFg             iSoundFire                      = null;
         private                     SoundFg             iSoundReload                    = null;
         private                     SoundFg             iSoundBulletShell               = null;
         public                      AmmoType            iAmmoType                       = null;
@@ -30,7 +30,7 @@
         private                     int                 iShotCountRandomMod             = 0;
         public                      int                 iMagazineSize                   = 0;
 
-        public                      LibD3dsFile         iProjectile                     = null;
+        private LibD3dsFile         iProjectile                     = null;
         
         public FireArm( AmmoType aAmmoType, int aMagazineSize, int aWearponIrregularityDepth, int aWearponIrregularityAngle, int aShotCount, int aShotCountRandomMod, SoundFg aUseSound, SoundFg aReloadSound, SoundFg aBulletShellSound, LibD3dsFile aProjectile )
         {
@@ -111,7 +111,7 @@
             return false;
         }
 
-        public final int getCurrentShotCount()
+        private int getCurrentShotCount()
         {
             return this.iShotCount + LibMath.getRandom( -this.iShotCountRandomMod, this.iShotCountRandomMod);
         }

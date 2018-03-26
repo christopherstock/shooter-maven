@@ -12,11 +12,11 @@
     *******************************************************************************************************************/
     public class LibIODataSource extends PullDataSource
     {
-        protected   ContentDescriptor           contentType;
+        private ContentDescriptor           contentType;
 
-        protected   LibIOSeekableStream[]       sources;
+        private LibIOSeekableStream[]       sources;
 
-        protected   ByteBuffer                  anInput;
+        private ByteBuffer                  anInput;
 
         protected   LibIODataSource()
         {

@@ -35,8 +35,8 @@
         protected       FXSize                  iSliverParticleSize     = null;
         protected       int                     iMaxAmmo                = 0;
         protected LibParticleQuantity iSliverParticleQuantity = null;
-        protected       LibGLImage              iHUDAmmoImage           = null;
-        protected       int                     iDamage                 = 0;
+        private LibGLImage              iHUDAmmoImage           = null;
+        private int                     iDamage                 = 0;
 
         private AmmoType(LibHoleSize aBulletHoleSize, int aMaxAmmo, LibParticleQuantity aSliverParticleQuantity, int aDamage, FXSize aSliverParticleSize )
         {

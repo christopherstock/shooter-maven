@@ -116,37 +116,37 @@
             ;
         }
 
-        public      static  final LibOffset OFFSET_ABSOLUTE_HEAD                = new LibOffset(   0.0f,       -0.05f,     1.225f  );
+        private static  final LibOffset OFFSET_ABSOLUTE_HEAD                = new LibOffset(   0.0f,       -0.05f,     1.225f  );
 
-        public      static  final LibOffset OFFSET_ABSOLUTE_LEFT_UPPER_ARM      = new LibOffset(   -0.075f,    0.0f,       1.1f    );
-        public      static  final LibOffset OFFSET_ABSOLUTE_LEFT_LOWER_ARM      = new LibOffset(   -0.215f,    -0.013f,    0.95f    );
-        public      static  final LibOffset OFFSET_ABSOLUTE_LEFT_HAND           = new LibOffset(   -0.15f,     -0.053f,    0.8f    );
+        private static  final LibOffset OFFSET_ABSOLUTE_LEFT_UPPER_ARM      = new LibOffset(   -0.075f,    0.0f,       1.1f    );
+        private static  final LibOffset OFFSET_ABSOLUTE_LEFT_LOWER_ARM      = new LibOffset(   -0.215f,    -0.013f,    0.95f    );
+        private static  final LibOffset OFFSET_ABSOLUTE_LEFT_HAND           = new LibOffset(   -0.15f,     -0.053f,    0.8f    );
 
-        public      static  final LibOffset OFFSET_ABSOLUTE_RIGHT_UPPER_ARM     = new LibOffset(   0.075f,     0.0f,       1.1f    );
-        public      static  final LibOffset OFFSET_ABSOLUTE_RIGHT_LOWER_ARM     = new LibOffset(   0.215f,     -0.013f,     0.95f    );
-        public      static  final LibOffset OFFSET_ABSOLUTE_RIGHT_HAND          = new LibOffset(   0.15f,      -0.053f,    0.8f    );
+        private static  final LibOffset OFFSET_ABSOLUTE_RIGHT_UPPER_ARM     = new LibOffset(   0.075f,     0.0f,       1.1f    );
+        private static  final LibOffset OFFSET_ABSOLUTE_RIGHT_LOWER_ARM     = new LibOffset(   0.215f,     -0.013f,     0.95f    );
+        private static  final LibOffset OFFSET_ABSOLUTE_RIGHT_HAND          = new LibOffset(   0.15f,      -0.053f,    0.8f    );
       //public      static  final   LibOffset              OFFSET_ABSOLUTE_RIGHT_LOWER_ARM     = new LibOffset(   0.215f,     0.013f,     0.95f    );
       //public      static  final   LibOffset              OFFSET_ABSOLUTE_RIGHT_HAND          = new LibOffset(   0.15f,      -0.025f,    0.8f    );
 
-        public      static  final LibOffset OFFSET_ABSOLUTE_RIGHT_UPPER_LEG     = new LibOffset(   0.075f,     -0.05f,     0.68f   );
-        public      static  final LibOffset OFFSET_ABSOLUTE_RIGHT_LOWER_LEG     = new LibOffset(   0.135f,     -0.05f,     0.38f   );
-        public      static  final LibOffset OFFSET_ABSOLUTE_RIGHT_FOOT          = new LibOffset(   0.21f,      -0.03f,     0.08f   );
+        private static  final LibOffset OFFSET_ABSOLUTE_RIGHT_UPPER_LEG     = new LibOffset(   0.075f,     -0.05f,     0.68f   );
+        private static  final LibOffset OFFSET_ABSOLUTE_RIGHT_LOWER_LEG     = new LibOffset(   0.135f,     -0.05f,     0.38f   );
+        private static  final LibOffset OFFSET_ABSOLUTE_RIGHT_FOOT          = new LibOffset(   0.21f,      -0.03f,     0.08f   );
 
-        public      static  final LibOffset OFFSET_ABSOLUTE_LEFT_UPPER_LEG      = new LibOffset(   -0.075f,    -0.05f,     0.68f   );
-        public      static  final LibOffset OFFSET_ABSOLUTE_LEFT_LOWER_LEG      = new LibOffset(   -0.135f,    -0.05f,     0.38f   );
-        public      static  final LibOffset OFFSET_ABSOLUTE_LEFT_FOOT           = new LibOffset(   -0.21f,     -0.03f,     0.08f   );
+        private static  final LibOffset OFFSET_ABSOLUTE_LEFT_UPPER_LEG      = new LibOffset(   -0.075f,    -0.05f,     0.68f   );
+        private static  final LibOffset OFFSET_ABSOLUTE_LEFT_LOWER_LEG      = new LibOffset(   -0.135f,    -0.05f,     0.38f   );
+        private static  final LibOffset OFFSET_ABSOLUTE_LEFT_FOOT           = new LibOffset(   -0.21f,     -0.03f,     0.08f   );
 
         private                     boolean             limbsStandStill                       = false;
 
-        public                      int                 currentTargetPitchHead              = 0;
-        public                      int                 currentTargetPitchLeftArm           = 0;
-        public                      int                 currentTargetPitchRightArm          = 0;
-        public                      int                 currentTargetPitchLeftLeg           = 0;
-        public                      int                 currentTargetPitchRightLeg          = 0;
+        private int                 currentTargetPitchHead              = 0;
+        private int                 currentTargetPitchLeftArm           = 0;
+        private int                 currentTargetPitchRightArm          = 0;
+        private int                 currentTargetPitchLeftLeg           = 0;
+        private int                 currentTargetPitchRightLeg          = 0;
 
-        public                      boolean             repeatTargetPitchesHead             = false;
-        public                      boolean             repeatTargetPitchesLeftArm          = false;
-        public                      boolean             repeatTargetPitchesRightArm         = false;
+        private boolean             repeatTargetPitchesHead             = false;
+        private boolean             repeatTargetPitchesLeftArm          = false;
+        private boolean             repeatTargetPitchesRightArm         = false;
         public                      boolean             repeatTargetPitchesLeftLeg          = false;
         public                      boolean             repeatTargetPitchesRightLeg         = false;
 
@@ -157,33 +157,33 @@
 
         public                      BotPattern   iTemplate                           = null;
 
-        public                      BotMesh             iEquippedItemLeft                   = null;
+        private BotMesh             iEquippedItemLeft                   = null;
         public                      BotMesh             iEquippedItemRight                  = null;
 
-        public                      BotMesh             iGlasses                            = null;
-        public                      BotMesh             iHat                                = null;
-        public                      BotMesh             iHead                               = null;
-        public                      BotMesh             iFace                               = null;
-        public                      BotMesh             iRightUpperArm                      = null;
-        public                      BotMesh             iRightLowerArm                      = null;
-        public                      BotMesh             iTorso                              = null;
-        public                      BotMesh             iNeck                               = null;
-        public                      BotMesh             iLeftUpperArm                       = null;
-        public                      BotMesh             iLeftLowerArm                       = null;
-        public                      BotMesh             iRightHand                          = null;
-        public                      BotMesh             iLeftHand                           = null;
-        public                      BotMesh             iRightUpperLeg                      = null;
-        public                      BotMesh             iLeftUpperLeg                       = null;
-        public                      BotMesh             iRightLowerLeg                      = null;
-        public                      BotMesh             iLeftLowerLeg                       = null;
-        public                      BotMesh             iRightFoot                          = null;
-        public                      BotMesh             iLeftFoot                           = null;
+        private BotMesh             iGlasses                            = null;
+        private BotMesh             iHat                                = null;
+        private BotMesh             iHead                               = null;
+        private BotMesh             iFace                               = null;
+        private BotMesh             iRightUpperArm                      = null;
+        private BotMesh             iRightLowerArm                      = null;
+        private BotMesh             iTorso                              = null;
+        private BotMesh             iNeck                               = null;
+        private BotMesh             iLeftUpperArm                       = null;
+        private BotMesh             iLeftLowerArm                       = null;
+        private BotMesh             iRightHand                          = null;
+        private BotMesh             iLeftHand                           = null;
+        private BotMesh             iRightUpperLeg                      = null;
+        private BotMesh             iLeftUpperLeg                       = null;
+        private BotMesh             iRightLowerLeg                      = null;
+        private BotMesh             iLeftLowerLeg                       = null;
+        private BotMesh             iRightFoot                          = null;
+        private BotMesh             iLeftFoot                           = null;
 
-        public                      boolean             equipmentChanged                    = false;
+        private boolean             equipmentChanged                    = false;
 
-        public                      HeadPosition        iCurrentHeadPosition                = null;
-        public                      ArmsPosition        iCurrentArmsPosition                = null;
-        public                      LegsPosition        iCurrentLegsPosition                = null;
+        private HeadPosition        iCurrentHeadPosition                = null;
+        private ArmsPosition        iCurrentArmsPosition                = null;
+        private LegsPosition        iCurrentLegsPosition                = null;
 
         /***************************************************************************************************************
         *   Constructs a new mesh with the specified properties.
@@ -1168,7 +1168,7 @@
             this.iNeck.translateLimb(  new LibOffset( 0.0f, 0.0f, 0.0f ) );
         }
 
-        public void turnAllLimbsX( LibVertex botAnchor, float angleX )
+        private void turnAllLimbsX(LibVertex botAnchor, float angleX)
         {
             for ( Mesh mesh : this.iMeshes)
             {
@@ -1176,7 +1176,7 @@
             }
         }
 
-        public void turnAllLimbsZ( LibVertex botAnchor, float facingAngle )
+        private void turnAllLimbsZ(LibVertex botAnchor, float facingAngle)
         {
             for ( Mesh mesh : this.iMeshes)
             {

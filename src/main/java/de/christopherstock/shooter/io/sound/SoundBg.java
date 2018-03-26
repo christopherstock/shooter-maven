@@ -28,13 +28,13 @@
 
         private         static          SoundBg                 currentSound            = null;
 
-        protected                       Player                  iPlayer                 = null;
-        protected                       ControllerListener      iControllerListener     = null;
+        private Player                  iPlayer                 = null;
+        private ControllerListener      iControllerListener     = null;
 
-        protected                       long                    iInitNanoSecondStart    = 0;
-        protected                       long                    iInitNanoSecondEnd      = 0;
-        protected                       long                    iLoopNanoSecondStart    = 0;
-        protected                       long                    iLoopNanoSecondEnd      = 0;
+        private long                    iInitNanoSecondStart    = 0;
+        private long                    iInitNanoSecondEnd      = 0;
+        private long                    iLoopNanoSecondStart    = 0;
+        private long                    iLoopNanoSecondEnd      = 0;
 
         private SoundBg( long aInitNanoSecondStart, long aInitNanoSecondEnd, long aLoopNanoSecondStart, long aLoopNanoSecondEnd )
         {

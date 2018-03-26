@@ -16,10 +16,10 @@
     *******************************************************************************************************************/
     public class ShooterTexture
     {
-        public static final class TexObject
+        protected static final class TexObject
         {
-            public                      LibGLTexture        iTexture            = null;
-            public                      LibGLImage          iTextureImage       = null;
+            protected LibGLTexture        iTexture            = null;
+            protected LibGLImage          iTextureImage       = null;
 
             protected TexObject( Translucency aTranslucency, Material aMaterial, LibTexture aMask )
             {
@@ -32,7 +32,7 @@
                 );
             }
 
-            public final void loadImage( String url )
+            protected final void loadImage(String url)
             {
                 //load all textures
                 BufferedImage bufferedImage = LibImage.load( url, ShooterDebug.glImage, false );

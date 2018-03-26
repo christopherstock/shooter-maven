@@ -59,7 +59,7 @@
             this.material = aMaterial;
         }
 
-        public final void update( float pX, float pY, float pZ, float newHeight )
+        private void update(float pX, float pY, float pZ, float newHeight)
         {
             this.anchor = new LibVertex( pX, pY, pZ );
 
@@ -420,17 +420,17 @@
         {
             //check horizontal intersection
             Point2D.Double  cylinderPosHorz         = new Point2D.Double(this.anchor.x, this.anchor.y );
-            boolean         horizontalIntersection1 = ( face.iCollisionLineHorz1.ptSegDist( cylinderPosHorz ) <= this.radius);
-            boolean         horizontalIntersection2 = ( face.iCollisionLineHorz2.ptSegDist( cylinderPosHorz ) <= this.radius);
-            boolean         horizontalIntersection3 = ( face.iCollisionLineHorz3.ptSegDist( cylinderPosHorz ) <= this.radius);
+            boolean         horizontalIntersection1 = ( face.collisionLineHorz1.ptSegDist( cylinderPosHorz ) <= this.radius);
+            boolean         horizontalIntersection2 = ( face.collisionLineHorz2.ptSegDist( cylinderPosHorz ) <= this.radius);
+            boolean         horizontalIntersection3 = ( face.collisionLineHorz3.ptSegDist( cylinderPosHorz ) <= this.radius);
 
             if ( horizontalIntersection1 || horizontalIntersection2 || horizontalIntersection3 )
             {
                 //check vertical intersection
-                boolean verticalIntersection = this.heightsIntersect( face.iLowestZ, face.iHighestZ, useBottomToleranceZ, invertBottomTolerance   );
+                boolean verticalIntersection = this.heightsIntersect( face.lowestZ, face.highestZ, useBottomToleranceZ, invertBottomTolerance   );
                 if ( verticalIntersection )
                 {
-                    //ShooterDebug.bugfix.out("INTERSECT - return float with z [" + face.iHighestZ + "]");
+                    //ShooterDebug.bugfix.out("INTERSECT - return float with z [" + face.highestZ + "]");
                     return true;
                 }
             }
@@ -481,7 +481,7 @@
             return this.anchor;
         }
 
-        public final boolean tryTargetPoint( float newHeight, boolean disableWallCollisions, boolean disableBotCollisions )
+        private boolean tryTargetPoint(float newHeight, boolean disableWallCollisions, boolean disableBotCollisions)
         {
             //update player's collision circle with target location
             this.update(this.target.x, this.target.y, this.target.z, newHeight );
