@@ -8,7 +8,7 @@
     import  de.christopherstock.lib.gl.*;
     import  de.christopherstock.lib.io.*;
     import  de.christopherstock.lib.ui.LibFPS;
-    import de.christopherstock.lib.ui.LibUI;
+    import  de.christopherstock.lib.ui.LibUI;
     import  de.christopherstock.shooter.*;
     import  de.christopherstock.shooter.ShooterSetting.*;
     import  de.christopherstock.shooter.game.objects.Player;
@@ -17,6 +17,7 @@
     import  de.christopherstock.shooter.level.*;
     import  de.christopherstock.shooter.state.*;
     import  de.christopherstock.shooter.ui.hud.*;
+    import  org.lwjgl.opengl.Display;
 
     /*******************************************************************************************************************
     *   The game engine holding all engine systems.
@@ -42,8 +43,9 @@
         /** The global player-instance being controlled by the user. */
         public                      Player                  player                      = null;
 
-        /** The gl system. */
-        public LibGL gl                          = null;
+        public                      LibFrame                frame                       = null;
+
+        public                      LibGLView               glView                      = null;
 
         /***************************************************************************************************************
         *   Inits the ui.
@@ -94,6 +96,8 @@
                 ShooterSetting.Form.FORM_HEIGHT = screenSize.height;
             }
 
+
+/*
             this.gl = new LibGL();
             this.gl.init
             (
@@ -103,6 +107,25 @@
                 this.iconImage,
                 ShooterDebug.init
             );
+*/
+            //init frame
+            this.frame = new LibFrame
+            (
+                ShooterSetting.Form.FORM_TITLE,
+                ShooterSetting.Form.FORM_WIDTH,
+                ShooterSetting.Form.FORM_HEIGHT,
+                this.iconImage
+            );
+
+            //init lwjgl glView
+            this.glView = new LibGLView
+            (
+                ShooterDebug.init,
+                this.frame,
+                ShooterSetting.Form.FORM_WIDTH,
+                ShooterSetting.Form.FORM_HEIGHT
+            );
+            this.glView.init();
         }
 
         /***************************************************************************************************************
@@ -121,7 +144,7 @@
 
             //assign textures and perform repaint
             this.preloader.increase( 40 );
-            Shooter.game.engine.gl.view.initTextures( ShooterTexture.getAllTextureImages() );
+            this.glView.initTextures( ShooterTexture.getAllTextureImages() );
 
             //init 3d studio max objects and perform repaint
             this.preloader.increase( 50 );
@@ -146,7 +169,7 @@
             this.preloader.increase( 90 );
 
             //init main menu
-            MainStateMainMenu.init();
+            MainMenu.init();
 
             this.preloader.increase( 100 );
 
@@ -172,5 +195,11 @@
                 ShooterDebug.error.trace( t );
                 System.exit( 1 );
             }
+        }
+
+        public void destroy()
+        {
+            Display.destroy();
+            System.exit( 0 );
         }
     }

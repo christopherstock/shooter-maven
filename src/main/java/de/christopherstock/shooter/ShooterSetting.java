@@ -84,9 +84,9 @@
             float           RADIUS_CLOSE_COMBAT                 = 1.5f;
             float           RADIUS_ACTION                       = 1.75f;                //player's action radius
 
-            float           VIEW_DISTANCE                       = 50.0f;                //max. view distance - faces do not get drawed if current distance to player is higher
+            float           VIEW_DISTANCE                       = 50.0f;                //max. glView distance - faces do not get drawed if current distance to player is higher
 
-            float           MAX_ACTION_VIEW_ANGLE               = 80.0f;                //to left and right side of the center view
+            float           MAX_ACTION_VIEW_ANGLE               = 80.0f;                //to left and right side of the center glView
 
             //depths
             float           DEPTH_TOTAL_STANDING                = 1.3f;                 //for collisions
@@ -101,7 +101,7 @@
             float           TRANS_X_HAND                        = 0.0f;                 //0.1f;     //player's hand x-translation for shots
             float           TRANS_Y_HAND                        = 0.0f;                 //0.0f;     //player's hand y-translation for shots
 
-            float           DEPTH_DEATH                         = 0.08f;                //player's view height on being dead
+            float           DEPTH_DEATH                         = 0.08f;                //player's glView height on being dead
 
             //speed
             float           SPEED_WALKING                       = 0.2f; //0.15f;        //walking  speed

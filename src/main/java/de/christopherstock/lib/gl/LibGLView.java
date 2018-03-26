@@ -28,21 +28,26 @@
         private     static  final   float               VIEW_MIN                    = 0.1f;
         private     static  final   float               VIEW_MAX                    = 100.0f;
 
-        private                     float               aspectRatio                 = 0.0f;
         private                     LibDebug            debug                       = null;
+        private                     LibFrame            panel                       = null;
+        private                     int                 width                       = 0;
+        private                     int                 height                      = 0;
+        private                     float               aspectRatio                 = 0.0f;
         private                     Vector<LibFace>     firstPrioDrawingQueue       = new Vector<LibFace>();
         private                     Vector<LibFace>     defaultFaceDrawingQueue     = new Vector<LibFace>();
         private                     LibGLTexture        lastOpaqueTexture           = null;
-        private                     LibGLPanel          panel                       = null;
 
-        public LibGLView( LibGLPanel panel, LibDebug debug, float aspectRatio )
+        public LibGLView( LibDebug debug, LibFrame panel, int width, int height )
         {
-            this.aspectRatio = aspectRatio;
-            this.debug = debug;
-            this.panel        = panel;
+            this.debug       = debug;
+            this.panel       = panel;
+            this.width       = width;
+            this.height      = height;
+
+            this.aspectRatio = ( (float)width / (float)height );
         }
 
-        public void init( int aFormWidth, int aFormHeight )
+        public void init()
         {
             try
             {
@@ -58,8 +63,8 @@
                     //check if this display mode fits
                     if
                     (
-                            aFormWidth  == dm.getWidth()
-                        &&  aFormHeight == dm.getHeight()
+                            this.width  == dm.getWidth()
+                        &&  this.height == dm.getHeight()
                         &&  currentBpp  == dm.getBitsPerPixel()
                     )
                     {
@@ -83,7 +88,7 @@
                 Display.setFullscreen( false );
                 this.debug.out( "setting fullscreen false Ok" );
 
-                //((Canvas)panel.getCanvas() ).setFocusable(false);
+                //((Canvas)frame.getCanvas() ).setFocusable(false);
 
                 //set native canvas as parent displayable
                 Display.setParent( this.panel.getCanvas() );
@@ -95,7 +100,7 @@
                 this.debug.out( "Display creation Ok" );
 
                 //request focus ( hangs?? )
-              //panel.getCanvas().requestFocus();
+              //frame.getCanvas().requestFocus();
                 this.debug.out( "Requesting focus Ok" );
             }
             catch ( LWJGLException e)
@@ -105,18 +110,18 @@
 
             this.debug.out( "invoked init-method of LWJGLView" );
 
-            //assign the panel's dimensions and parse its offsets
+            //assign the frame's dimensions and parse its offsets
             panel.width  = Display.getParent().getWidth();
             panel.height = Display.getParent().getHeight();
 
-            this.debug.out( "assigned panel dimensions [" + Shooter.game.engine.gl.panel.width + "]x[" + Shooter.game.engine.gl.panel.height + "]" );
+            this.debug.out( "assigned frame dimensions [" + Shooter.game.engine.frame.width + "]x[" + Shooter.game.engine.frame.height + "]" );
 
             //run through some based OpenGL capability settings
 
             // effect ?
             // GL11.glEnable(GL11.GL_CULL_FACE);
 
-            //switch to projection-matrix-mode and set view ratio
+            //switch to projection-matrix-mode and set glView ratio
             this.setNewGluFaceAngle( VIEW_ANGLE );
 /*
             GL11.glMatrixMode(      GL11.GL_PROJECTION                                      );
@@ -143,10 +148,10 @@
             GL11.glEnable(          GL11.GL_POLYGON_SMOOTH                                  );      //enable antialiasing for polygons
 */
             //set perspective
-//            GLU.gluPerspective( VIEW_ANGLE, ( (float)LibGL.panel.width / (float)LibGL.panel.height ), VIEW_MIN, VIEW_MAX );
+//            GLU.gluPerspective( VIEW_ANGLE, ( (float)LibGL.frame.width / (float)LibGL.frame.height ), VIEW_MIN, VIEW_MAX );
 
             //init all textures HANGS ??
-            Shooter.game.engine.gl.panel.getCanvas().requestFocus();
+            Shooter.game.engine.frame.getCanvas().requestFocus();
         }
 
         public void clearFaceQueue()
@@ -532,7 +537,7 @@
         public void drawOrthoBitmapBytes( LibGLImage glImage, int x, int y, float alpha, float scaleX, float scaleY, boolean translateAnk )
         {
             //prepare rendering 2D
-            this.setOrthoOn();
+            this.enableOrtho();
 
             //be sure to disable texturing - bytes will not be drawn otherwise
             GL11.glDisable( GL11.GL_TEXTURE_2D );
@@ -573,23 +578,23 @@
             GL11.glDisable( GL11.GL_BLEND );
 
             //restore previous perspective and model views
-            this.setOrthoOff();
+            this.disableOrtho();
         }
 
-        private void setOrthoOn()
+        private void enableOrtho()
         {
             // prepare to render in 2D
             GL11.glDisable( GL11.GL_DEPTH_TEST );                                       // so 2D stuff stays on top of 3D scene
             GL11.glMatrixMode( GL11.GL_PROJECTION );
-            GL11.glPushMatrix();                                                        // preserve perspective view
+            GL11.glPushMatrix();                                                        // preserve perspective glView
             GL11.glLoadIdentity();                                                      // clear the perspective matrix
-            GL11.glOrtho( 0, Shooter.game.engine.gl.panel.width, 0, Shooter.game.engine.gl.panel.height, -1, 1 );     // turn on 2D
+            GL11.glOrtho( 0, Shooter.game.engine.frame.width, 0, Shooter.game.engine.frame.height, -1, 1 );     // turn on 2D
             GL11.glMatrixMode( GL11.GL_MODELVIEW );
             GL11.glPushMatrix();                                                        // Preserve the Modelview Matrix
             GL11.glLoadIdentity();                                                      // clear the Modelview Matrix
         }
 
-        private void setOrthoOff()
+        private void disableOrtho()
         {
             // restore the original positions and views
             GL11.glMatrixMode( GL11.GL_PROJECTION );

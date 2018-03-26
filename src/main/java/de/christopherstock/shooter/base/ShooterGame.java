@@ -54,8 +54,8 @@
                 //update fps
                 this.engine.fps.update();
 
-                //draw gl panel
-                Shooter.game.engine.gl.panel.display();
+                //draw gl frame
+                Shooter.game.engine.frame.display();
 
                 //delay for specified delay time
                 try
@@ -75,7 +75,7 @@
         public void draw()
         {
             //clear face queue from last tick
-            Shooter.game.engine.gl.view.clearFaceQueue();
+            Shooter.game.engine.glView.clearFaceQueue();
 
             //draw 3d according to main state
             switch ( this.engine.mainState )
@@ -88,14 +88,14 @@
 
                 case EMainMenu:
                 {
-                    MainStateIngame.getSingleton().draw();
-                    MainStateMainMenu.getSingleton().draw();
+                    Ingame.getSingleton().draw();
+                    MainMenu.getSingleton().draw();
                     break;
                 }
 
                 case EIngame:
                 {
-                    MainStateIngame.getSingleton().draw();
+                    Ingame.getSingleton().draw();
                     break;
                 }
             }
@@ -146,10 +146,10 @@
                     LWJGLMouse.checkMouse();
 
                     //check menu key events
-                    MainStateMainMenu.getSingleton().checkMenuKeyEvents();
+                    MainMenu.getSingleton().checkMenuKeyEvents();
 
                     //animate main menu
-                    MainStateMainMenu.getSingleton().onRun();
+                    MainMenu.getSingleton().onRun();
 
                     break;
                 }
@@ -164,7 +164,7 @@
                     LevelChange.checkChangeToSection();
 
                     //check game key events
-                    MainStateIngame.getSingleton().checkGameKeyEvents();
+                    Ingame.getSingleton().checkGameKeyEvents();
 
                     //animate player and level ( only if a level is assigned )
                     if ( Level.currentSection() != null )

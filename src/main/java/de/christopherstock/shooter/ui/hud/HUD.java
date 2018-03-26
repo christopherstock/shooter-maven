@@ -1,7 +1,7 @@
 
     package de.christopherstock.shooter.ui.hud;
 
-    import de.christopherstock.lib.LibAnimation;
+    import  de.christopherstock.lib.LibAnimation;
     import  de.christopherstock.lib.gl.*;
     import  de.christopherstock.shooter.*;
     import  de.christopherstock.shooter.ShooterSetting.Colors;
@@ -51,7 +51,7 @@
         public HUD()
         {
             //parse ortho offsets
-            OffsetsOrtho.parseOffsets( Shooter.game.engine.gl.panel.width, Shooter.game.engine.gl.panel.height );
+            OffsetsOrtho.parseOffsets( Shooter.game.engine.frame.width, Shooter.game.engine.frame.height );
 
             //load all images
             ArtefactType.loadImages();
@@ -146,13 +146,13 @@
                 }
 
                 //draw shell image
-                Shooter.game.engine.gl.view.drawOrthoBitmapBytes( ( (FireArm)currentWearpon.iArtefactType.iArtefactKind ).getAmmoTypeImage(), Shooter.game.engine.gl.panel.width - OffsetsOrtho.EBorderHudX - 50, OffsetsOrtho.EBorderHudY );
+                Shooter.game.engine.glView.drawOrthoBitmapBytes( ( (FireArm)currentWearpon.iArtefactType.iArtefactKind ).getAmmoTypeImage(), Shooter.game.engine.frame.width - OffsetsOrtho.EBorderHudX - 50, OffsetsOrtho.EBorderHudY );
 
                 //draw magazine ammo
-                Shooter.game.engine.gl.view.drawOrthoBitmapBytes(this.iAmmoImageMagazineAmmo, Shooter.game.engine.gl.panel.width - OffsetsOrtho.EBorderHudX - 50 - ( (FireArm)currentWearpon.iArtefactType.iArtefactKind ).getAmmoTypeImage().width - this.iAmmoImageMagazineAmmo.width, OffsetsOrtho.EBorderHudY );
+                Shooter.game.engine.glView.drawOrthoBitmapBytes(this.iAmmoImageMagazineAmmo, Shooter.game.engine.frame.width - OffsetsOrtho.EBorderHudX - 50 - ( (FireArm)currentWearpon.iArtefactType.iArtefactKind ).getAmmoTypeImage().width - this.iAmmoImageMagazineAmmo.width, OffsetsOrtho.EBorderHudY );
 
                 //draw total ammo
-                Shooter.game.engine.gl.view.drawOrthoBitmapBytes(this.iAmmoImageTotalAmmo, Shooter.game.engine.gl.panel.width - OffsetsOrtho.EBorderHudX - this.iAmmoImageTotalAmmo.width, OffsetsOrtho.EBorderHudY );
+                Shooter.game.engine.glView.drawOrthoBitmapBytes(this.iAmmoImageTotalAmmo, Shooter.game.engine.frame.width - OffsetsOrtho.EBorderHudX - this.iAmmoImageTotalAmmo.width, OffsetsOrtho.EBorderHudY );
             }
         }
 
@@ -192,15 +192,15 @@
             //if ( iHealthShowTimer <  )
 
             //draw health image
-            Shooter.game.engine.gl.view.drawOrthoBitmapBytes(this.iHealthImage, OffsetsOrtho.EBorderHudX, OffsetsOrtho.EBorderHudY, alpha );
+            Shooter.game.engine.glView.drawOrthoBitmapBytes(this.iHealthImage, OffsetsOrtho.EBorderHudX, OffsetsOrtho.EBorderHudY, alpha );
         }
 
         private void drawCrosshair()
         {
             //draw crosshair
-            int   modY = 0; //(int)( ( ShooterGameShooter.game.engine.player.getView().rot.x / PlayerAttributes.MAX_LOOKING_X ) * ( Shooter.game.engine.gl.panel.height / 5 ) );
+            int   modY = 0; //(int)( ( ShooterGameShooter.game.engine.player.getView().rot.x / PlayerAttributes.MAX_LOOKING_X ) * ( Shooter.game.engine.frame.height / 5 ) );
             CrossHair crosshair = Shooter.game.engine.player.iArtefactSet.getArtefactType().getCrossHair();
-            Shooter.game.engine.gl.view.drawOrthoBitmapBytes( crosshair.getImage(), Shooter.game.engine.gl.panel.width / 2 - crosshair.getImage().width / 2, Shooter.game.engine.gl.panel.height / 2 - crosshair.getImage().height / 2 + modY );
+            Shooter.game.engine.glView.drawOrthoBitmapBytes( crosshair.getImage(), Shooter.game.engine.frame.width / 2 - crosshair.getImage().width / 2, Shooter.game.engine.frame.height / 2 - crosshair.getImage().height / 2 + modY );
         }
 
         public final void onRun()

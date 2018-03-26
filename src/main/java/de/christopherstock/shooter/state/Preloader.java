@@ -11,7 +11,7 @@
     *******************************************************************************************************************/
     public class Preloader
     {
-        /** The background image. */
+        /** The background image. TODO outsource! */
         private                     LibGLImage              bgImage                     = null;
 
         /** The current percentage of loaded contents. */
@@ -33,23 +33,23 @@
         public final void draw()
         {
             // clear screen
-            Shooter.game.engine.gl.view.clearGl( LibColors.EWhite );
+            Shooter.game.engine.glView.clearGl( LibColors.EWhite );
 
             // draw bg image
-            Shooter.game.engine.gl.view.drawOrthoBitmapBytes
+            Shooter.game.engine.glView.drawOrthoBitmapBytes
             (
                 this.bgImage,
-                ( Shooter.game.engine.gl.panel.width  - this.bgImage.width  ) / 2,
-                ( Shooter.game.engine.gl.panel.height - this.bgImage.height ) / 2
+                ( Shooter.game.engine.frame.width  - this.bgImage.width  ) / 2,
+                ( Shooter.game.engine.frame.height - this.bgImage.height ) / 2
             );
 
             // draw progress
             LibGLImage text = LibGLImage.getFromString( this.percentageLoaded + " %", Fonts.EPreloader, LibColors.EOrangeMF.colABGR, null, null, ShooterDebug.glImage );
-            Shooter.game.engine.gl.view.drawOrthoBitmapBytes
+            Shooter.game.engine.glView.drawOrthoBitmapBytes
             (
                 text,
-                ( Shooter.game.engine.gl.panel.width      - text.width  ) / 2,
-                ( Shooter.game.engine.gl.panel.height / 2 - text.height ) / 2
+                ( Shooter.game.engine.frame.width      - text.width  ) / 2,
+                ( Shooter.game.engine.frame.height / 2 - text.height ) / 2
             );
         }
 
@@ -65,6 +65,6 @@
             this.percentageLoaded = percentage;
 
             // repaint
-            Shooter.game.engine.gl.panel.display();
+            Shooter.game.engine.frame.display();
         }
     }

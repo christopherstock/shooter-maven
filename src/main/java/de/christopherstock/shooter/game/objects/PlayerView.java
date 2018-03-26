@@ -10,7 +10,7 @@
     import  de.christopherstock.shooter.ui.hud.*;
 
     /*******************************************************************************************************************
-    *   The players field of view.
+    *   The players field of glView.
     *******************************************************************************************************************/
     public class PlayerView implements PlayerSettings
     {

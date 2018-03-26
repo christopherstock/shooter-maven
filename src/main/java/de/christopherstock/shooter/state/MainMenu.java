@@ -14,7 +14,7 @@
     /*******************************************************************************************************************
     *   The Heads Up Display.
     *******************************************************************************************************************/
-    public class MainStateMainMenu
+    public class MainMenu
     {
         public enum MainMenuItem
         {
@@ -41,11 +41,11 @@
 
             protected void draw(int x, int y, MainMenuItem selectedItem)
             {
-                Shooter.game.engine.gl.view.drawOrthoBitmapBytes( ( this == selectedItem ? this.selected : this.unselected), x, y, 1.0f );
+                Shooter.game.engine.glView.drawOrthoBitmapBytes( ( this == selectedItem ? this.selected : this.unselected), x, y, 1.0f );
             }
         }
 
-        private         static          MainStateMainMenu                singleton                       = null;
+        private         static MainMenu singleton                       = null;
 
         private         static          MainMenuItem            currentMainMenuItem             = null;
 
@@ -53,9 +53,9 @@
 
         private                         int                     menuChangeBlocker               = 0;
 
-        private MainStateMainMenu()
+        private MainMenu()
         {
-            this.blackPane = LibGLImage.getFullOpaque( LibColors.EBlackTranslucent.colABGR, Shooter.game.engine.gl.panel.width, Shooter.game.engine.gl.panel.height, ShooterDebug.glImage );
+            this.blackPane = LibGLImage.getFullOpaque( LibColors.EBlackTranslucent.colABGR, Shooter.game.engine.frame.width, Shooter.game.engine.frame.height, ShooterDebug.glImage );
 
         }
 
@@ -71,12 +71,12 @@
             Shooter.game.engine.hud.draw();
 
             //draw black pane
-            Shooter.game.engine.gl.view.drawOrthoBitmapBytes( this.blackPane, 0,   0,   0.1f );
+            Shooter.game.engine.glView.drawOrthoBitmapBytes( this.blackPane, 0,   0,   0.1f );
 
             //draw main menu
             for ( MainMenuItem m : MainMenuItem.values() )
             {
-                m.draw( ( Shooter.game.engine.gl.panel.width - m.unselected.width ) / 2, 600 - m.ordinal() * 85, currentMainMenuItem );
+                m.draw( ( Shooter.game.engine.frame.width - m.unselected.width ) / 2, 600 - m.ordinal() * 85, currentMainMenuItem );
             }
         }
 
@@ -195,7 +195,7 @@
 */
                     case EQuitGame:
                     {
-                        Shooter.game.engine.gl.destroy();
+                        Shooter.game.engine.destroy();
                         break;
                     }
                 }
@@ -210,11 +210,11 @@
             Keys.enterKey.checkLaunchingAction();
         }
 
-        public static MainStateMainMenu getSingleton()
+        public static MainMenu getSingleton()
         {
             if ( singleton == null )
             {
-                singleton = new MainStateMainMenu();
+                singleton = new MainMenu();
             }
 
             return singleton;
@@ -235,12 +235,12 @@
             //change current main menu item
             if ( Keys.keyHoldWalkDown )
             {
-                MainStateMainMenu.getSingleton().nextItem();
+                MainMenu.getSingleton().nextItem();
             }
 
             if ( Keys.keyHoldWalkUp )
             {
-                MainStateMainMenu.getSingleton().previousItem();
+                MainMenu.getSingleton().previousItem();
             }
 
             //launch msg?
@@ -248,7 +248,7 @@
             {
                 Keys.enterKey.iLaunchAction = false;
 
-                MainStateMainMenu.getSingleton().selectItem();
+                MainMenu.getSingleton().selectItem();
             }
         }
     }

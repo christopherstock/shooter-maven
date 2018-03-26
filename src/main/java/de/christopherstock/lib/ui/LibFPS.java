@@ -65,7 +65,7 @@
         {
             if (this.iCurrentFps != null )
             {
-                Shooter.game.engine.gl.view.drawOrthoBitmapBytes(this.iCurrentFps, Shooter.game.engine.gl.panel.width - offX - this.iCurrentFps.width, Shooter.game.engine.gl.panel.height - offY - this.iCurrentFps.height );
+                Shooter.game.engine.glView.drawOrthoBitmapBytes(this.iCurrentFps, Shooter.game.engine.frame.width - offX - this.iCurrentFps.width, Shooter.game.engine.frame.height - offY - this.iCurrentFps.height );
             }
         }
     }

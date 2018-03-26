@@ -1109,7 +1109,7 @@
             LibShot       shot     = this.getViewShot();
             LibHitPoint[] hitPoint = Level.currentSection().launchShot( shot );
 
-            //draw view shot line
+            //draw glView shot line
             //shot.drawShotLine( FxSettings.LIFETIME_DEBUG );
 
             return ( hitPoint.length > 0 && hitPoint[ 0 ].iCarrier.getHitPointCarrier() == HitPointCarrier.EPlayer );

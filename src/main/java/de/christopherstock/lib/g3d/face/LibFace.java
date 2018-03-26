@@ -332,7 +332,7 @@
             //only draw if desired
             if ( draw )
             {
-                Shooter.game.engine.gl.view.enqueueFaceToQueue( this );
+                Shooter.game.engine.glView.enqueueFaceToQueue( this );
             }
         }
 

@@ -84,7 +84,7 @@
             this.iCylinder = new Cylinder( this, new LibVertex( aStartPosition.pos.x, aStartPosition.pos.y, aStartPosition.pos.z ), RADIUS_BODY, DEPTH_TOTAL_STANDING, ShooterSetting.Performance.COLLISION_CHECKING_STEPS, ShooterDebug.playerCylinder, false, PlayerSettings.MAX_CLIMBING_UP_Z, PlayerSettings.MIN_CLIMBING_UP_Z, ShooterSetting.Performance.ELLIPSE_SEGMENTS, Material.EHumanFlesh );
             this.iView = new PlayerView(     this, aStartPosition.rot );
 
-            //ShooterDebug.bugfix.out( "Reset player view!" );
+            //ShooterDebug.bugfix.out( "Reset player glView!" );
 
             this.iAmmoSet = new AmmoSet();
             this.iHealthChangeCallback = Shooter.game.engine.hud;
@@ -99,7 +99,7 @@
             {
                 this.handleKeysForMovement();        //handle game keys to specify player's new position
                 this.handleKeysForActions();         //handle game keys to invoke actions
-                this.iView.handleKeysForView();      //handle game keys to specify player's new view
+                this.iView.handleKeysForView();      //handle game keys to specify player's new glView
             }
         }
 
@@ -585,7 +585,7 @@
                 }
 
                 //set glu perspective zoom
-                Shooter.game.engine.gl.view.setNewGluFaceAngle( LibGLView.VIEW_ANGLE - this.iZoom);
+                Shooter.game.engine.glView.setNewGluFaceAngle( LibGLView.VIEW_ANGLE - this.iZoom);
 
                 //enter matrix mode modelview
                 GL11.glMatrixMode( GL11.GL_MODELVIEW );

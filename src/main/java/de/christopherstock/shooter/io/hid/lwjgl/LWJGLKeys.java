@@ -13,7 +13,7 @@
         {
             boolean displayHasFocus = Display.isActive();
 
-            //view and walking keys
+            //glView and walking keys
             keyHoldStrafeLeft                   = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_A          ) );
             keyHoldStrafeRight                  = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_D          ) );
             keyHoldWalkUp                       = displayHasFocus && ( ( Keyboard.isKeyDown( Keyboard.KEY_W          ) || Keyboard.isKeyDown( Keyboard.KEY_UP    ) ) );
@@ -51,7 +51,7 @@
 */
             if ( Keyboard.isKeyDown( Keyboard.KEY_M ) )
             {
-                Shooter.game.engine.gl.destroy();
+                Shooter.game.engine.destroy();
             }
 
             //check if the ALT keys are pressed
@@ -62,7 +62,7 @@
                 //destroy and recreate keyboard to release the alt keys
                 try
                 {
-                    //LibGL.panel.getCanvas().requestFocus();
+                    //LibGL.frame.getCanvas().requestFocus();
 
                     Keyboard.destroy();
                     Keyboard.create();

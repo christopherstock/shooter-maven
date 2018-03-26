@@ -85,7 +85,7 @@
             //only draw if an avatar-animation is active
             if (this.iAnim > -1 )
             {
-                //get panel's current alpha
+                //get frame's current alpha
                 float     alphaFg = 0;
                 switch (this.iAnimState)
                 {
@@ -107,8 +107,8 @@
                 }
 
                 //draw text
-                int x = Shooter.game.engine.gl.panel.width  - OffsetsOrtho.EBorderHudX - this.iTextImg.width;
-                Shooter.game.engine.gl.view.drawOrthoBitmapBytes(this.iTextImg, x, drawY, alphaFg );
+                int x = Shooter.game.engine.frame.width  - OffsetsOrtho.EBorderHudX - this.iTextImg.width;
+                Shooter.game.engine.glView.drawOrthoBitmapBytes(this.iTextImg, x, drawY, alphaFg );
             }
         }
 

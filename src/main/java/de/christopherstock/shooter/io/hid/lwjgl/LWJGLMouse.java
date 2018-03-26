@@ -23,7 +23,7 @@
                 checkMovement();
             }
 
-            //center mouse in view - ignore this event!
+            //center mouse in glView - ignore this event!
             //if ( centerMouse ) centerMouse();
         }
 

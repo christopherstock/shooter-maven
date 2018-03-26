@@ -39,11 +39,11 @@
         public static void init()
         {
             //init panes
-            damagePane      = LibGLImage.getFullOpaque( LibColors.ERed.colABGR,    Shooter.game.engine.gl.panel.width, Shooter.game.engine.gl.panel.height, ShooterDebug.glImage );
-            healthPane      = LibGLImage.getFullOpaque( LibColors.EWhite.colABGR,  Shooter.game.engine.gl.panel.width, Shooter.game.engine.gl.panel.height, ShooterDebug.glImage );
-            damagePane      = LibGLImage.getFullOpaque( LibColors.ERed.colABGR,    Shooter.game.engine.gl.panel.width, Shooter.game.engine.gl.panel.height, ShooterDebug.glImage );
-            deadPane        = LibGLImage.getFullOpaque( LibColors.EBlack.colABGR,  Shooter.game.engine.gl.panel.width, Shooter.game.engine.gl.panel.height, ShooterDebug.glImage );
-            adrenalinePane  = LibGLImage.getFullOpaque( LibColors.EYellow.colABGR, Shooter.game.engine.gl.panel.width, Shooter.game.engine.gl.panel.height, ShooterDebug.glImage );
+            damagePane      = LibGLImage.getFullOpaque( LibColors.ERed.colABGR,    Shooter.game.engine.frame.width, Shooter.game.engine.frame.height, ShooterDebug.glImage );
+            healthPane      = LibGLImage.getFullOpaque( LibColors.EWhite.colABGR,  Shooter.game.engine.frame.width, Shooter.game.engine.frame.height, ShooterDebug.glImage );
+            damagePane      = LibGLImage.getFullOpaque( LibColors.ERed.colABGR,    Shooter.game.engine.frame.width, Shooter.game.engine.frame.height, ShooterDebug.glImage );
+            deadPane        = LibGLImage.getFullOpaque( LibColors.EBlack.colABGR,  Shooter.game.engine.frame.width, Shooter.game.engine.frame.height, ShooterDebug.glImage );
+            adrenalinePane  = LibGLImage.getFullOpaque( LibColors.EYellow.colABGR, Shooter.game.engine.frame.width, Shooter.game.engine.frame.height, ShooterDebug.glImage );
 
             try
             {
@@ -81,41 +81,41 @@
             if ( animationHUDHealthFX > 0 )
             {
                 float alpha = opacityHealthFx * animationHUDHealthFX / ShooterSetting.Performance.TICKS_HEALTH_FX;
-                Shooter.game.engine.gl.view.drawOrthoBitmapBytes( healthPane, 0, 0, alpha );
+                Shooter.game.engine.glView.drawOrthoBitmapBytes( healthPane, 0, 0, alpha );
             }
 
             //draw damage effect?
             if ( animationHUDDamageFX > 0 )
             {
                 float alpha = opacityDamageFx * animationHUDDamageFX / animationHUDDamageFXticks;
-                Shooter.game.engine.gl.view.drawOrthoBitmapBytes( damagePane, 0, 0, alpha );
+                Shooter.game.engine.glView.drawOrthoBitmapBytes( damagePane, 0, 0, alpha );
             }
 
             //draw dying effect
             if ( drawDyingFx )
             {
                 float alpha = (float)animationHUDDyingFX / (float) ShooterSetting.Performance.TICKS_DYING_FX;
-                Shooter.game.engine.gl.view.drawOrthoBitmapBytes( damagePane, 0, 0, alpha );
+                Shooter.game.engine.glView.drawOrthoBitmapBytes( damagePane, 0, 0, alpha );
             }
 
             //draw dead effect
             if ( drawDeadFx )
             {
                 float alpha = (float)animationHUDDeadFX / (float) ShooterSetting.Performance.TICKS_DEAD_FX;
-                Shooter.game.engine.gl.view.drawOrthoBitmapBytes( deadPane, 0, 0, alpha );
+                Shooter.game.engine.glView.drawOrthoBitmapBytes( deadPane, 0, 0, alpha );
             }
 
             if ( drawAdrenalineFx )
             {
                 float alpha = 0.05f;
-                Shooter.game.engine.gl.view.drawOrthoBitmapBytes( adrenalinePane, 0, 0, alpha );
+                Shooter.game.engine.glView.drawOrthoBitmapBytes( adrenalinePane, 0, 0, alpha );
             }
 
             //draw reincarnation effect
             if ( drawReincarnationFx )
             {
                 float size = ( 5 * (float)animationHUDReincarnationFX ) / ShooterSetting.Performance.TICKS_DEAD_FX;
-                Shooter.game.engine.gl.view.drawOrthoBitmapBytes( gli, (int)( ( Shooter.game.engine.gl.panel.width - gli.width * size ) / 2 ), (int)( ( Shooter.game.engine.gl.panel.height - gli.height * size ) / 2 ), 1.0f, size, size, false );
+                Shooter.game.engine.glView.drawOrthoBitmapBytes( gli, (int)( ( Shooter.game.engine.frame.width - gli.width * size ) / 2 ), (int)( ( Shooter.game.engine.frame.height - gli.height * size ) / 2 ), 1.0f, size, size, false );
             }
         }
 

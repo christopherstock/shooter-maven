@@ -14,18 +14,18 @@
     /*******************************************************************************************************************
     *   The application's main thread. Start this thread to run the application.
     *******************************************************************************************************************/
-    public class MainStateIngame
+    public class Ingame
     {
-        private static          MainStateIngame          singleton                   = null;
+        private static Ingame singleton                   = null;
 
-        private MainStateIngame()
+        private Ingame()
         {
             //preloader constructor
         }
 
-        public static MainStateIngame getSingleton()
+        public static Ingame getSingleton()
         {
-            if ( singleton == null ) singleton = new MainStateIngame();
+            if ( singleton == null ) singleton = new Ingame();
             return singleton;
         }
 
@@ -35,7 +35,7 @@
             if ( Level.currentSection() != null )
             {
                 //reset gl
-                Shooter.game.engine.gl.view.clearGl( Level.currentSection().getBackgroundColor() );
+                Shooter.game.engine.glView.clearGl( Level.currentSection().getBackgroundColor() );
 
                 //get camera from player's position and orientation
                 LibViewSet cam = Shooter.game.engine.player.getCameraPositionAndRotation();
@@ -44,7 +44,7 @@
                 Level.currentSection().drawBg( cam );
 
                 //set player's camera
-                Shooter.game.engine.gl.view.setCamera( cam );
+                Shooter.game.engine.glView.setCamera( cam );
 
                 //this would be the right time to enable lights
                 //draw all game components
@@ -61,7 +61,7 @@
                 Shooter.game.engine.player.drawStandingCircle();          //draw circle on players bottom location
 
                 //flush face queue to force an immediate redraw
-                Shooter.game.engine.gl.view.flushFaceQueue( Shooter.game.engine.player.getAnchor() );
+                Shooter.game.engine.glView.flushFaceQueue( Shooter.game.engine.player.getAnchor() );
             }
 
             //draw hud

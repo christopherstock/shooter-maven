@@ -12,7 +12,7 @@
     /*******************************************************************************************************************
     *   The Panel is completely obsolete!.
     *******************************************************************************************************************/
-    public class LibGLPanel implements WindowListener
+    public class LibFrame implements WindowListener
     {
         private                     JFrame                  frame                   = null;
         private                     Canvas                  canvas                  = null;
@@ -20,7 +20,7 @@
         public                      int                     width                   = 0;
         public                      int                     height                  = 0;
 
-        public LibGLPanel( String aTitle, int width, int height, BufferedImage frameIcon )
+        public LibFrame(String aTitle, int width, int height, BufferedImage frameIcon )
         {
             this.canvas = new Canvas();
             this.frame = new JFrame();

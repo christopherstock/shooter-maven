@@ -23,7 +23,7 @@
 
         public static enum ShotType
         {
-            /** a non-striking view */
+            /** a non-striking glView */
             EViewOnly,
             /** a striking projectile */
             ESharpAmmo,

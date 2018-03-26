@@ -79,7 +79,7 @@
             this.iImgAvatar = new LibGLImage( aImage.img, ImageUsage.EOrtho, ShooterDebug.glImage, false );
 
             //calculate text
-            String[] textLinesS = LibStrings.breakLinesOptimized( Shooter.game.engine.gl.panel.getGraphics(), this.iText, this.iFont, Shooter.game.engine.gl.panel.width - 3 * OffsetsOrtho.EAvatarMsgX - this.iImgAvatar.width - OffsetsOrtho.EBorderHudX );
+            String[] textLinesS = LibStrings.breakLinesOptimized( Shooter.game.engine.frame.getGraphics(), this.iText, this.iFont, Shooter.game.engine.frame.width - 3 * OffsetsOrtho.EAvatarMsgX - this.iImgAvatar.width - OffsetsOrtho.EBorderHudX );
             this.textLines = new LibGLImage[ textLinesS.length ];
             for (int i = 0; i < this.textLines.length; ++i )
             {
@@ -87,10 +87,10 @@
             }
             this.blockHeight = (this.textLines.length * this.textLines[ 0 ].height ); //+ ( ( textLines.length - 1 ) * ShooterSetting.HUD.LINE_SPACING_RATIO_EMPTY_LINES ) );
             this.iDrawX = 3 * OffsetsOrtho.EAvatarMsgX + this.iImgAvatar.width;
-            this.iDrawY = Shooter.game.engine.gl.panel.height - OffsetsOrtho.EAvatarMsgY - this.textLines[ 0 ].height - OffsetsOrtho.EAvatarBgPanelHeight / 2 + this.blockHeight / 2;
+            this.iDrawY = Shooter.game.engine.frame.height - OffsetsOrtho.EAvatarMsgY - this.textLines[ 0 ].height - OffsetsOrtho.EAvatarBgPanelHeight / 2 + this.blockHeight / 2;
 
             //create bar if not done
-            this.bgBar = LibGLImage.getFullOpaque( bgColor, Shooter.game.engine.gl.panel.width - this.iImgAvatar.width - 3 * OffsetsOrtho.EAvatarMsgX, this.iImgAvatar.height, ShooterDebug.glImage );
+            this.bgBar = LibGLImage.getFullOpaque( bgColor, Shooter.game.engine.frame.width - this.iImgAvatar.width - 3 * OffsetsOrtho.EAvatarMsgX, this.iImgAvatar.height, ShooterDebug.glImage );
         }
 
         public static void showMessage(AvatarImage img, String text, Color bgColor )
@@ -169,7 +169,7 @@
 
         private void draw()
         {
-            //get panel's current alpha
+            //get frame's current alpha
             float alphaBgBar      = 0.0f;
             float alphaAvatarImg  = 0.0f;
             switch ( animState )
@@ -201,16 +201,16 @@
             }
 
             //draw bg bar
-            Shooter.game.engine.gl.view.drawOrthoBitmapBytes(this.bgBar, 2 * OffsetsOrtho.EAvatarMsgX + this.iImgAvatar.width, Shooter.game.engine.gl.panel.height - OffsetsOrtho.EAvatarMsgY - this.bgBar.height, alphaBgBar );
+            Shooter.game.engine.glView.drawOrthoBitmapBytes(this.bgBar, 2 * OffsetsOrtho.EAvatarMsgX + this.iImgAvatar.width, Shooter.game.engine.frame.height - OffsetsOrtho.EAvatarMsgY - this.bgBar.height, alphaBgBar );
 
             //draw avatar image
-            Shooter.game.engine.gl.view.drawOrthoBitmapBytes(this.iImgAvatar, OffsetsOrtho.EAvatarMsgX, Shooter.game.engine.gl.panel.height - OffsetsOrtho.EAvatarMsgY - this.bgBar.height, alphaAvatarImg );
+            Shooter.game.engine.glView.drawOrthoBitmapBytes(this.iImgAvatar, OffsetsOrtho.EAvatarMsgX, Shooter.game.engine.frame.height - OffsetsOrtho.EAvatarMsgY - this.bgBar.height, alphaAvatarImg );
 
             //draw text
             int y = this.iDrawY;
             for ( LibGLImage textLine : this.textLines)
             {
-                Shooter.game.engine.gl.view.drawOrthoBitmapBytes(textLine, this.iDrawX, y, alphaAvatarImg);
+                Shooter.game.engine.glView.drawOrthoBitmapBytes(textLine, this.iDrawX, y, alphaAvatarImg);
                 y -= textLine.height;
             }
         }

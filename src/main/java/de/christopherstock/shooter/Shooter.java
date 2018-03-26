@@ -6,8 +6,7 @@
     /*******************************************************************************************************************
     *   The main class.
     *
-    *   TODO    prune LibGL to ShooterEngine!
-    *   TODO    prune LibGLPanel
+    *   TODO    prune LibFrame
     *
     *   TODO    Prune all those super-confusing interfaces and abstract superclasses in LWJGL-Panel systems!
     *   TODO    Different heights for particle effects.
@@ -29,7 +28,7 @@
     *   TODO    Complete version 4.0.0.
     *
     *   TODO    let random assign different topping positions for ShooterWallCollection.createDeskOffice
-    *   TODO    slow panning for zoomed view?
+    *   TODO    slow panning for zoomed glView?
     *   TODO    Refactor the Artefact-System.
     *   TODO    Simple switch for lighting?
     *   TODO    Prefix 'Shooter' only for main and base classes!
