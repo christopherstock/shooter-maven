@@ -9,7 +9,6 @@
     {
         public                      LibGLView           view                            = null;
         public                      LibGLPanel          panel                           = null;
-        public                      LibGLForm           form                            = null;
 
         public void init
         (
@@ -23,13 +22,9 @@
             //init gl ui components
 
             //init panel
-            this.panel = new LibGLPanel();
-
-            //show lwjgl form
-            this.form = new LibGLForm
+            this.panel = new LibGLPanel
             (
                 formTitle,
-                this.panel.getNativePanel(),
                 formWidth,
                 formHeight,
                 iconImage
