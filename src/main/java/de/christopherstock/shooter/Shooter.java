@@ -6,8 +6,6 @@
     /*******************************************************************************************************************
     *   The main class.
     *
-    *   TODO    prune LibFrame
-    *
     *   TODO    Prune all those super-confusing interfaces and abstract superclasses in LWJGL-Panel systems!
     *   TODO    Different heights for particle effects.
     *   TODO    Mayflower branding and textures ( posters etc. ).

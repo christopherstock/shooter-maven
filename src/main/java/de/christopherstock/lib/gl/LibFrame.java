@@ -17,18 +17,15 @@
         private                     JFrame                  frame                   = null;
         private                     Canvas                  canvas                  = null;
 
-        public                      int                     width                   = 0;
-        public                      int                     height                  = 0;
-
-        public LibFrame(String aTitle, int width, int height, BufferedImage frameIcon )
+        public LibFrame( String title, int width, int height, BufferedImage frameIcon )
         {
-            this.canvas = new Canvas();
             this.frame = new JFrame();
+            this.canvas = new Canvas();
 
             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
             this.frame.setIconImage( frameIcon );
-            this.frame.setTitle(                  aTitle                          );
+            this.frame.setTitle(                  title                          );
             this.frame.setDefaultCloseOperation(  WindowConstants.EXIT_ON_CLOSE            );
 
             this.frame.setLocation( ( screenSize.width - width ) / 2, ( screenSize.height - height ) / 2 );
