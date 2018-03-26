@@ -144,7 +144,7 @@
             GL11.glEnable(          GL11.GL_POLYGON_SMOOTH                                  );      //enable antialiasing for polygons
 */
             //set perspective
-//            GLU.gluPerspective( VIEW_ANGLE, ( (float)LibGL3D.panel.width / (float)LibGL3D.panel.height ), VIEW_MIN, VIEW_MAX );
+//            GLU.gluPerspective( VIEW_ANGLE, ( (float)LibGL.panel.width / (float)LibGL.panel.height ), VIEW_MIN, VIEW_MAX );
 
             //init all textures HANGS ??
             Shooter.game.engine.gl.panel.getNativePanel().requestFocus();

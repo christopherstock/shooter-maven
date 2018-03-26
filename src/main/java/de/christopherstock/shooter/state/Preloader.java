@@ -36,7 +36,12 @@
             Shooter.game.engine.gl.view.clearGl( LibColors.EWhite );
 
             // draw bg image
-            Shooter.game.engine.gl.view.drawOrthoBitmapBytes( this.bgImage, ( Shooter.game.engine.gl.panel.width - this.bgImage.width ) / 2, Shooter.game.engine.gl.panel.height - this.bgImage.height - 100 );
+            Shooter.game.engine.gl.view.drawOrthoBitmapBytes
+            (
+                this.bgImage,
+                ( Shooter.game.engine.gl.panel.width - this.bgImage.width ) / 2,
+                Shooter.game.engine.gl.panel.height / 2 + ( ( Shooter.game.engine.gl.panel.height / 2 ) - this.bgImage.height ) / 2
+            );
 
             // draw progress
             LibGLImage text = LibGLImage.getFromString( this.percentageLoaded + " %", Fonts.EPreloader, LibColors.EOrangeMF.colABGR, null, null, ShooterDebug.glImage );

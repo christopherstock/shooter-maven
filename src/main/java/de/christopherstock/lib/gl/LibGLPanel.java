@@ -2,8 +2,7 @@
     package de.christopherstock.lib.gl;
 
     import  java.awt.*;
-
-    import de.christopherstock.shooter.Shooter;
+    import  de.christopherstock.shooter.Shooter;
     import  org.lwjgl.opengl.*;
 
     /*******************************************************************************************************************

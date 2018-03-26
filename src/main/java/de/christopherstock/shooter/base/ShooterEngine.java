@@ -42,7 +42,7 @@
         public                      Player                  player                      = null;
 
         /** The gl system. */
-        public                      LibGL3D                 gl                          = null;
+        public LibGL gl                          = null;
 
         /***************************************************************************************************************
         *   Inits the ui.
@@ -93,7 +93,7 @@
                 ShooterSetting.Form.FORM_HEIGHT = screenSize.height;
             }
 
-            this.gl = new LibGL3D();
+            this.gl = new LibGL();
             this.gl.init
             (
                 ShooterSetting.Form.FORM_WIDTH,

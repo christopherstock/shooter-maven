@@ -5,7 +5,7 @@
     import  org.lwjgl.opengl.*;
     import  de.christopherstock.lib.*;
 
-    public class LibGL3D
+    public class LibGL
     {
         public                      LibGLView           view                            = null;
         public                      LibGLPanel          panel                           = null;
