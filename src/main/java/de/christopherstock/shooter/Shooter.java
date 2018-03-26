@@ -6,7 +6,8 @@
     /*******************************************************************************************************************
     *   The main class.
     *
-    *   TODO    punre LibGLPanel
+    *   TODO    prune LibGLCanvas!
+    *   TODO    prune LibGLPanel
     *
     *   TODO    Prune all those super-confusing interfaces and abstract superclasses in LWJGL-Panel systems!
     *   TODO    Different heights for particle effects.

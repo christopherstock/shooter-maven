@@ -14,7 +14,7 @@
     *******************************************************************************************************************/
     public class LibGLPanel implements WindowListener
     {
-        private                     LibGLFrame              nativeFrame             = null;
+        private                     JFrame                  frame                   = null;
         private                     LibGLCanvas             canvas                  = null;
 
         private                     BufferedImage           iconImage               = null;
@@ -26,11 +26,10 @@
         {
             this.iconImage = aIconImage;
 
+            this.canvas = new LibGLCanvas();
+
             try
             {
-                this.canvas = new LibGLCanvas();
-
-                //set canvas focusable
                 this.canvas.setFocusable( true );
             }
             catch ( Exception e )
@@ -38,37 +37,35 @@
                 //ignore exception
             }
 
-            // TODO move to LibGLFrame!
-
             //instanciate JFrame
-            this.nativeFrame = new LibGLFrame();
+            this.frame = new JFrame();
 
             //get screen environment
             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
-            this.nativeFrame.setIconImage(this.iconImage);
-            this.nativeFrame.setTitle(                  aTitle                          );
-            this.nativeFrame.setDefaultCloseOperation(  WindowConstants.EXIT_ON_CLOSE            );
+            this.frame.setIconImage(this.iconImage);
+            this.frame.setTitle(                  aTitle                          );
+            this.frame.setDefaultCloseOperation(  WindowConstants.EXIT_ON_CLOSE            );
 
-            this.nativeFrame.setLocation( ( screenSize.width - width ) / 2, ( screenSize.height - height ) / 2 );
-            this.nativeFrame.setSize( width, height );
+            this.frame.setLocation( ( screenSize.width - width ) / 2, ( screenSize.height - height ) / 2 );
+            this.frame.setSize( width, height );
 
-            this.nativeFrame.setResizable(              false                           );
-            this.nativeFrame.setUndecorated(            true                            );
+            this.frame.setResizable(              false                           );
+            this.frame.setUndecorated(            true                            );
 
             //add listener
-            this.nativeFrame.addWindowListener(         this                            );
+            this.frame.addWindowListener(         this                            );
 
             //set canvas as content pane
-            this.nativeFrame.getContentPane().add(      this.canvas                     );
+            this.frame.getContentPane().add(      this.canvas                     );
 
             //show form
-            this.nativeFrame.setVisible(                true                            );
+            this.frame.setVisible(                true                            );
 
             //stick in foreground ( may raise a SucurityException )
             try
             {
-                this.nativeFrame.setAlwaysOnTop(        true                            );
+                this.frame.setAlwaysOnTop(        true                            );
             }
             catch ( SecurityException se )
             {
@@ -76,7 +73,7 @@
             }
         }
 
-        public final Component getNativePanel()
+        public final Component getCanvas()
         {
             return this.canvas;
         }
@@ -92,7 +89,7 @@
 
         public Graphics2D getGraphics()
         {
-            return (Graphics2D) this.getNativePanel().getGraphics();
+            return (Graphics2D) this.getCanvas().getGraphics();
         }
 
         public void windowClosing( WindowEvent arg0 )

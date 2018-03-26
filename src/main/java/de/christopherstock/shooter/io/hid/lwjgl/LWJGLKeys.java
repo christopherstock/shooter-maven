@@ -62,7 +62,7 @@
                 //destroy and recreate keyboard to release the alt keys
                 try
                 {
-                    //LibGL.panel.getNativePanel().requestFocus();
+                    //LibGL.panel.getCanvas().requestFocus();
 
                     Keyboard.destroy();
                     Keyboard.create();

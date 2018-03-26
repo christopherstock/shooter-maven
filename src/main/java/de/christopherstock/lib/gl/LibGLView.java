@@ -84,10 +84,10 @@
                 Display.setFullscreen( false );
                 this.debug.out( "setting fullscreen false Ok" );
 
-                //((Canvas)panel.getNativePanel() ).setFocusable(false);
+                //((Canvas)panel.getCanvas() ).setFocusable(false);
 
                 //set native canvas as parent displayable
-                Display.setParent( (Canvas) panel.getNativePanel() );
+                Display.setParent( (Canvas) panel.getCanvas() );
                 this.debug.out( "setting native Canvas Ok" );
 
                 //create the display
@@ -96,7 +96,7 @@
                 this.debug.out( "Display creation Ok" );
 
                 //request focus ( hangs?? )
-              //panel.getNativePanel().requestFocus();
+              //panel.getCanvas().requestFocus();
                 this.debug.out( "Requesting focus Ok" );
             }
             catch ( LWJGLException e)
@@ -147,7 +147,7 @@
 //            GLU.gluPerspective( VIEW_ANGLE, ( (float)LibGL.panel.width / (float)LibGL.panel.height ), VIEW_MIN, VIEW_MAX );
 
             //init all textures HANGS ??
-            Shooter.game.engine.gl.panel.getNativePanel().requestFocus();
+            Shooter.game.engine.gl.panel.getCanvas().requestFocus();
         }
 
         public void clearFaceQueue()
