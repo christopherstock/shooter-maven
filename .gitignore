@@ -1,6 +1,12 @@
-/target
-/.settings
-/.project
+
+# IDEA and ECLIPSE settings folders
 /.classpath
 /.idea
-/shooter-maven.iml
+/.project
+/.settings
+
+# maven build folder
+/target
+
+# IDEA module files
+*.iml
