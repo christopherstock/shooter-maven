@@ -25,7 +25,6 @@
             this.canvas = new Canvas();
             this.frame = new JFrame();
 
-
             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
             this.frame.setIconImage( frameIcon );
@@ -46,7 +45,7 @@
 
             //show form
             this.frame.setVisible(                true                            );
-
+/*
             //stick in foreground ( may raise a SucurityException )
             try
             {
@@ -56,6 +55,7 @@
             {
                 //ignore exception
             }
+*/
         }
 
         public final Canvas getCanvas()

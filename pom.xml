@@ -17,7 +17,6 @@
         <profile>
             <id>development</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
                 <runMode>development</runMode>
@@ -27,6 +26,7 @@
         <profile>
             <id>production</id>
             <activation>
+                <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
                 <runMode>production</runMode>

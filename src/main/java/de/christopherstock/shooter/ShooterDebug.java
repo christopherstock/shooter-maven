@@ -46,7 +46,7 @@
         /***************************************************************************************************************
         *   The global debug switch that disables all debug outputs.
         ***************************************************************************************************************/
-        public      static          boolean         DEBUG_MODE                          = YES;
+        public      static          boolean         DEBUG_MODE                          = NO;
 
         public      static  final   boolean         DEBUG_DRAW_PLAYER_CIRCLE            = YES;
         public      static  final   boolean         DEBUG_DRAW_ITEM_CIRCLE              = YES;
@@ -91,9 +91,9 @@
 
         public static void checkDebugMode( String[] args )
         {
-            if ( args.length > 0 && args[ 0 ].equals( "--runMode production" ) )
+            if ( args.length > 0 && args[ 0 ].equals( "--runMode development" ) )
             {
-                ShooterDebug.DEBUG_MODE = ShooterDebug.NO;
+                ShooterDebug.DEBUG_MODE = ShooterDebug.YES;
             }
         }
     }

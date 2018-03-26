@@ -39,8 +39,8 @@
             Shooter.game.engine.gl.view.drawOrthoBitmapBytes
             (
                 this.bgImage,
-                ( Shooter.game.engine.gl.panel.width - this.bgImage.width ) / 2,
-                Shooter.game.engine.gl.panel.height / 2 + ( ( Shooter.game.engine.gl.panel.height / 2 ) - this.bgImage.height ) / 2
+                ( Shooter.game.engine.gl.panel.width  - this.bgImage.width  ) / 2,
+                ( Shooter.game.engine.gl.panel.height - this.bgImage.height ) / 2
             );
 
             // draw progress
@@ -48,8 +48,8 @@
             Shooter.game.engine.gl.view.drawOrthoBitmapBytes
             (
                 text,
-                ( Shooter.game.engine.gl.panel.width  - text.width  ) / 2,
-                ( Shooter.game.engine.gl.panel.height - text.height ) / 2
+                ( Shooter.game.engine.gl.panel.width      - text.width  ) / 2,
+                ( Shooter.game.engine.gl.panel.height / 2 - text.height ) / 2
             );
         }
 
