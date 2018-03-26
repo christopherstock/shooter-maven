@@ -18,8 +18,12 @@
         }
 
         LibVertex getAnchor();
+
         HitPointCarrier getHitPointCarrier();
+
         float getCarriersFaceAngle();
+
         Vector<LibHitPoint> launchShot(LibShot shot);
-        void launchAction(LibCylinder aCylinder, Object gadget, float faceAngle);
+
+        void launchAction(LibCylinder cylinder, Object gadget, float faceAngle );
     }

@@ -243,7 +243,7 @@
             return null;
         }
 
-        public final void launchAction( LibCylinder aCylinder, Object gadget, float faceAngle )
+        public final void launchAction(LibCylinder cylinder, Object gadget, float faceAngle )
         {
             //actions have no effect on items
         }

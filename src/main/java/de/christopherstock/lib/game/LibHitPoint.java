@@ -32,7 +32,7 @@
         private                     LibColors[]             iSliverColors               = null;
         private                     float                   iHorzDistance               = 0.0f;
         private                     float                   iHorzSliverAngle            = 0.0f;
-        private float                   iVertShotAngle              = 0.0f;
+        private                     float                   iVertShotAngle              = 0.0f;
         private                     float                   iVertSliverAngle            = 0.0f;
         private                     int                     iEllipseSegments            = 0;
 

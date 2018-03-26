@@ -297,13 +297,13 @@
             return (this.iAliveState == BotAliveState.EAlive ? this.iCylinder.checkCollisionHorz( aCylinder ) : false );
         }
 
-        public final void launchAction( LibCylinder aCylinder, Object artefact, float faceAngle )
+        public final void launchAction(LibCylinder cylinder, Object artefact, float faceAngle )
         {
             //only if alive
             if (this.iAliveState == BotAliveState.EAlive )
             {
                 //check if collision appears
-                if (this.iCylinder.checkCollisionHorz( aCylinder ) )
+                if (this.iCylinder.checkCollisionHorz(cylinder) )
                 {
                     float anglePlayerToWall = LibMath.getAngleCorrect( Shooter.game.engine.player.getCylinder().getCenterHorz(), this.iCylinder.getCenterHorz() );
                     anglePlayerToWall = LibMath.normalizeAngle( -anglePlayerToWall );
