@@ -11,51 +11,51 @@
     *******************************************************************************************************************/
     class LibFXSliver extends LibFX
     {
-        public                      LibColors[]         iSliverColors               = null;
-        public                      int                 iParticlesToLaunch          = 0;
-        public                      float               iAngleMod                   = 0.0f;
-        public                      FXGravity           iGravity                    = null;
-        public                      float               iBaseZ                      = 0;
+        public                      LibColors[]         sliverColors            = null;
+        public                      int                 particlesToLaunch       = 0;
+        public                      float               angleMod                = 0.0f;
+        public                      FXGravity           gravity                 = null;
+        public                      float               baseZ                   = 0;
 
         protected LibFXSliver(LibDebug aDebug, LibVertex aAnchor, LibColors[] aSliverColors, LibParticleQuantity particleQuantity, float aAngleMod, int aLifetime, FXSize aSize, FXGravity aGravity, float aBaseZ, int aFadeOutTicks )
         {
             super( aDebug, aAnchor, aLifetime, aFadeOutTicks );
 
-            this.iSliverColors = aSliverColors;
-            this.iAngleMod = aAngleMod;
-            this.iSize = aSize;
-            this.iGravity = aGravity;
-            this.iBaseZ = aBaseZ;
+            this.sliverColors = aSliverColors;
+            this.angleMod = aAngleMod;
+            this.size = aSize;
+            this.gravity = aGravity;
+            this.baseZ = aBaseZ;
 
             switch ( particleQuantity )
             {
                 case ETiny:
                 {
-                    this.iParticlesToLaunch = LibMath.getRandom( 1, 3 );
+                    this.particlesToLaunch = LibMath.getRandom( 1, 3 );
                     break;
                 }
 
                 case ELow:
                 {
-                    this.iParticlesToLaunch = LibMath.getRandom( 3, 6 );
+                    this.particlesToLaunch = LibMath.getRandom( 3, 6 );
                     break;
                 }
 
                 case EMedium:
                 {
-                    this.iParticlesToLaunch = LibMath.getRandom( 6, 12 );
+                    this.particlesToLaunch = LibMath.getRandom( 6, 12 );
                     break;
                 }
 
                 case EHigh:
                 {
-                    this.iParticlesToLaunch = LibMath.getRandom( 10, 20 );
+                    this.particlesToLaunch = LibMath.getRandom( 10, 20 );
                     break;
                 }
 
                 case EMassive:
                 {
-                    this.iParticlesToLaunch = LibMath.getRandom( 15, 30 );
+                    this.particlesToLaunch = LibMath.getRandom( 15, 30 );
                     break;
                 }
             }
@@ -63,28 +63,28 @@
 
         protected final void launch( float angle )
         {
-            for (int i = 0; i < this.iParticlesToLaunch; ++i )
+            for (int i = 0; i < this.particlesToLaunch; ++i )
             {
                 float radius    = 0.01f * LibMath.getRandom( 1, 30 );
-                float angleMod  = ( i * this.iAngleMod * 2 / this.iParticlesToLaunch) - this.iAngleMod;
+                float angleMod  = ( i * this.angleMod * 2 / this.particlesToLaunch) - this.angleMod;
 
                 LibFXManager.start
                 (
                     new LibFXPoint
                     (
-                            this.iDebug,
-                            this.iBaseZ,
+                            this.debug,
+                            this.baseZ,
                         FXType.ESliver,
-                            this.iSliverColors[ LibMath.getRandom( 0, this.iSliverColors.length - 1 ) ],
+                            this.sliverColors[ LibMath.getRandom( 0, this.sliverColors.length - 1 ) ],
                         angle + angleMod,
-                            this.iAnchor.x + radius * LibMath.sinDeg( angle ),
-                            this.iAnchor.y + radius * LibMath.cosDeg( angle ),
-                            this.iAnchor.z,
-                            this.iSize,
+                            this.anchor.x + radius * LibMath.sinDeg( angle ),
+                            this.anchor.y + radius * LibMath.cosDeg( angle ),
+                            this.anchor.z,
+                            this.size,
                         0,
-                            this.iLifetime,
-                            this.iGravity,
-                            this.iFadeOutTicks,
+                            this.lifetime,
+                            this.gravity,
+                            this.fadeOutTicks,
                         null //new Sprite( Others.ESprite1, new LibVertex( iPoint.x, iPoint.y, iPoint.z ), LibScalation.ELowerThreeQuarters, WallCollidable.ENo, WallTex.ESliver1 )
                     )
                 );

@@ -43,33 +43,33 @@
         /***************************************************************************************************************
         *   Creates a vertex ignoring the texture coordinates.
         ***************************************************************************************************************/
-        public LibVertex( float aX, float aY, float aZ )
+        public LibVertex( float x, float y, float z )
         {
-            this( aX, aY, aZ, 0.0f, 0.0f );
+            this( x, y, z, 0.0f, 0.0f );
         }
 
         /***************************************************************************************************************
         *   Creates a vertex with specified texture coordinates.
         ***************************************************************************************************************/
-        public LibVertex( LibVertex aVertex )
+        public LibVertex( LibVertex vertex )
         {
-            this.x = aVertex.x;
-            this.y = aVertex.y;
-            this.z = aVertex.z;
-            this.u = aVertex.u;
-            this.v = aVertex.v;
+            this.x = vertex.x;
+            this.y = vertex.y;
+            this.z = vertex.z;
+            this.u = vertex.u;
+            this.v = vertex.v;
         }
 
         /***************************************************************************************************************
         *   Creates a vertex with specified texture coordinates.
         ***************************************************************************************************************/
-        public LibVertex( float aX, float aY, float aZ, float aU, float aV )
+        public LibVertex( float x, float y, float z, float u, float v )
         {
-            this.x = aX;
-            this.y = aY;
-            this.z = aZ;
-            this.u = aU;
-            this.v = aV;
+            this.x = x;
+            this.y = y;
+            this.z = z;
+            this.u = u;
+            this.v = v;
         }
 
         /***************************************************************************************************************
@@ -79,11 +79,11 @@
         {
             return new LibVertex
             (
-                    this.x,
-                    this.y,
-                    this.z,
-                    this.u,
-                    this.v
+                this.x,
+                this.y,
+                this.z,
+                this.u,
+                this.v
             );
         }
 
@@ -94,11 +94,11 @@
             this.z += transZ;
         }
 
-        public void translate( Point3f by )
+        public void translate( Point3f delta )
         {
-            this.x += by.x;
-            this.y += by.y;
-            this.z += by.z;
+            this.x += delta.x;
+            this.y += delta.y;
+            this.z += delta.z;
         }
 
         public void rotateXYZ( float rotX, float rotY, float rotZ, LibVertex alternateAnchor )

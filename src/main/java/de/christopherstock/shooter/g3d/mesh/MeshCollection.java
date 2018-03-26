@@ -57,17 +57,17 @@
         /***************************************************************************************************************
         *   Translates all faces.
         *
-        *   @param  tX  The translation for axis x.
-        *   @param  tY  The translation for axis y.
-        *   @param  tZ  The translation for axis z.
+        *   @param  x  The translation for axis x.
+        *   @param  y  The translation for axis y.
+        *   @param  z  The translation for axis z.
         ***************************************************************************************************************/
-        public void translate( float tX, float tY, float tZ, LibTransformationMode transformationMode )
+        public void translate(float x, float y, float z, LibTransformationMode transformationMode )
         {
             //translate all faces ( resetting the rotation! )
             for ( Mesh mesh : this.iMeshes)
             {
                 //translate and init this face
-                mesh.translate( tX, tY, tZ, transformationMode );
+                mesh.translate(x, y, z, transformationMode );
             }
         }
 

@@ -15,11 +15,11 @@
     {
         private         static          Vector<LibFXPoint>         fxPoints                    = new Vector<LibFXPoint>();
 
-        public static void launchStaticPoint(LibDebug aDebug, LibVertex vertex, LibColors col, float size, int lifetime, int aFadeOutTicks )
+        public static void launchStaticPoint( LibDebug debug, LibVertex vertex, LibColors col, float size, int lifetime, int fadeOutTicks )
         {
             LibFXPoint fx = new LibFXPoint
             (
-                aDebug,
+                debug,
                 0.0f,
                 LibFX.FXType.EStaticDebugPoint,
                 col,
@@ -31,23 +31,23 @@
                 0,
                 lifetime,
                 FXGravity.ENormal,
-                aFadeOutTicks,
+                fadeOutTicks,
                 null //new Sprite( Others.ESprite1, new LibVertex( iPoint.x, iPoint.y, iPoint.z ), LibScalation.ELowerThreeQuarters, WallCollidable.ENo, WallTex.ESliver1 )
             );
-//          fx.iLifetime  = lifetime;
-            fx.iPointSize = size;
+//          fx.lifetime  = lifetime;
+            fx.pointSize = size;
             LibFXManager.start( fx );
         }
 
-        public static void launchExplosion(LibDebug aDebug, LibVertex v, LibFX.FXSize size, LibFX.FXTime time, int lifetime, float baseZ, int aFadeOutTicks )
+        public static void launchExplosion( LibDebug debug, LibVertex v, LibFX.FXSize size, LibFX.FXTime time, int lifetime, float baseZ, int fadeOutTicks )
         {
-            LibFXExplosion fx = new LibFXExplosion( aDebug, v, size, time, lifetime, baseZ, aFadeOutTicks );
+            LibFXExplosion fx = new LibFXExplosion( debug, v, size, time, lifetime, baseZ, fadeOutTicks );
             fx.launch();
         }
 
-        public static void launchSliver(LibDebug aDebug, LibVertex v, LibColors[] sliverColors, float angle, LibParticleQuantity pq, float angleMod, int lifetime, FXSize size, FXGravity gravity, float baseZ, int aFadeoutTicks )
+        public static void launchSliver( LibDebug debug, LibVertex v, LibColors[] sliverColors, float angle, LibParticleQuantity pq, float angleMod, int lifetime, FXSize size, FXGravity gravity, float baseZ, int fadeoutTicks )
         {
-            LibFXSliver fx = new LibFXSliver( aDebug, v, sliverColors, pq, angleMod, lifetime, size, gravity, baseZ, aFadeoutTicks );
+            LibFXSliver fx = new LibFXSliver( debug, v, sliverColors, pq, angleMod, lifetime, size, gravity, baseZ, fadeoutTicks );
             fx.launch( angle );
         }
 
@@ -76,7 +76,7 @@
                 //do not draw delayed points
                 if ( !fxPoint.isDelayedBefore() )
                 {
-                    if ( fxPoint.iType == LibFX.FXType.EStaticDebugPoint )
+                    if ( fxPoint.type == LibFX.FXType.EStaticDebugPoint )
                     {
                         fxPoint.draw( LibAlign3D.AXIS_X );
                         fxPoint.draw( LibAlign3D.AXIS_Y );
@@ -84,7 +84,7 @@
                     }
                     else
                     {
-                        fxPoint.draw( fxPoint.iAlign3D );
+                        fxPoint.draw( fxPoint.align3D);
                     }
                 }
             }
@@ -108,7 +108,7 @@
             fxPoints.removeAllElements();
         }
 
-        protected static void start(LibFXPoint point )
+        protected static void start( LibFXPoint point )
         {
             //adding the fxpoint to the vector makes it active
             fxPoints.addElement( point );

@@ -27,15 +27,15 @@
         EDecuple(               10.0f   ),
         ;
 
-        private         float           iScaleFactor            = 0.0f;
+        private         float               scaleFactor             = 0.0f;
 
-        private LibScalation(float aScaleFactor )
+        private LibScalation( float scaleFactor )
         {
-            this.iScaleFactor = aScaleFactor;
+            this.scaleFactor = scaleFactor;
         }
 
         public final float getScaleFactor()
         {
-            return this.iScaleFactor;
+            return this.scaleFactor;
         }
     }

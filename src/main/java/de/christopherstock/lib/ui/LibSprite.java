@@ -1,5 +1,5 @@
 
-    package de.christopherstock.lib.fx;
+    package de.christopherstock.lib.ui;
 
     import de.christopherstock.lib.LibTransformationMode;
     import  de.christopherstock.lib.g3d.*;
@@ -11,7 +11,7 @@
     {
         float getCenterZ();
 
-        void translate(float f, float g, float h, LibTransformationMode eoriginalstooriginals);
+        void translate( float f, float g, float h, LibTransformationMode eoriginalstooriginals );
 
         void draw();
 

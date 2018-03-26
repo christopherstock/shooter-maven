@@ -5,7 +5,6 @@
     import  java.awt.event.*;
     import  java.awt.image.*;
     import  javax.swing.*;
-    import  de.christopherstock.lib.*;
     import  de.christopherstock.shooter.Shooter;
 
     /*******************************************************************************************************************
@@ -90,20 +89,5 @@
         public void windowDeactivated(  WindowEvent arg0 )
         {
             //no operations
-        }
-
-        /***************************************************************************************************************
-        *   Sets lookAndFeel of the host operating system.
-        ***************************************************************************************************************/
-        public static void setLookAndFeel(LibDebug debug )
-        {
-            try
-            {
-                UIManager.setLookAndFeel( UIManager.getSystemLookAndFeelClassName() );
-            }
-            catch( Exception e )
-            {
-                debug.err( "Setting host-operating system lookAndFeel failed!\n" + e.toString() );
-            }
         }
     }

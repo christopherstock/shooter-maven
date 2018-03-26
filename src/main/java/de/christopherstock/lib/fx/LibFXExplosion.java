@@ -19,21 +19,22 @@
             LibColors.EExplosion10, LibColors.EExplosion11, LibColors.EExplosion12,
         };
 
-        private                     float               iBaseZ                          = 0;
+        private                     float baseZ = 0;
 
-        protected LibFXExplosion( LibDebug aDebug, LibVertex aAnchor, FXSize aSize, FXTime aTime, int lifetime, float aBaseZ, int aFadeOutTicks )
+        protected LibFXExplosion( LibDebug debug, LibVertex anchor, FXSize size, FXTime time, int lifetime, float baseZ, int fadeOutTicks )
         {
-            super( aDebug, aAnchor, lifetime, aFadeOutTicks );
-            this.iSize = aSize;
-            this.iTime = aTime;
-            this.iBaseZ = aBaseZ;
+            super( debug, anchor, lifetime, fadeOutTicks );
+
+            this.size  = size;
+            this.time  = time;
+            this.baseZ = baseZ;
         }
 
         protected final void launch()
         {
-            int numParticlesPerWave     = 0;
-            int numWaves                = 0;
-            switch (this.iSize)
+            int numParticlesPerWave = 0;
+            int numWaves            = 0;
+            switch ( this.size )
             {
                 case ESmall:
                 {
@@ -54,7 +55,7 @@
                 }
             }
 
-            switch (this.iTime)
+            switch (this.time)
             {
                 case EShort:
                 {
@@ -86,19 +87,19 @@
                     (
                         new LibFXPoint
                         (
-                                this.iDebug,
-                                this.iBaseZ,
+                                this.debug,
+                                this.baseZ,
                             FXType.EExplosion,
                             EXPLOSION_COLORS[ LibMath.getRandom( 0, EXPLOSION_COLORS.length - 1 ) ],
                             angle,
-                                this.iAnchor.x + radius * LibMath.sinDeg( angle ),
-                                this.iAnchor.y + radius * LibMath.cosDeg( angle ),
-                                this.iAnchor.z,
-                                this.iSize,
+                                this.anchor.x + radius * LibMath.sinDeg( angle ),
+                                this.anchor.y + radius * LibMath.cosDeg( angle ),
+                                this.anchor.z,
+                                this.size,
                             wave,
-                                this.iLifetime,
+                                this.lifetime,
                             FXGravity.ENormal,
-                                this.iFadeOutTicks,
+                                this.fadeOutTicks,
                             null //new Sprite( Others.ESprite1, new LibVertex( iPoint.x, iPoint.y, iPoint.z ), LibScalation.ELowerThreeQuarters, WallCollidable.ENo, WallTex.ESliver1 )
                         )
                     );

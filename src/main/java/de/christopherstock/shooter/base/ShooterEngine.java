@@ -8,6 +8,7 @@
     import  de.christopherstock.lib.gl.*;
     import  de.christopherstock.lib.io.*;
     import  de.christopherstock.lib.ui.LibFPS;
+    import de.christopherstock.lib.ui.LibUI;
     import  de.christopherstock.shooter.*;
     import  de.christopherstock.shooter.ShooterSetting.*;
     import  de.christopherstock.shooter.game.objects.Player;
@@ -62,7 +63,7 @@
             }
 
             //set host-os lookAndFeel
-            LibGLForm.setLookAndFeel( ShooterDebug.error );
+            LibUI.setLookAndFeel( ShooterDebug.error );
         }
 
         /***************************************************************************************************************

@@ -31,6 +31,8 @@
 
                 this.iInfo = new DataLine.Info( Clip.class, this.iAudioFormat, size );
                 this.iBytes = new byte[ size ];
+
+                //noinspection ResultOfMethodCallIgnored
                 audioInputStream.read(this.iBytes, 0, size );
                 audioInputStream.close();
             }

@@ -162,13 +162,13 @@
                     if (this.iDepthHand > DEPTH_HAND_STANDING ) this.iDepthHand = DEPTH_HAND_STANDING;
 
                     //check collision on standing up
-                    this.iParentPlayer.getCylinder().iHeight = this.iDepthTotal;
+                    this.iParentPlayer.getCylinder().height = this.iDepthTotal;
                     if ( !ShooterSetting.General.DISABLE_PLAYER_TO_WALL_COLLISIONS && Level.currentSection().checkCollisionOnWalls(this.iParentPlayer.getCylinder() ) )
                     {
                         this.iDepthEye -= SPEED_CROUCH_TOGGLE;
                         this.iDepthHand -= SPEED_CROUCH_TOGGLE;
                         this.iDepthTotal = DEPTH_TOTAL_CROUCHING;
-                        this.iParentPlayer.getCylinder().iHeight = this.iDepthTotal;
+                        this.iParentPlayer.getCylinder().height = this.iDepthTotal;
 
                         //crouch the player
                         this.iParentPlayer.iCrouching = true;

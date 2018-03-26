@@ -17,7 +17,7 @@
     {
         public static enum DrawMethod
         {
-            /** Do not draw this face if it is too distant. */
+            //Do not draw this face if it is too distant.
             //EHideIfTooDistant,
 
             /** Always draw these faces. */
@@ -109,11 +109,11 @@
         /***************************************************************************************************************
         *   Translates the ORIGINAL vertices setting the TRANSFORMED vertices.
         *
-        *   @param  tX  The x-modification value to translate all original vertices for.
-        *   @param  tY  The y-modification value to translate all original vertices for.
-        *   @param  tZ  The z-modification value to translate all original vertices for.
+        *   @param  x  The x-modification value to translate all original vertices for.
+        *   @param  y  The y-modification value to translate all original vertices for.
+        *   @param  z  The z-modification value to translate all original vertices for.
         ***************************************************************************************************************/
-        public void translate( float tX, float tY, float  tZ, LibTransformationMode transformationMode )
+        public void translate(float x, float y, float z, LibTransformationMode transformationMode )
         {
             LibVertex[] newTransformedVertices  = new LibVertex[this.iOriginalVertices.length ];
             LibVertex[] srcVertices             = null;
@@ -142,9 +142,9 @@
                 //remember to copy u and v and to make a new object!
                 newTransformedVertices[ i ] = new LibVertex
                 (
-                    srcVertices[ i ].x + tX,
-                    srcVertices[ i ].y + tY,
-                    srcVertices[ i ].z + tZ,
+                    srcVertices[ i ].x + x,
+                    srcVertices[ i ].y + y,
+                    srcVertices[ i ].z + z,
                     srcVertices[ i ].u,
                     srcVertices[ i ].v
                 );

@@ -105,7 +105,7 @@
 
             if ( !skipReach )
             {
-                this.iPitch.reachToAbsolute(this.iTargetPitch.elementAt( currentTargetPitch ), this.iTargetPitch.elementAt( currentTargetPitch ).iSpeed );
+                this.iPitch.reachToAbsolute(this.iTargetPitch.elementAt( currentTargetPitch ), this.iTargetPitch.elementAt( currentTargetPitch ).speed);
             }
 
             return reached;

@@ -16,8 +16,8 @@
 
         public  float   size    = 0.0f;
 
-        private LibHoleSize( float aSize )
+        private LibHoleSize( float size )
         {
-            this.size = aSize;
+            this.size = size;
         }
     }

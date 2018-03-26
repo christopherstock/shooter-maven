@@ -100,7 +100,7 @@
             this.iProjectile = aProjectile;
             this.iFadeOutTicks = aFadeOutTicks;
 
-            //iDebug.out( "=======================================" );
+            //debug.out( "=======================================" );
 
             //let the wearpon affect the horz- and vert-fire-angles
             this.iRotZ += irregularityHorz;
@@ -123,7 +123,7 @@
                     this.iSrcPointHorz.y - LibMath.cosDeg(this.iRotZ) * this.iShotRange
             );
             this.iLineShotHorz = new Line2D.Float(this.iSrcPointHorz, this.iEndPointHorz);
-            //iDebug.out( "SHOT LINE HORZ [" + iSrcPoint3d.x + "," + iSrcPoint3d.y + "] to [" + iEndPointHorz.x + "," + iEndPointHorz.y + "]" );
+            //debug.out( "SHOT LINE HORZ [" + iSrcPoint3d.x + "," + iSrcPoint3d.y + "] to [" + iEndPointHorz.x + "," + iEndPointHorz.y + "]" );
 
             //calculate end point and shot-line for the vertical axis
             this.iSrcPointVert = new Point2D.Float( 0.0f, (float) this.iSrcPoint3d.z );
@@ -133,7 +133,7 @@
                     this.iSrcPointVert.y - LibMath.sinDeg(this.iRotX) * this.iShotRange
             );
             this.iLineShotVert = new Line2D.Float(this.iSrcPointVert, this.iEndPointVert);
-            //iDebug.out( "SHOT LINE VERT " + iSrcPointVert + iEndPointVert );
+            //debug.out( "SHOT LINE VERT " + iSrcPointVert + iEndPointVert );
 
             //Debug.drawLine( new Vertex( 2.0f, 1.0f, 2.0f, -1.0f, -1.0f ), new Vertex( 0.0f, 0.0f, 0.0f, -1.0f, -1.0f ) );
             //Debug.drawLine( srcPointVert.x, srcPointVert.y, endPointVert.x, endPointVert.y );

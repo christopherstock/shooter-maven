@@ -21,81 +21,81 @@
     *******************************************************************************************************************/
     public class Cylinder implements LibGeomObject, LibCylinder
     {
-        private     static  final   int                 VERTICAL_DEBUG_SLICES           = 4;
+        private     static  final   int                     VERTICAL_DEBUG_SLICES               = 4;
 
-        private                     LibGameObject       iParentGameObject               = null;
-        private                     LibVertex           iAnchor                         = null;
-        private                     LibDebug            iDebug                          = null;
+        private                     LibGameObject           parentGameObject                    = null;
+        private                     LibVertex               anchor                              = null;
+        private                     LibDebug                debug                               = null;
 
         /** Current center bottom point. */
-        private                     float               iRadius                         = 0.0f;
+        private                     float                   radius                              = 0.0f;
 
-        private                     int                 iEllipseSegments                = 0;
+        private                     int                     ellipseSegments                     = 0;
 
         /** Cylinder's height. */
-        public                      float               iHeight                         = 0.0f;
-        private                     boolean             iDebugDrawBotCircles            = false;
-        private                     int                 iCollisionCheckingSteps         = 0;
-        private                     float               iBottomCollisionToleranceZ      = 0.0f;
-        private                     float               iMinBottomCollisionToleranceZ   = 0.0f;
+        public                      float                   height                              = 0.0f;
+        private                     boolean                 debugDrawBotCircles                 = false;
+        private                     int                     collisionCheckingSteps              = 0;
+        private                     float                   bottomCollisionToleranceZ           = 0.0f;
+        private                     float                   minBottomCollisionToleranceZ        = 0.0f;
 
         /** The target position for the cylinder to move to. Will be the next pos if no collisions appear. */
-        private                     LibVertex           iTarget                         = null;
+        private                     LibVertex               target                              = null;
 
-        private                     LibMaterial         iMaterial                       = null;
+        private                     LibMaterial             material                            = null;
 
         public Cylinder( LibGameObject aParentGameObject, LibVertex aAnchor, float aRadius, float aHeight, int aCollisionCheckingSteps, LibDebug aDebug, boolean aDebugDrawBotCircles, float aBottomCollisionToleranceZ, float aMinBottomCollisionToleranceZ, int aEllipseSegments, LibMaterial aMaterial )
         {
-            this.iParentGameObject = aParentGameObject;
-            this.iAnchor = aAnchor;
-            this.iRadius = aRadius;
-            this.iHeight = aHeight;
-            this.iCollisionCheckingSteps = aCollisionCheckingSteps;
-            this.iDebug = aDebug;
-            this.iDebugDrawBotCircles = aDebugDrawBotCircles;
-            this.iBottomCollisionToleranceZ = aBottomCollisionToleranceZ;
-            this.iMinBottomCollisionToleranceZ = aMinBottomCollisionToleranceZ;
-            this.iEllipseSegments = aEllipseSegments;
-            this.iMaterial = aMaterial;
+            this.parentGameObject = aParentGameObject;
+            this.anchor = aAnchor;
+            this.radius = aRadius;
+            this.height = aHeight;
+            this.collisionCheckingSteps = aCollisionCheckingSteps;
+            this.debug = aDebug;
+            this.debugDrawBotCircles = aDebugDrawBotCircles;
+            this.bottomCollisionToleranceZ = aBottomCollisionToleranceZ;
+            this.minBottomCollisionToleranceZ = aMinBottomCollisionToleranceZ;
+            this.ellipseSegments = aEllipseSegments;
+            this.material = aMaterial;
         }
 
         public final void update( float pX, float pY, float pZ, float newHeight )
         {
-            this.iAnchor = new LibVertex( pX, pY, pZ );
+            this.anchor = new LibVertex( pX, pY, pZ );
 
             //unchanged
             //radius = RADIUS;
-            this.iHeight = newHeight;
+            this.height = newHeight;
 
         }
 
         public final void drawDebug()
         {
-            if (this.iDebugDrawBotCircles)
+            if (this.debugDrawBotCircles)
             {
                 //Debug.bot.out( "drawing bot .." );
                 for ( int i = 0; i <= VERTICAL_DEBUG_SLICES; ++i )
                 {
-                    new LibFaceEllipseFloor(this.iDebug, null, LibColors.ERed, this.iAnchor.x, this.iAnchor.y, this.iAnchor.z + ( i * this.iHeight / VERTICAL_DEBUG_SLICES ), this.iRadius, this.iRadius, this.iEllipseSegments).draw();
+                    new LibFaceEllipseFloor(this.debug, null, LibColors.ERed, this.anchor.x, this.anchor.y, this.anchor.z + ( i * this.height / VERTICAL_DEBUG_SLICES ), this.radius, this.radius, this.ellipseSegments).draw();
                 }
             }
         }
 
         public final Point2D.Float getCenterHorz()
         {
-            return new Point2D.Float(this.iAnchor.x, this.iAnchor.y );
+            return new Point2D.Float(this.anchor.x, this.anchor.y );
         }
 
         public final void setNewAnchor( LibVertex newAnk, boolean b, LibTransformationMode tm )
         {
-            this.iAnchor.x = newAnk.x;
-            this.iAnchor.y = newAnk.y;
-            this.iAnchor.z = newAnk.z;
+            this.anchor.x = newAnk.x;
+            this.anchor.y = newAnk.y;
+            this.anchor.z = newAnk.z;
         }
 
         public final void translate( float x, float y, float z, LibTransformationMode tm )
         {
-            this.iAnchor.translate( x, y, z );
+            this.anchor.translate( x, y, z );
         }
 
         public final Vector<LibHitPoint> launchShot( LibShot shot )
@@ -117,17 +117,17 @@
             //if ( shot.iOrigin == ShotOrigin.EEnemies ) ShooterDebug.bugfix.out( "launch shot: [" + "on cylinder" + "]" );
 
             //check horizontal intersection
-            Point2D.Float   centerHorz              = new Point2D.Float(this.iAnchor.x, this.iAnchor.y );
-            boolean         horizontalIntersection  = shot.iLineShotHorz.ptSegDist( centerHorz ) <= this.iRadius;
+            Point2D.Float   centerHorz              = new Point2D.Float(this.anchor.x, this.anchor.y );
+            boolean         horizontalIntersection  = shot.iLineShotHorz.ptSegDist( centerHorz ) <= this.radius;
             if ( horizontalIntersection )
             {
                 //if ( shot.iOrigin == ShotOrigin.EEnemies ) ShooterDebug.bugfix.out( " player hit" );
 
-                this.iDebug.out( "bot horizontal hit !!" );
+                this.debug.out( "bot horizontal hit !!" );
 
                 //get horizontal intersecttion
                 Point2D.Float intersectionPointHorz = LibMathGeometry.findLineCircleIntersection( shot.iLineShotHorz, this.getCircle() );
-                this.iDebug.out( "interP: ["+intersectionPointHorz+",]" );
+                this.debug.out( "interP: ["+intersectionPointHorz+",]" );
 
                 //get angle from horz hitPoint to shot-src-point
                 float           angleCenterToHitPointHorz = LibMath.getAngleCorrect( centerHorz, intersectionPointHorz );
@@ -138,42 +138,42 @@
                 float           invertedShotAngleHorz   = 360.0f - ( shotAngleHorz - 180.0f  );              //get opposite direction of shot
                 float           sliverAngleHorz         = shotAngleHorz /* - faceAngleHorz */ * 2;              //get Sliver angle
 
-                this.iDebug.out( "exactDistanceHorz:     [" + exactDistanceHorz       + "]" );
-                this.iDebug.out( "shotAngleHorz:         [" + shotAngleHorz           + "]" );
-                this.iDebug.out( "invertedShotAngleHorz: [" + invertedShotAngleHorz   + "]" );
-                this.iDebug.out( "SliverAngleHorz:       [" + sliverAngleHorz         + "]" );
+                this.debug.out( "exactDistanceHorz:     [" + exactDistanceHorz       + "]" );
+                this.debug.out( "shotAngleHorz:         [" + shotAngleHorz           + "]" );
+                this.debug.out( "invertedShotAngleHorz: [" + invertedShotAngleHorz   + "]" );
+                this.debug.out( "SliverAngleHorz:       [" + sliverAngleHorz         + "]" );
 
                 //calculate face's vertical collision line
-                Line2D.Float collisionLineVert = new Line2D.Float( new Point2D.Float( exactDistanceHorz, this.iAnchor.z ), new Point2D.Float( exactDistanceHorz, this.iAnchor.z + this.iHeight) );
-                this.iDebug.out( "bot's collision line vert is: [" + collisionLineVert + "]" );
+                Line2D.Float collisionLineVert = new Line2D.Float( new Point2D.Float( exactDistanceHorz, this.anchor.z ), new Point2D.Float( exactDistanceHorz, this.anchor.z + this.height) );
+                this.debug.out( "bot's collision line vert is: [" + collisionLineVert + "]" );
 
                 if ( !shot.iLineShotVert.intersectsLine( collisionLineVert ) )
                 {
-                    this.iDebug.out( "VERTICAL FACE MISSED!" );
+                    this.debug.out( "VERTICAL FACE MISSED!" );
                     return null;
                 }
 
                 //get intersection point for the vertical axis
-                this.iDebug.out( "VERTICAL FACE HIT!" );
-                Point2D.Float   intersectionPointVert   = LibMathGeometry.findLineSegmentIntersection( shot.iLineShotVert, collisionLineVert, this.iDebug);
+                this.debug.out( "VERTICAL FACE HIT!" );
+                Point2D.Float   intersectionPointVert   = LibMathGeometry.findLineSegmentIntersection( shot.iLineShotVert, collisionLineVert, this.debug);
                 float           z                       = intersectionPointVert.y;
-                this.iDebug.out( ">> INTERSECTION POINT VERT: " + intersectionPointVert );
+                this.debug.out( ">> INTERSECTION POINT VERT: " + intersectionPointVert );
 
                 //get vertical values
                 float exactDistanceVert = (float)shot.iSrcPointVert.distance( intersectionPointVert );       //get exact distance
 
-                this.iDebug.out( ">> EXACT DISTANCE VERT: " + exactDistanceVert );
-//                iDebug.out( ">> SHOT-ANGLE-VERT: " + shotAngleVert );
-//                iDebug.out( ">> SLIVER-ANGLE-VERT: " + SliverAngleVert );
+                this.debug.out( ">> EXACT DISTANCE VERT: " + exactDistanceVert );
+//                debug.out( ">> SHOT-ANGLE-VERT: " + shotAngleVert );
+//                debug.out( ">> SLIVER-ANGLE-VERT: " + SliverAngleVert );
 
                 //return hit point
                 return new LibHitPoint
                 (
                     shot,
-                        this.iParentGameObject,
-                        this.iMaterial.getBulletHoleTexture().getTexture(),
+                        this.parentGameObject,
+                        this.material.getBulletHoleTexture().getTexture(),
                     BotTex.ESkinBrown.getTexture(),
-                        this.iMaterial.getSliverColors(),
+                        this.material.getSliverColors(),
                     new LibVertex( intersectionPointHorz.x, intersectionPointHorz.y, z ),
                     exactDistanceHorz,
                     shotAngleHorz,
@@ -193,27 +193,27 @@
 
         public final Ellipse2D.Float getCircle()
         {
-            return new Ellipse2D.Float(this.iAnchor.x - this.iRadius, this.iAnchor.y - this.iRadius, this.iRadius * 2, this.iRadius * 2 );
+            return new Ellipse2D.Float(this.anchor.x - this.radius, this.anchor.y - this.radius, this.radius * 2, this.radius * 2 );
         }
 
         public final float getRadius()
         {
-            return this.iRadius;
+            return this.radius;
         }
 
         public final float setRadius( float newRadius )
         {
-            return this.iRadius = newRadius;
+            return this.radius = newRadius;
         }
 
         public final LibVertex getTarget()
         {
-            return this.iTarget;
+            return this.target;
         }
 
         public final float getHeight()
         {
-            return this.iHeight;
+            return this.height;
         }
 
         /************************************************************************************
@@ -229,13 +229,13 @@
             float lowestWallZ   = Math.min( wallZ1, wallZ2 );
             float highestWallZ  = Math.max( wallZ1, wallZ2 );
 
-            //ShooterDebug.bugfix.out( "heights intersect " + wallZ1 + " " + wallZ2 + " " + iAnchor.z + "  "   );
+            //ShooterDebug.bugfix.out( "heights intersect " + wallZ1 + " " + wallZ2 + " " + anchor.z + "  "   );
 
             float mod = ( invertBottomTolerance ? -1.0f : 1.0f );
             boolean miss =
             (
-                    this.iAnchor.z + ( useBottomToleranceZ ? mod * this.iBottomCollisionToleranceZ : mod * this.iMinBottomCollisionToleranceZ) > highestWallZ
-                || this.iAnchor.z + this.iHeight < lowestWallZ
+                    this.anchor.z + ( useBottomToleranceZ ? mod * this.bottomCollisionToleranceZ : mod * this.minBottomCollisionToleranceZ) > highestWallZ
+                || this.anchor.z + this.height < lowestWallZ
             );
             //ShooterDebug.bugfix.out( "intersect miss " + miss );
 
@@ -247,9 +247,9 @@
 
         public void drawStandingCircle()
         {
-            if (this.iDebugDrawBotCircles)
+            if (this.debugDrawBotCircles)
             {
-                new LibFaceEllipseFloor(this.iDebug, null, LibColors.ERed, this.iAnchor.x, this.iAnchor.y, this.iAnchor.z + 0.001f, this.iRadius, this.iRadius, this.iEllipseSegments).draw();
+                new LibFaceEllipseFloor(this.debug, null, LibColors.ERed, this.anchor.x, this.anchor.y, this.anchor.z + 0.001f, this.radius, this.radius, this.ellipseSegments).draw();
             }
         }
 
@@ -275,7 +275,7 @@
             for ( int i = 0; i < floorsToCheck.size(); ++i )
             {
                 //assign 1st point - check if the distance is nearer
-                float thisDistance = Math.abs(this.iAnchor.z - floorsToCheck.elementAt(i));
+                float thisDistance = Math.abs(this.anchor.z - floorsToCheck.elementAt(i));
                 if
                 (
                         ( nearestIndex == -1 )
@@ -285,7 +285,7 @@
                     //check if the point is under the player or, if lower, not too high to climb up to!
                     if
                     (
-                            floorsToCheck.elementAt(i) < this.iAnchor.z
+                            floorsToCheck.elementAt(i) < this.anchor.z
                         ||  thisDistance <= maxClimbDistZ
                     )
                     {
@@ -312,15 +312,15 @@
             for ( int i = 0; i < floorsToCheck.size(); ++i )
             {
                 //assign 1st point - check if the distance is nearer
-                float thisDistance = Math.abs(this.iAnchor.z - floorsToCheck.elementAt(i));
+                float thisDistance = Math.abs(this.anchor.z - floorsToCheck.elementAt(i));
 
                 //only pick faces that..
                 if
                 (
                         //..are lower than the player
-                        floorsToCheck.elementAt(i) < this.iAnchor.z
+                        floorsToCheck.elementAt(i) < this.anchor.z
                         //..are not too high
-                    ||  thisDistance <= this.iBottomCollisionToleranceZ
+                    ||  thisDistance <= this.bottomCollisionToleranceZ
                 )
                 {
                     //assign if higher
@@ -337,45 +337,45 @@
 
         public final void setAnchorAsTargetPosition()
         {
-            this.iTarget = new LibVertex(this.iAnchor.x, this.iAnchor.y, this.iAnchor.z );
+            this.target = new LibVertex(this.anchor.x, this.anchor.y, this.anchor.z );
         }
 
         public final void moveToTargetPosition( float newHeight, boolean disableWallCollisions, boolean disableBotCollisions )
         {
             //get distances from old to the new position
-            float distX     = this.iTarget.x - this.iAnchor.x;
-            float distY     = this.iTarget.y - this.iAnchor.y;
-            float distZ     = this.iTarget.z - this.iAnchor.z;
+            float distX     = this.target.x - this.anchor.x;
+            float distY     = this.target.y - this.anchor.y;
+            float distZ     = this.target.z - this.anchor.z;
 
             //save original anchor cause it will change in the loop!
-            float startX   = this.iAnchor.x;
-            float startY   = this.iAnchor.y;
-            float startZ   = this.iAnchor.z;
+            float startX   = this.anchor.x;
+            float startY   = this.anchor.y;
+            float startZ   = this.anchor.z;
 
             //check target-point collision stepwise from far to near ( to increase walking speed )
-            for (float j = this.iCollisionCheckingSteps; j > 0; --j )
+            for (float j = this.collisionCheckingSteps; j > 0; --j )
             {
                 //try next step point..
-                float distanceToCheckX = distX * j / this.iCollisionCheckingSteps;
-                float distanceToCheckY = distY * j / this.iCollisionCheckingSteps;
-                float distanceToCheckZ = distZ * j / this.iCollisionCheckingSteps;
+                float distanceToCheckX = distX * j / this.collisionCheckingSteps;
+                float distanceToCheckY = distY * j / this.collisionCheckingSteps;
+                float distanceToCheckZ = distZ * j / this.collisionCheckingSteps;
 
                 //try point on the line between current and target point
-                this.iTarget.x = startX + distanceToCheckX;
-                this.iTarget.y = startY + distanceToCheckY;
-                this.iTarget.z = startZ + distanceToCheckZ;
+                this.target.x = startX + distanceToCheckX;
+                this.target.y = startY + distanceToCheckY;
+                this.target.z = startZ + distanceToCheckZ;
                 if (this.tryTargetPoint( newHeight, disableWallCollisions, disableBotCollisions ) ) return;
 
                 //try point on x-clipped axis
-                this.iTarget.x = startX + distanceToCheckX;
-                this.iTarget.y = startY;
-                this.iTarget.z = startZ + distanceToCheckZ;
+                this.target.x = startX + distanceToCheckX;
+                this.target.y = startY;
+                this.target.z = startZ + distanceToCheckZ;
                 if (this.tryTargetPoint( newHeight, disableWallCollisions, disableBotCollisions ) ) return;
 
                 //try point on y-clipped axis
-                this.iTarget.x = startX;
-                this.iTarget.y = startY + distanceToCheckY;
-                this.iTarget.z = startZ + distanceToCheckZ;
+                this.target.x = startX;
+                this.target.y = startY + distanceToCheckY;
+                this.target.z = startZ + distanceToCheckZ;
                 if (this.tryTargetPoint( newHeight, disableWallCollisions, disableBotCollisions ) ) return;
             }
 
@@ -394,8 +394,8 @@
              //check collision of 2 circles ( easy  task.. )
              return
              (
-                     z >= this.iAnchor.z
-                 &&  z < (this.iAnchor.z + this.iHeight)
+                     z >= this.anchor.z
+                 &&  z < (this.anchor.z + this.height)
              );
          }
 
@@ -419,10 +419,10 @@
         public final boolean checkCollisionHorzLines( LibFaceTriangle face, boolean useBottomToleranceZ, boolean invertBottomTolerance  )
         {
             //check horizontal intersection
-            Point2D.Double  cylinderPosHorz         = new Point2D.Double(this.iAnchor.x, this.iAnchor.y );
-            boolean         horizontalIntersection1 = ( face.iCollisionLineHorz1.ptSegDist( cylinderPosHorz ) <= this.iRadius);
-            boolean         horizontalIntersection2 = ( face.iCollisionLineHorz2.ptSegDist( cylinderPosHorz ) <= this.iRadius);
-            boolean         horizontalIntersection3 = ( face.iCollisionLineHorz3.ptSegDist( cylinderPosHorz ) <= this.iRadius);
+            Point2D.Double  cylinderPosHorz         = new Point2D.Double(this.anchor.x, this.anchor.y );
+            boolean         horizontalIntersection1 = ( face.iCollisionLineHorz1.ptSegDist( cylinderPosHorz ) <= this.radius);
+            boolean         horizontalIntersection2 = ( face.iCollisionLineHorz2.ptSegDist( cylinderPosHorz ) <= this.radius);
+            boolean         horizontalIntersection3 = ( face.iCollisionLineHorz3.ptSegDist( cylinderPosHorz ) <= this.radius);
 
             if ( horizontalIntersection1 || horizontalIntersection2 || horizontalIntersection3 )
             {
@@ -447,7 +447,7 @@
         public final boolean checkCollisionHorz( LibCylinder c )
         {
             //check horizontal and vertical intersection
-            if (this.checkCollision( c.getCircle() ) && c.heightsIntersect(this.iAnchor.z, this.iAnchor.z + this.iHeight, false, false ) )
+            if (this.checkCollision( c.getCircle() ) && c.heightsIntersect(this.anchor.z, this.anchor.z + this.height, false, false ) )
             {
                 //no height information is required here ..
                 return true;
@@ -467,7 +467,7 @@
             Vector<Float> v = new Vector<Float>();
 
             //check horizontal and vertical intersection
-            if (this.checkCollision( c.getCircle() ) && c.heightsIntersect(this.iAnchor.z, this.iAnchor.z + this.iHeight, false, false ) )
+            if (this.checkCollision( c.getCircle() ) && c.heightsIntersect(this.anchor.z, this.anchor.z + this.height, false, false ) )
             {
                 //no height information is required here ..
                 v.add( new Float( 42 ) );
@@ -478,13 +478,13 @@
 
         public final LibVertex getAnchor()
         {
-            return this.iAnchor;
+            return this.anchor;
         }
 
         public final boolean tryTargetPoint( float newHeight, boolean disableWallCollisions, boolean disableBotCollisions )
         {
             //update player's collision circle with target location
-            this.update(this.iTarget.x, this.iTarget.y, this.iTarget.z, newHeight );
+            this.update(this.target.x, this.target.y, this.target.z, newHeight );
 
             //check if target-point is collision free
             boolean collisionFree =
@@ -496,7 +496,7 @@
             if ( collisionFree )
             {
                 //assign this point as the target-point and leave this method!
-                this.update(this.iTarget.x, this.iTarget.y, this.iTarget.z, newHeight );
+                this.update(this.target.x, this.target.y, this.target.z, newHeight );
             }
 
             return collisionFree;
@@ -506,17 +506,17 @@
         {
             return new Cylinder
             (
-                    this.iParentGameObject,
-                    this.iAnchor.copy(),
-                    this.iRadius,
-                    this.iHeight,
-                    this.iCollisionCheckingSteps,
-                    this.iDebug,
-                    this.iDebugDrawBotCircles,
-                    this.iBottomCollisionToleranceZ,
-                    this.iMinBottomCollisionToleranceZ,
+                    this.parentGameObject,
+                    this.anchor.copy(),
+                    this.radius,
+                    this.height,
+                    this.collisionCheckingSteps,
+                    this.debug,
+                    this.debugDrawBotCircles,
+                    this.bottomCollisionToleranceZ,
+                    this.minBottomCollisionToleranceZ,
                 ShooterSetting.Performance.ELLIPSE_SEGMENTS,
-                    this.iMaterial
+                    this.material
             );
         }
 
@@ -530,15 +530,13 @@
         *   @return         <code>true</code> if the cylinder's center point is in the rect.
         *   @deprecated     replaced by j2se api.
         ***************************************************************************************************************/
-/*
         @Deprecated
         public final boolean checkHorzCenterCollision( float x1, float y1, float x2, float y2 )
         {
             return
             (
-                    ( x1 > x2 ? anchor.x >= x2 && anchor.x <= x1 : anchor.x >= x1 && anchor.x <= x2 )
-                &&  ( y1 > y2 ? anchor.y >= y2 && anchor.y <= y1 : anchor.y >= y1 && anchor.y <= y2 )
+                    ( x1 > x2 ? this.anchor.x >= x2 && this.anchor.x <= x1 : this.anchor.x >= x1 && this.anchor.x <= x2 )
+                &&  ( y1 > y2 ? this.anchor.y >= y2 && this.anchor.y <= y1 : this.anchor.y >= y1 && this.anchor.y <= y2 )
             );
         }
-*/
     }

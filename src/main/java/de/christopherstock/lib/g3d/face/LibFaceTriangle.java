@@ -178,10 +178,10 @@
                     float           invertedShotAngleHorz = 360.0f - ( shotAngleHorz - 180.0f  );                                       //get opposite direction of shot
                     float           sliverAngleHorz       = shotAngleHorz - this.iFaceAngleHorz * 2;                                         //get Sliver angle
 
-                    //iDebug.shotAndHit.out( "exactDistanceHorz:     [" + exactDistanceHorz + "]" );
-                    //iDebug.shotAndHit.out( "shotAngleHorz:         [" + shotAngleHorz + "]" );
-                    //iDebug.shotAndHit.out( "invertedShotAngleHorz: [" + invertedShotAngleHorz + "]" );
-                    //iDebug.shotAndHit.out( "SliverAngleHorz:       [" + sliverAngleHorz + "]" );
+                    //debug.shotAndHit.out( "exactDistanceHorz:     [" + exactDistanceHorz + "]" );
+                    //debug.shotAndHit.out( "shotAngleHorz:         [" + shotAngleHorz + "]" );
+                    //debug.shotAndHit.out( "invertedShotAngleHorz: [" + invertedShotAngleHorz + "]" );
+                    //debug.shotAndHit.out( "SliverAngleHorz:       [" + sliverAngleHorz + "]" );
 
                   //Point2D.Float   intersectionPointVert   = new Point2D.Float( 0, (float)intersectionPoint.z );
 
@@ -191,7 +191,7 @@
                     LibGLTexture    faceTexture   = this.getTexture();
                     LibMaterial     faceMaterial  = ( faceTexture == null ? this.iDefaultTexture.getTexture().getMaterial() : faceTexture.getMaterial() );
 
-                    //iDebug.bugfix.out( "DISTANCE [" + intersectionPoint.distance( shot.iSrcPoint3d ) + "] HIT ! shot ["+shot.iSrcPoint3d+"] to ["+shot.iEndPoint3d+"] FACE is ["+face1+"]["+face2+"]["+face3+"]" );
+                    //debug.bugfix.out( "DISTANCE [" + intersectionPoint.distance( shot.iSrcPoint3d ) + "] HIT ! shot ["+shot.iSrcPoint3d+"] to ["+shot.iEndPoint3d+"] FACE is ["+face1+"]["+face2+"]["+face3+"]" );
                     //FX.launchDebugPoint( new LibVertex( (float)intersectionPoint.x, (float)intersectionPoint.y, (float)intersectionPoint.z ), LibColors.EPink, 150, 0.03f );
 
                     if (this.iLowestZ == this.iHighestZ)
@@ -267,10 +267,10 @@
                     float           invertedShotAngleHorz = 360.0f - ( shotAngleHorz - 180.0f  );                                       //get opposite direction of shot
                     float           sliverAngleHorz       = shotAngleHorz - this.iFaceAngleHorz * 2;                                         //get Sliver angle
 
-                    //iDebug.shotAndHit.out( "exactDistanceHorz:     [" + exactDistanceHorz + "]" );
-                    //iDebug.shotAndHit.out( "shotAngleHorz:         [" + shotAngleHorz + "]" );
-                    //iDebug.shotAndHit.out( "invertedShotAngleHorz: [" + invertedShotAngleHorz + "]" );
-                    //iDebug.shotAndHit.out( "SliverAngleHorz:       [" + sliverAngleHorz + "]" );
+                    //debug.shotAndHit.out( "exactDistanceHorz:     [" + exactDistanceHorz + "]" );
+                    //debug.shotAndHit.out( "shotAngleHorz:         [" + shotAngleHorz + "]" );
+                    //debug.shotAndHit.out( "invertedShotAngleHorz: [" + invertedShotAngleHorz + "]" );
+                    //debug.shotAndHit.out( "SliverAngleHorz:       [" + sliverAngleHorz + "]" );
 
                   //Point2D.Float   intersectionPointVert   = new Point2D.Float( 0, (float)intersectionPoint.z );
 
@@ -280,7 +280,7 @@
                     LibGLTexture    faceTexture   = this.getTexture();
                     LibMaterial     faceMaterial  = ( faceTexture == null ? this.iDefaultTexture.getTexture().getMaterial() : faceTexture.getMaterial() );
 
-                    //iDebug.bugfix.out( "DISTANCE [" + intersectionPoint.distance( shot.iSrcPoint3d ) + "] HIT ! shot ["+shot.iSrcPoint3d+"] to ["+shot.iEndPoint3d+"] FACE is ["+face1+"]["+face2+"]["+face3+"]" );
+                    //debug.bugfix.out( "DISTANCE [" + intersectionPoint.distance( shot.iSrcPoint3d ) + "] HIT ! shot ["+shot.iSrcPoint3d+"] to ["+shot.iEndPoint3d+"] FACE is ["+face1+"]["+face2+"]["+face3+"]" );
                     //FX.launchDebugPoint( new LibVertex( (float)intersectionPoint.x, (float)intersectionPoint.y, (float)intersectionPoint.z ), LibColors.EPink, 150, 0.03f );
 
                     if (this.iLowestZ == this.iHighestZ)
@@ -345,7 +345,7 @@
                     if ( shot.iLineShotHorz.intersectsLine(this.iCollisionLineHorz1) )
                     {
                         //get intersection point horz
-                        //iDebug.shotAndHit.out( "==============\nHORZ FACE HIT!" );
+                        //debug.shotAndHit.out( "==============\nHORZ FACE HIT!" );
                         intersectionPointHorz = LibMathGeometry.findLineSegmentIntersection( shot.iLineShotHorz, this.iCollisionLineHorz1, this.iDebug);
                         if ( intersectionPointHorz == null )
                         {
@@ -356,7 +356,7 @@
                     else if ( shot.iLineShotHorz.intersectsLine(this.iCollisionLineHorz2) )
                     {
                         //get intersection point horz
-                        //iDebug.shotAndHit.out( "==============\nHORZ FACE HIT!" );
+                        //debug.shotAndHit.out( "==============\nHORZ FACE HIT!" );
                         intersectionPointHorz = LibMathGeometry.findLineSegmentIntersection( shot.iLineShotHorz, this.iCollisionLineHorz2, this.iDebug);
                         if ( intersectionPointHorz == null )
                         {
@@ -367,7 +367,7 @@
                     else if ( shot.iLineShotHorz.intersectsLine(this.iCollisionLineHorz3) )
                     {
                         //get intersection point horz
-                        //iDebug.shotAndHit.out( "==============\nHORZ FACE HIT!" );
+                        //debug.shotAndHit.out( "==============\nHORZ FACE HIT!" );
                         intersectionPointHorz = LibMathGeometry.findLineSegmentIntersection( shot.iLineShotHorz, this.iCollisionLineHorz3, this.iDebug);
                         if ( intersectionPointHorz == null )
                         {
@@ -386,33 +386,33 @@
                     float           invertedShotAngleHorz = 360.0f - ( shotAngleHorz - 180.0f  );                                       //get opposite direction of shot
                     float           sliverAngleHorz       = shotAngleHorz - this.iFaceAngleHorz * 2;                                         //get Sliver angle
 /*
-                    iDebug.shotAndHit.out( "exactDistanceHorz:     [" + exactDistanceHorz + "]" );
-                    iDebug.shotAndHit.out( "shotAngleHorz:         [" + shotAngleHorz + "]" );
-                    iDebug.shotAndHit.out( "invertedShotAngleHorz: [" + invertedShotAngleHorz + "]" );
-                    iDebug.shotAndHit.out( "SliverAngleHorz:       [" + sliverAngleHorz + "]" );
+                    debug.shotAndHit.out( "exactDistanceHorz:     [" + exactDistanceHorz + "]" );
+                    debug.shotAndHit.out( "shotAngleHorz:         [" + shotAngleHorz + "]" );
+                    debug.shotAndHit.out( "invertedShotAngleHorz: [" + invertedShotAngleHorz + "]" );
+                    debug.shotAndHit.out( "SliverAngleHorz:       [" + sliverAngleHorz + "]" );
 */
                     //calculate face's vertical collision line ( if we assume that this is a straight vertical face! )
                     Line2D.Float collisionLineVert = new Line2D.Float( new Point2D.Float( exactDistanceHorz, this.iLowestZ), new Point2D.Float( exactDistanceHorz, this.iHighestZ) );
-                    //iDebug.shotAndHit.out( "face's collision line vert is: [" + collisionLineVert + "]" );
+                    //debug.shotAndHit.out( "face's collision line vert is: [" + collisionLineVert + "]" );
 
                     if ( !shot.iLineShotVert.intersectsLine( collisionLineVert ) )
                     {
-                        //iDebug.shotAndHit.out( "VERTICAL FACE MISSED!" );
+                        //debug.shotAndHit.out( "VERTICAL FACE MISSED!" );
                         return null;
                     }
 
                     //get then intersection point for the vertical axis
-                    //iDebug.shotAndHit.out( "VERTICAL FACE HIT!" );
+                    //debug.shotAndHit.out( "VERTICAL FACE HIT!" );
                     Point2D.Float   intersectionPointVert   = LibMathGeometry.findLineSegmentIntersection( shot.iLineShotVert, collisionLineVert, this.iDebug);
                     float           z                       = intersectionPointVert.y;
-                    //iDebug.shotAndHit.out( ">> INTERSECTION POINT VERT: " + intersectionPointVert );
+                    //debug.shotAndHit.out( ">> INTERSECTION POINT VERT: " + intersectionPointVert );
 
                     //get vertical values
                   //float exactDistanceVert = (float)shot.iSrcPointVert.distance( intersectionPointVert );       //get exact distance
 
-                  //iDebug.shotAndHit.out( ">> EXACT DISTANCE VERT: " + exactDistanceVert );
-//                  iDebug.shot.out( ">> SHOT-ANGLE-VERT: " + shotAngleVert );
-//                  iDebug.shot.out( ">> SLIVER-ANGLE-VERT: " + SliverAngleVert );
+                  //debug.shotAndHit.out( ">> EXACT DISTANCE VERT: " + exactDistanceVert );
+//                  debug.shot.out( ">> SHOT-ANGLE-VERT: " + shotAngleVert );
+//                  debug.shot.out( ">> SLIVER-ANGLE-VERT: " + SliverAngleVert );
 
                     LibGLTexture    faceTexture   = this.getTexture();
                     LibMaterial     faceMaterial  = ( faceTexture == null ? this.iDefaultTexture.getTexture().getMaterial() : faceTexture.getMaterial() );
@@ -497,7 +497,7 @@
                 //do not check heights intersection !
                 // if ( cylinder.heightsIntersect( iLowestZ, iHighestZ, false ) )
                 {
-                    //iDebug.bugfix.out("INTERSECT - return float with z [" + iHighestZ + "]");
+                    //debug.bugfix.out("INTERSECT - return float with z [" + iHighestZ + "]");
                     v.add( new Float(this.iHighestZ) );
                 }
             }

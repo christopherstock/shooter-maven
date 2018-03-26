@@ -6,11 +6,11 @@
     import de.christopherstock.lib.LibTransformationMode;
     import de.christopherstock.lib.LibInvert;
     import de.christopherstock.lib.LibScalation;
-    import  de.christopherstock.lib.fx.*;
     import  de.christopherstock.lib.g3d.*;
     import  de.christopherstock.lib.g3d.face.LibFace.*;
     import  de.christopherstock.lib.io.d3ds.LibD3dsFile;
     import  de.christopherstock.lib.math.LibMath;
+    import de.christopherstock.lib.ui.LibSprite;
     import  de.christopherstock.shooter.Shooter;
     import  de.christopherstock.shooter.base.ShooterTexture.WallTex;
 

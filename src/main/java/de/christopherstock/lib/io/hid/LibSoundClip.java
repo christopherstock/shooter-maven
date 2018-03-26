@@ -68,8 +68,8 @@
                 {
                     this.iClip.open(this.iFactory.iAudioFormat, this.iFactory.iBytes, 0, this.iFactory.iBytes.length );
 
-                    //iDebug.out( "Initialized sound clip! Memory info is:" );
-                    //iDebug.mem();
+                    //debug.out( "Initialized sound clip! Memory info is:" );
+                    //debug.mem();
                 }
                 catch ( OutOfMemoryError oome )
                 {
@@ -96,7 +96,7 @@
                 }
                 catch ( Exception e )
                 {
-                    iDebug.err( "Unsupported control type 'balance' for this wav" );
+                    debug.err( "Unsupported control type 'balance' for this wav" );
                 }
 */
                 //add listener
@@ -164,7 +164,7 @@
             if ( t == Type.STOP || t == Type.CLOSE )
             {
                 //log
-                //iDebug.out( "Sound [" + this + "] finished!" );
+                //debug.out( "Sound [" + this + "] finished!" );
 
                 //release the line ( prevents OutOfMemoryErrors ! )
                 le.getLine().close();
@@ -186,7 +186,7 @@
             if ( newVolume > LibSoundClip.VOLUME_MAX  ) newVolume = LibSoundClip.VOLUME_MAX;
 
             this.setVolume( newVolume );
-            //iDebug.out( "update volume to:  volume [" + volume + "]"  );
+            //debug.out( "update volume to:  volume [" + volume + "]"  );
         }
 
         public final Point2D.Float getDistantLocation()

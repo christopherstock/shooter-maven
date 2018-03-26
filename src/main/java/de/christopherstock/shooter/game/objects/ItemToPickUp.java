@@ -220,7 +220,7 @@
 
         public final void assignMesh( Mesh mesh )
         {
-            this.iMesh = mesh; //new Mesh( mesh.getFaces(), iAnchor, iStartRotZ, 1.0f, LibInvert.ENo, this, LibTransformationMode.EOriginalsToTransformed, DrawMethod.EAlwaysDraw );
+            this.iMesh = mesh; //new Mesh( mesh.getFaces(), anchor, iStartRotZ, 1.0f, LibInvert.ENo, this, LibTransformationMode.EOriginalsToTransformed, DrawMethod.EAlwaysDraw );
         }
 
         public final LibVertex getAnchor()

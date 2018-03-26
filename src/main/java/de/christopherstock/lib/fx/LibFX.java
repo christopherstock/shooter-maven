@@ -40,18 +40,18 @@
         @SuppressWarnings( "unused" )
         private     static  final   int                 MAX_FX                      = 0;
 
-        protected                   int                 iFadeOutTicks               = 0;
-        protected                   LibDebug            iDebug                      = null;
-        protected                   LibVertex           iAnchor                     = null;
-        protected                   FXSize              iSize                       = null;
-        protected                   FXTime              iTime                       = null;
-        protected                   int                 iLifetime                   = 0;
+        protected                   LibDebug            debug                       = null;
+        protected                   LibVertex           anchor                      = null;
+        protected                   int                 lifetime                    = 0;
+        protected                   int                 fadeOutTicks                = 0;
+        protected                   FXSize              size                        = null;
+        protected                   FXTime              time                        = null;
 
-        public LibFX( LibDebug aDebug, LibVertex aAnchor, int aLifetime, int aFadeOutTicks )
+        public LibFX( LibDebug debug, LibVertex anchor, int lifetime, int fadeOutTicks )
         {
-            this.iDebug = aDebug;
-            this.iAnchor = aAnchor;
-            this.iLifetime = aLifetime;
-            this.iFadeOutTicks = aFadeOutTicks;
+            this.debug        = debug;
+            this.anchor       = anchor;
+            this.lifetime     = lifetime;
+            this.fadeOutTicks = fadeOutTicks;
         }
     }
