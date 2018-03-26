@@ -11,14 +11,13 @@
     import  de.christopherstock.shooter.game.artefact.Artefact;
     import  de.christopherstock.shooter.game.artefact.ArtefactType;
     import  de.christopherstock.shooter.game.artefact.firearm.*;
-    import  de.christopherstock.shooter.game.objects.Player.HealthChangeListener;
     import  de.christopherstock.shooter.level.*;
     import  de.christopherstock.shooter.ui.hud.AvatarMessage.AvatarImage;
 
     /*******************************************************************************************************************
     *   The Heads Up Display.
     *******************************************************************************************************************/
-    public class HUD implements HealthChangeListener
+    public class HUD
     {
         public enum ChangeAction
         {
@@ -51,7 +50,7 @@
         public HUD()
         {
             //parse ortho offsets
-            OffsetsOrtho.parseOffsets( Shooter.game.engine.frame.width, Shooter.game.engine.frame.height );
+            OffsetsOrtho.parseOffsets( Shooter.game.engine.glView.width, Shooter.game.engine.glView.height );
 
             //load all images
             ArtefactType.loadImages();
@@ -146,13 +145,13 @@
                 }
 
                 //draw shell image
-                Shooter.game.engine.glView.drawOrthoBitmapBytes( ( (FireArm)currentWearpon.iArtefactType.iArtefactKind ).getAmmoTypeImage(), Shooter.game.engine.frame.width - OffsetsOrtho.EBorderHudX - 50, OffsetsOrtho.EBorderHudY );
+                Shooter.game.engine.glView.drawOrthoBitmapBytes( ( (FireArm)currentWearpon.iArtefactType.iArtefactKind ).getAmmoTypeImage(), Shooter.game.engine.glView.width - OffsetsOrtho.EBorderHudX - 50, OffsetsOrtho.EBorderHudY );
 
                 //draw magazine ammo
-                Shooter.game.engine.glView.drawOrthoBitmapBytes(this.iAmmoImageMagazineAmmo, Shooter.game.engine.frame.width - OffsetsOrtho.EBorderHudX - 50 - ( (FireArm)currentWearpon.iArtefactType.iArtefactKind ).getAmmoTypeImage().width - this.iAmmoImageMagazineAmmo.width, OffsetsOrtho.EBorderHudY );
+                Shooter.game.engine.glView.drawOrthoBitmapBytes(this.iAmmoImageMagazineAmmo, Shooter.game.engine.glView.width - OffsetsOrtho.EBorderHudX - 50 - ( (FireArm)currentWearpon.iArtefactType.iArtefactKind ).getAmmoTypeImage().width - this.iAmmoImageMagazineAmmo.width, OffsetsOrtho.EBorderHudY );
 
                 //draw total ammo
-                Shooter.game.engine.glView.drawOrthoBitmapBytes(this.iAmmoImageTotalAmmo, Shooter.game.engine.frame.width - OffsetsOrtho.EBorderHudX - this.iAmmoImageTotalAmmo.width, OffsetsOrtho.EBorderHudY );
+                Shooter.game.engine.glView.drawOrthoBitmapBytes(this.iAmmoImageTotalAmmo, Shooter.game.engine.glView.width - OffsetsOrtho.EBorderHudX - this.iAmmoImageTotalAmmo.width, OffsetsOrtho.EBorderHudY );
             }
         }
 
@@ -200,7 +199,12 @@
             //draw crosshair
             int   modY = 0; //(int)( ( ShooterGameShooter.game.engine.player.getView().rot.x / PlayerAttributes.MAX_LOOKING_X ) * ( Shooter.game.engine.frame.height / 5 ) );
             CrossHair crosshair = Shooter.game.engine.player.iArtefactSet.getArtefactType().getCrossHair();
-            Shooter.game.engine.glView.drawOrthoBitmapBytes( crosshair.getImage(), Shooter.game.engine.frame.width / 2 - crosshair.getImage().width / 2, Shooter.game.engine.frame.height / 2 - crosshair.getImage().height / 2 + modY );
+            Shooter.game.engine.glView.drawOrthoBitmapBytes
+            (
+                crosshair.getImage(),
+                Shooter.game.engine.glView.width  / 2 - crosshair.getImage().width  / 2,
+                Shooter.game.engine.glView.height / 2 - crosshair.getImage().height / 2 + modY
+            );
         }
 
         public final void onRun()

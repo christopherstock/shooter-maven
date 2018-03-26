@@ -39,11 +39,11 @@
         public static void init()
         {
             //init panes
-            damagePane      = LibGLImage.getFullOpaque( LibColors.ERed.colABGR,    Shooter.game.engine.frame.width, Shooter.game.engine.frame.height, ShooterDebug.glImage );
-            healthPane      = LibGLImage.getFullOpaque( LibColors.EWhite.colABGR,  Shooter.game.engine.frame.width, Shooter.game.engine.frame.height, ShooterDebug.glImage );
-            damagePane      = LibGLImage.getFullOpaque( LibColors.ERed.colABGR,    Shooter.game.engine.frame.width, Shooter.game.engine.frame.height, ShooterDebug.glImage );
-            deadPane        = LibGLImage.getFullOpaque( LibColors.EBlack.colABGR,  Shooter.game.engine.frame.width, Shooter.game.engine.frame.height, ShooterDebug.glImage );
-            adrenalinePane  = LibGLImage.getFullOpaque( LibColors.EYellow.colABGR, Shooter.game.engine.frame.width, Shooter.game.engine.frame.height, ShooterDebug.glImage );
+            damagePane      = LibGLImage.getFullOpaque( LibColors.ERed.colABGR,    Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
+            healthPane      = LibGLImage.getFullOpaque( LibColors.EWhite.colABGR,  Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
+            damagePane      = LibGLImage.getFullOpaque( LibColors.ERed.colABGR,    Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
+            deadPane        = LibGLImage.getFullOpaque( LibColors.EBlack.colABGR,  Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
+            adrenalinePane  = LibGLImage.getFullOpaque( LibColors.EYellow.colABGR, Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
 
             try
             {
@@ -115,7 +115,7 @@
             if ( drawReincarnationFx )
             {
                 float size = ( 5 * (float)animationHUDReincarnationFX ) / ShooterSetting.Performance.TICKS_DEAD_FX;
-                Shooter.game.engine.glView.drawOrthoBitmapBytes( gli, (int)( ( Shooter.game.engine.frame.width - gli.width * size ) / 2 ), (int)( ( Shooter.game.engine.frame.height - gli.height * size ) / 2 ), 1.0f, size, size, false );
+                Shooter.game.engine.glView.drawOrthoBitmapBytes( gli, (int)( ( Shooter.game.engine.glView.width - gli.width * size ) / 2 ), (int)( ( Shooter.game.engine.glView.height - gli.height * size ) / 2 ), 1.0f, size, size, false );
             }
         }
 

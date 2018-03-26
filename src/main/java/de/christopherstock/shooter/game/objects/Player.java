@@ -32,11 +32,6 @@
     *******************************************************************************************************************/
     public class Player implements LibGameObject, PlayerSettings, ShotSpender
     {
-        public interface HealthChangeListener
-        {
-            void healthChanged();
-        }
-
         /** The player's collision cylinger represents his position and hiscollision body. */
         private                     Cylinder                iCylinder                   = null;
 
@@ -74,8 +69,6 @@
         public                      float                   iZoom                       = 0.0f;
         public                      float                   iScaleFactor                = 0.0f;
 
-        private                     HealthChangeListener    iHealthChangeCallback       = null;
-
         private                     boolean                 iFalling                    = false;
 
         public Player(LibViewSet aStartPosition, boolean aDisableGravity )
@@ -86,10 +79,9 @@
 
             //ShooterDebug.bugfix.out( "Reset player glView!" );
 
-            this.iAmmoSet = new AmmoSet();
-            this.iHealthChangeCallback = Shooter.game.engine.hud;
-            this.iDisableGravity = aDisableGravity;
-            this.iArtefactSet = new ArtefactSet();
+            this.iAmmoSet              = new AmmoSet();
+            this.iDisableGravity       = aDisableGravity;
+            this.iArtefactSet          = new ArtefactSet();
         }
 
         private void handleKeys()
@@ -542,7 +534,7 @@
             }
 
             //health changed
-            this.iHealthChangeCallback.healthChanged();
+            Shooter.game.engine.hud.healthChanged();
         }
 
         public final LibViewSet getCameraPositionAndRotation()

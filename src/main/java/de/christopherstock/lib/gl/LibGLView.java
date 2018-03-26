@@ -30,9 +30,11 @@
 
         private                     LibDebug            debug                       = null;
         private                     LibFrame            panel                       = null;
-        private                     int                 width                       = 0;
-        private                     int                 height                      = 0;
+
+        public                      int                 width                       = 0;
+        public                      int                 height                      = 0;
         private                     float               aspectRatio                 = 0.0f;
+
         private                     Vector<LibFace>     firstPrioDrawingQueue       = new Vector<LibFace>();
         private                     Vector<LibFace>     defaultFaceDrawingQueue     = new Vector<LibFace>();
         private                     LibGLTexture        lastOpaqueTexture           = null;
@@ -41,6 +43,7 @@
         {
             this.debug       = debug;
             this.panel       = panel;
+
             this.width       = width;
             this.height      = height;
 
@@ -111,10 +114,10 @@
             this.debug.out( "invoked init-method of LWJGLView" );
 
             //assign the frame's dimensions and parse its offsets
-            panel.width  = Display.getParent().getWidth();
-            panel.height = Display.getParent().getHeight();
+            this.width  = Display.getParent().getWidth();
+            this.height = Display.getParent().getHeight();
 
-            this.debug.out( "assigned frame dimensions [" + Shooter.game.engine.frame.width + "]x[" + Shooter.game.engine.frame.height + "]" );
+            this.debug.out( "assigned frame dimensions [" + this.width + "]x[" + this.height + "]" );
 
             //run through some based OpenGL capability settings
 
@@ -588,7 +591,7 @@
             GL11.glMatrixMode( GL11.GL_PROJECTION );
             GL11.glPushMatrix();                                                        // preserve perspective glView
             GL11.glLoadIdentity();                                                      // clear the perspective matrix
-            GL11.glOrtho( 0, Shooter.game.engine.frame.width, 0, Shooter.game.engine.frame.height, -1, 1 );     // turn on 2D
+            GL11.glOrtho( 0, Shooter.game.engine.glView.width, 0, Shooter.game.engine.glView.height, -1, 1 );     // turn on 2D
             GL11.glMatrixMode( GL11.GL_MODELVIEW );
             GL11.glPushMatrix();                                                        // Preserve the Modelview Matrix
             GL11.glLoadIdentity();                                                      // clear the Modelview Matrix

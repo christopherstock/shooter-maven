@@ -53,8 +53,8 @@
 
             //Debug.bugfix.out( "x: [" + x + "] rotZ [" + playerRotZ + "] rotY [" + playerRotX + "]" );
 
-            Shooter.game.engine.glView.drawOrthoBitmapBytes(this.bgImage, x, Shooter.game.engine.frame.height - this.bgImage.height / 2 + y );
+            Shooter.game.engine.glView.drawOrthoBitmapBytes(this.bgImage, x, Shooter.game.engine.glView.height - this.bgImage.height / 2 + y );
             x -= this.bgImage.width;
-            Shooter.game.engine.glView.drawOrthoBitmapBytes(this.bgImage, x, Shooter.game.engine.frame.height - this.bgImage.height / 2 + y );
+            Shooter.game.engine.glView.drawOrthoBitmapBytes(this.bgImage, x, Shooter.game.engine.glView.height - this.bgImage.height / 2 + y );
         }
     }

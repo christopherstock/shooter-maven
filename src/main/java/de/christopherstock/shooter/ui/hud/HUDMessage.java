@@ -107,7 +107,7 @@
                 }
 
                 //draw text
-                int x = Shooter.game.engine.frame.width  - OffsetsOrtho.EBorderHudX - this.iTextImg.width;
+                int x = Shooter.game.engine.glView.width  - OffsetsOrtho.EBorderHudX - this.iTextImg.width;
                 Shooter.game.engine.glView.drawOrthoBitmapBytes(this.iTextImg, x, drawY, alphaFg );
             }
         }

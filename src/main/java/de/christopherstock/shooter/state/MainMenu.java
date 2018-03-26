@@ -55,8 +55,7 @@
 
         private MainMenu()
         {
-            this.blackPane = LibGLImage.getFullOpaque( LibColors.EBlackTranslucent.colABGR, Shooter.game.engine.frame.width, Shooter.game.engine.frame.height, ShooterDebug.glImage );
-
+            this.blackPane = LibGLImage.getFullOpaque( LibColors.EBlackTranslucent.colABGR, Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
         }
 
         public static void init()
@@ -76,7 +75,7 @@
             //draw main menu
             for ( MainMenuItem m : MainMenuItem.values() )
             {
-                m.draw( ( Shooter.game.engine.frame.width - m.unselected.width ) / 2, 600 - m.ordinal() * 85, currentMainMenuItem );
+                m.draw( ( Shooter.game.engine.glView.width - m.unselected.width ) / 2, 600 - m.ordinal() * 85, currentMainMenuItem );
             }
         }
 

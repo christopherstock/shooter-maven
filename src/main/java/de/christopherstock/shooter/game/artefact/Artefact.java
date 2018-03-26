@@ -149,7 +149,7 @@
                     Shooter.game.engine.glView.drawOrthoBitmapBytes
                     (
                         fxImage,
-                        randomX + modX + modGiveTake[ 0 ] + Shooter.game.engine.frame.width - this.iArtefactType.iFXOffset.x,
+                        randomX + modX + modGiveTake[ 0 ] + Shooter.game.engine.glView.width - this.iArtefactType.iFXOffset.x,
                         randomY + modY + modGiveTake[ 1 ] + this.iArtefactType.iFXOffset.y,
                         1.0f,
                         1.0f + p.iScaleFactor * 1.5f,
@@ -167,7 +167,7 @@
                 Shooter.game.engine.glView.drawOrthoBitmapBytes
                 (
                     this.iArtefactType.getArtefactImage(),
-                    modX + modGiveTake[ 0 ] + Shooter.game.engine.frame.width - this.iArtefactType.getArtefactImage().width,
+                    modX + modGiveTake[ 0 ] + Shooter.game.engine.glView.width - this.iArtefactType.getArtefactImage().width,
                     modY + modGiveTake[ 1 ] - this.iArtefactType.getArtefactImage().height / 8,
                     1.0f,
                     1.0f + p.iScaleFactor * 1.5f,
