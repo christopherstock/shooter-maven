@@ -1,7 +1,6 @@
 
     package de.christopherstock.lib.gl;
 
-    import  java.awt.*;
     import  java.nio.ByteBuffer;
     import  java.nio.ByteOrder;
     import  java.nio.FloatBuffer;
@@ -87,7 +86,7 @@
                 //((Canvas)panel.getCanvas() ).setFocusable(false);
 
                 //set native canvas as parent displayable
-                Display.setParent( (Canvas) panel.getCanvas() );
+                Display.setParent( this.panel.getCanvas() );
                 this.debug.out( "setting native Canvas Ok" );
 
                 //create the display

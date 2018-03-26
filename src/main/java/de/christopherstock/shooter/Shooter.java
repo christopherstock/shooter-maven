@@ -6,7 +6,7 @@
     /*******************************************************************************************************************
     *   The main class.
     *
-    *   TODO    prune LibGLCanvas!
+    *   TODO    prune LibGL to ShooterEngine!
     *   TODO    prune LibGLPanel
     *
     *   TODO    Prune all those super-confusing interfaces and abstract superclasses in LWJGL-Panel systems!

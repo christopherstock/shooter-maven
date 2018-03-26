@@ -15,35 +15,20 @@
     public class LibGLPanel implements WindowListener
     {
         private                     JFrame                  frame                   = null;
-        private                     LibGLCanvas             canvas                  = null;
-
-        private                     BufferedImage           iconImage               = null;
+        private                     Canvas                  canvas                  = null;
 
         public                      int                     width                   = 0;
         public                      int                     height                  = 0;
 
-        public LibGLPanel( String aTitle, int width, int height, BufferedImage aIconImage )
+        public LibGLPanel( String aTitle, int width, int height, BufferedImage frameIcon )
         {
-            this.iconImage = aIconImage;
-
-            this.canvas = new LibGLCanvas();
-
-            try
-            {
-                this.canvas.setFocusable( true );
-            }
-            catch ( Exception e )
-            {
-                //ignore exception
-            }
-
-            //instanciate JFrame
+            this.canvas = new Canvas();
             this.frame = new JFrame();
 
-            //get screen environment
+
             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
-            this.frame.setIconImage(this.iconImage);
+            this.frame.setIconImage( frameIcon );
             this.frame.setTitle(                  aTitle                          );
             this.frame.setDefaultCloseOperation(  WindowConstants.EXIT_ON_CLOSE            );
 
@@ -73,7 +58,7 @@
             }
         }
 
-        public final Component getCanvas()
+        public final Canvas getCanvas()
         {
             return this.canvas;
         }
