@@ -101,7 +101,7 @@
 
         private void loadBytes()
         {
-            String uri = ShooterSetting.Path.ESoundsFg.iUrl + this.toString() + LibExtension.wav.getSpecifier();
+            String uri = ShooterSetting.Path.ESoundsFg.url + this.toString() + LibExtension.wav.getSpecifier();
 
             try
             {

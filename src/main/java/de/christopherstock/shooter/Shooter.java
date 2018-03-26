@@ -6,13 +6,13 @@
     /*******************************************************************************************************************
     *   The main class.
     *
-    *   TODO    Prune all those super-confusing interfaces and abstract superclasses in LWJGL-Panel systems!
+    *   TODO    Cleanup game initialization.
+    *
     *   TODO    Different heights for particle effects.
     *   TODO    Mayflower branding and textures ( posters etc. ).
     *   TODO    Delete all 'a' and 'i' prefixes from variables. ( start at LibHitPoint )
     *
     *   TODO    only for FireArms! Move ArtefactType.iFXImages to Firearms (Wearpons)!
-    *   TODO    Cleanup game initialization.
     *   TODO    Turn all elements in ShooterEngine non static!
     *   TODO    Optimize fields in ArtefactType!
     *   TODO    Outsource iconImage and UI-matters from ShooterEngine.
@@ -24,6 +24,7 @@
     *   TODO    Move all CloseCombat constants to settings!
     *   TODO    make new subclass:  Wearpon that derives from ArtefactKind!!
     *   TODO    Complete version 4.0.0.
+    *   TODO    Complete the MVP.
     *
     *   TODO    let random assign different topping positions for ShooterWallCollection.createDeskOffice
     *   TODO    slow panning for zoomed glView?

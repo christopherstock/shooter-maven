@@ -30,7 +30,7 @@
     /*******************************************************************************************************************
     *   The superclass of all non-player-characters.
     *******************************************************************************************************************/
-    public class Bot implements LibGameObject, ShotSpender
+    public class Bot implements LibGameObject, ShotSource
     {
         public enum BotAliveState
         {

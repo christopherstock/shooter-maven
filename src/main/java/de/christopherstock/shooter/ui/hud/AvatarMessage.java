@@ -43,7 +43,7 @@
 
             private void loadImage()
             {
-                this.img = LibImage.load( ShooterSetting.Path.EAvatar.iUrl + this.toString() + LibExtension.png.getSpecifier(), ShooterDebug.glImage, true );
+                this.img = LibImage.load( ShooterSetting.Path.EAvatar.url + this.toString() + LibExtension.png.getSpecifier(), ShooterDebug.glImage, true );
             }
         }
 

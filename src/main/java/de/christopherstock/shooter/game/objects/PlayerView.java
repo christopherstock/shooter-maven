@@ -12,7 +12,7 @@
     /*******************************************************************************************************************
     *   The players field of glView.
     *******************************************************************************************************************/
-    public class PlayerView implements PlayerSettings
+    public class PlayerView
     {
         public enum DyingState
         {
@@ -39,11 +39,11 @@
 
         private                     Player          iParentPlayer               = null;
 
-        protected                   float           iDepthTotal                 = DEPTH_TOTAL_STANDING;
-        protected                   float           iDepthEye                   = DEPTH_EYE_STANDING;
-        protected                   float           iDepthHand                  = DEPTH_HAND_STANDING;
-        protected                   float           iHandTransX                 = TRANS_X_HAND;
-        protected                   float           iHandTransY                 = TRANS_Y_HAND;
+        protected                   float           iDepthTotal                 = PlayerSettings.DEPTH_TOTAL_STANDING;
+        protected                   float           iDepthEye                   = PlayerSettings.DEPTH_EYE_STANDING;
+        protected                   float           iDepthHand                  = PlayerSettings.DEPTH_HAND_STANDING;
+        protected                   float           iHandTransX                 = PlayerSettings.TRANS_X_HAND;
+        protected                   float           iHandTransY                 = PlayerSettings.TRANS_Y_HAND;
 
         protected                   float           iDieModX                    = 0.0f;
         protected                   float           iDieModY                    = 0.0f;
@@ -71,14 +71,14 @@
             //turn left
             if ( Keys.keyHoldTurnLeft && !Keys.keyHoldAlternate )
             {
-                this.iRot.z += SPEED_TURNING_Z * speedMultiplier;
+                this.iRot.z += PlayerSettings.SPEED_TURNING_Z * speedMultiplier;
                 this.iRot.z = this.iRot.z >= 360.0f ? this.iRot.z - 360.0f : this.iRot.z;
             }
 
             //turn right
             if ( Keys.keyHoldTurnRight && !Keys.keyHoldAlternate )
             {
-                this.iRot.z -= SPEED_TURNING_Z * speedMultiplier;
+                this.iRot.z -= PlayerSettings.SPEED_TURNING_Z * speedMultiplier;
                 this.iRot.z = this.iRot.z < 0.0f ? this.iRot.z + 360.0f : this.iRot.z;
             }
 
@@ -97,13 +97,13 @@
             //check x-looking-centering via keys
             if ( Keys.keyHoldLookUp )
             {
-                this.iRot.x -= SPEED_LOOKING_X * speedMultiplier;
-                this.iRot.x = this.iRot.x < -MAX_LOOKING_X ? -MAX_LOOKING_X : this.iRot.x;
+                this.iRot.x -= PlayerSettings.SPEED_LOOKING_X * speedMultiplier;
+                this.iRot.x = this.iRot.x < -PlayerSettings.MAX_LOOKING_X ? -PlayerSettings.MAX_LOOKING_X : this.iRot.x;
             }
             else if ( Keys.keyHoldLookDown )
             {
-                this.iRot.x += SPEED_LOOKING_X * speedMultiplier;
-                this.iRot.x = this.iRot.x > MAX_LOOKING_X ? MAX_LOOKING_X : this.iRot.x;
+                this.iRot.x += PlayerSettings.SPEED_LOOKING_X * speedMultiplier;
+                this.iRot.x = this.iRot.x > PlayerSettings.MAX_LOOKING_X ? PlayerSettings.MAX_LOOKING_X : this.iRot.x;
             }
             else if ( Keys.keyHoldWalkUp || Keys.keyHoldWalkDown )
             {
@@ -115,8 +115,8 @@
             if ( MouseInput.mouseMovementY != 0 )
             {
                 this.iRot.x -= MouseInput.mouseMovementY * speedMultiplier;
-                this.iRot.x = this.iRot.x < -MAX_LOOKING_X ? -MAX_LOOKING_X : this.iRot.x;
-                this.iRot.x = this.iRot.x > MAX_LOOKING_X  ? MAX_LOOKING_X  : this.iRot.x;
+                this.iRot.x = this.iRot.x < -PlayerSettings.MAX_LOOKING_X ? -PlayerSettings.MAX_LOOKING_X : this.iRot.x;
+                this.iRot.x = this.iRot.x > PlayerSettings.MAX_LOOKING_X  ? PlayerSettings.MAX_LOOKING_X  : this.iRot.x;
 
                 MouseInput.mouseMovementY = 0;
             }
@@ -131,17 +131,17 @@
                 //only move if required
                 if
                 (
-                        this.iDepthEye > DEPTH_EYE_CROUCHING
-                    || this.iDepthHand > DEPTH_HAND_CROUCHING
-                    || this.iDepthTotal > DEPTH_TOTAL_CROUCHING
+                        this.iDepthEye  > PlayerSettings.DEPTH_EYE_CROUCHING
+                    || this.iDepthHand  > PlayerSettings.DEPTH_HAND_CROUCHING
+                    || this.iDepthTotal > PlayerSettings.DEPTH_TOTAL_CROUCHING
                 )
                 {
-                    this.iDepthEye -= SPEED_CROUCH_TOGGLE;
-                    this.iDepthHand -= SPEED_CROUCH_TOGGLE;
-                    this.iDepthTotal = DEPTH_TOTAL_CROUCHING;
+                    this.iDepthEye   -= PlayerSettings.SPEED_CROUCH_TOGGLE;
+                    this.iDepthHand  -= PlayerSettings.SPEED_CROUCH_TOGGLE;
+                    this.iDepthTotal =  PlayerSettings.DEPTH_TOTAL_CROUCHING;
 
-                    if (this.iDepthEye < DEPTH_EYE_CROUCHING  ) this.iDepthEye = DEPTH_EYE_CROUCHING;
-                    if (this.iDepthHand < DEPTH_HAND_CROUCHING ) this.iDepthHand = DEPTH_HAND_CROUCHING;
+                    if (this.iDepthEye <  PlayerSettings.DEPTH_EYE_CROUCHING  ) this.iDepthEye  = PlayerSettings.DEPTH_EYE_CROUCHING;
+                    if (this.iDepthHand < PlayerSettings.DEPTH_HAND_CROUCHING ) this.iDepthHand = PlayerSettings.DEPTH_HAND_CROUCHING;
                 }
             }
             else
@@ -149,25 +149,25 @@
                 //only move if required
                 if
                 (
-                        this.iDepthEye < DEPTH_EYE_STANDING
-                    || this.iDepthHand < DEPTH_HAND_STANDING
-                    || this.iDepthTotal < DEPTH_TOTAL_STANDING
+                        this.iDepthEye <  PlayerSettings.DEPTH_EYE_STANDING
+                    || this.iDepthHand <  PlayerSettings.DEPTH_HAND_STANDING
+                    || this.iDepthTotal < PlayerSettings.DEPTH_TOTAL_STANDING
                 )
                 {
-                    this.iDepthEye += SPEED_CROUCH_TOGGLE;
-                    this.iDepthHand += SPEED_CROUCH_TOGGLE;
-                    this.iDepthTotal = DEPTH_TOTAL_STANDING;
+                    this.iDepthEye   += PlayerSettings.SPEED_CROUCH_TOGGLE;
+                    this.iDepthHand  += PlayerSettings.SPEED_CROUCH_TOGGLE;
+                    this.iDepthTotal =  PlayerSettings.DEPTH_TOTAL_STANDING;
 
-                    if (this.iDepthEye > DEPTH_EYE_STANDING  ) this.iDepthEye = DEPTH_EYE_STANDING;
-                    if (this.iDepthHand > DEPTH_HAND_STANDING ) this.iDepthHand = DEPTH_HAND_STANDING;
+                    if (this.iDepthEye  > PlayerSettings.DEPTH_EYE_STANDING  ) this.iDepthEye  = PlayerSettings.DEPTH_EYE_STANDING;
+                    if (this.iDepthHand > PlayerSettings.DEPTH_HAND_STANDING ) this.iDepthHand = PlayerSettings.DEPTH_HAND_STANDING;
 
                     //check collision on standing up
                     this.iParentPlayer.getCylinder().height = this.iDepthTotal;
                     if ( !ShooterSetting.General.DISABLE_PLAYER_TO_WALL_COLLISIONS && Level.currentSection().checkCollisionOnWalls(this.iParentPlayer.getCylinder() ) )
                     {
-                        this.iDepthEye -= SPEED_CROUCH_TOGGLE;
-                        this.iDepthHand -= SPEED_CROUCH_TOGGLE;
-                        this.iDepthTotal = DEPTH_TOTAL_CROUCHING;
+                        this.iDepthEye -= PlayerSettings.SPEED_CROUCH_TOGGLE;
+                        this.iDepthHand -= PlayerSettings.SPEED_CROUCH_TOGGLE;
+                        this.iDepthTotal = PlayerSettings.DEPTH_TOTAL_CROUCHING;
                         this.iParentPlayer.getCylinder().height = this.iDepthTotal;
 
                         //crouch the player
@@ -185,7 +185,7 @@
                 this.iCenterLookXthisTick = false;
                 if (this.iRot.x > 0.0f )
                 {
-                    this.iRot.x -= SPEED_CENTERING_X;
+                    this.iRot.x -= PlayerSettings.SPEED_CENTERING_X;
                     if (this.iRot.x <= 0.0f )
                     {
                         this.iRot.x = 0.0f;
@@ -194,7 +194,7 @@
                 }
                 else if (this.iRot.x < 0.0f )
                 {
-                    this.iRot.x += SPEED_CENTERING_X;
+                    this.iRot.x += PlayerSettings.SPEED_CENTERING_X;
                     if (this.iRot.x >= 0.0f )
                     {
                         this.iRot.x = 0.0f;
@@ -214,12 +214,12 @@
                     case EFallingDown:
                     {
                         //shake player's head
-                        this.iDieModX -= ROTATION_DYING / 10;
-                        this.iDieModY += ROTATION_DYING;
-                        this.iDieModZ += ROTATION_DYING;  // * UMath.getRandom( 0, 10 ) / 10;
+                        this.iDieModX -= PlayerSettings.ROTATION_DYING / 10;
+                        this.iDieModY += PlayerSettings.ROTATION_DYING;
+                        this.iDieModZ += PlayerSettings.ROTATION_DYING;  // * UMath.getRandom( 0, 10 ) / 10;
 
                         //let player sink
-                        this.iDieModTransZ += SPEED_DYING_SINKING;
+                        this.iDieModTransZ += PlayerSettings.SPEED_DYING_SINKING;
                         if (this.iDieModTransZ >= this.iDepthEye) this.iDieModTransZ = this.iDepthEye;
 
                         //start anim each x ticks

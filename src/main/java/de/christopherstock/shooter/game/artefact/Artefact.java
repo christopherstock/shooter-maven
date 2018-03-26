@@ -5,7 +5,7 @@
     import  de.christopherstock.lib.*;
     import de.christopherstock.lib.LibAnimation;
     import  de.christopherstock.lib.g3d.*;
-    import  de.christopherstock.lib.game.LibShot.ShotSpender;
+    import de.christopherstock.lib.game.LibShot.ShotSource;
     import  de.christopherstock.lib.gl.*;
     import  de.christopherstock.lib.math.*;
     import  de.christopherstock.shooter.*;
@@ -33,7 +33,7 @@
             this.iArtefactType = aArtefactType;
         }
 
-        public final void fire( ShotSpender ss, Point2D.Float shooterXY )
+        public final void fire(ShotSource ss, Point2D.Float shooterXY )
         {
             //check if delay after use is still active
             if (this.iCurrentDelayAfterUse > System.currentTimeMillis() )
@@ -54,7 +54,7 @@
             }
         }
 
-        public final void handleArtefact( ShotSpender ss, boolean doFire, AmmoSet ammoSet )
+        public final void handleArtefact(ShotSource ss, boolean doFire, AmmoSet ammoSet )
         {
             //check artefact actions
             if (this.iCurrentDelayAfterUse > System.currentTimeMillis() )

@@ -132,13 +132,13 @@
 
         private void loadImage()
         {
-            BufferedImage bufferedImage   = LibImage.load( ShooterSetting.Path.EArtefact.iUrl + this.toString() + LibExtension.png.getSpecifier(), ShooterDebug.glImage, false );
+            BufferedImage bufferedImage   = LibImage.load( ShooterSetting.Path.EArtefact.url + this.toString() + LibExtension.png.getSpecifier(), ShooterDebug.glImage, false );
             this.iArtefactImage = new LibGLImage( bufferedImage,   ImageUsage.EOrtho, ShooterDebug.glImage, true );
             Vector<LibGLImage> fxImages = new Vector<LibGLImage>();
             while ( true )
             {
                 String ext = ( fxImages.size() > 0 ? String.valueOf( fxImages.size() + 1 ) : "" );
-                String url = ShooterSetting.Path.EArtefactMuzzleFlash.iUrl + this.toString() + ext + LibExtension.png.getSpecifier();
+                String url = ShooterSetting.Path.EArtefactMuzzleFlash.url + this.toString() + ext + LibExtension.png.getSpecifier();
 
                 //break if file does not exist ( allows desired different flashes )
                 if (this.getClass().getResourceAsStream( url ) == null )

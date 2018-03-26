@@ -6,7 +6,7 @@
     import  de.christopherstock.lib.fx.LibFX.*;
     import  de.christopherstock.lib.g3d.*;
     import  de.christopherstock.lib.game.*;
-    import  de.christopherstock.lib.game.LibShot.ShotSpender;
+    import de.christopherstock.lib.game.LibShot.ShotSource;
     import  de.christopherstock.lib.gl.*;
     import  de.christopherstock.lib.io.d3ds.*;
     import  de.christopherstock.lib.math.*;
@@ -53,7 +53,7 @@
         }
 
         @Override
-        public boolean use( Artefact a, ShotSpender ss, Point2D.Float shooterXY )
+        public boolean use(Artefact a, ShotSource ss, Point2D.Float shooterXY )
         {
             //ShooterDebug.bugfix.out( "Fire FireArm .." );
 

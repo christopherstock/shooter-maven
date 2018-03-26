@@ -49,7 +49,7 @@
 
         protected final void loadImage()
         {
-            BufferedImage bufferedImage = LibImage.load( ShooterSetting.Path.EShells.iUrl + this.toString() + LibExtension.png.getSpecifier(), ShooterDebug.glImage, false );
+            BufferedImage bufferedImage = LibImage.load( ShooterSetting.Path.EShells.url + this.toString() + LibExtension.png.getSpecifier(), ShooterDebug.glImage, false );
             this.iHUDAmmoImage = new LibGLImage( bufferedImage, ImageUsage.EOrtho, ShooterDebug.glImage, true );
         }
 

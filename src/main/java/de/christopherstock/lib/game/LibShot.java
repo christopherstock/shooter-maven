@@ -16,7 +16,7 @@
     *******************************************************************************************************************/
     public class LibShot
     {
-        public interface ShotSpender
+        public interface ShotSource
         {
             LibShot getShot(float modZ);
         }

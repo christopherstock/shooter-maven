@@ -6,7 +6,7 @@
     import de.christopherstock.lib.LibParticleQuantity;
     import  de.christopherstock.lib.fx.LibFX.FXSize;
     import  de.christopherstock.lib.g3d.LibHoleSize;
-    import  de.christopherstock.lib.game.LibShot.ShotSpender;
+    import de.christopherstock.lib.game.LibShot.ShotSource;
 
     /*******************************************************************************************************************
     *   The kind of artefact.
@@ -28,6 +28,6 @@
          *   @return <code>true</code> if the wearpon actually fired.
          *           <code>false</code> if the wearpon has not been fired ( if there is no ammo etc. ).
          ***************************************************************************************************************/
-         public abstract boolean use( Artefact artefact, ShotSpender ss, Point2D.Float shooterXY );
+         public abstract boolean use(Artefact artefact, ShotSource ss, Point2D.Float shooterXY );
          public abstract int getDamage();
     }

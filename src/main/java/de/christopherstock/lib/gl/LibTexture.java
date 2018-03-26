@@ -7,6 +7,8 @@
     public interface LibTexture
     {
         LibGLTexture getTexture();
+
         LibGLImage getTextureImage();
+
         void loadImage(String url);
     }

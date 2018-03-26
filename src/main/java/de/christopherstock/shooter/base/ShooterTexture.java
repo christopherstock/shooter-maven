@@ -500,23 +500,23 @@
         {
             for ( Mask texture : Mask.values() )
             {
-                texture.loadImage( ShooterSetting.Path.ETexturesMask.iUrl + texture.toString() + LibExtension.jpg.getSpecifier() );
+                texture.loadImage( ShooterSetting.Path.ETexturesMask.url + texture.toString() + LibExtension.jpg.getSpecifier() );
             }
             for ( BulletHoleTex texture : BulletHoleTex.values() )
             {
-                texture.loadImage( ShooterSetting.Path.ETexturesBulletHole.iUrl + texture.toString() + LibExtension.jpg.getSpecifier() );
+                texture.loadImage( ShooterSetting.Path.ETexturesBulletHole.url + texture.toString() + LibExtension.jpg.getSpecifier() );
             }
             for ( WallTex texture : WallTex.values() )
             {
-                texture.loadImage( ShooterSetting.Path.ETexturesWall.iUrl + texture.toString() + LibExtension.jpg.getSpecifier() );
+                texture.loadImage( ShooterSetting.Path.ETexturesWall.url + texture.toString() + LibExtension.jpg.getSpecifier() );
             }
             for ( BotTex texture : BotTex.values() )
             {
-                texture.loadImage( ShooterSetting.Path.ETexturesBot.iUrl + texture.toString() + LibExtension.jpg.getSpecifier() );
+                texture.loadImage( ShooterSetting.Path.ETexturesBot.url + texture.toString() + LibExtension.jpg.getSpecifier() );
             }
             for ( ItemTex texture : ItemTex.values() )
             {
-                texture.loadImage( ShooterSetting.Path.ETexturesItem.iUrl + texture.toString() + LibExtension.jpg.getSpecifier() );
+                texture.loadImage( ShooterSetting.Path.ETexturesItem.url + texture.toString() + LibExtension.jpg.getSpecifier() );
             }
         }
 

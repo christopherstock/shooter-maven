@@ -7,6 +7,7 @@
     public interface LibD3dsFile
     {
         void initFile(LibD3dsImporter aD3dsFile);
+
         LibD3dsImporter getFile();
     }
     

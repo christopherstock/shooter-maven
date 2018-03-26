@@ -31,7 +31,7 @@
 
         private void loadImage()
         {
-            BufferedImage bufferedImage = LibImage.load( ShooterSetting.Path.EBackGrounds.iUrl + this.toString() + LibExtension.jpg.getSpecifier(), ShooterDebug.glImage, false );
+            BufferedImage bufferedImage = LibImage.load( ShooterSetting.Path.EBackGrounds.url + this.toString() + LibExtension.jpg.getSpecifier(), ShooterDebug.glImage, false );
             this.bgImage = new LibGLImage( bufferedImage, ImageUsage.EOrtho, ShooterDebug.glImage, true );
         }
 

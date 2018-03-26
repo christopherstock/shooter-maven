@@ -3,17 +3,16 @@
 
     import  java.util.*;
     import  javax.vecmath.*;
-
     import  org.lwjgl.opengl.*;
-    import de.christopherstock.lib.LibAnimation;
-    import de.christopherstock.lib.LibViewSet;
+    import  de.christopherstock.lib.LibAnimation;
+    import  de.christopherstock.lib.LibViewSet;
     import  de.christopherstock.lib.g3d.*;
     import  de.christopherstock.lib.game.*;
     import  de.christopherstock.lib.game.LibShot.*;
     import  de.christopherstock.lib.gl.*;
     import  de.christopherstock.lib.math.*;
     import  de.christopherstock.shooter.*;
-    import de.christopherstock.shooter.ShooterSetting.*;
+    import  de.christopherstock.shooter.ShooterSetting.*;
     import  de.christopherstock.shooter.g3d.*;
     import  de.christopherstock.shooter.game.artefact.ArtefactSet;
     import  de.christopherstock.shooter.game.artefact.ArtefactType;
@@ -30,7 +29,7 @@
     /*******************************************************************************************************************
     *   Represents the player.
     *******************************************************************************************************************/
-    public class Player implements LibGameObject, PlayerSettings, ShotSpender
+    public class Player implements LibGameObject, ShotSource
     {
         /** The player's collision cylinger represents his position and hiscollision body. */
         private                     Cylinder                iCylinder                   = null;
@@ -53,7 +52,7 @@
         private                     float                   iWalkingAngleY              = 0.0f;
         private                     float                   iWalkingAngleWearponX       = 0.0f;
         private                     float                   iWalkingAngleWearponY       = 0.0f;
-        private                     float                   iCurrentSpeedFalling        = SPEED_FALLING_MIN;
+        private                     float                   iCurrentSpeedFalling        = PlayerSettings.SPEED_FALLING_MIN;
 
         /***************************************************************************************************************
         *   Specifies if the player is currently crouching.
@@ -74,7 +73,20 @@
         public Player(LibViewSet aStartPosition, boolean aDisableGravity )
         {
             //init and set cylinder
-            this.iCylinder = new Cylinder( this, new LibVertex( aStartPosition.pos.x, aStartPosition.pos.y, aStartPosition.pos.z ), RADIUS_BODY, DEPTH_TOTAL_STANDING, ShooterSetting.Performance.COLLISION_CHECKING_STEPS, ShooterDebug.playerCylinder, false, PlayerSettings.MAX_CLIMBING_UP_Z, PlayerSettings.MIN_CLIMBING_UP_Z, ShooterSetting.Performance.ELLIPSE_SEGMENTS, Material.EHumanFlesh );
+            this.iCylinder = new Cylinder
+            (
+                this,
+                new LibVertex( aStartPosition.pos.x, aStartPosition.pos.y, aStartPosition.pos.z ),
+                PlayerSettings.RADIUS_BODY,
+                PlayerSettings.DEPTH_TOTAL_STANDING,
+                ShooterSetting.Performance.COLLISION_CHECKING_STEPS,
+                ShooterDebug.playerCylinder,
+                false,
+                PlayerSettings.MAX_CLIMBING_UP_Z,
+                PlayerSettings.MIN_CLIMBING_UP_Z,
+                ShooterSetting.Performance.ELLIPSE_SEGMENTS,
+                Material.EHumanFlesh
+            );
             this.iView = new PlayerView(     this, aStartPosition.rot );
 
             //ShooterDebug.bugfix.out( "Reset player glView!" );
@@ -113,13 +125,13 @@
                 if ( Keys.keyHoldWalkUp )
                 {
                     //change character's position
-                    this.iCylinder.getTarget().x = this.iCylinder.getTarget().x - LibMath.sinDeg(this.iView.iRot.z ) * SPEED_WALKING;
-                    this.iCylinder.getTarget().y = this.iCylinder.getTarget().y - LibMath.cosDeg(this.iView.iRot.z ) * SPEED_WALKING;
+                    this.iCylinder.getTarget().x = this.iCylinder.getTarget().x - LibMath.sinDeg(this.iView.iRot.z ) * PlayerSettings.SPEED_WALKING;
+                    this.iCylinder.getTarget().y = this.iCylinder.getTarget().y - LibMath.cosDeg(this.iView.iRot.z ) * PlayerSettings.SPEED_WALKING;
 
                     //increase walkY-axis-angles
-                    this.iWalkingAngleY += SPEED_WALKING_ANGLE_Y;
-                    this.iWalkingAngleWearponX += SPEED_WALKING_ANGLE_WEARPON_X;
-                    this.iWalkingAngleWearponY += SPEED_WALKING_ANGLE_WEARPON_Y;
+                    this.iWalkingAngleY        += PlayerSettings.SPEED_WALKING_ANGLE_Y;
+                    this.iWalkingAngleWearponX += PlayerSettings.SPEED_WALKING_ANGLE_WEARPON_X;
+                    this.iWalkingAngleWearponY += PlayerSettings.SPEED_WALKING_ANGLE_WEARPON_Y;
                     this.iWalkingAngleY = this.iWalkingAngleY > 360.0f ? this.iWalkingAngleY - 360.0f        : this.iWalkingAngleY;
                     this.iWalkingAngleWearponX = this.iWalkingAngleWearponX > 360.0f ? this.iWalkingAngleWearponX - 360.0f : this.iWalkingAngleWearponX;
                     this.iWalkingAngleWearponY = this.iWalkingAngleWearponY > 360.0f ? this.iWalkingAngleWearponY - 360.0f : this.iWalkingAngleWearponY;
@@ -129,19 +141,19 @@
                 if ( Keys.keyHoldWalkDown )
                 {
                     //change character's position
-                    this.iCylinder.getTarget().x = this.iCylinder.getTarget().x + LibMath.sinDeg(this.iView.iRot.z ) * SPEED_WALKING;
-                    this.iCylinder.getTarget().y = this.iCylinder.getTarget().y + LibMath.cosDeg(this.iView.iRot.z ) * SPEED_WALKING;
+                    this.iCylinder.getTarget().x = this.iCylinder.getTarget().x + LibMath.sinDeg(this.iView.iRot.z ) * PlayerSettings.SPEED_WALKING;
+                    this.iCylinder.getTarget().y = this.iCylinder.getTarget().y + LibMath.cosDeg(this.iView.iRot.z ) * PlayerSettings.SPEED_WALKING;
 
                     //increase walkY-axis-angles
                     //walkingAngle1 += CHARACTER_WALKING_ANGLE_1_SPEED;
-                    this.iWalkingAngleWearponX += SPEED_WALKING_ANGLE_WEARPON_X;
-                    this.iWalkingAngleWearponY += SPEED_WALKING_ANGLE_WEARPON_Y;
+                    this.iWalkingAngleWearponX += PlayerSettings.SPEED_WALKING_ANGLE_WEARPON_X;
+                    this.iWalkingAngleWearponY += PlayerSettings.SPEED_WALKING_ANGLE_WEARPON_Y;
                     //walkingAngle1 = walkingAngle1 > 360.0f ? walkingAngle1 - 360.0f : walkingAngle1;
                     this.iWalkingAngleWearponX = this.iWalkingAngleWearponX > 360.0f ? this.iWalkingAngleWearponX - 360.0f : this.iWalkingAngleWearponX;
                     this.iWalkingAngleWearponY = this.iWalkingAngleWearponY > 360.0f ? this.iWalkingAngleWearponY - 360.0f : this.iWalkingAngleWearponY;
 
                     //decrease walkY-axis-angle
-                    this.iWalkingAngleY -= SPEED_WALKING_ANGLE_Y;
+                    this.iWalkingAngleY -= PlayerSettings.SPEED_WALKING_ANGLE_Y;
                     //walkingAngle2 -= CHARACTER_WALKING_ANGLE_2_SPEED;
                     //walkingAngle3 -= CHARACTER_WALKING_ANGLE_3_SPEED;
                     this.iWalkingAngleY = this.iWalkingAngleY < 0.0f ? this.iWalkingAngleY + 360.0f : this.iWalkingAngleY;
@@ -154,8 +166,8 @@
                 {
                     if ( Keys.keyHoldAlternate || Keys.keyHoldStrafeLeft )
                     {
-                        this.iCylinder.getTarget().x = this.iCylinder.getTarget().x - LibMath.cosDeg(this.iView.iRot.z ) * SPEED_STRAFING;
-                        this.iCylinder.getTarget().y = this.iCylinder.getTarget().y + LibMath.sinDeg(this.iView.iRot.z ) * SPEED_STRAFING;
+                        this.iCylinder.getTarget().x = this.iCylinder.getTarget().x - LibMath.cosDeg(this.iView.iRot.z ) * PlayerSettings.SPEED_STRAFING;
+                        this.iCylinder.getTarget().y = this.iCylinder.getTarget().y + LibMath.sinDeg(this.iView.iRot.z ) * PlayerSettings.SPEED_STRAFING;
                     }
                 }
 
@@ -164,8 +176,8 @@
                 {
                     if ( Keys.keyHoldAlternate  || Keys.keyHoldStrafeRight )
                     {
-                        this.iCylinder.getTarget().x = this.iCylinder.getTarget().x + LibMath.cosDeg(this.iView.iRot.z ) * SPEED_STRAFING;
-                        this.iCylinder.getTarget().y = this.iCylinder.getTarget().y - LibMath.sinDeg(this.iView.iRot.z ) * SPEED_STRAFING;
+                        this.iCylinder.getTarget().x = this.iCylinder.getTarget().x + LibMath.cosDeg(this.iView.iRot.z ) * PlayerSettings.SPEED_STRAFING;
+                        this.iCylinder.getTarget().y = this.iCylinder.getTarget().y - LibMath.sinDeg(this.iView.iRot.z ) * PlayerSettings.SPEED_STRAFING;
                     }
                 }
             }
@@ -286,16 +298,16 @@
             //check if the player is falling - if no highest point or highest point is too far away
             if ( highestZ == null || highestZ < this.iCylinder.getAnchor().z - PlayerSettings.MAX_CLIMBING_UP_Z / 2  )
             {
-                if (this.iCurrentSpeedFalling > SPEED_FALLING_MAX ) this.iCurrentSpeedFalling = SPEED_FALLING_MAX;
+                if (this.iCurrentSpeedFalling > PlayerSettings.SPEED_FALLING_MAX ) this.iCurrentSpeedFalling = PlayerSettings.SPEED_FALLING_MAX;
 
                 this.iCylinder.getAnchor().z -= this.iCurrentSpeedFalling;
-                this.iCurrentSpeedFalling *= SPEED_FALLING_MULTIPLIER;
+                this.iCurrentSpeedFalling *= PlayerSettings.SPEED_FALLING_MULTIPLIER;
                 this.iFalling = true;
             }
             else
             {
                 //assign face's z
-                this.iCurrentSpeedFalling = SPEED_FALLING_MIN;
+                this.iCurrentSpeedFalling = PlayerSettings.SPEED_FALLING_MIN;
                 this.iCylinder.getAnchor().z = highestZ;
                 this.iFalling = false;
             }
@@ -453,7 +465,7 @@
         public final void heal( int gainer )
         {
             //player can only be healed if it is not too late
-            if ( !this.iDead && this.iHealth < MAX_HEALTH )
+            if ( !this.iDead && this.iHealth < PlayerSettings.MAX_HEALTH )
             {
                 //substract damage - clip rock bottom
                 this.setHealth(this.iHealth + gainer );
@@ -521,9 +533,9 @@
             this.iHealth = health;
 
             //clip roof
-            if (this.iHealth > MAX_HEALTH )
+            if (this.iHealth > PlayerSettings.MAX_HEALTH )
             {
-                this.iHealth = MAX_HEALTH;
+                this.iHealth = PlayerSettings.MAX_HEALTH;
             }
 
             //clip ceiling - kill if player falls to death

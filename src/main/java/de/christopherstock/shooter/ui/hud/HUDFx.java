@@ -47,7 +47,7 @@
 
             try
             {
-                reincarnationTube = ImageIO.read( LibIO.preStreamJarResource( ShooterSetting.Path.EScreen.iUrl + "reincarnation.png" ) );
+                reincarnationTube = ImageIO.read( LibIO.preStreamJarResource( ShooterSetting.Path.EScreen.url + "reincarnation.png" ) );
                 gli = new LibGLImage( reincarnationTube, ImageUsage.EOrtho, ShooterDebug.glImage, true );
             }
             catch ( Exception e )

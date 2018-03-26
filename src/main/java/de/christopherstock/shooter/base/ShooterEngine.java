@@ -24,9 +24,9 @@
     *******************************************************************************************************************/
     public class ShooterEngine
     {
-        /** Icon image for the frame. */
+        /** Icon image for the frame. TODO outsource! */
         private                     BufferedImage           iconImage                   = null;
-        /** The bg image for the preloader. */
+        /** The bg image for the preloader. TODO outsource! */
         private                     BufferedImage           bgImage                     = null;
 
         /** Preloader. */
@@ -43,8 +43,9 @@
         /** The global player-instance being controlled by the user. */
         public                      Player                  player                      = null;
 
+        /** The frame contains a native Java frame and canvas. */
         public                      LibFrame                frame                       = null;
-
+        /** The gl view manages all GL operations. */
         public                      LibGLView               glView                      = null;
 
         /***************************************************************************************************************
@@ -56,8 +57,8 @@
 
             try
             {
-                this.iconImage = ImageIO.read( LibIO.preStreamJarResource( ShooterSetting.Path.EScreen.iUrl + "icon.png" ) );
-                this.bgImage   = ImageIO.read( LibIO.preStreamJarResource( ShooterSetting.Path.EScreen.iUrl + "bg.jpg"   ) );
+                this.iconImage = ImageIO.read( LibIO.preStreamJarResource( ShooterSetting.Path.EScreen.url + "icon.png" ) );
+                this.bgImage   = ImageIO.read( LibIO.preStreamJarResource( ShooterSetting.Path.EScreen.url + "bg.jpg"   ) );
             }
             catch ( IOException ioe )
             {
@@ -182,13 +183,13 @@
         {
             try
             {
-                Fonts.EAmmo          = LibIO.createFont( Path.EFont.iUrl + "sourceSansPro.otf", 18.0f ); // new Font( "verdana",     Font.BOLD,  12 );
-                Fonts.EPreloader     = LibIO.createFont( Path.EFont.iUrl + "sourceSansPro.otf", 25.0f ); // new Font( "verdana",     Font.BOLD,  12 );
-                Fonts.EHealth        = LibIO.createFont( Path.EFont.iUrl + "sourceSansPro.otf", 18.0f ); // new Font( "verdana",     Font.BOLD,  12 );
-                Fonts.EFps           = LibIO.createFont( Path.EFont.iUrl + "sourceSansPro.otf", 18.0f ); // new Font( "verdana",     Font.BOLD,  12 );
-                Fonts.EAvatarMessage = LibIO.createFont( Path.EFont.iUrl + "sourceSansPro.otf", 18.0f ); // new Font( "verdana",     Font.BOLD,  12 );
+                Fonts.EAmmo          = LibIO.createFont( Path.EFont.url + "sourceSansPro.otf", 18.0f ); // new Font( "verdana",     Font.BOLD,  12 );
+                Fonts.EPreloader     = LibIO.createFont( Path.EFont.url + "sourceSansPro.otf", 25.0f ); // new Font( "verdana",     Font.BOLD,  12 );
+                Fonts.EHealth        = LibIO.createFont( Path.EFont.url + "sourceSansPro.otf", 18.0f ); // new Font( "verdana",     Font.BOLD,  12 );
+                Fonts.EFps           = LibIO.createFont( Path.EFont.url + "sourceSansPro.otf", 18.0f ); // new Font( "verdana",     Font.BOLD,  12 );
+                Fonts.EAvatarMessage = LibIO.createFont( Path.EFont.url + "sourceSansPro.otf", 18.0f ); // new Font( "verdana",     Font.BOLD,  12 );
 
-                Fonts.EMainMenu      = LibIO.createFont( Path.EFont.iUrl + "sourceSansPro.otf", 55.0f );
+                Fonts.EMainMenu      = LibIO.createFont( Path.EFont.url + "sourceSansPro.otf", 55.0f );
             }
             catch ( Throwable t )
             {

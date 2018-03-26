@@ -240,22 +240,22 @@
         {
             for ( LibD3dsFile file : Bots.values() )
             {
-                file.initFile( new LibD3dsImporter( ShooterSetting.Path.E3dsMaxBot.iUrl + file.toString() + LibExtension.ase.getSpecifier(), aDebug ) );
+                file.initFile( new LibD3dsImporter( ShooterSetting.Path.E3dsMaxBot.url + file.toString() + LibExtension.ase.getSpecifier(), aDebug ) );
             }
 
             for ( LibD3dsFile file : Others.values() )
             {
-                file.initFile( new LibD3dsImporter( ShooterSetting.Path.E3dsMaxOther.iUrl + file.toString() + LibExtension.ase.getSpecifier(), aDebug ) );
+                file.initFile( new LibD3dsImporter( ShooterSetting.Path.E3dsMaxOther.url + file.toString() + LibExtension.ase.getSpecifier(), aDebug ) );
             }
 
             for ( LibD3dsFile file : Items.values() )
             {
-                file.initFile( new LibD3dsImporter( ShooterSetting.Path.E3dsMaxItem.iUrl + file.toString() + LibExtension.ase.getSpecifier(), aDebug ) );
+                file.initFile( new LibD3dsImporter( ShooterSetting.Path.E3dsMaxItem.url + file.toString() + LibExtension.ase.getSpecifier(), aDebug ) );
             }
 
             for ( LibD3dsFile file : Menu.values() )
             {
-                file.initFile( new LibD3dsImporter( ShooterSetting.Path.E3dsMaxMenu.iUrl + file.toString() + LibExtension.ase.getSpecifier(), aDebug ) );
+                file.initFile( new LibD3dsImporter( ShooterSetting.Path.E3dsMaxMenu.url + file.toString() + LibExtension.ase.getSpecifier(), aDebug ) );
             }
 
 

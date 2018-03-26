@@ -4,9 +4,9 @@
     /*******************************************************************************************************************
     *   All content strings gather here.
     *******************************************************************************************************************/
-    public interface ShooterStrings
+    public class ShooterStrings
     {
-        final class AvatarMessages
+        public static final class AvatarMessages
         {
             public  static  final   String      LEVEL1_OFFICE_PARTNER_ACCLAIM_TUTORIAL_LOOK     = "That's all for today.\nWill you yield these reports to the Human Resources Department?\n\nUse LEFT and RIGHT or Q and E to turn into all directions.";
             public  static  final   String      LEVEL1_OFFICE_PARTNER_ACCLAIM_TUTORIAL_WALK     = "Use UP and DOWN or W and S to walk forewards and backwards.\n\nUse A and D to strafe left or right.";
@@ -25,7 +25,7 @@
         /***************************************************************************************************************
         *   These characters will break lines.
         ***************************************************************************************************************/
-        final class HUDMessages
+        public static final class HUDMessages
         {
             public  static  final   String      PICKED_UP_CRACKERS          = "Picked up a cracker bag";
             public  static  final   String      PICKED_UP_BOTTLE            = "Picked up a bottle of soft water";
@@ -47,7 +47,7 @@
             public  static  final   String      TAKE_KEYCARD                = "Received keycard";
         }
 
-        final class BotInteraction
+        public static final class BotInteraction
         {
             public  static  final   String      THANKS_FOR_MOBILE           = "Thanks for this handset.";
         }

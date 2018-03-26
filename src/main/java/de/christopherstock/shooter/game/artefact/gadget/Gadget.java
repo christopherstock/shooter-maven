@@ -35,7 +35,7 @@
         }
 
         @Override
-        public boolean use( Artefact artefact, ShotSpender ss, Point2D.Float shooterXY )
+        public boolean use(Artefact artefact, ShotSource ss, Point2D.Float shooterXY )
         {
             //can only be used if not being animated
             if (this.iGiveTakeAnimState == GiveTakeAnim.ENone )

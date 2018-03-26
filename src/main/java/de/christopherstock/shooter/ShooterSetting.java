@@ -75,63 +75,62 @@
         /***************************************************************************************************************
         *   Holding all of player's constant attributes.
         ***************************************************************************************************************/
-        public interface PlayerSettings
+        public class PlayerSettings
         {
-            boolean         INVINCIBILITY                       = false;                //no damage
+            public  static  final   boolean         INVINCIBILITY                       = false;                //no damage
 
             //basics
-            float           RADIUS_BODY                         = 0.4f;                 //player's standing radius
-            float           RADIUS_CLOSE_COMBAT                 = 1.5f;
-            float           RADIUS_ACTION                       = 1.75f;                //player's action radius
+            public  static  final   float           RADIUS_BODY                         = 0.4f;                 //player's standing radius
+            public  static  final   float           RADIUS_CLOSE_COMBAT                 = 1.5f;
+            public  static  final   float           RADIUS_ACTION                       = 1.75f;                //player's action radius
 
-            float           VIEW_DISTANCE                       = 50.0f;                //max. glView distance - faces do not get drawed if current distance to player is higher
+            public  static  final   float           VIEW_DISTANCE                       = 50.0f;                //max. glView distance - faces do not get drawed if current distance to player is higher
 
-            float           MAX_ACTION_VIEW_ANGLE               = 80.0f;                //to left and right side of the center glView
+            public  static  final   float           MAX_ACTION_VIEW_ANGLE               = 80.0f;                //to left and right side of the center glView
 
             //depths
-            float           DEPTH_TOTAL_STANDING                = 1.3f;                 //for collisions
-            float           DEPTH_TOTAL_CROUCHING               = 0.7f;                 //for collisions
+            public  static  final   float           DEPTH_TOTAL_STANDING                = 1.3f;                 //for collisions
+            public  static  final   float           DEPTH_TOTAL_CROUCHING               = 0.7f;                 //for collisions
 
-            float           DEPTH_EYE_STANDING                  = 1.2f;                 //player's eye-distance from floor
-            float           DEPTH_EYE_CROUCHING                 = 0.6f;                 //player's eye-distance from floor
+            public  static  final   float           DEPTH_EYE_STANDING                  = 1.2f;                 //player's eye-distance from floor
+            public  static  final   float           DEPTH_EYE_CROUCHING                 = 0.6f;                 //player's eye-distance from floor
 
-            float           DEPTH_HAND_STANDING                 = DEPTH_EYE_STANDING;   //player's hand-distance from floor
-            float           DEPTH_HAND_CROUCHING                = DEPTH_EYE_CROUCHING;  //player's hand-distance from floor
+            public  static  final   float           DEPTH_HAND_STANDING                 = DEPTH_EYE_STANDING;   //player's hand-distance from floor
+            public  static  final   float           DEPTH_HAND_CROUCHING                = DEPTH_EYE_CROUCHING;  //player's hand-distance from floor
 
-            float           TRANS_X_HAND                        = 0.0f;                 //0.1f;     //player's hand x-translation for shots
-            float           TRANS_Y_HAND                        = 0.0f;                 //0.0f;     //player's hand y-translation for shots
+            public  static  final   float           TRANS_X_HAND                        = 0.0f;                 //0.1f;     //player's hand x-translation for shots
+            public  static  final   float           TRANS_Y_HAND                        = 0.0f;                 //0.0f;     //player's hand y-translation for shots
 
-            float           DEPTH_DEATH                         = 0.08f;                //player's glView height on being dead
+            public  static  final   float           DEPTH_DEATH                         = 0.08f;                //player's glView height on being dead
 
             //speed
-            float           SPEED_WALKING                       = 0.2f; //0.15f;        //walking  speed
-            float           SPEED_STRAFING                      = 0.1f;                 //strafing speed
-            float           SPEED_CROUCH_TOGGLE                 = 0.1f;                 //speed to crouch / get up
-            float           SPEED_FALLING_MIN                   = 0.075f;               //falling down on z axis per tick
-            float           SPEED_FALLING_MAX                   = 0.3f;                 //falling down on z axis per tick
-            float           SPEED_FALLING_MULTIPLIER            = 1.25f;                //falling   speed multiplier per tick
-            float           SPEED_TURNING_Z                     = 2.0f;                 //2.5f; //turning   speed in ° (left/right)
-            float           SPEED_LOOKING_X                     = 2.5f;                 //5.0f; //1.25f;    //looking   speed in ° (up/down)
-            float           SPEED_CENTERING_X                   = 10.0f;                //centering speed in ° back to 0°
-            float           SPEED_DYING_SINKING                 = 0.1f;                 //rotating  speed in ° x y z on dying
+            public  static  final   float           SPEED_WALKING                       = 0.2f; //0.15f;        //walking  speed
+            public  static  final   float           SPEED_STRAFING                      = 0.1f;                 //strafing speed
+            public  static  final   float           SPEED_CROUCH_TOGGLE                 = 0.1f;                 //speed to crouch / get up
+            public  static  final   float           SPEED_FALLING_MIN                   = 0.075f;               //falling down on z axis per tick
+            public  static  final   float           SPEED_FALLING_MAX                   = 0.3f;                 //falling down on z axis per tick
+            public  static  final   float           SPEED_FALLING_MULTIPLIER            = 1.25f;                //falling   speed multiplier per tick
+            public  static  final   float           SPEED_TURNING_Z                     = 2.0f;                 //2.5f; //turning   speed in ° (left/right)
+            public  static  final   float           SPEED_LOOKING_X                     = 2.5f;                 //5.0f; //1.25f;    //looking   speed in ° (up/down)
+            public  static  final   float           SPEED_CENTERING_X                   = 10.0f;                //centering speed in ° back to 0°
+            public  static  final   float           SPEED_DYING_SINKING                 = 0.1f;                 //rotating  speed in ° x y z on dying
 
             //health
-            int             MAX_HEALTH                          = 25;                   //maximum health value
+            public  static  final   int             MAX_HEALTH                          = 25;                   //maximum health value
 
-            float           ROTATION_DYING                      = 4.5f;                 //rotating speed in ° x y z on dying
-            float           MAX_LOOKING_X                       = 85.0f;                //max. look up/down in °
+            public  static  final   float           ROTATION_DYING                      = 4.5f;                 //rotating speed in ° x y z on dying
+            public  static  final   float           MAX_LOOKING_X                       = 85.0f;                //max. look up/down in °
 
-            float           MIN_CLIMBING_UP_Z                   = 0.02f;                //min auto climbing on non-climbable faces z
-            float           MAX_CLIMBING_UP_Z                   = 1.0f;                 //max auto climbing on climbable faces z
+            public  static  final   float           MIN_CLIMBING_UP_Z                   = 0.02f;                //min auto climbing on non-climbable faces z
+            public  static  final   float           MAX_CLIMBING_UP_Z                   = 1.0f;                 //max auto climbing on climbable faces z
 
+            public  static  final   float           AMP_WALKING_Z                       = 0.10f;                 //0.05f;    //z-amplitude ratio
 
-            float           AMP_WALKING_Z                       = 0.10f;                 //0.05f;    //z-amplitude ratio
+            public  static  final   float           SPEED_WALKING_ANGLE_Y               = 7.5f;                 //y-modification per walking-step in °
+            public  static  final   float           SPEED_WALKING_ANGLE_WEARPON_X       = 5.0f;                 //y-modification per walking-step in °
+            public  static  final   float           SPEED_WALKING_ANGLE_WEARPON_Y       = 2.5f;                 //y-modification per walking-step in °
 
-            float           SPEED_WALKING_ANGLE_Y               = 7.5f;                 //y-modification per walking-step in °
-            float           SPEED_WALKING_ANGLE_WEARPON_X       = 5.0f;                 //y-modification per walking-step in °
-            float           SPEED_WALKING_ANGLE_WEARPON_Y       = 2.5f;                 //y-modification per walking-step in °
-
-            int             GIVE_TAKE_ANIM_RATIO                = 4;
+            public  static  final   int             GIVE_TAKE_ANIM_RATIO                = 4;
         }
 
         public static final class DoorSettings
@@ -384,17 +383,17 @@
             EFont(                  "/res/font/"                    ),
             ;
 
-            public                  String      iUrl                                = null;
+            public                  String                  url                     = null;
 
-            private Path( String aUrl )
+            private Path( String url )
             {
-                this.iUrl = aUrl;
+                this.url = url;
 
                 //assert leading slash
-                if ( !this.iUrl.startsWith( "/" ) ) this.iUrl = "/" + this.iUrl;
+                if ( !this.url.startsWith( "/" ) ) this.url = "/" + this.url;
 
                 //assert trailing slash
-                if ( !this.iUrl.endsWith(   "/" ) ) this.iUrl = this.iUrl + "/";
+                if ( !this.url.endsWith(   "/" ) ) this.url = this.url + "/";
             }
         }
     }

@@ -8,7 +8,7 @@
     import  de.christopherstock.lib.fx.LibFX.*;
     import  de.christopherstock.lib.g3d.*;
     import  de.christopherstock.lib.game.*;
-    import  de.christopherstock.lib.game.LibShot.ShotSpender;
+    import de.christopherstock.lib.game.LibShot.ShotSource;
     import  de.christopherstock.lib.math.*;
     import  de.christopherstock.shooter.game.artefact.Artefact;
     import  de.christopherstock.shooter.game.artefact.ArtefactKind;
@@ -29,7 +29,7 @@
         }
 
         @Override
-        public boolean use( Artefact w, ShotSpender ss, Point2D.Float shooterXY )
+        public boolean use(Artefact w, ShotSource ss, Point2D.Float shooterXY )
         {
             //ShooterDebug.bugfix.out( "LAUNCH CC - damage is [" + iDamage + "]" );
 

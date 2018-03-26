@@ -97,7 +97,7 @@
             try
             {
                 //inoperative on mac :(
-                BufferedImage bi  = ImageIO.read( LibIO.preStreamJarResource( ShooterSetting.Path.EScreen.iUrl + "invisible.png" ) );
+                BufferedImage bi  = ImageIO.read( LibIO.preStreamJarResource( ShooterSetting.Path.EScreen.url + "invisible.png" ) );
                 LibGLImage    img = new LibGLImage( bi, LibGLImage.ImageUsage.EOrtho, ShooterDebug.glimage, false );
                 Mouse.setNativeCursor( new Cursor( bi.getWidth(), bi.getHeight(), bi.getWidth() / 2, bi.getHeight() / 2, 1, img.bytes.asIntBuffer(), null ) );
 
