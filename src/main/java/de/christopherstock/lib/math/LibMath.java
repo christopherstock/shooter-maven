@@ -17,7 +17,7 @@
         *   @param  degrees     The degrees to get the sin-value for.
         *   @return             The sin-value from -1.0f to 1.0f of the given degree value.
         ***************************************************************************************************************/
-        public static float sinDeg(float degrees )
+        public static float sinDeg( float degrees )
         {
             return (float)Math.sin( degrees * Math.PI / 180.0f );
         }
@@ -28,29 +28,29 @@
         *   @param  degrees     The degrees to get the cos-value for.
         *   @return     The cos-value from -1.0f to 1.0f of the given degree value.
         ***************************************************************************************************************/
-        public static float cosDeg(float degrees )
+        public static float cosDeg( float degrees )
         {
             return (float)Math.cos( degrees * Math.PI / 180.0f );
         }
 
         /***************************************************************************************************************
-        *   Delivers the sin-value from a degree-value.
+        *   Delivers the sin-value from a degree-value as a DOUBLE value.
         *
         *   @param  degrees     The degrees to get the sin-value for.
         *   @return             The sin-value from -1.0f to 1.0f of the given degree value.
         ***************************************************************************************************************/
-        public static double sinDegD(double degrees )
+        public static double sinDegD( double degrees )
         {
             return Math.sin( degrees * Math.PI / 180.0f );
         }
 
         /***************************************************************************************************************
-        *   Delivers the cos-value from a degree-value.
+        *   Delivers the cos-value from a degree-value as a DOUBLE value.
         *
         *   @param  degrees     The degrees to get the cos-value for.
         *   @return     The cos-value from -1.0f to 1.0f of the given degree value.
         ***************************************************************************************************************/
-        public static double cosDegD(double degrees )
+        public static double cosDegD( double degrees )
         {
             return Math.cos( degrees * Math.PI / 180.0f );
         }
@@ -60,10 +60,11 @@
         *   There is no need to set a random seed.
         *   {@link Math#random()} does this on the first invocation.
         ***************************************************************************************************************/
-        public static int getRandom(int from, int to )
+        public static int getRandom( int from, int to )
         {
             double  rand    = Math.random() * 1000;
             int     randI   = ( ( (int)rand % ( to + 1 - from ) ) + from );
+
             return randI;
         }
 
@@ -122,7 +123,7 @@
         *
         *   @return     The nearest distance as an absolute value.
         ***************************************************************************************************************/
-        public static float getAngleDistanceAbsolute(float angleSrc, float angleDest )
+        public static float getAngleDistanceAbsolute( float angleSrc, float angleDest )
         {
             return Math.abs( getAngleDistanceRelative( angleSrc, angleDest ) );
         }
@@ -132,7 +133,7 @@
         *
         *   @return     The nearest distance as a relative value.
         ***************************************************************************************************************/
-        public static float getAngleDistanceRelative(float angleSrc, float angleDest )
+        public static float getAngleDistanceRelative( float angleSrc, float angleDest )
         {
             float distance = 0.0f;
 
@@ -143,11 +144,12 @@
             return distance;
         }
 
-        public static float normalizeAngle(int aAngle )
+        public static float normalizeAngle( int aAngle )
         {
             float angle = aAngle;
             while ( angle <    0 ) angle += 360;
             while ( angle >= 360 ) angle -= 360;
+
             return angle;
         }
 
@@ -156,6 +158,7 @@
             float angle = aAngle;
             while ( angle <    0.0f ) angle += 360.0f;
             while ( angle >= 360.0f ) angle -= 360.0f;
+
             return angle;
         }
 

@@ -9,16 +9,16 @@
     *******************************************************************************************************************/
     public class LibGLLight
     {
-        public                  LibVertex               iAnk                = null;
-        public                  float                   iRotZ               = 0.0f;
-        public                  float                   iSpotCutoff         = 0.0f;
-        public                  LibColors               iColDiffuse         = null;
+        public                  LibVertex               ank                 = null;
+        public                  float                   rotZ                = 0.0f;
+        public                  float                   spotCutoff          = 0.0f;
+        public                  LibColors               colDiffuse          = null;
 
-        public LibGLLight( LibVertex aAnk, float aRotZ, float aSpotCutoff, LibColors aColDiffuse )
+        public LibGLLight( LibVertex ank, float rotZ, float spotCutoff, LibColors colDiffuse )
         {
-            this.iAnk = aAnk;
-            this.iRotZ = aRotZ;
-            this.iSpotCutoff = aSpotCutoff;
-            this.iColDiffuse = aColDiffuse;
+            this.ank = ank;
+            this.rotZ = rotZ;
+            this.spotCutoff = spotCutoff;
+            this.colDiffuse = colDiffuse;
         }
     }

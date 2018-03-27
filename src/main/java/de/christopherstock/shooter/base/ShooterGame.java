@@ -6,6 +6,7 @@
     import  de.christopherstock.shooter.io.sound.*;
     import  de.christopherstock.shooter.level.*;
     import  de.christopherstock.shooter.state.*;
+    import  org.lwjgl.opengl.Display;
 
     /*******************************************************************************************************************
     *   Represents the game with all components.
@@ -54,8 +55,8 @@
                 //update fps
                 this.engine.fps.update();
 
-                //draw gl frame
-                Shooter.game.engine.frame.display();
+                //invoke callback 3d drawing
+                this.draw();
 
                 //delay for specified delay time
                 try
@@ -99,6 +100,9 @@
                     break;
                 }
             }
+
+            //update native LWJGL Display
+            Display.update();
         }
 
         public final void quit()
@@ -107,6 +111,7 @@
             this.destroyed = true;
         }
 
+        // TODO check if required?
         public final void orderMainStateChangeTo( MainState aFutureMainState )
         {
             this.engine.mainStateToChangeTo = aFutureMainState;
@@ -135,20 +140,16 @@
             {
                 case EPreloader:
                 {
-                    //nothing to animate ?
                     break;
                 }
 
                 case EMainMenu:
                 {
-                    //check keys and mouse for lwjgl
                     LWJGLKeys.checkKeys();
                     LWJGLMouse.checkMouse();
 
-                    //check menu key events
                     MainMenu.getSingleton().checkMenuKeyEvents();
 
-                    //animate main menu
                     MainMenu.getSingleton().onRun();
 
                     break;
@@ -156,24 +157,18 @@
 
                 case EIngame:
                 {
-                    //check keys and mouse for lwjgl
                     LWJGLKeys.checkKeys();
                     LWJGLMouse.checkMouse();
 
-                    //perform synchronized level change
                     LevelChange.checkChangeToSection();
 
-                    //check game key events
                     Ingame.getSingleton().checkGameKeyEvents();
 
-                    //animate player and level ( only if a level is assigned )
                     if ( Level.currentSection() != null )
                     {
-                        //animate level
                         Level.currentSection().render();
                     }
 
-                    //maintain sounds
                     SoundFg.onRun();
 
                     break;

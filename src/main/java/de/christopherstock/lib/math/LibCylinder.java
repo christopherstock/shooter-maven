@@ -9,11 +9,11 @@
     *******************************************************************************************************************/
     public interface LibCylinder
     {
-        boolean checkCollisionHorzLines(LibFaceTriangle face, boolean useBottomToleranceZ, boolean invertBottomTolerance);
+        boolean checkCollisionHorzLines( LibFaceTriangle face, boolean useBottomToleranceZ, boolean invertBottomTolerance );
 
         Point2D.Float getCenterHorz();
 
         Ellipse2D.Float getCircle();
 
-        boolean heightsIntersect(float wallZ1, float wallZ2, boolean useBottomToleranceZ, boolean invertBottomTolerance);
+        boolean heightsIntersect( float wallZ1, float wallZ2, boolean useBottomToleranceZ, boolean invertBottomTolerance );
     }

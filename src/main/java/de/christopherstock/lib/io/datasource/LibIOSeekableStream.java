@@ -18,10 +18,10 @@
         /***************************************************************************************************************
         *   Creates a new instance of SeekableStream
         ***************************************************************************************************************/
-        public LibIOSeekableStream(ByteBuffer byteBuffer)
+        public LibIOSeekableStream( ByteBuffer inputBuffer )
         {
-            this.inputBuffer = byteBuffer;
-            this.seek(0); // set the ByteBuffer to to beginning
+            this.inputBuffer = inputBuffer;
+            this.seek( 0 ); // set the ByteBuffer to to beginning
         }
 
         /***************************************************************************************************************

@@ -31,7 +31,7 @@
         @Override
         public boolean use(Artefact w, ShotSource ss, Point2D.Float shooterXY )
         {
-            //ShooterDebug.bugfix.out( "LAUNCH CC - damage is [" + iDamage + "]" );
+            //ShooterDebug.bugfix.out( "LAUNCH CC - damage is [" + damage + "]" );
 
             //launch use-sound-fx
             if (this.iUseSound != null )

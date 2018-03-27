@@ -1,33 +1,27 @@
-/*  $Id: LibMaxVertex.java 1273 2014-02-04 13:56:08Z jenetic.bytemare@googlemail.com $
- *  =================================================================================
- *  The 3dsmax-loader.
- */
+
     package de.christopherstock.lib.io.d3ds;
 
     class LibMaxVertex
     {
-        public float    x   = 0.0f;
-        public float    y   = 0.0f;
-        public float    z   = 0.0f;
-        public float    u   = 0.0f;
-        public float    v   = 0.0f;
+        public                  float       x           = 0.0f;
+        public                  float       y           = 0.0f;
+        public                  float       z           = 0.0f;
+
+        public                  float       u           = 0.0f;
+        public                  float       v           = 0.0f;
 
         /***************************************************************************************************************
-        *   returns a copy!
-        *
-        *   @param  v   The max-vertex to create a copy from.
+        *   Creates a copy of the specified vertex.
         ***************************************************************************************************************/
-        public LibMaxVertex( LibMaxVertex aV )
+        public LibMaxVertex( LibMaxVertex v )
         {
-            this.x = aV.x;
-            this.y = aV.y;
-            this.z = aV.z;
+            this( v.x, v.y, v.z );
         }
 
-        public LibMaxVertex( float initX, float initY, float initZ )
+        public LibMaxVertex( float x, float y, float z )
         {
-            this.x = initX;
-            this.y = initY;
-            this.z = initZ;
+            this.x = x;
+            this.y = y;
+            this.z = z;
         }
     }

@@ -10,5 +10,18 @@
     *******************************************************************************************************************/
     public interface LibFloorStack
     {
-        Float getHighestFloor(LibGameObject aParentGameObject, LibVertex aAnchor, float aRadius, float aHeight, int aCollisionCheckingSteps, LibDebug aDebug, boolean aDebugDrawBotCircles, float aBottomCollisionToleranceZ, float aMinBottomCollisionToleranceZ, int aEllipseSegments, Object exclude);
+        Float getHighestFloor
+        (
+            LibGameObject parentGameObject,
+            LibVertex     anchor,
+            float         radius,
+            float         height,
+            int           collisionCheckingSteps,
+            LibDebug      debug,
+            boolean       debugDrawBotCircles,
+            float         bottomCollisionToleranceZ,
+            float         minBottomCollisionToleranceZ,
+            int           ellipseSegments,
+            Object        exclude
+        );
     }

@@ -6,7 +6,6 @@
     import  java.awt.event.WindowListener;
     import  java.awt.image.BufferedImage;
     import  de.christopherstock.shooter.Shooter;
-    import  org.lwjgl.opengl.*;
     import  javax.swing.*;
 
     /*******************************************************************************************************************
@@ -14,45 +13,39 @@
     *******************************************************************************************************************/
     public class LibFrame implements WindowListener
     {
+        private                     String                  title                   = null;
+        private                     int                     width                   = 0;
+        private                     int                     height                  = 0;
+        private                     BufferedImage           icon                    = null;
+
         private                     JFrame                  frame                   = null;
         private                     Canvas                  canvas                  = null;
 
-        public LibFrame( String title, int width, int height, BufferedImage frameIcon )
+        public LibFrame( String title, int width, int height, BufferedImage icon )
         {
-            this.frame = new JFrame();
-            this.canvas = new Canvas();
+            this.title  = title;
+            this.width  = width;
+            this.height = height;
+            this.icon   = icon;
 
+            this.frame  = new JFrame();
+            this.canvas = new Canvas();
+        }
+
+        public void init()
+        {
             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
-            this.frame.setIconImage( frameIcon );
-            this.frame.setTitle(                  title                          );
-            this.frame.setDefaultCloseOperation(  WindowConstants.EXIT_ON_CLOSE            );
-
-            this.frame.setLocation( ( screenSize.width - width ) / 2, ( screenSize.height - height ) / 2 );
-            this.frame.setSize( width, height );
-
-            this.frame.setResizable(              false                           );
-            this.frame.setUndecorated(            true                            );
-
-            //add listener
-            this.frame.addWindowListener(         this                            );
-
-            //set canvas as content pane
-            this.frame.getContentPane().add(      this.canvas                     );
-
-            //show form
-            this.frame.setVisible(                true                            );
-/*
-            //stick in foreground ( may raise a SucurityException )
-            try
-            {
-                this.frame.setAlwaysOnTop(        true                            );
-            }
-            catch ( SecurityException se )
-            {
-                //ignore exception
-            }
-*/
+            this.frame.setIconImage( this.icon );
+            this.frame.setTitle( this.title );
+            this.frame.setDefaultCloseOperation( WindowConstants.EXIT_ON_CLOSE );
+            this.frame.setLocation( ( screenSize.width - this.width ) / 2, ( screenSize.height - this.height ) / 2 );
+            this.frame.setSize( this.width, this.height );
+            this.frame.setResizable( false );
+            this.frame.setUndecorated( true );
+            this.frame.addWindowListener( this );
+            this.frame.getContentPane().add( this.canvas );
+            this.frame.setVisible( true );
         }
 
         public final Canvas getCanvas()
@@ -60,18 +53,9 @@
             return this.canvas;
         }
 
-        public final void display()
-        {
-            //invoke callback 3d drawing
-            Shooter.game.draw();
-
-            //update native LWJGL Display each tick
-            Display.update();
-        }
-
         public Graphics2D getGraphics()
         {
-            return (Graphics2D) this.getCanvas().getGraphics();
+            return (Graphics2D)this.canvas.getGraphics();
         }
 
         public void windowClosing( WindowEvent arg0 )

@@ -29,10 +29,8 @@
         public              ByteBuffer          bytes                       = null;
         public              SrcPixelFormat      srcPixelFormat              = null;
 
-        public LibGLImage( BufferedImage aBufferedImage, ImageUsage imageUsage, LibDebug debug, boolean flipAllBytes )
+        public LibGLImage( BufferedImage bufferedImage, ImageUsage imageUsage, LibDebug debug, boolean flipAllBytes )
         {
-            BufferedImage bufferedImage = aBufferedImage;
-
             this.width = bufferedImage.getWidth();
             this.height = bufferedImage.getHeight();
 
@@ -75,7 +73,7 @@
             }
         }
 
-        private static ByteBuffer getByteBuffer(BufferedImage aBufferedImage, LibDebug debug, boolean flipAllBytes)
+        private static ByteBuffer getByteBuffer( BufferedImage aBufferedImage, LibDebug debug, boolean flipAllBytes )
         {
             byte[] bytes = LibImage.getBytesFromImg( aBufferedImage, debug );
 
@@ -90,7 +88,7 @@
             return ret;
         }
 
-        public static LibGLImage[] convertAll(BufferedImage[] bufferedImages, ImageUsage imageUsage, LibDebug debug )
+        public static LibGLImage[] convertAll( BufferedImage[] bufferedImages, ImageUsage imageUsage, LibDebug debug )
         {
             LibGLImage[] ret = new LibGLImage[ bufferedImages.length ];
 
@@ -102,12 +100,12 @@
             return ret;
         }
 
-        public static LibGLImage getFromString(String stringToDisplay, Font font, Color colFg, Color colShadow, Color colOutline, LibDebug debug )
+        public static LibGLImage getFromString( String stringToDisplay, Font font, Color colFg, Color colShadow, Color colOutline, LibDebug debug )
         {
-            Graphics2D      g           = Shooter.game.engine.frame.getGraphics();
+            Graphics2D g         = Shooter.game.engine.frame.getGraphics();
 
-            int             imgWidth    = LibStrings.getStringWidth(  g, stringToDisplay, font );
-            int             imgHeight   = LibStrings.getStringHeight( g, font );
+            int        imgWidth  = LibStrings.getStringWidth(  g, stringToDisplay, font );
+            int        imgHeight = LibStrings.getStringHeight( g, font );
 
             //secure minimum width
             if ( imgWidth  < 1 ) imgWidth  = 1;
@@ -126,7 +124,7 @@
             return new LibGLImage( template2, ImageUsage.EOrtho, debug, false );
         }
 
-        public static LibGLImage getFullOpaque(Color col, int width, int height, LibDebug debug )
+        public static LibGLImage getFullOpaque( Color col, int width, int height, LibDebug debug )
         {
             //create dynamic buffered image and draw context
             BufferedImage   template2 = new BufferedImage( width, height, BufferedImage.TYPE_INT_ARGB );

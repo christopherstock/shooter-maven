@@ -23,7 +23,7 @@
 
         float getCarriersFaceAngle();
 
-        Vector<LibHitPoint> launchShot(LibShot shot);
+        Vector<LibHitPoint> launchShot( LibShot shot );
 
-        void launchAction(LibCylinder cylinder, Object gadget, float faceAngle );
+        void launchAction( LibCylinder cylinder, Object gadget, float faceAngle );
     }

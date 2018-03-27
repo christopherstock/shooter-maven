@@ -10,5 +10,5 @@
 
         LibGLImage getTextureImage();
 
-        void loadImage(String url);
+        void loadImage( String url );
     }

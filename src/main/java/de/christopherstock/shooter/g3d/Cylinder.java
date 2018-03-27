@@ -114,27 +114,27 @@
         */
         private LibHitPoint launchAShot(LibShot shot )
         {
-            //if ( shot.iOrigin == ShotOrigin.EEnemies ) ShooterDebug.bugfix.out( "launch shot: [" + "on cylinder" + "]" );
+            //if ( shot.origin == ShotOrigin.EEnemies ) ShooterDebug.bugfix.out( "launch shot: [" + "on cylinder" + "]" );
 
             //check horizontal intersection
             Point2D.Float   centerHorz              = new Point2D.Float(this.anchor.x, this.anchor.y );
-            boolean         horizontalIntersection  = shot.iLineShotHorz.ptSegDist( centerHorz ) <= this.radius;
+            boolean         horizontalIntersection  = shot.lineShotHorz.ptSegDist( centerHorz ) <= this.radius;
             if ( horizontalIntersection )
             {
-                //if ( shot.iOrigin == ShotOrigin.EEnemies ) ShooterDebug.bugfix.out( " player hit" );
+                //if ( shot.origin == ShotOrigin.EEnemies ) ShooterDebug.bugfix.out( " player hit" );
 
                 this.debug.out( "bot horizontal hit !!" );
 
                 //get horizontal intersecttion
-                Point2D.Float intersectionPointHorz = LibMathGeometry.findLineCircleIntersection( shot.iLineShotHorz, this.getCircle() );
+                Point2D.Float intersectionPointHorz = LibMathGeometry.findLineCircleIntersection( shot.lineShotHorz, this.getCircle() );
                 this.debug.out( "interP: ["+intersectionPointHorz+",]" );
 
                 //get angle from horz hitPoint to shot-src-point
                 float           angleCenterToHitPointHorz = LibMath.getAngleCorrect( centerHorz, intersectionPointHorz );
                 float           angleHitPointHorzToCenter = angleCenterToHitPointHorz - 180.0f;
 
-                float           exactDistanceHorz       = (float)shot.iSrcPointHorz.distance( intersectionPointHorz );
-                float           shotAngleHorz           = LibMath.getAngleCorrect( shot.iSrcPointHorz, new Point2D.Float( (float)centerHorz.getX(), (float)centerHorz.getY() ) );        //get angle between player and hit-point
+                float           exactDistanceHorz       = (float)shot.srcPointHorz.distance( intersectionPointHorz );
+                float           shotAngleHorz           = LibMath.getAngleCorrect( shot.srcPointHorz, new Point2D.Float( (float)centerHorz.getX(), (float)centerHorz.getY() ) );        //get angle between player and hit-point
                 float           invertedShotAngleHorz   = 360.0f - ( shotAngleHorz - 180.0f  );              //get opposite direction of shot
                 float           sliverAngleHorz         = shotAngleHorz /* - faceAngleHorz */ * 2;              //get Sliver angle
 
@@ -147,7 +147,7 @@
                 Line2D.Float collisionLineVert = new Line2D.Float( new Point2D.Float( exactDistanceHorz, this.anchor.z ), new Point2D.Float( exactDistanceHorz, this.anchor.z + this.height) );
                 this.debug.out( "bot's collision line vert is: [" + collisionLineVert + "]" );
 
-                if ( !shot.iLineShotVert.intersectsLine( collisionLineVert ) )
+                if ( !shot.lineShotVert.intersectsLine( collisionLineVert ) )
                 {
                     this.debug.out( "VERTICAL FACE MISSED!" );
                     return null;
@@ -155,12 +155,12 @@
 
                 //get intersection point for the vertical axis
                 this.debug.out( "VERTICAL FACE HIT!" );
-                Point2D.Float   intersectionPointVert   = LibMathGeometry.findLineSegmentIntersection( shot.iLineShotVert, collisionLineVert, this.debug);
+                Point2D.Float   intersectionPointVert   = LibMathGeometry.findLineSegmentIntersection( shot.lineShotVert, collisionLineVert, this.debug);
                 float           z                       = intersectionPointVert.y;
                 this.debug.out( ">> INTERSECTION POINT VERT: " + intersectionPointVert );
 
                 //get vertical values
-                float exactDistanceVert = (float)shot.iSrcPointVert.distance( intersectionPointVert );       //get exact distance
+                float exactDistanceVert = (float)shot.srcPointVert.distance( intersectionPointVert );       //get exact distance
 
                 this.debug.out( ">> EXACT DISTANCE VERT: " + exactDistanceVert );
 //                debug.out( ">> SHOT-ANGLE-VERT: " + shotAngleVert );

@@ -1,7 +1,7 @@
 
     package de.christopherstock.lib.ui;
 
-    import de.christopherstock.lib.LibTransformationMode;
+    import  de.christopherstock.lib.LibTransformationMode;
     import  de.christopherstock.lib.g3d.*;
 
     /*******************************************************************************************************************
@@ -15,5 +15,5 @@
 
         void draw();
 
-        void animateSprite(LibVertex object);
+        void animateSprite( LibVertex object );
     }

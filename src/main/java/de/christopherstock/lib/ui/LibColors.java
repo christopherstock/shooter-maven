@@ -23,7 +23,7 @@
         EWhite(                         0xffffffff      ),
 
         ESkin(                          0xfff2cec5      ),
-        EOrangeMF(                        0xffec7404      ),
+        EOrangeMF(                      0xffec7404      ),
 
         EBrown(                         0xffb68527      ),
         EBrownDark(                     0xff89651e      ),
@@ -72,19 +72,19 @@
 
         ;
 
-        private int         rgb             = 0;
+        private             int         rgb             = 0;
         public              float[]     f4              = null;
         public              float[]     f3              = null;
         public              Color       colARGB         = null;
         public              Color       colABGR         = null;
 
-        private LibColors( int aArgb )
+        private LibColors( int rgb )
         {
-            this.rgb =                   aArgb;
-            this.f3 = LibMath.col2f3(   aArgb       );
-            this.f4 = LibMath.col2f4(   aArgb       );
-            this.colARGB = new Color(        aArgb, true );
-            this.colABGR = new Color(this.colARGB.getBlue(), this.colARGB.getGreen(), this.colARGB.getRed(), this.colARGB.getAlpha() );
+            this.rgb = rgb;
+            this.f3 = LibMath.col2f3( rgb );
+            this.f4 = LibMath.col2f4( rgb );
+            this.colARGB = new Color( rgb, true );
+            this.colABGR = new Color( this.colARGB.getBlue(), this.colARGB.getGreen(), this.colARGB.getRed(), this.colARGB.getAlpha() );
         }
 
         public static LibColors getByName(String name )

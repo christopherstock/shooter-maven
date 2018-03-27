@@ -153,8 +153,6 @@
             //set perspective
 //            GLU.gluPerspective( VIEW_ANGLE, ( (float)LibGL.frame.width / (float)LibGL.frame.height ), VIEW_MIN, VIEW_MAX );
 
-            //init all textures HANGS ??
-            Shooter.game.engine.frame.getCanvas().requestFocus();
         }
 
         public void clearFaceQueue()
@@ -675,16 +673,16 @@
             GL11.glEnable( lightKey );
 
             //set position                 x,               z,              y,              w       // w=1.0f: x y z describe the position, w=0.0f: x y z describe the axis direction - inoperative
-            float[] lightPosition      = { light.iAnk.x,    light.iAnk.z,   light.iAnk.y,   1.0f    };
+            float[] lightPosition      = { light.ank.x,    light.ank.z,   light.ank.y,   1.0f    };
 
           //float[] lightAmbient       = { 0.0f, 0.0f, 0.0f,  1.0f, };
 
-            float[] lightSpotDirection  = { LibMath.sinDeg( light.iRotZ ), 0.0f, LibMath.cosDeg( light.iRotZ ), 0.0f, };
+            float[] lightSpotDirection  = { LibMath.sinDeg( light.rotZ), 0.0f, LibMath.cosDeg( light.rotZ), 0.0f, };
 
             FloatBuffer buffPosition      = (FloatBuffer)ByteBuffer.allocateDirect( 16 ).order( ByteOrder.nativeOrder() ).asFloatBuffer().put( lightPosition            ).flip();
             FloatBuffer buffSpotDirection = (FloatBuffer)ByteBuffer.allocateDirect( 16 ).order( ByteOrder.nativeOrder() ).asFloatBuffer().put( lightSpotDirection       ).flip();
-            FloatBuffer buffDiffuse       = (FloatBuffer)ByteBuffer.allocateDirect( 16 ).order( ByteOrder.nativeOrder() ).asFloatBuffer().put( light.iColDiffuse.f4     ).flip();
-            FloatBuffer buffSpecular      = (FloatBuffer)ByteBuffer.allocateDirect( 16 ).order( ByteOrder.nativeOrder() ).asFloatBuffer().put( light.iColDiffuse.f4     ).flip();
+            FloatBuffer buffDiffuse       = (FloatBuffer)ByteBuffer.allocateDirect( 16 ).order( ByteOrder.nativeOrder() ).asFloatBuffer().put( light.colDiffuse.f4     ).flip();
+            FloatBuffer buffSpecular      = (FloatBuffer)ByteBuffer.allocateDirect( 16 ).order( ByteOrder.nativeOrder() ).asFloatBuffer().put( light.colDiffuse.f4     ).flip();
 
             GL11.glLight(  lightKey, GL11.GL_POSITION, buffPosition );
             GL11.glLight(  lightKey, GL11.GL_DIFFUSE,  buffDiffuse  );
@@ -694,7 +692,7 @@
           //GL11.glLight(  glKey, GL11.GL_AMBIENT,  (FloatBuffer)temp .asFloatBuffer().put( lightAmbient  ).flip() );
 
             //spot size and direction
-            GL11.glLightf(  lightKey,  GL11.GL_SPOT_CUTOFF,    light.iSpotCutoff    );
+            GL11.glLightf(  lightKey,  GL11.GL_SPOT_CUTOFF,    light.spotCutoff);
             GL11.glLight( lightKey,  GL11.GL_SPOT_DIRECTION, buffSpotDirection    );
 
             GL11.glMaterial( GL11.GL_FRONT, GL11.GL_DIFFUSE,    buffDiffuse  );

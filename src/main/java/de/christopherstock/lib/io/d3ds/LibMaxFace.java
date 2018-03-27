@@ -1,21 +1,18 @@
-/*  $Id: LibMaxFace.java 1224 2012-12-31 12:32:24Z jenetic.bytemare@googlemail.com $
- *  =================================================================================
- *  The 3dsmax-loader.
- */
+
     package de.christopherstock.lib.io.d3ds;
 
     class LibMaxFace
     {
-        public  LibMaxVertex   iFaceNormal     = null;
-        public  LibMaxVertex   vertex1         = null;
-        public  LibMaxVertex   vertex2         = null;
-        public  LibMaxVertex   vertex3         = null;
+        public      LibMaxVertex        faceNormal          = null;
+        public      LibMaxVertex        vertex1             = null;
+        public      LibMaxVertex        vertex2             = null;
+        public      LibMaxVertex        vertex3             = null;
 
-        public LibMaxFace( LibMaxVertex aFaceNormal, LibMaxVertex initVertex1, LibMaxVertex initVertex2, LibMaxVertex initVertex3 )
+        public LibMaxFace( LibMaxVertex faceNormal, LibMaxVertex vertex1, LibMaxVertex vertex2, LibMaxVertex vertex3 )
         {
-            this.iFaceNormal = aFaceNormal;
-            this.vertex1 = new LibMaxVertex( initVertex1 );
-            this.vertex2 = new LibMaxVertex( initVertex2 );
-            this.vertex3 = new LibMaxVertex( initVertex3 );
+            this.faceNormal = faceNormal;
+            this.vertex1 = new LibMaxVertex( vertex1 );
+            this.vertex2 = new LibMaxVertex( vertex2 );
+            this.vertex3 = new LibMaxVertex( vertex3 );
         }
     }

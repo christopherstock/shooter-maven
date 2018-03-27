@@ -24,12 +24,12 @@
         private                     LibMaterial         material            = null;
         private                     Integer             maskId              = null;
 
-        public LibGLTexture( int aId, Translucency aTranslucency, LibMaterial aMaterial, Integer aMaskId )
+        public LibGLTexture( int id, Translucency translucency, LibMaterial material, Integer maskId )
         {
-            this.id = aId;
-            this.translucency = aTranslucency;
-            this.material = aMaterial;
-            this.maskId = aMaskId;
+            this.id           = id;
+            this.translucency = translucency;
+            this.material     = material;
+            this.maskId       = maskId;
         }
 
         public final int getId()

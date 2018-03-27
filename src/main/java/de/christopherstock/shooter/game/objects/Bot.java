@@ -1112,7 +1112,7 @@
             //draw glView shot line
             //shot.drawShotLine( FxSettings.LIFETIME_DEBUG );
 
-            return ( hitPoint.length > 0 && hitPoint[ 0 ].iCarrier.getHitPointCarrier() == HitPointCarrier.EPlayer );
+            return ( hitPoint.length > 0 && hitPoint[ 0 ].carrier.getHitPointCarrier() == HitPointCarrier.EPlayer );
         }
 
         public final LibVertex getAnchor()

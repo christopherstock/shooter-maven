@@ -1,7 +1,4 @@
-/*  $Id: LibMaxTriangle.java 1224 2012-12-31 12:32:24Z jenetic.bytemare@googlemail.com $
- *  =================================================================================
- *  The 3dsmax-loader.
- */
+
     package de.christopherstock.lib.io.d3ds;
 
     import  de.christopherstock.lib.g3d.*;
@@ -9,22 +6,22 @@
 
     public class LibMaxTriangle
     {
-        public          LibVertex       iAnchor         = null;
-        public          String          iTextureName    = null;
-        public          LibColors       iCol            = null;
-        public          LibVertex       iA              = null;
-        public          LibVertex       iB              = null;
-        public          LibVertex       iC              = null;
-        public          LibVertex       iFaceNormal     = null;
+        public          LibVertex       anchor          = null;
+        public          String          textureName     = null;
+        public          LibColors       col             = null;
+        public          LibVertex       a               = null;
+        public          LibVertex       b               = null;
+        public          LibVertex       c               = null;
+        public          LibVertex       faceNormal      = null;
 
-        public LibMaxTriangle( LibVertex aAnchor, String aTextureName, LibColors aCol, LibVertex aA, LibVertex aB, LibVertex aC, LibVertex aFaceNormal )
+        public LibMaxTriangle( LibVertex anchor, String textureName, LibColors col, LibVertex a, LibVertex b, LibVertex c, LibVertex faceNormal )
         {
-            this.iAnchor = aAnchor;
-            this.iTextureName = aTextureName;
-            this.iCol = aCol;
-            this.iA = aA;
-            this.iB = aB;
-            this.iC = aC;
-            this.iFaceNormal = aFaceNormal;
+            this.anchor      = anchor;
+            this.textureName = textureName;
+            this.col         = col;
+            this.a           = a;
+            this.b           = b;
+            this.c           = c;
+            this.faceNormal  = faceNormal;
         }
     }

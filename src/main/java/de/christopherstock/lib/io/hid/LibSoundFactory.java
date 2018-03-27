@@ -12,40 +12,40 @@
     *******************************************************************************************************************/
     public class LibSoundFactory
     {
-        private LibDebug        iDebug          = null;
-        public                  byte[]          iBytes          = null;
-        public                  DataLine.Info   iInfo           = null;
-        public                  AudioFormat     iAudioFormat    = null;
+        private                 LibDebug            debug                   = null;
+        public                  byte[]              bytes                   = null;
+        public                  DataLine.Info       info                    = null;
+        public                  AudioFormat         audioFormat             = null;
 
-        public LibSoundFactory( InputStream aInputStream, LibDebug aDebug ) throws Throwable
+        public LibSoundFactory( InputStream inputStream, LibDebug debug ) throws Throwable
         {
-            this.iDebug = aDebug;
+            this.debug = debug;
 
             try
             {
-                if ( aInputStream == null ) throw new FileNotFoundException( "sound is null!" );
+                if ( inputStream == null ) throw new FileNotFoundException( "sound is null!" );
 
-                AudioInputStream    audioInputStream    = AudioSystem.getAudioInputStream( aInputStream );
-                this.iAudioFormat = audioInputStream.getFormat();
-                int                 size                = (int) (this.iAudioFormat.getFrameSize() * audioInputStream.getFrameLength() );
+                AudioInputStream    audioInputStream    = AudioSystem.getAudioInputStream( inputStream );
+                this.audioFormat = audioInputStream.getFormat();
+                int                 size                = (int) (this.audioFormat.getFrameSize() * audioInputStream.getFrameLength() );
 
-                this.iInfo = new DataLine.Info( Clip.class, this.iAudioFormat, size );
-                this.iBytes = new byte[ size ];
+                this.info = new DataLine.Info( Clip.class, this.audioFormat, size );
+                this.bytes = new byte[ size ];
 
                 //noinspection ResultOfMethodCallIgnored
-                audioInputStream.read(this.iBytes, 0, size );
+                audioInputStream.read(this.bytes, 0, size );
                 audioInputStream.close();
             }
             catch ( Throwable t )
             {
-                this.iDebug.trace( t );
+                this.debug.trace( t );
                 throw t;
             }
         }
 
         public final LibSoundClip getInstancedClip( float volume, float balance, int delay, Point2D.Float aDistantLocation )
         {
-            LibSoundClip sound = new LibSoundClip(this.iDebug, this, volume, balance, delay, aDistantLocation );
+            LibSoundClip sound = new LibSoundClip(this.debug, this, volume, balance, delay, aDistantLocation );
             //if ( aDistantLocation != null ) sound.updateDistancedSound();
             return sound;
         }

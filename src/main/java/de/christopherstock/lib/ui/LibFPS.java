@@ -14,58 +14,58 @@
     *******************************************************************************************************************/
     public class LibFPS
     {
-        private                 LibGLImage      iCurrentFps                 = null;
-        private                 Font            iFont                       = null;
-        private                 Color           iColFont                    = null;
-        private                 Color           iColOutline                 = null;
-        private                 LibDebug        iDebug                      = null;
-        private                 long            iStartMeassuringMillis      = 0;
-        private                 int             iFramesDrawn                = 0;
+        private                     LibGLImage      currentFps                  = null;
+        private                     Font            font                        = null;
+        private                     Color           colFont                     = null;
+        private                     Color           colOutline                  = null;
+        private                     LibDebug        debug                       = null;
+        private                     long            startMeassuringMillis       = 0;
+        private                     int             framesDrawn                 = 0;
 
-        public LibFPS( Font aFont, Color aColFont, Color aColOutline, LibDebug aDebug )
+        public LibFPS( Font font, Color colFont, Color colOutline, LibDebug debug )
         {
-            this.iFont = aFont;
-            this.iColFont = aColFont;
-            this.iColOutline = aColOutline;
-            this.iDebug = aDebug;
+            this.font       = font;
+            this.colFont    = colFont;
+            this.colOutline = colOutline;
+            this.debug      = debug;
         }
 
         public final void update()
         {
             //init fps-counter
-            if (this.iStartMeassuringMillis == 0 )
+            if (this.startMeassuringMillis == 0 )
             {
-                this.iFramesDrawn = 0;
-                this.iStartMeassuringMillis = System.currentTimeMillis();
+                this.framesDrawn = 0;
+                this.startMeassuringMillis = System.currentTimeMillis();
             }
             else
             {
                 //increase number of drawn frames
-                ++this.iFramesDrawn;
+                ++this.framesDrawn;
 
                 //check if 1 sec is over
-                if ( System.currentTimeMillis() - this.iStartMeassuringMillis >= TimeUnit.SECONDS.toMillis( 1 ) )
+                if ( System.currentTimeMillis() - this.startMeassuringMillis >= TimeUnit.SECONDS.toMillis( 1 ) )
                 {
-                    this.iCurrentFps = LibGLImage.getFromString
+                    this.currentFps = LibGLImage.getFromString
                     (
-                            this.iFramesDrawn + " fps",
-                            this.iFont,
-                            this.iColFont,
+                            this.framesDrawn + " fps",
+                            this.font,
+                            this.colFont,
                         null,
-                            this.iColOutline,
-                            this.iDebug
+                            this.colOutline,
+                            this.debug
                     );
-                    this.iFramesDrawn = 0;
-                    this.iStartMeassuringMillis = System.currentTimeMillis();
+                    this.framesDrawn = 0;
+                    this.startMeassuringMillis = System.currentTimeMillis();
                 }
             }
         }
 
         public final void draw( int offX, int offY )
         {
-            if (this.iCurrentFps != null )
+            if (this.currentFps != null )
             {
-                Shooter.game.engine.glView.drawOrthoBitmapBytes(this.iCurrentFps, Shooter.game.engine.glView.width - offX - this.iCurrentFps.width, Shooter.game.engine.glView.height - offY - this.iCurrentFps.height );
+                Shooter.game.engine.glView.drawOrthoBitmapBytes(this.currentFps, Shooter.game.engine.glView.width - offX - this.currentFps.width, Shooter.game.engine.glView.height - offY - this.currentFps.height );
             }
         }
     }

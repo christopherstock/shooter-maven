@@ -65,6 +65,6 @@
             this.percentageLoaded = percentage;
 
             // repaint
-            Shooter.game.engine.frame.display();
+            Shooter.game.draw();
         }
     }

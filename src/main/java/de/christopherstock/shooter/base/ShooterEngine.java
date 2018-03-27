@@ -24,8 +24,6 @@
     *******************************************************************************************************************/
     public class ShooterEngine
     {
-        /** Icon image for the frame. TODO outsource! */
-        private                     BufferedImage           iconImage                   = null;
         /** The bg image for the preloader. TODO outsource! */
         private                     BufferedImage           bgImage                     = null;
 
@@ -57,7 +55,6 @@
 
             try
             {
-                this.iconImage = ImageIO.read( LibIO.preStreamJarResource( ShooterSetting.Path.EScreen.url + "icon.png" ) );
                 this.bgImage   = ImageIO.read( LibIO.preStreamJarResource( ShooterSetting.Path.EScreen.url + "bg.jpg"   ) );
             }
             catch ( IOException ioe )
@@ -97,28 +94,25 @@
                 ShooterSetting.Form.FORM_HEIGHT = screenSize.height;
             }
 
+            BufferedImage iconImage = null;
+            try
+            {
+                iconImage = ImageIO.read( LibIO.preStreamJarResource( ShooterSetting.Path.EScreen.url + "icon.png" ) );
+            }
+            catch ( IOException ioe )
+            {
+                ShooterDebug.error.err( "ERROR! Frame Icon could not be loaded!" );
+            }
 
-/*
-            this.gl = new LibGL();
-            this.gl.init
-            (
-                ShooterSetting.Form.FORM_WIDTH,
-                ShooterSetting.Form.FORM_HEIGHT,
-                ShooterSetting.Form.FORM_TITLE,
-                this.iconImage,
-                ShooterDebug.init
-            );
-*/
-            //init frame
             this.frame = new LibFrame
             (
                 ShooterSetting.Form.FORM_TITLE,
                 ShooterSetting.Form.FORM_WIDTH,
                 ShooterSetting.Form.FORM_HEIGHT,
-                this.iconImage
+                iconImage
             );
+            this.frame.init();
 
-            //init lwjgl glView
             this.glView = new LibGLView
             (
                 ShooterDebug.init,

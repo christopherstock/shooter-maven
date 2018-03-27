@@ -1,6 +1,4 @@
-/*  $Id: ShooterD3ds.java 1262 2013-01-06 16:08:51Z jenetic.bytemare@googlemail.com $
- *  =================================================================================
- */
+
     package de.christopherstock.shooter.base;
 
     import  de.christopherstock.lib.*;
@@ -26,9 +24,9 @@
 
             protected LibD3dsImporter            iD3dsfile                    = null;
 
-            public final void initFile( LibD3dsImporter aD3dsfile )
+            public final void initFile( LibD3dsImporter d3dsFile)
             {
-                this.iD3dsfile = aD3dsfile;
+                this.iD3dsfile = d3dsFile;
             }
 
             public final LibD3dsImporter getFile()
@@ -124,9 +122,9 @@
 
             protected LibD3dsImporter            iD3dsfile                    = null;
 
-            public final void initFile( LibD3dsImporter aD3dsfile )
+            public final void initFile( LibD3dsImporter d3dsFile)
             {
-                this.iD3dsfile = aD3dsfile;
+                this.iD3dsfile = d3dsFile;
             }
 
             public final LibD3dsImporter getFile()
@@ -171,9 +169,9 @@
 
             protected LibD3dsImporter            iD3dsfile                    = null;
 
-            public final void initFile( LibD3dsImporter aD3dsfile )
+            public final void initFile( LibD3dsImporter d3dsFile)
             {
-                this.iD3dsfile = aD3dsfile;
+                this.iD3dsfile = d3dsFile;
             }
 
             public final  LibD3dsImporter getFile()
@@ -199,9 +197,9 @@
 
             protected LibD3dsImporter            iD3dsfile                    = null;
 
-            public final void initFile( LibD3dsImporter aD3dsfile )
+            public final void initFile( LibD3dsImporter d3dsFile)
             {
-                this.iD3dsfile = aD3dsfile;
+                this.iD3dsfile = d3dsFile;
             }
 
             public final LibD3dsImporter getFile()
@@ -224,7 +222,7 @@
                 (
                     ShooterDebug.face,
                     originalFaces[ i ],
-                    ( ShooterTexture.getByName( originalFaces[ i ].iTextureName ) == null ? null : ShooterTexture.getByName( originalFaces[ i ].iTextureName ).getTexture() ),
+                    ( ShooterTexture.getByName( originalFaces[ i ].textureName) == null ? null : ShooterTexture.getByName( originalFaces[ i ].textureName).getTexture() ),
                     WallTex.EConcrete1,
                     General.FADE_OUT_FACES_TOTAL_TICKS,
                     ShooterSetting.Performance.ELLIPSE_SEGMENTS

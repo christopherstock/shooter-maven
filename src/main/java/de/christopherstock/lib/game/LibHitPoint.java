@@ -17,73 +17,73 @@
     *******************************************************************************************************************/
     public class LibHitPoint implements Comparable<LibHitPoint>
     {
-        private LibDebug                iDebug                      = null;
-        public                      LibShot                 iShot                       = null;
-        public                      LibGameObject           iCarrier                    = null;
-        public                      LibVertex               iVertex                     = null;
-        public                      LibGLTexture            iBulletHoleTexture          = null;
-        public                      LibGLTexture            iWallTexture                = null;
-        public                      float                   iHorzShotAngle              = 0.0f;
-        public                      float                   iHorzInvertedShotAngle      = 0.0f;
-        public                      float                   iHorzFaceAngle              = 0.0f;
-        public                      float                   iVertFaceAngle              = 0.0f;
-        public                      float                   iDamageMultiplier           = 0.0f;
-        private                     int                     iFadeOutTicks               = 0;
-        private                     LibColors[]             iSliverColors               = null;
-        private                     float                   iHorzDistance               = 0.0f;
-        private                     float                   iHorzSliverAngle            = 0.0f;
-        private                     float                   iVertShotAngle              = 0.0f;
-        private                     float                   iVertSliverAngle            = 0.0f;
-        private                     int                     iEllipseSegments            = 0;
+        private                     LibDebug                debug                       = null;
+        public                      LibShot                 shot                        = null;
+        public                      LibGameObject           carrier                     = null;
+        public                      LibVertex               vertex                      = null;
+        public                      LibGLTexture            bulletHoleTexture           = null;
+        public                      LibGLTexture            wallTexture                 = null;
+        public                      float                   horzShotAngle               = 0.0f;
+        public                      float                   horzInvertedShotAngle       = 0.0f;
+        public                      float                   horzFaceAngle               = 0.0f;
+        public                      float                   vertFaceAngle               = 0.0f;
+        public                      float                   damageMultiplier            = 0.0f;
+        private                     int                     fadeOutTicks                = 0;
+        private                     LibColors[]             sliverColors                = null;
+        private                     float                   horzDistance                = 0.0f;
+        private                     float                   horzSliverAngle             = 0.0f;
+        private                     float                   vertShotAngle               = 0.0f;
+        private                     float                   vertSliverAngle             = 0.0f;
+        private                     int                     ellipseSegments             = 0;
 
         public LibHitPoint
         (
-            LibShot                 aShot,
+            LibShot       shot,
 
-            LibGameObject           aCarrier,
-            LibGLTexture            aBulletHoleTexture,
-            LibGLTexture            aWallTexture,
-            LibColors[]             aSliverColors,
-            LibVertex               aVertex,
+            LibGameObject carrier,
+            LibGLTexture  bulletHoleTexture,
+            LibGLTexture  wallTexture,
+            LibColors[]   sliverColors,
+            LibVertex     vertex,
 
-            float                   aHorzDistance,
-            float                   aHorzShotAngle,
-            float                   aHorzInvertedShotAngle,
-            float                   aHorzSliverAngle,
-            float                   aHorzFaceAngle,
-            float                   aVertFaceAngle,
-            float                   aDamageMultiplier,
+            float         horzDistance,
+            float         horzShotAngle,
+            float         horzInvertedShotAngle,
+            float         horzSliverAngle,
+            float         horzFaceAngle,
+            float         vertFaceAngle,
+            float         damageMultiplier,
 
-            int                     aFadeOutTicks,
-            int                     aEllipseSegments
+            int           fadeOutTicks,
+            int           ellipseSegments
         )
         {
-            this.iShot = aShot;
+            this.shot                  = shot;
 
-            this.iCarrier = aCarrier;
-            this.iBulletHoleTexture = aBulletHoleTexture;
-            this.iWallTexture = aWallTexture;
-            this.iSliverColors = aSliverColors;
+            this.carrier               = carrier;
+            this.bulletHoleTexture     = bulletHoleTexture;
+            this.wallTexture           = wallTexture;
+            this.sliverColors          = sliverColors;
 
-            this.iVertex = aVertex;
+            this.vertex                = vertex;
 
-            this.iHorzShotAngle = aHorzShotAngle;
-            this.iHorzInvertedShotAngle = aHorzInvertedShotAngle;
-            this.iHorzSliverAngle = aHorzSliverAngle;
-            this.iHorzFaceAngle = aHorzFaceAngle;
-            this.iHorzDistance = aHorzDistance;
+            this.horzShotAngle         = horzShotAngle;
+            this.horzInvertedShotAngle = horzInvertedShotAngle;
+            this.horzSliverAngle       = horzSliverAngle;
+            this.horzFaceAngle         = horzFaceAngle;
+            this.horzDistance          = horzDistance;
 
-            this.iVertShotAngle = LibMath.getAngleCorrect(this.iShot.iSrcPointVert, new Point2D.Float( (float) this.iShot.iSrcPointHorz.distance( new Point2D.Float(this.iVertex.x, this.iVertex.y ) ), this.iVertex.z ) );
-            this.iVertFaceAngle = aVertFaceAngle;
-            this.iDamageMultiplier = aDamageMultiplier;
+            this.vertShotAngle         = LibMath.getAngleCorrect( this.shot.srcPointVert, new Point2D.Float( (float) this.shot.srcPointHorz.distance( new Point2D.Float(this.vertex.x, this.vertex.y ) ), this.vertex.z ) );
+            this.vertFaceAngle         = vertFaceAngle;
+            this.damageMultiplier      = damageMultiplier;
 
           //iVertDistance           = aVertDistance;
-          //iVertInvertedShotAngle  = 360.0f - ( iVertShotAngle - 180.0f  );
+          //iVertInvertedShotAngle  = 360.0f - ( vertShotAngle - 180.0f  );
 
-            this.iVertSliverAngle = LibMath.normalizeAngle( 180.0f - this.iVertShotAngle);
+            this.vertSliverAngle       = LibMath.normalizeAngle( 180.0f - this.vertShotAngle);
 
-            this.iFadeOutTicks = aFadeOutTicks;
-            this.iEllipseSegments = aEllipseSegments;
+            this.fadeOutTicks          = fadeOutTicks;
+            this.ellipseSegments       = ellipseSegments;
         }
 
         public static LibHitPoint[] getAffectedHitPoints(Vector<LibHitPoint> hitPoints )
@@ -97,14 +97,14 @@
             Vector<LibHitPoint> ret = new Vector<LibHitPoint>();
             for ( LibHitPoint n : nearToFar )
             {
-                //ShooterDebug.bugfix.out( "hitpoint: " + n.iHorzDistance );
-                //ShooterDebug.bugfix.out( " penetrable: " + n.iWallTexture.getMaterial().isPenetrable() );
+                //ShooterDebug.bugfix.out( "hitpoint: " + n.horzDistance );
+                //ShooterDebug.bugfix.out( " penetrable: " + n.wallTexture.getMaterial().isPenetrable() );
 
                 //add hitpoint
                 ret.add( n );
 
                 //break if not penetrable or material is not specified
-                if ( n.iWallTexture == null || n.iWallTexture.getMaterial() == null || !n.iWallTexture.getMaterial().isPenetrable() )
+                if ( n.wallTexture == null || n.wallTexture.getMaterial() == null || !n.wallTexture.getMaterial().isPenetrable() )
                 {
                     break;
                 }
@@ -132,11 +132,11 @@
                 if
                 (
                         ( nearestIndex == -1 )
-                    ||  ( nearestDistance > hitPoints.elementAt( i ).iHorzDistance )
+                    ||  ( nearestDistance > hitPoints.elementAt( i ).horzDistance)
                 )
                 {
                     nearestIndex    = i;
-                    nearestDistance = hitPoints.elementAt( i ).iHorzDistance;
+                    nearestDistance = hitPoints.elementAt( i ).horzDistance;
                 }
             }
 
@@ -158,17 +158,17 @@
                 {
                     LibFXManager.launchStaticPoint
                     (
-                            this.iDebug,
+                            this.debug,
                         new LibVertex
                         (
-                                this.iVertex.x - LibMath.sinDeg(this.iHorzSliverAngle) * distance,
-                                this.iVertex.y - LibMath.cosDeg(this.iHorzSliverAngle) * distance,
-                                this.iVertex.z - LibMath.sinDeg(this.iVertSliverAngle - 90.0f ) * distance
+                                this.vertex.x - LibMath.sinDeg(this.horzSliverAngle) * distance,
+                                this.vertex.y - LibMath.cosDeg(this.horzSliverAngle) * distance,
+                                this.vertex.z - LibMath.sinDeg(this.vertSliverAngle - 90.0f ) * distance
                         ),
                         LibColors.ERed,
                         SIZE,
                         lifetime,
-                            this.iFadeOutTicks
+                            this.fadeOutTicks
                     );
                 }
             }
@@ -185,14 +185,14 @@
             //get sliver vertex ( translate a bit to shot source in order to distance it from walls )
             LibVertex sliverVertex = new LibVertex
             (
-                    this.iVertex.x - ( LibMath.sinDeg(this.iHorzInvertedShotAngle) * 0.1f ),
-                    this.iVertex.y - ( LibMath.cosDeg(this.iHorzInvertedShotAngle) * 0.1f ),
-                    this.iVertex.z
+                    this.vertex.x - ( LibMath.sinDeg(this.horzInvertedShotAngle) * 0.1f ),
+                    this.vertex.y - ( LibMath.cosDeg(this.horzInvertedShotAngle) * 0.1f ),
+                    this.vertex.z
             );
 
             //launch sliver fx on this hole
             float baseZ     = Float.MIN_VALUE;
-            Float baseZF    = floorStack.getHighestFloor( null, sliverVertex, 0.05f, SIZE, 0, this.iDebug, false, SIZE, SIZE, this.iEllipseSegments, exclude );
+            Float baseZF    = floorStack.getHighestFloor( null, sliverVertex, 0.05f, SIZE, 0, this.debug, false, SIZE, SIZE, this.ellipseSegments, exclude );
             if ( baseZF != null )
             {
                 baseZ = baseZF;
@@ -203,24 +203,27 @@
 
             LibFXManager.launchSliver
             (
-                    this.iDebug,
+                    this.debug,
                 sliverVertex,
-                    this.iSliverColors,
-                    this.iHorzSliverAngle,
+                    this.sliverColors,
+                    this.horzSliverAngle,
                 sliverQuantity,
                 angleMod,
                 lifetime,
                 size,
                 gravity,
                 baseZ,
-                    this.iFadeOutTicks
+                    this.fadeOutTicks
             );
         }
 
         public final int compareTo( LibHitPoint otherHP )
         {
-            if (this.iHorzDistance == otherHP.iHorzDistance ) return 0;
-            if (this.iHorzDistance > otherHP.iHorzDistance  ) return 1;
+            return Float.compare( this.horzDistance, otherHP.horzDistance );
+/*
+            if (this.horzDistance == otherHP.horzDistance) return 0;
+            if (this.horzDistance > otherHP.horzDistance) return 1;
             return -1;
+*/
         }
     }

@@ -41,13 +41,13 @@
             this
             (
                 debug,
-                maxTriangle.iAnchor.copy(),
+                maxTriangle.anchor.copy(),
                 tex,
-                maxTriangle.iCol,
-                maxTriangle.iA.copy(),
-                maxTriangle.iB.copy(),
-                maxTriangle.iC.copy(),
-                ( maxTriangle.iFaceNormal == null ? null : maxTriangle.iFaceNormal.copy() ),
+                maxTriangle.col,
+                maxTriangle.a.copy(),
+                maxTriangle.b.copy(),
+                maxTriangle.c.copy(),
+                ( maxTriangle.faceNormal == null ? null : maxTriangle.faceNormal.copy() ),
                 defaultTexture,
                 fadeOutFacesTicks,
                 ellipseSegments
@@ -162,7 +162,7 @@
                     Point3d p3 = new Point3d( vertices[ 2 ].x, vertices[ 2 ].y, vertices[ 2 ].z );
 
                     //get line-face-intersection
-                    Point3d intersectionPoint = LibMathGeometry.getLineFaceIntersectionD( shot.iSrcPoint3d, shot.iEndPoint3d, p1, p2, p3 );
+                    Point3d intersectionPoint = LibMathGeometry.getLineFaceIntersectionD( shot.srcPoint3d, shot.endPoint3d, p1, p2, p3 );
 
                     //check collision
                     if ( intersectionPoint == null )
@@ -173,8 +173,8 @@
                     Point2D.Float intersectionPointHorz = new Point2D.Float( (float)intersectionPoint.x, (float)intersectionPoint.y );
 
                     //get horizontal values
-                    float           exactDistanceHorz     = (float)shot.iSrcPointHorz.distance( intersectionPointHorz  );                //get exact distance
-                    float           shotAngleHorz         = LibMath.getAngleCorrect( shot.iSrcPointHorz, intersectionPointHorz );       //get angle between player and hit-point
+                    float           exactDistanceHorz     = (float)shot.srcPointHorz.distance( intersectionPointHorz  );                //get exact distance
+                    float           shotAngleHorz         = LibMath.getAngleCorrect( shot.srcPointHorz, intersectionPointHorz );       //get angle between player and hit-point
                     float           invertedShotAngleHorz = 360.0f - ( shotAngleHorz - 180.0f  );                                       //get opposite direction of shot
                     float           sliverAngleHorz       = shotAngleHorz - this.faceAngleHorz * 2;                                         //get Sliver angle
 
@@ -186,12 +186,12 @@
                   //Point2D.Float   intersectionPointVert   = new Point2D.Float( 0, (float)intersectionPoint.z );
 
                     //get vertical values ( unused with new collision algo )
-                  //float exactDistanceVert = (float)shot.iSrcPointVert.distance( intersectionPointVert );       //get exact distance
+                  //float exactDistanceVert = (float)shot.srcPointVert.distance( intersectionPointVert );       //get exact distance
 
                     LibGLTexture    faceTexture   = this.getTexture();
                     LibMaterial     faceMaterial  = ( faceTexture == null ? this.defaultTexture.getTexture().getMaterial() : faceTexture.getMaterial() );
 
-                    //debug.bugfix.out( "DISTANCE [" + intersectionPoint.distance( shot.iSrcPoint3d ) + "] HIT ! shot ["+shot.iSrcPoint3d+"] to ["+shot.iEndPoint3d+"] FACE is ["+face1+"]["+face2+"]["+face3+"]" );
+                    //debug.bugfix.out( "DISTANCE [" + intersectionPoint.distance( shot.srcPoint3d ) + "] HIT ! shot ["+shot.srcPoint3d+"] to ["+shot.endPoint3d+"] FACE is ["+face1+"]["+face2+"]["+face3+"]" );
                     //FX.launchDebugPoint( new LibVertex( (float)intersectionPoint.x, (float)intersectionPoint.y, (float)intersectionPoint.z ), LibColors.EPink, 150, 0.03f );
 
                     if (this.lowestZ == this.highestZ)
@@ -251,7 +251,7 @@
                     Point3d p3 = new Point3d( vertices[ 2 ].x, vertices[ 2 ].y, vertices[ 2 ].z );
 
                     //get line-face-intersection
-                    Point3d intersectionPoint = LibMathGeometry.getLineFaceIntersectionD( shot.iSrcPoint3d, shot.iEndPoint3d, p1, p2, p3 );
+                    Point3d intersectionPoint = LibMathGeometry.getLineFaceIntersectionD( shot.srcPoint3d, shot.endPoint3d, p1, p2, p3 );
 
                     //check collision
                     if ( intersectionPoint == null )
@@ -262,8 +262,8 @@
                     Point2D.Float intersectionPointHorz = new Point2D.Float( (float)intersectionPoint.x, (float)intersectionPoint.y );
 
                     //get horizontal values
-                    float           exactDistanceHorz     = (float)shot.iSrcPointHorz.distance( intersectionPointHorz  );                //get exact distance
-                    float           shotAngleHorz         = LibMath.getAngleCorrect( shot.iSrcPointHorz, intersectionPointHorz );       //get angle between player and hit-point
+                    float           exactDistanceHorz     = (float)shot.srcPointHorz.distance( intersectionPointHorz  );                //get exact distance
+                    float           shotAngleHorz         = LibMath.getAngleCorrect( shot.srcPointHorz, intersectionPointHorz );       //get angle between player and hit-point
                     float           invertedShotAngleHorz = 360.0f - ( shotAngleHorz - 180.0f  );                                       //get opposite direction of shot
                     float           sliverAngleHorz       = shotAngleHorz - this.faceAngleHorz * 2;                                         //get Sliver angle
 
@@ -275,12 +275,12 @@
                   //Point2D.Float   intersectionPointVert   = new Point2D.Float( 0, (float)intersectionPoint.z );
 
                     //get vertical values ( unused with new collision algo )
-                  //float exactDistanceVert = (float)shot.iSrcPointVert.distance( intersectionPointVert );       //get exact distance
+                  //float exactDistanceVert = (float)shot.srcPointVert.distance( intersectionPointVert );       //get exact distance
 
                     LibGLTexture    faceTexture   = this.getTexture();
                     LibMaterial     faceMaterial  = ( faceTexture == null ? this.defaultTexture.getTexture().getMaterial() : faceTexture.getMaterial() );
 
-                    //debug.bugfix.out( "DISTANCE [" + intersectionPoint.distance( shot.iSrcPoint3d ) + "] HIT ! shot ["+shot.iSrcPoint3d+"] to ["+shot.iEndPoint3d+"] FACE is ["+face1+"]["+face2+"]["+face3+"]" );
+                    //debug.bugfix.out( "DISTANCE [" + intersectionPoint.distance( shot.srcPoint3d ) + "] HIT ! shot ["+shot.srcPoint3d+"] to ["+shot.endPoint3d+"] FACE is ["+face1+"]["+face2+"]["+face3+"]" );
                     //FX.launchDebugPoint( new LibVertex( (float)intersectionPoint.x, (float)intersectionPoint.y, (float)intersectionPoint.z ), LibColors.EPink, 150, 0.03f );
 
                     if (this.lowestZ == this.highestZ)
@@ -342,33 +342,33 @@
                     //we could check if face's z are equal - but the new shot algo is better! :-)
 
                     //check horizontal collision
-                    if ( shot.iLineShotHorz.intersectsLine(this.collisionLineHorz1) )
+                    if ( shot.lineShotHorz.intersectsLine(this.collisionLineHorz1) )
                     {
                         //get intersection point horz
                         //debug.shotAndHit.out( "==============\nHORZ FACE HIT!" );
-                        intersectionPointHorz = LibMathGeometry.findLineSegmentIntersection( shot.iLineShotHorz, this.collisionLineHorz1, this.debug);
+                        intersectionPointHorz = LibMathGeometry.findLineSegmentIntersection( shot.lineShotHorz, this.collisionLineHorz1, this.debug);
                         if ( intersectionPointHorz == null )
                         {
                             this.debug.err( "Intersection Point not calculated due to buggy external API." );
                             return null;
                         }
                     }
-                    else if ( shot.iLineShotHorz.intersectsLine(this.collisionLineHorz2) )
+                    else if ( shot.lineShotHorz.intersectsLine(this.collisionLineHorz2) )
                     {
                         //get intersection point horz
                         //debug.shotAndHit.out( "==============\nHORZ FACE HIT!" );
-                        intersectionPointHorz = LibMathGeometry.findLineSegmentIntersection( shot.iLineShotHorz, this.collisionLineHorz2, this.debug);
+                        intersectionPointHorz = LibMathGeometry.findLineSegmentIntersection( shot.lineShotHorz, this.collisionLineHorz2, this.debug);
                         if ( intersectionPointHorz == null )
                         {
                             this.debug.err( "Intersection Point not calculated due to buggy external API." );
                             return null;
                         }
                     }
-                    else if ( shot.iLineShotHorz.intersectsLine(this.collisionLineHorz3) )
+                    else if ( shot.lineShotHorz.intersectsLine(this.collisionLineHorz3) )
                     {
                         //get intersection point horz
                         //debug.shotAndHit.out( "==============\nHORZ FACE HIT!" );
-                        intersectionPointHorz = LibMathGeometry.findLineSegmentIntersection( shot.iLineShotHorz, this.collisionLineHorz3, this.debug);
+                        intersectionPointHorz = LibMathGeometry.findLineSegmentIntersection( shot.lineShotHorz, this.collisionLineHorz3, this.debug);
                         if ( intersectionPointHorz == null )
                         {
                             this.debug.err( "Intersection Point not calculated due to buggy external API." );
@@ -381,8 +381,8 @@
                     }
 
                     //get horizontal values
-                    float           exactDistanceHorz     = (float)shot.iSrcPointHorz.distance( intersectionPointHorz );                //get exact distance
-                    float           shotAngleHorz         = LibMath.getAngleCorrect( shot.iSrcPointHorz, intersectionPointHorz );       //get angle between player and hit-point
+                    float           exactDistanceHorz     = (float)shot.srcPointHorz.distance( intersectionPointHorz );                //get exact distance
+                    float           shotAngleHorz         = LibMath.getAngleCorrect( shot.srcPointHorz, intersectionPointHorz );       //get angle between player and hit-point
                     float           invertedShotAngleHorz = 360.0f - ( shotAngleHorz - 180.0f  );                                       //get opposite direction of shot
                     float           sliverAngleHorz       = shotAngleHorz - this.faceAngleHorz * 2;                                         //get Sliver angle
 /*
@@ -395,7 +395,7 @@
                     Line2D.Float collisionLineVert = new Line2D.Float( new Point2D.Float( exactDistanceHorz, this.lowestZ), new Point2D.Float( exactDistanceHorz, this.highestZ) );
                     //debug.shotAndHit.out( "face's collision line vert is: [" + collisionLineVert + "]" );
 
-                    if ( !shot.iLineShotVert.intersectsLine( collisionLineVert ) )
+                    if ( !shot.lineShotVert.intersectsLine( collisionLineVert ) )
                     {
                         //debug.shotAndHit.out( "VERTICAL FACE MISSED!" );
                         return null;
@@ -403,12 +403,12 @@
 
                     //get then intersection point for the vertical axis
                     //debug.shotAndHit.out( "VERTICAL FACE HIT!" );
-                    Point2D.Float   intersectionPointVert   = LibMathGeometry.findLineSegmentIntersection( shot.iLineShotVert, collisionLineVert, this.debug);
+                    Point2D.Float   intersectionPointVert   = LibMathGeometry.findLineSegmentIntersection( shot.lineShotVert, collisionLineVert, this.debug);
                     float           z                       = intersectionPointVert.y;
                     //debug.shotAndHit.out( ">> INTERSECTION POINT VERT: " + intersectionPointVert );
 
                     //get vertical values
-                  //float exactDistanceVert = (float)shot.iSrcPointVert.distance( intersectionPointVert );       //get exact distance
+                  //float exactDistanceVert = (float)shot.srcPointVert.distance( intersectionPointVert );       //get exact distance
 
                   //debug.shotAndHit.out( ">> EXACT DISTANCE VERT: " + exactDistanceVert );
 //                  debug.shot.out( ">> SHOT-ANGLE-VERT: " + shotAngleVert );

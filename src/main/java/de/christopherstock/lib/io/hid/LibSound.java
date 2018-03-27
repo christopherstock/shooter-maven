@@ -8,7 +8,5 @@
     *******************************************************************************************************************/
     public interface LibSound
     {
-        void playDistancedFx(Point2D.Float distantLocation);
-
-
+        void playDistancedFx( Point2D.Float distantLocation );
     }

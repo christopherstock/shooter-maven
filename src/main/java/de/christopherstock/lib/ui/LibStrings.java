@@ -30,12 +30,12 @@
         *   @param  y       The String's y-location.
         *   @param  anchor  The desired anchor for the String.
         ***************************************************************************************************************/
-        public static void drawString(Graphics2D g, Color col, Font fnt, LibAnchor anchor, String str, int x, int y )
+        public static void drawString( Graphics2D g, Color col, Font fnt, LibAnchor anchor, String str, int x, int y )
         {
             drawString( g, col, null, null, fnt, anchor, str, x, y );
         }
 
-        public static void drawString(Graphics2D g, Color colFg, Color colShadow, Color colOutline, Font fnt, LibAnchor anchor, String str, int aX, int aY )
+        public static void drawString( Graphics2D g, Color colFg, Color colShadow, Color colOutline, Font fnt, LibAnchor anchor, String str, int aX, int aY )
         {
             int x            = aX;
             int y            = aY;
@@ -85,29 +85,32 @@
             g.drawString( str, x, y - g.getFontMetrics().getDescent() );
         }
 
-        public static int getStringWidth(Graphics2D g, String str, Font fnt )
+        // TODO outsource to Graphics!
+        public static int getStringWidth( Graphics2D g, String str, Font fnt )
         {
             g.setFont( fnt );
             FontMetrics fm = g.getFontMetrics();
+
             return fm.charsWidth( str.toCharArray(), 0, str.length() );
             //return (int)fnt.getStringBounds( str, g.getFontRenderContext() ).getWidth();
         }
 
-        public static int getStringHeight(Graphics2D g, Font fnt )
+        public static int getStringHeight( Graphics2D g, Font fnt )
         {
             g.setFont( fnt );
             FontMetrics fm = g.getFontMetrics();
+
             return fm.getHeight();
             //return (int)fnt.getStringBounds( str, g.getFontRenderContext() ).getHeight();
         }
 
-        public static String[] splitByWhitespaces(String heuhaufen )
+        public static String[] splitByWhitespaces( String whitespaces )
         {
             Vector<String>  chunks      = null;
             Pattern         pat         = null;
 
             pat     = Pattern.compile( "[\\s]", Pattern.CASE_INSENSITIVE|Pattern.DOTALL );
-            chunks  = new Vector<String>( Arrays.asList( pat.split( heuhaufen ) ) );
+            chunks  = new Vector<String>( Arrays.asList( pat.split( whitespaces ) ) );
 
             //prune empty elements
             for ( int j = chunks.size() - 1; j >= 0; --j )
@@ -119,7 +122,7 @@
             return chunks.toArray( new String[] {} );
         }
 
-        public static String[] getViaRegEx(String haystack, String pattern )
+        public static String[] getViaRegEx( String haystack, String pattern )
         {
             Pattern         pat         = null;
             Matcher         mat         = null;
@@ -138,7 +141,7 @@
             return ( sa.length == 0 ? null : sa );
         }
 
-        public static String[][] getViaRegExGrouped(String haystack, int numberOfCaptureGroups, String pattern )
+        public static String[][] getViaRegExGrouped( String haystack, int numberOfCaptureGroups, String pattern )
         {
             Pattern             pat         = null;
             Matcher             mat         = null;
@@ -162,7 +165,7 @@
             return ( saa.length == 0 ? null : saa );
         }
 
-        public static String[] breakLinesOptimized(Graphics2D g2d, String aString, Font aFont, int aTargetWidth )
+        public static String[] breakLinesOptimized( Graphics2D g2d, String aString, Font aFont, int aTargetWidth )
         {
             //avoid exceptions
             if ( aString == null || aString.length() == 0 ) return new String[] {};
@@ -259,7 +262,7 @@
             return retArr;
         }
 
-        private static int getNearestLinebreakIndex(String aString, int aStartIndex )
+        private static int getNearestLinebreakIndex( String aString, int aStartIndex )
         {
             //start a new end-index-search
             int startIndex = aStartIndex;
@@ -283,7 +286,7 @@
             return endIndex;
         }
 
-        public static void debugLineBreaks(Graphics2D g2d, LibDebug debug, Font font )
+        public static void debugLineBreaks( Graphics2D g2d, LibDebug debug, Font font )
         {
             String[] lines = LibStrings.breakLinesOptimized( g2d, "123456789-abcdefgh\nijklmnopqrstuvwxyzAnnodinio comes up      with a.gamethatwicgdfgfggfgfgdfdggerrtetetkedandwhacked\n\n\n\ntesttest2test3test4students can play between php and pear sessions\n 123456789abc\n o \n \ndefghijklmnopqrstuvwxyz Mauris porttitor sodales congue. Integer venenatis sem vel libero vehicula hendrerit. Ut in tincidunt felis. Aenean nec mattis magna. Suspendisse enim nisl, euismod quis suscipit vel, porttitor egestas elit. Suspendisse facilisis scelerisque mi, ut pharetra felis porta eget. Proin ultrices molestie ornare. Morbi hendrerit orci eu mauris blandit ut dapibus lacus pulvinar. Proin tempor auctor nisl, quis blandit lacus mollis vel. Curabitur mollis diam quis massa commodo vestibulum. Maecenas in nunc vitae sem vestibulum commodo. In congue elit non sem ornare congue. Aliquam ac purus nibh, id imperdiet neque. Aenean consectetur dictum dictum. Curabitur gravida posuere sodales. Nam augue odio, convallis quis volutpat id, accumsan aliquet turpis. Nullam imperdiet dignissim dui, sed fermentum libero convallis in. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla tempus fringilla lorem, non euismod libero lobortis at. Suspendisse aliquet, nunc ut porta ornare, risus leo placerat leo, eget varius magna dui ac massa. ", font, 106 );
             for ( String line : lines )
@@ -292,7 +295,7 @@
             }
         }
 
-        public static int getLinesHeight(Graphics2D g, String[] lines, Font iFont, float lineSpacingRatioEmptyLines )
+        public static int getLinesHeight( Graphics2D g, String[] lines, Font iFont, float lineSpacingRatioEmptyLines )
         {
             int iBlockHeight = 0;
             int iLineHeight = LibStrings.getStringHeight( g, iFont );
@@ -312,7 +315,7 @@
             return iBlockHeight;
         }
 
-        public static void drawStrings(Graphics2D g, String[] lines, Font iFont, int aX, int aY, Color fg, Color shadow, Color outline, float lineSpacingRatioEmptyLines )
+        public static void drawStrings( Graphics2D g, String[] lines, Font iFont, int aX, int aY, Color fg, Color shadow, Color outline, float lineSpacingRatioEmptyLines )
         {
             int drawX       = aX;
             int drawY       = aY;

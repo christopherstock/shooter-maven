@@ -26,15 +26,15 @@
 
         ;
 
-        private                     String      iSpecifier          = null;
+        private                     String              specifier           = null;
 
-        private LibExtension( String aSpecifier )
+        private LibExtension( String specifier )
         {
-            this.iSpecifier = aSpecifier;
+            this.specifier = specifier;
         }
 
         public String getSpecifier()
         {
-            return this.iSpecifier;
+            return this.specifier;
         }
     }

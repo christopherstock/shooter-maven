@@ -32,10 +32,10 @@
         /***************************************************************************************************************
         *   Defines one anchor.
         *
-        *   @param  aVal     The int-value to use for this anchor.
+        *   @param  val     The int-value to use for this anchor.
         ***************************************************************************************************************/
-        private LibAnchor( int aVal )
+        private LibAnchor( int val )
         {
-            this.val = aVal;
+            this.val = val;
         }
     }

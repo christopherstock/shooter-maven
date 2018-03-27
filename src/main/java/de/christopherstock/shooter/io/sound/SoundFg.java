@@ -77,13 +77,13 @@
                     soundQueue.removeElement( queuedItem );
                 }
                 //countdown delayed sounds
-                else if ( queuedItem.iDelay > 0 )
+                else if ( queuedItem.delay > 0 )
                 {
                     //subsctract delay
-                    --queuedItem.iDelay;
+                    --queuedItem.delay;
 
                     //start sound if delay reached 0
-                    if ( queuedItem.iDelay == 0 )
+                    if ( queuedItem.delay == 0 )
                     {
                         queuedItem.start();
                     }

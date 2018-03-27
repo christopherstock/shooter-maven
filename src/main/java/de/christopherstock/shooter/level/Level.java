@@ -151,9 +151,9 @@
             }
         }
 
-        public final Float getHighestFloor( LibGameObject aParentGameObject, LibVertex aAnchor, float aRadius, float aHeight, int aCollisionCheckingSteps, LibDebug aDebug, boolean aDebugDrawBotCircles, float aBottomCollisionToleranceZ, float aMinBottomCollisionToleranceZ, int aEllipseSegments, Object exclude )
+        public final Float getHighestFloor(LibGameObject parentGameObject, LibVertex anchor, float radius, float height, int collisionCheckingSteps, LibDebug debug, boolean debugDrawBotCircles, float bottomCollisionToleranceZ, float minBottomCollisionToleranceZ, int ellipseSegments, Object exclude )
         {
-            return this.getHighestFloor( new Cylinder( aParentGameObject, aAnchor, aRadius, aHeight, aCollisionCheckingSteps, aDebug, aDebugDrawBotCircles, aBottomCollisionToleranceZ, aMinBottomCollisionToleranceZ, aEllipseSegments, Material.EHumanFlesh ), exclude );
+            return this.getHighestFloor( new Cylinder(parentGameObject, anchor, radius, height, collisionCheckingSteps, debug, debugDrawBotCircles, bottomCollisionToleranceZ, minBottomCollisionToleranceZ, ellipseSegments, Material.EHumanFlesh ), exclude );
         }
 
         public final Float getHighestFloor( Cylinder cylinder, Object exclude )
@@ -199,7 +199,7 @@
             }
 
             //launch the shot on all bots' collision unit ( if not shot by a bot! )
-            if ( s.iOrigin != ShotOrigin.EEnemies )
+            if ( s.origin != ShotOrigin.EEnemies )
             {
                 for ( Bot bot : this.getBots() )
                 {
@@ -208,7 +208,7 @@
             }
 
             //launch the shot on the player ( if not shot by the player )
-            if ( s.iOrigin != ShotOrigin.EPlayer )
+            if ( s.origin != ShotOrigin.EPlayer )
             {
                 allHitPoints.addAll( Shooter.game.engine.player.launchShot( s ) );
             }
@@ -217,7 +217,7 @@
             LibHitPoint[] affectedHitPoints = null;
 
             //check if wall-breaking ammo has been used!
-            if ( s.iWallBreakingAmmo )
+            if ( s.wallBreakingAmmo)
             {
                 //all hitpoints are afftected
                 affectedHitPoints = allHitPoints.toArray( new LibHitPoint[] {} );
@@ -229,7 +229,7 @@
             }
 
             //draw nearest hp in 3d
-            //if ( nearestHitPoint != null ) LibFXManager.launchStaticPoint( nearestHitPoint.iVertex, LibColors.EWhite, 0.05f, 300 );
+            //if ( nearestHitPoint != null ) LibFXManager.launchStaticPoint( nearestHitPoint.vertex, LibColors.EWhite, 0.05f, 300 );
 
             //hurt all game objects only once
             Vector<LibGameObject> hitObjects = new Vector<LibGameObject>();
@@ -243,37 +243,37 @@
                 if
                 (
                         //the game object is able to be hit
-                        affectedHitPoint.iCarrier != null && affectedHitPoint.iCarrier.getHitPointCarrier() != null
+                        affectedHitPoint.carrier != null && affectedHitPoint.carrier.getHitPointCarrier() != null
 
                         //sharp ammo has been used
-                    &&  s.iType == ShotType.ESharpAmmo
+                    &&  s.type == ShotType.ESharpAmmo
                 )
                 {
                     //ShooterDebug.bugfix.out( " faceangle of hit face: [" + nearestHitPoint.horzFaceAngle + "]" );
 
                     //check the hitPoint's receiver
-                    switch ( affectedHitPoint.iCarrier.getHitPointCarrier() )
+                    switch ( affectedHitPoint.carrier.getHitPointCarrier() )
                     {
                         case EWall:
                         {
-                            Wall w = (Wall)affectedHitPoint.iCarrier;
+                            Wall w = (Wall)affectedHitPoint.carrier;
                             boolean drawBulletHoleAndPlaySound = true;
 
                             //check if this is a projectile
-                            if ( s.iProjectile != null )
+                            if ( s.projectile != null )
                             {
                                 //no bullet hole but projectile for last point ( if wall is not penetrable )
-                                if ( i == affectedHitPoints.length - 1 && !affectedHitPoint.iWallTexture.getMaterial().isPenetrable() )
+                                if ( i == affectedHitPoints.length - 1 && !affectedHitPoint.wallTexture.getMaterial().isPenetrable() )
                                 {
                                     drawBulletHoleAndPlaySound  = false;
 
                                     //append projectile for last point
-                                    BulletHole.addBulletHole( affectedHitPoint, s.iProjectile );
+                                    BulletHole.addBulletHole( affectedHitPoint, s.projectile);
                                 }
                             }
 
                             //append bullet hole
-                            if ( drawBulletHoleAndPlaySound && s.iBulletHoleSize != LibHoleSize.ENone )
+                            if ( drawBulletHoleAndPlaySound && s.bulletHoleSize != LibHoleSize.ENone )
                             {
                                 //draw bullet hole
                                 BulletHole.addBulletHole( affectedHitPoint, null );
@@ -285,27 +285,27 @@
                                 hitObjects.add( w );
 
                                 //hurt wall ( not for projectiles
-                                if ( s.iProjectile == null )
+                                if ( s.projectile == null )
                                 {
-                                    w.hurt( s.iDamage, affectedHitPoint.iHorzInvertedShotAngle );
+                                    w.hurt( s.damage, affectedHitPoint.horzInvertedShotAngle);
                                 }
 
                                 //draw sliver
                                 affectedHitPoint.launchWallSliver
                                 (
-                                    s.iParticleQuantity,
-                                    s.iSliverAngleMod,
+                                    s.particleQuantity,
+                                    s.sliverAngleMod,
                                     FxSettings.LIFETIME_SLIVER,
-                                    s.iSliverSize,
+                                    s.sliverSize,
                                     FXGravity.ENormal,
-                                    affectedHitPoint.iCarrier,
+                                    affectedHitPoint.carrier,
                                     Level.currentSection()
                                 );
 
                                 //play wall sound ( not for target wall ! )
-                                if ( affectedHitPoint.iWallTexture != null && drawBulletHoleAndPlaySound )
+                                if ( affectedHitPoint.wallTexture != null && drawBulletHoleAndPlaySound )
                                 {
-                                    affectedHitPoint.iWallTexture.getMaterial().getBulletImpactSound().playDistancedFx( new Point2D.Float( affectedHitPoint.iVertex.x, affectedHitPoint.iVertex.y ) );
+                                    affectedHitPoint.wallTexture.getMaterial().getBulletImpactSound().playDistancedFx( new Point2D.Float( affectedHitPoint.vertex.x, affectedHitPoint.vertex.y ) );
                                 }
                             }
                             break;
@@ -324,12 +324,12 @@
                                 //draw sliver
                                 affectedHitPoint.launchWallSliver
                                 (
-                                    s.iParticleQuantity,
-                                    s.iSliverAngleMod,
+                                    s.particleQuantity,
+                                    s.sliverAngleMod,
                                     FxSettings.LIFETIME_SLIVER,
-                                    s.iSliverSize,
+                                    s.sliverSize,
                                     FXGravity.ENormal,
-                                    affectedHitPoint.iCarrier,
+                                    affectedHitPoint.carrier,
                                     Level.currentSection()
                                 );
                             }
@@ -339,27 +339,27 @@
                         case EBot:
                         {
                             //only once per bot
-                            Bot b       = (Bot)affectedHitPoint.iCarrier;
+                            Bot b       = (Bot)affectedHitPoint.carrier;
                             if ( !hitObjects.contains( b ) )
                             {
                                 hitObjects.add( b );
 
-                                if ( s.iProjectile == null )
+                                if ( s.projectile == null )
                                 {
                                     //hurt bot
-                                    int damage  = ( affectedHitPoint.iDamageMultiplier == -1 ? b.getHealth() : (int)( s.iDamage * affectedHitPoint.iDamageMultiplier ) );
+                                    int damage  = ( affectedHitPoint.damageMultiplier == -1 ? b.getHealth() : (int)( s.damage * affectedHitPoint.damageMultiplier) );
                                     ShooterDebug.bot.out( "damage is " + damage );
                                     b.hurt( damage );
 
                                     //draw blood
                                     affectedHitPoint.launchWallSliver
                                     (
-                                        s.iParticleQuantity,
-                                        s.iSliverAngleMod,
+                                        s.particleQuantity,
+                                        s.sliverAngleMod,
                                         FxSettings.LIFETIME_BLOOD,
                                         FXSize.ELarge,
                                         FXGravity.ELow,
-                                        affectedHitPoint.iCarrier,
+                                        affectedHitPoint.carrier,
                                         Level.currentSection()
                                     );
                                 }
@@ -370,7 +370,7 @@
                                 }
 
                                 //play hit sound
-                                affectedHitPoint.iWallTexture.getMaterial().getBulletImpactSound().playDistancedFx( new Point2D.Float( affectedHitPoint.iVertex.x, affectedHitPoint.iVertex.y ) );
+                                affectedHitPoint.wallTexture.getMaterial().getBulletImpactSound().playDistancedFx( new Point2D.Float( affectedHitPoint.vertex.x, affectedHitPoint.vertex.y ) );
                             }
                             break;
                         }
@@ -378,8 +378,8 @@
                 }
 
                 //show debugs
-              //s.debug.out( "hit point: [" + nearestHitPoint.iVertex.x + "," + nearestHitPoint.iVertex.y + ", " + nearestHitPoint.iVertex.z + "]" );
-              //s.debug.out( "shotAngle [" + nearestHitPoint.iHorzShotAngle + "] SliverAngle [" + nearestHitPoint.iHorzSliverAngle + "] invertedShotAngle [" + nearestHitPoint.iHorzInvertedShotAngle + "] faceAngle [" + nearestHitPoint.iHorzFaceAngle + "]" );
+              //s.debug.out( "hit point: [" + nearestHitPoint.vertex.x + "," + nearestHitPoint.vertex.y + ", " + nearestHitPoint.vertex.z + "]" );
+              //s.debug.out( "shotAngle [" + nearestHitPoint.horzShotAngle + "] SliverAngle [" + nearestHitPoint.iHorzSliverAngle + "] invertedShotAngle [" + nearestHitPoint.horzInvertedShotAngle + "] faceAngle [" + nearestHitPoint.horzFaceAngle + "]" );
             }
 
             //s.debug.out( "=====================================================================\n" );

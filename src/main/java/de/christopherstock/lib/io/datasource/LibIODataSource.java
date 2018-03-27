@@ -12,11 +12,11 @@
     *******************************************************************************************************************/
     public class LibIODataSource extends PullDataSource
     {
-        private ContentDescriptor           contentType;
+        private         ContentDescriptor           contentType             = null;
 
-        private LibIOSeekableStream[]       sources;
+        private         LibIOSeekableStream[]       sources                 = null;
 
-        private ByteBuffer                  anInput;
+        private         ByteBuffer                  input                   = null;
 
         protected   LibIODataSource()
         {
@@ -29,11 +29,11 @@
         ***************************************************************************************************************/
         public LibIODataSource(ByteBuffer input, String contentType)
         {
-            this.anInput = input;
+            this.input = input;
             this.contentType = new ContentDescriptor( contentType );
 
             this.sources = new LibIOSeekableStream [ 1 ];
-            this.sources[ 0 ] = new LibIOSeekableStream(this.anInput);
+            this.sources[ 0 ] = new LibIOSeekableStream(this.input);
         }
 
         /***************************************************************************************************************

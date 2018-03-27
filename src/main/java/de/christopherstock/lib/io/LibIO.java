@@ -5,7 +5,6 @@
     import  java.io.*;
     import  java.nio.ByteBuffer;
     import  java.util.*;
-    import  de.christopherstock.lib.*;
 
     /*******************************************************************************************************************
     *   The GL-View.
