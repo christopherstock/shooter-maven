@@ -2,7 +2,6 @@
     package de.christopherstock.shooter.base;
 
     import  de.christopherstock.shooter.*;
-    import  de.christopherstock.shooter.io.hid.lwjgl.*;
     import  de.christopherstock.shooter.io.sound.*;
     import  de.christopherstock.shooter.level.*;
     import  de.christopherstock.shooter.state.*;
@@ -134,7 +133,7 @@
 
                 case EMainMenu:
                 {
-                    LWJGLKeys.checkKeys();
+                    Shooter.game.engine.keys.checkKeys();
                     this.engine.mouse.update();
 
                     MainMenu.getSingleton().checkMenuKeyEvents();
@@ -146,7 +145,7 @@
 
                 case EIngame:
                 {
-                    LWJGLKeys.checkKeys();
+                    Shooter.game.engine.keys.checkKeys();
                     this.engine.mouse.update();
 
                     LevelChange.checkChangeToSection();

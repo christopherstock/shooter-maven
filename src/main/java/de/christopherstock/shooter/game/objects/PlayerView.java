@@ -69,14 +69,14 @@
             }
 
             //turn left
-            if ( Keys.keyHoldTurnLeft && !Keys.keyHoldAlternate )
+            if ( Shooter.game.engine.keys.keyHoldTurnLeft && !Shooter.game.engine.keys.keyHoldAlternate )
             {
                 this.iRot.z += PlayerSettings.SPEED_TURNING_Z * speedMultiplier;
                 this.iRot.z = this.iRot.z >= 360.0f ? this.iRot.z - 360.0f : this.iRot.z;
             }
 
             //turn right
-            if ( Keys.keyHoldTurnRight && !Keys.keyHoldAlternate )
+            if ( Shooter.game.engine.keys.keyHoldTurnRight && !Shooter.game.engine.keys.keyHoldAlternate )
             {
                 this.iRot.z -= PlayerSettings.SPEED_TURNING_Z * speedMultiplier;
                 this.iRot.z = this.iRot.z < 0.0f ? this.iRot.z + 360.0f : this.iRot.z;
@@ -93,17 +93,17 @@
             }
 
             //check x-looking-centering via keys
-            if ( Keys.keyHoldLookUp )
+            if ( Shooter.game.engine.keys.keyHoldLookUp )
             {
                 this.iRot.x -= PlayerSettings.SPEED_LOOKING_X * speedMultiplier;
                 this.iRot.x = this.iRot.x < -PlayerSettings.MAX_LOOKING_X ? -PlayerSettings.MAX_LOOKING_X : this.iRot.x;
             }
-            else if ( Keys.keyHoldLookDown )
+            else if ( Shooter.game.engine.keys.keyHoldLookDown )
             {
                 this.iRot.x += PlayerSettings.SPEED_LOOKING_X * speedMultiplier;
                 this.iRot.x = this.iRot.x > PlayerSettings.MAX_LOOKING_X ? PlayerSettings.MAX_LOOKING_X : this.iRot.x;
             }
-            else if ( Keys.keyHoldWalkUp || Keys.keyHoldWalkDown )
+            else if ( Shooter.game.engine.keys.keyHoldWalkUp || Shooter.game.engine.keys.keyHoldWalkDown )
             {
                 //center back on walking
                 if ( !General.DISABLE_LOOK_CENTERING_X ) this.iCenterLookXthisTick = true;
@@ -119,7 +119,7 @@
                 Shooter.game.engine.mouse.movementY = 0;
             }
 
-            if ( Keys.keyHoldCenterView )
+            if ( Shooter.game.engine.keys.keyHoldCenterView )
             {
                 this.iCenterLookX = true;
             }

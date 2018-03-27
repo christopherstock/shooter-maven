@@ -1,23 +1,47 @@
 
     package de.christopherstock.shooter.io.hid.lwjgl;
 
+    import de.christopherstock.shooter.io.hid.*;
     import  org.lwjgl.input.*;
     import  org.lwjgl.opengl.*;
     import  de.christopherstock.shooter.*;
     import  de.christopherstock.shooter.g3d.BulletHole;
-    import  de.christopherstock.shooter.io.hid.*;
 
-    public class LWJGLKeys extends Keys
+    public class LWJGLKeys
     {
-        public static void init()
-        {
-        }
+        public                  boolean             keyHoldFireMustBeReleased       = false;
 
-        public static void checkKeys()
+        public                  boolean             keyHoldWalkUp                   = false;
+        public                  boolean             keyHoldWalkDown                 = false;
+
+        public                  boolean             keyHoldTurnLeft                 = false;
+        public                  boolean             keyHoldTurnRight                = false;
+
+        public                  boolean             keyHoldStrafeLeft               = false;
+        public                  boolean             keyHoldStrafeRight              = false;
+
+        public                  boolean             keyHoldLookUp                   = false;
+        public                  boolean             keyHoldLookDown                 = false;
+
+        public                  boolean             keyHoldAlternate                = false;
+        public                  boolean             keyHoldFire                     = false;
+        public                  boolean             keyHoldCenterView               = false;
+        public                  boolean             keyHoldZoom                     = false;
+
+        public                  KeyControl          crouching                       = new KeyControl( ShooterSetting.Performance.DELAY_AFTER_CROUCHING         );
+        public                  KeyControl          gainHealth                      = new KeyControl( ShooterSetting.Performance.DELAY_AFTER_GAIN_HEALTH       );
+        public                  KeyControl          damageFx                        = new KeyControl( ShooterSetting.Performance.DELAY_AFTER_DAMAGE_FX         );
+        public                  KeyControl          playerAction                    = new KeyControl( ShooterSetting.Performance.DELAY_AFTER_PLAYER_ACTION     );
+        public                  KeyControl          reload                          = new KeyControl( ShooterSetting.Performance.DELAY_AFTER_RELOAD            );
+        public                  KeyControl          enterKey                        = new KeyControl( ShooterSetting.Performance.DELAY_AFTER_AVATAR_MESSAGE    );
+        public                  KeyControl          explosion                       = new KeyControl( ShooterSetting.Performance.DELAY_AFTER_EXPLOSION         );
+        public                  KeyControl          toggleMainMenu                  = new KeyControl( ShooterSetting.Performance.DELAY_AFTER_MAIN_MENU_TOGGLE  );
+
+        public void checkKeys()
         {
             boolean displayHasFocus = Display.isActive();
 
-            //glView and walking keys
+            //view and walk
             keyHoldStrafeLeft                   = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_A          ) );
             keyHoldStrafeRight                  = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_D          ) );
             keyHoldWalkUp                       = displayHasFocus && ( ( Keyboard.isKeyDown( Keyboard.KEY_W          ) || Keyboard.isKeyDown( Keyboard.KEY_UP    ) ) );
@@ -31,7 +55,7 @@
             keyHoldFire                         = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_LCONTROL   ) || Keyboard.isKeyDown( Keyboard.KEY_RCONTROL ) );
             keyHoldZoom                         = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_X          ) );
 
-            //action keys
+            //actions
             playerAction.iKeyHold               = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_SPACE      ) );
             crouching.iKeyHold                  = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_Y          ) );
             reload.iKeyHold                     = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_R          ) );

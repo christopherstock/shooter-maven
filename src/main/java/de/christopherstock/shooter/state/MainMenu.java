@@ -6,7 +6,6 @@
     import  de.christopherstock.shooter.*;
     import  de.christopherstock.shooter.ShooterSetting.Fonts;
     import  de.christopherstock.shooter.ShooterSetting.HUDSettings;
-    import  de.christopherstock.shooter.io.hid.Keys;
     import  de.christopherstock.shooter.io.sound.*;
     import  de.christopherstock.shooter.level.*;
     import  de.christopherstock.shooter.level.setup.*;
@@ -206,7 +205,7 @@
             if (this.menuChangeBlocker > 0 ) --this.menuChangeBlocker;
 
             //check enter press
-            Keys.enterKey.checkLaunchingAction();
+            Shooter.game.engine.keys.enterKey.checkLaunchingAction();
         }
 
         public static MainMenu getSingleton()
@@ -222,30 +221,30 @@
         public void checkMenuKeyEvents()
         {
             //check main menu toggle
-            Keys.toggleMainMenu.checkLaunchingAction();
+            Shooter.game.engine.keys.toggleMainMenu.checkLaunchingAction();
 
             //change to game
-            if ( Keys.toggleMainMenu.iLaunchAction )
+            if ( Shooter.game.engine.keys.toggleMainMenu.iLaunchAction )
             {
-                Keys.toggleMainMenu.iLaunchAction = false;
+                Shooter.game.engine.keys.toggleMainMenu.iLaunchAction = false;
                 Shooter.game.orderMainStateChangeTo( MainState.EIngame );
             }
 
             //change current main menu item
-            if ( Keys.keyHoldWalkDown )
+            if ( Shooter.game.engine.keys.keyHoldWalkDown )
             {
                 MainMenu.getSingleton().nextItem();
             }
 
-            if ( Keys.keyHoldWalkUp )
+            if ( Shooter.game.engine.keys.keyHoldWalkUp )
             {
                 MainMenu.getSingleton().previousItem();
             }
 
             //launch msg?
-            if ( Keys.enterKey.iLaunchAction )
+            if ( Shooter.game.engine.keys.enterKey.iLaunchAction )
             {
-                Keys.enterKey.iLaunchAction = false;
+                Shooter.game.engine.keys.enterKey.iLaunchAction = false;
 
                 MainMenu.getSingleton().selectItem();
             }

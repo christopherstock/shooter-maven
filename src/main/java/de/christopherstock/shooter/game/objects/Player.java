@@ -113,17 +113,11 @@
         ***************************************************************************************************************/
         private void handleKeysForMovement()
         {
-/*
-            Keys.ticksKeyLeftHold     = ( Keys.keyLeftHold     ? Keys.ticksKeyLeftHold     + 1 : 0 );
-            Keys.ticksKeyRightHold    = ( Keys.keyRightHold    ? Keys.ticksKeyRightHold    + 1 : 0 );
-            Keys.ticksKeyPageUpHold   = ( Keys.keyPageUpHold   ? Keys.ticksKeyPageUpHold   + 1 : 0 );
-            Keys.ticksKeyPageDownHold = ( Keys.keyPageDownHold ? Keys.ticksKeyPageDownHold + 1 : 0 );
-*/
             //not if player is falling
             if ( !this.iFalling)
             {
                 //forewards
-                if ( Keys.keyHoldWalkUp )
+                if ( Shooter.game.engine.keys.keyHoldWalkUp )
                 {
                     //change character's position
                     this.iCylinder.getTarget().x = this.iCylinder.getTarget().x - LibMath.sinDeg(this.iView.iRot.z ) * PlayerSettings.SPEED_WALKING;
@@ -139,7 +133,7 @@
                 }
 
                 //backwards
-                if ( Keys.keyHoldWalkDown )
+                if ( Shooter.game.engine.keys.keyHoldWalkDown )
                 {
                     //change character's position
                     this.iCylinder.getTarget().x = this.iCylinder.getTarget().x + LibMath.sinDeg(this.iView.iRot.z ) * PlayerSettings.SPEED_WALKING;
@@ -163,9 +157,9 @@
                 }
 
                 //left
-                if ( Keys.keyHoldTurnLeft || Keys.keyHoldStrafeLeft )
+                if ( Shooter.game.engine.keys.keyHoldTurnLeft || Shooter.game.engine.keys.keyHoldStrafeLeft )
                 {
-                    if ( Keys.keyHoldAlternate || Keys.keyHoldStrafeLeft )
+                    if ( Shooter.game.engine.keys.keyHoldAlternate || Shooter.game.engine.keys.keyHoldStrafeLeft )
                     {
                         this.iCylinder.getTarget().x = this.iCylinder.getTarget().x - LibMath.cosDeg(this.iView.iRot.z ) * PlayerSettings.SPEED_STRAFING;
                         this.iCylinder.getTarget().y = this.iCylinder.getTarget().y + LibMath.sinDeg(this.iView.iRot.z ) * PlayerSettings.SPEED_STRAFING;
@@ -173,9 +167,9 @@
                 }
 
                 //right
-                if ( Keys.keyHoldTurnRight || Keys.keyHoldStrafeRight )
+                if ( Shooter.game.engine.keys.keyHoldTurnRight || Shooter.game.engine.keys.keyHoldStrafeRight )
                 {
-                    if ( Keys.keyHoldAlternate  || Keys.keyHoldStrafeRight )
+                    if ( Shooter.game.engine.keys.keyHoldAlternate  || Shooter.game.engine.keys.keyHoldStrafeRight )
                     {
                         this.iCylinder.getTarget().x = this.iCylinder.getTarget().x + LibMath.cosDeg(this.iView.iRot.z ) * PlayerSettings.SPEED_STRAFING;
                         this.iCylinder.getTarget().y = this.iCylinder.getTarget().y - LibMath.sinDeg(this.iView.iRot.z ) * PlayerSettings.SPEED_STRAFING;
@@ -187,10 +181,10 @@
         private void handleKeysForActions()
         {
             //launch a shot - delay after shot depends on current wearpon
-            if ( Keys.keyHoldFire || Shooter.game.engine.mouse.holdButtonLeft)
+            if ( Shooter.game.engine.keys.keyHoldFire || Shooter.game.engine.mouse.holdButtonLeft)
             {
                 //perform nothing if the key must be released
-                if ( Keys.keyHoldFireMustBeReleased )
+                if ( Shooter.game.engine.keys.keyHoldFireMustBeReleased )
                 {
                     //stop launching the shot
                     this.iLaunchShot = false;
@@ -207,7 +201,7 @@
                         if (this.iArtefactSet.iCurrentArtefact.iCurrentShotsWithoutKeyRelease >= this.iArtefactSet.getArtefactType().iShotsTillKeyReleaseRequired )
                         {
                             //key-release required before next shot will be launched :)
-                            Keys.keyHoldFireMustBeReleased = true;
+                            Shooter.game.engine.keys.keyHoldFireMustBeReleased = true;
                         }
                     }
                 }
@@ -218,7 +212,7 @@
                 this.iArtefactSet.iCurrentArtefact.iCurrentShotsWithoutKeyRelease = 0;
 
                 //reset
-                Keys.keyHoldFireMustBeReleased = false;
+                Shooter.game.engine.keys.keyHoldFireMustBeReleased = false;
 
                 //stop launching the shot
                 this.iLaunchShot = false;
@@ -237,7 +231,7 @@
             }
 
             //check zooming
-            if ( Shooter.game.engine.mouse.holdButtonRight || Keys.keyHoldZoom )
+            if ( Shooter.game.engine.mouse.holdButtonRight || Shooter.game.engine.keys.keyHoldZoom )
             {
                 this.iAiming = true;
                 this.iZoom += General.SPEED_ZOOM;
@@ -253,25 +247,25 @@
             }
 
             //launch crouching
-            Keys.crouching.checkLaunchingAction();
+            Shooter.game.engine.keys.crouching.checkLaunchingAction();
 
             //launch reload
-            Keys.reload.checkLaunchingAction();
+            Shooter.game.engine.keys.reload.checkLaunchingAction();
 
             //launch an action
-            Keys.playerAction.checkLaunchingAction();
+            Shooter.game.engine.keys.playerAction.checkLaunchingAction();
 
             //launch avatar message
-            Keys.enterKey.checkLaunchingAction();
+            Shooter.game.engine.keys.enterKey.checkLaunchingAction();
 
             //launch explosion
-            Keys.explosion.checkLaunchingAction();
+            Shooter.game.engine.keys.explosion.checkLaunchingAction();
 
             //launch health fx
-            Keys.gainHealth.checkLaunchingAction();
+            Shooter.game.engine.keys.gainHealth.checkLaunchingAction();
 
             //launch damage fx
-            Keys.damageFx.checkLaunchingAction();
+            Shooter.game.engine.keys.damageFx.checkLaunchingAction();
         }
 
         public final Cylinder getCylinder()

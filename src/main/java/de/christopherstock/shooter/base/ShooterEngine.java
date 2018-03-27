@@ -20,7 +20,7 @@
     import  org.lwjgl.opengl.Display;
 
     /*******************************************************************************************************************
-    *   The game engine holding all engine systems.
+    *   The game engine holds all game systems.
     *******************************************************************************************************************/
     public class ShooterEngine
     {
@@ -42,6 +42,8 @@
         public                      MainState               mainStateToChangeTo         = null;
         /** Mouse. */
         public                      LWJGLMouse              mouse                       = null;
+        /** Keys. */
+        public                      LWJGLKeys               keys                        = null;
 
         /***************************************************************************************************************
         *   Inits the game engine.
@@ -56,6 +58,8 @@
             this.preloader.increase( 10 );
             this.initMouse();
 
+            this.preloader.increase( 15 );
+            this.initKeys();
 
 
 
@@ -135,6 +139,14 @@
         }
 
         /***************************************************************************************************************
+        *   Inits the keys.
+        ***************************************************************************************************************/
+        private void initKeys()
+        {
+            this.keys = new LWJGLKeys();
+        }
+
+        /***************************************************************************************************************
         *   Inits the rest.
         *   TODO split!
         ***************************************************************************************************************/
@@ -145,8 +157,6 @@
 
 
 
-            this.preloader.increase( 15 );
-            LWJGLKeys.init();
 
             this.preloader.increase( 20 );
             this.initFonts();

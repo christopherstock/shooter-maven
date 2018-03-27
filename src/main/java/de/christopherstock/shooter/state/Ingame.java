@@ -5,7 +5,6 @@
     import  de.christopherstock.shooter.ShooterDebug;
     import  de.christopherstock.shooter.g3d.*;
     import  de.christopherstock.shooter.g3d.mesh.BotMeshes.ArmsPosition;
-    import  de.christopherstock.shooter.io.hid.Keys;
     import  de.christopherstock.shooter.level.*;
     import  de.christopherstock.shooter.level.setup.*;
     import de.christopherstock.lib.LibViewSet;
@@ -72,19 +71,19 @@
         public void checkGameKeyEvents()
         {
             //check main menu toggle
-            Keys.toggleMainMenu.checkLaunchingAction();
+            Shooter.game.engine.keys.toggleMainMenu.checkLaunchingAction();
 
             //change to main menu
-            if ( Keys.toggleMainMenu.iLaunchAction )
+            if ( Shooter.game.engine.keys.toggleMainMenu.iLaunchAction )
             {
-                Keys.toggleMainMenu.iLaunchAction = false;
+                Shooter.game.engine.keys.toggleMainMenu.iLaunchAction = false;
                 Shooter.game.orderMainStateChangeTo( MainState.EMainMenu );
             }
 
             //launch test exploisions?
-            if ( Keys.explosion.iLaunchAction )
+            if ( Shooter.game.engine.keys.explosion.iLaunchAction )
             {
-                Keys.explosion.iLaunchAction = false;
+                Shooter.game.engine.keys.explosion.iLaunchAction = false;
 /*
                 float baseZ = ShooterGameShooter.game.engine.player.getAnchor().z;
 
@@ -98,41 +97,41 @@
             }
 
             //player action?
-            if ( Keys.playerAction.iLaunchAction )
+            if ( Shooter.game.engine.keys.playerAction.iLaunchAction )
             {
-                Keys.playerAction.iLaunchAction = false;
+                Shooter.game.engine.keys.playerAction.iLaunchAction = false;
                 Shooter.game.engine.player.launchAction( null );
             }
 
             //player action?
-            if ( Keys.crouching.iLaunchAction )
+            if ( Shooter.game.engine.keys.crouching.iLaunchAction )
             {
-                Keys.crouching.iLaunchAction = false;
+                Shooter.game.engine.keys.crouching.iLaunchAction = false;
                 Shooter.game.engine.player.toggleCrouching();
             }
 
             //gainHealth
-            if ( Keys.gainHealth.iLaunchAction )
+            if ( Shooter.game.engine.keys.gainHealth.iLaunchAction )
             {
-                Keys.gainHealth.iLaunchAction = false;
+                Shooter.game.engine.keys.gainHealth.iLaunchAction = false;
 
                 //heal player
                 Shooter.game.engine.player.heal( 10 );
             }
 
             //hurt
-            if ( Keys.damageFx.iLaunchAction )
+            if ( Shooter.game.engine.keys.damageFx.iLaunchAction )
             {
-                Keys.damageFx.iLaunchAction = false;
+                Shooter.game.engine.keys.damageFx.iLaunchAction = false;
 
                 //hurt player
                 Shooter.game.engine.player.hurt( 10 );
             }
 
             //launch msg?
-            if ( Keys.enterKey.iLaunchAction )
+            if ( Shooter.game.engine.keys.enterKey.iLaunchAction )
             {
-                Keys.enterKey.iLaunchAction = false;
+                Shooter.game.engine.keys.enterKey.iLaunchAction = false;
 
                 try
                 {
