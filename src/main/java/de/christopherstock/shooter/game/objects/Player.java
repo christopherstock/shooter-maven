@@ -3,6 +3,7 @@
 
     import  java.util.*;
     import  javax.vecmath.*;
+    import de.christopherstock.shooter.io.hid.lwjgl.*;
     import  org.lwjgl.opengl.*;
     import  de.christopherstock.lib.LibAnimation;
     import  de.christopherstock.lib.LibViewSet;
@@ -186,7 +187,7 @@
         private void handleKeysForActions()
         {
             //launch a shot - delay after shot depends on current wearpon
-            if ( Keys.keyHoldFire || MouseInput.mouseHoldFire )
+            if ( Keys.keyHoldFire || LWJGLMouse.mouseHoldLeft )
             {
                 //perform nothing if the key must be released
                 if ( Keys.keyHoldFireMustBeReleased )
@@ -224,19 +225,19 @@
             }
 
             //cycle through artefacts
-            if ( MouseInput.mouseWheelDown )
+            if ( LWJGLMouse.mouseWheelDown )
             {
-                MouseInput.mouseWheelDown = false;
+                LWJGLMouse.mouseWheelDown = false;
                 Shooter.game.engine.player.orderWearponOrGadget( ChangeAction.EActionNext );
             }
-            else if ( MouseInput.mouseWheelUp )
+            else if ( LWJGLMouse.mouseWheelUp )
             {
-                MouseInput.mouseWheelUp = false;
+                LWJGLMouse.mouseWheelUp = false;
                 Shooter.game.engine.player.orderWearponOrGadget( ChangeAction.EActionPrevious );
             }
 
             //check zooming
-            if ( MouseInput.mouseHoldZoom || Keys.keyHoldZoom )
+            if ( LWJGLMouse.mouseHoldRight || Keys.keyHoldZoom )
             {
                 this.iAiming = true;
                 this.iZoom += General.SPEED_ZOOM;

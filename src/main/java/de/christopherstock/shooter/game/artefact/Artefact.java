@@ -3,9 +3,9 @@
 
     import  java.awt.geom.Point2D;
     import  de.christopherstock.lib.*;
-    import de.christopherstock.lib.LibAnimation;
+    import  de.christopherstock.lib.LibAnimation;
     import  de.christopherstock.lib.g3d.*;
-    import de.christopherstock.lib.game.LibShot.ShotSource;
+    import  de.christopherstock.lib.game.LibShot.ShotSource;
     import  de.christopherstock.lib.gl.*;
     import  de.christopherstock.lib.math.*;
     import  de.christopherstock.shooter.*;
@@ -14,6 +14,7 @@
     import  de.christopherstock.shooter.game.artefact.gadget.Gadget;
     import  de.christopherstock.shooter.game.objects.*;
     import  de.christopherstock.shooter.io.hid.*;
+    import de.christopherstock.shooter.io.hid.lwjgl.*;
     import  de.christopherstock.shooter.ui.hud.HUD.*;
 
     /*******************************************************************************************************************
@@ -64,11 +65,11 @@
             else
             {
                 //reload?
-                if ( Keys.reload.iLaunchAction || MouseInput.mouseHoldReload )
+                if ( Keys.reload.iLaunchAction || LWJGLMouse.mouseHoldCenter )
                 {
                     //reload if the wearpon uses ammo
                     Keys.reload.iLaunchAction   = false;
-                    MouseInput.mouseHoldReload  = false;
+                    LWJGLMouse.mouseHoldCenter  = false;
 
                     //if the wearpon has ammo
                     if (this.iArtefactType.isFireArm() )

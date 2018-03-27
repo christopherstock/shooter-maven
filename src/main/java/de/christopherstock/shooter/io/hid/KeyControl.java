@@ -8,8 +8,8 @@
     {
         public                          boolean         iKeyHold                = false;
         public                          boolean         iLaunchAction           = false;
-        private long            iNextMillis             = 0;
-        private long            iDelayAfterReload       = 0;
+        private                         long            iNextMillis             = 0;
+        private                         long            iDelayAfterReload       = 0;
 
         public KeyControl( int aDelayAfterReload )
         {

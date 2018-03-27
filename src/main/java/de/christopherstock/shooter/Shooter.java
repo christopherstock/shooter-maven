@@ -7,20 +7,20 @@
     *   The main class.
     *
     *   TODO    Cleanup game initialization.
+    *   TODO    Turn all elements in ShooterEngine non static!
+    *   TODO    Turn ShooterEngine not static.
     *
     *   TODO    Different heights for particle effects.
     *   TODO    Mayflower branding and textures ( posters etc. ).
     *   TODO    Delete all 'a' and 'i' prefixes from variables. ( start at Shooter )
     *
     *   TODO    only for FireArms! Move ArtefactType.iFXImages to Firearms (Wearpons)!
-    *   TODO    Turn all elements in ShooterEngine non static!
     *   TODO    Optimize fields in ArtefactType!
     *   TODO    Outsource iconImage and UI-matters from ShooterEngine.
     *   TODO    Create example JUnit test!
     *   TODO    Remove ALL static fields!
     *   TODO    Revise level design.
     *   TODO    Remove all linter warnings!
-    *   TODO    Turn ShooterEngine not static.
     *   TODO    Move all CloseCombat constants to settings!
     *   TODO    make new subclass:  Wearpon that derives from ArtefactKind!!
     *   TODO    Complete version 4.0.0.
