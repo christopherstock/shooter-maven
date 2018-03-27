@@ -13,7 +13,7 @@
     *******************************************************************************************************************/
     public class ShooterGame extends Thread
     {
-        /** A flag being set to true if a closing-event on the main form is invoked. */
+        /** Flags the end of the main thread. */
         private                     boolean                 destroyed                   = false;
 
         /** The game engine. */
@@ -28,24 +28,13 @@
         }
 
         /***************************************************************************************************************
-        *   Inits the game engine.
-        ***************************************************************************************************************/
-        private void init()
-        {
-            this.engine.initUi();
-            this.engine.initPreloader();
-            this.engine.initGL();
-            this.engine.initRest();
-        }
-
-        /***************************************************************************************************************
         *   The game's main-thread run-method performing and endless loop of ticks.
         ***************************************************************************************************************/
         @Override
         public void run()
         {
             // opengl needs to be initialized in the same thread
-            this.init();
+            this.engine.init();
 
             // tick until main thread is destroyed
             while ( !this.destroyed )

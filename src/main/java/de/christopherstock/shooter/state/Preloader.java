@@ -2,16 +2,21 @@
     package de.christopherstock.shooter.state;
 
     import  de.christopherstock.lib.gl.*;
+    import de.christopherstock.lib.io.*;
     import  de.christopherstock.lib.ui.*;
     import  de.christopherstock.shooter.*;
     import  de.christopherstock.shooter.ShooterSetting.Fonts;
+
+    import javax.imageio.*;
+    import java.awt.image.*;
+    import java.io.*;
 
     /*******************************************************************************************************************
     *   Represents the preloader shown in the 1st state of the game.
     *******************************************************************************************************************/
     public class Preloader
     {
-        /** The background image. TODO outsource! */
+        /** The background image. */
         private                     LibGLImage              bgImage                     = null;
 
         /** The current percentage of loaded contents. */
@@ -19,12 +24,18 @@
 
         /***************************************************************************************************************
         *   Creates a new preloader.
-        *
-        *   @param bgImage The image to show in the background of the preloader screen.
         ***************************************************************************************************************/
-        public Preloader( LibGLImage bgImage )
+        public Preloader()
         {
-            this.bgImage = bgImage;
+            try
+            {
+                BufferedImage bg = ImageIO.read( LibIO.preStreamJarResource( ShooterSetting.Path.EScreen.url + "bg.jpg"   ) );
+                this.bgImage = new LibGLImage( bg, LibGLImage.ImageUsage.EOrtho, ShooterDebug.glImage, true );
+            }
+            catch ( IOException ioe )
+            {
+                ShooterDebug.error.err( "ERROR! on loading preloader bg image." );
+            }
         }
 
         /***************************************************************************************************************

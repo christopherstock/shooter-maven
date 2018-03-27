@@ -9,6 +9,10 @@
 
     public class LWJGLKeys extends Keys
     {
+        public static void init()
+        {
+        }
+
         public static void checkKeys()
         {
             boolean displayHasFocus = Display.isActive();

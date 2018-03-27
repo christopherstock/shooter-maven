@@ -24,76 +24,61 @@
     *******************************************************************************************************************/
     public class ShooterEngine
     {
-        /** The bg image for the preloader. TODO outsource! */
-        private                     BufferedImage           bgImage                     = null;
-
         /** Preloader. */
         public                      Preloader               preloader                   = null;
         /** Heads up display. */
         public                      HUD                     hud                         = null;
         /** Frames per second counter. */
         public                      LibFPS                  fps                         = null;
+        /** The global player-instance being controlled by the user. */
+        public                      Player                  player                      = null;
+        /** The frame contains a native Java frame and canvas. */
+        public                      LibFrame                frame                       = null;
+        /** The gl view manages all GL operations. */
+        public                      LibGLView               glView                      = null;
         /** Current main state. */
         public                      MainState               mainState                   = MainState.EPreloader;
         /** Main state to change to. */
         public                      MainState               mainStateToChangeTo         = null;
 
-        /** The global player-instance being controlled by the user. */
-        public                      Player                  player                      = null;
-
-        /** The frame contains a native Java frame and canvas. */
-        public                      LibFrame                frame                       = null;
-        /** The gl view manages all GL operations. */
-        public                      LibGLView               glView                      = null;
+        /***************************************************************************************************************
+        *   Inits the game engine.
+        ***************************************************************************************************************/
+        protected void init()
+        {
+            this.initUi();
+            this.initPreloader();
+            this.initFrame();
+            this.initGL();
+            this.initRest();
+        }
 
         /***************************************************************************************************************
         *   Inits the ui.
         ***************************************************************************************************************/
-        protected void initUi()
+        private void initUi()
         {
-            ShooterDebug.init.out( "init UI" );
+            ShooterDebug.init.out( "init UI look and feel" );
 
-            try
-            {
-                this.bgImage   = ImageIO.read( LibIO.preStreamJarResource( ShooterSetting.Path.EScreen.url + "bg.jpg"   ) );
-            }
-            catch ( IOException ioe )
-            {
-                ShooterDebug.error.err( "ERROR! Screen-Graphics could not be loaded!" );
-            }
-
-            //set host-os lookAndFeel
             LibUI.setLookAndFeel( ShooterDebug.error );
+            this.determineFullScreenSize();
         }
 
         /***************************************************************************************************************
         *   Inits the preloader.
         ***************************************************************************************************************/
-        protected void initPreloader()
+        private void initPreloader()
         {
             ShooterDebug.init.out( "init Preloader" );
 
-            this.preloader = new Preloader
-            (
-                new LibGLImage( this.bgImage, LibGLImage.ImageUsage.EOrtho, ShooterDebug.glImage, true  )
-            );
+            this.preloader = new Preloader();
         }
 
         /***************************************************************************************************************
-        *   Inits the Open GL system.
+        *   Inits the native JFrame.
         ***************************************************************************************************************/
-        protected void initGL()
+        private void initFrame()
         {
-            ShooterDebug.init.out( "init GL" );
-
-            if ( ShooterDebug.ENABLE_FULLSCREEN && !ShooterDebug.DEBUG_MODE )
-            {
-                Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-
-                ShooterSetting.Form.FORM_WIDTH  = screenSize.width;
-                ShooterSetting.Form.FORM_HEIGHT = screenSize.height;
-            }
-
             BufferedImage iconImage = null;
             try
             {
@@ -112,6 +97,14 @@
                 iconImage
             );
             this.frame.init();
+        }
+
+        /***************************************************************************************************************
+        *   Inits the Open GL system.
+        ***************************************************************************************************************/
+        private void initGL()
+        {
+            ShooterDebug.init.out( "init GL" );
 
             this.glView = new LibGLView
             (
@@ -125,11 +118,15 @@
 
         /***************************************************************************************************************
         *   Inits the rest.
+        *   TODO split!
         ***************************************************************************************************************/
-        protected void initRest()
+        private void initRest()
         {
             this.preloader.increase( 10 );
             LWJGLMouse.init();
+
+            this.preloader.increase( 15 );
+            LWJGLKeys.init();
 
             this.preloader.increase( 20 );
             this.initFonts();
@@ -153,10 +150,11 @@
             //init HUD fx
             HUDFx.init();
 
-            //init sounds and bg sounds
+            //init fg sounds
             this.preloader.increase( 70 );
             SoundFg.init();
 
+            // init bg sounds
             this.preloader.increase( 80 );
             SoundBg.init();
 
@@ -196,5 +194,16 @@
         {
             Display.destroy();
             System.exit( 0 );
+        }
+
+        private void determineFullScreenSize()
+        {
+            if ( ShooterDebug.ENABLE_FULLSCREEN && !ShooterDebug.DEBUG_MODE )
+            {
+                Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+                ShooterSetting.Form.FORM_WIDTH  = screenSize.width;
+                ShooterSetting.Form.FORM_HEIGHT = screenSize.height;
+            }
         }
     }

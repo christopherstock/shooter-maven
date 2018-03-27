@@ -10,7 +10,7 @@
     public class LibUI
     {
         /***************************************************************************************************************
-        *   Sets the look-and-feel of the host operating system for all UI components.
+        *   Sets the look and feel of the host operating system for all UI components.
         *
         *   @param debug The debug instance.
         ***************************************************************************************************************/
