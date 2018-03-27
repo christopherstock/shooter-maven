@@ -3,7 +3,6 @@
 
     import  de.christopherstock.lib.gl.*;
     import  de.christopherstock.shooter.*;
-    import  de.christopherstock.shooter.ShooterSetting.Fonts;
     import  de.christopherstock.shooter.ShooterSetting.HUDSettings;
     import  de.christopherstock.shooter.ShooterSetting.OffsetsOrtho;
     import  de.christopherstock.shooter.ui.hud.HUDMessageManager.AnimState;
@@ -31,8 +30,8 @@
             //init img and add this message to the queue
             this.iTextImg = LibGLImage.getFromString
             (
-                    this.iText,
-                Fonts.EAvatarMessage,
+                this.iText,
+                Shooter.game.engine.fonts.avatarMessage,
                 ShooterSetting.Colors.EHudMsgFg.colARGB,
                 null,
                 ShooterSetting.Colors.EHudMsgOutline.colARGB,

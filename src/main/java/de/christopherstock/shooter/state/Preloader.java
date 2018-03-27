@@ -5,7 +5,6 @@
     import de.christopherstock.lib.io.*;
     import  de.christopherstock.lib.ui.*;
     import  de.christopherstock.shooter.*;
-    import  de.christopherstock.shooter.ShooterSetting.Fonts;
 
     import javax.imageio.*;
     import java.awt.image.*;
@@ -55,7 +54,7 @@
             );
 
             // draw progress
-            LibGLImage text = LibGLImage.getFromString( this.percentageLoaded + " %", Fonts.EPreloader, LibColors.EOrangeMF.colABGR, null, null, ShooterDebug.glImage );
+            LibGLImage text = LibGLImage.getFromString( this.percentageLoaded + " %", Shooter.game.engine.fonts.preloader, LibColors.EOrangeMF.colABGR, null, null, ShooterDebug.glImage );
             Shooter.game.engine.glView.drawOrthoBitmapBytes
             (
                 text,

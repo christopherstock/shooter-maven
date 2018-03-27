@@ -4,7 +4,6 @@
     import  de.christopherstock.lib.gl.*;
     import  de.christopherstock.lib.ui.*;
     import  de.christopherstock.shooter.*;
-    import  de.christopherstock.shooter.ShooterSetting.Fonts;
     import  de.christopherstock.shooter.ShooterSetting.HUDSettings;
     import  de.christopherstock.shooter.io.sound.*;
     import  de.christopherstock.shooter.level.*;
@@ -34,8 +33,8 @@
 
             private MainMenuItem( String label )
             {
-                this.unselected = LibGLImage.getFromString( label, Fonts.EMainMenu, LibColors.EWhite.colABGR,  null, LibColors.EBlack.colABGR, ShooterDebug.glImage );
-                this.selected   = LibGLImage.getFromString( label, Fonts.EMainMenu, LibColors.EOrangeMF.colABGR, null, LibColors.EBlack.colABGR, ShooterDebug.glImage );
+                this.unselected = LibGLImage.getFromString( label, Shooter.game.engine.fonts.mainMenu, LibColors.EWhite.colABGR,    null, LibColors.EBlack.colABGR, ShooterDebug.glImage );
+                this.selected   = LibGLImage.getFromString( label, Shooter.game.engine.fonts.mainMenu, LibColors.EOrangeMF.colABGR, null, LibColors.EBlack.colABGR, ShooterDebug.glImage );
             }
 
             protected void draw(int x, int y, MainMenuItem selectedItem)

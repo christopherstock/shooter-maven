@@ -16,6 +16,7 @@
     import  de.christopherstock.shooter.io.sound.*;
     import  de.christopherstock.shooter.level.*;
     import  de.christopherstock.shooter.state.*;
+    import  de.christopherstock.shooter.ui.Fonts;
     import  de.christopherstock.shooter.ui.hud.*;
     import  org.lwjgl.opengl.Display;
 
@@ -44,6 +45,8 @@
         public                      LWJGLMouse              mouse                       = null;
         /** Keys. */
         public                      LWJGLKeys               keys                        = null;
+        /** Fonts. */
+        public                      Fonts                   fonts                       = null;
 
         /***************************************************************************************************************
         *   Inits the game engine.
@@ -54,12 +57,21 @@
             this.initPreloader();
             this.initFrame();
             this.initGL();
+            this.initFonts();
 
             this.preloader.increase( 10 );
             this.initMouse();
 
             this.preloader.increase( 15 );
             this.initKeys();
+
+            this.preloader.increase( 20 );
+
+            // TODO non-static image system!
+            ShooterTexture.loadImages();
+
+
+
 
 
 
@@ -158,11 +170,7 @@
 
 
 
-            this.preloader.increase( 20 );
-            this.initFonts();
 
-            this.preloader.increase( 30 );
-            ShooterTexture.loadImages();
 
             //assign textures and perform repaint
             this.preloader.increase( 40 );
@@ -175,7 +183,7 @@
             //init hud
             this.preloader.increase( 60 );
             this.hud = new HUD();
-            this.fps = new LibFPS( Fonts.EFps, ShooterSetting.Colors.EFpsFg.colABGR, ShooterSetting.Colors.EFpsOutline.colABGR, ShooterDebug.glImage );
+            this.fps = new LibFPS( Shooter.game.engine.fonts.fps, ShooterSetting.Colors.EFpsFg.colABGR, ShooterSetting.Colors.EFpsOutline.colABGR, ShooterDebug.glImage );
 
             //init HUD fx
             HUDFx.init();
@@ -203,21 +211,8 @@
 
         private void initFonts()
         {
-            try
-            {
-                Fonts.EAmmo          = LibIO.createFont( Path.EFont.url + "sourceSansPro.otf", 18.0f ); // new Font( "verdana",     Font.BOLD,  12 );
-                Fonts.EPreloader     = LibIO.createFont( Path.EFont.url + "sourceSansPro.otf", 25.0f ); // new Font( "verdana",     Font.BOLD,  12 );
-                Fonts.EHealth        = LibIO.createFont( Path.EFont.url + "sourceSansPro.otf", 18.0f ); // new Font( "verdana",     Font.BOLD,  12 );
-                Fonts.EFps           = LibIO.createFont( Path.EFont.url + "sourceSansPro.otf", 18.0f ); // new Font( "verdana",     Font.BOLD,  12 );
-                Fonts.EAvatarMessage = LibIO.createFont( Path.EFont.url + "sourceSansPro.otf", 18.0f ); // new Font( "verdana",     Font.BOLD,  12 );
-
-                Fonts.EMainMenu      = LibIO.createFont( Path.EFont.url + "sourceSansPro.otf", 55.0f );
-            }
-            catch ( Throwable t )
-            {
-                ShooterDebug.error.trace( t );
-                System.exit( 1 );
-            }
+            this.fonts = new Fonts();
+            this.fonts.init();
         }
 
         public void destroy()

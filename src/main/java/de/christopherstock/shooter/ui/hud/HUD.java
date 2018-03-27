@@ -5,7 +5,6 @@
     import  de.christopherstock.lib.gl.*;
     import  de.christopherstock.shooter.*;
     import  de.christopherstock.shooter.ShooterSetting.Colors;
-    import  de.christopherstock.shooter.ShooterSetting.Fonts;
     import  de.christopherstock.shooter.ShooterSetting.HUDSettings;
     import  de.christopherstock.shooter.ShooterSetting.OffsetsOrtho;
     import  de.christopherstock.shooter.game.artefact.Artefact;
@@ -126,8 +125,8 @@
                     this.iDisplayAmmoStringTotalAmmo = this.iCurrentAmmoStringTotalAmmo;
                     this.iAmmoImageMagazineAmmo = LibGLImage.getFromString
                     (
-                            this.iDisplayAmmoStringMagazineAmmo,
-                        Fonts.EAmmo,
+                        this.iDisplayAmmoStringMagazineAmmo,
+                        Shooter.game.engine.fonts.ammo,
                         Colors.EFpsFg.colARGB,
                         null,
                         Colors.EFpsOutline.colARGB,
@@ -136,7 +135,7 @@
                     this.iAmmoImageTotalAmmo = LibGLImage.getFromString
                     (
                             this.iDisplayAmmoStringTotalAmmo,
-                        Fonts.EAmmo,
+                        Shooter.game.engine.fonts.ammo,
                         Colors.EFpsFg.colARGB,
                         null,
                         Colors.EFpsOutline.colARGB,
@@ -172,8 +171,8 @@
 
                 this.iHealthImage = LibGLImage.getFromString
                 (
-                        this.iDisplayHealthString,
-                    Fonts.EHealth,
+                    this.iDisplayHealthString,
+                    Shooter.game.engine.fonts.health,
                     ( drawHealthWarning ? Colors.EHealthFgWarning.colABGR : Colors.EHealthFgNormal.colABGR ),
                     null,
                     Colors.EHealthOutline.colARGB,

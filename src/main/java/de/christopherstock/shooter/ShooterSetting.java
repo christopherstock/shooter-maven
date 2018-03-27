@@ -172,16 +172,6 @@
             public  static  final   int             DELAY_AFTER_MAIN_MENU_TOGGLE        = 200;
         }
 
-        public static final class Fonts
-        {
-            public  static          Font            EMainMenu                           = null;
-            public  static          Font            EAmmo                               = null;
-            public  static          Font            EPreloader                          = null;
-            public  static          Font            EHealth                             = null;
-            public  static          Font            EFps                                = null;
-            public  static          Font            EAvatarMessage                      = null;
-        }
-
         public static final class Sounds
         {
             public  static  final   float           SPEECH_PLAYER_DISTANCE_MAX_VOLUME   = 3.0f;

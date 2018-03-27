@@ -16,6 +16,14 @@
     *******************************************************************************************************************/
     public class ShooterTexture
     {
+
+
+        public              Map<String, TexObject>      allTexObjects           = null;
+
+
+
+
+
         protected static final class TexObject
         {
             protected LibGLTexture        iTexture            = null;

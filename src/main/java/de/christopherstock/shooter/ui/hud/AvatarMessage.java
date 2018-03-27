@@ -10,7 +10,6 @@
     import  de.christopherstock.lib.ui.*;
     import  de.christopherstock.shooter.*;
     import  de.christopherstock.shooter.ShooterSetting.AvatarMessages;
-    import  de.christopherstock.shooter.ShooterSetting.Fonts;
     import  de.christopherstock.shooter.ShooterSetting.OffsetsOrtho;
     import  de.christopherstock.shooter.base.*;
 
@@ -105,7 +104,7 @@
             }
 
             //add a message to the queue
-            messageQueue.add( new AvatarMessage( img, text, Fonts.EAvatarMessage, bgColor ) );
+            messageQueue.add( new AvatarMessage( img, text, Shooter.game.engine.fonts.avatarMessage, bgColor ) );
         }
 
         public static void animate()
