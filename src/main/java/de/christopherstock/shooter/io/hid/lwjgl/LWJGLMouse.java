@@ -7,17 +7,23 @@
 
     public class LWJGLMouse
     {
-        public          static      float       mouseMovementX      = 0;
-        public          static      float       mouseMovementY      = 0;
+        public                      float       movementX           = 0;
+        public                      float       movementY           = 0;
 
-        public          static      boolean     mouseHoldLeft       = false;
-        public          static      boolean     mouseHoldCenter     = false;
-        public          static      boolean     mouseHoldRight      = false;
+        public                      boolean     holdButtonLeft      = false;
+        public                      boolean     holdButtonCenter    = false;
+        public                      boolean     holdButtonRight     = false;
 
-        public          static      boolean     mouseWheelDown      = false;
-        public          static      boolean     mouseWheelUp        = false;
+        public                      boolean     wheelDown           = false;
+        public                      boolean     wheelUp             = false;
 
-        public static void checkMouse()
+        public void init()
+        {
+            //grab mouse to LWJGL display
+            Mouse.setGrabbed( true );
+        }
+
+        public void update()
         {
             //handle all occuring mouse events
             while ( Mouse.next() )
@@ -36,23 +42,23 @@
             //if ( centerMouse ) centerMouse();
         }
 
-        private static void checkWheel()
+        private void checkWheel()
         {
             //check wheel event
             int wheelSpin = Mouse.getEventDWheel();
             if ( wheelSpin < 0 )
             {
                 //ShooterDebug.mouse.out( "Wheel rolled down - next wearpon" );
-                mouseWheelDown = true;
+                wheelDown = true;
             }
             else if ( wheelSpin > 0 )
             {
                 //ShooterDebug.mouse.out( "Wheel rolled up - previous wearpon" );
-                mouseWheelUp   = true;
+                wheelUp = true;
             }
         }
 
-        private static void checkButton()
+        private void checkButton()
         {
             //check button event
             int     buttonPress = Mouse.getEventButton();
@@ -65,42 +71,36 @@
                 //left mouse key
                 case 0:
                 {
-                    mouseHoldLeft = down;
+                    holdButtonLeft = down;
                     break;
                 }
 
                 //right mouse key
                 case 1:
                 {
-                    mouseHoldRight = down;
+                    holdButtonRight = down;
                     break;
                 }
 
                 //center mouse key
                 case 2:
                 {
-                    mouseHoldCenter = down;
+                    holdButtonCenter = down;
                     break;
                 }
             }
         }
 
-        private static void checkMovement()
+        private void checkMovement()
         {
             int distX = Mouse.getEventDX();
             int distY = Mouse.getEventDY();
 
-            mouseMovementX += distX * ShooterSetting.General.MOUSE_MOVEMENT_MULTIPLIER;
-            mouseMovementY += distY * ShooterSetting.General.MOUSE_MOVEMENT_MULTIPLIER;
+            movementX += distX * ShooterSetting.General.MOUSE_MOVEMENT_MULTIPLIER;
+            movementY += distY * ShooterSetting.General.MOUSE_MOVEMENT_MULTIPLIER;
 
             //clip movements
-            if ( mouseMovementX > General.MOUSE_MAX_MOVEMENT_X ) mouseMovementX = General.MOUSE_MAX_MOVEMENT_X;
-            if ( mouseMovementY > General.MOUSE_MAX_MOVEMENT_Y ) mouseMovementY = General.MOUSE_MAX_MOVEMENT_Y;
-        }
-
-        public static void init()
-        {
-            //grab mouse to lwjgl display
-            Mouse.setGrabbed( true );
+            if ( movementX > General.MOUSE_MAX_MOVEMENT_X ) movementX = General.MOUSE_MAX_MOVEMENT_X;
+            if ( movementY > General.MOUSE_MAX_MOVEMENT_Y ) movementY = General.MOUSE_MAX_MOVEMENT_Y;
         }
     }

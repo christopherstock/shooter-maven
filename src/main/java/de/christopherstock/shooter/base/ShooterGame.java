@@ -135,7 +135,7 @@
                 case EMainMenu:
                 {
                     LWJGLKeys.checkKeys();
-                    LWJGLMouse.checkMouse();
+                    this.engine.mouse.update();
 
                     MainMenu.getSingleton().checkMenuKeyEvents();
 
@@ -147,7 +147,7 @@
                 case EIngame:
                 {
                     LWJGLKeys.checkKeys();
-                    LWJGLMouse.checkMouse();
+                    this.engine.mouse.update();
 
                     LevelChange.checkChangeToSection();
 

@@ -40,6 +40,8 @@
         public                      MainState               mainState                   = MainState.EPreloader;
         /** Main state to change to. */
         public                      MainState               mainStateToChangeTo         = null;
+        /** Mouse. */
+        public                      LWJGLMouse              mouse                       = null;
 
         /***************************************************************************************************************
         *   Inits the game engine.
@@ -50,6 +52,13 @@
             this.initPreloader();
             this.initFrame();
             this.initGL();
+
+            this.preloader.increase( 10 );
+            this.initMouse();
+
+
+
+
             this.initRest();
         }
 
@@ -117,13 +126,24 @@
         }
 
         /***************************************************************************************************************
+        *   Inits the mouse.
+        ***************************************************************************************************************/
+        private void initMouse()
+        {
+            this.mouse = new LWJGLMouse();
+            this.mouse.init();
+        }
+
+        /***************************************************************************************************************
         *   Inits the rest.
         *   TODO split!
         ***************************************************************************************************************/
         private void initRest()
         {
-            this.preloader.increase( 10 );
-            LWJGLMouse.init();
+
+
+
+
 
             this.preloader.increase( 15 );
             LWJGLKeys.init();

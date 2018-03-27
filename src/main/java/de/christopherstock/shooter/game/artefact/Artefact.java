@@ -14,7 +14,6 @@
     import  de.christopherstock.shooter.game.artefact.gadget.Gadget;
     import  de.christopherstock.shooter.game.objects.*;
     import  de.christopherstock.shooter.io.hid.*;
-    import de.christopherstock.shooter.io.hid.lwjgl.*;
     import  de.christopherstock.shooter.ui.hud.HUD.*;
 
     /*******************************************************************************************************************
@@ -65,11 +64,11 @@
             else
             {
                 //reload?
-                if ( Keys.reload.iLaunchAction || LWJGLMouse.mouseHoldCenter )
+                if ( Keys.reload.iLaunchAction || Shooter.game.engine.mouse.holdButtonCenter)
                 {
                     //reload if the wearpon uses ammo
                     Keys.reload.iLaunchAction   = false;
-                    LWJGLMouse.mouseHoldCenter  = false;
+                    Shooter.game.engine.mouse.holdButtonCenter = false;
 
                     //if the wearpon has ammo
                     if (this.iArtefactType.isFireArm() )

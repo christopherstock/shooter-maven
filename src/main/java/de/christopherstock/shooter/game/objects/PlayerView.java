@@ -6,7 +6,6 @@
     import  de.christopherstock.shooter.ShooterSetting.General;
     import  de.christopherstock.shooter.ShooterSetting.PlayerSettings;
     import  de.christopherstock.shooter.io.hid.*;
-    import de.christopherstock.shooter.io.hid.lwjgl.*;
     import  de.christopherstock.shooter.level.*;
     import  de.christopherstock.shooter.ui.hud.*;
 
@@ -84,13 +83,13 @@
             }
 
             //check mouse movement
-            if ( LWJGLMouse.mouseMovementX != 0 )
+            if ( Shooter.game.engine.mouse.movementX != 0 )
             {
-                this.iRot.z -= LWJGLMouse.mouseMovementX * speedMultiplier;
+                this.iRot.z -= Shooter.game.engine.mouse.movementX * speedMultiplier;
                 this.iRot.z = this.iRot.z < 0.0f ? this.iRot.z + 360.0f : this.iRot.z;
                 this.iRot.z = this.iRot.z >= 360.0f ? this.iRot.z - 360.0f : this.iRot.z;
 
-                LWJGLMouse.mouseMovementX = 0;
+                Shooter.game.engine.mouse.movementX = 0;
             }
 
             //check x-looking-centering via keys
@@ -111,13 +110,13 @@
             }
 
             //check x-looking-centering via mouse
-            if ( LWJGLMouse.mouseMovementY != 0 )
+            if ( Shooter.game.engine.mouse.movementY != 0 )
             {
-                this.iRot.x -= LWJGLMouse.mouseMovementY * speedMultiplier;
+                this.iRot.x -= Shooter.game.engine.mouse.movementY * speedMultiplier;
                 this.iRot.x = this.iRot.x < -PlayerSettings.MAX_LOOKING_X ? -PlayerSettings.MAX_LOOKING_X : this.iRot.x;
                 this.iRot.x = this.iRot.x > PlayerSettings.MAX_LOOKING_X  ? PlayerSettings.MAX_LOOKING_X  : this.iRot.x;
 
-                LWJGLMouse.mouseMovementY = 0;
+                Shooter.game.engine.mouse.movementY = 0;
             }
 
             if ( Keys.keyHoldCenterView )
