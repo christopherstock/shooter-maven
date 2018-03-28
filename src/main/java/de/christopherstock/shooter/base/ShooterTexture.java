@@ -18,15 +18,6 @@
     {
         private     static  HashMap<String, LibTexture>     allTextures     = new HashMap<String, LibTexture>();
 
-        public static final class TextureClass
-        {
-
-        }
-
-
-
-
-
         private static final class TexObject
         {
             protected           LibGLTexture                texture                 = null;
@@ -51,12 +42,6 @@
             }
         }
 
-        public static enum TextureEnum
-        {
-
-        }
-
-
         /*
          *  Leave this class on 1st position!
          */
@@ -74,22 +59,7 @@
 
             private Mask()
             {
-                this( Translucency.EOpaque );
-            }
-
-            private Mask( Translucency translucency )
-            {
-                this( translucency, Material.EUndefined );
-            }
-
-            private Mask( Translucency aTranslucency, Material aMaterial )
-            {
-                this( aTranslucency, aMaterial, null );
-            }
-
-            private Mask( Translucency aTranslucency, Material aMaterial, LibTexture aMask )
-            {
-                this.texObject = new TexObject( aTranslucency, aMaterial, aMask );
+                this.texObject = new TexObject( Translucency.EOpaque, Material.EUndefined, null );
             }
 
             public final void loadImage( String url )
@@ -207,59 +177,6 @@
             EWhiteboard1(                   Material.EPlastic1                                                             ),
             EWood1(                         Material.EWood                                                                 ),
             EWood2(                         Material.EWood                                                                 ),
-/*
-            ECactus1,
-            ECactus2,
-            ECar1,
-            ECar2,
-            ECarpet1,
-            ECeiling1,
-            ECeramic1,
-            EContainer1,
-            EContainer2,
-            ECrop1,
-            EFence1(                        Translucency.EHasMask,    LibGLMaterial.EUndefined,     Mask.EMaskFence1                ),
-            EForest1,
-            EGrass1,
-            EGrass2,
-            EGrass3,
-            EHouse1,
-            EHouse2,
-            EHouse3,
-            EHouse4,
-            EHouse5,
-            EHouse6,
-            EHouse7,
-            EHouse8,
-            EHouse9,
-            EJeansBlue1(                    Translucency.EOpaque,   LibGLMaterial.EHumanFlesh                                       ),
-            EKeyboard1,
-            ELeaf1,
-            ELeather1,
-            ELeather2,
-            EMarble1,
-            EMetal1,
-            EPlastic1,
-            EPlastic2,
-            EScreen1,
-            EShirtRed1(                     Translucency.EOpaque,   LibGLMaterial.EHumanFlesh                            ),
-            ESign1,
-            ESign2,
-            ESoil1,
-            ERoad1,
-            ERoad2,
-            ERug1,
-            ESand1,
-            EStones1,
-            EWater1,
-            EWallpaper1(                    Translucency.EOpaque,   LibGLMaterial.EConcrete                            ),
-            EWallpaper2(                    Translucency.EOpaque,   LibGLMaterial.EConcrete                            ),
-            EWallpaper3,
-            EWood1(                         Translucency.EOpaque,   LibGLMaterial.EWood                                ),
-            EWood2(                         Translucency.EOpaque,   LibGLMaterial.EWood                                ),
-            EWood3(                         Translucency.EOpaque,   LibGLMaterial.EWood                                ),
-            EWood4(                         Translucency.EOpaque,   LibGLMaterial.EWood                                ),
-*/
             ;
 
             private                     TexObject                   texObject           = null;
@@ -393,12 +310,7 @@
 
             private BotTex()
             {
-                this( Translucency.EOpaque, Material.EHumanFlesh, null );
-            }
-
-            private BotTex( Translucency aTranslucency, Material aMaterial, LibTexture aMask )
-            {
-                this.texObject = new TexObject( aTranslucency, aMaterial, aMask );
+                this.texObject = new TexObject( Translucency.EOpaque, Material.EHumanFlesh, null );
             }
 
             public final void loadImage( String url )
@@ -436,22 +348,7 @@
 
             private ItemTex()
             {
-                this( Translucency.EOpaque );
-            }
-
-            private ItemTex( Translucency translucency )
-            {
-                this( translucency, Material.EUndefined );
-            }
-
-            private ItemTex( Translucency aTranslucency, Material aMaterial )
-            {
-                this( aTranslucency, aMaterial, null );
-            }
-
-            private ItemTex( Translucency aTranslucency, Material aMaterial, LibTexture aMask )
-            {
-                this.texObject = new TexObject( aTranslucency, aMaterial, aMask );
+                this.texObject = new TexObject( Translucency.EOpaque, Material.EUndefined, null );
             }
 
             public final void loadImage( String url )
@@ -470,54 +367,11 @@
             }
         }
 
-
-
-
-
         public static LibTexture getByName( String name )
         {
             if ( name == null ) return null;
 
             return allTextures.get( name );
-/*
-            for ( Mask tex : Mask.values() )
-            {
-                if ( tex.name().compareToIgnoreCase( name ) == 0 )
-                {
-                    return tex;
-                }
-            }
-            for ( BulletHoleTex tex : BulletHoleTex.values() )
-            {
-                if ( tex.name().compareToIgnoreCase( name ) == 0 )
-                {
-                    return tex;
-                }
-            }
-            for ( WallTex tex : WallTex.values() )
-            {
-                if ( tex.name().compareToIgnoreCase( name ) == 0 )
-                {
-                    return tex;
-                }
-            }
-            for ( BotTex tex : BotTex.values() )
-            {
-                if ( tex.name().compareToIgnoreCase( name ) == 0 )
-                {
-                    return tex;
-                }
-            }
-            for ( ItemTex tex : ItemTex.values() )
-            {
-                if ( tex.name().compareToIgnoreCase( name ) == 0 )
-                {
-                    return tex;
-                }
-            }
-
-            return null;
-*/
         }
 
         public static void loadImages()
