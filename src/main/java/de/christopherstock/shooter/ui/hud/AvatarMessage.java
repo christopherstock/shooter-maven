@@ -5,7 +5,7 @@
     import  java.awt.image.*;
     import  java.util.*;
     import  de.christopherstock.lib.gl.*;
-    import  de.christopherstock.lib.gl.LibGLImage.ImageUsage;
+    import  de.christopherstock.lib.gl.LibGLTextureImage.ImageUsage;
     import  de.christopherstock.lib.io.*;
     import  de.christopherstock.lib.ui.*;
     import  de.christopherstock.shooter.*;
@@ -62,10 +62,10 @@
         private     static          int                     anim                    = 0;
         private     static          AnimState               animState               = AnimState.EDisabled;
 
-        private                     LibGLImage              bgBar                   = null;
+        private LibGLTextureImage bgBar                   = null;
         private                     Font                    iFont                   = null;
-        private                     LibGLImage              iImgAvatar              = null;
-        private                     LibGLImage[]            textLines               = null;
+        private LibGLTextureImage iImgAvatar              = null;
+        private                     LibGLTextureImage[]            textLines               = null;
         private                     int                     blockHeight             = 0;
         private                     int                     iDrawX                  = 0;
         private                     int                     iDrawY                  = 0;
@@ -75,21 +75,21 @@
         {
             this.iText = aText;
             this.iFont = aFont;
-            this.iImgAvatar = new LibGLImage( aImage.img, ImageUsage.EOrtho, ShooterDebug.glImage, false );
+            this.iImgAvatar = new LibGLTextureImage( aImage.img, ImageUsage.EOrtho, ShooterDebug.glImage, false );
 
             //calculate text
             String[] textLinesS = LibStrings.breakLinesOptimized( Shooter.game.engine.frame.getGraphics(), this.iText, this.iFont, Shooter.game.engine.glView.width - 3 * OffsetsOrtho.EAvatarMsgX - this.iImgAvatar.width - OffsetsOrtho.EBorderHudX );
-            this.textLines = new LibGLImage[ textLinesS.length ];
+            this.textLines = new LibGLTextureImage[ textLinesS.length ];
             for (int i = 0; i < this.textLines.length; ++i )
             {
-                this.textLines[ i ] = LibGLImage.getFromString( textLinesS[ i ], this.iFont, ShooterSetting.Colors.EAvatarMessageText.colABGR, null, ShooterSetting.Colors.EAvatarMessageTextOutline.colABGR, ShooterDebug.glImage );
+                this.textLines[ i ] = LibGLTextureImage.getFromString( textLinesS[ i ], this.iFont, ShooterSetting.Colors.EAvatarMessageText.colABGR, null, ShooterSetting.Colors.EAvatarMessageTextOutline.colABGR, ShooterDebug.glImage );
             }
             this.blockHeight = (this.textLines.length * this.textLines[ 0 ].height ); //+ ( ( textLines.length - 1 ) * ShooterSetting.HUD.LINE_SPACING_RATIO_EMPTY_LINES ) );
             this.iDrawX = 3 * OffsetsOrtho.EAvatarMsgX + this.iImgAvatar.width;
             this.iDrawY = Shooter.game.engine.glView.height - OffsetsOrtho.EAvatarMsgY - this.textLines[ 0 ].height - OffsetsOrtho.EAvatarBgPanelHeight / 2 + this.blockHeight / 2;
 
             //create bar if not done
-            this.bgBar = LibGLImage.getFullOpaque( bgColor, Shooter.game.engine.glView.width - this.iImgAvatar.width - 3 * OffsetsOrtho.EAvatarMsgX, this.iImgAvatar.height, ShooterDebug.glImage );
+            this.bgBar = LibGLTextureImage.getFullOpaque( bgColor, Shooter.game.engine.glView.width - this.iImgAvatar.width - 3 * OffsetsOrtho.EAvatarMsgX, this.iImgAvatar.height, ShooterDebug.glImage );
         }
 
         public static void showMessage(AvatarImage img, String text, Color bgColor )
@@ -207,7 +207,7 @@
 
             //draw text
             int y = this.iDrawY;
-            for ( LibGLImage textLine : this.textLines)
+            for ( LibGLTextureImage textLine : this.textLines)
             {
                 Shooter.game.engine.glView.drawOrthoBitmapBytes(textLine, this.iDrawX, y, alphaAvatarImg);
                 y -= textLine.height;

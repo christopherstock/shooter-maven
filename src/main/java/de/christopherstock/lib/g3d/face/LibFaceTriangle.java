@@ -36,7 +36,7 @@
         /***************************************************************************************************************
         *   Copy constructor.
         ***************************************************************************************************************/
-        public LibFaceTriangle( LibDebug debug, LibMaxTriangle maxTriangle, LibGLTexture tex, LibTexture defaultTexture, int fadeOutFacesTicks, int ellipseSegments )
+        public LibFaceTriangle(LibDebug debug, LibMaxTriangle maxTriangle, LibGLTextureMetaData tex, LibTexture defaultTexture, int fadeOutFacesTicks, int ellipseSegments )
         {
             this
             (
@@ -54,7 +54,7 @@
             );
         }
 
-        private LibFaceTriangle( LibDebug aDebug, LibVertex ank, LibGLTexture texture, LibColors col, LibVertex a, LibVertex b, LibVertex c, LibVertex aFaceNormal, LibTexture aDefaultTexture, int aFadeOutFacesTicks, int aEllipseSegments )
+        private LibFaceTriangle(LibDebug aDebug, LibVertex ank, LibGLTextureMetaData texture, LibColors col, LibVertex a, LibVertex b, LibVertex c, LibVertex aFaceNormal, LibTexture aDefaultTexture, int aFadeOutFacesTicks, int aEllipseSegments )
         {
             super( aDebug, ank, texture, col, aFaceNormal );
 
@@ -188,8 +188,8 @@
                     //get vertical values ( unused with new collision algo )
                   //float exactDistanceVert = (float)shot.srcPointVert.distance( intersectionPointVert );       //get exact distance
 
-                    LibGLTexture    faceTexture   = this.getTexture();
-                    LibMaterial     faceMaterial  = ( faceTexture == null ? this.defaultTexture.getTexture().getMaterial() : faceTexture.getMaterial() );
+                    LibGLTextureMetaData faceTexture   = this.getTexture();
+                    LibMaterial     faceMaterial  = ( faceTexture == null ? this.defaultTexture.getMetaData().getMaterial() : faceTexture.getMaterial() );
 
                     //debug.bugfix.out( "DISTANCE [" + intersectionPoint.distance( shot.srcPoint3d ) + "] HIT ! shot ["+shot.srcPoint3d+"] to ["+shot.endPoint3d+"] FACE is ["+face1+"]["+face2+"]["+face3+"]" );
                     //FX.launchDebugPoint( new LibVertex( (float)intersectionPoint.x, (float)intersectionPoint.y, (float)intersectionPoint.z ), LibColors.EPink, 150, 0.03f );
@@ -204,7 +204,7 @@
                     (
                         shot,
                             this.parentGameObject,
-                        faceMaterial.getBulletHoleTexture().getTexture(),
+                        faceMaterial.getBulletHoleTexture().getMetaData(),
                             this.getTexture(),
                         faceMaterial.getSliverColors(),
                         new LibVertex( (float)intersectionPoint.x, (float)intersectionPoint.y, (float)intersectionPoint.z ),
@@ -277,8 +277,8 @@
                     //get vertical values ( unused with new collision algo )
                   //float exactDistanceVert = (float)shot.srcPointVert.distance( intersectionPointVert );       //get exact distance
 
-                    LibGLTexture    faceTexture   = this.getTexture();
-                    LibMaterial     faceMaterial  = ( faceTexture == null ? this.defaultTexture.getTexture().getMaterial() : faceTexture.getMaterial() );
+                    LibGLTextureMetaData faceTexture   = this.getTexture();
+                    LibMaterial     faceMaterial  = ( faceTexture == null ? this.defaultTexture.getMetaData().getMaterial() : faceTexture.getMaterial() );
 
                     //debug.bugfix.out( "DISTANCE [" + intersectionPoint.distance( shot.srcPoint3d ) + "] HIT ! shot ["+shot.srcPoint3d+"] to ["+shot.endPoint3d+"] FACE is ["+face1+"]["+face2+"]["+face3+"]" );
                     //FX.launchDebugPoint( new LibVertex( (float)intersectionPoint.x, (float)intersectionPoint.y, (float)intersectionPoint.z ), LibColors.EPink, 150, 0.03f );
@@ -293,7 +293,7 @@
                     (
                         shot,
                             this.parentGameObject,
-                        faceMaterial.getBulletHoleTexture().getTexture(),
+                        faceMaterial.getBulletHoleTexture().getMetaData(),
                             this.getTexture(),
                         faceMaterial.getSliverColors(),
                         new LibVertex( (float)intersectionPoint.x, (float)intersectionPoint.y, (float)intersectionPoint.z ),
@@ -414,8 +414,8 @@
 //                  debug.shot.out( ">> SHOT-ANGLE-VERT: " + shotAngleVert );
 //                  debug.shot.out( ">> SLIVER-ANGLE-VERT: " + SliverAngleVert );
 
-                    LibGLTexture    faceTexture   = this.getTexture();
-                    LibMaterial     faceMaterial  = ( faceTexture == null ? this.defaultTexture.getTexture().getMaterial() : faceTexture.getMaterial() );
+                    LibGLTextureMetaData faceTexture   = this.getTexture();
+                    LibMaterial     faceMaterial  = ( faceTexture == null ? this.defaultTexture.getMetaData().getMaterial() : faceTexture.getMaterial() );
 
                     if (this.lowestZ == this.highestZ)
                     {
@@ -427,7 +427,7 @@
                     (
                         shot,
                             this.parentGameObject,
-                        faceMaterial.getBulletHoleTexture().getTexture(),
+                        faceMaterial.getBulletHoleTexture().getMetaData(),
                             this.getTexture(),
                         faceMaterial.getSliverColors(),
                         new LibVertex( intersectionPointHorz.x, intersectionPointHorz.y, z ),

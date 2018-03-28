@@ -222,7 +222,7 @@
                 (
                     ShooterDebug.face,
                     originalFaces[ i ],
-                    ( ShooterTexture.getByName( originalFaces[ i ].textureName) == null ? null : ShooterTexture.getByName( originalFaces[ i ].textureName).getTexture() ),
+                    ( ShooterTexture.getByName( originalFaces[ i ].textureName ) == null ? null : ShooterTexture.getByName( originalFaces[ i ].textureName).getMetaData() ),
                     WallTex.EConcrete1,
                     General.FADE_OUT_FACES_TOTAL_TICKS,
                     ShooterSetting.Performance.ELLIPSE_SEGMENTS

@@ -31,7 +31,7 @@
         protected LibDebug                debug                       = null;
 
         private                     LibVertex               anchor                      = null;
-        private                     LibGLTexture            texture                     = null;
+        private LibGLTextureMetaData texture                     = null;
         private                     LibColors               color                       = null;
 
         protected                   LibVertex               normal                      = null;
@@ -53,7 +53,7 @@
         *   @param  texture     The texture to use. May be <code>null</code>.
         *   @param  color       The color for this face. May be <code>null</code>.
         ***************************************************************************************************************/
-        protected LibFace(LibDebug debug, LibVertex anchor, LibGLTexture texture, LibColors color, LibVertex faceNormal)
+        protected LibFace(LibDebug debug, LibVertex anchor, LibGLTextureMetaData texture, LibColors color, LibVertex faceNormal)
         {
             this.debug = debug;
             this.anchor = anchor;
@@ -341,7 +341,7 @@
             return this.normal; //iTransformedNormal; inoperative :(
         }
 
-        public final LibGLTexture getTexture()
+        public final LibGLTextureMetaData getTexture()
         {
             return this.texture;
         }
@@ -371,7 +371,7 @@
             return this.anchor;
         }
 
-        public void changeTexture( LibGLTexture oldTex, LibGLTexture newTex )
+        public void changeTexture(LibGLTextureMetaData oldTex, LibGLTextureMetaData newTex )
         {
             if (this.texture == oldTex )
             {

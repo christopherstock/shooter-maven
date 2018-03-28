@@ -14,7 +14,7 @@
     *******************************************************************************************************************/
     public class LibFPS
     {
-        private                     LibGLImage      currentFps                  = null;
+        private LibGLTextureImage currentFps                  = null;
         private                     Font            font                        = null;
         private                     Color           colFont                     = null;
         private                     Color           colOutline                  = null;
@@ -46,7 +46,7 @@
                 //check if 1 sec is over
                 if ( System.currentTimeMillis() - this.startMeassuringMillis >= TimeUnit.SECONDS.toMillis( 1 ) )
                 {
-                    this.currentFps = LibGLImage.getFromString
+                    this.currentFps = LibGLTextureImage.getFromString
                     (
                             this.framesDrawn + " fps",
                             this.font,

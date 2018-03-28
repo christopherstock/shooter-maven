@@ -28,13 +28,13 @@
             EQuitGame(                  "QUIT GAME"                     ),
             ;
 
-            protected   LibGLImage  unselected                      = null;
-            protected   LibGLImage  selected                        = null;
+            protected LibGLTextureImage unselected                      = null;
+            protected LibGLTextureImage selected                        = null;
 
             private MainMenuItem( String label )
             {
-                this.unselected = LibGLImage.getFromString( label, Shooter.game.engine.fonts.mainMenu, LibColors.EWhite.colABGR,    null, LibColors.EBlack.colABGR, ShooterDebug.glImage );
-                this.selected   = LibGLImage.getFromString( label, Shooter.game.engine.fonts.mainMenu, LibColors.EOrangeMF.colABGR, null, LibColors.EBlack.colABGR, ShooterDebug.glImage );
+                this.unselected = LibGLTextureImage.getFromString( label, Shooter.game.engine.fonts.mainMenu, LibColors.EWhite.colABGR,    null, LibColors.EBlack.colABGR, ShooterDebug.glImage );
+                this.selected   = LibGLTextureImage.getFromString( label, Shooter.game.engine.fonts.mainMenu, LibColors.EOrangeMF.colABGR, null, LibColors.EBlack.colABGR, ShooterDebug.glImage );
             }
 
             protected void draw(int x, int y, MainMenuItem selectedItem)
@@ -47,13 +47,13 @@
 
         private         static          MainMenuItem            currentMainMenuItem             = null;
 
-        private                         LibGLImage              blackPane                       = null;
+        private LibGLTextureImage blackPane                       = null;
 
         private                         int                     menuChangeBlocker               = 0;
 
         private MainMenu()
         {
-            this.blackPane = LibGLImage.getFullOpaque( LibColors.EBlackTranslucent.colABGR, Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
+            this.blackPane = LibGLTextureImage.getFullOpaque( LibColors.EBlackTranslucent.colABGR, Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
         }
 
         public static void init()

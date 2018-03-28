@@ -15,12 +15,12 @@
     {
         public                      float               iTextureRotation        = 0.0f;
 
-        public LibFaceEllipseWall( LibDebug debug, LibGLTexture textureID, float horzFaceAngle, float vertFaceAngle, float x, float y, float z, float radiusX, float radiusZ, int ellipseSegments )
+        public LibFaceEllipseWall(LibDebug debug, LibGLTextureMetaData textureID, float horzFaceAngle, float vertFaceAngle, float x, float y, float z, float radiusX, float radiusZ, int ellipseSegments )
         {
             this( debug, textureID, horzFaceAngle, vertFaceAngle, x, y, z, radiusX, radiusZ, LibMath.getRandom( 0, 360 ), ellipseSegments );
         }
 
-        public LibFaceEllipseWall( LibDebug debug, LibGLTexture textureID, float horzFaceAngle, float vertFaceAngle, float x, float y, float z, float radiusX, float radiusZ, float textureRotation, int ellipseSegments )
+        public LibFaceEllipseWall(LibDebug debug, LibGLTextureMetaData textureID, float horzFaceAngle, float vertFaceAngle, float x, float y, float z, float radiusX, float radiusZ, float textureRotation, int ellipseSegments )
         {
             //call super-construct
             super( debug, new LibVertex( x, y, z, 0.0f, 0.0f ), textureID, LibColors.EWhite, null );

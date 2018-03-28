@@ -3,7 +3,7 @@
 
     import  java.awt.image.*;
     import  de.christopherstock.lib.gl.*;
-    import  de.christopherstock.lib.gl.LibGLImage.*;
+    import de.christopherstock.lib.gl.LibGLTextureImage.*;
     import  de.christopherstock.lib.io.*;
     import  de.christopherstock.lib.ui.*;
     import  de.christopherstock.shooter.*;
@@ -19,7 +19,7 @@
         ENight1,
         ;
 
-        private LibGLImage      bgImage                     = null;
+        private LibGLTextureImage bgImage                     = null;
 
         public static void loadImages()
         {
@@ -32,7 +32,7 @@
         private void loadImage()
         {
             BufferedImage bufferedImage = LibImage.load( ShooterSetting.Path.EBackGrounds.url + this.toString() + LibExtension.jpg.getSpecifier(), ShooterDebug.glImage, false );
-            this.bgImage = new LibGLImage( bufferedImage, ImageUsage.EOrtho, ShooterDebug.glImage, true );
+            this.bgImage = new LibGLTextureImage( bufferedImage, ImageUsage.EOrtho, ShooterDebug.glImage, true );
         }
 
         public final void drawOrtho( float playerRotX, float playerRotZ )

@@ -216,7 +216,7 @@
             return vecZ;
         }
 
-        public void changeTexture( LibGLTexture oldTex, LibGLTexture newTex )
+        public void changeTexture(LibGLTextureMetaData oldTex, LibGLTextureMetaData newTex )
         {
             for ( LibFaceTriangle face : this.iFaces)
             {

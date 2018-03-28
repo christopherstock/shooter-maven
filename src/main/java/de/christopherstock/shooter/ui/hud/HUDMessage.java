@@ -15,7 +15,7 @@
     {
         private                     int                     iAnim                   = 0;
         private                     AnimState               iAnimState              = null;
-        private                     LibGLImage              iTextImg                = null;
+        private LibGLTextureImage iTextImg                = null;
         private                     String                  iText                   = null;
 
         protected HUDMessage( String aText )
@@ -28,7 +28,7 @@
         public final void show()
         {
             //init img and add this message to the queue
-            this.iTextImg = LibGLImage.getFromString
+            this.iTextImg = LibGLTextureImage.getFromString
             (
                 this.iText,
                 Shooter.game.engine.fonts.avatarMessage,

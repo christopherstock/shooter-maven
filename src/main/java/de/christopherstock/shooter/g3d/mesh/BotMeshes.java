@@ -200,14 +200,14 @@
             if ( aTemp.iHat != null )
             {
                 this.iHat = new BotMesh( ShooterD3ds.getFaces( aTemp.iHat ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.0f );
-                this.iHat.changeTexture(             WallTex.ETest.getTexture(),          aTemp.iTexHat.getTexture()                  );
+                this.iHat.changeTexture(             WallTex.ETest.getMetaData(),          aTemp.iTexHat.getMetaData()                  );
             }
 
             if ( aTemp.iGlasses != null )
             {
                 this.iGlasses = new BotMesh( ShooterD3ds.getFaces( aTemp.iGlasses ), aAnchor, 0.0f, 1.0f, aParentGameObject, -1.0f );
-                this.iGlasses.changeTexture(             WallTex.ETest.getTexture(),         aTemp.iTexGlassesGlass.getTexture()         );
-                this.iGlasses.changeTexture(             BotTex.EHairBlonde.getTexture(),    aTemp.iTexGlassesHolder.getTexture()        );
+                this.iGlasses.changeTexture(             WallTex.ETest.getMetaData(),         aTemp.iTexGlassesGlass.getMetaData()         );
+                this.iGlasses.changeTexture(             BotTex.EHairBlonde.getMetaData(),    aTemp.iTexGlassesHolder.getMetaData()        );
             }
 
             //assign limbs
@@ -229,23 +229,23 @@
             this.iLeftFoot = new BotMesh( ShooterD3ds.getFaces( aTemp.iLeftFoot           ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
 
             //assign textures for bot meshes
-            this.iRightUpperLeg.changeTexture(   WallTex.ETest.getTexture(),          ( aTemplate.iTexRightUpperLeg == null ? aTemp.iSkin.getTexture() : aTemplate.iTexRightUpperLeg .getTexture()  )         );
-            this.iLeftUpperLeg.changeTexture(    WallTex.ETest.getTexture(),          ( aTemplate.iTexLeftUpperLeg  == null ? aTemp.iSkin.getTexture() : aTemplate.iTexLeftUpperLeg  .getTexture()  )         );
-            this.iRightLowerLeg.changeTexture(   WallTex.ETest.getTexture(),          ( aTemplate.iTexRightLowerLeg == null ? aTemp.iSkin.getTexture() : aTemplate.iTexRightLowerLeg .getTexture()  )         );
-            this.iLeftLowerLeg.changeTexture(    WallTex.ETest.getTexture(),          ( aTemplate.iTexLeftLowerLeg  == null ? aTemp.iSkin.getTexture() : aTemplate.iTexLeftLowerLeg  .getTexture()  )         );
-            this.iLeftFoot.changeTexture(        WallTex.ETest.getTexture(),          ( aTemplate.iTexLeftFoot      == null ? aTemp.iSkin.getTexture() : aTemplate.iTexLeftFoot      .getTexture()  )         );
-            this.iRightFoot.changeTexture(       WallTex.ETest.getTexture(),          ( aTemplate.iTexRightFoot     == null ? aTemp.iSkin.getTexture() : aTemplate.iTexRightFoot     .getTexture()  )         );
-            this.iLeftUpperArm.changeTexture(    WallTex.ETest.getTexture(),          ( aTemplate.iTexLeftUpperArm  == null ? aTemp.iSkin.getTexture() : aTemplate.iTexLeftUpperArm  .getTexture()  )         );
-            this.iRightUpperArm.changeTexture(   WallTex.ETest.getTexture(),          ( aTemplate.iTexRightUpperArm == null ? aTemp.iSkin.getTexture() : aTemplate.iTexRightUpperArm .getTexture()  )         );
-            this.iLeftLowerArm.changeTexture(    WallTex.ETest.getTexture(),          ( aTemplate.iTexLeftLowerArm  == null ? aTemp.iSkin.getTexture() : aTemplate.iTexLeftLowerArm  .getTexture()  )         );
-            this.iRightLowerArm.changeTexture(   WallTex.ETest.getTexture(),          ( aTemplate.iTexRightLowerArm == null ? aTemp.iSkin.getTexture() : aTemplate.iTexRightLowerArm .getTexture()  )         );
-            this.iLeftHand.changeTexture(        WallTex.ETest.getTexture(),          ( aTemplate.iTexLeftHand      == null ? aTemp.iSkin.getTexture() : aTemplate.iTexLeftHand      .getTexture()  )         );
-            this.iRightHand.changeTexture(       WallTex.ETest.getTexture(),          ( aTemplate.iTexRightHand     == null ? aTemp.iSkin.getTexture() : aTemplate.iTexRightHand     .getTexture()  )         );
-            this.iNeck.changeTexture(            WallTex.ETest.getTexture(),          ( aTemplate.iTexNeck          == null ? aTemp.iSkin.getTexture() : aTemplate.iTexNeck          .getTexture()  )         );
-            this.iTorso.changeTexture(           WallTex.ETest.getTexture(),          ( aTemplate.iTexTorso    == null ? aTemp.iSkin.getTexture() : aTemplate.iTexTorso    .getTexture()  )         );
+            this.iRightUpperLeg.changeTexture(   WallTex.ETest.getMetaData(),          ( aTemplate.iTexRightUpperLeg == null ? aTemp.iSkin.getMetaData() : aTemplate.iTexRightUpperLeg .getMetaData()  )         );
+            this.iLeftUpperLeg.changeTexture(    WallTex.ETest.getMetaData(),          ( aTemplate.iTexLeftUpperLeg  == null ? aTemp.iSkin.getMetaData() : aTemplate.iTexLeftUpperLeg  .getMetaData()  )         );
+            this.iRightLowerLeg.changeTexture(   WallTex.ETest.getMetaData(),          ( aTemplate.iTexRightLowerLeg == null ? aTemp.iSkin.getMetaData() : aTemplate.iTexRightLowerLeg .getMetaData()  )         );
+            this.iLeftLowerLeg.changeTexture(    WallTex.ETest.getMetaData(),          ( aTemplate.iTexLeftLowerLeg  == null ? aTemp.iSkin.getMetaData() : aTemplate.iTexLeftLowerLeg  .getMetaData()  )         );
+            this.iLeftFoot.changeTexture(        WallTex.ETest.getMetaData(),          ( aTemplate.iTexLeftFoot      == null ? aTemp.iSkin.getMetaData() : aTemplate.iTexLeftFoot      .getMetaData()  )         );
+            this.iRightFoot.changeTexture(       WallTex.ETest.getMetaData(),          ( aTemplate.iTexRightFoot     == null ? aTemp.iSkin.getMetaData() : aTemplate.iTexRightFoot     .getMetaData()  )         );
+            this.iLeftUpperArm.changeTexture(    WallTex.ETest.getMetaData(),          ( aTemplate.iTexLeftUpperArm  == null ? aTemp.iSkin.getMetaData() : aTemplate.iTexLeftUpperArm  .getMetaData()  )         );
+            this.iRightUpperArm.changeTexture(   WallTex.ETest.getMetaData(),          ( aTemplate.iTexRightUpperArm == null ? aTemp.iSkin.getMetaData() : aTemplate.iTexRightUpperArm .getMetaData()  )         );
+            this.iLeftLowerArm.changeTexture(    WallTex.ETest.getMetaData(),          ( aTemplate.iTexLeftLowerArm  == null ? aTemp.iSkin.getMetaData() : aTemplate.iTexLeftLowerArm  .getMetaData()  )         );
+            this.iRightLowerArm.changeTexture(   WallTex.ETest.getMetaData(),          ( aTemplate.iTexRightLowerArm == null ? aTemp.iSkin.getMetaData() : aTemplate.iTexRightLowerArm .getMetaData()  )         );
+            this.iLeftHand.changeTexture(        WallTex.ETest.getMetaData(),          ( aTemplate.iTexLeftHand      == null ? aTemp.iSkin.getMetaData() : aTemplate.iTexLeftHand      .getMetaData()  )         );
+            this.iRightHand.changeTexture(       WallTex.ETest.getMetaData(),          ( aTemplate.iTexRightHand     == null ? aTemp.iSkin.getMetaData() : aTemplate.iTexRightHand     .getMetaData()  )         );
+            this.iNeck.changeTexture(            WallTex.ETest.getMetaData(),          ( aTemplate.iTexNeck          == null ? aTemp.iSkin.getMetaData() : aTemplate.iTexNeck          .getMetaData()  )         );
+            this.iTorso.changeTexture(           WallTex.ETest.getMetaData(),          ( aTemplate.iTexTorso    == null ? aTemp.iSkin.getMetaData() : aTemplate.iTexTorso    .getMetaData()  )         );
 
-            this.iHead.changeTexture(            BotTex.EHairBlonde.getTexture(),     aTemp.iTexHair.getTexture()                            );
-            this.iFace.changeTexture(            WallTex.ETest.getTexture(),          aTemp.iTexFaceEyesOpen.getTexture()                    );
+            this.iHead.changeTexture(            BotTex.EHairBlonde.getMetaData(),     aTemp.iTexHair.getMetaData()                            );
+            this.iFace.changeTexture(            WallTex.ETest.getMetaData(),          aTemp.iTexFaceEyesOpen.getMetaData()                    );
 
             //assign initial arm position
             this.assignArmsPosition( ArmsPosition.ERestInHip             );
@@ -1184,7 +1184,7 @@
             }
         }
 
-        public void changeFaceTexture( LibGLTexture oldTex, LibGLTexture newTex )
+        public void changeFaceTexture(LibGLTextureMetaData oldTex, LibGLTextureMetaData newTex )
         {
             this.iFace.changeTexture( oldTex, newTex );
         }

@@ -86,10 +86,10 @@
             this.iEnergy = new WallEnergy( aWallHealth, aExplosionSize, aExplosionSound );
 
             //change texture if desired
-            if ( aChangeTexture1 != null ) this.changeTexture( WallTex.ETest.getTexture(),   aChangeTexture1.getTexture() );
+            if ( aChangeTexture1 != null ) this.changeTexture( WallTex.ETest.getMetaData(),   aChangeTexture1.getMetaData() );
             if ( aChangeTexture2 != null )
             {
-                this.changeTexture( WallTex.ETest2.getTexture(),  aChangeTexture2[ 0 ].getTexture() );
+                this.changeTexture( WallTex.ETest2.getMetaData(),  aChangeTexture2[ 0 ].getMetaData() );
                 this.iChangeTexture2 = aChangeTexture2;
                 this.iChangeTexture2Delay = aChangeTexture2Delay;
             }
@@ -162,7 +162,7 @@
                         if (this.iChangeTexture2Index >= this.iChangeTexture2.length ) this.iChangeTexture2Index = 0;
 
                         //change texture
-                        this.changeTexture(this.iChangeTexture2[ currentIndex ].getTexture(), this.iChangeTexture2[this.iChangeTexture2Index].getTexture() );
+                        this.changeTexture(this.iChangeTexture2[ currentIndex ].getMetaData(), this.iChangeTexture2[this.iChangeTexture2Index].getMetaData() );
                     }
                 }
             }

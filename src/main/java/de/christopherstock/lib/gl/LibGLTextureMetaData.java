@@ -6,7 +6,7 @@
     /*******************************************************************************************************************
     *   The Texture-System.
     *******************************************************************************************************************/
-    public class LibGLTexture implements Serializable
+    public class LibGLTextureMetaData implements Serializable
     {
         public static enum Translucency
         {
@@ -24,7 +24,7 @@
         private                     LibMaterial         material            = null;
         private                     Integer             maskId              = null;
 
-        public LibGLTexture( int id, Translucency translucency, LibMaterial material, Integer maskId )
+        public LibGLTextureMetaData(int id, Translucency translucency, LibMaterial material, Integer maskId )
         {
             this.id           = id;
             this.translucency = translucency;

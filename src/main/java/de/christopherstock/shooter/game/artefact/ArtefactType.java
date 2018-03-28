@@ -4,7 +4,7 @@
     import  java.awt.image.*;
     import  java.util.*;
     import  de.christopherstock.lib.gl.*;
-    import  de.christopherstock.lib.gl.LibGLImage.*;
+    import de.christopherstock.lib.gl.LibGLTextureImage.*;
     import  de.christopherstock.lib.io.*;
     import  de.christopherstock.lib.ui.*;
     import  de.christopherstock.shooter.*;
@@ -74,7 +74,7 @@
         // -- All these fields belong to ArtefactKind !!
 
         /** The orthogonal image for displaying this artefact to the player. */
-        private                     LibGLImage          iArtefactImage               = null;
+        private LibGLTextureImage iArtefactImage               = null;
 
 
         protected                   long                iDelayAfterUse                  = 0;
@@ -85,7 +85,7 @@
 
 
 
-        protected                   LibGLImage[]        iFXImages                       = null;
+        protected                   LibGLTextureImage[]        iFXImages                       = null;
         protected                   FireArmFXOffset     iFXOffset                     = null;
 
 
@@ -133,8 +133,8 @@
         private void loadImage()
         {
             BufferedImage bufferedImage   = LibImage.load( ShooterSetting.Path.EArtefact.url + this.toString() + LibExtension.png.getSpecifier(), ShooterDebug.glImage, false );
-            this.iArtefactImage = new LibGLImage( bufferedImage,   ImageUsage.EOrtho, ShooterDebug.glImage, true );
-            Vector<LibGLImage> fxImages = new Vector<LibGLImage>();
+            this.iArtefactImage = new LibGLTextureImage( bufferedImage,   ImageUsage.EOrtho, ShooterDebug.glImage, true );
+            Vector<LibGLTextureImage> fxImages = new Vector<LibGLTextureImage>();
             while ( true )
             {
                 String ext = ( fxImages.size() > 0 ? String.valueOf( fxImages.size() + 1 ) : "" );
@@ -147,10 +147,10 @@
                 }
 
                 BufferedImage bufferedImageFX = LibImage.load( url, ShooterDebug.glImage, false );
-                fxImages.add( new LibGLImage( bufferedImageFX, ImageUsage.EOrtho, ShooterDebug.glImage, true ) );
+                fxImages.add( new LibGLTextureImage( bufferedImageFX, ImageUsage.EOrtho, ShooterDebug.glImage, true ) );
             }
 
-            this.iFXImages = fxImages.toArray( new LibGLImage[] {} );
+            this.iFXImages = fxImages.toArray( new LibGLTextureImage[] {} );
         }
 
         public final boolean getCurrentShotNeedsKeyRelease()
@@ -183,7 +183,7 @@
             return this.iBreaksWalls;
         }
 
-        public final LibGLImage getArtefactImage()
+        public final LibGLTextureImage getArtefactImage()
         {
             return this.iArtefactImage;
         }

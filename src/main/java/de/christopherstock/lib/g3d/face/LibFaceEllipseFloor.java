@@ -13,12 +13,12 @@
     *******************************************************************************************************************/
     public class LibFaceEllipseFloor extends LibFace
     {
-        public LibFaceEllipseFloor( LibDebug debug, LibGLTexture texture, LibColors col, float x, float y, float z, float radiusX, float radiusY, int ellipseSegments )
+        public LibFaceEllipseFloor(LibDebug debug, LibGLTextureMetaData texture, LibColors col, float x, float y, float z, float radiusX, float radiusY, int ellipseSegments )
         {
             this( debug, texture, col, x, y, z, radiusX, radiusY,LibMath.getRandom( 0, 360 ), ellipseSegments );
         }
 
-        private LibFaceEllipseFloor(LibDebug debug, LibGLTexture texture, LibColors col, float x, float y, float z, float radiusX, float radiusY, float textureRotation, int ellipseSegments)
+        private LibFaceEllipseFloor(LibDebug debug, LibGLTextureMetaData texture, LibColors col, float x, float y, float z, float radiusX, float radiusY, float textureRotation, int ellipseSegments)
         {
             //call super-construct
             super( debug, new LibVertex( x, y, z, 0.0f, 0.0f ), texture, col, null );

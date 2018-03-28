@@ -16,7 +16,7 @@
     public class Preloader
     {
         /** The background image. */
-        private                     LibGLImage              bgImage                     = null;
+        private LibGLTextureImage bgImage                     = null;
 
         /** The current percentage of loaded contents. */
         private                     int                     percentageLoaded            = 0;
@@ -29,7 +29,7 @@
             try
             {
                 BufferedImage bg = ImageIO.read( LibIO.preStreamJarResource( ShooterSetting.Path.EScreen.url + "bg.jpg"   ) );
-                this.bgImage = new LibGLImage( bg, LibGLImage.ImageUsage.EOrtho, ShooterDebug.glImage, true );
+                this.bgImage = new LibGLTextureImage( bg, LibGLTextureImage.ImageUsage.EOrtho, ShooterDebug.glImage, true );
             }
             catch ( IOException ioe )
             {
@@ -54,7 +54,7 @@
             );
 
             // draw progress
-            LibGLImage text = LibGLImage.getFromString( this.percentageLoaded + " %", Shooter.game.engine.fonts.preloader, LibColors.EOrangeMF.colABGR, null, null, ShooterDebug.glImage );
+            LibGLTextureImage text = LibGLTextureImage.getFromString( this.percentageLoaded + " %", Shooter.game.engine.fonts.preloader, LibColors.EOrangeMF.colABGR, null, null, ShooterDebug.glImage );
             Shooter.game.engine.glView.drawOrthoBitmapBytes
             (
                 text,

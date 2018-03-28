@@ -6,8 +6,8 @@
     import de.christopherstock.lib.LibParticleQuantity;
     import  de.christopherstock.lib.fx.LibFX.FXSize;
     import  de.christopherstock.lib.g3d.LibHoleSize;
-    import  de.christopherstock.lib.gl.LibGLImage;
-    import  de.christopherstock.lib.gl.LibGLImage.ImageUsage;
+    import de.christopherstock.lib.gl.LibGLTextureImage;
+    import  de.christopherstock.lib.gl.LibGLTextureImage.ImageUsage;
     import  de.christopherstock.lib.io.LibExtension;
     import  de.christopherstock.lib.ui.LibImage;
     import  de.christopherstock.shooter.ShooterDebug;
@@ -35,7 +35,7 @@
         protected       FXSize                  iSliverParticleSize     = null;
         protected       int                     iMaxAmmo                = 0;
         protected LibParticleQuantity iSliverParticleQuantity = null;
-        private LibGLImage              iHUDAmmoImage           = null;
+        private LibGLTextureImage iHUDAmmoImage           = null;
         private int                     iDamage                 = 0;
 
         private AmmoType(LibHoleSize aBulletHoleSize, int aMaxAmmo, LibParticleQuantity aSliverParticleQuantity, int aDamage, FXSize aSliverParticleSize )
@@ -50,10 +50,10 @@
         protected final void loadImage()
         {
             BufferedImage bufferedImage = LibImage.load( ShooterSetting.Path.EShells.url + this.toString() + LibExtension.png.getSpecifier(), ShooterDebug.glImage, false );
-            this.iHUDAmmoImage = new LibGLImage( bufferedImage, ImageUsage.EOrtho, ShooterDebug.glImage, true );
+            this.iHUDAmmoImage = new LibGLTextureImage( bufferedImage, ImageUsage.EOrtho, ShooterDebug.glImage, true );
         }
 
-        protected final LibGLImage getImage()
+        protected final LibGLTextureImage getImage()
         {
             return this.iHUDAmmoImage;
         }

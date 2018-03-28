@@ -1177,7 +1177,7 @@
             {
                 if (this.iEyesOpen)
                 {
-                    this.iBotMeshes.changeFaceTexture(this.iBotMeshes.iTemplate.iTexFaceEyesOpen.getTexture(), this.iBotMeshes.iTemplate.iTexFaceEyesShut.getTexture() );
+                    this.iBotMeshes.changeFaceTexture(this.iBotMeshes.iTemplate.iTexFaceEyesOpen.getMetaData(), this.iBotMeshes.iTemplate.iTexFaceEyesShut.getMetaData() );
                     this.iEyesOpen = false;
                 }
             }
@@ -1187,11 +1187,11 @@
                 this.iEyesOpen = !this.iEyesOpen;
                 if (this.iEyesOpen)
                 {
-                    this.iBotMeshes.changeFaceTexture(this.iBotMeshes.iTemplate.iTexFaceEyesShut.getTexture(), this.iBotMeshes.iTemplate.iTexFaceEyesOpen.getTexture() );
+                    this.iBotMeshes.changeFaceTexture(this.iBotMeshes.iTemplate.iTexFaceEyesShut.getMetaData(), this.iBotMeshes.iTemplate.iTexFaceEyesOpen.getMetaData() );
                 }
                 else
                 {
-                    this.iBotMeshes.changeFaceTexture(this.iBotMeshes.iTemplate.iTexFaceEyesOpen.getTexture(), this.iBotMeshes.iTemplate.iTexFaceEyesShut.getTexture() );
+                    this.iBotMeshes.changeFaceTexture(this.iBotMeshes.iTemplate.iTexFaceEyesOpen.getMetaData(), this.iBotMeshes.iTemplate.iTexFaceEyesShut.getMetaData() );
                 }
                 this.setNextEyeChange();
             }

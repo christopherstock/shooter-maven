@@ -143,7 +143,7 @@
                 if (this.iArtefactType.iFXImages.length > 1 )
                 {
                     int         randomIndex = LibMath.getRandom( 0, this.iArtefactType.iFXImages.length - 1 );
-                    LibGLImage  fxImage     = this.iArtefactType.iFXImages[ randomIndex ];
+                    LibGLTextureImage fxImage     = this.iArtefactType.iFXImages[ randomIndex ];
 
                     Shooter.game.engine.glView.drawOrthoBitmapBytes
                     (

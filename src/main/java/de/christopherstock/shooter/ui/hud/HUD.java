@@ -30,14 +30,14 @@
         public                          LibAnimation    iAnimationState                 = LibAnimation.EAnimationNone;
         private                         ChangeAction    iActionAfterHide                = null;
 
-        private                         LibGLImage      iAmmoImageMagazineAmmo          = null;
-        private                         LibGLImage      iAmmoImageTotalAmmo             = null;
+        private LibGLTextureImage iAmmoImageMagazineAmmo          = null;
+        private LibGLTextureImage iAmmoImageTotalAmmo             = null;
         private                         String          iDisplayAmmoStringMagazineAmmo  = null;
         private                         String          iDisplayAmmoStringTotalAmmo     = null;
         private                         String          iCurrentAmmoStringMagazineAmmo  = null;
         private                         String          iCurrentAmmoStringTotalAmmo     = null;
 
-        private                         LibGLImage      iHealthImage                    = null;
+        private LibGLTextureImage iHealthImage                    = null;
         private                         String          iDisplayHealthString            = null;
         private                         String          iCurrentHealthString            = null;
 
@@ -123,7 +123,7 @@
                 {
                     this.iDisplayAmmoStringMagazineAmmo = this.iCurrentAmmoStringMagazineAmmo;
                     this.iDisplayAmmoStringTotalAmmo = this.iCurrentAmmoStringTotalAmmo;
-                    this.iAmmoImageMagazineAmmo = LibGLImage.getFromString
+                    this.iAmmoImageMagazineAmmo = LibGLTextureImage.getFromString
                     (
                         this.iDisplayAmmoStringMagazineAmmo,
                         Shooter.game.engine.fonts.ammo,
@@ -132,7 +132,7 @@
                         Colors.EFpsOutline.colARGB,
                         ShooterDebug.glImage
                     );
-                    this.iAmmoImageTotalAmmo = LibGLImage.getFromString
+                    this.iAmmoImageTotalAmmo = LibGLTextureImage.getFromString
                     (
                             this.iDisplayAmmoStringTotalAmmo,
                         Shooter.game.engine.fonts.ammo,
@@ -169,7 +169,7 @@
             {
                 this.iDisplayHealthString = this.iCurrentHealthString;
 
-                this.iHealthImage = LibGLImage.getFromString
+                this.iHealthImage = LibGLTextureImage.getFromString
                 (
                     this.iDisplayHealthString,
                     Shooter.game.engine.fonts.health,

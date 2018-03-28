@@ -8,8 +8,8 @@
     import  de.christopherstock.lib.*;
     import  de.christopherstock.lib.g3d.*;
     import  de.christopherstock.lib.g3d.face.LibFace;
-    import  de.christopherstock.lib.gl.LibGLImage.*;
-    import  de.christopherstock.lib.gl.LibGLTexture.Translucency;
+    import de.christopherstock.lib.gl.LibGLTextureImage.*;
+    import  de.christopherstock.lib.gl.LibGLTextureMetaData.Translucency;
     import  de.christopherstock.lib.math.*;
     import  de.christopherstock.lib.ui.*;
     import  de.christopherstock.shooter.Shooter;
@@ -37,7 +37,7 @@
 
         private                     Vector<LibFace>     firstPrioDrawingQueue       = new Vector<LibFace>();
         private                     Vector<LibFace>     defaultFaceDrawingQueue     = new Vector<LibFace>();
-        private                     LibGLTexture        lastOpaqueTexture           = null;
+        private LibGLTextureMetaData lastOpaqueTexture           = null;
 
         public LibGLView( LibDebug debug, LibFrame panel, int width, int height )
         {
@@ -259,12 +259,12 @@
             return ret;
         }
 
-        public final void drawOrthoBitmapBytes( LibGLImage glImage, int x, int y )
+        public final void drawOrthoBitmapBytes(LibGLTextureImage glImage, int x, int y )
         {
             this.drawOrthoBitmapBytes( glImage, x, y, 1.0f );
         }
 
-        public void drawOrthoBitmapBytes( LibGLImage glImage, int x, int y, float alphaF )
+        public void drawOrthoBitmapBytes(LibGLTextureImage glImage, int x, int y, float alphaF )
         {
             this.drawOrthoBitmapBytes( glImage, x, y, alphaF, 1.0f, 1.0f, true );
         }
@@ -282,7 +282,7 @@
             GL11.glTranslatef(  viewSet.pos.x,          viewSet.pos.z,  viewSet.pos.y           );      //translate x z y
         }
 
-        private void drawFace(LibVertex[] verticesToDraw, LibVertex faceNormal, LibGLTexture texture, float[] col, float alpha, float darken)
+        private void drawFace(LibVertex[] verticesToDraw, LibVertex faceNormal, LibGLTextureMetaData texture, float[] col, float alpha, float darken)
         {
             //draw plain color if texture is missing ( fx points or debug only )
             if ( texture == null )
@@ -496,7 +496,7 @@
             GL11.glVertex3f(   v.x, v.z, v.y   );
         }
 
-        public final void initTextures( LibGLImage[] texImages )
+        public final void initTextures( LibGLTextureImage[] texImages )
         {
             GL11.glGenTextures();
 
@@ -514,7 +514,7 @@
         *   information about the data rewinding can be found at
         *   http://www.experts-exchange.com/Programming/Languages/Java/Q_22397090.html?sfQueryTermInfo=1+jogl
         ***************************************************************************************************************/
-        private void makeRGBTexture(LibGLImage img )
+        private void makeRGBTexture(LibGLTextureImage img )
         {
             //bind texture to gl
             GL11.glTexParameteri( GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_LINEAR ); // GL_NEAREST is also possible ..
@@ -535,7 +535,7 @@
             GL11.glFlush();
         }
 
-        public void drawOrthoBitmapBytes( LibGLImage glImage, int x, int y, float alpha, float scaleX, float scaleY, boolean translateAnk )
+        public void drawOrthoBitmapBytes(LibGLTextureImage glImage, int x, int y, float alpha, float scaleX, float scaleY, boolean translateAnk )
         {
             //prepare rendering 2D
             this.enableOrtho();

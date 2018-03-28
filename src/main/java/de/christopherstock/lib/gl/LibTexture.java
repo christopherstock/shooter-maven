@@ -8,9 +8,7 @@
     *******************************************************************************************************************/
     public interface LibTexture
     {
-        LibGLTexture getTexture();
-
-        LibGLImage getTextureImage();
-
-        void loadImage( String url );
+        LibGLTextureMetaData getMetaData();
+        LibGLTextureImage    getImage();
+        String               getName();
     }

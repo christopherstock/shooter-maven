@@ -171,8 +171,8 @@
                 (
                     shot,
                         this.parentGameObject,
-                        this.material.getBulletHoleTexture().getTexture(),
-                    BotTex.ESkinBrown.getTexture(),
+                        this.material.getBulletHoleTexture().getMetaData(),
+                    BotTex.ESkinBrown.getMetaData(),
                         this.material.getSliverColors(),
                     new LibVertex( intersectionPointHorz.x, intersectionPointHorz.y, z ),
                     exactDistanceHorz,

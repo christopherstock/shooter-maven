@@ -1,11 +1,10 @@
 
     package de.christopherstock.shooter.base;
 
-    import  java.awt.image.*;
     import  java.util.*;
     import  de.christopherstock.lib.gl.*;
-    import  de.christopherstock.lib.gl.LibGLTexture.Translucency;
-    import  de.christopherstock.lib.gl.LibGLImage.ImageUsage;
+    import  de.christopherstock.lib.gl.LibGLTextureMetaData.Translucency;
+    import  de.christopherstock.lib.gl.LibGLTextureImage.ImageUsage;
     import  de.christopherstock.lib.io.*;
     import  de.christopherstock.lib.ui.*;
     import  de.christopherstock.shooter.*;
@@ -16,29 +15,33 @@
     *******************************************************************************************************************/
     public abstract class ShooterTexture
     {
-        private     static  HashMap<String, LibTexture>     allTextures     = new HashMap<String, LibTexture>();
+        private     static  HashMap<Integer, LibTexture>    allTextures         = new HashMap<Integer, LibTexture>();
 
         private static final class TexObject
         {
-            protected           LibGLTexture                texture                 = null;
-            protected           LibGLImage                  image                   = null;
+            private             LibGLTextureMetaData        metaData                = null;
+            private             LibGLTextureImage           image                   = null;
 
-            protected TexObject( Translucency aTranslucency, Material aMaterial, LibTexture aMask )
+            private TexObject( Translucency translucency, Material material, LibTexture mask )
             {
-                this.texture = new LibGLTexture
+                this.metaData = new LibGLTextureMetaData
                 (
-                    LibGLTexture.getNextFreeID(),
-                    aTranslucency,
-                    aMaterial,
-                    ( aMask == null ? null : aMask.getTexture().getId() )
+                    LibGLTextureMetaData.getNextFreeID(),
+                    translucency,
+                    material,
+                    ( mask == null ? null : mask.getMetaData().getId() )
                 );
             }
 
-            protected final void loadImage(String url)
+            private void init( String url )
             {
-                //load all textures
-                BufferedImage bufferedImage = LibImage.load( url, ShooterDebug.glImage, false );
-                this.image = new LibGLImage( bufferedImage, ImageUsage.ETexture, ShooterDebug.glImage, true );
+                this.image = new LibGLTextureImage
+                (
+                    LibImage.load( url, ShooterDebug.glImage, false ),
+                    ImageUsage.ETexture,
+                    ShooterDebug.glImage,
+                    true
+                );
             }
         }
 
@@ -62,19 +65,19 @@
                 this.texObject = new TexObject( Translucency.EOpaque, Material.EUndefined, null );
             }
 
-            public final void loadImage( String url )
+            public LibGLTextureMetaData getMetaData()
             {
-                this.texObject.loadImage( url );
+                return this.texObject.metaData;
             }
 
-            public LibGLTexture getTexture()
-            {
-                return this.texObject.texture;
-            }
-
-            public final LibGLImage getTextureImage()
+            public final LibGLTextureImage getImage()
             {
                 return this.texObject.image;
+            }
+
+            public final String getName()
+            {
+                return this.name();
             }
         }
 
@@ -112,19 +115,19 @@
                 this.texObject = new TexObject( aTranslucency, aMaterial, aMask );
             }
 
-            public final void loadImage( String url )
+            public LibGLTextureMetaData getMetaData()
             {
-                this.texObject.loadImage( url );
+                return this.texObject.metaData;
             }
 
-            public LibGLTexture getTexture()
-            {
-                return this.texObject.texture;
-            }
-
-            public final LibGLImage getTextureImage()
+            public final LibGLTextureImage getImage()
             {
                 return this.texObject.image;
+            }
+
+            public final String getName()
+            {
+                return this.name();
             }
         }
 
@@ -201,19 +204,19 @@
                 this.texObject = new TexObject( aTranslucency, aMaterial, aMask );
             }
 
-            public final void loadImage( String url )
+            public LibGLTextureMetaData getMetaData()
             {
-                this.texObject.loadImage( url );
+                return this.texObject.metaData;
             }
 
-            public LibGLTexture getTexture()
-            {
-                return this.texObject.texture;
-            }
-
-            public final LibGLImage getTextureImage()
+            public final LibGLTextureImage getImage()
             {
                 return this.texObject.image;
+            }
+
+            public final String getName()
+            {
+                return this.name();
             }
         }
 
@@ -313,19 +316,19 @@
                 this.texObject = new TexObject( Translucency.EOpaque, Material.EHumanFlesh, null );
             }
 
-            public final void loadImage( String url )
-            {
-                this.texObject.loadImage( url );
-            }
-
-            public final LibGLImage getTextureImage()
+            public final LibGLTextureImage getImage()
             {
                 return this.texObject.image;
             }
 
-            public LibGLTexture getTexture()
+            public LibGLTextureMetaData getMetaData()
             {
-                return this.texObject.texture;
+                return this.texObject.metaData;
+            }
+
+            public final String getName()
+            {
+                return this.name();
             }
         }
 
@@ -351,19 +354,48 @@
                 this.texObject = new TexObject( Translucency.EOpaque, Material.EUndefined, null );
             }
 
-            public final void loadImage( String url )
+            public LibGLTextureMetaData getMetaData()
             {
-                this.texObject.loadImage( url );
+                return this.texObject.metaData;
             }
 
-            public LibGLTexture getTexture()
-            {
-                return this.texObject.texture;
-            }
-
-            public final LibGLImage getTextureImage()
+            public final LibGLTextureImage getImage()
             {
                 return this.texObject.image;
+            }
+
+            public final String getName()
+            {
+                return this.name();
+            }
+        }
+
+        public static void loadImages()
+        {
+            for ( Mask texture : Mask.values() )
+            {
+                texture.texObject.init( ShooterSetting.Path.ETexturesMask.url + texture.toString() + LibExtension.jpg.getSpecifier() );
+                allTextures.put( texture.getMetaData().getId(), texture );
+            }
+            for ( BulletHoleTex texture : BulletHoleTex.values() )
+            {
+                texture.texObject.init( ShooterSetting.Path.ETexturesBulletHole.url + texture.toString() + LibExtension.jpg.getSpecifier() );
+                allTextures.put( texture.getMetaData().getId(), texture );
+            }
+            for ( WallTex texture : WallTex.values() )
+            {
+                texture.texObject.init( ShooterSetting.Path.ETexturesWall.url + texture.toString() + LibExtension.jpg.getSpecifier() );
+                allTextures.put( texture.getMetaData().getId(), texture );
+            }
+            for ( BotTex texture : BotTex.values() )
+            {
+                texture.texObject.init( ShooterSetting.Path.ETexturesBot.url + texture.toString() + LibExtension.jpg.getSpecifier() );
+                allTextures.put( texture.getMetaData().getId(), texture );
+            }
+            for ( ItemTex texture : ItemTex.values() )
+            {
+                texture.texObject.init( ShooterSetting.Path.ETexturesItem.url + texture.toString() + LibExtension.jpg.getSpecifier() );
+                allTextures.put( texture.getMetaData().getId(), texture );
             }
         }
 
@@ -371,63 +403,26 @@
         {
             if ( name == null ) return null;
 
-            return allTextures.get( name );
+            for ( LibTexture texture : allTextures.values() )
+            {
+                if ( texture.getName().equals( name ) )
+                {
+                    return texture;
+                }
+            }
+
+            return null;
         }
 
-        public static void loadImages()
+        public static LibGLTextureImage[] getAllTextureImages()
         {
-            for ( Mask texture : Mask.values() )
-            {
-                texture.loadImage( ShooterSetting.Path.ETexturesMask.url + texture.toString() + LibExtension.jpg.getSpecifier() );
-                allTextures.put( texture.name(), texture );
-            }
-            for ( BulletHoleTex texture : BulletHoleTex.values() )
-            {
-                texture.loadImage( ShooterSetting.Path.ETexturesBulletHole.url + texture.toString() + LibExtension.jpg.getSpecifier() );
-                allTextures.put( texture.name(), texture );
-            }
-            for ( WallTex texture : WallTex.values() )
-            {
-                texture.loadImage( ShooterSetting.Path.ETexturesWall.url + texture.toString() + LibExtension.jpg.getSpecifier() );
-                allTextures.put( texture.name(), texture );
-            }
-            for ( BotTex texture : BotTex.values() )
-            {
-                texture.loadImage( ShooterSetting.Path.ETexturesBot.url + texture.toString() + LibExtension.jpg.getSpecifier() );
-                allTextures.put( texture.name(), texture );
-            }
-            for ( ItemTex texture : ItemTex.values() )
-            {
-                texture.loadImage( ShooterSetting.Path.ETexturesItem.url + texture.toString() + LibExtension.jpg.getSpecifier() );
-                allTextures.put( texture.name(), texture );
-            }
-        }
+            Vector<LibGLTextureImage> ret  = new Vector<LibGLTextureImage>();
 
-        public static LibGLImage[] getAllTextureImages()
-        {
-            Vector<LibGLImage> ret = new Vector<LibGLImage>();
-
-            for ( Mask m : Mask.values() )
+            for ( int i = 0; i < allTextures.values().size(); ++i )
             {
-                ret.addElement( m.getTextureImage() );
-            }
-            for ( BulletHoleTex b : BulletHoleTex.values() )
-            {
-                ret.addElement( b.getTextureImage() );
-            }
-            for ( WallTex w : WallTex.values() )
-            {
-                ret.addElement( w.getTextureImage() );
-            }
-            for ( BotTex c : BotTex.values() )
-            {
-                ret.addElement( c.getTextureImage() );
-            }
-            for ( ItemTex b : ItemTex.values() )
-            {
-                ret.addElement( b.getTextureImage() );
+                ret.addElement( allTextures.get( i ).getImage() );
             }
 
-            return ret.toArray( new LibGLImage[] {} );
+            return ret.toArray( new LibGLTextureImage[] {} );
         }
     }

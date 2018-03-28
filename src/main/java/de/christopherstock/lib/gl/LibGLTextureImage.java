@@ -8,7 +8,7 @@
     import  de.christopherstock.lib.ui.*;
     import de.christopherstock.shooter.Shooter;
 
-    public class LibGLImage
+    public class LibGLTextureImage
     {
         public static enum SrcPixelFormat
         {
@@ -29,7 +29,7 @@
         public              ByteBuffer          bytes                       = null;
         public              SrcPixelFormat      srcPixelFormat              = null;
 
-        public LibGLImage( BufferedImage bufferedImage, ImageUsage imageUsage, LibDebug debug, boolean flipAllBytes )
+        public LibGLTextureImage(BufferedImage bufferedImage, ImageUsage imageUsage, LibDebug debug, boolean flipAllBytes )
         {
             this.width = bufferedImage.getWidth();
             this.height = bufferedImage.getHeight();
@@ -88,19 +88,19 @@
             return ret;
         }
 
-        public static LibGLImage[] convertAll( BufferedImage[] bufferedImages, ImageUsage imageUsage, LibDebug debug )
+        public static LibGLTextureImage[] convertAll(BufferedImage[] bufferedImages, ImageUsage imageUsage, LibDebug debug )
         {
-            LibGLImage[] ret = new LibGLImage[ bufferedImages.length ];
+            LibGLTextureImage[] ret = new LibGLTextureImage[ bufferedImages.length ];
 
             for ( int i = 0; i < bufferedImages.length; ++i )
             {
-                ret[ i ] = new LibGLImage( bufferedImages[ i ], imageUsage, debug, true );
+                ret[ i ] = new LibGLTextureImage( bufferedImages[ i ], imageUsage, debug, true );
             }
 
             return ret;
         }
 
-        public static LibGLImage getFromString( String stringToDisplay, Font font, Color colFg, Color colShadow, Color colOutline, LibDebug debug )
+        public static LibGLTextureImage getFromString(String stringToDisplay, Font font, Color colFg, Color colShadow, Color colOutline, LibDebug debug )
         {
             Graphics2D g         = Shooter.game.engine.frame.getGraphics();
 
@@ -121,10 +121,10 @@
             LibStrings.drawString( g2, colFg, colShadow, colOutline, font, LibAnchor.EAnchorLeftTop, stringToDisplay, 0, 0 );
 
             //convert to and return as GLImage
-            return new LibGLImage( template2, ImageUsage.EOrtho, debug, false );
+            return new LibGLTextureImage( template2, ImageUsage.EOrtho, debug, false );
         }
 
-        public static LibGLImage getFullOpaque( Color col, int width, int height, LibDebug debug )
+        public static LibGLTextureImage getFullOpaque(Color col, int width, int height, LibDebug debug )
         {
             //create dynamic buffered image and draw context
             BufferedImage   template2 = new BufferedImage( width, height, BufferedImage.TYPE_INT_ARGB );
@@ -135,6 +135,6 @@
             g2.fillRect( 0, 0, width, height );
 
             //convert to and return as GLImage
-            return new LibGLImage( template2, ImageUsage.EOrtho, debug, false );
+            return new LibGLTextureImage( template2, ImageUsage.EOrtho, debug, false );
         }
     }

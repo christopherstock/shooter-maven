@@ -128,7 +128,7 @@
             return ( LibMath.getRandom( -this.iWearponIrregularityHorz, this.iWearponIrregularityHorz) * 0.01f );
         }
 
-        public final LibGLImage getAmmoTypeImage()
+        public final LibGLTextureImage getAmmoTypeImage()
         {
             return this.iAmmoType.getImage();
         }

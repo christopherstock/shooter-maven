@@ -81,7 +81,7 @@
                         g.drawImage( buf, 0, 0, null );
 
                         //assign alpha-buffered-image
-                        glImages[ i ] = new LibGLImage( bufA, usage, debug );
+                        glImages[ i ] = new LibGLTextureImage( bufA, usage, debug );
                     }
                     else
 */

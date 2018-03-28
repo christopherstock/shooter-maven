@@ -4,7 +4,7 @@
     import  java.awt.image.*;
     import  javax.imageio.*;
     import  de.christopherstock.lib.gl.*;
-    import  de.christopherstock.lib.gl.LibGLImage.ImageUsage;
+    import  de.christopherstock.lib.gl.LibGLTextureImage.ImageUsage;
     import  de.christopherstock.lib.io.*;
     import  de.christopherstock.lib.ui.*;
     import  de.christopherstock.shooter.*;
@@ -14,12 +14,12 @@
     *******************************************************************************************************************/
     public class HUDFx
     {
-        private         static          LibGLImage      damagePane                  = null;
-        private         static          LibGLImage      healthPane                  = null;
-        private         static          LibGLImage      deadPane                    = null;
-        private         static          LibGLImage      adrenalinePane              = null;
+        private         static LibGLTextureImage damagePane                  = null;
+        private         static LibGLTextureImage healthPane                  = null;
+        private         static LibGLTextureImage deadPane                    = null;
+        private         static LibGLTextureImage adrenalinePane              = null;
         private         static          BufferedImage   reincarnationTube           = null;
-        private         static          LibGLImage      gli                         = null;
+        private         static LibGLTextureImage gli                         = null;
 
         private         static          int             animationHUDHealthFX        = 0;
         private         static          int             animationHUDDamageFX        = 0;
@@ -39,16 +39,16 @@
         public static void init()
         {
             //init panes
-            damagePane      = LibGLImage.getFullOpaque( LibColors.ERed.colABGR,    Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
-            healthPane      = LibGLImage.getFullOpaque( LibColors.EWhite.colABGR,  Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
-            damagePane      = LibGLImage.getFullOpaque( LibColors.ERed.colABGR,    Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
-            deadPane        = LibGLImage.getFullOpaque( LibColors.EBlack.colABGR,  Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
-            adrenalinePane  = LibGLImage.getFullOpaque( LibColors.EYellow.colABGR, Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
+            damagePane      = LibGLTextureImage.getFullOpaque( LibColors.ERed.colABGR,    Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
+            healthPane      = LibGLTextureImage.getFullOpaque( LibColors.EWhite.colABGR,  Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
+            damagePane      = LibGLTextureImage.getFullOpaque( LibColors.ERed.colABGR,    Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
+            deadPane        = LibGLTextureImage.getFullOpaque( LibColors.EBlack.colABGR,  Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
+            adrenalinePane  = LibGLTextureImage.getFullOpaque( LibColors.EYellow.colABGR, Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
 
             try
             {
                 reincarnationTube = ImageIO.read( LibIO.preStreamJarResource( ShooterSetting.Path.EScreen.url + "reincarnation.png" ) );
-                gli = new LibGLImage( reincarnationTube, ImageUsage.EOrtho, ShooterDebug.glImage, true );
+                gli = new LibGLTextureImage( reincarnationTube, ImageUsage.EOrtho, ShooterDebug.glImage, true );
             }
             catch ( Exception e )
             {

@@ -21,8 +21,8 @@
         public                      LibShot                 shot                        = null;
         public                      LibGameObject           carrier                     = null;
         public                      LibVertex               vertex                      = null;
-        public                      LibGLTexture            bulletHoleTexture           = null;
-        public                      LibGLTexture            wallTexture                 = null;
+        public LibGLTextureMetaData bulletHoleTexture           = null;
+        public LibGLTextureMetaData wallTexture                 = null;
         public                      float                   horzShotAngle               = 0.0f;
         public                      float                   horzInvertedShotAngle       = 0.0f;
         public                      float                   horzFaceAngle               = 0.0f;
@@ -41,8 +41,8 @@
             LibShot       shot,
 
             LibGameObject carrier,
-            LibGLTexture  bulletHoleTexture,
-            LibGLTexture  wallTexture,
+            LibGLTextureMetaData bulletHoleTexture,
+            LibGLTextureMetaData wallTexture,
             LibColors[]   sliverColors,
             LibVertex     vertex,
 
