@@ -193,11 +193,8 @@
             //init hud
             this.preloader.increase( 50 );
             this.hud = new HUD();
-            this.fps = new LibFPS( Shooter.game.engine.fonts.fps, ShooterSetting.Colors.EFpsFg.colABGR, ShooterSetting.Colors.EFpsOutline.colABGR, ShooterDebug.glImage );
-
-            //init HUD fx
-            this.preloader.increase( 60 );
             HUDFx.init();
+            this.fps = new LibFPS( Shooter.game.engine.fonts.fps, ShooterSetting.Colors.EFpsFg.colABGR, ShooterSetting.Colors.EFpsOutline.colABGR, ShooterDebug.glImage );
 
             //init fg sounds
             this.preloader.increase( 70 );

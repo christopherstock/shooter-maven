@@ -18,7 +18,6 @@
     *   TODO    only for FireArms! Move ArtefactType.iFXImages to Firearms (Wearpons)!
     *   TODO    Optimize fields in ArtefactType!
     *   TODO    Outsource iconImage and UI-matters from ShooterEngine.
-    *   TODO    Create example JUnit test!
     *   TODO    Remove ALL static fields!
     *   TODO    Revise level design.
     *   TODO    Remove all linter warnings!

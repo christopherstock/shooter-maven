@@ -14,27 +14,27 @@
     *******************************************************************************************************************/
     public class HUDFx
     {
-        private         static LibGLTextureImage damagePane                  = null;
-        private         static LibGLTextureImage healthPane                  = null;
-        private         static LibGLTextureImage deadPane                    = null;
-        private         static LibGLTextureImage adrenalinePane              = null;
-        private         static          BufferedImage   reincarnationTube           = null;
-        private         static LibGLTextureImage gli                         = null;
+        private         static          LibGLTextureImage   damagePane                  = null;
+        private         static          LibGLTextureImage   healthPane                  = null;
+        private         static          LibGLTextureImage   deadPane                    = null;
+        private         static          LibGLTextureImage   adrenalinePane              = null;
+        private         static          BufferedImage       reincarnationTube           = null;
+        private         static          LibGLTextureImage   gli                         = null;
 
-        private         static          int             animationHUDHealthFX        = 0;
-        private         static          int             animationHUDDamageFX        = 0;
-        private         static          int             animationHUDDyingFX         = 0;
-        private static          int             animationHUDDeadFX          = 0;
-        private static          int             animationHUDReincarnationFX = 0;
-        private static          int             animationHUDDamageFXticks   = 0;
+        private         static          int                 animationHUDHealthFX        = 0;
+        private         static          int                 animationHUDDamageFX        = 0;
+        private         static          int                 animationHUDDyingFX         = 0;
+        private         static          int                 animationHUDDeadFX          = 0;
+        private         static          int                 animationHUDReincarnationFX = 0;
+        private         static          int                 animationHUDDamageFXticks   = 0;
 
-        private         static          float           opacityHealthFx             = 0.0f;
-        private         static          float           opacityDamageFx             = 0.0f;
+        private         static          float               opacityHealthFx             = 0.0f;
+        private         static          float               opacityDamageFx             = 0.0f;
 
-        private static          boolean         drawDyingFx                 = false;
-        private static          boolean         drawDeadFx                  = false;
-        private static          boolean         drawReincarnationFx         = false;
-        public          static          boolean         drawAdrenalineFx            = false;
+        private         static          boolean             drawDyingFx                 = false;
+        private         static          boolean             drawDeadFx                  = false;
+        private         static          boolean             drawReincarnationFx         = false;
+        public          static          boolean             drawAdrenalineFx            = false;
 
         public static void init()
         {
