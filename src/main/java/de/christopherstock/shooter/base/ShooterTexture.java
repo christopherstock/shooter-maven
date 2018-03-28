@@ -13,9 +13,9 @@
     /*******************************************************************************************************************
     *   The Texture-System.
     *******************************************************************************************************************/
-    public abstract class ShooterTexture
+    public class ShooterTexture
     {
-        private     static  HashMap<Integer, LibTexture>    allTextures         = new HashMap<Integer, LibTexture>();
+        private             HashMap<Integer, LibTexture>    allTextures         = new HashMap<Integer, LibTexture>();
 
         private static final class TexObject
         {
@@ -370,40 +370,11 @@
             }
         }
 
-        public static void loadImages()
-        {
-            for ( Mask texture : Mask.values() )
-            {
-                texture.texObject.init( ShooterSetting.Path.ETexturesMask.url + texture.toString() + LibExtension.jpg.getSpecifier() );
-                allTextures.put( texture.getMetaData().getId(), texture );
-            }
-            for ( BulletHoleTex texture : BulletHoleTex.values() )
-            {
-                texture.texObject.init( ShooterSetting.Path.ETexturesBulletHole.url + texture.toString() + LibExtension.jpg.getSpecifier() );
-                allTextures.put( texture.getMetaData().getId(), texture );
-            }
-            for ( WallTex texture : WallTex.values() )
-            {
-                texture.texObject.init( ShooterSetting.Path.ETexturesWall.url + texture.toString() + LibExtension.jpg.getSpecifier() );
-                allTextures.put( texture.getMetaData().getId(), texture );
-            }
-            for ( BotTex texture : BotTex.values() )
-            {
-                texture.texObject.init( ShooterSetting.Path.ETexturesBot.url + texture.toString() + LibExtension.jpg.getSpecifier() );
-                allTextures.put( texture.getMetaData().getId(), texture );
-            }
-            for ( ItemTex texture : ItemTex.values() )
-            {
-                texture.texObject.init( ShooterSetting.Path.ETexturesItem.url + texture.toString() + LibExtension.jpg.getSpecifier() );
-                allTextures.put( texture.getMetaData().getId(), texture );
-            }
-        }
-
-        public static LibTexture getByName( String name )
+        public LibTexture getByName( String name )
         {
             if ( name == null ) return null;
 
-            for ( LibTexture texture : allTextures.values() )
+            for ( LibTexture texture : this.allTextures.values() )
             {
                 if ( texture.getName().equals( name ) )
                 {
@@ -414,13 +385,42 @@
             return null;
         }
 
-        public static LibGLTextureImage[] getAllTextureImages()
+        protected void loadAllImages()
+        {
+            for ( Mask texture : Mask.values() )
+            {
+                texture.texObject.init( ShooterSetting.Path.ETexturesMask.url + texture.toString() + LibExtension.jpg.getSpecifier() );
+                this.allTextures.put( texture.getMetaData().getId(), texture );
+            }
+            for ( BulletHoleTex texture : BulletHoleTex.values() )
+            {
+                texture.texObject.init( ShooterSetting.Path.ETexturesBulletHole.url + texture.toString() + LibExtension.jpg.getSpecifier() );
+                this.allTextures.put( texture.getMetaData().getId(), texture );
+            }
+            for ( WallTex texture : WallTex.values() )
+            {
+                texture.texObject.init( ShooterSetting.Path.ETexturesWall.url + texture.toString() + LibExtension.jpg.getSpecifier() );
+                this.allTextures.put( texture.getMetaData().getId(), texture );
+            }
+            for ( BotTex texture : BotTex.values() )
+            {
+                texture.texObject.init( ShooterSetting.Path.ETexturesBot.url + texture.toString() + LibExtension.jpg.getSpecifier() );
+                this.allTextures.put( texture.getMetaData().getId(), texture );
+            }
+            for ( ItemTex texture : ItemTex.values() )
+            {
+                texture.texObject.init( ShooterSetting.Path.ETexturesItem.url + texture.toString() + LibExtension.jpg.getSpecifier() );
+                this.allTextures.put( texture.getMetaData().getId(), texture );
+            }
+        }
+
+        protected LibGLTextureImage[] getAllTextureImages()
         {
             Vector<LibGLTextureImage> ret  = new Vector<LibGLTextureImage>();
 
-            for ( int i = 0; i < allTextures.values().size(); ++i )
+            for ( int i = 0; i < this.allTextures.values().size(); ++i )
             {
-                ret.addElement( allTextures.get( i ).getImage() );
+                ret.addElement( this.allTextures.get( i ).getImage() );
             }
 
             return ret.toArray( new LibGLTextureImage[] {} );

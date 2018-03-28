@@ -3,6 +3,8 @@
 
     import  de.christopherstock.lib.*;
     import  de.christopherstock.lib.g3d.face.*;
+    import de.christopherstock.lib.gl.LibGLTextureMetaData;
+    import de.christopherstock.lib.gl.LibTexture;
     import  de.christopherstock.lib.io.*;
     import  de.christopherstock.lib.io.d3ds.*;
     import  de.christopherstock.shooter.*;
@@ -218,11 +220,17 @@
             LibFaceTriangle[]   copiedFaces   = new LibFaceTriangle[ originalFaces.length ];
             for ( int i = 0; i < copiedFaces.length; ++i )
             {
+                LibTexture texture = Shooter.game.engine.textures.getByName( originalFaces[ i ].textureName );
+
                 copiedFaces[ i ] = new LibFaceTriangle
                 (
                     ShooterDebug.face,
                     originalFaces[ i ],
-                    ( ShooterTexture.getByName( originalFaces[ i ].textureName ) == null ? null : ShooterTexture.getByName( originalFaces[ i ].textureName).getMetaData() ),
+                    (
+                            texture == null
+                        ?   null
+                        :   texture.getMetaData()
+                    ),
                     WallTex.EConcrete1,
                     General.FADE_OUT_FACES_TOTAL_TICKS,
                     ShooterSetting.Performance.ELLIPSE_SEGMENTS

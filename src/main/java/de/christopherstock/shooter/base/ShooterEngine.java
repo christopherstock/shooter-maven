@@ -41,12 +41,14 @@
         public                      MainState               mainState                   = MainState.EPreloader;
         /** Main state to change to. */
         public                      MainState               mainStateToChangeTo         = null;
+        /** Fonts. */
+        public                      Fonts                   fonts                       = null;
         /** Mouse. */
         public                      LWJGLMouse              mouse                       = null;
         /** Keys. */
         public                      LWJGLKeys               keys                        = null;
-        /** Fonts. */
-        public                      Fonts                   fonts                       = null;
+        /** Textures. */
+        public                      ShooterTexture          textures                    = null;
 
         /***************************************************************************************************************
         *   Inits the game engine.
@@ -62,13 +64,14 @@
             this.preloader.increase( 10 );
             this.initMouse();
 
-            this.preloader.increase( 15 );
+            this.preloader.increase( 20 );
             this.initKeys();
 
-            this.preloader.increase( 20 );
+            this.preloader.increase( 30 );
+            this.initTextures();
 
-            // TODO non-static image system!
-            ShooterTexture.loadImages();
+
+
 
 
 
@@ -159,6 +162,16 @@
         }
 
         /***************************************************************************************************************
+        *   Inits the textures.
+        ***************************************************************************************************************/
+        private void initTextures()
+        {
+            this.textures = new ShooterTexture();
+            this.textures.loadAllImages();
+            this.glView.initTextures( this.textures.getAllTextureImages() );
+        }
+
+        /***************************************************************************************************************
         *   Inits the rest.
         *   TODO split!
         ***************************************************************************************************************/
@@ -172,20 +185,18 @@
 
 
 
-            //assign textures and perform repaint
-            this.preloader.increase( 40 );
-            this.glView.initTextures( ShooterTexture.getAllTextureImages() );
 
             //init 3d studio max objects and perform repaint
-            this.preloader.increase( 50 );
+            this.preloader.increase( 40 );
             ShooterD3ds.init( ShooterDebug.d3ds );
 
             //init hud
-            this.preloader.increase( 60 );
+            this.preloader.increase( 50 );
             this.hud = new HUD();
             this.fps = new LibFPS( Shooter.game.engine.fonts.fps, ShooterSetting.Colors.EFpsFg.colABGR, ShooterSetting.Colors.EFpsOutline.colABGR, ShooterDebug.glImage );
 
             //init HUD fx
+            this.preloader.increase( 60 );
             HUDFx.init();
 
             //init fg sounds
