@@ -9,6 +9,7 @@
     *   TODO    Cleanup game initialization.
     *   TODO    Turn all elements in ShooterEngine non static!
     *   TODO    Turn ShooterEngine not static.
+    *   TODO    Improve output for preloader / startup phase.
     *
     *   TODO    Different heights for particle effects.
     *   TODO    Mayflower branding and textures ( posters etc. ).

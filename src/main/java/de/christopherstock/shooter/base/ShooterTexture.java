@@ -14,29 +14,32 @@
     /*******************************************************************************************************************
     *   The Texture-System.
     *******************************************************************************************************************/
-    public class ShooterTexture
+    public abstract class ShooterTexture
     {
+        private     static  HashMap<String, LibTexture>     allTextures     = new HashMap<String, LibTexture>();
 
-
-        public              Map<String, TexObject>      allTexObjects           = null;
-
-
-
-
-
-        protected static final class TexObject
+        public static final class TextureClass
         {
-            protected LibGLTexture        iTexture            = null;
-            protected LibGLImage          iTextureImage       = null;
+
+        }
+
+
+
+
+
+        private static final class TexObject
+        {
+            protected           LibGLTexture                texture                 = null;
+            protected           LibGLImage                  image                   = null;
 
             protected TexObject( Translucency aTranslucency, Material aMaterial, LibTexture aMask )
             {
-                this.iTexture = new LibGLTexture
+                this.texture = new LibGLTexture
                 (
                     LibGLTexture.getNextFreeID(),
                     aTranslucency,
                     aMaterial,
-                    ( aMask == null ? null : new Integer( aMask.getTexture().getId() ) )
+                    ( aMask == null ? null : aMask.getTexture().getId() )
                 );
             }
 
@@ -44,9 +47,15 @@
             {
                 //load all textures
                 BufferedImage bufferedImage = LibImage.load( url, ShooterDebug.glImage, false );
-                this.iTextureImage = new LibGLImage( bufferedImage, ImageUsage.ETexture, ShooterDebug.glImage, true );
+                this.image = new LibGLImage( bufferedImage, ImageUsage.ETexture, ShooterDebug.glImage, true );
             }
         }
+
+        public static enum TextureEnum
+        {
+
+        }
+
 
         /*
          *  Leave this class on 1st position!
@@ -61,7 +70,7 @@
             EMaskSliver1,
             ;
 
-            private                     TexObject                   iTexObject          = null;
+            private                         TexObject                   texObject               = null;
 
             private Mask()
             {
@@ -80,22 +89,22 @@
 
             private Mask( Translucency aTranslucency, Material aMaterial, LibTexture aMask )
             {
-                this.iTexObject = new TexObject( aTranslucency, aMaterial, aMask );
+                this.texObject = new TexObject( aTranslucency, aMaterial, aMask );
             }
 
             public final void loadImage( String url )
             {
-                this.iTexObject.loadImage( url );
+                this.texObject.loadImage( url );
             }
 
             public LibGLTexture getTexture()
             {
-                return this.iTexObject.iTexture;
+                return this.texObject.texture;
             }
 
             public final LibGLImage getTextureImage()
             {
-                return this.iTexObject.iTextureImage;
+                return this.texObject.image;
             }
         }
 
@@ -111,7 +120,7 @@
             EBulletHoleWood1,
             ;
 
-            private                     TexObject                   iTexObject          = null;
+            private                     TexObject                   texObject           = null;
 
             private BulletHoleTex()
             {
@@ -130,22 +139,22 @@
 
             private BulletHoleTex( Translucency aTranslucency, Material aMaterial, LibTexture aMask )
             {
-                this.iTexObject = new TexObject( aTranslucency, aMaterial, aMask );
+                this.texObject = new TexObject( aTranslucency, aMaterial, aMask );
             }
 
             public final void loadImage( String url )
             {
-                this.iTexObject.loadImage( url );
+                this.texObject.loadImage( url );
             }
 
             public LibGLTexture getTexture()
             {
-                return this.iTexObject.iTexture;
+                return this.texObject.texture;
             }
 
             public final LibGLImage getTextureImage()
             {
-                return this.iTexObject.iTextureImage;
+                return this.texObject.image;
             }
         }
 
@@ -253,7 +262,7 @@
 */
             ;
 
-            private                     TexObject                   iTexObject          = null;
+            private                     TexObject                   texObject           = null;
 
             private WallTex()
             {
@@ -272,22 +281,22 @@
 
             private WallTex( Translucency aTranslucency, Material aMaterial, LibTexture aMask )
             {
-                this.iTexObject = new TexObject( aTranslucency, aMaterial, aMask );
+                this.texObject = new TexObject( aTranslucency, aMaterial, aMask );
             }
 
             public final void loadImage( String url )
             {
-                this.iTexObject.loadImage( url );
+                this.texObject.loadImage( url );
             }
 
             public LibGLTexture getTexture()
             {
-                return this.iTexObject.iTexture;
+                return this.texObject.texture;
             }
 
             public final LibGLImage getTextureImage()
             {
-                return this.iTexObject.iTextureImage;
+                return this.texObject.image;
             }
         }
 
@@ -380,7 +389,7 @@
             ETorsoUpperChemise4,
             ;
 
-            private                     TexObject                   iTexObject          = null;
+            private                     TexObject                   texObject           = null;
 
             private BotTex()
             {
@@ -389,22 +398,22 @@
 
             private BotTex( Translucency aTranslucency, Material aMaterial, LibTexture aMask )
             {
-                this.iTexObject = new TexObject( aTranslucency, aMaterial, aMask );
+                this.texObject = new TexObject( aTranslucency, aMaterial, aMask );
             }
 
             public final void loadImage( String url )
             {
-                this.iTexObject.loadImage( url );
+                this.texObject.loadImage( url );
             }
 
             public final LibGLImage getTextureImage()
             {
-                return this.iTexObject.iTextureImage;
+                return this.texObject.image;
             }
 
             public LibGLTexture getTexture()
             {
-                return this.iTexObject.iTexture;
+                return this.texObject.texture;
             }
         }
 
@@ -423,7 +432,7 @@
             EApple,
             ;
 
-            private                     TexObject                   iTexObject          = null;
+            private                     TexObject           texObject                   = null;
 
             private ItemTex()
             {
@@ -442,29 +451,35 @@
 
             private ItemTex( Translucency aTranslucency, Material aMaterial, LibTexture aMask )
             {
-                this.iTexObject = new TexObject( aTranslucency, aMaterial, aMask );
+                this.texObject = new TexObject( aTranslucency, aMaterial, aMask );
             }
 
             public final void loadImage( String url )
             {
-                this.iTexObject.loadImage( url );
+                this.texObject.loadImage( url );
             }
 
             public LibGLTexture getTexture()
             {
-                return this.iTexObject.iTexture;
+                return this.texObject.texture;
             }
 
             public final LibGLImage getTextureImage()
             {
-                return this.iTexObject.iTextureImage;
+                return this.texObject.image;
             }
         }
 
-        public static LibTexture getByName(String name )
+
+
+
+
+        public static LibTexture getByName( String name )
         {
             if ( name == null ) return null;
 
+            return allTextures.get( name );
+/*
             for ( Mask tex : Mask.values() )
             {
                 if ( tex.name().compareToIgnoreCase( name ) == 0 )
@@ -502,6 +517,7 @@
             }
 
             return null;
+*/
         }
 
         public static void loadImages()
@@ -509,22 +525,27 @@
             for ( Mask texture : Mask.values() )
             {
                 texture.loadImage( ShooterSetting.Path.ETexturesMask.url + texture.toString() + LibExtension.jpg.getSpecifier() );
+                allTextures.put( texture.name(), texture );
             }
             for ( BulletHoleTex texture : BulletHoleTex.values() )
             {
                 texture.loadImage( ShooterSetting.Path.ETexturesBulletHole.url + texture.toString() + LibExtension.jpg.getSpecifier() );
+                allTextures.put( texture.name(), texture );
             }
             for ( WallTex texture : WallTex.values() )
             {
                 texture.loadImage( ShooterSetting.Path.ETexturesWall.url + texture.toString() + LibExtension.jpg.getSpecifier() );
+                allTextures.put( texture.name(), texture );
             }
             for ( BotTex texture : BotTex.values() )
             {
                 texture.loadImage( ShooterSetting.Path.ETexturesBot.url + texture.toString() + LibExtension.jpg.getSpecifier() );
+                allTextures.put( texture.name(), texture );
             }
             for ( ItemTex texture : ItemTex.values() )
             {
                 texture.loadImage( ShooterSetting.Path.ETexturesItem.url + texture.toString() + LibExtension.jpg.getSpecifier() );
+                allTextures.put( texture.name(), texture );
             }
         }
 
@@ -552,7 +573,6 @@
             {
                 ret.addElement( b.getTextureImage() );
             }
-
 
             return ret.toArray( new LibGLImage[] {} );
         }
