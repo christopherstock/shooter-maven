@@ -2,15 +2,14 @@
     package de.christopherstock.shooter.g3d.mesh;
 
     import  java.util.*;
-
-    import de.christopherstock.lib.LibTransformationMode;
-    import de.christopherstock.lib.LibOffset;
-    import de.christopherstock.lib.LibRotation;
+    import  de.christopherstock.lib.LibTransformationMode;
+    import  de.christopherstock.lib.LibOffset;
+    import  de.christopherstock.lib.LibRotation;
     import  de.christopherstock.lib.g3d.*;
     import  de.christopherstock.lib.game.*;
     import  de.christopherstock.lib.gl.*;
+    import  de.christopherstock.shooter.Shooter;
     import  de.christopherstock.shooter.ShooterSetting.BotSettings.RotationSpeed;
-    import  de.christopherstock.shooter.base.*;
     import  de.christopherstock.shooter.base.ShooterD3ds.*;
     import  de.christopherstock.shooter.base.ShooterTexture.*;
     import  de.christopherstock.shooter.game.bot.*;
@@ -199,34 +198,34 @@
 
             if ( aTemp.iHat != null )
             {
-                this.iHat = new BotMesh( ShooterD3ds.getFaces( aTemp.iHat ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.0f );
+                this.iHat = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.iHat ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.0f );
                 this.iHat.changeTexture(             WallTex.ETest.getMetaData(),          aTemp.iTexHat.getMetaData()                  );
             }
 
             if ( aTemp.iGlasses != null )
             {
-                this.iGlasses = new BotMesh( ShooterD3ds.getFaces( aTemp.iGlasses ), aAnchor, 0.0f, 1.0f, aParentGameObject, -1.0f );
+                this.iGlasses = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.iGlasses ), aAnchor, 0.0f, 1.0f, aParentGameObject, -1.0f );
                 this.iGlasses.changeTexture(             WallTex.ETest.getMetaData(),         aTemp.iTexGlassesGlass.getMetaData()         );
                 this.iGlasses.changeTexture(             BotTex.EHairBlonde.getMetaData(),    aTemp.iTexGlassesHolder.getMetaData()        );
             }
 
             //assign limbs
-            this.iHead = new BotMesh( ShooterD3ds.getFaces( aTemp.iHead               ), aAnchor, 0.0f, 1.0f, aParentGameObject, -1.0f );
-            this.iFace = new BotMesh( ShooterD3ds.getFaces( aTemp.iFace               ), aAnchor, 0.0f, 1.0f, aParentGameObject, -1.0f );
-            this.iRightUpperArm = new BotMesh( ShooterD3ds.getFaces( aTemp.iRightUpperArm      ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
-            this.iRightLowerArm = new BotMesh( ShooterD3ds.getFaces( aTemp.iRightLowerArm      ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
-            this.iTorso = new BotMesh( ShooterD3ds.getFaces( aTemp.iTorso              ), aAnchor, 0.0f, 1.0f, aParentGameObject, 1.0f  );
-            this.iNeck = new BotMesh( ShooterD3ds.getFaces( aTemp.iNeck               ), aAnchor, 0.0f, 1.0f, aParentGameObject, -1.0f  );
-            this.iLeftUpperArm = new BotMesh( ShooterD3ds.getFaces( aTemp.iLeftUpperArm       ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
-            this.iLeftLowerArm = new BotMesh( ShooterD3ds.getFaces( aTemp.iLeftLowerArm       ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
-            this.iRightHand = new BotMesh( ShooterD3ds.getFaces( aTemp.iRightHand          ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
-            this.iLeftHand = new BotMesh( ShooterD3ds.getFaces( aTemp.iLeftHand           ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
-            this.iRightUpperLeg = new BotMesh( ShooterD3ds.getFaces( aTemp.iRightUpperLeg      ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.5f  );
-            this.iLeftUpperLeg = new BotMesh( ShooterD3ds.getFaces( aTemp.iLeftUpperLeg       ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.5f  );
-            this.iRightLowerLeg = new BotMesh( ShooterD3ds.getFaces( aTemp.iRightLowerLeg      ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.5f  );
-            this.iLeftLowerLeg = new BotMesh( ShooterD3ds.getFaces( aTemp.iLeftLowerLeg       ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.5f  );
-            this.iRightFoot = new BotMesh( ShooterD3ds.getFaces( aTemp.iRightFoot          ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
-            this.iLeftFoot = new BotMesh( ShooterD3ds.getFaces( aTemp.iLeftFoot           ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
+            this.iHead = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.iHead               ), aAnchor, 0.0f, 1.0f, aParentGameObject, -1.0f );
+            this.iFace = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.iFace               ), aAnchor, 0.0f, 1.0f, aParentGameObject, -1.0f );
+            this.iRightUpperArm = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.iRightUpperArm      ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
+            this.iRightLowerArm = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.iRightLowerArm      ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
+            this.iTorso = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.iTorso              ), aAnchor, 0.0f, 1.0f, aParentGameObject, 1.0f  );
+            this.iNeck = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.iNeck               ), aAnchor, 0.0f, 1.0f, aParentGameObject, -1.0f  );
+            this.iLeftUpperArm = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.iLeftUpperArm       ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
+            this.iLeftLowerArm = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.iLeftLowerArm       ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
+            this.iRightHand = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.iRightHand          ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
+            this.iLeftHand = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.iLeftHand           ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
+            this.iRightUpperLeg = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.iRightUpperLeg      ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.5f  );
+            this.iLeftUpperLeg = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.iLeftUpperLeg       ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.5f  );
+            this.iRightLowerLeg = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.iRightLowerLeg      ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.5f  );
+            this.iLeftLowerLeg = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.iLeftLowerLeg       ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.5f  );
+            this.iRightFoot = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.iRightFoot          ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
+            this.iLeftFoot = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.iLeftFoot           ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
 
             //assign textures for bot meshes
             this.iRightUpperLeg.changeTexture(   WallTex.ETest.getMetaData(),          ( aTemplate.iTexRightUpperLeg == null ? aTemp.iSkin.getMetaData() : aTemplate.iTexRightUpperLeg .getMetaData()  )         );
@@ -1234,7 +1233,7 @@
                     if ( newItem != null )
                     {
                         //rotate item on startup
-                        Mesh item = new Mesh( ShooterD3ds.getFaces( newItem ), new LibVertex( 0.0f, 0.0f, 0.0f ) );
+                        Mesh item = new Mesh( Shooter.game.engine.d3ds.getFaces( newItem ), new LibVertex( 0.0f, 0.0f, 0.0f ) );
                         item.translateAndRotateXYZ( 0.0f, 0.0f, 0.0f, 270.0f, 0.0f, 90.0f, null, LibTransformationMode.EOriginalsToOriginals );
 
                         this.iEquippedItemLeft = new BotMesh( item.getFaces(), anchor, 0.0f, 1.0f, aParentGameObject, 0.0f );
@@ -1259,7 +1258,7 @@
                     if ( newItem != null )
                     {
                         //rotate item on startup
-                        Mesh item = new Mesh( ShooterD3ds.getFaces( newItem ), new LibVertex( 0.0f, 0.0f, 0.0f ) );
+                        Mesh item = new Mesh( Shooter.game.engine.d3ds.getFaces( newItem ), new LibVertex( 0.0f, 0.0f, 0.0f ) );
                         item.translateAndRotateXYZ( 0.0f, 0.0f, 0.0f, 270.0f, 0.0f, 90.0f, null, LibTransformationMode.EOriginalsToOriginals );
 
                         this.iEquippedItemRight = new BotMesh( item.getFaces(), anchor, 0.0f, 1.0f, aParentGameObject, 0.0f );

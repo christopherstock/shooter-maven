@@ -3,8 +3,7 @@
 
     import  de.christopherstock.lib.*;
     import  de.christopherstock.lib.g3d.face.*;
-    import de.christopherstock.lib.gl.LibGLTextureMetaData;
-    import de.christopherstock.lib.gl.LibTexture;
+    import  de.christopherstock.lib.gl.LibTexture;
     import  de.christopherstock.lib.io.*;
     import  de.christopherstock.lib.io.d3ds.*;
     import  de.christopherstock.shooter.*;
@@ -19,24 +18,6 @@
     *******************************************************************************************************************/
     public class ShooterD3ds
     {
-        public static enum Menu implements LibD3dsFile
-        {
-            ELogoIpco,
-            ;
-
-            protected LibD3dsImporter            iD3dsfile                    = null;
-
-            public final void initFile( LibD3dsImporter d3dsFile)
-            {
-                this.iD3dsfile = d3dsFile;
-            }
-
-            public final LibD3dsImporter getFile()
-            {
-                return this.iD3dsfile;
-            }
-        }
-
         public static enum Others implements LibD3dsFile
         {
             EChairOffice1,
@@ -210,14 +191,42 @@
             }
         }
 
+        private                     LibDebug                    debug                   = null;
+
+        public ShooterD3ds( LibDebug debug )
+        {
+            this.debug = debug;
+        }
+
+        /***************************************************************************************************************
+        *   Init all 3dsmax-files.
+        ***************************************************************************************************************/
+        public void init()
+        {
+            for ( LibD3dsFile file : Bots.values() )
+            {
+                file.initFile( new LibD3dsImporter( ShooterSetting.Path.E3dsMaxBot.url + file.toString() + LibExtension.ase.getSpecifier(), this.debug ) );
+            }
+
+            for ( LibD3dsFile file : Others.values() )
+            {
+                file.initFile( new LibD3dsImporter( ShooterSetting.Path.E3dsMaxOther.url + file.toString() + LibExtension.ase.getSpecifier(), this.debug ) );
+            }
+
+            for ( LibD3dsFile file : Items.values() )
+            {
+                file.initFile( new LibD3dsImporter( ShooterSetting.Path.E3dsMaxItem.url + file.toString() + LibExtension.ase.getSpecifier(), this.debug ) );
+            }
+        }
+
         /***************************************************************************************************************
         *   Returns a COPY of an imported 3dsmax mesh.
         ***************************************************************************************************************/
-        public static LibFaceTriangle[] getFaces(LibD3dsFile file )
+        public LibFaceTriangle[] getFaces( LibD3dsFile file )
         {
             //copy original faces
-            LibMaxTriangle[] originalFaces = file.getFile().getFaces();
-            LibFaceTriangle[]   copiedFaces   = new LibFaceTriangle[ originalFaces.length ];
+            LibMaxTriangle[]  originalFaces = file.getFile().getFaces();
+            LibFaceTriangle[] copiedFaces   = new LibFaceTriangle[ originalFaces.length ];
             for ( int i = 0; i < copiedFaces.length; ++i )
             {
                 LibTexture texture = Shooter.game.engine.textures.getByName( originalFaces[ i ].textureName );
@@ -236,34 +245,7 @@
                     ShooterSetting.Performance.ELLIPSE_SEGMENTS
                 );
             }
+
             return copiedFaces;
-        }
-
-        /***************************************************************************************************************
-        *   Init all 3dsmax-files.
-        ***************************************************************************************************************/
-        public static void init(LibDebug aDebug )
-        {
-            for ( LibD3dsFile file : Bots.values() )
-            {
-                file.initFile( new LibD3dsImporter( ShooterSetting.Path.E3dsMaxBot.url + file.toString() + LibExtension.ase.getSpecifier(), aDebug ) );
-            }
-
-            for ( LibD3dsFile file : Others.values() )
-            {
-                file.initFile( new LibD3dsImporter( ShooterSetting.Path.E3dsMaxOther.url + file.toString() + LibExtension.ase.getSpecifier(), aDebug ) );
-            }
-
-            for ( LibD3dsFile file : Items.values() )
-            {
-                file.initFile( new LibD3dsImporter( ShooterSetting.Path.E3dsMaxItem.url + file.toString() + LibExtension.ase.getSpecifier(), aDebug ) );
-            }
-
-            for ( LibD3dsFile file : Menu.values() )
-            {
-                file.initFile( new LibD3dsImporter( ShooterSetting.Path.E3dsMaxMenu.url + file.toString() + LibExtension.ase.getSpecifier(), aDebug ) );
-            }
-
-
         }
     }

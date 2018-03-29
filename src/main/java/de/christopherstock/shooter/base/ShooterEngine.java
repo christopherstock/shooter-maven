@@ -49,6 +49,8 @@
         public                      LWJGLKeys               keys                        = null;
         /** Textures. */
         public                      ShooterTexture          textures                    = null;
+        /** 3D Studio Max system. */
+        public                      ShooterD3ds             d3ds                        = null;
 
         /***************************************************************************************************************
         *   Inits the game engine.
@@ -70,8 +72,8 @@
             this.preloader.increase( 30 );
             this.initTextures();
 
-
-
+            this.preloader.increase( 40 );
+            this.init3ds();
 
 
 
@@ -172,6 +174,15 @@
         }
 
         /***************************************************************************************************************
+        *   Inits all 3D Studio Max Model.
+        ***************************************************************************************************************/
+        private void init3ds()
+        {
+            this.d3ds = new ShooterD3ds( ShooterDebug.d3ds );
+            this.d3ds.init();
+        }
+
+        /***************************************************************************************************************
         *   Inits the rest.
         *   TODO split!
         ***************************************************************************************************************/
@@ -186,9 +197,6 @@
 
 
 
-            //init 3d studio max objects and perform repaint
-            this.preloader.increase( 40 );
-            ShooterD3ds.init( ShooterDebug.d3ds );
 
             //init hud
             this.preloader.increase( 50 );

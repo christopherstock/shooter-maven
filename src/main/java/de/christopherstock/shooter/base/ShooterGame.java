@@ -32,7 +32,7 @@
         @Override
         public void run()
         {
-            // opengl needs to be initialized in the same thread
+            // opengl needs to be initialized and started in the same thread!
             this.engine.init();
 
             // tick until main thread is destroyed

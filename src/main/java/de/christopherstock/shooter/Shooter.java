@@ -10,10 +10,11 @@
     *   TODO    Turn all elements in ShooterEngine non static!
     *   TODO    Turn ShooterEngine not static.
     *   TODO    Improve output for preloader / startup phase.
+    *   TODO    Delete all 'a' and 'i' prefixes from variables. ( start at Shooter )
     *
+    *   TODO    Add skybox!
     *   TODO    Different heights for particle effects.
     *   TODO    Mayflower branding and textures ( posters etc. ).
-    *   TODO    Delete all 'a' and 'i' prefixes from variables. ( start at Shooter )
     *
     *   TODO    only for FireArms! Move ArtefactType.iFXImages to Firearms (Wearpons)!
     *   TODO    Optimize fields in ArtefactType!

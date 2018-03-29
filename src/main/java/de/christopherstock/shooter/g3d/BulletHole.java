@@ -44,7 +44,7 @@
                 float rotZ = this.iHitPoint.horzShotAngle + 90.0f;
 
                 //only set once .. :/
-                this.iProjectile = new Mesh( ShooterD3ds.getFaces(this.iProjectileTemplate), this.iHitPoint.vertex, 0.0f, 1.0f, LibInvert.ENo, this.iHitPoint.carrier, LibTransformationMode.EOriginalsToOriginals, DrawMethod.EAlwaysDraw );
+                this.iProjectile = new Mesh( Shooter.game.engine.d3ds.getFaces(this.iProjectileTemplate), this.iHitPoint.vertex, 0.0f, 1.0f, LibInvert.ENo, this.iHitPoint.carrier, LibTransformationMode.EOriginalsToOriginals, DrawMethod.EAlwaysDraw );
                 this.iProjectile.translateAndRotateXYZ
                 (
                     0.0f,

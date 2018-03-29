@@ -207,7 +207,7 @@
         {
             if (this.iKind.iMeshFile != null )
             {
-                this.iMesh = new Mesh( ShooterD3ds.getFaces(this.iKind.iMeshFile ), this.iAnchor, this.iStartRotZ, 1.0f, LibInvert.ENo, this, LibTransformationMode.EOriginalsToTransformed, DrawMethod.EAlwaysDraw );
+                this.iMesh = new Mesh( Shooter.game.engine.d3ds.getFaces(this.iKind.iMeshFile ), this.iAnchor, this.iStartRotZ, 1.0f, LibInvert.ENo, this, LibTransformationMode.EOriginalsToTransformed, DrawMethod.EAlwaysDraw );
 
                 //translate rotating items to the meshe's center in order to rotate around the (fixed) anchor
                 if (this.iIsRotating == LibRotating.EYes )
