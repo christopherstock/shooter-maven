@@ -15,6 +15,7 @@
     *******************************************************************************************************************/
     public class Ingame
     {
+        // TODO prune!
         private static Ingame singleton                   = null;
 
         private Ingame()

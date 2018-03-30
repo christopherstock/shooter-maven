@@ -43,23 +43,20 @@
             }
         }
 
-        private         static MainMenu singleton                       = null;
+        private             MainMenuItem            currentMainMenuItem             = null;
 
-        private         static          MainMenuItem            currentMainMenuItem             = null;
+        private             LibGLTextureImage       blackPane                       = null;
 
-        private LibGLTextureImage blackPane                       = null;
+        private             int                     menuChangeBlocker               = 0;
 
-        private                         int                     menuChangeBlocker               = 0;
-
-        private MainMenu()
+        public MainMenu()
         {
             this.blackPane = LibGLTextureImage.getFullOpaque( LibColors.EBlackTranslucent.colABGR, Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
         }
 
-        public static void init()
+        public void init()
         {
-            getSingleton();
-            currentMainMenuItem = MainMenuItem.EStartNewGameFacility;
+            this.currentMainMenuItem = MainMenuItem.EStartNewGameFacility;
         }
 
         public final void draw()
@@ -73,7 +70,7 @@
             //draw main menu
             for ( MainMenuItem m : MainMenuItem.values() )
             {
-                m.draw( ( Shooter.game.engine.glView.width - m.unselected.width ) / 2, 600 - m.ordinal() * 85, currentMainMenuItem );
+                m.draw( ( Shooter.game.engine.glView.width - m.unselected.width ) / 2, 600 - m.ordinal() * 85, this.currentMainMenuItem );
             }
         }
 
@@ -81,9 +78,9 @@
         {
             if (this.menuChangeBlocker == 0 )
             {
-                if ( currentMainMenuItem.ordinal() > 0 )
+                if ( this.currentMainMenuItem.ordinal() > 0 )
                 {
-                    currentMainMenuItem = MainMenuItem.values()[ currentMainMenuItem.ordinal() - 1 ];
+                    this.currentMainMenuItem = MainMenuItem.values()[ this.currentMainMenuItem.ordinal() - 1 ];
                     this.menuChangeBlocker = HUDSettings.TICKS_MAIN_MENU_BLOCKER;
                     SoundFg.ELocked1.playGlobalFx();
                 }
@@ -94,9 +91,9 @@
         {
             if (this.menuChangeBlocker == 0 )
             {
-                if ( currentMainMenuItem.ordinal() < MainMenuItem.values().length - 1 )
+                if ( this.currentMainMenuItem.ordinal() < MainMenuItem.values().length - 1 )
                 {
-                    currentMainMenuItem = MainMenuItem.values()[ currentMainMenuItem.ordinal() + 1 ];
+                    this.currentMainMenuItem = MainMenuItem.values()[ this.currentMainMenuItem.ordinal() + 1 ];
                     this.menuChangeBlocker = HUDSettings.TICKS_MAIN_MENU_BLOCKER;
                     SoundFg.ELocked1.playGlobalFx();
                 }
@@ -109,7 +106,7 @@
             {
                 this.menuChangeBlocker = HUDSettings.TICKS_MAIN_MENU_BLOCKER;
                 SoundFg.ELocked1.playGlobalFx();
-                switch ( currentMainMenuItem )
+                switch ( this.currentMainMenuItem )
                 {
                     case EStartNewGameFacility:
                     {
@@ -207,16 +204,6 @@
             Shooter.game.engine.keys.enterKey.checkLaunchingAction();
         }
 
-        public static MainMenu getSingleton()
-        {
-            if ( singleton == null )
-            {
-                singleton = new MainMenu();
-            }
-
-            return singleton;
-        }
-
         public void checkMenuKeyEvents()
         {
             //check main menu toggle
@@ -232,12 +219,12 @@
             //change current main menu item
             if ( Shooter.game.engine.keys.keyHoldWalkDown )
             {
-                MainMenu.getSingleton().nextItem();
+                Shooter.game.engine.mainMenu.nextItem();
             }
 
             if ( Shooter.game.engine.keys.keyHoldWalkUp )
             {
-                MainMenu.getSingleton().previousItem();
+                Shooter.game.engine.mainMenu.previousItem();
             }
 
             //launch msg?
@@ -245,7 +232,7 @@
             {
                 Shooter.game.engine.keys.enterKey.iLaunchAction = false;
 
-                MainMenu.getSingleton().selectItem();
+                Shooter.game.engine.mainMenu.selectItem();
             }
         }
     }

@@ -54,6 +54,8 @@
         public                      HUDFx                   hudFx                       = null;
         /** The sound system. */
         public                      Sound                   sound                       = null;
+        /** The main menu. */
+        public                      MainMenu                mainMenu                    = null;
 
         /***************************************************************************************************************
         *   Inits the game engine.
@@ -89,6 +91,9 @@
 
             this.preloader.increase( 80 );
             this.initSound();
+
+            this.preloader.increase( 90 );
+            this.initMainMenu();
 
 
 
@@ -231,6 +236,15 @@
         }
 
         /***************************************************************************************************************
+        *   Inits the main menu.
+        ***************************************************************************************************************/
+        private void initMainMenu()
+        {
+            this.mainMenu = new MainMenu();
+            this.mainMenu.init();
+        }
+
+        /***************************************************************************************************************
         *   Inits the rest.
         *   TODO split!
         ***************************************************************************************************************/
@@ -240,9 +254,8 @@
 
 
 
-            //init main menu
-            this.preloader.increase( 90 );
-            MainMenu.init();
+
+
 
             //reset and change to startup main state
             this.preloader.increase( 100 );

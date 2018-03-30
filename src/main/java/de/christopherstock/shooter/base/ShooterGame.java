@@ -78,7 +78,7 @@
                 case EMainMenu:
                 {
                     Ingame.getSingleton().draw();
-                    MainMenu.getSingleton().draw();
+                    this.engine.mainMenu.draw();
                     break;
                 }
 
@@ -134,11 +134,11 @@
                 case EMainMenu:
                 {
                     Shooter.game.engine.keys.checkKeys();
+
                     this.engine.mouse.update();
 
-                    MainMenu.getSingleton().checkMenuKeyEvents();
-
-                    MainMenu.getSingleton().onRun();
+                    this.engine.mainMenu.checkMenuKeyEvents();
+                    this.engine.mainMenu.onRun();
 
                     break;
                 }
