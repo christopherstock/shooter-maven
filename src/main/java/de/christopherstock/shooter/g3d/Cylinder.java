@@ -4,14 +4,14 @@
     import  java.awt.geom.*;
     import  java.util.*;
     import  de.christopherstock.lib.*;
-    import de.christopherstock.lib.LibTransformationMode;
+    import  de.christopherstock.lib.LibTransformationMode;
     import  de.christopherstock.lib.g3d.*;
     import  de.christopherstock.lib.g3d.face.*;
     import  de.christopherstock.lib.game.*;
     import  de.christopherstock.lib.gl.*;
     import  de.christopherstock.lib.math.*;
     import  de.christopherstock.lib.ui.*;
-    import de.christopherstock.shooter.ShooterSetting;
+    import  de.christopherstock.shooter.ShooterSetting;
     import  de.christopherstock.shooter.ShooterSetting.General;
     import  de.christopherstock.shooter.base.ShooterTexture.BotTex;
     import  de.christopherstock.shooter.level.*;
@@ -44,19 +44,19 @@
 
         private                     LibMaterial             material                            = null;
 
-        public Cylinder( LibGameObject aParentGameObject, LibVertex aAnchor, float aRadius, float aHeight, int aCollisionCheckingSteps, LibDebug aDebug, boolean aDebugDrawBotCircles, float aBottomCollisionToleranceZ, float aMinBottomCollisionToleranceZ, int aEllipseSegments, LibMaterial aMaterial )
+        public Cylinder( LibGameObject parentGameObject, LibVertex anchor, float radius, float height, int collisionCheckingSteps, LibDebug debug, boolean debugDrawBotCircles, float bottomCollisionToleranceZ, float minBottomCollisionToleranceZ, int ellipseSegments, LibMaterial material )
         {
-            this.parentGameObject = aParentGameObject;
-            this.anchor = aAnchor;
-            this.radius = aRadius;
-            this.height = aHeight;
-            this.collisionCheckingSteps = aCollisionCheckingSteps;
-            this.debug = aDebug;
-            this.debugDrawBotCircles = aDebugDrawBotCircles;
-            this.bottomCollisionToleranceZ = aBottomCollisionToleranceZ;
-            this.minBottomCollisionToleranceZ = aMinBottomCollisionToleranceZ;
-            this.ellipseSegments = aEllipseSegments;
-            this.material = aMaterial;
+            this.parentGameObject = parentGameObject;
+            this.anchor = anchor;
+            this.radius = radius;
+            this.height = height;
+            this.collisionCheckingSteps = collisionCheckingSteps;
+            this.debug = debug;
+            this.debugDrawBotCircles = debugDrawBotCircles;
+            this.bottomCollisionToleranceZ = bottomCollisionToleranceZ;
+            this.minBottomCollisionToleranceZ = minBottomCollisionToleranceZ;
+            this.ellipseSegments = ellipseSegments;
+            this.material = material;
         }
 
         private void update(float pX, float pY, float pZ, float newHeight)

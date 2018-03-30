@@ -1,7 +1,6 @@
 
     package de.christopherstock.shooter;
 
-    import  java.awt.*;
     import  de.christopherstock.lib.gl.*;
     import  de.christopherstock.lib.ui.*;
     import  de.christopherstock.shooter.level.setup.*;

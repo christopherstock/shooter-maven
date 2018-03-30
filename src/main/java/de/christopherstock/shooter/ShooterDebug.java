@@ -57,9 +57,9 @@
 
         private                     boolean         iDebugEnabled                       = false;
 
-        private ShooterDebug( boolean aDebugEnabled )
+        private ShooterDebug( boolean debugEnabled )
         {
-            this.iDebugEnabled = aDebugEnabled;
+            this.iDebugEnabled = debugEnabled;
         }
 
         public final void out( Object obj )
@@ -69,12 +69,12 @@
 
         public final void err( Object obj )
         {
-            if ( DEBUG_MODE                     ) System.err.println( "[" + LibStringFormat.getSingleton().formatDateTime() + "] " + obj );
+            if ( DEBUG_MODE ) System.err.println( "[" + LibStringFormat.getSingleton().formatDateTime() + "] " + obj );
         }
 
         public final void trace( Throwable obj )
         {
-            if ( DEBUG_MODE                     ) obj.printStackTrace();
+            if ( DEBUG_MODE ) obj.printStackTrace();
         }
 
         public final void mem()
@@ -82,6 +82,7 @@
             if ( DEBUG_MODE && this.iDebugEnabled)
             {
                 Runtime r = Runtime.getRuntime();
+
                 this.out( "========================================================"                         );
                 this.out( " free:  [" + LibStringFormat.getSingleton().formatNumber( r.freeMemory()  ) + "]" );
                 this.out( " total: [" + LibStringFormat.getSingleton().formatNumber( r.totalMemory() ) + "]" );

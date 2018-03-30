@@ -3,7 +3,7 @@
 
     import  java.io.*;
     import  java.util.*;
-    import de.christopherstock.lib.LibTransformationMode;
+    import  de.christopherstock.lib.LibTransformationMode;
     import  de.christopherstock.lib.g3d.*;
     import  de.christopherstock.lib.game.*;
     import  de.christopherstock.lib.math.*;
@@ -13,8 +13,8 @@
     *******************************************************************************************************************/
     abstract class MeshCollection implements LibGeomObject, Serializable
     {
-        protected Mesh[]      iMeshes                     = null;
-        private                     LibVertex   iAnchor                     = null;
+        private                 LibVertex           anchor              = null;
+        protected               Mesh[]              meshes              = null;
 
         protected MeshCollection()
         {
@@ -24,12 +24,12 @@
         /***************************************************************************************************************
         *   Constructs a new mesh with the specified properties.
         *
-        *   @param  aAnchor             The meshes' anchor point.
+        *   @param  anchor             The meshes' anchor point.
         ***************************************************************************************************************/
-        public MeshCollection( LibVertex aAnchor, Mesh[] aMeshes )
+        public MeshCollection( LibVertex anchor, Mesh[] meshes )
         {
-            this.iAnchor = aAnchor;
-            this.iMeshes = aMeshes;
+            this.anchor = anchor;
+            this.meshes = meshes;
         }
 
         /***************************************************************************************************************
@@ -41,16 +41,16 @@
         ***************************************************************************************************************/
         public void setNewAnchor( LibVertex newAnchor, boolean performTranslationOnFaces, LibTransformationMode transformationMode )
         {
-            this.iAnchor = newAnchor;
-            for (Mesh iMesh : this.iMeshes) {
+            this.anchor = newAnchor;
+            for (Mesh iMesh : this.meshes) {
                 iMesh.setNewAnchor(newAnchor, performTranslationOnFaces, transformationMode);
             }
         }
 
-        public void assignParentOnFaces( LibGameObject aParentGameObject )
+        public void assignParentOnFaces( LibGameObject parentGameObject )
         {
-            for (Mesh iMesh : this.iMeshes) {
-                iMesh.assignParentOnFaces(aParentGameObject);
+            for (Mesh iMesh : this.meshes) {
+                iMesh.assignParentOnFaces( parentGameObject );
             }
         }
 
@@ -61,13 +61,13 @@
         *   @param  y  The translation for axis y.
         *   @param  z  The translation for axis z.
         ***************************************************************************************************************/
-        public void translate(float x, float y, float z, LibTransformationMode transformationMode )
+        public void translate( float x, float y, float z, LibTransformationMode transformationMode )
         {
             //translate all faces ( resetting the rotation! )
-            for ( Mesh mesh : this.iMeshes)
+            for ( Mesh mesh : this.meshes)
             {
                 //translate and init this face
-                mesh.translate(x, y, z, transformationMode );
+                mesh.translate( x, y, z, transformationMode );
             }
         }
 
@@ -84,7 +84,7 @@
         public void translateAndRotateXYZ( float tX, float tY, float tZ, float rotX, float rotY, float rotZ, LibVertex alternateAnchor, LibTransformationMode transformationMode )
         {
             //rotate all faces
-            for ( Mesh mesh : this.iMeshes)
+            for ( Mesh mesh : this.meshes)
             {
                 //translate and init this face
                 mesh.translateAndRotateXYZ( tX, tY, tZ, rotX, rotY, rotZ, alternateAnchor, transformationMode );
@@ -97,7 +97,7 @@
         public final void draw()
         {
             //draw all faces
-            for ( Mesh mesh : this.iMeshes)
+            for ( Mesh mesh : this.meshes)
             {
                 mesh.draw();
             }
@@ -106,7 +106,7 @@
         public final boolean checkCollisionHorz( LibCylinder cylinder )
         {
             //check all meshes
-            for ( Mesh mesh : this.iMeshes)
+            for ( Mesh mesh : this.meshes)
             {
                 boolean b = mesh.checkCollisionHorz( cylinder );
                 if ( b ) return true;
@@ -120,7 +120,7 @@
             Vector<Float> vecZ = new Vector<Float>();
 
             //check all meshes
-            for ( Mesh mesh : this.iMeshes)
+            for ( Mesh mesh : this.meshes)
             {
                 vecZ.addAll( mesh.checkCollisionVert( cylinder, exclude ) );
             }
@@ -133,7 +133,7 @@
             Vector<LibHitPoint> hitPoints = new Vector<LibHitPoint>();
 
             //fire all faces and collect all hit-points
-            for ( Mesh mesh : this.iMeshes)
+            for ( Mesh mesh : this.meshes)
             {
                 hitPoints.addAll( mesh.launchShot( shot ) );
             }
@@ -143,6 +143,6 @@
 
         public final LibVertex getAnchor()
         {
-            return this.iAnchor;
+            return this.anchor;
         }
     }

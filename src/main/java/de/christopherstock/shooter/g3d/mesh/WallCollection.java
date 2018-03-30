@@ -13,44 +13,44 @@
     *******************************************************************************************************************/
     public class WallCollection extends MeshCollection
     {
-        public WallCollection( Wall[] aWalls )
+        public WallCollection( Wall[] walls )
         {
-            this( null, aWalls );
+            this( null, walls );
         }
 
-        public WallCollection( Wall aAnchorWall, Wall[] aWalls )
+        public WallCollection( Wall anchorWall, Wall[] walls )
         {
-            this( aAnchorWall, aWalls, null, null, true );
+            this( anchorWall, walls, null, null, true );
         }
 
-        public WallCollection( Wall aAnchorWall, Wall[] aWalls, LibVertex anchorWallPostTrans, LibVertex anchorWallPostRot, boolean propagadeDestroyToChilds )
+        public WallCollection( Wall anchorWall, Wall[] walls, LibVertex anchorWallPostTrans, LibVertex anchorWallPostRot, boolean propagadeDestroyToChilds )
         {
-            if ( aWalls == null ) aWalls = new Wall[] {};
-            this.iMeshes = aWalls;
+            if ( walls == null ) walls = new Wall[] {};
+            this.meshes = walls;
 
             //translate all walls by anchorWall if specified
-            if ( aAnchorWall != null )
+            if ( anchorWall != null )
             {
                 //assign child walls to destroy if this wall is destroyed
-                if ( propagadeDestroyToChilds ) aAnchorWall.assignChildWallsToDestroy( aWalls );
+                if ( propagadeDestroyToChilds ) anchorWall.assignChildWallsToDestroy( walls );
 
                 Vector<Mesh> newWalls = new Vector<Mesh>();
-                newWalls.add( aAnchorWall );
+                newWalls.add( anchorWall );
 
-                LibVertex anchorWallAnk = aAnchorWall.getAnchor();
-                for ( Wall wall : aWalls )
+                LibVertex anchorWallAnk = anchorWall.getAnchor();
+                for ( Wall wall : walls )
                 {
                     //fixed double translation :p
                     LibVertex newWallAnk = new LibVertex( 0.0f, 0.0f, 0.0f ); //wall.getAnchor().copy();
 
                     //translate and rotate anchor by room offset and set as new anchor
                     newWallAnk.translate( anchorWallAnk );
-                    newWallAnk.rotateXYZ( 0.0f, 0.0f, aAnchorWall.iStartupRotZ, aAnchorWall.getAnchor() );
+                    newWallAnk.rotateXYZ( 0.0f, 0.0f, anchorWall.iStartupRotZ, anchorWall.getAnchor() );
 
                     //set anchor and perform translation on originals
                     wall.setNewAnchor( newWallAnk, true, LibTransformationMode.EOriginalsToOriginals );
 
-                    wall.iStartupRotZ = wall.iStartupRotZ + aAnchorWall.iStartupRotZ;
+                    wall.iStartupRotZ = wall.iStartupRotZ + anchorWall.iStartupRotZ;
 
                     //turn wall by new anchor for room rotation
                     wall.translateAndRotateXYZ
@@ -60,7 +60,7 @@
                         0.0f,
                         0.0f,
                         0.0f,
-                        aAnchorWall.iStartupRotZ,
+                        anchorWall.iStartupRotZ,
                         newWallAnk,
                         LibTransformationMode.EOriginalsToOriginals
                     );
@@ -68,13 +68,13 @@
                     //ShooterDebug.bugfix.out("new ank: ["+newAnk+"]");
                     newWalls.add( wall );
                 }
-                this.iMeshes = newWalls.toArray(this.iMeshes);
+                this.meshes = newWalls.toArray(this.meshes);
                 //ShooterDebug.bugfix.out("new wc: ["+walls.length+"]");
 
                 //perform post-translation on anchor wall
                 if ( anchorWallPostTrans != null )
                 {
-                    aAnchorWall.translateAndRotateXYZ
+                    anchorWall.translateAndRotateXYZ
                     (
                         anchorWallPostTrans.x,
                         anchorWallPostTrans.y,
@@ -82,11 +82,11 @@
                         anchorWallPostRot.x,
                         anchorWallPostRot.y,
                         anchorWallPostRot.z,
-                        aAnchorWall.getAnchor(),
+                        anchorWall.getAnchor(),
                         LibTransformationMode.EOriginalsToOriginals
                     );
 
-                    aAnchorWall.getAnchor().translate( anchorWallPostTrans );
+                    anchorWall.getAnchor().translate( anchorWallPostTrans );
                 }
             }
         }
@@ -94,7 +94,7 @@
         public final void launchAction( Cylinder cylinder, Gadget gadget, float faceAngle )
         {
             //launch action on all meshes
-            for ( Mesh wall : this.iMeshes)
+            for ( Mesh wall : this.meshes)
             {
                 ( (Wall)wall ).launchAction( cylinder, gadget, faceAngle );
             }
@@ -103,7 +103,7 @@
         public final void animate()
         {
             //animate all meshes
-            for ( Mesh wall : this.iMeshes)
+            for ( Mesh wall : this.meshes)
             {
                 ( (Wall)wall ).animate();
             }

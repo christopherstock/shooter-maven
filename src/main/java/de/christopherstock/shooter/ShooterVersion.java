@@ -30,10 +30,10 @@
         private     String  version = null;
         private     String  date    = null;
 
-        private ShooterVersion( String aVersion, String aDate )
+        private ShooterVersion( String version, String date )
         {
-            this.version = aVersion;
-            this.date = aDate;
+            this.version = version;
+            this.date    = date;
         }
 
         public static String getCurrentVersionDesc()

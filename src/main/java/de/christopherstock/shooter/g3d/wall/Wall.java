@@ -16,7 +16,6 @@
     import  de.christopherstock.lib.math.*;
     import  de.christopherstock.shooter.*;
     import de.christopherstock.shooter.ShooterSetting.*;
-    import  de.christopherstock.shooter.base.*;
     import  de.christopherstock.shooter.base.ShooterTexture.WallTex;
     import  de.christopherstock.shooter.g3d.*;
     import  de.christopherstock.shooter.g3d.mesh.Mesh;
@@ -433,7 +432,7 @@
             //play explosion sound if specified
             if (this.iEnergy.iExplosionSound != null )
             {
-                this.iEnergy.iExplosionSound.playDistancedFx( new Point2D.Float(this.iAnchor.x, this.iAnchor.y ) );
+                this.iEnergy.iExplosionSound.playDistancedFx( new Point2D.Float(this.anchor.x, this.anchor.y ) );
             }
         }
 

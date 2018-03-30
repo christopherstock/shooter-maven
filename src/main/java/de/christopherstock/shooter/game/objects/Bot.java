@@ -1177,7 +1177,7 @@
             {
                 if (this.iEyesOpen)
                 {
-                    this.iBotMeshes.changeFaceTexture(this.iBotMeshes.iTemplate.iTexFaceEyesOpen.getMetaData(), this.iBotMeshes.iTemplate.iTexFaceEyesShut.getMetaData() );
+                    this.iBotMeshes.changeFaceTexture(this.iBotMeshes.template.iTexFaceEyesOpen.getMetaData(), this.iBotMeshes.template.iTexFaceEyesShut.getMetaData() );
                     this.iEyesOpen = false;
                 }
             }
@@ -1187,11 +1187,11 @@
                 this.iEyesOpen = !this.iEyesOpen;
                 if (this.iEyesOpen)
                 {
-                    this.iBotMeshes.changeFaceTexture(this.iBotMeshes.iTemplate.iTexFaceEyesShut.getMetaData(), this.iBotMeshes.iTemplate.iTexFaceEyesOpen.getMetaData() );
+                    this.iBotMeshes.changeFaceTexture(this.iBotMeshes.template.iTexFaceEyesShut.getMetaData(), this.iBotMeshes.template.iTexFaceEyesOpen.getMetaData() );
                 }
                 else
                 {
-                    this.iBotMeshes.changeFaceTexture(this.iBotMeshes.iTemplate.iTexFaceEyesOpen.getMetaData(), this.iBotMeshes.iTemplate.iTexFaceEyesShut.getMetaData() );
+                    this.iBotMeshes.changeFaceTexture(this.iBotMeshes.template.iTexFaceEyesOpen.getMetaData(), this.iBotMeshes.template.iTexFaceEyesShut.getMetaData() );
                 }
                 this.setNextEyeChange();
             }
@@ -1342,10 +1342,10 @@
                 if ( p != null )
                 {
                     //p.loadD3ds(); //old solution
-                    this.iBotMeshes.iEquippedItemRight.setTranslatedAsOriginalVertices();
-                    p.assignMesh(this.iBotMeshes.iEquippedItemRight );
+                    this.iBotMeshes.equippedItemRight.setTranslatedAsOriginalVertices();
+                    p.assignMesh(this.iBotMeshes.equippedItemRight);
                     p.iDropTarget = this.getAnchor().z;
-                    p.iDropBegin  = this.iBotMeshes.iEquippedItemRight.getCenterZ();
+                    p.iDropBegin  = this.iBotMeshes.equippedItemRight.getCenterZ();
                     Level.currentSection().addItem( p );
                 }
             }

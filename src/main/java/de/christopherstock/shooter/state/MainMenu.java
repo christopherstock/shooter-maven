@@ -141,7 +141,7 @@
                         {
                             toSave.add( w );
 
-                            ShooterDebug.saveLoad.out( "saving walls # " + w.iMeshes.length );
+                            ShooterDebug.saveLoad.out( "saving walls # " + w.meshes.length );
                         }
 
                         try
@@ -164,8 +164,8 @@
                             ShooterDebug.saveLoad.out( "Loaded [" + loaded.length + "] objects:" );
 
                             ShooterDebug.saveLoad.out( loaded[ 0 ] );
-                            ShooterDebug.saveLoad.out( "" + ( (WallCollection)loaded[ 1 ] ).iMeshes.length );
-                            ShooterDebug.saveLoad.out( "" + ( (WallCollection)loaded[ 2 ] ).iMeshes.length );
+                            ShooterDebug.saveLoad.out( "" + ( (WallCollection)loaded[ 1 ] ).meshes.length );
+                            ShooterDebug.saveLoad.out( "" + ( (WallCollection)loaded[ 2 ] ).meshes.length );
                         }
                         catch ( Throwable t )
                         {
@@ -189,7 +189,7 @@
 */
                     case EQuitGame:
                     {
-                        Shooter.game.engine.destroy();
+                        Shooter.game.quit();
                         break;
                     }
                 }

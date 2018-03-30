@@ -103,16 +103,16 @@
 */
             ;
 
-            protected LibD3dsImporter            iD3dsfile                    = null;
+            protected           LibD3dsImporter             d3dsfile            = null;
 
-            public final void initFile( LibD3dsImporter d3dsFile)
+            public final void initFile( LibD3dsImporter d3dsFile )
             {
-                this.iD3dsfile = d3dsFile;
+                this.d3dsfile = d3dsFile;
             }
 
             public final LibD3dsImporter getFile()
             {
-                return this.iD3dsfile;
+                return this.d3dsfile;
             }
         }
 
@@ -150,16 +150,16 @@
             ELeftFoot,
             ;
 
-            protected LibD3dsImporter            iD3dsfile                    = null;
+            protected           LibD3dsImporter             d3dsfile                = null;
 
-            public final void initFile( LibD3dsImporter d3dsFile)
+            public final void initFile( LibD3dsImporter d3dsFile )
             {
-                this.iD3dsfile = d3dsFile;
+                this.d3dsfile = d3dsFile;
             }
 
             public final  LibD3dsImporter getFile()
             {
-                return this.iD3dsfile;
+                return this.d3dsfile;
             }
         }
 
@@ -178,16 +178,16 @@
             EApple,
             ;
 
-            protected LibD3dsImporter            iD3dsfile                    = null;
+            protected           LibD3dsImporter             d3dsfile                    = null;
 
-            public final void initFile( LibD3dsImporter d3dsFile)
+            public final void initFile( LibD3dsImporter d3dsFile )
             {
-                this.iD3dsfile = d3dsFile;
+                this.d3dsfile = d3dsFile;
             }
 
             public final LibD3dsImporter getFile()
             {
-                return this.iD3dsfile;
+                return this.d3dsfile;
             }
         }
 

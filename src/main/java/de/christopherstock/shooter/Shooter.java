@@ -6,11 +6,8 @@
     /*******************************************************************************************************************
     *   The main class.
     *
-    *   TODO    Cleanup game initialization.
-    *   TODO    Turn all elements in ShooterEngine non static!
-    *   TODO    Turn ShooterEngine not static.
     *   TODO    Improve output for preloader / startup phase.
-    *   TODO    Delete all 'a' and 'i' prefixes from variables. ( start at Shooter )
+    *   TODO    Delete all 'a' and 'i' prefixes from variables. ( start at Door )
     *
     *   TODO    Add skybox!
     *   TODO    Different heights for particle effects.

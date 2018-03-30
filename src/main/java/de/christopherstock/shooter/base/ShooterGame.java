@@ -59,12 +59,14 @@
 
             //stop all bg sounds ( hangs on mac )
             SoundBg.stopCurrentSound();
+
+            this.engine.destroy();
         }
 
         public void draw()
         {
             //clear face queue from last tick
-            Shooter.game.engine.glView.clearFaceQueue();
+            this.engine.glView.clearFaceQueue();
 
             //draw 3d according to main state
             switch ( this.engine.mainState )
@@ -100,14 +102,14 @@
         }
 
         // TODO check if required?
-        public final void orderMainStateChange(MainState aFutureMainState )
+        public final void orderMainStateChange( MainState futureMainState )
         {
-            this.engine.mainStateToChangeTo = aFutureMainState;
+            this.engine.mainStateToChangeTo = futureMainState;
         }
 
         private void performMainStateChange()
         {
-            if (this.engine.mainStateToChangeTo != null )
+            if ( this.engine.mainStateToChangeTo != null )
             {
                 //center mouse for new mainstate
                 //LWJGLMouse.centerMouse();
@@ -133,7 +135,7 @@
 
                 case EMainMenu:
                 {
-                    Shooter.game.engine.keys.checkKeys();
+                    this.engine.keys.checkKeys();
 
                     this.engine.mouse.update();
 
@@ -145,7 +147,7 @@
 
                 case EIngame:
                 {
-                    Shooter.game.engine.keys.checkKeys();
+                    this.engine.keys.checkKeys();
                     this.engine.mouse.update();
 
                     LevelChange.checkChangeToSection();
@@ -157,7 +159,7 @@
                         Level.currentSection().render();
                     }
 
-                    Shooter.game.engine.sound.onRun();
+                    this.engine.sound.onRun();
 
                     break;
                 }

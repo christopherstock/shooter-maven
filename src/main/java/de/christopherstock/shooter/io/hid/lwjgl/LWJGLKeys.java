@@ -79,7 +79,7 @@
 */
             if ( Keyboard.isKeyDown( Keyboard.KEY_M ) )
             {
-                Shooter.game.engine.destroy();
+                Shooter.game.quit();
             }
 
             //check if the ALT keys are pressed

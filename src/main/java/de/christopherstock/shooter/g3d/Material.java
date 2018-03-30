@@ -26,15 +26,15 @@
         EWood(              false,      Colors.SLIVER_COLOR_WALL,           SoundFg.EWallWood1      ),
         ;
 
-        private boolean         iPenetrable             = false;
-        private LibColors[]     iSliverColors           = null;
-        private SoundFg    iBulletImpactSound      = null;
+        private     boolean         penetrable              = false;
+        private     LibColors[]     sliverColors            = null;
+        private     SoundFg         bulletImpactSound       = null;
 
-        private Material( boolean aPenetrable, LibColors[] aSliverColors, SoundFg aBulletSound )
+        private Material( boolean penetrable, LibColors[] sliverColors, SoundFg bulletSound )
         {
-            this.iPenetrable = aPenetrable;
-            this.iSliverColors = aSliverColors;
-            this.iBulletImpactSound = aBulletSound;
+            this.penetrable        = penetrable;
+            this.sliverColors      = sliverColors;
+            this.bulletImpactSound = bulletSound;
         }
 
         /***************************************************************************************************************
@@ -62,16 +62,16 @@
 
         public LibColors[] getSliverColors()
         {
-            return this.iSliverColors;
+            return this.sliverColors;
         }
 
         public boolean isPenetrable()
         {
-            return this.iPenetrable;
+            return this.penetrable;
         }
 
         public LibSound getBulletImpactSound()
         {
-            return this.iBulletImpactSound;
+            return this.bulletImpactSound;
         }
     }

@@ -4,9 +4,8 @@
     import  java.awt.geom.*;
     import  java.io.*;
     import  java.util.*;
-
-    import de.christopherstock.lib.LibInvert;
-    import de.christopherstock.lib.LibTransformationMode;
+    import  de.christopherstock.lib.LibInvert;
+    import  de.christopherstock.lib.LibTransformationMode;
     import  de.christopherstock.lib.g3d.*;
     import  de.christopherstock.lib.g3d.face.*;
     import  de.christopherstock.lib.g3d.face.LibFace.*;
@@ -22,41 +21,41 @@
     *******************************************************************************************************************/
     public class Mesh implements LibGeomObject, Serializable
     {
-        public                      LibVertex               iAnchor                     = null;
+        public                      LibVertex               anchor              = null;
 
-        private                     LibFaceTriangle[]       iFaces                      = null;
+        private                     LibFaceTriangle[]       faces               = null;
 
-        public Mesh( LibFaceTriangle[] aFaces, LibVertex aAnchor )
+        public Mesh( LibFaceTriangle[] faces, LibVertex anchor )
         {
-            this( aFaces, aAnchor, 0.0f, 1.0f, LibInvert.ENo, null, LibTransformationMode.EOriginalsToOriginals, DrawMethod.EAlwaysDraw );
+            this( faces, anchor, 0.0f, 1.0f, LibInvert.ENo, null, LibTransformationMode.EOriginalsToOriginals, DrawMethod.EAlwaysDraw );
         }
 
         /***************************************************************************************************************
         *   Constructs a new mesh with the specified properties.
         *
-        *   @param  aFaces              All faces this mesh shall consist of.
-        *   @param  aAnchor             The meshes' anchor point.
+        *   @param  faces              All faces this mesh shall consist of.
+        *   @param  anchor             The meshes' anchor point.
         ***************************************************************************************************************/
-        public Mesh(LibFaceTriangle[] aFaces, LibVertex aAnchor, float aInitRotZ, float aInitScale, LibInvert aInvert, LibGameObject aParentGameObject, LibTransformationMode transformationMode, DrawMethod aDrawMethod )
+        public Mesh( LibFaceTriangle[] faces, LibVertex anchor, float initRotZ, float initScale, LibInvert invert, LibGameObject parentGameObject, LibTransformationMode transformationMode, DrawMethod drawMethod )
         {
-            this.iFaces = aFaces;
+            this.faces = faces;
 
             //rotate all faces
-            this.performOriginalRotationOnFaces(  aInitRotZ  );
-            if ( aInitScale != 1.0f         ) this.performOriginalScalationOnFaces( aInitScale );
-            if ( aInvert    == LibInvert.EYes  ) this.performOriginalInvertOnFaces();
+            this.performOriginalRotationOnFaces(  initRotZ  );
+            if ( initScale != 1.0f         ) this.performOriginalScalationOnFaces( initScale );
+            if ( invert    == LibInvert.EYes  ) this.performOriginalInvertOnFaces();
 
             //set and translate by new anchor
-            this.setNewAnchor( aAnchor, true, transformationMode );
+            this.setNewAnchor( anchor, true, transformationMode );
 
             //assign parent game object
-            this.assignParentOnFaces(     aParentGameObject  );
-            this.assignDrawMethodOnFaces( aDrawMethod        );
+            this.assignParentOnFaces(     parentGameObject  );
+            this.assignDrawMethodOnFaces( drawMethod        );
         }
 
         public LibFaceTriangle[] getFaces()
         {
-            return this.iFaces;
+            return this.faces;
         }
 
         /***************************************************************************************************************
@@ -69,45 +68,45 @@
         public void setNewAnchor( LibVertex newAnchor, boolean performTranslationOnFaces, LibTransformationMode transformationMode )
         {
             //assign new anchor for this mesh and for all it's faces - translate all faces by the new anchor!
-            this.iAnchor = newAnchor;
-            for (LibFaceTriangle iFace : this.iFaces) {
-                iFace.setNewAnchor(this.iAnchor, performTranslationOnFaces, transformationMode);
+            this.anchor = newAnchor;
+            for (LibFaceTriangle iFace : this.faces) {
+                iFace.setNewAnchor(this.anchor, performTranslationOnFaces, transformationMode);
             }
         }
 
-        protected void assignParentOnFaces( LibGameObject aParentGameObject )
+        protected void assignParentOnFaces( LibGameObject parentGameObject )
         {
-            for (LibFaceTriangle iFace : this.iFaces) {
-                iFace.assignParentGameObject(aParentGameObject);
+            for (LibFaceTriangle iFace : this.faces) {
+                iFace.assignParentGameObject(parentGameObject);
             }
         }
 
-        protected void assignDrawMethodOnFaces( DrawMethod aDrawMethod )
+        protected void assignDrawMethodOnFaces( DrawMethod drawMethod )
         {
-            for (LibFaceTriangle iFace : this.iFaces) {
-                iFace.setDrawMethod(aDrawMethod);
+            for (LibFaceTriangle iFace : this.faces) {
+                iFace.setDrawMethod( drawMethod );
             }
         }
 
-        private void performOriginalRotationOnFaces( float aRotZ )
+        private void performOriginalRotationOnFaces( float rotZ )
         {
-            LibMatrix transformationMatrix = new LibMatrix( 0.0f, 0.0f, aRotZ );
+            LibMatrix transformationMatrix = new LibMatrix( 0.0f, 0.0f, rotZ );
 
-            for (LibFaceTriangle iFace : this.iFaces) {
+            for (LibFaceTriangle iFace : this.faces) {
                 iFace.translateAndRotateXYZ(transformationMatrix, 0.0f, 0.0f, 0.0f, LibTransformationMode.EOriginalsToOriginals, null);
             }
         }
 
-        private void performOriginalScalationOnFaces( float aScale )
+        private void performOriginalScalationOnFaces( float scale )
         {
-            for (LibFaceTriangle iFace : this.iFaces) {
-                iFace.scale(aScale, true);
+            for (LibFaceTriangle face : this.faces) {
+                face.scale(scale, true);
             }
         }
 
         private void performOriginalInvertOnFaces()
         {
-            for (LibFaceTriangle iFace : this.iFaces) {
+            for (LibFaceTriangle iFace : this.faces) {
                 iFace.invert();
             }
         }
@@ -119,10 +118,10 @@
         *   @param  y  The translation for axis y.
         *   @param  z  The translation for axis z.
         ***************************************************************************************************************/
-        public void translate(float x, float y, float z, LibTransformationMode transformationMode )
+        public void translate( float x, float y, float z, LibTransformationMode transformationMode )
         {
             //translate all faces ( resetting the rotation! )
-            for ( LibFaceTriangle face : this.iFaces)
+            for ( LibFaceTriangle face : this.faces)
             {
                 //translate and init this face
                 face.translate(x, y, z, transformationMode );
@@ -144,7 +143,7 @@
             LibMatrix transformationMatrix = new LibMatrix( rotX, rotY, rotZ );
 
             //rotate all faces
-            for ( LibFaceTriangle face : this.iFaces)
+            for ( LibFaceTriangle face : this.faces)
             {
                 //translate and init this face
                 face.translateAndRotateXYZ( transformationMatrix, tX, tY, tZ, transformationMode, alternateAnchor );
@@ -154,7 +153,7 @@
         public final void mirrorFaces( boolean x, boolean y, boolean z )
         {
             //draw all faces
-            for ( LibFaceTriangle face : this.iFaces)
+            for ( LibFaceTriangle face : this.faces)
             {
                 face.mirror( x, y, z );
             }
@@ -166,16 +165,16 @@
         public void draw()
         {
             //draw all faces
-            for ( LibFaceTriangle face : this.iFaces)
+            for ( LibFaceTriangle face : this.faces)
             {
                 face.draw();
             }
         }
 
-        public final boolean checkAction( LibCylinder cylinder, boolean useBottomToleranceZ, boolean invertBottomTolerance )
+        protected final boolean checkAction( LibCylinder cylinder, boolean useBottomToleranceZ, boolean invertBottomTolerance )
         {
             //browse all faces and check if any face is affected by the action
-            for ( LibFaceTriangle face : this.iFaces)
+            for ( LibFaceTriangle face : this.faces)
             {
                 if ( cylinder.checkCollisionHorzLines( face, useBottomToleranceZ, invertBottomTolerance ) )
                 {
@@ -194,7 +193,7 @@
         public boolean checkCollisionHorz( LibCylinder cylinder, WallClimbable wallClimbable )
         {
             //check all faces
-            for ( LibFaceTriangle face : this.iFaces)
+            for ( LibFaceTriangle face : this.faces)
             {
                 boolean b = face.checkCollisionHorz( cylinder, ( wallClimbable == WallClimbable.EYes ), false );
                 if ( b ) return true;
@@ -208,7 +207,7 @@
             Vector<Float> vecZ = new Vector<Float>();
 
             //check all faces
-            for ( LibFaceTriangle face : this.iFaces)
+            for ( LibFaceTriangle face : this.faces)
             {
                 vecZ.addAll( face.checkCollisionVert( cylinder, exclude ) );
             }
@@ -218,7 +217,7 @@
 
         public void changeTexture(LibGLTextureMetaData oldTex, LibGLTextureMetaData newTex )
         {
-            for ( LibFaceTriangle face : this.iFaces)
+            for ( LibFaceTriangle face : this.faces)
             {
                 face.changeTexture( oldTex, newTex );
             }
@@ -226,19 +225,17 @@
 
         public void fadeOutAllFaces()
         {
-            for ( LibFaceTriangle face : this.iFaces)
+            for ( LibFaceTriangle face : this.faces)
             {
                 face.fadeOut( ShooterSetting.General.FADE_OUT_FACES );
             }
         }
 
-        public void darkenAllFaces( float aOpacity, boolean useRandomSubstract, boolean useRandomAdd, float maxSubstract, float maxAdd )
+        protected void darkenAllFaces( float opacity, boolean useRandomSubstract, boolean useRandomAdd, float maxSubstract, float maxAdd )
         {
             //darken all faces
-            for ( LibFaceTriangle face : this.iFaces)
+            for ( LibFaceTriangle face : this.faces)
             {
-                float opacity = aOpacity;
-
                 if ( useRandomSubstract ) opacity -= ( maxSubstract * ( (float)LibMath.getRandom( 0, 100 ) / (float)100 ) );
                 if ( useRandomAdd       ) opacity += ( maxAdd       * ( (float)LibMath.getRandom( 0, 100 ) / (float)100 ) );
 
@@ -251,7 +248,7 @@
             Vector<LibHitPoint> hitPoints = new Vector<LibHitPoint>();
 
             //fire all faces and collect all hit-points
-            for ( LibFaceTriangle face : this.iFaces)
+            for ( LibFaceTriangle face : this.faces)
             {
                 //try new shot algo
                 LibHitPoint hp = face.launchShotNew( shot );
@@ -275,12 +272,12 @@
 
         public final LibVertex getAnchor()
         {
-            return this.iAnchor;
+            return this.anchor;
         }
 
-        public final void makeDistancedSound( SoundFg fx )
+        protected final void makeDistancedSound( SoundFg fx )
         {
-            fx.playDistancedFx( new Point2D.Float(this.iAnchor.x, this.iAnchor.y ) );
+            fx.playDistancedFx( new Point2D.Float(this.anchor.x, this.anchor.y ) );
         }
 
         public final float getCenterZ()
@@ -316,8 +313,8 @@
             {
                 for ( LibVertex v : f.getOriginalVertices() )
                 {
-                    if ( lowestX  == null || v.x < lowestX) lowestX  = new Float( v.x );
-                    if ( lowestY  == null || v.y < lowestY) lowestY  = new Float( v.y );
+                    if ( lowestX  == null || v.x < lowestX) lowestX   = new Float( v.x );
+                    if ( lowestY  == null || v.y < lowestY) lowestY   = new Float( v.y );
                     if ( highestX == null || v.x > highestX) highestX = new Float( v.x );
                     if ( highestY == null || v.y > highestY) highestY = new Float( v.y );
                 }
@@ -330,14 +327,14 @@
 
             return new Point2D.Float
             (
-                    lowestX + (highestX - lowestX) / 2,
-                    lowestY + (highestY - lowestY) / 2
+                    lowestX + ( highestX - lowestX ) / 2,
+                    lowestY + ( highestY - lowestY ) / 2
             );
         }
 
         public final void setTranslatedAsOriginalVertices()
         {
-            for ( LibFaceTriangle face : this.iFaces)
+            for ( LibFaceTriangle face : this.faces)
             {
                 face.originalVertices = face.transformedVertices;
             }
@@ -348,7 +345,7 @@
             Vector<Float> vecZ = new Vector<Float>();
 
             //check all faces
-            for ( FaceTriangle face : iFaces )
+            for ( FaceTriangle face : faces )
             {
                 Float f = face.checkCollision( point );
 

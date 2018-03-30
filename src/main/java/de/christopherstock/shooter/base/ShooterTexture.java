@@ -105,14 +105,14 @@
                 this( translucency, Material.EUndefined );
             }
 
-            private BulletHoleTex( Translucency aTranslucency, Material aMaterial )
+            private BulletHoleTex( Translucency translucency, Material material )
             {
-                this( aTranslucency, aMaterial, null );
+                this( translucency, material, null );
             }
 
-            private BulletHoleTex( Translucency aTranslucency, Material aMaterial, LibTexture aMask )
+            private BulletHoleTex( Translucency translucency, Material material, LibTexture mask )
             {
-                this.texObject = new TexObject( aTranslucency, aMaterial, aMask );
+                this.texObject = new TexObject( translucency, material, mask );
             }
 
             public LibGLTextureMetaData getMetaData()
@@ -189,19 +189,19 @@
                 this( Translucency.EOpaque, Material.EUndefined, null );
             }
 
-            private WallTex( Material aMaterial )
+            private WallTex( Material material )
             {
-                this( Translucency.EOpaque, aMaterial, null );
+                this( Translucency.EOpaque, material, null );
             }
 
-            private WallTex( Translucency aTranslucency, Material aMaterial )
+            private WallTex( Translucency translucency, Material material )
             {
-                this( aTranslucency, aMaterial, null );
+                this( translucency, material, null );
             }
 
-            private WallTex( Translucency aTranslucency, Material aMaterial, LibTexture aMask )
+            private WallTex( Translucency translucency, Material material, LibTexture mask )
             {
-                this.texObject = new TexObject( aTranslucency, aMaterial, aMask );
+                this.texObject = new TexObject( translucency, material, mask );
             }
 
             public LibGLTextureMetaData getMetaData()
