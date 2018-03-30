@@ -13,24 +13,24 @@
     *******************************************************************************************************************/
     final class HUDMessage
     {
-        private                     int                     iAnim                   = 0;
-        private                     AnimState               iAnimState              = null;
-        private LibGLTextureImage iTextImg                = null;
-        private                     String                  iText                   = null;
+        private                     int                     anim                = 0;
+        private                     AnimState               animState           = null;
+        private                     LibGLTextureImage       textImg             = null;
+        private                     String                  text                = null;
 
-        protected HUDMessage( String aText )
+        protected HUDMessage( String text )
         {
-            this.iAnimState = AnimState.EPopUp;
-            this.iAnim = HUDSettings.MSG_TICKS_POP_UP - 1;
-            this.iText = aText;
+            this.animState = AnimState.EPopUp;
+            this.anim = HUDSettings.MSG_TICKS_POP_UP - 1;
+            this.text = text;
         }
 
         public final void show()
         {
             //init img and add this message to the queue
-            this.iTextImg = LibGLTextureImage.getFromString
+            this.textImg = LibGLTextureImage.getFromString
             (
-                this.iText,
+                this.text,
                 Shooter.game.engine.fonts.avatarMessage,
                 ShooterSetting.Colors.EHudMsgFg.colARGB,
                 null,
@@ -48,24 +48,24 @@
         protected boolean animate()
         {
             //next animation-tick!
-            if (this.iAnim > -1 ) --this.iAnim;
+            if (this.anim > -1 ) --this.anim;
 
-            if (this.iAnim == -1 )
+            if (this.anim == -1 )
             {
                 //check next state
-                switch (this.iAnimState)
+                switch (this.animState)
                 {
                     case EPopUp:
                     {
-                        this.iAnim = HUDSettings.MSG_TICKS_STILL - 1;
-                        this.iAnimState = AnimState.EStill;
+                        this.anim = HUDSettings.MSG_TICKS_STILL - 1;
+                        this.animState = AnimState.EStill;
                         return false;
                     }
 
                     case EStill:
                     {
-                        this.iAnim = HUDSettings.MSG_TICKS_POP_DOWN - 1;
-                        this.iAnimState = AnimState.EPopDown;
+                        this.anim = HUDSettings.MSG_TICKS_POP_DOWN - 1;
+                        this.animState = AnimState.EPopDown;
                         return false;
                     }
 
@@ -82,15 +82,15 @@
         protected final void draw( int drawY )
         {
             //only draw if an avatar-animation is active
-            if (this.iAnim > -1 )
+            if (this.anim > -1 )
             {
                 //get frame's current alpha
                 float     alphaFg = 0;
-                switch (this.iAnimState)
+                switch (this.animState)
                 {
                     case EPopUp:
                     {
-                        alphaFg     = HUDSettings.MSG_OPACITY - HUDSettings.MSG_OPACITY * this.iAnim / HUDSettings.MSG_TICKS_POP_UP;
+                        alphaFg     = HUDSettings.MSG_OPACITY - HUDSettings.MSG_OPACITY * this.anim / HUDSettings.MSG_TICKS_POP_UP;
                         break;
                     }
                     case EStill:
@@ -100,19 +100,19 @@
                     }
                     case EPopDown:
                     {
-                        alphaFg     = HUDSettings.MSG_OPACITY * this.iAnim / HUDSettings.MSG_TICKS_POP_DOWN;
+                        alphaFg     = HUDSettings.MSG_OPACITY * this.anim / HUDSettings.MSG_TICKS_POP_DOWN;
                         break;
                     }
                 }
 
                 //draw text
-                int x = Shooter.game.engine.glView.width  - OffsetsOrtho.EBorderHudX - this.iTextImg.width;
-                Shooter.game.engine.glView.drawOrthoBitmapBytes(this.iTextImg, x, drawY, alphaFg );
+                int x = Shooter.game.engine.glView.width  - OffsetsOrtho.EBorderHudX - this.textImg.width;
+                Shooter.game.engine.glView.drawOrthoBitmapBytes(this.textImg, x, drawY, alphaFg );
             }
         }
 
         protected int getTexImgHeight()
         {
-            return this.iTextImg.height;
+            return this.textImg.height;
         }
     }

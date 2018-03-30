@@ -147,22 +147,22 @@
 
                 case EOffer:
                 {
-                    ret[ 0 ] -= (this.iParentKind.getArtefactImage().width  / PlayerSettings.GIVE_TAKE_ANIM_RATIO ) * (this.iTicksAnimGive - this.iGiveTakeAnim) / this.iTicksAnimGive;
-                    ret[ 1 ] += (this.iParentKind.getArtefactImage().height / PlayerSettings.GIVE_TAKE_ANIM_RATIO ) * (this.iTicksAnimGive - this.iGiveTakeAnim) / this.iTicksAnimGive;
+                    ret[ 0 ] -= (this.parentKind.getArtefactImage().width  / PlayerSettings.GIVE_TAKE_ANIM_RATIO ) * (this.iTicksAnimGive - this.iGiveTakeAnim) / this.iTicksAnimGive;
+                    ret[ 1 ] += (this.parentKind.getArtefactImage().height / PlayerSettings.GIVE_TAKE_ANIM_RATIO ) * (this.iTicksAnimGive - this.iGiveTakeAnim) / this.iTicksAnimGive;
                     break;
                 }
 
                 case EHold:
                 {
-                    ret[ 0 ] -= (this.iParentKind.getArtefactImage().width  / PlayerSettings.GIVE_TAKE_ANIM_RATIO ) * 1;
-                    ret[ 1 ] += (this.iParentKind.getArtefactImage().height / PlayerSettings.GIVE_TAKE_ANIM_RATIO ) * 1;
+                    ret[ 0 ] -= (this.parentKind.getArtefactImage().width  / PlayerSettings.GIVE_TAKE_ANIM_RATIO ) * 1;
+                    ret[ 1 ] += (this.parentKind.getArtefactImage().height / PlayerSettings.GIVE_TAKE_ANIM_RATIO ) * 1;
                     break;
                 }
 
                 case EDraw:
                 {
-                    ret[ 0 ] -= (this.iParentKind.getArtefactImage().width  / PlayerSettings.GIVE_TAKE_ANIM_RATIO ) * this.iGiveTakeAnim / this.iTicksAnimRecall;
-                    ret[ 1 ] += (this.iParentKind.getArtefactImage().height / PlayerSettings.GIVE_TAKE_ANIM_RATIO ) * this.iGiveTakeAnim / this.iTicksAnimRecall;
+                    ret[ 0 ] -= (this.parentKind.getArtefactImage().width  / PlayerSettings.GIVE_TAKE_ANIM_RATIO ) * this.iGiveTakeAnim / this.iTicksAnimRecall;
+                    ret[ 1 ] += (this.parentKind.getArtefactImage().height / PlayerSettings.GIVE_TAKE_ANIM_RATIO ) * this.iGiveTakeAnim / this.iTicksAnimRecall;
                     break;
                 }
             }

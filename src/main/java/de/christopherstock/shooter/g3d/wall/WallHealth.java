@@ -18,15 +18,15 @@
         EFurniture(         50  ),
         ;
 
-        private     int     iHealth     = 0;
+        private         int             health          = 0;
 
-        private WallHealth( int aHealth )
+        private WallHealth( int health )
         {
-            this.iHealth = aHealth;
+            this.health = health;
         }
 
         public int getHealth()
         {
-            return this.iHealth;
+            return this.health;
         }
     }

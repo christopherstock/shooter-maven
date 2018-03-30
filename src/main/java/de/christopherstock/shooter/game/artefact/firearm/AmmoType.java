@@ -31,35 +31,35 @@
         /** Pipebombs                           */  EPipeBombs(         LibHoleSize.E51mm,     10,      LibParticleQuantity.EMassive, 40,  FXSize.ELarge  ),
         ;
 
-        protected       LibHoleSize             iBulletHoleSize         = null;
-        protected       FXSize                  iSliverParticleSize     = null;
-        protected       int                     iMaxAmmo                = 0;
-        protected LibParticleQuantity iSliverParticleQuantity = null;
-        private LibGLTextureImage iHUDAmmoImage           = null;
-        private int                     iDamage                 = 0;
+        protected       LibHoleSize             bulletHoleSize          = null;
+        protected       FXSize                  sliverParticleSize      = null;
+        protected       int                     maxAmmo                 = 0;
+        protected       LibParticleQuantity     sliverParticleQuantity = null;
+        private         LibGLTextureImage       HUDAmmoImage            = null;
+        private         int                     damage                  = 0;
 
-        private AmmoType(LibHoleSize aBulletHoleSize, int aMaxAmmo, LibParticleQuantity aSliverParticleQuantity, int aDamage, FXSize aSliverParticleSize )
+        private AmmoType( LibHoleSize bulletHoleSize, int maxAmmo, LibParticleQuantity sliverParticleQuantity, int damage, FXSize sliverParticleSize )
         {
-            this.iBulletHoleSize = aBulletHoleSize;
-            this.iMaxAmmo = aMaxAmmo;
-            this.iSliverParticleQuantity = aSliverParticleQuantity;
-            this.iDamage = aDamage;
-            this.iSliverParticleSize = aSliverParticleSize;
+            this.bulletHoleSize         = bulletHoleSize;
+            this.maxAmmo                = maxAmmo;
+            this.sliverParticleQuantity = sliverParticleQuantity;
+            this.damage                 = damage;
+            this.sliverParticleSize     = sliverParticleSize;
         }
 
         protected final void loadImage()
         {
             BufferedImage bufferedImage = LibImage.load( ShooterSetting.Path.EShells.url + this.toString() + LibExtension.png.getSpecifier(), ShooterDebug.glImage, false );
-            this.iHUDAmmoImage = new LibGLTextureImage( bufferedImage, ImageUsage.EOrtho, ShooterDebug.glImage, true );
+            this.HUDAmmoImage = new LibGLTextureImage( bufferedImage, ImageUsage.EOrtho, ShooterDebug.glImage, true );
         }
 
         protected final LibGLTextureImage getImage()
         {
-            return this.iHUDAmmoImage;
+            return this.HUDAmmoImage;
         }
 
         protected final int getDamage()
         {
-            return this.iDamage;
+            return this.damage;
         }
     }

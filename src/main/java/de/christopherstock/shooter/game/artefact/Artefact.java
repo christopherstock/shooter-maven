@@ -20,43 +20,43 @@
     *******************************************************************************************************************/
     public class Artefact
     {
-        public              ArtefactType            iArtefactType                       = null;
+        public              ArtefactType            artefactType                        = null;
 
-        public              int                     iCurrentShotsWithoutKeyRelease      = 0;
-        public              long                    iCurrentDelayAfterUse               = 0;
-        private             boolean                 iDrawFireFXtick                     = false;
-        public              int                     iMagazineAmmo                       = 0;
+        public              int                     currentShotsWithoutKeyRelease       = 0;
+        public              long                    currentDelayAfterUse                = 0;
+        private             boolean                 drawFireFXtick                      = false;
+        public              int                     magazineAmmo                        = 0;
 
-        public Artefact( ArtefactType aArtefactType )
+        public Artefact( ArtefactType artefactType )
         {
-            this.iArtefactType = aArtefactType;
+            this.artefactType = artefactType;
         }
 
-        public final void fire(ShotSource ss, Point2D.Float shooterXY )
+        public final void fire( ShotSource ss, Point2D.Float shooterXY )
         {
             //check if delay after use is still active
-            if (this.iCurrentDelayAfterUse > System.currentTimeMillis() )
+            if (this.currentDelayAfterUse > System.currentTimeMillis() )
             {
                 //delay after wearpon use
             }
             //try to fire wearpon
-            else if (this.iArtefactType.iArtefactKind.use( this, ss, shooterXY ) )
+            else if (this.artefactType.artefactKind.use( this, ss, shooterXY ) )
             {
                 //draw fire fx
-                this.iDrawFireFXtick = true;
+                this.drawFireFXtick = true;
 
                 //set delay after this shot
-                this.iCurrentDelayAfterUse = System.currentTimeMillis() + this.iArtefactType.iDelayAfterUse;
+                this.currentDelayAfterUse = System.currentTimeMillis() + this.artefactType.delayAfterUse;
 
                 //increase number of shots since last key release
-                ++this.iCurrentShotsWithoutKeyRelease;
+                ++this.currentShotsWithoutKeyRelease;
             }
         }
 
-        public final void handleArtefact(ShotSource ss, boolean doFire, AmmoSet ammoSet )
+        public final void handleArtefact( ShotSource ss, boolean doFire, AmmoSet ammoSet )
         {
             //check artefact actions
-            if (this.iCurrentDelayAfterUse > System.currentTimeMillis() )
+            if (this.currentDelayAfterUse > System.currentTimeMillis() )
             {
                 //delay after artefact use
             }
@@ -70,7 +70,7 @@
                     Shooter.game.engine.mouse.holdButtonCenter = false;
 
                     //if the wearpon has ammo
-                    if (this.iArtefactType.isFireArm() )
+                    if (this.artefactType.isFireArm() )
                     {
                         this.reload( ammoSet, true, true, null );
                     }
@@ -83,9 +83,9 @@
             }
 
             //animate start / give anim
-            if (this.iArtefactType.iArtefactKind instanceof Gadget )
+            if (this.artefactType.artefactKind instanceof Gadget )
             {
-                ( (Gadget) this.iArtefactType.iArtefactKind ).handleGadget();
+                ( (Gadget) this.artefactType.artefactKind).handleGadget();
             }
         }
         public final void drawOrtho()
@@ -107,12 +107,12 @@
                     }
                     case EAnimationHide:
                     {
-                        modY -= this.iArtefactType.getArtefactImage().height - Shooter.game.engine.hud.getAnimationRightHand() * this.iArtefactType.getArtefactImage().height / ShooterSetting.Performance.TICKS_WEARPON_HIDE_SHOW;
+                        modY -= this.artefactType.getArtefactImage().height - Shooter.game.engine.hud.getAnimationRightHand() * this.artefactType.getArtefactImage().height / ShooterSetting.Performance.TICKS_WEARPON_HIDE_SHOW;
                         break;
                     }
                     case EAnimationShow:
                     {
-                        modY -= Shooter.game.engine.hud.getAnimationRightHand() * this.iArtefactType.getArtefactImage().height / ShooterSetting.Performance.TICKS_WEARPON_HIDE_SHOW;
+                        modY -= Shooter.game.engine.hud.getAnimationRightHand() * this.artefactType.getArtefactImage().height / ShooterSetting.Performance.TICKS_WEARPON_HIDE_SHOW;
                         break;
                     }
                 }
@@ -120,36 +120,36 @@
 
             //give/take animation?
             int[] modGiveTake = new int[] { 0, 0, };
-            if (this.iArtefactType.iArtefactKind instanceof Gadget )
+            if (this.artefactType.artefactKind instanceof Gadget )
             {
-                modGiveTake = ( (Gadget) this.iArtefactType.iArtefactKind ).getGiveTakeDrawMod();
+                modGiveTake = ( (Gadget) this.artefactType.artefactKind).getGiveTakeDrawMod();
             }
 
             //zoom animation?
             if ( p.iZoom != 0.0f )
             {
-                modX += this.iArtefactType.getArtefactImage().width  * 0.75f * p.iScaleFactor * 2;
-                modY -= this.iArtefactType.getArtefactImage().height * 0.5f  * p.iScaleFactor / 2;
+                modX += this.artefactType.getArtefactImage().width  * 0.75f * p.iScaleFactor * 2;
+                modY -= this.artefactType.getArtefactImage().height * 0.5f  * p.iScaleFactor / 2;
             }
 
             //draw fire fx behind artefact
-            if (this.iDrawFireFXtick && this.iArtefactType.iArtefactKind instanceof FireArm )
+            if (this.drawFireFXtick && this.artefactType.artefactKind instanceof FireArm )
             {
                 //no random translation!
                 int         randomX     = 0; //LibMath.getRandom( -5, 5 );
                 int         randomY     = 0; //LibMath.getRandom( -5, 5 );
 
                 //only draw if fx image could be read
-                if (this.iArtefactType.iFXImages.length > 1 )
+                if (this.artefactType.fXImages.length > 1 )
                 {
-                    int         randomIndex = LibMath.getRandom( 0, this.iArtefactType.iFXImages.length - 1 );
-                    LibGLTextureImage fxImage     = this.iArtefactType.iFXImages[ randomIndex ];
+                    int         randomIndex = LibMath.getRandom( 0, this.artefactType.fXImages.length - 1 );
+                    LibGLTextureImage fxImage     = this.artefactType.fXImages[ randomIndex ];
 
                     Shooter.game.engine.glView.drawOrthoBitmapBytes
                     (
                         fxImage,
-                        randomX + modX + modGiveTake[ 0 ] + Shooter.game.engine.glView.width - this.iArtefactType.iFXOffset.x,
-                        randomY + modY + modGiveTake[ 1 ] + this.iArtefactType.iFXOffset.y,
+                        randomX + modX + modGiveTake[ 0 ] + Shooter.game.engine.glView.width - this.artefactType.fXOffset.x,
+                        randomY + modY + modGiveTake[ 1 ] + this.artefactType.fXOffset.y,
                         1.0f,
                         1.0f + p.iScaleFactor * 1.5f,
                         1.0f + p.iScaleFactor * 1.5f,
@@ -157,7 +157,7 @@
                     );
                 }
 
-                this.iDrawFireFXtick = false;
+                this.drawFireFXtick = false;
             }
 
             //draw artefact
@@ -165,9 +165,9 @@
             {
                 Shooter.game.engine.glView.drawOrthoBitmapBytes
                 (
-                    this.iArtefactType.getArtefactImage(),
-                    modX + modGiveTake[ 0 ] + Shooter.game.engine.glView.width - this.iArtefactType.getArtefactImage().width,
-                    modY + modGiveTake[ 1 ] - this.iArtefactType.getArtefactImage().height / 8,
+                    this.artefactType.getArtefactImage(),
+                    modX + modGiveTake[ 0 ] + Shooter.game.engine.glView.width - this.artefactType.getArtefactImage().width,
+                    modY + modGiveTake[ 1 ] - this.artefactType.getArtefactImage().height / 8,
                     1.0f,
                     1.0f + p.iScaleFactor * 1.5f,
                     1.0f + p.iScaleFactor * 1.5f,
@@ -178,21 +178,21 @@
 
         public final String getCurrentAmmoStringMagazineAmmo()
         {
-            return String.valueOf(this.iMagazineAmmo);
+            return String.valueOf(this.magazineAmmo);
         }
 
         public final String getCurrentAmmoStringTotalAmmo( AmmoSet ammoSet )
         {
-            return String.valueOf( ammoSet.getAmmo( ( (FireArm) this.iArtefactType.iArtefactKind ).iAmmoType ) );
+            return String.valueOf( ammoSet.getAmmo( ( (FireArm) this.artefactType.artefactKind).ammoType) );
         }
 
         public void reload( AmmoSet ammoSet, boolean reloadAnimationRequired, boolean playSound, Point2D.Float reloaderXY )
         {
             //if ammo to reload is available
-            if ( ammoSet.getAmmo( ( (FireArm) this.iArtefactType.iArtefactKind ).iAmmoType ) > 0 )
+            if ( ammoSet.getAmmo( ( (FireArm) this.artefactType.artefactKind).ammoType) > 0 )
             {
                 //if the wearpon is not fully loaded
-                if ( ( (FireArm) this.iArtefactType.iArtefactKind ).iMagazineSize != this.iMagazineAmmo)
+                if ( ( (FireArm) this.artefactType.artefactKind).magazineSize != this.magazineAmmo)
                 {
                     //start HUD-animation 'hide' only if required
                     if ( reloadAnimationRequired )
@@ -211,20 +211,20 @@
 
         public final void performReload( AmmoSet ammoSet, boolean playSound, Point2D.Float reloaderXY, boolean freeAmmo )
         {
-            FireArm fireArm = ( (FireArm) this.iArtefactType.iArtefactKind );
+            FireArm fireArm = ( (FireArm) this.artefactType.artefactKind);
 
             //put unused ammo back onto the stack!
-            ammoSet.addAmmo( fireArm.iAmmoType, this.iMagazineAmmo);
+            ammoSet.addAmmo( fireArm.ammoType, this.magazineAmmo);
 
             //check ammo stock
-            int ammo = ammoSet.getAmmo( fireArm.iAmmoType );
-            int ammoToReload = ( ammo >= fireArm.iMagazineSize ? fireArm.iMagazineSize : ammo );
+            int ammo = ammoSet.getAmmo( fireArm.ammoType);
+            int ammoToReload = ( ammo >= fireArm.magazineSize ? fireArm.magazineSize : ammo );
 
-            if ( freeAmmo ) ammoToReload = fireArm.iMagazineSize;
+            if ( freeAmmo ) ammoToReload = fireArm.magazineSize;
 
             //load ammoToReload into the magazine and substract it from the ammo stock
-            this.iMagazineAmmo = ammoToReload;
-            ammoSet.substractAmmo( fireArm.iAmmoType, ammoToReload );
+            this.magazineAmmo = ammoToReload;
+            ammoSet.substractAmmo( fireArm.ammoType, ammoToReload );
 
             //play reload sound
             if ( playSound )
@@ -242,7 +242,7 @@
 
         public final ItemToPickUp getPickUpItem( LibVertex ank )
         {
-            if (this.iArtefactType.iPickUpItemKind == null ) return null;
-            return new ItemToPickUp(this.iArtefactType.iPickUpItemKind, this, ank.x, ank.y, ank.z, LibMath.getRandom( 0, 360 ), LibRotating.ENo );
+            if (this.artefactType.pickUpItemKind == null ) return null;
+            return new ItemToPickUp(this.artefactType.pickUpItemKind, this, ank.x, ank.y, ank.z, LibMath.getRandom( 0, 360 ), LibRotating.ENo );
         }
     }

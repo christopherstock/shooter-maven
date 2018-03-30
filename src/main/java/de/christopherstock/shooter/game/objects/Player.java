@@ -21,7 +21,6 @@
     import  de.christopherstock.shooter.game.artefact.firearm.*;
     import  de.christopherstock.shooter.game.artefact.gadget.Gadget;
     import  de.christopherstock.shooter.game.objects.PlayerView.*;
-    import  de.christopherstock.shooter.io.hid.*;
     import  de.christopherstock.shooter.io.sound.*;
     import  de.christopherstock.shooter.level.*;
     import  de.christopherstock.shooter.ui.hud.*;
@@ -198,7 +197,7 @@
                     if (this.iArtefactSet.getArtefactType().getCurrentShotNeedsKeyRelease() )
                     {
                         //force release after number of shots withput release is reached
-                        if (this.iArtefactSet.iCurrentArtefact.iCurrentShotsWithoutKeyRelease >= this.iArtefactSet.getArtefactType().iShotsTillKeyReleaseRequired )
+                        if (this.iArtefactSet.currentArtefact.currentShotsWithoutKeyRelease >= this.iArtefactSet.getArtefactType().shotsTillKeyReleaseRequired)
                         {
                             //key-release required before next shot will be launched :)
                             Shooter.game.engine.keys.keyHoldFireMustBeReleased = true;
@@ -209,7 +208,7 @@
             else
             {
                 //reset wearpon's shots withput key release
-                this.iArtefactSet.iCurrentArtefact.iCurrentShotsWithoutKeyRelease = 0;
+                this.iArtefactSet.currentArtefact.currentShotsWithoutKeyRelease = 0;
 
                 //reset
                 Shooter.game.engine.keys.keyHoldFireMustBeReleased = false;
@@ -336,7 +335,7 @@
 */
         public final LibShot getShot( float modHorzCC )
         {
-            boolean isFirearm = (this.iArtefactSet.getArtefactType().iArtefactKind instanceof FireArm );
+            boolean isFirearm = (this.iArtefactSet.getArtefactType().artefactKind instanceof FireArm );
             return
             (
                     isFirearm
@@ -344,22 +343,22 @@
                     (
                         ShotType.ESharpAmmo,
                         LibShot.ShotOrigin.EPlayer,
-                        ( (FireArm)(this.iArtefactSet.getArtefactType().iArtefactKind ) ).getCurrentIrregularityHorz(),
-                        ( (FireArm)(this.iArtefactSet.getArtefactType().iArtefactKind ) ).getCurrentIrregularityVert(),
+                        ( (FireArm)(this.iArtefactSet.getArtefactType().artefactKind) ).getCurrentIrregularityHorz(),
+                        ( (FireArm)(this.iArtefactSet.getArtefactType().artefactKind) ).getCurrentIrregularityVert(),
                             this.iCylinder.getAnchor().x    + ( LibMath.sinDeg(this.iView.iRot.z + 90.0f ) * this.iView.iHandTransX ) - ( LibMath.sinDeg(this.iView.iRot.z ) * this.iView.iHandTransY ),
                             this.iCylinder.getAnchor().y    + ( LibMath.cosDeg(this.iView.iRot.z + 90.0f ) * this.iView.iHandTransX ) - ( LibMath.cosDeg(this.iView.iRot.z ) * this.iView.iHandTransY ),
                             this.iCylinder.getAnchor().z + this.iView.iDepthHand,
                             this.iView.iRot.z,
                             this.iView.iRot.x,
                             this.iArtefactSet.getArtefactType().getShotRange(),
-                            this.iArtefactSet.getArtefactType().iArtefactKind.getBulletHoleSize(),
+                            this.iArtefactSet.getArtefactType().artefactKind.getBulletHoleSize(),
                         ShooterDebug.shotAndHit,
-                            this.iArtefactSet.getArtefactType().iArtefactKind.getSliverParticleQuantity(),
+                            this.iArtefactSet.getArtefactType().artefactKind.getSliverParticleQuantity(),
                         FxSettings.SLIVER_ANGLE_MOD,
                             this.iArtefactSet.getArtefactType().getDamage(),
-                            this.iArtefactSet.getArtefactType().iArtefactKind.getSliverParticleSize(),
+                            this.iArtefactSet.getArtefactType().artefactKind.getSliverParticleSize(),
                             this.iArtefactSet.getArtefactType().getBreaksWalls(),
-                        ( (FireArm) this.iArtefactSet.getArtefactType().iArtefactKind ).getProjectile(),
+                        ( (FireArm) this.iArtefactSet.getArtefactType().artefactKind).getProjectile(),
                         General.FADE_OUT_FACES_TOTAL_TICKS
                     )
                 :   new LibShot
@@ -374,12 +373,12 @@
                             this.iView.iRot.z,
                             this.iView.iRot.x,
                             this.iArtefactSet.getArtefactType().getShotRange(),
-                            this.iArtefactSet.getArtefactType().iArtefactKind.getBulletHoleSize(),
+                            this.iArtefactSet.getArtefactType().artefactKind.getBulletHoleSize(),
                         ShooterDebug.shotAndHit,
-                            this.iArtefactSet.getArtefactType().iArtefactKind.getSliverParticleQuantity(),
+                            this.iArtefactSet.getArtefactType().artefactKind.getSliverParticleQuantity(),
                         FxSettings.SLIVER_ANGLE_MOD,
                             this.iArtefactSet.getArtefactType().getDamage(),
-                            this.iArtefactSet.getArtefactType().iArtefactKind.getSliverParticleSize(),
+                            this.iArtefactSet.getArtefactType().artefactKind.getSliverParticleSize(),
                             this.iArtefactSet.getArtefactType().getBreaksWalls(),
                         null,
                         General.FADE_OUT_FACES_TOTAL_TICKS
@@ -407,8 +406,8 @@
                     !Shooter.game.engine.hud.animationActive()
                 &&
                     (
-                            !(this.iArtefactSet.iCurrentArtefact.iArtefactType.iArtefactKind instanceof Gadget )
-                        ||  ( (Gadget) this.iArtefactSet.iCurrentArtefact.iArtefactType.iArtefactKind ).iGiveTakeAnimState == GiveTakeAnim.ENone
+                            !(this.iArtefactSet.currentArtefact.artefactType.artefactKind instanceof Gadget )
+                        ||  ( (Gadget) this.iArtefactSet.currentArtefact.artefactType.artefactKind).iGiveTakeAnimState == GiveTakeAnim.ENone
                     )
             )
             {
@@ -475,7 +474,7 @@
             ShooterDebug.playerAction.out( "launchAction()" );
 
             //some artefacts are not applied on the level
-            if ( gadget != null && gadget.iParentKind == ArtefactType.EAdrenaline )
+            if ( gadget != null && gadget.parentKind == ArtefactType.EAdrenaline )
             {
                 Level.currentSection().startAdrenaline();
             }
@@ -490,7 +489,7 @@
                 }
                 else
                 {
-                    actionCylinder.setRadius( gadget.iParentKind.getShotRange() );
+                    actionCylinder.setRadius( gadget.parentKind.getShotRange() );
                 }
 
                 //launch the action on the level
@@ -663,9 +662,9 @@
             //handle artefact ( fire, reload, give ) if no HUD anim is running
             if ( !Shooter.game.engine.hud.animationActive() )
             {
-                if (this.iArtefactSet.iCurrentArtefact != null )
+                if (this.iArtefactSet.currentArtefact != null )
                 {
-                    this.iArtefactSet.iCurrentArtefact.handleArtefact( this, this.iLaunchShot, this.iAmmoSet);
+                    this.iArtefactSet.currentArtefact.handleArtefact( this, this.iLaunchShot, this.iAmmoSet);
                 }
             }
         }

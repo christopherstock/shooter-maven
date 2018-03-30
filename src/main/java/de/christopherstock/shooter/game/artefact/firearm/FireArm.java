@@ -6,7 +6,7 @@
     import  de.christopherstock.lib.fx.LibFX.*;
     import  de.christopherstock.lib.g3d.*;
     import  de.christopherstock.lib.game.*;
-    import de.christopherstock.lib.game.LibShot.ShotSource;
+    import  de.christopherstock.lib.game.LibShot.ShotSource;
     import  de.christopherstock.lib.gl.*;
     import  de.christopherstock.lib.io.d3ds.*;
     import  de.christopherstock.lib.math.*;
@@ -20,74 +20,74 @@
     *******************************************************************************************************************/
     public final class FireArm extends ArtefactKind
     {
-        private SoundFg             iSoundFire                      = null;
-        private                     SoundFg             iSoundReload                    = null;
-        private                     SoundFg             iSoundBulletShell               = null;
-        public                      AmmoType            iAmmoType                       = null;
-        private                     int                 iWearponIrregularityVert        = 0;
-        private                     int                 iWearponIrregularityHorz        = 0;
-        private                     int                 iShotCount                      = 0;
-        private                     int                 iShotCountRandomMod             = 0;
-        public                      int                 iMagazineSize                   = 0;
+        private                     SoundFg             soundFire               = null;
+        private                     SoundFg             soundReload             = null;
+        private                     SoundFg             soundBulletShell        = null;
+        public                      AmmoType            ammoType                = null;
+        private                     int                 wearponIrregularityVert = 0;
+        private                     int                 wearponIrregularityHorz = 0;
+        private                     int                 shotCount               = 0;
+        private                     int                 shotCountRandomMod      = 0;
+        public                      int                 magazineSize            = 0;
 
-        private LibD3dsFile         iProjectile                     = null;
+        private                     LibD3dsFile         projectile              = null;
         
-        public FireArm( AmmoType aAmmoType, int aMagazineSize, int aWearponIrregularityDepth, int aWearponIrregularityAngle, int aShotCount, int aShotCountRandomMod, SoundFg aUseSound, SoundFg aReloadSound, SoundFg aBulletShellSound, LibD3dsFile aProjectile )
+        public FireArm( AmmoType ammoType, int magazineSize, int wearponIrregularityDepth, int wearponIrregularityAngle, int shotCount, int shotCountRandomMod, SoundFg useSound, SoundFg reloadSound, SoundFg bulletShellSound, LibD3dsFile projectile )
         {
-            this.iMagazineSize = aMagazineSize;
-            this.iAmmoType = aAmmoType;
-            this.iWearponIrregularityVert = aWearponIrregularityDepth;
-            this.iWearponIrregularityHorz = aWearponIrregularityAngle;
-            this.iShotCount = aShotCount;
-            this.iShotCountRandomMod = aShotCountRandomMod;
-            this.iSoundFire = aUseSound;
-            this.iSoundReload = aReloadSound;
-            this.iSoundBulletShell = aBulletShellSound;
-            this.iProjectile = aProjectile;
+            this.magazineSize = magazineSize;
+            this.ammoType = ammoType;
+            this.wearponIrregularityVert = wearponIrregularityDepth;
+            this.wearponIrregularityHorz = wearponIrregularityAngle;
+            this.shotCount = shotCount;
+            this.shotCountRandomMod = shotCountRandomMod;
+            this.soundFire = useSound;
+            this.soundReload = reloadSound;
+            this.soundBulletShell = bulletShellSound;
+            this.projectile = projectile;
         }
 
         @Override
         public int getDamage()
         {
-            return this.iAmmoType.getDamage();
+            return this.ammoType.getDamage();
         }
 
         @Override
-        public boolean use(Artefact a, ShotSource ss, Point2D.Float shooterXY )
+        public boolean use( Artefact a, ShotSource ss, Point2D.Float shooterXY )
         {
             //ShooterDebug.bugfix.out( "Fire FireArm .." );
 
             //only fire if magazine is not empty
-            if ( a.iMagazineAmmo > 0 )
+            if ( a.magazineAmmo > 0 )
             {
                 //ShooterDebug.bugfix.out( "No ammo!" );
 
                 //reduce magazine-ammo by 1
-                a.iMagazineAmmo -= 1;
+                a.magazineAmmo -= 1;
 
                 //launch shot-sound-fx
-                if (this.iSoundFire != null )
+                if (this.soundFire != null )
                 {
                     if ( shooterXY == null )
                     {
-                        this.iSoundFire.playGlobalFx();
+                        this.soundFire.playGlobalFx();
                     }
                     else
                     {
-                        this.iSoundFire.playDistancedFx( shooterXY );
+                        this.soundFire.playDistancedFx( shooterXY );
                     }
                 }
 
                 //launch bullet shell sound-fx
-                if (this.iSoundBulletShell != null )
+                if (this.soundBulletShell != null )
                 {
                     if ( shooterXY == null )
                     {
-                        this.iSoundBulletShell.playGlobalFx( 8 );
+                        this.soundBulletShell.playGlobalFx( 8 );
                     }
                     else
                     {
-                        this.iSoundBulletShell.playDistancedFx( shooterXY, 8 );
+                        this.soundBulletShell.playDistancedFx( shooterXY, 8 );
                     }
                 }
 
@@ -113,51 +113,51 @@
 
         private int getCurrentShotCount()
         {
-            return this.iShotCount + LibMath.getRandom( -this.iShotCountRandomMod, this.iShotCountRandomMod);
+            return this.shotCount + LibMath.getRandom( -this.shotCountRandomMod, this.shotCountRandomMod);
         }
 
         public final float getCurrentIrregularityVert()
         {
             //return modifier-z for the current wearpon
-            return ( LibMath.getRandom( -this.iWearponIrregularityVert, this.iWearponIrregularityVert) * 0.01f );
+            return ( LibMath.getRandom( -this.wearponIrregularityVert, this.wearponIrregularityVert) * 0.01f );
         }
 
         public final float getCurrentIrregularityHorz()
         {
             //return modifier-z for the current wearpon
-            return ( LibMath.getRandom( -this.iWearponIrregularityHorz, this.iWearponIrregularityHorz) * 0.01f );
+            return ( LibMath.getRandom( -this.wearponIrregularityHorz, this.wearponIrregularityHorz) * 0.01f );
         }
 
         public final LibGLTextureImage getAmmoTypeImage()
         {
-            return this.iAmmoType.getImage();
+            return this.ammoType.getImage();
         }
 
         @Override
         public final LibParticleQuantity getSliverParticleQuantity()
         {
-            return this.iAmmoType.iSliverParticleQuantity;
+            return this.ammoType.sliverParticleQuantity;
         }
 
         @Override
         public final FXSize getSliverParticleSize()
         {
-            return this.iAmmoType.iSliverParticleSize;
+            return this.ammoType.sliverParticleSize;
         }
 
         @Override
         public final LibHoleSize getBulletHoleSize()
         {
-            return this.iAmmoType.iBulletHoleSize;
+            return this.ammoType.bulletHoleSize;
         }
 
         public final SoundFg getReloadSound()
         {
-            return this.iSoundReload;
+            return this.soundReload;
         }
         
         public final LibD3dsFile getProjectile()
         {
-            return this.iProjectile;
+            return this.projectile;
         }
     }

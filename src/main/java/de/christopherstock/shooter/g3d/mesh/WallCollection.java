@@ -45,12 +45,12 @@
 
                     //translate and rotate anchor by room offset and set as new anchor
                     newWallAnk.translate( anchorWallAnk );
-                    newWallAnk.rotateXYZ( 0.0f, 0.0f, anchorWall.iStartupRotZ, anchorWall.getAnchor() );
+                    newWallAnk.rotateXYZ( 0.0f, 0.0f, anchorWall.startupRotZ, anchorWall.getAnchor() );
 
                     //set anchor and perform translation on originals
                     wall.setNewAnchor( newWallAnk, true, LibTransformationMode.EOriginalsToOriginals );
 
-                    wall.iStartupRotZ = wall.iStartupRotZ + anchorWall.iStartupRotZ;
+                    wall.startupRotZ = wall.startupRotZ + anchorWall.startupRotZ;
 
                     //turn wall by new anchor for room rotation
                     wall.translateAndRotateXYZ
@@ -60,7 +60,7 @@
                         0.0f,
                         0.0f,
                         0.0f,
-                        anchorWall.iStartupRotZ,
+                        anchorWall.startupRotZ,
                         newWallAnk,
                         LibTransformationMode.EOriginalsToOriginals
                     );

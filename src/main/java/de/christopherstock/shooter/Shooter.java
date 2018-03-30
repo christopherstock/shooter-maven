@@ -7,13 +7,13 @@
     *   The main class.
     *
     *   TODO    Improve output for preloader / startup phase.
-    *   TODO    Delete all 'a' and 'i' prefixes from variables. ( start at Door )
+    *   TODO    Delete all 'a' and 'i' prefixes from variables. ( start at Gadget )
     *
     *   TODO    Add skybox!
     *   TODO    Different heights for particle effects.
     *   TODO    Mayflower branding and textures ( posters etc. ).
     *
-    *   TODO    only for FireArms! Move ArtefactType.iFXImages to Firearms (Wearpons)!
+    *   TODO    only for FireArms! Move ArtefactType.fXImages to Firearms (Wearpons)!
     *   TODO    Optimize fields in ArtefactType!
     *   TODO    Outsource iconImage and UI-matters from ShooterEngine.
     *   TODO    Remove ALL static fields!
@@ -29,7 +29,7 @@
     *   TODO    Refactor the Artefact-System.
     *   TODO    Simple switch for lighting?
     *   TODO    Prefix 'Shooter' only for main and base classes!
-    *   TODO    WearponKind.java - remove iParentKind ?
+    *   TODO    WearponKind.java - remove parentKind ?
     *   TODO    enum GiveTakeAnim to Gadget?
     *   TODO    Own class for FireFxOffset ?? (use Point2D or Distance-class?)
     *   TODO    suitable door textures
@@ -43,7 +43,7 @@
     *   TODO    bsp engine / algo
     *   TODO    Stop sounds when the game is quit!
     *   TODO    create cool story level data
-    *   TODO    create double-handed bots or artefacts? - 2 x iCurrentArtefact?
+    *   TODO    create double-handed bots or artefacts? - 2 x currentArtefact?
     *******************************************************************************************************************/
     public class Shooter
     {

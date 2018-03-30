@@ -13,7 +13,6 @@
     import  de.christopherstock.lib.ui.*;
     import  de.christopherstock.shooter.*;
     import  de.christopherstock.shooter.ShooterSetting.ItemSettings;
-    import  de.christopherstock.shooter.base.*;
     import  de.christopherstock.shooter.g3d.mesh.*;
     import  de.christopherstock.shooter.game.artefact.Artefact;
     import  de.christopherstock.shooter.game.artefact.firearm.*;
@@ -166,15 +165,15 @@
                         if ( assignAmmoToNewArtefact )
                         {
                             //give ammo to new artefact
-                            //ShooterDebug.major.out( "firearm has ammo " + iArtefact.iMagazineAmmo );
+                            //ShooterDebug.major.out( "firearm has ammo " + iArtefact.magazineAmmo );
                             Shooter.game.engine.player.iArtefactSet.assignMagazine(this.iArtefact);
                         }
                         else
                         {
-                            if (this.iArtefact.iArtefactType.iArtefactKind instanceof FireArm )
+                            if (this.iArtefact.artefactType.artefactKind instanceof FireArm )
                             {
                                 //give ammo from magazine to stack
-                                Shooter.game.engine.player.iAmmoSet.addAmmo( ( (FireArm) this.iArtefact.iArtefactType.iArtefactKind ).iAmmoType, this.iArtefact.iMagazineAmmo );
+                                Shooter.game.engine.player.iAmmoSet.addAmmo( ( (FireArm) this.iArtefact.artefactType.artefactKind).ammoType, this.iArtefact.magazineAmmo);
                             }
                         }
                     }

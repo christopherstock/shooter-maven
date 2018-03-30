@@ -2,16 +2,15 @@
     package de.christopherstock.shooter.g3d.wall;
 
     import  java.util.IllegalFormatCodePointException;
-
-    import de.christopherstock.lib.LibInvert;
-    import de.christopherstock.lib.LibTransformationMode;
-    import de.christopherstock.lib.LibScalation;
+    import  de.christopherstock.lib.LibInvert;
+    import  de.christopherstock.lib.LibTransformationMode;
+    import  de.christopherstock.lib.LibScalation;
     import  de.christopherstock.lib.g3d.*;
     import  de.christopherstock.lib.g3d.face.LibFace.*;
     import  de.christopherstock.lib.gl.*;
     import  de.christopherstock.lib.io.d3ds.LibD3dsFile;
     import  de.christopherstock.lib.math.LibMath;
-    import de.christopherstock.shooter.Shooter;
+    import  de.christopherstock.shooter.Shooter;
     import  de.christopherstock.shooter.ShooterDebug;
     import  de.christopherstock.shooter.ShooterSetting.DoorSettings;
     import  de.christopherstock.shooter.g3d.*;
@@ -26,60 +25,60 @@
     *******************************************************************************************************************/
     public class Door extends Wall
     {
-        private                     boolean             iDoorOpening                        = false;
-        private                     boolean             iDoorLocked                         = false;
-        private                     ArtefactType        iDoorKey                            = null;
-        private                     int                 iDoorAnimation                      = 0;
+        private                     boolean             doorOpening                         = false;
+        private                     boolean             doorLocked                          = false;
+        private                     ArtefactType        doorKey                             = null;
+        private                     int                 doorAnimation                       = 0;
 
-        private                     int                 iDoorUnlockedCountdown              = 0;
-        private                     int                 iDoorLockedCountdown                = 0;
-        private                     int                 iAutoLockDelay                      = 0;
+        private                     int                 doorUnlockedCountdown               = 0;
+        private                     int                 doorLockedCountdown                 = 0;
+        private                     int                 autoLockDelay                       = 0;
 
-        private                     Door                iWallElevator                       = null;
-        private                     Door                iWallElevatorDoorOne                = null;
-        private                     Door                iWallElevatorDoorTwo             = null;
-        private                     Wall                iWallElevatorCeiling                = null;
+        private                     Door                wallElevator                        = null;
+        private                     Door                wallElevatorDoorOne                 = null;
+        private                     Door                wallElevatorDoorTwo                 = null;
+        private                     Wall                wallElevatorCeiling                 = null;
 
-        private                     Door                iWallSluiceDoor                     = null;
-        private                     Door                iWallSluiceFloor                    = null;
-        private                     int                 iDoorTargetSectionOnClosed          = 0;
+        private                     Door                wallSluiceDoor                      = null;
+        private                     Door                wallSluiceFloor                     = null;
+        private                     int                 doorTargetSectionOnClosed           = 0;
 
-        private                     boolean             iAutoLock                           = false;
+        private                     boolean             autoLock                            = false;
 
         private                     boolean             toggleDoorTopNextTick               = false;
         private                     boolean             toggleDoorBottomNextTick            = false;
 
-        public Door( LibD3dsFile file, float x, float y, float z, float rotZ, WallCollidable aCollidable, WallAction doorAction, WallClimbable aClimbable, LibTexture tex, WallHealth wallHealth, ArtefactType aDoorKey, boolean aAutoLock, int aAutoLockDelay )
+        public Door( LibD3dsFile file, float x, float y, float z, float rotZ, WallCollidable collidable, WallAction doorAction, WallClimbable climbable, LibTexture tex, WallHealth wallHealth, ArtefactType doorKey, boolean autoLock, int autoLockDelay )
         {
-            super( file, new LibVertex( x, y, z ), rotZ, LibScalation.ENone, LibInvert.ENo, aCollidable, doorAction, aClimbable, DrawMethod.EAlwaysDraw, tex, null, 0, wallHealth, null, null );
+            super( file, new LibVertex( x, y, z ), rotZ, LibScalation.ENone, LibInvert.ENo, collidable, doorAction, climbable, DrawMethod.EAlwaysDraw, tex, null, 0, wallHealth, null, null );
 
-            this.iDoorKey = aDoorKey;
-            this.iAutoLock = aAutoLock;
-            this.iAutoLockDelay = aAutoLockDelay;
-            if (this.iDoorKey != null )
+            this.doorKey = doorKey;
+            this.autoLock = autoLock;
+            this.autoLockDelay = autoLockDelay;
+            if (this.doorKey != null )
             {
-                this.iDoorLocked = true;
+                this.doorLocked = true;
             }
         }
 
         public void setConnectedElevator( Door connectedElevator, int targetSectionToShowOnClosed )
         {
-            this.iWallElevator = connectedElevator;
-            this.iDoorTargetSectionOnClosed = targetSectionToShowOnClosed;
+            this.wallElevator = connectedElevator;
+            this.doorTargetSectionOnClosed = targetSectionToShowOnClosed;
         }
 
         public void setConnectedSluiceDoor( int targetSectionToShowOnClosed, Door connectedSluiceDoor, Door connectedSluiceFloor )
         {
-            this.iWallSluiceDoor = connectedSluiceDoor;
-            this.iWallSluiceFloor = connectedSluiceFloor;
-            this.iDoorTargetSectionOnClosed = targetSectionToShowOnClosed;
+            this.wallSluiceDoor = connectedSluiceDoor;
+            this.wallSluiceFloor = connectedSluiceFloor;
+            this.doorTargetSectionOnClosed = targetSectionToShowOnClosed;
         }
 
         public final void setElevatorDoors( Door wallDoorTop, Door wallDoorBottom, Wall wallCeiling )
         {
-            this.iWallElevatorDoorOne = wallDoorTop;
-            this.iWallElevatorDoorTwo = wallDoorBottom;
-            this.iWallElevatorCeiling = wallCeiling;
+            this.wallElevatorDoorOne = wallDoorTop;
+            this.wallElevatorDoorTwo = wallDoorBottom;
+            this.wallElevatorCeiling = wallCeiling;
         }
 
         protected void animateDoor()
@@ -89,15 +88,15 @@
                 this.toggleDoorTopNextTick = false;
 
                 //toggle connected door if any
-                if (this.iWallElevatorDoorTwo != null )
+                if (this.wallElevatorDoorTwo != null )
                 {
-                    if (this.iWallAction == WallAction.EElevatorUp )
+                    if (this.wallAction == WallAction.EElevatorUp )
                     {
-                        this.iWallElevatorDoorOne.toggleWallOpenClose( null );
+                        this.wallElevatorDoorOne.toggleWallOpenClose( null );
                     }
                     else
                     {
-                        this.iWallElevatorDoorTwo.toggleWallOpenClose( null );
+                        this.wallElevatorDoorTwo.toggleWallOpenClose( null );
                     }
                 }
             }
@@ -106,30 +105,30 @@
             {
                 this.toggleDoorBottomNextTick = false;
 
-                if (this.iWallElevatorDoorTwo != null )
+                if (this.wallElevatorDoorTwo != null )
                 {
-                    if (this.iWallAction == WallAction.EElevatorUp )
+                    if (this.wallAction == WallAction.EElevatorUp )
                     {
-                        this.iWallElevatorDoorTwo.toggleWallOpenClose( null );
+                        this.wallElevatorDoorTwo.toggleWallOpenClose( null );
                     }
                     else
                     {
-                        this.iWallElevatorDoorOne.toggleWallOpenClose( null );
+                        this.wallElevatorDoorOne.toggleWallOpenClose( null );
                     }
                 }
             }
 
             //check if the door is being opened or being closed
-            if (this.iDoorOpening)
+            if (this.doorOpening)
             {
                 //open the door
-                if (this.iDoorAnimation < DoorSettings.DOOR_TICKS_OPEN_CLOSE )
+                if (this.doorAnimation < DoorSettings.DOOR_TICKS_OPEN_CLOSE )
                 {
                     //increase animation counter
-                    ++this.iDoorAnimation;
+                    ++this.doorAnimation;
 
                     //translate mesh
-                    switch (this.iWallAction)
+                    switch (this.wallAction)
                     {
                         case ENone:
                         case ESprite:
@@ -178,16 +177,16 @@
                         {
                             //rotate mesh
                             float angle  = DoorSettings.DOOR_ANGLE_OPEN / DoorSettings.DOOR_TICKS_OPEN_CLOSE;
-                            float rotX   = LibMath.cosDeg(this.iStartupRotZ - 90.0f ) * angle;
-                            float rotY   = LibMath.sinDeg(this.iStartupRotZ - 90.0f ) * angle;
+                            float rotX   = LibMath.cosDeg(this.startupRotZ - 90.0f ) * angle;
+                            float rotY   = LibMath.sinDeg(this.startupRotZ - 90.0f ) * angle;
 
                             this.translateAndRotateXYZ
                             (
                                 0.0f,
                                 0.0f,
                                 0.0f,
-                                rotX * this.iDoorAnimation,
-                                rotY * this.iDoorAnimation,
+                                rotX * this.doorAnimation,
+                                rotY * this.doorAnimation,
                                 0.0f,
                                     this.getAnchor(),
                                 LibTransformationMode.EOriginalsToTransformed
@@ -200,14 +199,14 @@
                     }
 
                     //check if door is open now
-                    if (this.iDoorAnimation == DoorSettings.DOOR_TICKS_OPEN_CLOSE )
+                    if (this.doorAnimation == DoorSettings.DOOR_TICKS_OPEN_CLOSE )
                     {
                         this.toggleDoorTopNextTick = true;
 
                         //lock the door automatically after countdown
-                        if (this.iAutoLock)
+                        if (this.autoLock)
                         {
-                            this.iDoorLockedCountdown = this.iAutoLockDelay;
+                            this.doorLockedCountdown = this.autoLockDelay;
                         }
                     }
                 }
@@ -215,16 +214,16 @@
             else
             {
                 //close the door
-                if (this.iDoorAnimation > 0 )
+                if (this.doorAnimation > 0 )
                 {
                     //decrease animation counter
-                    --this.iDoorAnimation;
+                    --this.doorAnimation;
 
                     //disable auto lock
-                    this.iDoorLockedCountdown = -1;
+                    this.doorLockedCountdown = -1;
 
                     //translate mesh
-                    switch (this.iWallAction)
+                    switch (this.wallAction)
                     {
                         case ENone:
                         case ESprite:
@@ -273,16 +272,16 @@
                         {
                             //rotate mesh
                             float angle  = DoorSettings.DOOR_ANGLE_OPEN / DoorSettings.DOOR_TICKS_OPEN_CLOSE;
-                            float rotX   = LibMath.cosDeg(this.iStartupRotZ - 90.0f ) * angle;
-                            float rotY   = LibMath.sinDeg(this.iStartupRotZ - 90.0f ) * angle;
+                            float rotX   = LibMath.cosDeg(this.startupRotZ - 90.0f ) * angle;
+                            float rotY   = LibMath.sinDeg(this.startupRotZ - 90.0f ) * angle;
 
                             this.translateAndRotateXYZ
                             (
                                 0.0f,
                                 0.0f,
                                 0.0f,
-                                rotX * this.iDoorAnimation,
-                                rotY * this.iDoorAnimation,
+                                rotX * this.doorAnimation,
+                                rotY * this.doorAnimation,
                                 0.0f,
                                     this.getAnchor(),
                                 LibTransformationMode.EOriginalsToTransformed
@@ -295,35 +294,35 @@
                     }
 
                     //check if door is closed now
-                    if (this.iDoorAnimation == 0 )
+                    if (this.doorAnimation == 0 )
                     {
                         //toggle connected elevator if any
-                        if (this.iWallElevator != null )
+                        if (this.wallElevator != null )
                         {
                             //only if player stands on the elevator
-                          //if ( iWallElevator.checkAction( ShooterGameLevel.currentPlayer().getCylinder(), true, true ) )
-                            if (this.iWallElevator.checkCollisionVert( Shooter.game.engine.player.getCylinder(), null ).size() > 0 )
+                          //if ( wallElevator.checkAction( ShooterGameLevel.currentPlayer().getCylinder(), true, true ) )
+                            if (this.wallElevator.checkCollisionVert( Shooter.game.engine.player.getCylinder(), null ).size() > 0 )
                             {
                                 //open connected elevator door
-                                this.iWallElevator.toggleWallOpenClose( null );
+                                this.wallElevator.toggleWallOpenClose( null );
 
                                 //change to desired section
-                                LevelChange.orderLevelChange( LevelCurrent.currentLevelMain, this.iDoorTargetSectionOnClosed, false );
+                                LevelChange.orderLevelChange( LevelCurrent.currentLevelMain, this.doorTargetSectionOnClosed, false );
                             }
                         }
 
                         //open connected sluice wall if any
-                        if (this.iWallSluiceDoor != null )
+                        if (this.wallSluiceDoor != null )
                         {
                             //only if player stands on the sluice floor
-                          //if ( iWallSluiceFloor.checkAction( ShooterGameLevel.currentPlayer().getCylinder(), true, true ) )
-                            if (this.iWallSluiceFloor.checkCollisionVert( Shooter.game.engine.player.getCylinder(), null ).size() > 0 )
+                          //if ( wallSluiceFloor.checkAction( ShooterGameLevel.currentPlayer().getCylinder(), true, true ) )
+                            if (this.wallSluiceFloor.checkCollisionVert( Shooter.game.engine.player.getCylinder(), null ).size() > 0 )
                             {
                                 //open connected sluice door
-                                this.iWallSluiceDoor.toggleWallOpenClose( null );
+                                this.wallSluiceDoor.toggleWallOpenClose( null );
 
                                 //change to desired section
-                                LevelChange.orderLevelChange( LevelCurrent.currentLevelMain, this.iDoorTargetSectionOnClosed, false );
+                                LevelChange.orderLevelChange( LevelCurrent.currentLevelMain, this.doorTargetSectionOnClosed, false );
                             }
                         }
 
@@ -334,29 +333,29 @@
             }
 
             //countdown door unlocking
-            if (this.iDoorUnlockedCountdown > 0 )
+            if (this.doorUnlockedCountdown > 0 )
             {
-                if ( --this.iDoorUnlockedCountdown == 0 )
+                if ( --this.doorUnlockedCountdown == 0 )
                 {
                     ShooterDebug.playerAction.out( "unlock the door!" );
 
                     //unlock and open the door
-                    this.iDoorLocked = false;
-                    this.iDoorOpening = true;
+                    this.doorLocked = false;
+                    this.doorOpening = true;
 
                     this.makeDistancedSound( SoundFg.EDoorOpen1 );
                 }
             }
 
             //countdown door locking
-            if (this.iDoorLockedCountdown > 0 )
+            if (this.doorLockedCountdown > 0 )
             {
-                if ( --this.iDoorLockedCountdown == 0 )
+                if ( --this.doorLockedCountdown == 0 )
                 {
                     ShooterDebug.playerAction.out( "lock the door!" );
 
                     //lock the door
-                    this.iDoorOpening = false;
+                    this.doorOpening = false;
 
                     this.makeDistancedSound( SoundFg.EDoorClose1 );
                 }
@@ -365,29 +364,29 @@
 
         private void slideAsDoor(boolean open, boolean left)
         {
-            float transX = LibMath.cosDeg(this.iStartupRotZ - 90.0f ) * ( DoorSettings.DOOR_SLIDING_TRANSLATION_OPEN / DoorSettings.DOOR_TICKS_OPEN_CLOSE );
-            float transY = LibMath.sinDeg(this.iStartupRotZ - 90.0f ) * ( DoorSettings.DOOR_SLIDING_TRANSLATION_OPEN / DoorSettings.DOOR_TICKS_OPEN_CLOSE );
+            float transX = LibMath.cosDeg(this.startupRotZ - 90.0f ) * ( DoorSettings.DOOR_SLIDING_TRANSLATION_OPEN / DoorSettings.DOOR_TICKS_OPEN_CLOSE );
+            float transY = LibMath.sinDeg(this.startupRotZ - 90.0f ) * ( DoorSettings.DOOR_SLIDING_TRANSLATION_OPEN / DoorSettings.DOOR_TICKS_OPEN_CLOSE );
 
             //translate mesh
             this.translate
             (
-                0.0f + transX * this.iDoorAnimation * ( left ? -1.0f : +1.0f ),
-                0.0f + transY * this.iDoorAnimation * ( left ? -1.0f : +1.0f ),
+                0.0f + transX * this.doorAnimation * ( left ? -1.0f : +1.0f ),
+                0.0f + transY * this.doorAnimation * ( left ? -1.0f : +1.0f ),
                 0.0f,
                 LibTransformationMode.EOriginalsToTransformed
             );
 
             //translate mesh's bullet holes
-            BulletHole.translateAll( this, ( open ? 1.0f : -1.0f ) * (this.iWallAction == WallAction.EDoorSlideRight ? 1.0f : -1.0f ) * transX, ( open ? 1.0f : -1.0f ) * (this.iWallAction == WallAction.EDoorSlideRight ? 1.0f : -1.0f ) * transY, 0.0f );
+            BulletHole.translateAll( this, ( open ? 1.0f : -1.0f ) * (this.wallAction == WallAction.EDoorSlideRight ? 1.0f : -1.0f ) * transX, ( open ? 1.0f : -1.0f ) * (this.wallAction == WallAction.EDoorSlideRight ? 1.0f : -1.0f ) * transY, 0.0f );
 
             //check collision to player
             this.checkOnDoorAnimation( open );
         }
 
-        private void swingAsDoor(boolean open, boolean counterClockwise)
+        private void swingAsDoor( boolean open, boolean counterClockwise )
         {
             //rotate mesh
-            float angle = DoorSettings.DOOR_ANGLE_OPEN * this.iDoorAnimation / DoorSettings.DOOR_TICKS_OPEN_CLOSE;
+            float angle = DoorSettings.DOOR_ANGLE_OPEN * this.doorAnimation / DoorSettings.DOOR_TICKS_OPEN_CLOSE;
 
             this.translateAndRotateXYZ
             (
@@ -408,21 +407,21 @@
             this.checkOnDoorAnimation( open );
         }
 
-        private void moveAsElevator(boolean up)
+        private void moveAsElevator( boolean up )
         {
             //translate mesh and bullet hole
             this.translate( 0.0f, 0.0f, ( up ? 0.125f : -0.125f ), LibTransformationMode.EOriginalsToOriginals );
             BulletHole.translateAll( this, 0.0f, 0.0f, ( up ? 0.125f : -0.125f ) );
 
             //same for ceiling
-            if (this.iWallElevatorCeiling != null )
+            if (this.wallElevatorCeiling != null )
             {
-                this.iWallElevatorCeiling.translate( 0.0f, 0.0f, ( up ? 0.125f : -0.125f ), LibTransformationMode.EOriginalsToOriginals );
-                BulletHole.translateAll(this.iWallElevatorCeiling, 0.0f, 0.0f, ( up ? 0.125f : -0.125f ) );
+                this.wallElevatorCeiling.translate( 0.0f, 0.0f, ( up ? 0.125f : -0.125f ), LibTransformationMode.EOriginalsToOriginals );
+                BulletHole.translateAll(this.wallElevatorCeiling, 0.0f, 0.0f, ( up ? 0.125f : -0.125f ) );
             }
         }
 
-        private void checkOnDoorAnimation(boolean opening)
+        private void checkOnDoorAnimation( boolean opening )
         {
             boolean toggleDoor = false;
 
@@ -445,7 +444,7 @@
 
             if ( toggleDoor )
             {
-                this.iDoorOpening = !opening;
+                this.doorOpening = !opening;
                 this.makeDistancedSound( ( opening ? SoundFg.EDoorClose1 : SoundFg.EDoorOpen1 ) );
             }
         }
@@ -454,7 +453,7 @@
         {
             if ( artefact == null )
             {
-                if (this.iDoorLocked)
+                if (this.doorLocked)
                 {
                     ShooterDebug.playerAction.out( "door is locked!" );
                     this.makeDistancedSound( SoundFg.ELocked1 );
@@ -462,11 +461,11 @@
                 else
                 {
                     //check if this is an elevator door - doors can't be toggled while elevator is moving!
-                    if (this.iWallElevator != null )
+                    if (this.wallElevator != null )
                     {
-                        if ( this == this.iWallElevator.iWallElevatorDoorOne || this == this.iWallElevator.iWallElevatorDoorTwo )
+                        if ( this == this.wallElevator.wallElevatorDoorOne || this == this.wallElevator.wallElevatorDoorTwo)
                         {
-                            if (this.iWallElevator.iDoorAnimation != 0 && this.iWallElevator.iDoorAnimation != DoorSettings.DOOR_TICKS_OPEN_CLOSE )
+                            if (this.wallElevator.doorAnimation != 0 && this.wallElevator.doorAnimation != DoorSettings.DOOR_TICKS_OPEN_CLOSE )
                             {
                                 //deny wall toggle
                                 //ShooterDebug.bugfix.out( "deny wall toggle" );
@@ -476,27 +475,27 @@
                     }
 
                     //check if this is a sluice door - doors can't be opened if the other door is open
-                    if (this.iWallSluiceDoor != null )
+                    if (this.wallSluiceDoor != null )
                     {
-                        //if ( this == iWallElevator.iWallElevatorDoorTop || this == iWallElevator.iWallElevatorDoorBottom )
+                        //if ( this == wallElevator.iWallElevatorDoorTop || this == wallElevator.iWallElevatorDoorBottom )
                         {
                             //check if connected sluice door is moving
-                            if (this.iWallSluiceDoor.iDoorAnimation != 0 /* && iWallSluiceDoor.iDoorAnimation != DoorSettings.DOOR_TICKS_OPEN_CLOSE */ )
+                            if (this.wallSluiceDoor.doorAnimation != 0 /* && wallSluiceDoor.doorAnimation != DoorSettings.DOOR_TICKS_OPEN_CLOSE */ )
                             {
                                 //deny wall toggle!
                                 //ShooterDebug.bugfix.out( "deny wall toggle" );
 
                                 //close the other door immediately if it's opened
-                                if (this.iWallSluiceDoor.iDoorOpening )
+                                if (this.wallSluiceDoor.doorOpening)
                                 {
-                                    this.iWallSluiceDoor.toggleDoorOpening();
+                                    this.wallSluiceDoor.toggleDoorOpening();
                                 }
 
                                 return;
                             }
 /*
                             //.. or if the player stands on the floor
-                            if ( iWallSluiceFloor.checkAction( ShooterGameLevel.currentPlayer().getCylinder(), true, true ) )
+                            if ( wallSluiceFloor.checkAction( ShooterGameLevel.currentPlayer().getCylinder(), true, true ) )
                             {
                                 return;
                             }
@@ -511,17 +510,17 @@
             else
             {
                 ShooterDebug.playerAction.out( "launch gadget action on door" );
-                if (this.iDoorLocked)
+                if (this.doorLocked)
                 {
-                    if ( ( (Gadget)artefact ).iParentKind == this.iDoorKey && this.iDoorUnlockedCountdown == 0 )
+                    if ( ( (Gadget)artefact ).parentKind == this.doorKey && this.doorUnlockedCountdown == 0 )
                     {
                         ShooterDebug.playerAction.out( "use doorkey!" );
                         this.makeDistancedSound( SoundFg.EUnlocked1 );
 
-                        this.iDoorUnlockedCountdown = 100;
+                        this.doorUnlockedCountdown = 100;
 
                         //open the door - later?
-                        //iDoorOpening = true;
+                        //doorOpening = true;
                     }
                 }
             }
@@ -529,9 +528,9 @@
 
         private void toggleDoorOpening()
         {
-            this.iDoorOpening = !this.iDoorOpening;
-            ShooterDebug.playerAction.out( "launch door change, doorOpening now [" + this.iDoorOpening + "]" );
-            if (this.iDoorOpening)
+            this.doorOpening = !this.doorOpening;
+            ShooterDebug.playerAction.out( "launch door change, doorOpening now [" + this.doorOpening + "]" );
+            if (this.doorOpening)
             {
                 this.makeDistancedSound( SoundFg.EDoorOpen1 );
             }

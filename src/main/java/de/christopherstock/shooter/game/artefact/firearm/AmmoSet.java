@@ -16,7 +16,7 @@
 
             for ( AmmoType at : AmmoType.values() )
             {
-                this.ammo.put( at, new Integer( 0 ) );
+                this.ammo.put( at, 0 );
             }
         }
 
@@ -29,15 +29,15 @@
         {
             int oldAmmo = this.ammo.get(at);
             oldAmmo -= substraction;
-            this.ammo.put( at, new Integer( oldAmmo ) );
+            this.ammo.put( at, oldAmmo );
         }
 
         public void addAmmo( AmmoType at, int addition )
         {
             int oldAmmo = this.ammo.get(at);
             oldAmmo += addition;
-            if ( oldAmmo > at.iMaxAmmo ) oldAmmo = at.iMaxAmmo;
-            this.ammo.put( at, new Integer( oldAmmo ) );
+            if ( oldAmmo > at.maxAmmo) oldAmmo = at.maxAmmo;
+            this.ammo.put( at, oldAmmo );
         }
 
         public static void loadImages()

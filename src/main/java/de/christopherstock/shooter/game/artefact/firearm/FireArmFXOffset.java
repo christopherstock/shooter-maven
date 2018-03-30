@@ -9,9 +9,9 @@
         public int x = 0;
         public int y = 0;
 
-        public FireArmFXOffset( int aX, int aY )
+        public FireArmFXOffset( int x, int y )
         {
-            this.x = aX;
-            this.y = aY;
+            this.x = x;
+            this.y = y;
         }
     }

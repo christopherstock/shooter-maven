@@ -10,25 +10,25 @@
     *******************************************************************************************************************/
     public class WallEnergy implements Serializable
     {
-        protected                   int                 iHealthStart                    = 0;
-        protected                   boolean             iDestroyed                      = false;
-        protected                   int                 iHealthCurrent                  = 0;
-        protected                   float               iDyingTransZ                    = 0.0f;
-        protected                   int                 iCurrentDyingTick               = 0;
-        protected                   float               iKillAngleHorz                  = 0.0f;
-        protected                   FXSize              iExplosionSize                  = null;
-        protected                   SoundFg        iExplosionSound                 = null;
+        protected                   int                 healthStart             = 0;
+        protected                   boolean             destroyed               = false;
+        protected                   int                 healthCurrent           = 0;
+        protected                   float               dyingTransZ             = 0.0f;
+        protected                   int                 currentDyingTick        = 0;
+        protected                   float               killAngleHorz           = 0.0f;
+        protected                   FXSize              explosionSize           = null;
+        protected                   SoundFg             explosionSound          = null;
 
-        protected WallEnergy( WallHealth aWallHealth, FXSize aExplosionSize, SoundFg aExplosionSound )
+        protected WallEnergy( WallHealth wallHealth, FXSize explosionSize, SoundFg explosionSound )
         {
-            this.iHealthStart = aWallHealth.getHealth();
-            this.iHealthCurrent = aWallHealth.getHealth();
-            this.iExplosionSize = aExplosionSize;
-            this.iExplosionSound = aExplosionSound;
+            this.healthStart    = wallHealth.getHealth();
+            this.healthCurrent  = wallHealth.getHealth();
+            this.explosionSize  = explosionSize;
+            this.explosionSound = explosionSound;
         }
 
         public void reset()
         {
-            this.iHealthCurrent = this.iHealthStart;
+            this.healthCurrent = this.healthStart;
         }
     }

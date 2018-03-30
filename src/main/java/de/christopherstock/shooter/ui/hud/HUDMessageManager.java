@@ -19,6 +19,7 @@
             ;
         }
 
+        // TODO non-static!
         private         static          HUDMessageManager       singleton               = null;
 
         private                         Vector<HUDMessage>      messageQueue            = new Vector<HUDMessage>();

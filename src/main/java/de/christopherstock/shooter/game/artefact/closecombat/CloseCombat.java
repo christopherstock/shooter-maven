@@ -20,29 +20,29 @@
     *******************************************************************************************************************/
     public final class CloseCombat extends ArtefactKind
     {
-        private         int             iDamage         = 0;
-        private         SoundFg    iUseSound       = null;
+        private         int             damage              = 0;
+        private         SoundFg         useSound            = null;
 
-        public CloseCombat( int aDamage )
+        public CloseCombat( int damage )
         {
-            this.iDamage = aDamage;
+            this.damage = damage;
         }
 
         @Override
-        public boolean use(Artefact w, ShotSource ss, Point2D.Float shooterXY )
+        public boolean use( Artefact w, ShotSource ss, Point2D.Float shooterXY )
         {
             //ShooterDebug.bugfix.out( "LAUNCH CC - damage is [" + damage + "]" );
 
             //launch use-sound-fx
-            if (this.iUseSound != null )
+            if (this.useSound != null )
             {
                 if ( shooterXY == null )
                 {
-                    this.iUseSound.playGlobalFx();
+                    this.useSound.playGlobalFx();
                 }
                 else
                 {
-                    this.iUseSound.playDistancedFx( shooterXY );
+                    this.useSound.playDistancedFx( shooterXY );
                 }
             }
 
@@ -91,7 +91,7 @@
         @Override
         public int getDamage()
         {
-            return this.iDamage;
+            return this.damage;
         }
 
         @Override

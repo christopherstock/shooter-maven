@@ -19,9 +19,9 @@
     *******************************************************************************************************************/
     public class Sprite extends Wall implements LibSprite
     {
-        public Sprite(LibD3dsFile file, LibVertex aAnchor, LibScalation scale, WallCollidable collidable, WallTex tex )
+        public Sprite( LibD3dsFile file, LibVertex anchor, LibScalation scale, WallCollidable collidable, WallTex tex )
         {
-            super(   file, aAnchor, 90.0f, scale, LibInvert.ENo, collidable, WallAction.ESprite, WallClimbable.ENo, DrawMethod.EAlwaysDraw, tex, null, 0, WallHealth.EUnbreakale, null, null );
+            super(   file, anchor, 90.0f, scale, LibInvert.ENo, collidable, WallAction.ESprite, WallClimbable.ENo, DrawMethod.EAlwaysDraw, tex, null, 0, WallHealth.EUnbreakale, null, null );
         }
 
         public void animateSprite( LibVertex trans )

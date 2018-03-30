@@ -13,11 +13,11 @@
     *******************************************************************************************************************/
     public abstract class ArtefactKind
     {
-        public          ArtefactType        iParentKind         = null;
+        public          ArtefactType            parentKind                  = null;
 
-        public void setParent( ArtefactType aParent )
+        public void setParent( ArtefactType parent )
         {
-            this.iParentKind = aParent;
+            this.parentKind = parent;
         }
 
         public abstract LibHoleSize getBulletHoleSize();

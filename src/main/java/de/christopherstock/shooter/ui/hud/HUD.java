@@ -112,7 +112,7 @@
             Artefact currentWearpon = Shooter.game.engine.player.iArtefactSet.getArtefact();
 
             //only if this is a reloadable wearpon
-            if ( currentWearpon.iArtefactType.isFireArm() /* && Shooter.game.hud.iAnimationState == LibAnimation.EAnimationNone */ )
+            if ( currentWearpon.artefactType.isFireArm() /* && Shooter.game.hud.iAnimationState == LibAnimation.EAnimationNone */ )
             {
                 //create current ammo string
                 this.iCurrentAmmoStringMagazineAmmo = currentWearpon.getCurrentAmmoStringMagazineAmmo();
@@ -144,10 +144,10 @@
                 }
 
                 //draw shell image
-                Shooter.game.engine.glView.drawOrthoBitmapBytes( ( (FireArm)currentWearpon.iArtefactType.iArtefactKind ).getAmmoTypeImage(), Shooter.game.engine.glView.width - OffsetsOrtho.EBorderHudX - 50, OffsetsOrtho.EBorderHudY );
+                Shooter.game.engine.glView.drawOrthoBitmapBytes( ( (FireArm)currentWearpon.artefactType.artefactKind).getAmmoTypeImage(), Shooter.game.engine.glView.width - OffsetsOrtho.EBorderHudX - 50, OffsetsOrtho.EBorderHudY );
 
                 //draw magazine ammo
-                Shooter.game.engine.glView.drawOrthoBitmapBytes(this.iAmmoImageMagazineAmmo, Shooter.game.engine.glView.width - OffsetsOrtho.EBorderHudX - 50 - ( (FireArm)currentWearpon.iArtefactType.iArtefactKind ).getAmmoTypeImage().width - this.iAmmoImageMagazineAmmo.width, OffsetsOrtho.EBorderHudY );
+                Shooter.game.engine.glView.drawOrthoBitmapBytes(this.iAmmoImageMagazineAmmo, Shooter.game.engine.glView.width - OffsetsOrtho.EBorderHudX - 50 - ( (FireArm)currentWearpon.artefactType.artefactKind).getAmmoTypeImage().width - this.iAmmoImageMagazineAmmo.width, OffsetsOrtho.EBorderHudY );
 
                 //draw total ammo
                 Shooter.game.engine.glView.drawOrthoBitmapBytes(this.iAmmoImageTotalAmmo, Shooter.game.engine.glView.width - OffsetsOrtho.EBorderHudX - this.iAmmoImageTotalAmmo.width, OffsetsOrtho.EBorderHudY );
@@ -278,7 +278,7 @@
 
                                 case EActionDie:
                                 {
-                                    Shooter.game.engine.player.iArtefactSet.setArtefact( Shooter.game.engine.player.iArtefactSet.iHands );
+                                    Shooter.game.engine.player.iArtefactSet.setArtefact( Shooter.game.engine.player.iArtefactSet.hands);
 
                                     //iHideWearpon = true;
                                     break;

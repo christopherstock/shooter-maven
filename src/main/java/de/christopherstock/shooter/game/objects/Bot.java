@@ -242,7 +242,7 @@
                 }
 
                 this.iArtefactSet.chooseNextWearponOrGadget( false );
-                this.iArtefactSet.iCurrentArtefact.reload(this.iAmmoSet, false, false, null );
+                this.iArtefactSet.currentArtefact.reload(this.iAmmoSet, false, false, null );
             }
 
             Items leftItem  = null;
@@ -252,13 +252,13 @@
             {
                 case ELeftHanded:
                 {
-                    leftItem = this.iArtefactSet.iCurrentArtefact.iArtefactType.iItemMesh;
+                    leftItem = this.iArtefactSet.currentArtefact.artefactType.itemMesh;
                     break;
                 }
 
                 case ERightHanded:
                 {
-                    rightItem = this.iArtefactSet.iCurrentArtefact.iArtefactType.iItemMesh;
+                    rightItem = this.iArtefactSet.currentArtefact.artefactType.itemMesh;
                     break;
                 }
             }
@@ -346,7 +346,7 @@
                                         BotGiveAction ga = (BotGiveAction)action;
 
                                         //LAUNCH if KEY matches
-                                        if ( ga.iKey == ( (Gadget)artefact ).iParentKind )
+                                        if ( ga.iKey == ( (Gadget)artefact ).parentKind)
                                         {
                                             ga.iEvent.perform( this );
                                             Shooter.game.engine.player.iArtefactSet.extractArtefact( artefact );
@@ -515,8 +515,8 @@
                         {
                             this.iState = BotState.EStandStill;
 
-//                            iArtefactSet.iCurrentArtefact.reload( iAmmoSet, false, true, iCylinder.getCenterHorz() );
-                            this.iArtefactSet.iCurrentArtefact.performReload(this.iAmmoSet, true, this.iCylinder.getCenterHorz(), true );
+//                            iArtefactSet.currentArtefact.reload( iAmmoSet, false, true, iCylinder.getCenterHorz() );
+                            this.iArtefactSet.currentArtefact.performReload(this.iAmmoSet, true, this.iCylinder.getCenterHorz(), true );
 
                             //init reload action
                             this.setNewJobQueue
@@ -567,7 +567,7 @@
                                 float           angleBotToPlayer = LibMath.normalizeAngle( anglePlayerToBot - 180.0f ); //checked normalizing - also works wothout :)
 
                                 //ShooterDebug.bugfix.out( "angle [" + angleBotToPlayer + "] facing: " + iFacingAngle );
-                                //ShooterDebug.bugfix.out( "attacking bot holds " + iArtefactSet.iCurrentArtefact.iArtefactType );
+                                //ShooterDebug.bugfix.out( "attacking bot holds " + iArtefactSet.currentArtefact.artefactType );
 
                                 //check if bot looks into player's direction
                                 if ( Math.abs( angleBotToPlayer - this.iFacingAngle) <= BotSettings.TARGET_TURNING_TOLERANCE )
@@ -588,7 +588,7 @@
                                             )
                                             {
                                                 //fire
-                                                this.iArtefactSet.iCurrentArtefact.fire( this, this.iCylinder.getCenterHorz() );
+                                                this.iArtefactSet.currentArtefact.fire( this, this.iCylinder.getCenterHorz() );
                                             }
                                         }
                                     }
@@ -1067,12 +1067,12 @@
                 BotSettings.SHOT_RANGE,    // bot has constant shot range ???
                 LibHoleSize.E44mm,   // bot always fires 9mm    ??
                 ShooterDebug.shotAndHit,
-                ArtefactType.EMagnum357.iArtefactKind.getSliverParticleQuantity(),
+                ArtefactType.EMagnum357.artefactKind.getSliverParticleQuantity(),
                 FxSettings.SLIVER_ANGLE_MOD,
                 10,
-                ArtefactType.EMagnum357.iArtefactKind.getSliverParticleSize(),
+                ArtefactType.EMagnum357.artefactKind.getSliverParticleSize(),
                 ArtefactType.EMagnum357.getBreaksWalls(),
-                ( (FireArm)ArtefactType.EMagnum357.iArtefactKind ).getProjectile(),
+                ( (FireArm)ArtefactType.EMagnum357.artefactKind).getProjectile(),
                 General.FADE_OUT_FACES_TOTAL_TICKS
             );
         }
@@ -1093,10 +1093,10 @@
                 BotSettings.VIEW_RANGE,
                 LibHoleSize.ENone,
                 ShooterDebug.shotAndHit,
-                ArtefactType.EMagnum357.iArtefactKind.getSliverParticleQuantity(),
+                ArtefactType.EMagnum357.artefactKind.getSliverParticleQuantity(),
                 FxSettings.SLIVER_ANGLE_MOD,
                 0,
-                ArtefactType.EMagnum357.iArtefactKind.getSliverParticleSize(),
+                ArtefactType.EMagnum357.artefactKind.getSliverParticleSize(),
                 false,
                 null,
                 General.FADE_OUT_FACES_TOTAL_TICKS
@@ -1336,7 +1336,7 @@
         private void dropAllArtefacts()
         {
             //turn artefacts to pickable items
-            for ( Artefact toDrop : this.iArtefactSet.iArtefacts )
+            for ( Artefact toDrop : this.iArtefactSet.artefacts)
             {
                 ItemToPickUp p = toDrop.getPickUpItem(this.getAnchor() );
                 if ( p != null )

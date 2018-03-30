@@ -2,7 +2,7 @@
     package de.christopherstock.shooter.game.artefact;
 
     import  java.util.Vector;
-    import de.christopherstock.lib.LibAnimation;
+    import  de.christopherstock.lib.LibAnimation;
     import  de.christopherstock.shooter.*;
     import  de.christopherstock.shooter.game.artefact.gadget.Gadget;
 
@@ -12,30 +12,31 @@
     public class ArtefactSet
     {
         /** The currently equipped artefact. */
-        public                      Artefact                iCurrentArtefact            = null;
+        public                      Artefact                currentArtefact         = null;
 
         /** All currently holded artefacts. */
-        public                      Vector<Artefact>        iArtefacts                  = null;
+        public                      Vector<Artefact>        artefacts               = null;
 
         /** This is a instance of the {@link ArtefactType} {@link ArtefactType#EHands}, that is always holded. */
-        public                      Artefact                iHands                      = null;
+        public                      Artefact                hands                   = null;
 
         public ArtefactSet()
         {
             //set and deliver default artefact
-            this.iArtefacts = new Vector<Artefact>();
-            this.iHands = new Artefact( ArtefactType.EHands );
-            this.iCurrentArtefact = this.iHands;
-            this.deliverArtefact(this.iHands);
+            this.artefacts = new Vector<Artefact>();
+            this.hands = new Artefact( ArtefactType.EHands );
+            this.currentArtefact = this.hands;
+
+            this.deliverArtefact( this.hands );
         }
 
         public final void deliverArtefact( Artefact artefactToDeliver )
         {
             //check if this artefact type is already holded
             boolean contained = false;
-            for ( Artefact a : this.iArtefacts)
+            for ( Artefact a : this.artefacts)
             {
-                if ( a.iArtefactType == artefactToDeliver.iArtefactType )
+                if ( a.artefactType == artefactToDeliver.artefactType)
                 {
                     contained = true;
                 }
@@ -46,14 +47,14 @@
             {
                 //sort wearpons according to enum
                 int targetIndex = 0;
-                for ( Artefact iW : this.iArtefacts)
+                for ( Artefact iW : this.artefacts)
                 {
-                    if ( artefactToDeliver.iArtefactType.ordinal() > iW.iArtefactType.ordinal() )
+                    if ( artefactToDeliver.artefactType.ordinal() > iW.artefactType.ordinal() )
                     {
                         ++targetIndex;
                     }
                 }
-                this.iArtefacts.insertElementAt( artefactToDeliver, targetIndex );
+                this.artefacts.insertElementAt( artefactToDeliver, targetIndex );
             }
         }
 
@@ -63,11 +64,11 @@
             Shooter.game.engine.hud.stopHandAnimation();
 
             //change to hands if this artefact is holded
-            if ( toDraw == this.iCurrentArtefact.iArtefactType.iArtefactKind )
+            if ( toDraw == this.currentArtefact.artefactType.artefactKind)
             {
-                this.iCurrentArtefact = this.iHands;
+                this.currentArtefact = this.hands;
             }
-            this.iArtefacts.remove( toDraw );
+            this.artefacts.remove( toDraw );
         }
 
         public final boolean showAmmoInHUD()
@@ -75,8 +76,8 @@
             return
             (
                     //iCurrentItemGroup == ItemGroup.EWearpon
-                    this.iCurrentArtefact != null
-                && this.iCurrentArtefact.iArtefactType.isFireArm()
+                    this.currentArtefact != null
+                && this.currentArtefact.artefactType.isFireArm()
             );
         }
 
@@ -84,31 +85,31 @@
         public final void choosePreviousWearponOrGadget( boolean byPlayer )
         {
             //browse all wearpons
-            for (int i = 0; i < this.iArtefacts.size(); ++i )
+            for (int i = 0; i < this.artefacts.size(); ++i )
             {
                 //find current wearpon
-                if (this.iCurrentArtefact == null )
+                if (this.currentArtefact == null )
                 {
-                    this.setArtefact(this.iArtefacts.elementAt( i ) );
+                    this.setArtefact(this.artefacts.elementAt( i ) );
                     break;
                 }
-                else if (this.iCurrentArtefact == this.iArtefacts.elementAt( i ) )
+                else if (this.currentArtefact == this.artefacts.elementAt( i ) )
                 {
                     int previousIndex = i - 1;
                     if ( previousIndex < 0 )
                     {
                         //pick last wearpon
-                        this.setArtefact(this.iArtefacts.elementAt(this.iArtefacts.size() - 1 ) );
+                        this.setArtefact(this.artefacts.elementAt(this.artefacts.size() - 1 ) );
 
                         //animate only if more than one wearpon is available!
-                        if (this.iArtefacts.size() > 1 && byPlayer )
+                        if (this.artefacts.size() > 1 && byPlayer )
                         {
                             Shooter.game.engine.hud.startHandAnimation( LibAnimation.EAnimationShow, null );
                         }
                     }
                     else
                     {
-                        this.setArtefact(this.iArtefacts.elementAt( previousIndex ) );
+                        this.setArtefact(this.artefacts.elementAt( previousIndex ) );
                         if ( byPlayer ) Shooter.game.engine.hud.startHandAnimation( LibAnimation.EAnimationShow, null );
                     }
                     break;
@@ -119,31 +120,31 @@
         public final void chooseNextWearponOrGadget( boolean byPlayer )
         {
             //browse all holded wearpons
-            for (int i = 0; i < this.iArtefacts.size(); ++i )
+            for (int i = 0; i < this.artefacts.size(); ++i )
             {
                 //find current wearpon
                 if (this.getArtefact() == null )
                 {
-                    this.setArtefact(this.iArtefacts.elementAt( i ) );
+                    this.setArtefact(this.artefacts.elementAt( i ) );
                     break;
                 }
-                else if (this.getArtefact() == this.iArtefacts.elementAt( i ) )
+                else if (this.getArtefact() == this.artefacts.elementAt( i ) )
                 {
                     int nextIndex = i + 1;
-                    if ( nextIndex >= this.iArtefacts.size() )
+                    if ( nextIndex >= this.artefacts.size() )
                     {
                         //pick first wearpon
-                        this.setArtefact(this.iArtefacts.elementAt( 0 ) );
+                        this.setArtefact(this.artefacts.elementAt( 0 ) );
 
                         //animate only if more than one wearpon is available!
-                        if (this.iArtefacts.size() > 1 && byPlayer )
+                        if (this.artefacts.size() > 1 && byPlayer )
                         {
                             Shooter.game.engine.hud.startHandAnimation( LibAnimation.EAnimationShow, null );
                         }
                     }
                     else
                     {
-                        this.setArtefact(this.iArtefacts.elementAt( nextIndex ) );
+                        this.setArtefact(this.artefacts.elementAt( nextIndex ) );
                         if ( byPlayer ) Shooter.game.engine.hud.startHandAnimation( LibAnimation.EAnimationShow, null );
                     }
                     break;
@@ -153,39 +154,39 @@
 
         public final Artefact getArtefact()
         {
-            return this.iCurrentArtefact;
+            return this.currentArtefact;
         }
 
         public final ArtefactType getArtefactType()
         {
-            return this.iCurrentArtefact.iArtefactType;
+            return this.currentArtefact.artefactType;
         }
 
         public final void setArtefact( Artefact newWearpon )
         {
-            this.iCurrentArtefact = newWearpon;
+            this.currentArtefact = newWearpon;
         }
 
         public final void drawArtefactOrtho()
         {
-            if (this.iCurrentArtefact != null ) this.iCurrentArtefact.drawOrtho();
+            if (this.currentArtefact != null ) this.currentArtefact.drawOrtho();
         }
 
         public final boolean isMagazineEmpty()
         {
-            return (this.iCurrentArtefact.iMagazineAmmo == 0 );
+            return (this.currentArtefact.magazineAmmo == 0 );
         }
 
         public final boolean isWearponDelayed()
         {
-            return (this.iCurrentArtefact.iCurrentDelayAfterUse > System.currentTimeMillis() );
+            return (this.currentArtefact.currentDelayAfterUse > System.currentTimeMillis() );
         }
 
         public final boolean contains( Artefact a )
         {
-            for ( Artefact art : this.iArtefacts)
+            for ( Artefact art : this.artefacts)
             {
-                if ( art.iArtefactType == a.iArtefactType )
+                if ( art.artefactType == a.artefactType)
                 {
                     return true;
                 }
@@ -195,11 +196,11 @@
 
         public final void assignMagazine( Artefact a )
         {
-            for ( Artefact art : this.iArtefacts)
+            for ( Artefact art : this.artefacts)
             {
-                if ( art.iArtefactType == a.iArtefactType )
+                if ( art.artefactType == a.artefactType)
                 {
-                    art.iMagazineAmmo = a.iMagazineAmmo;
+                    art.magazineAmmo = a.magazineAmmo;
                 }
             }
         }
