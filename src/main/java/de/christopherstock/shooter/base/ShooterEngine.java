@@ -75,6 +75,11 @@
             this.preloader.increase( 40 );
             this.init3ds();
 
+            this.preloader.increase( 50 );
+            this.initHUD();
+
+            this.preloader.increase( 60 );
+            this.initFPS();
 
 
 
@@ -183,6 +188,22 @@
         }
 
         /***************************************************************************************************************
+        *   Inits the Heads Up Display.
+        ***************************************************************************************************************/
+        private void initHUD()
+        {
+            this.hud = new HUD();
+        }
+
+        /***************************************************************************************************************
+        *   Inits the Frames Per Second counter.
+        ***************************************************************************************************************/
+        private void initFPS()
+        {
+            this.fps = new LibFPS( this.fonts.fps, ShooterSetting.Colors.EFpsFg.colABGR, ShooterSetting.Colors.EFpsOutline.colABGR, ShooterDebug.glImage );
+        }
+
+        /***************************************************************************************************************
         *   Inits the rest.
         *   TODO split!
         ***************************************************************************************************************/
@@ -195,14 +216,7 @@
 
 
 
-
-
-
-            //init hud
-            this.preloader.increase( 50 );
-            this.hud = new HUD();
             HUDFx.init();
-            this.fps = new LibFPS( Shooter.game.engine.fonts.fps, ShooterSetting.Colors.EFpsFg.colABGR, ShooterSetting.Colors.EFpsOutline.colABGR, ShooterDebug.glImage );
 
             //init fg sounds
             this.preloader.increase( 70 );

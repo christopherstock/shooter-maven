@@ -27,24 +27,24 @@
             ;
         }
 
-        public                          LibAnimation    iAnimationState                 = LibAnimation.EAnimationNone;
-        private                         ChangeAction    iActionAfterHide                = null;
+        public              LibAnimation        iAnimationState                     = LibAnimation.EAnimationNone;
+        private             ChangeAction        iActionAfterHide                    = null;
 
-        private LibGLTextureImage iAmmoImageMagazineAmmo          = null;
-        private LibGLTextureImage iAmmoImageTotalAmmo             = null;
-        private                         String          iDisplayAmmoStringMagazineAmmo  = null;
-        private                         String          iDisplayAmmoStringTotalAmmo     = null;
-        private                         String          iCurrentAmmoStringMagazineAmmo  = null;
-        private                         String          iCurrentAmmoStringTotalAmmo     = null;
+        private             LibGLTextureImage   iAmmoImageMagazineAmmo              = null;
+        private             LibGLTextureImage   iAmmoImageTotalAmmo                 = null;
+        private             String              iDisplayAmmoStringMagazineAmmo      = null;
+        private             String              iDisplayAmmoStringTotalAmmo         = null;
+        private             String              iCurrentAmmoStringMagazineAmmo      = null;
+        private             String              iCurrentAmmoStringTotalAmmo         = null;
 
-        private LibGLTextureImage iHealthImage                    = null;
-        private                         String          iDisplayHealthString            = null;
-        private                         String          iCurrentHealthString            = null;
+        private             LibGLTextureImage   iHealthImage                        = null;
+        private             String              iDisplayHealthString                = null;
+        private             String              iCurrentHealthString                = null;
 
-        private                         int             iAnimationPlayerRightHand       = 0;
-        private                         int             iHealthShowTimer                = 0;
+        private             int                 iAnimationPlayerRightHand           = 0;
+        private             int                 iHealthShowTimer                    = 0;
 
-        public                          boolean         iHideWearpon                    = false;
+        public              boolean             iHideWearpon                        = false;
 
         public HUD()
         {
