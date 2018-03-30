@@ -450,7 +450,7 @@
                 //HUDFx.launchDamageFX( descent );
 
                 //start damage fx
-                HUDFx.launchDamageFX( 15 );
+                Shooter.game.engine.hudFx.launchDamageFX( 15 );
 
                 //play damage sound delayed
                 SoundFg.EPlayerHit1.playGlobalFx( 20 );
@@ -466,7 +466,7 @@
                 this.setHealth(this.iHealth + gainer );
 
                 //start healing screen anim
-                HUDFx.launchHealthFX( gainer );
+                Shooter.game.engine.hudFx.launchHealthFX( gainer );
             }
         }
 

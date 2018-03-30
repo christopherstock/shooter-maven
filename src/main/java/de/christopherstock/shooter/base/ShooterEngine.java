@@ -27,10 +27,6 @@
     {
         /** Preloader. */
         public                      Preloader               preloader                   = null;
-        /** Heads up display. */
-        public                      HUD                     hud                         = null;
-        /** Frames per second counter. */
-        public                      LibFPS                  fps                         = null;
         /** The global player-instance being controlled by the user. */
         public                      Player                  player                      = null;
         /** The frame contains a native Java frame and canvas. */
@@ -51,6 +47,12 @@
         public                      ShooterTexture          textures                    = null;
         /** 3D Studio Max system. */
         public                      ShooterD3ds             d3ds                        = null;
+        /** Heads up display. */
+        public                      HUD                     hud                         = null;
+        /** Frames per second counter. */
+        public                      LibFPS                  fps                         = null;
+        /** Heads up display effects. */
+        public                      HUDFx                   hudFx                       = null;
 
         /***************************************************************************************************************
         *   Inits the game engine.
@@ -80,6 +82,9 @@
 
             this.preloader.increase( 60 );
             this.initFPS();
+
+            this.preloader.increase( 70 );
+            this.initHUDFx();
 
 
 
@@ -204,6 +209,15 @@
         }
 
         /***************************************************************************************************************
+        *   Inits the HUD effects.
+        ***************************************************************************************************************/
+        private void initHUDFx()
+        {
+            this.hudFx = new HUDFx();
+            this.hudFx.init();
+        }
+
+        /***************************************************************************************************************
         *   Inits the rest.
         *   TODO split!
         ***************************************************************************************************************/
@@ -213,10 +227,6 @@
 
 
 
-
-
-
-            HUDFx.init();
 
             //init fg sounds
             this.preloader.increase( 70 );

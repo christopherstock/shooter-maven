@@ -14,41 +14,41 @@
     *******************************************************************************************************************/
     public class HUDFx
     {
-        private         static          LibGLTextureImage   damagePane                  = null;
-        private         static          LibGLTextureImage   healthPane                  = null;
-        private         static          LibGLTextureImage   deadPane                    = null;
-        private         static          LibGLTextureImage   adrenalinePane              = null;
-        private         static          BufferedImage       reincarnationTube           = null;
-        private         static          LibGLTextureImage   gli                         = null;
+        private                             LibGLTextureImage   damagePane                  = null;
+        private                             LibGLTextureImage   healthPane                  = null;
+        private                             LibGLTextureImage   deadPane                    = null;
+        private                             LibGLTextureImage   adrenalinePane              = null;
+        private                             BufferedImage       reincarnationTube           = null;
+        private                             LibGLTextureImage   gli                         = null;
 
-        private         static          int                 animationHUDHealthFX        = 0;
-        private         static          int                 animationHUDDamageFX        = 0;
-        private         static          int                 animationHUDDyingFX         = 0;
-        private         static          int                 animationHUDDeadFX          = 0;
-        private         static          int                 animationHUDReincarnationFX = 0;
-        private         static          int                 animationHUDDamageFXticks   = 0;
+        private                             int                 animationHUDHealthFX        = 0;
+        private                             int                 animationHUDDamageFX        = 0;
+        private                             int                 animationHUDDyingFX         = 0;
+        private                             int                 animationHUDDeadFX          = 0;
+        private                             int                 animationHUDReincarnationFX = 0;
+        private                             int                 animationHUDDamageFXticks   = 0;
 
-        private         static          float               opacityHealthFx             = 0.0f;
-        private         static          float               opacityDamageFx             = 0.0f;
+        private                             float               opacityHealthFx             = 0.0f;
+        private                             float               opacityDamageFx             = 0.0f;
 
-        private         static          boolean             drawDyingFx                 = false;
-        private         static          boolean             drawDeadFx                  = false;
-        private         static          boolean             drawReincarnationFx         = false;
-        public          static          boolean             drawAdrenalineFx            = false;
+        private                             boolean             drawDyingFx                 = false;
+        private                             boolean             drawDeadFx                  = false;
+        private                             boolean             drawReincarnationFx         = false;
+        public                              boolean             drawAdrenalineFx            = false;
 
-        public static void init()
+        public void init()
         {
             //init panes
-            damagePane      = LibGLTextureImage.getFullOpaque( LibColors.ERed.colABGR,    Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
-            healthPane      = LibGLTextureImage.getFullOpaque( LibColors.EWhite.colABGR,  Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
-            damagePane      = LibGLTextureImage.getFullOpaque( LibColors.ERed.colABGR,    Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
-            deadPane        = LibGLTextureImage.getFullOpaque( LibColors.EBlack.colABGR,  Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
-            adrenalinePane  = LibGLTextureImage.getFullOpaque( LibColors.EYellow.colABGR, Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
+            this.damagePane      = LibGLTextureImage.getFullOpaque( LibColors.ERed.colABGR,    Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
+            this.healthPane      = LibGLTextureImage.getFullOpaque( LibColors.EWhite.colABGR,  Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
+            this.damagePane      = LibGLTextureImage.getFullOpaque( LibColors.ERed.colABGR,    Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
+            this.deadPane        = LibGLTextureImage.getFullOpaque( LibColors.EBlack.colABGR,  Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
+            this.adrenalinePane  = LibGLTextureImage.getFullOpaque( LibColors.EYellow.colABGR, Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
 
             try
             {
-                reincarnationTube = ImageIO.read( LibIO.preStreamJarResource( ShooterSetting.Path.EScreen.url + "reincarnation.png" ) );
-                gli = new LibGLTextureImage( reincarnationTube, ImageUsage.EOrtho, ShooterDebug.glImage, true );
+                this.reincarnationTube = ImageIO.read( LibIO.preStreamJarResource( ShooterSetting.Path.EScreen.url + "reincarnation.png" ) );
+                this.gli = new LibGLTextureImage( this.reincarnationTube, ImageUsage.EOrtho, ShooterDebug.glImage, true );
             }
             catch ( Exception e )
             {
@@ -57,135 +57,135 @@
             }
         }
 
-        public static void disableAllFx()
+        public void disableAllFx()
         {
-            animationHUDHealthFX        = 0;
-            animationHUDDamageFX        = 0;
-            animationHUDDyingFX         = 0;
-            animationHUDDeadFX          = 0;
-            animationHUDReincarnationFX = 0;
-            animationHUDDamageFXticks   = 0;
+            this.animationHUDHealthFX        = 0;
+            this.animationHUDDamageFX        = 0;
+            this.animationHUDDyingFX         = 0;
+            this.animationHUDDeadFX          = 0;
+            this.animationHUDReincarnationFX = 0;
+            this.animationHUDDamageFXticks   = 0;
 
-            opacityHealthFx             = 0.0f;
-            opacityDamageFx             = 0.0f;
+            this.opacityHealthFx             = 0.0f;
+            this.opacityDamageFx             = 0.0f;
 
-            drawDyingFx                 = false;
-            drawDeadFx                  = false;
-            drawReincarnationFx         = false;
-            drawAdrenalineFx            = false;
+            this.drawDyingFx                 = false;
+            this.drawDeadFx                  = false;
+            this.drawReincarnationFx         = false;
+            this.drawAdrenalineFx            = false;
         }
         
-        public static void drawHUDEffects()
+        public void drawHUDEffects()
         {
             //draw healing effect?
-            if ( animationHUDHealthFX > 0 )
+            if ( this.animationHUDHealthFX > 0 )
             {
-                float alpha = opacityHealthFx * animationHUDHealthFX / ShooterSetting.Performance.TICKS_HEALTH_FX;
-                Shooter.game.engine.glView.drawOrthoBitmapBytes( healthPane, 0, 0, alpha );
+                float alpha = this.opacityHealthFx * this.animationHUDHealthFX / ShooterSetting.Performance.TICKS_HEALTH_FX;
+                Shooter.game.engine.glView.drawOrthoBitmapBytes( this.healthPane, 0, 0, alpha );
             }
 
             //draw damage effect?
-            if ( animationHUDDamageFX > 0 )
+            if ( this.animationHUDDamageFX > 0 )
             {
-                float alpha = opacityDamageFx * animationHUDDamageFX / animationHUDDamageFXticks;
-                Shooter.game.engine.glView.drawOrthoBitmapBytes( damagePane, 0, 0, alpha );
+                float alpha = this.opacityDamageFx * this.animationHUDDamageFX / this.animationHUDDamageFXticks;
+                Shooter.game.engine.glView.drawOrthoBitmapBytes( this.damagePane, 0, 0, alpha );
             }
 
             //draw dying effect
-            if ( drawDyingFx )
+            if ( this.drawDyingFx )
             {
-                float alpha = (float)animationHUDDyingFX / (float) ShooterSetting.Performance.TICKS_DYING_FX;
-                Shooter.game.engine.glView.drawOrthoBitmapBytes( damagePane, 0, 0, alpha );
+                float alpha = (float)this.animationHUDDyingFX / (float) ShooterSetting.Performance.TICKS_DYING_FX;
+                Shooter.game.engine.glView.drawOrthoBitmapBytes( this.damagePane, 0, 0, alpha );
             }
 
             //draw dead effect
-            if ( drawDeadFx )
+            if ( this.drawDeadFx )
             {
-                float alpha = (float)animationHUDDeadFX / (float) ShooterSetting.Performance.TICKS_DEAD_FX;
-                Shooter.game.engine.glView.drawOrthoBitmapBytes( deadPane, 0, 0, alpha );
+                float alpha = (float)this.animationHUDDeadFX / (float) ShooterSetting.Performance.TICKS_DEAD_FX;
+                Shooter.game.engine.glView.drawOrthoBitmapBytes( this.deadPane, 0, 0, alpha );
             }
 
-            if ( drawAdrenalineFx )
+            if ( this.drawAdrenalineFx )
             {
                 float alpha = 0.05f;
-                Shooter.game.engine.glView.drawOrthoBitmapBytes( adrenalinePane, 0, 0, alpha );
+                Shooter.game.engine.glView.drawOrthoBitmapBytes( this.adrenalinePane, 0, 0, alpha );
             }
 
             //draw reincarnation effect
-            if ( drawReincarnationFx )
+            if ( this.drawReincarnationFx )
             {
-                float size = ( 5 * (float)animationHUDReincarnationFX ) / ShooterSetting.Performance.TICKS_DEAD_FX;
-                Shooter.game.engine.glView.drawOrthoBitmapBytes( gli, (int)( ( Shooter.game.engine.glView.width - gli.width * size ) / 2 ), (int)( ( Shooter.game.engine.glView.height - gli.height * size ) / 2 ), 1.0f, size, size, false );
+                float size = ( 5 * (float)this.animationHUDReincarnationFX ) / ShooterSetting.Performance.TICKS_DEAD_FX;
+                Shooter.game.engine.glView.drawOrthoBitmapBytes( this.gli, (int)( ( Shooter.game.engine.glView.width - this.gli.width * size ) / 2 ), (int)( ( Shooter.game.engine.glView.height - this.gli.height * size ) / 2 ), 1.0f, size, size, false );
             }
         }
 
-        public static void launchDamageFX(int descent )
+        public void launchDamageFX(int descent )
         {
             //set new opacity value and clip it
-            opacityDamageFx = ShooterSetting.HUDSettings.MAX_OPACITY_DAMAGE_FX * descent / 15;
-            if ( opacityDamageFx > ShooterSetting.HUDSettings.MAX_OPACITY_DAMAGE_FX ) opacityDamageFx = ShooterSetting.HUDSettings.MAX_OPACITY_DAMAGE_FX;
+            this.opacityDamageFx = ShooterSetting.HUDSettings.MAX_OPACITY_DAMAGE_FX * descent / 15;
+            if ( this.opacityDamageFx > ShooterSetting.HUDSettings.MAX_OPACITY_DAMAGE_FX ) this.opacityDamageFx = ShooterSetting.HUDSettings.MAX_OPACITY_DAMAGE_FX;
 
             //start damage animation
-            animationHUDDamageFXticks   = ShooterSetting.Performance.MAX_TICKS_DAMAGE_FX * descent / 15;
-            animationHUDDamageFX        = animationHUDDamageFXticks;
+            this.animationHUDDamageFXticks   = ShooterSetting.Performance.MAX_TICKS_DAMAGE_FX * descent / 15;
+            this.animationHUDDamageFX        = this.animationHUDDamageFXticks;
         }
 
-        public static void launchHealthFX(int gain )
+        public void launchHealthFX(int gain )
         {
             //set new opacity value and clip it
-            opacityHealthFx = ShooterSetting.HUDSettings.MAX_OPACITY_HEALTH_FX * gain / 15;
-            if ( opacityHealthFx > ShooterSetting.HUDSettings.MAX_OPACITY_HEALTH_FX ) opacityHealthFx = ShooterSetting.HUDSettings.MAX_OPACITY_HEALTH_FX;
+            this.opacityHealthFx = ShooterSetting.HUDSettings.MAX_OPACITY_HEALTH_FX * gain / 15;
+            if ( this.opacityHealthFx > ShooterSetting.HUDSettings.MAX_OPACITY_HEALTH_FX ) this.opacityHealthFx = ShooterSetting.HUDSettings.MAX_OPACITY_HEALTH_FX;
 
             //start health animation
-            animationHUDHealthFX = ShooterSetting.Performance.TICKS_HEALTH_FX;
+            this.animationHUDHealthFX = ShooterSetting.Performance.TICKS_HEALTH_FX;
         }
 
-        public static void launchDyingFX()
+        public void launchDyingFX()
         {
-            if ( !drawDyingFx )
+            if ( !this.drawDyingFx )
             {
                 //start health animation
-                drawDyingFx         = true;
-                animationHUDDyingFX = 0;
+                this.drawDyingFx         = true;
+                this.animationHUDDyingFX = 0;
             }
         }
 
-        public static void launchDeadFX()
+        public void launchDeadFX()
         {
-            if ( !drawDeadFx )
+            if ( !this.drawDeadFx )
             {
                 //start health animation
-                drawDeadFx          = true;
-                animationHUDDeadFX  = 0;
+                this.drawDeadFx          = true;
+                this.animationHUDDeadFX  = 0;
             }
         }
 
-        public static void launchReincarnationFX()
+        public void launchReincarnationFX()
         {
-            if ( !drawReincarnationFx )
+            if ( !this.drawReincarnationFx )
             {
                 //start health animation
-                drawReincarnationFx          = true;
-                animationHUDReincarnationFX  = 0;
+                this.drawReincarnationFx          = true;
+                this.animationHUDReincarnationFX  = 0;
             }
         }
 
-        public static void animateEffects()
+        public void animateEffects()
         {
-            if ( animationHUDHealthFX       > 0     ) --animationHUDHealthFX;
-            if ( animationHUDDamageFX       > 0     ) --animationHUDDamageFX;
+            if ( this.animationHUDHealthFX       > 0     ) --this.animationHUDHealthFX;
+            if ( this.animationHUDDamageFX       > 0     ) --this.animationHUDDamageFX;
 
-            if ( drawDeadFx )
+            if ( this.drawDeadFx )
             {
-                if ( animationHUDDeadFX  < ShooterSetting.Performance.TICKS_DEAD_FX ) ++animationHUDDeadFX;
+                if ( this.animationHUDDeadFX  < ShooterSetting.Performance.TICKS_DEAD_FX ) ++this.animationHUDDeadFX;
             }
-            if ( drawDyingFx )
+            if ( this.drawDyingFx )
             {
-                if ( animationHUDDyingFX < ShooterSetting.Performance.TICKS_DYING_FX ) ++animationHUDDyingFX;
+                if ( this.animationHUDDyingFX < ShooterSetting.Performance.TICKS_DYING_FX ) ++this.animationHUDDyingFX;
             }
-            if ( drawReincarnationFx )
+            if ( this.drawReincarnationFx )
             {
-                if ( animationHUDReincarnationFX < ShooterSetting.Performance.TICKS_REINCARNATION_FX ) ++animationHUDReincarnationFX;
+                if ( this.animationHUDReincarnationFX < ShooterSetting.Performance.TICKS_REINCARNATION_FX ) ++this.animationHUDReincarnationFX;
             }
         }
     }

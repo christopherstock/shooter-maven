@@ -523,7 +523,7 @@
             if (this.iAdrenalineTicks-- > 0 )
             {
                 //enable adrenaline fx
-                HUDFx.drawAdrenalineFx = true;
+                Shooter.game.engine.hudFx.drawAdrenalineFx = true;
 
                 //check player animation
                 if (this.iAdrenalineDelayPlayer > 0 )
@@ -556,7 +556,7 @@
             else
             {
                 //disable adrenaline fx
-                HUDFx.drawAdrenalineFx = false;
+                Shooter.game.engine.hudFx.drawAdrenalineFx = false;
 
                 //animate player and level
                 runPlayer = true;

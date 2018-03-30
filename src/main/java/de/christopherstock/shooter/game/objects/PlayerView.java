@@ -221,7 +221,7 @@
                         if (this.iDieModTransZ >= this.iDepthEye) this.iDieModTransZ = this.iDepthEye;
 
                         //start anim each x ticks
-                        if ( (this.iDyingAnimation++ ) % 5 == 0 ) HUDFx.launchDamageFX( 6 );
+                        if ( (this.iDyingAnimation++ ) % 5 == 0 ) Shooter.game.engine.hudFx.launchDamageFX( 6 );
 
                         //check change to next dying state
                         if (this.iDieModTransZ >= this.iDepthEye)
@@ -236,7 +236,7 @@
                     {
                         if ( ++this.iDyingAnimation < 5 )
                         {
-                            HUDFx.launchDamageFX( 15 );
+                            Shooter.game.engine.hudFx.launchDamageFX( 15 );
                         }
                         else
                         {
@@ -263,7 +263,7 @@
                     {
                         if ( ++this.iDyingAnimation < ShooterSetting.Performance.TICKS_DYING_FX )
                         {
-                            HUDFx.launchDyingFX();
+                            Shooter.game.engine.hudFx.launchDyingFX();
                         }
                         else
                         {
@@ -277,7 +277,7 @@
                     {
                         if ( ++this.iDyingAnimation < ShooterSetting.Performance.TICKS_DEAD_FX )
                         {
-                            HUDFx.launchDeadFX();
+                            Shooter.game.engine.hudFx.launchDeadFX();
                         }
                         else
                         {
@@ -291,7 +291,7 @@
                     {
                         if ( ++this.iDyingAnimation < ShooterSetting.Performance.TICKS_REINCARNATION_FX )
                         {
-                            HUDFx.launchReincarnationFX();
+                            Shooter.game.engine.hudFx.launchReincarnationFX();
                         }
                         else
                         {

@@ -40,7 +40,7 @@
                         Level.init();
 
                         //disable all hud fx
-                        HUDFx.disableAllFx();
+                        Shooter.game.engine.hudFx.disableAllFx();
 
                         //start according bg music
                         if ( !ShooterDebug.DISABLE_SOUNDS )
