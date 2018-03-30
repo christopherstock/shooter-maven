@@ -95,11 +95,9 @@
             this.preloader.increase( 90 );
             this.initMainMenu();
 
-
-
-
-
-            this.initRest();
+            this.preloader.increase( 100 );
+            Shooter.game.orderMainStateChange( ShooterSetting.Startup.STARTUP_STATE_AFTER_PRELOADER );
+            LevelChange.orderLevelChange( Startup.STARTUP_LEVEL_MAIN, Startup.STARTUP_LEVEL_SECTION, true );
         }
 
         /***************************************************************************************************************
@@ -163,6 +161,15 @@
                 ShooterSetting.Form.FORM_HEIGHT
             );
             this.glView.init();
+        }
+
+        /***************************************************************************************************************
+        *   Inits the fonts.
+        ***************************************************************************************************************/
+        private void initFonts()
+        {
+            this.fonts = new Fonts();
+            this.fonts.init();
         }
 
         /***************************************************************************************************************
@@ -245,30 +252,8 @@
         }
 
         /***************************************************************************************************************
-        *   Inits the rest.
-        *   TODO split!
+        *   Quits the GL display and exits the program.
         ***************************************************************************************************************/
-        private void initRest()
-        {
-
-
-
-
-
-
-
-            //reset and change to startup main state
-            this.preloader.increase( 100 );
-            Shooter.game.orderMainStateChangeTo( ShooterSetting.Startup.STARTUP_STATE_AFTER_PRELOADER );
-            LevelChange.orderLevelChange( Startup.STARTUP_LEVEL_MAIN, Startup.STARTUP_LEVEL_SECTION, true );
-        }
-
-        private void initFonts()
-        {
-            this.fonts = new Fonts();
-            this.fonts.init();
-        }
-
         public void destroy()
         {
             Display.destroy();

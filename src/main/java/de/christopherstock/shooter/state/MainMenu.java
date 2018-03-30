@@ -111,21 +111,21 @@
                     case EStartNewGameFacility:
                     {
                         LevelChange.orderLevelChange( new LevelSetupTestMayflowerOffice(), ShooterSetting.Startup.STARTUP_LEVEL_SECTION, true );
-                        Shooter.game.orderMainStateChangeTo( MainState.EIngame );
+                        Shooter.game.orderMainStateChange( MainState.EIngame );
                         break;
                     }
 
                     case EStartNewGameTestOffice:
                     {
                         LevelChange.orderLevelChange( new LevelSetupTestFacility(), ShooterSetting.Startup.STARTUP_LEVEL_SECTION, true );
-                        Shooter.game.orderMainStateChangeTo( MainState.EIngame );
+                        Shooter.game.orderMainStateChange( MainState.EIngame );
                         break;
                     }
 
                     case EContinueGame:
                     {
                         //ShooterGameLevel.orderLevelChange( ShooterSetting.General.STARTUP_LEVEL, true );
-                        Shooter.game.orderMainStateChangeTo( MainState.EIngame );
+                        Shooter.game.orderMainStateChange( MainState.EIngame );
                         break;
                     }
 /*
@@ -213,7 +213,7 @@
             if ( Shooter.game.engine.keys.toggleMainMenu.iLaunchAction )
             {
                 Shooter.game.engine.keys.toggleMainMenu.iLaunchAction = false;
-                Shooter.game.orderMainStateChangeTo( MainState.EIngame );
+                Shooter.game.orderMainStateChange( MainState.EIngame );
             }
 
             //change current main menu item

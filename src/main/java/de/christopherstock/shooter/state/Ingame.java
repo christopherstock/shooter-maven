@@ -78,7 +78,7 @@
             if ( Shooter.game.engine.keys.toggleMainMenu.iLaunchAction )
             {
                 Shooter.game.engine.keys.toggleMainMenu.iLaunchAction = false;
-                Shooter.game.orderMainStateChangeTo( MainState.EMainMenu );
+                Shooter.game.orderMainStateChange( MainState.EMainMenu );
             }
 
             //launch test exploisions?

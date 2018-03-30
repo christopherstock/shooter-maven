@@ -100,7 +100,7 @@
         }
 
         // TODO check if required?
-        public final void orderMainStateChangeTo( MainState aFutureMainState )
+        public final void orderMainStateChange(MainState aFutureMainState )
         {
             this.engine.mainStateToChangeTo = aFutureMainState;
         }
