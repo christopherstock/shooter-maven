@@ -1,7 +1,6 @@
 
     package de.christopherstock.shooter.base;
 
-    import  java.awt.*;
     import  java.awt.image.*;
     import  java.io.*;
     import  javax.imageio.*;
@@ -53,6 +52,8 @@
         public                      LibFPS                  fps                         = null;
         /** Heads up display effects. */
         public                      HUDFx                   hudFx                       = null;
+        /** The sound system. */
+        public                      Sound                   sound                       = null;
 
         /***************************************************************************************************************
         *   Inits the game engine.
@@ -86,6 +87,9 @@
             this.preloader.increase( 70 );
             this.initHUDFx();
 
+            this.preloader.increase( 80 );
+            this.initSound();
+
 
 
 
@@ -101,7 +105,7 @@
             ShooterDebug.init.out( "init UI look and feel" );
 
             LibUI.setLookAndFeel( ShooterDebug.error );
-            this.determineFullScreenSize();
+            LibUI.determineFullScreenSize();
         }
 
         /***************************************************************************************************************
@@ -218,6 +222,15 @@
         }
 
         /***************************************************************************************************************
+        *   Inits the sound system.
+        ***************************************************************************************************************/
+        private void initSound()
+        {
+            this.sound = new Sound();
+            this.sound.init();
+        }
+
+        /***************************************************************************************************************
         *   Inits the rest.
         *   TODO split!
         ***************************************************************************************************************/
@@ -227,24 +240,12 @@
 
 
 
-
-            //init fg sounds
-            this.preloader.increase( 70 );
-            SoundFg.init();
-
-            // init bg sounds
-            this.preloader.increase( 80 );
-            SoundBg.init();
-
-            //switch main state to 'game' and order change to level 1
-            this.preloader.increase( 90 );
-
             //init main menu
+            this.preloader.increase( 90 );
             MainMenu.init();
 
-            this.preloader.increase( 100 );
-
             //reset and change to startup main state
+            this.preloader.increase( 100 );
             Shooter.game.orderMainStateChangeTo( ShooterSetting.Startup.STARTUP_STATE_AFTER_PRELOADER );
             LevelChange.orderLevelChange( Startup.STARTUP_LEVEL_MAIN, Startup.STARTUP_LEVEL_SECTION, true );
         }
@@ -259,16 +260,5 @@
         {
             Display.destroy();
             System.exit( 0 );
-        }
-
-        private void determineFullScreenSize()
-        {
-            if ( ShooterDebug.ENABLE_FULLSCREEN && !ShooterDebug.DEBUG_MODE )
-            {
-                Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-
-                ShooterSetting.Form.FORM_WIDTH  = screenSize.width;
-                ShooterSetting.Form.FORM_HEIGHT = screenSize.height;
-            }
         }
     }

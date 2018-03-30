@@ -157,7 +157,7 @@
                         Level.currentSection().render();
                     }
 
-                    SoundFg.onRun();
+                    Shooter.game.engine.sound.onRun();
 
                     break;
                 }

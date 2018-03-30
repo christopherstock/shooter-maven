@@ -3,7 +3,6 @@
 
     import  java.awt.geom.*;
     import  java.io.*;
-    import  java.util.*;
     import  de.christopherstock.lib.io.*;
     import  de.christopherstock.lib.io.hid.*;
     import  de.christopherstock.shooter.*;
@@ -48,58 +47,9 @@
 
         private     static  final   int                     MAX_SOUND_QUEUE_SIZE    = 512;
 
-        private     static          Vector<LibSoundClip>    soundQueue              = new Vector<LibSoundClip>();
-
         private                     LibSoundFactory         factory                 = null;
 
-        public static void init()
-        {
-            //load all sounds
-            for ( SoundFg sound : values() )
-            {
-                sound.loadBytes();
-            }
-        }
-
-        public static void onRun()
-        {
-            //ShooterDebug.sound.out( "maintaining [" + soundQueue.size() + "] sounds" );
-
-            //browse queue reversed
-            for ( int i = soundQueue.size() - 1; i >= 0; --i )
-            {
-                //reference queded item
-                LibSoundClip queuedItem = soundQueue.elementAt( i );
-
-                //remove finished sounds
-                if ( queuedItem.hasSoundFinished() )
-                {
-                    soundQueue.removeElement( queuedItem );
-                }
-                //countdown delayed sounds
-                else if ( queuedItem.delay > 0 )
-                {
-                    //subsctract delay
-                    --queuedItem.delay;
-
-                    //start sound if delay reached 0
-                    if ( queuedItem.delay == 0 )
-                    {
-                        queuedItem.start();
-                    }
-                }
-                //adjust volume for currently played sound
-                else if ( queuedItem.isDistanced() )
-                {
-                    float distanceToPlayer = (float)Shooter.game.engine.player.getCylinder().getCenterHorz().distance( queuedItem.getDistantLocation() );
-                    float volume = ( distanceToPlayer <= Sounds.SPEECH_PLAYER_DISTANCE_MAX_VOLUME ? LibSoundClip.VOLUME_MAX : ( 1.0f - ( distanceToPlayer / Sounds.SPEECH_PLAYER_DISTANCE_MUTE ) ) );
-
-                    queuedItem.updateDistancedSound( volume );
-                }
-            }
-        }
-
-        private void loadBytes()
+        public void loadBytes()
         {
             String uri = ShooterSetting.Path.ESoundsFg.url + this.toString() + LibExtension.wav.getSpecifier();
 
@@ -182,7 +132,10 @@
                 }
 
                 //add to queue
-                if ( soundQueue.size() < MAX_SOUND_QUEUE_SIZE ) soundQueue.addElement( sound );
+                if ( Shooter.game.engine.sound.soundQueue.size() < MAX_SOUND_QUEUE_SIZE )
+                {
+                    Shooter.game.engine.sound.soundQueue.addElement( sound );
+                }
             }
             catch ( Throwable t )
             {

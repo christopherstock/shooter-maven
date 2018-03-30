@@ -3,7 +3,6 @@
 
     import  java.io.ByteArrayInputStream;
     import  javax.media.*;
-    import  javax.media.format.*;
     import  javax.media.protocol.FileTypeDescriptor;
     import  de.christopherstock.lib.io.*;
     import  de.christopherstock.lib.io.datasource.LibIODataSource;
@@ -44,34 +43,7 @@
             this.iLoopNanoSecondEnd = aLoopNanoSecondEnd;
         }
 
-        public static void init()
-        {
-            //add the mp3 plugin in order to play mp3 sounds
-            addMp3Plugin();
-
-            //create all players for all sounds
-            for ( SoundBg sound : values() )
-            {
-                sound.createPlayer();
-            }
-        }
-
-        private static void addMp3Plugin()
-        {
-            Format input1 = new AudioFormat( AudioFormat.MPEGLAYER3 );
-            Format input2 = new AudioFormat( AudioFormat.MPEG       );
-            Format output = new AudioFormat( AudioFormat.LINEAR     );
-
-            PlugInManager.addPlugIn
-            (
-                com.sun.media.codec.audio.mpa.JavaDecoder.class.getName(),
-                new Format[]{input1, input2},
-                new Format[]{output},
-                PlugInManager.CODEC
-            );
-        }
-
-        private void createPlayer()
+        public void createPlayer()
         {
             try
             {
