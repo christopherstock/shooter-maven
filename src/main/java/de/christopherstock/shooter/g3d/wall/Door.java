@@ -409,15 +409,17 @@
 
         private void moveAsElevator( boolean up )
         {
+            float MOVE_DELTA = 0.125f;
+
             //translate mesh and bullet hole
-            this.translate( 0.0f, 0.0f, ( up ? 0.125f : -0.125f ), LibTransformationMode.EOriginalsToOriginals );
-            BulletHole.translateAll( this, 0.0f, 0.0f, ( up ? 0.125f : -0.125f ) );
+            this.translate( 0.0f, 0.0f, ( up ? MOVE_DELTA : -MOVE_DELTA ), LibTransformationMode.EOriginalsToOriginals );
+            BulletHole.translateAll( this, 0.0f, 0.0f, ( up ? MOVE_DELTA : -MOVE_DELTA ) );
 
             //same for ceiling
             if (this.wallElevatorCeiling != null )
             {
-                this.wallElevatorCeiling.translate( 0.0f, 0.0f, ( up ? 0.125f : -0.125f ), LibTransformationMode.EOriginalsToOriginals );
-                BulletHole.translateAll(this.wallElevatorCeiling, 0.0f, 0.0f, ( up ? 0.125f : -0.125f ) );
+                this.wallElevatorCeiling.translate( 0.0f, 0.0f, ( up ? MOVE_DELTA : -MOVE_DELTA ), LibTransformationMode.EOriginalsToOriginals );
+                BulletHole.translateAll(this.wallElevatorCeiling, 0.0f, 0.0f, ( up ? MOVE_DELTA : -MOVE_DELTA ) );
             }
         }
 

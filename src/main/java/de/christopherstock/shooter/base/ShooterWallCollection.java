@@ -114,12 +114,14 @@
 
         public static WallCollection createElevator( float x, float y, float z, float rotZ, LibTexture floorTex, LibTexture doorTex, WallAction action, WallTex wallTex, WallTex ceilingTex, int targetSectionDoorTwo, int targetSectionDoorOne )
         {
+            float CABIN_HEIGHT = 2.5f;
+
             Vector<Wall> allWalls = new Vector<Wall>();
 
             Door wallElevatorFloor      = new Door(   Others.EFloor2x2, x,       y,       z,                                                   rotZ,  WallCollidable.EYes,  action, WallClimbable.EYes, floorTex, WallHealth.EUnbreakale, null, false, DoorSettings.DOOR_DEFAULT_AUTO_CLOSE_DELAY );
             Door wallElevatorCeiling    = null;
-            Door wallDoorOne            = new Door(   Others.EDoor1,    0.0f,    0.0f,    ( action == WallAction.EElevatorUp ? 2.5f : 0.0f  ), 90.0f, WallCollidable.EYes, WallAction.EDoorSlideLeft, WallClimbable.ENo, doorTex, WallHealth.EUnbreakale, null, true, DoorSettings.DOOR_DEFAULT_AUTO_CLOSE_DELAY );
-            Door wallDoorTwo            = new Door(   Others.EDoor1,    0.0f,    0.0f,    ( action == WallAction.EElevatorUp ? 0.0f : -2.5f ), 90.0f, WallCollidable.EYes, WallAction.EDoorSlideLeft, WallClimbable.ENo, doorTex, WallHealth.EUnbreakale, null, true, DoorSettings.DOOR_DEFAULT_AUTO_CLOSE_DELAY );
+            Door wallDoorOne            = new Door(   Others.EDoor1,    0.0f,    0.0f,    ( action == WallAction.EElevatorUp ? CABIN_HEIGHT : 0.0f  ), 90.0f, WallCollidable.EYes, WallAction.EDoorSlideLeft, WallClimbable.ENo, doorTex, WallHealth.EUnbreakale, null, true, DoorSettings.DOOR_DEFAULT_AUTO_CLOSE_DELAY );
+            Door wallDoorTwo            = new Door(   Others.EDoor1,    0.0f,    0.0f,    ( action == WallAction.EElevatorUp ? 0.0f : -CABIN_HEIGHT ), 90.0f, WallCollidable.EYes, WallAction.EDoorSlideLeft, WallClimbable.ENo, doorTex, WallHealth.EUnbreakale, null, true, DoorSettings.DOOR_DEFAULT_AUTO_CLOSE_DELAY );
 
             //create shaft if desired
             if ( wallTex != null )
@@ -128,13 +130,13 @@
                 allWalls.add( new Wall(   Others.EWall2Solid,  new LibVertex(  2.0f,   0.0f,    0.0f    ), 270.0f, LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex, null, 0, WallHealth.EUnbreakale, null, null ) );
                 allWalls.add( new Wall(   Others.EWall2Solid,  new LibVertex(  0.0f,   2.0f,    0.0f    ), 180.0f, LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex, null, 0, WallHealth.EUnbreakale, null, null ) );
 
-                allWalls.add( new Wall(   Others.EWall2Solid,  new LibVertex(  0.0f,   0.0f,    ( action == WallAction.EElevatorUp ? 2.5f : -2.5f )    ), 270.0f, LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ) );
-                allWalls.add( new Wall(   Others.EWall2Solid,  new LibVertex(  2.0f,   0.0f,    ( action == WallAction.EElevatorUp ? 2.5f : -2.5f )    ), 270.0f, LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ) );
-                allWalls.add( new Wall(   Others.EWall2Solid,  new LibVertex(  0.0f,   2.0f,    ( action == WallAction.EElevatorUp ? 2.5f : -2.5f )    ), 180.0f, LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ) );
+                allWalls.add( new Wall(   Others.EWall2Solid,  new LibVertex(  0.0f,   0.0f,    ( action == WallAction.EElevatorUp ? CABIN_HEIGHT : -CABIN_HEIGHT )    ), 270.0f, LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ) );
+                allWalls.add( new Wall(   Others.EWall2Solid,  new LibVertex(  2.0f,   0.0f,    ( action == WallAction.EElevatorUp ? CABIN_HEIGHT : -CABIN_HEIGHT )    ), 270.0f, LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ) );
+                allWalls.add( new Wall(   Others.EWall2Solid,  new LibVertex(  0.0f,   2.0f,    ( action == WallAction.EElevatorUp ? CABIN_HEIGHT : -CABIN_HEIGHT )    ), 180.0f, LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ) );
 
                 //door sockets
-                allWalls.add( new Wall(   Others.EWall2Door,   new LibVertex(  0.0f,    0.0f,   0.0f                                                   ), 180.0f, LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ) );
-                allWalls.add( new Wall(   Others.EWall2Door,   new LibVertex(  0.0f,    0.0f,   ( action == WallAction.EElevatorUp ? 2.5f : -2.5f )    ), 180.0f, LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ) );
+                allWalls.add( new Wall(   Others.EWall2Door,   new LibVertex(  0.0f,    0.0f,   0.0f                                                       ), 180.0f, LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ) );
+                allWalls.add( new Wall(   Others.EWall2Door,   new LibVertex(  0.0f,    0.0f,   ( action == WallAction.EElevatorUp ? CABIN_HEIGHT : -CABIN_HEIGHT )    ), 180.0f, LibScalation.ENone, LibInvert.ENo,   WallCollidable.EYes,  WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, wallTex,   null, 0, WallHealth.EUnbreakale, null, null ) );
             }
 
             //set connected elevator for doors

@@ -36,7 +36,7 @@
         public      static      final   int         SECTION_ONE                 = 0;
         public      static      final   int         SECTION_TWO                 = 1;
         public      static      final   int         SECTION_THREE               = 2;
-        private     static      final   int         SECTION_FOUR                = 3;
+        public      static      final   int         SECTION_FOUR                = 3;
 
         public      static      final   int         OFFICE_PARTNER_1            = 0;
         private     static      final   int         OFFICE_PARTNER_2            = 1;
@@ -49,7 +49,7 @@
                 "Test Facility",
 
 true ?
-                new LibViewSet( 5.0f, 25.0f, 2.5f, 0.0f, 0.0f, 185.0f )
+                new LibViewSet( 6.0f, 38.0f, 0.0f, 0.0f, 0.0f, 0.0f )
 :                new LibViewSet( 2.0f, 2.0f, 2.5f, 0.0f, 0.0f, 185.0f ),
 
                 new ArtefactType[]   {  ArtefactType.ETranquilizerGun,  ArtefactType.EWaltherPPK,  ArtefactType.EMagnum357, ArtefactType.EAutoShotgun, ArtefactType.ESpaz12,  ArtefactType.ERCP180,  ArtefactType.ESniperRifle, ArtefactType.EAdrenaline, },
@@ -72,7 +72,6 @@ true ?
 
                 //elevator
                 ShooterWallCollection.createElevator(   5.0f, 42.0f,   2.5f, 0.0f, WallTex.EMarble1, WallTex.EWood1, WallAction.EElevatorDown, WallTex.EBricks2, WallTex.ECeiling1, SECTION_THREE, SECTION_FOUR ),
-
 
                 //ground
                 //ShooterWallCollection.createGround( WALL_OFFICE, 0.0f ), // -0.01f ),
@@ -310,8 +309,27 @@ true ?
                     //hallway
                     ShooterWallCollection.createRoom
                     (
-                        4.0f, 38.0f, 0.0f, 0.0f, 4, 4,
-                        WallStyle.ENoWall, WallStyle.ESolidWall, WallStyle.ESolidWall, WallStyle.ESolidWall,
+                        5.0f, 34.0f, 0.0f, 0.0f, 2, 8,
+                        WallStyle.ENoWall, WallStyle.ESolidWall, WallStyle.ENoWall, WallStyle.ESolidWall,
+                        WallTex.EGlass1, WallHealth.ESolidGlass, WallAction.EDoorSlideRight,
+                        DoorStyle.ENoDoor, 0,
+                        WALL_OFFICE, CARPET_OFFICE, WallTex.ECeiling1,
+                        new Wall[]
+                        {
+                            new Wall(   Others.EWhiteboard1,    new LibVertex(  0.0f,   0.5f,  0.7f    ), 180.0f,   LibScalation.EDouble,      LibInvert.ENo,  WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EPoster8,  null, 0,               WallHealth.ESolidWood, FXSize.ESmall, null  ),
+                            new Wall(   Others.EWhiteboard1,    new LibVertex(  0.0f,   4.0f,  0.7f    ), 180.0f,   LibScalation.EDouble,      LibInvert.ENo,  WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EPoster9,  null, 0,               WallHealth.ESolidWood, FXSize.ESmall, null  ),
+                            new Wall(   Others.EWhiteboard1,    new LibVertex(  0.0f,   7.5f,  0.7f    ), 180.0f,   LibScalation.EDouble,      LibInvert.ENo,  WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EPoster3,  null, 0,               WallHealth.ESolidWood, FXSize.ESmall, null  ),
+                        },
+                        null,
+                        null,
+                        null,
+                        new int[] { 1, }
+                    ),
+                    // corner
+                    ShooterWallCollection.createRoom
+                    (
+                        5.0f, 32.0f, 0.0f, 0.0f, 2, 2,
+                        WallStyle.ESolidWall, WallStyle.ESolidWall, WallStyle.ENoWall, WallStyle.ENoWall,
                         WallTex.EGlass1, WallHealth.ESolidGlass, WallAction.EDoorSlideRight,
                         DoorStyle.ENoDoor, 0,
                         WALL_OFFICE, CARPET_OFFICE, WallTex.ECeiling1,

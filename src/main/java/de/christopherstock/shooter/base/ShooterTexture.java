@@ -163,6 +163,8 @@
             EPoster5(                       Material.EPlastic1                                                      ),
             EPoster6(                       Material.EPlastic1                                                      ),
             EPoster7(                       Material.EPlastic1                                                      ),
+            EPoster8(                       Material.EPlastic1                                                      ),
+            EPoster9(                       Material.EPlastic1                                                      ),
             ERingBook1,
             EScreen1(                       Material.EGlass                                                         ),
             EScreen2(                       Material.EGlass                                                         ),
