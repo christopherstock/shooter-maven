@@ -54,9 +54,9 @@
             );
         }
 
-        private LibFaceTriangle(LibDebug aDebug, LibVertex ank, LibGLTextureMetaData texture, LibColors col, LibVertex a, LibVertex b, LibVertex c, LibVertex aFaceNormal, LibTexture aDefaultTexture, int aFadeOutFacesTicks, int aEllipseSegments )
+        private LibFaceTriangle(LibDebug debug, LibVertex ank, LibGLTextureMetaData texture, LibColors col, LibVertex a, LibVertex b, LibVertex c, LibVertex faceNormal, LibTexture aDefaultTexture, int aFadeOutFacesTicks, int aEllipseSegments )
         {
-            super( aDebug, ank, texture, col, aFaceNormal );
+            super( debug, ank, texture, col, faceNormal );
 
             this.ellipseSegments = aEllipseSegments;
 
@@ -453,20 +453,21 @@
             LibVertex aCopy    = new LibVertex(this.originalVertices[ 0 ] );
             LibVertex bCopy    = new LibVertex(this.originalVertices[ 1 ] );
             LibVertex cCopy    = new LibVertex(this.originalVertices[ 2 ] );
-            LibVertex normCopy = (this.getFaceNormal() == null ? null : this.getFaceNormal().copy() );
+            LibVertex normCopy = ( this.getFaceNormal() == null ? null : this.getFaceNormal().copy() );
+
             return new LibFaceTriangle
             (
-                    this.debug,
+                this.debug,
                 ankCopy,
-                    this.getTexture(),
-                    this.getColor(),
+                this.getTexture(),
+                this.getColor(),
                 aCopy,
                 bCopy,
                 cCopy,
                 normCopy,
-                    this.defaultTexture,
-                    this.fadeOutFacesTicks,
-                    this.ellipseSegments
+                this.defaultTexture,
+                this.fadeOutFacesTicks,
+                this.ellipseSegments
             );
         }
 
