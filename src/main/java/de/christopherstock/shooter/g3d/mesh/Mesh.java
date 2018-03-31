@@ -236,10 +236,12 @@
             //darken all faces
             for ( LibFaceTriangle face : this.faces)
             {
-                if ( useRandomSubstract ) opacity -= ( maxSubstract * ( (float)LibMath.getRandom( 0, 100 ) / (float)100 ) );
-                if ( useRandomAdd       ) opacity += ( maxAdd       * ( (float)LibMath.getRandom( 0, 100 ) / (float)100 ) );
+                float targetOpacity = opacity;
 
-                face.darken( opacity );
+                if ( useRandomSubstract ) targetOpacity -= ( maxSubstract * ( (float)LibMath.getRandom( 0, 100 ) / (float)100 ) );
+                if ( useRandomAdd       ) targetOpacity += ( maxAdd       * ( (float)LibMath.getRandom( 0, 100 ) / (float)100 ) );
+
+                face.darken( targetOpacity );
             }
         }
 
