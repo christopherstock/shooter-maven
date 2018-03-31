@@ -6,10 +6,11 @@
     /*******************************************************************************************************************
     *   The main class.
     *
+    *   TODO    Remove all linter warnings!
+    *
     *   TODO    Optimize fields in ArtefactType!
     *   TODO    make new subclass:  Wearpon that derives from ArtefactKind!!
     *   TODO    only for FireArms! Move ArtefactType.fXImages to Firearms (Wearpons)!
-    *   TODO    Remove all linter warnings!
     *   TODO    Move all CloseCombat constants to settings!
     *   TODO    Remove ALL static fields!
     *   TODO    Different heights for particle effects (blood).
