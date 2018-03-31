@@ -2,7 +2,7 @@
     package de.christopherstock.shooter.game.bot;
 
     import  de.christopherstock.lib.gl.*;
-    import de.christopherstock.shooter.ShooterSetting.*;
+    import  de.christopherstock.shooter.ShooterSetting.*;
     import  de.christopherstock.shooter.base.ShooterTexture.*;
     import  de.christopherstock.shooter.game.objects.Bot.*;
 
@@ -208,68 +208,68 @@
 
         ;
 
-        public              float                   iRadius             = 0.0f;
-        public              float                   iHeight             = 0.0f;
+        public              float                   radius                                  = 0.0f;
+        public              float                   height                                  = 0.0f;
 
-        public              BotBodyType             iBodyType           = null;
-        public              BotSkinType             iSkinType           = null;
+        public              BotBodyType             bodyType                                = null;
+        public              BotSkinType             skinType                                = null;
 
-        public              LibTexture              iTexRightUpperArm   = null;
-        public              LibTexture              iTexRightLowerArm   = null;
-        public              LibTexture              iTexTorso           = null;
-        public              LibTexture              iTexNeck            = null;
-        public              LibTexture              iTexLeftUpperArm    = null;
-        public              LibTexture              iTexLeftLowerArm    = null;
-        public              LibTexture              iTexRightHand       = null;
-        public              LibTexture              iTexLeftHand        = null;
-        public              LibTexture              iTexRightUpperLeg   = null;
-        public              LibTexture              iTexLeftUpperLeg    = null;
-        public              LibTexture              iTexRightLowerLeg   = null;
-        public              LibTexture              iTexLeftLowerLeg    = null;
-        public              LibTexture              iTexRightFoot       = null;
-        public              LibTexture              iTexLeftFoot        = null;
+        public              LibTexture              texRightUpperArm                        = null;
+        public              LibTexture              texRightLowerArm                        = null;
+        public              LibTexture              texTorso                                = null;
+        public              LibTexture              texNeck                                 = null;
+        public              LibTexture              texLeftUpperArm                         = null;
+        public              LibTexture              texLeftLowerArm                         = null;
+        public              LibTexture              texRightHand                            = null;
+        public              LibTexture              texLeftHand                             = null;
+        public              LibTexture              texRightUpperLeg                        = null;
+        public              LibTexture              texLeftUpperLeg                         = null;
+        public              LibTexture              texRightLowerLeg                        = null;
+        public              LibTexture              texLeftLowerLeg                         = null;
+        public              LibTexture              texRightFoot                            = null;
+        public              LibTexture              texLeftFoot                             = null;
 
         private BotPatternBase
         (
-            float       aRadius,
-            float       aHeight,
-            BotBodyType aBodyType,
-            BotSkinType aSkinType,
-            LibTexture  aTexRightUpperArm,
-            LibTexture  aTexRightLowerArm,
-            LibTexture  aTexTorso,
-            LibTexture  aTexNeck,
-            LibTexture  aTexLeftUpperArm,
-            LibTexture  aTexLeftLowerArm,
-            LibTexture  aTexRightUpperLeg,
-            LibTexture  aTexLeftUpperLeg,
-            LibTexture  aTexRightLowerLeg,
-            LibTexture  aTexLeftLowerLeg,
-            LibTexture  aTexRightHand,
-            LibTexture  aTexLeftHand,
-            LibTexture  aTexRightFoot,
-            LibTexture  aTexLeftFoot
+            float       radius,
+            float       height,
+            BotBodyType bodyType,
+            BotSkinType skinType,
+            LibTexture  texRightUpperArm,
+            LibTexture  texRightLowerArm,
+            LibTexture  texTorso,
+            LibTexture  texNeck,
+            LibTexture  texLeftUpperArm,
+            LibTexture  texLeftLowerArm,
+            LibTexture  texRightUpperLeg,
+            LibTexture  texLeftUpperLeg,
+            LibTexture  texRightLowerLeg,
+            LibTexture  texLeftLowerLeg,
+            LibTexture  texRightHand,
+            LibTexture  texLeftHand,
+            LibTexture  texRightFoot,
+            LibTexture  texLeftFoot
         )
         {
-            this.iRadius = aRadius;
-            this.iHeight = aHeight;
+            this.radius           = radius;
+            this.height           = height;
 
-            this.iSkinType = aSkinType;
-            this.iBodyType = aBodyType;
+            this.skinType         = skinType;
+            this.bodyType         = bodyType;
 
-            this.iTexRightUpperArm = aTexRightUpperArm ;
-            this.iTexRightLowerArm = aTexRightLowerArm ;
-            this.iTexTorso = aTexTorso         ;
-            this.iTexNeck = aTexNeck          ;
-            this.iTexLeftUpperArm = aTexLeftUpperArm  ;
-            this.iTexLeftLowerArm = aTexLeftLowerArm  ;
-            this.iTexRightHand = aTexRightHand     ;
-            this.iTexLeftHand = aTexLeftHand      ;
-            this.iTexRightUpperLeg = aTexRightUpperLeg ;
-            this.iTexLeftUpperLeg = aTexLeftUpperLeg  ;
-            this.iTexRightLowerLeg = aTexRightLowerLeg ;
-            this.iTexLeftLowerLeg = aTexLeftLowerLeg  ;
-            this.iTexRightFoot = aTexRightFoot     ;
-            this.iTexLeftFoot = aTexLeftFoot      ;
+            this.texRightUpperArm = texRightUpperArm;
+            this.texRightLowerArm = texRightLowerArm;
+            this.texTorso         = texTorso;
+            this.texNeck          = texNeck;
+            this.texLeftUpperArm  = texLeftUpperArm;
+            this.texLeftLowerArm  = texLeftLowerArm;
+            this.texRightHand     = texRightHand;
+            this.texLeftHand      = texLeftHand;
+            this.texRightUpperLeg = texRightUpperLeg;
+            this.texLeftUpperLeg  = texLeftUpperLeg;
+            this.texRightLowerLeg = texRightLowerLeg;
+            this.texLeftLowerLeg  = texLeftLowerLeg;
+            this.texRightFoot     = texRightFoot;
+            this.texLeftFoot      = texLeftFoot;
         }
     }

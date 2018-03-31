@@ -47,7 +47,7 @@
                     //thank player
                     AvatarMessage.showMessage( AvatarImage.EWoman2, ShooterStrings.AvatarMessages.LEVEL1_OFFICE_PARTNER_TEST_MOBILE_GIVE,   ShooterSetting.Colors.EAvatarMessagePanelBgGrey.colABGR );
 
-                    bot.iNextItemToDeliverRightHand = Items.EApple;
+                    bot.nextItemToDeliverRightHand = Items.EApple;
 
                     //turn to player
                     bot.setNewJobQueue
@@ -79,8 +79,8 @@
                     //give keycard
                     ItemEvent.EGiveKeycard.perform( bot );
 
-                    bot.iNextItemToDeliverLeftHand  = Items.ECrackers;
-                    bot.iNextItemToDeliverRightHand = Items.EAmmoShotgunShell;
+                    bot.nextItemToDeliverLeftHand = Items.ECrackers;
+                    bot.nextItemToDeliverRightHand = Items.EAmmoShotgunShell;
 
                     //turn to player
                     bot.setNewJobQueue

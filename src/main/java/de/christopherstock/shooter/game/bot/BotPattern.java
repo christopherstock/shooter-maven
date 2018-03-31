@@ -14,84 +14,84 @@
     *******************************************************************************************************************/
     public class BotPattern
     {
-        public              BotPatternBase       iBase                   = null;
-        private BotKind                     iKind                   = null;
+        public              BotPatternBase              base                        = null;
+        private             BotKind                     kind                        = null;
 
-        private BotSkinType                 iSkinType               = null;
-        public              LibTexture                  iSkin                   = null;
-        private BotBodyType                 iBodyType               = null;
+        private             BotSkinType                 skinType                    = null;
+        public              LibTexture                  skin                        = null;
+        private             BotBodyType                 bodyType                    = null;
 
-        public              Bots                        iHat                    = null;
-        public              Bots                        iGlasses                = null;
-        public              Bots                        iHead                   = null;
-        public              Bots                        iFace                   = null;
+        public              Bots                        hat                         = null;
+        public              Bots                        glasses                     = null;
+        public              Bots                        head                        = null;
+        public              Bots                        face                        = null;
 
-        public              LibTexture                  iTexGlassesGlass        = null;
-        public              LibTexture                  iTexGlassesHolder       = null;
-        public              LibTexture                  iTexHat                 = null;
-        public              LibTexture                  iTexFaceEyesOpen        = null;
-        public              LibTexture                  iTexFaceEyesShut        = null;
-        public              LibTexture                  iTexHair                = null;
+        public              LibTexture                  texGlassesGlass             = null;
+        public              LibTexture                  texGlassesHolder            = null;
+        public              LibTexture                  texHat                      = null;
+        public              LibTexture                  texFaceEyesOpen             = null;
+        public              LibTexture                  texFaceEyesShut             = null;
+        public              LibTexture                  texHair                     = null;
 
-        public              Bots                        iNeck                   = null;
-        public              Bots                        iRightUpperArm          = null;
-        public              Bots                        iRightLowerArm          = null;
-        public              Bots                        iTorso                  = null;
-        public              Bots                        iLeftUpperArm           = null;
-        public              Bots                        iLeftLowerArm           = null;
-        public              Bots                        iRightHand              = null;
-        public              Bots                        iLeftHand               = null;
-        public              Bots                        iRightUpperLeg          = null;
-        public              Bots                        iLeftUpperLeg           = null;
-        public              Bots                        iRightLowerLeg          = null;
-        public              Bots                        iLeftLowerLeg           = null;
-        public              Bots                        iRightFoot              = null;
-        public              Bots                        iLeftFoot               = null;
+        public              Bots                        neck                        = null;
+        public              Bots                        rightUpperArm               = null;
+        public              Bots                        rightLowerArm               = null;
+        public              Bots                        torso                       = null;
+        public              Bots                        leftUpperArm                = null;
+        public              Bots                        leftLowerArm                = null;
+        public              Bots                        rightHand                   = null;
+        public              Bots                        leftHand                    = null;
+        public              Bots                        rightUpperLeg               = null;
+        public              Bots                        leftUpperLeg                = null;
+        public              Bots                        rightLowerLeg               = null;
+        public              Bots                        leftLowerLeg                = null;
+        public              Bots                        rightFoot                   = null;
+        public              Bots                        leftFoot                    = null;
 
         public BotPattern
         (
-            BotPatternBase  aBase,
-            BotKind                 aKind
+            BotPatternBase base,
+            BotKind        kind
         )
         {
-            this.iBase = aBase;
-            this.iKind = aKind;
+            this.base = base;
+            this.kind = kind;
 
             //assign skin and body type
-            this.iSkinType = this.iBase.iSkinType;
-            this.iBodyType = this.iBase.iBodyType;
-            if (this.iSkinType == null ) this.iSkinType = this.iKind.iSkinTypes[ LibMath.getRandom( 0, this.iKind.iSkinTypes.length - 1 ) ];
-            if (this.iBodyType == null ) this.iBodyType = this.iKind.iBodyTypes[ LibMath.getRandom( 0, this.iKind.iBodyTypes.length - 1 ) ];
+            this.skinType = this.base.skinType;
+            this.bodyType = this.base.bodyType;
+            if (this.skinType == null ) this.skinType = this.kind.skinTypes[ LibMath.getRandom( 0, this.kind.skinTypes.length - 1 ) ];
+            if (this.bodyType == null ) this.bodyType = this.kind.bodyTypes[ LibMath.getRandom( 0, this.kind.bodyTypes.length - 1 ) ];
 
             //assign skin according to type
-            switch (this.iSkinType)
+            switch (this.skinType)
             {
                 case ERose:
-                    this.iSkin = BotTex.ESkinRose;           break;
+                    this.skin = BotTex.ESkinRose;           break;
                 case ELightBrown:
-                    this.iSkin = BotTex.ESkinLightBrown;     break;
+                    this.skin = BotTex.ESkinLightBrown;     break;
                 case EBrown:
-                    this.iSkin = BotTex.ESkinBrown;          break;
+                    this.skin = BotTex.ESkinBrown;          break;
                 case EBlack:
-                    this.iSkin = BotTex.ESkinBlack;          break;
+                    this.skin = BotTex.ESkinBlack;          break;
                 case EYellow:
-                    this.iSkin = BotTex.ESkinYellow;         break;
+                    this.skin = BotTex.ESkinYellow;         break;
             }
 
             //set face
-            this.iFace = Bots.EFace;
+            this.face = Bots.EFace;
 
             //select head
-            switch (this.iBodyType)
+            switch (this.bodyType)
             {
                 case EMaleNormal:
                 {
                     switch ( LibMath.getRandom( 0, 1 ) )
                     {
                         case 0:
-                            this.iHead = Bots.EHeadMale1;   break;
+                            this.head = Bots.EHeadMale1;   break;
                         case 1:
-                            this.iHead = Bots.EHeadMale1;   break;
+                            this.head = Bots.EHeadMale1;   break;
                     }
                     break;
                 }
@@ -101,11 +101,11 @@
                     switch ( LibMath.getRandom( 0, 2 ) )
                     {
                         case 0:
-                            this.iHead = Bots.EHeadFemale1;   break;
+                            this.head = Bots.EHeadFemale1;   break;
                         case 1:
-                            this.iHead = Bots.EHeadFemale2;   break;
+                            this.head = Bots.EHeadFemale2;   break;
                         case 2:
-                            this.iHead = Bots.EHeadFemale3;   break;
+                            this.head = Bots.EHeadFemale3;   break;
                     }
                     break;
                 }
@@ -113,7 +113,7 @@
 
             //select hair
             BotTex[] possibleHairTexs = new BotTex[] {};
-            switch (this.iSkinType)
+            switch (this.skinType)
             {
                 case EYellow:
                 {
@@ -170,11 +170,11 @@
                     break;
                 }
             }
-            this.iTexHair = possibleHairTexs[ ( possibleHairTexs.length == 1 ? 0 : LibMath.getRandom( 0, possibleHairTexs.length - 1 ) ) ];
+            this.texHair = possibleHairTexs[ ( possibleHairTexs.length == 1 ? 0 : LibMath.getRandom( 0, possibleHairTexs.length - 1 ) ) ];
 
             //select glasses
             boolean setGlasses = false;
-            switch (this.iKind.iGlasses )
+            switch (this.kind.glasses)
             {
                 case EAlways:    setGlasses = true;                                 break;
                 case ENever:     setGlasses = false;                                break;
@@ -183,14 +183,14 @@
             }
             if ( setGlasses )
             {
-                this.iGlasses = Bots.EGlasses;
-                this.iTexGlassesGlass = WallTex.EGlass1;
-                this.iTexGlassesHolder = WallTex.EChrome1;
+                this.glasses = Bots.EGlasses;
+                this.texGlassesGlass = WallTex.EGlass1;
+                this.texGlassesHolder = WallTex.EChrome1;
             }
 
             //select hat
             boolean setHat = false;
-            switch (this.iKind.iHat )
+            switch (this.kind.hat)
             {
                 case EAlways:    setHat = true;                                 break;
                 case ENever:     setHat = false;                                break;
@@ -200,28 +200,28 @@
             }
             if ( setHat )
             {
-                this.iHat = Bots.EHat;
-                this.iTexHat = BotTex.EClothBlue1;
+                this.hat = Bots.EHat;
+                this.texHat = BotTex.EClothBlue1;
             }
 
 
             //switch color type
-            switch (this.iSkinType)
+            switch (this.skinType)
             {
                 case EYellow:
                 {
-                    switch (this.iBodyType)
+                    switch (this.bodyType)
                     {
                         case EFemaleNormal:
                         {
                             switch ( LibMath.getRandom( 0, 1 ) )
                             {
                                 case 0:
-                                    this.iTexFaceEyesOpen = BotTex.EFaceFemale4YellowEyesOpen;
-                                    this.iTexFaceEyesShut = BotTex.EFaceFemale4YellowEyesShut;          break;
+                                    this.texFaceEyesOpen = BotTex.EFaceFemale4YellowEyesOpen;
+                                    this.texFaceEyesShut = BotTex.EFaceFemale4YellowEyesShut;          break;
                                 case 1:
-                                    this.iTexFaceEyesOpen = BotTex.EFaceFemale4YellowEyesOpen;
-                                    this.iTexFaceEyesShut = BotTex.EFaceFemale4YellowEyesShut;          break;
+                                    this.texFaceEyesOpen = BotTex.EFaceFemale4YellowEyesOpen;
+                                    this.texFaceEyesShut = BotTex.EFaceFemale4YellowEyesShut;          break;
                             }
                             break;
                         }
@@ -231,11 +231,11 @@
                             switch ( LibMath.getRandom( 0, 1 ) )
                             {
                                 case 0:
-                                    this.iTexFaceEyesOpen = BotTex.EFaceMale2YellowEyesOpen;
-                                    this.iTexFaceEyesShut = BotTex.EFaceMale2YellowEyesShut;          break;
+                                    this.texFaceEyesOpen = BotTex.EFaceMale2YellowEyesOpen;
+                                    this.texFaceEyesShut = BotTex.EFaceMale2YellowEyesShut;          break;
                                 case 1:
-                                    this.iTexFaceEyesOpen = BotTex.EFaceMale2YellowEyesOpen;
-                                    this.iTexFaceEyesShut = BotTex.EFaceMale2YellowEyesShut;          break;
+                                    this.texFaceEyesOpen = BotTex.EFaceMale2YellowEyesOpen;
+                                    this.texFaceEyesShut = BotTex.EFaceMale2YellowEyesShut;          break;
                             }
                             break;
                         }
@@ -245,21 +245,21 @@
 
                 case EBlack:
                 {
-                    switch (this.iBodyType)
+                    switch (this.bodyType)
                     {
                         case EFemaleNormal:
                         {
                             switch ( LibMath.getRandom( 0, 2 ) )
                             {
                                 case 0:
-                                    this.iTexFaceEyesOpen = BotTex.EFaceFemale1BlackEyesOpen;
-                                    this.iTexFaceEyesShut = BotTex.EFaceFemale1BlackEyesShut;          break;
+                                    this.texFaceEyesOpen = BotTex.EFaceFemale1BlackEyesOpen;
+                                    this.texFaceEyesShut = BotTex.EFaceFemale1BlackEyesShut;          break;
                                 case 1:
-                                    this.iTexFaceEyesOpen = BotTex.EFaceFemale2BlackEyesOpen;
-                                    this.iTexFaceEyesShut = BotTex.EFaceFemale2BlackEyesShut;          break;
+                                    this.texFaceEyesOpen = BotTex.EFaceFemale2BlackEyesOpen;
+                                    this.texFaceEyesShut = BotTex.EFaceFemale2BlackEyesShut;          break;
                                 case 2:
-                                    this.iTexFaceEyesOpen = BotTex.EFaceFemale3BlackEyesOpen;
-                                    this.iTexFaceEyesShut = BotTex.EFaceFemale3BlackEyesShut;          break;
+                                    this.texFaceEyesOpen = BotTex.EFaceFemale3BlackEyesOpen;
+                                    this.texFaceEyesShut = BotTex.EFaceFemale3BlackEyesShut;          break;
                             }
                             break;
                         }
@@ -270,11 +270,11 @@
                             switch ( LibMath.getRandom( 0, 2 ) )
                             {
                                 case 0:
-                                    this.iTexFaceEyesOpen = BotTex.EFaceMale1BlackEyesOpen;
-                                    this.iTexFaceEyesShut = BotTex.EFaceMale1BlackEyesShut;          break;
+                                    this.texFaceEyesOpen = BotTex.EFaceMale1BlackEyesOpen;
+                                    this.texFaceEyesShut = BotTex.EFaceMale1BlackEyesShut;          break;
                                 case 1:
-                                    this.iTexFaceEyesOpen = BotTex.EFaceMale2BlackEyesOpen;
-                                    this.iTexFaceEyesShut = BotTex.EFaceMale2BlackEyesShut;          break;
+                                    this.texFaceEyesOpen = BotTex.EFaceMale2BlackEyesOpen;
+                                    this.texFaceEyesShut = BotTex.EFaceMale2BlackEyesShut;          break;
                             }
                             break;
                         }
@@ -284,21 +284,21 @@
 
                 case EBrown:
                 {
-                    switch (this.iBodyType)
+                    switch (this.bodyType)
                     {
                         case EFemaleNormal:
                         {
                             switch ( LibMath.getRandom( 0, 2 ) )
                             {
                                 case 0:
-                                    this.iTexFaceEyesOpen = BotTex.EFaceFemale1BrownEyesOpen;
-                                    this.iTexFaceEyesShut = BotTex.EFaceFemale1BrownEyesShut;          break;
+                                    this.texFaceEyesOpen = BotTex.EFaceFemale1BrownEyesOpen;
+                                    this.texFaceEyesShut = BotTex.EFaceFemale1BrownEyesShut;          break;
                                 case 1:
-                                    this.iTexFaceEyesOpen = BotTex.EFaceFemale2BrownEyesOpen;
-                                    this.iTexFaceEyesShut = BotTex.EFaceFemale2BrownEyesShut;          break;
+                                    this.texFaceEyesOpen = BotTex.EFaceFemale2BrownEyesOpen;
+                                    this.texFaceEyesShut = BotTex.EFaceFemale2BrownEyesShut;          break;
                                 case 2:
-                                    this.iTexFaceEyesOpen = BotTex.EFaceFemale3BrownEyesOpen;
-                                    this.iTexFaceEyesShut = BotTex.EFaceFemale3BrownEyesShut;          break;
+                                    this.texFaceEyesOpen = BotTex.EFaceFemale3BrownEyesOpen;
+                                    this.texFaceEyesShut = BotTex.EFaceFemale3BrownEyesShut;          break;
                             }
                             break;
                         }
@@ -309,11 +309,11 @@
                             switch ( LibMath.getRandom( 0, 1 ) )
                             {
                                 case 0:
-                                    this.iTexFaceEyesOpen = BotTex.EFaceMale1BrownEyesOpen;
-                                    this.iTexFaceEyesShut = BotTex.EFaceMale1BrownEyesShut;          break;
+                                    this.texFaceEyesOpen = BotTex.EFaceMale1BrownEyesOpen;
+                                    this.texFaceEyesShut = BotTex.EFaceMale1BrownEyesShut;          break;
                                 case 1:
-                                    this.iTexFaceEyesOpen = BotTex.EFaceMale2BrownEyesOpen;
-                                    this.iTexFaceEyesShut = BotTex.EFaceMale2BrownEyesShut;          break;
+                                    this.texFaceEyesOpen = BotTex.EFaceMale2BrownEyesOpen;
+                                    this.texFaceEyesShut = BotTex.EFaceMale2BrownEyesShut;          break;
                             }
                             break;
                         }
@@ -323,21 +323,21 @@
 
                 case ELightBrown:
                 {
-                    switch (this.iBodyType)
+                    switch (this.bodyType)
                     {
                         case EFemaleNormal:
                         {
                             switch ( LibMath.getRandom( 0, 2 ) )
                             {
                                 case 0:
-                                    this.iTexFaceEyesOpen = BotTex.EFaceFemale1LightBrownEyesOpen;
-                                    this.iTexFaceEyesShut = BotTex.EFaceFemale1LightBrownEyesShut;          break;
+                                    this.texFaceEyesOpen = BotTex.EFaceFemale1LightBrownEyesOpen;
+                                    this.texFaceEyesShut = BotTex.EFaceFemale1LightBrownEyesShut;          break;
                                 case 1:
-                                    this.iTexFaceEyesOpen = BotTex.EFaceFemale2LightBrownEyesOpen;
-                                    this.iTexFaceEyesShut = BotTex.EFaceFemale2LightBrownEyesShut;          break;
+                                    this.texFaceEyesOpen = BotTex.EFaceFemale2LightBrownEyesOpen;
+                                    this.texFaceEyesShut = BotTex.EFaceFemale2LightBrownEyesShut;          break;
                                 case 2:
-                                    this.iTexFaceEyesOpen = BotTex.EFaceFemale3LightBrownEyesOpen;
-                                    this.iTexFaceEyesShut = BotTex.EFaceFemale3LightBrownEyesShut;          break;
+                                    this.texFaceEyesOpen = BotTex.EFaceFemale3LightBrownEyesOpen;
+                                    this.texFaceEyesShut = BotTex.EFaceFemale3LightBrownEyesShut;          break;
                             }
                             break;
                         }
@@ -348,14 +348,14 @@
                             switch ( LibMath.getRandom( 0, 2 ) )
                             {
                                 case 0:
-                                    this.iTexFaceEyesOpen = BotTex.EFaceMale1LightBrownEyesOpen;
-                                    this.iTexFaceEyesShut = BotTex.EFaceMale1LightBrownEyesShut;          break;
+                                    this.texFaceEyesOpen = BotTex.EFaceMale1LightBrownEyesOpen;
+                                    this.texFaceEyesShut = BotTex.EFaceMale1LightBrownEyesShut;          break;
                                 case 1:
-                                    this.iTexFaceEyesOpen = BotTex.EFaceMale2LightBrownEyesOpen;
-                                    this.iTexFaceEyesShut = BotTex.EFaceMale2LightBrownEyesShut;          break;
+                                    this.texFaceEyesOpen = BotTex.EFaceMale2LightBrownEyesOpen;
+                                    this.texFaceEyesShut = BotTex.EFaceMale2LightBrownEyesShut;          break;
                                 case 2:
-                                    this.iTexFaceEyesOpen = BotTex.EFaceMale3LightBrownEyesOpen;
-                                    this.iTexFaceEyesShut = BotTex.EFaceMale3LightBrownEyesOpen;          break;
+                                    this.texFaceEyesOpen = BotTex.EFaceMale3LightBrownEyesOpen;
+                                    this.texFaceEyesShut = BotTex.EFaceMale3LightBrownEyesOpen;          break;
                             }
                             break;
                         }
@@ -366,21 +366,21 @@
 
                 case ERose:
                 {
-                    switch (this.iBodyType)
+                    switch (this.bodyType)
                     {
                         case EFemaleNormal:
                         {
                             switch ( LibMath.getRandom( 0, 2 ) )
                             {
                                 case 0:
-                                    this.iTexFaceEyesOpen = BotTex.EFaceFemale1RoseEyesOpen;
-                                    this.iTexFaceEyesShut = BotTex.EFaceFemale1RoseEyesShut;          break;
+                                    this.texFaceEyesOpen = BotTex.EFaceFemale1RoseEyesOpen;
+                                    this.texFaceEyesShut = BotTex.EFaceFemale1RoseEyesShut;          break;
                                 case 1:
-                                    this.iTexFaceEyesOpen = BotTex.EFaceFemale2RoseEyesOpen;
-                                    this.iTexFaceEyesShut = BotTex.EFaceFemale2RoseEyesShut;          break;
+                                    this.texFaceEyesOpen = BotTex.EFaceFemale2RoseEyesOpen;
+                                    this.texFaceEyesShut = BotTex.EFaceFemale2RoseEyesShut;          break;
                                 case 2:
-                                    this.iTexFaceEyesOpen = BotTex.EFaceFemale3RoseEyesOpen;
-                                    this.iTexFaceEyesShut = BotTex.EFaceFemale3RoseEyesShut;          break;
+                                    this.texFaceEyesOpen = BotTex.EFaceFemale3RoseEyesOpen;
+                                    this.texFaceEyesShut = BotTex.EFaceFemale3RoseEyesShut;          break;
                             }
                             break;
                         }
@@ -391,11 +391,11 @@
                             switch ( LibMath.getRandom( 0, 1 ) )
                             {
                                 case 0:
-                                    this.iTexFaceEyesOpen = BotTex.EFaceMale1RoseEyesOpen;
-                                    this.iTexFaceEyesShut = BotTex.EFaceMale1RoseEyesShut;          break;
+                                    this.texFaceEyesOpen = BotTex.EFaceMale1RoseEyesOpen;
+                                    this.texFaceEyesShut = BotTex.EFaceMale1RoseEyesShut;          break;
                                 case 1:
-                                    this.iTexFaceEyesOpen = BotTex.EFaceMale2RoseEyesOpen;
-                                    this.iTexFaceEyesShut = BotTex.EFaceMale2RoseEyesShut;          break;
+                                    this.texFaceEyesOpen = BotTex.EFaceMale2RoseEyesOpen;
+                                    this.texFaceEyesShut = BotTex.EFaceMale2RoseEyesShut;          break;
                             }
                             break;
                         }
@@ -405,40 +405,40 @@
             }
 
             //set default limb objects
-            this.iNeck = Bots.ENeck;
-            this.iRightHand = Bots.ERightHand;
-            this.iLeftHand = Bots.ELeftHand;
-            this.iRightFoot = Bots.ERightFoot;
-            this.iLeftFoot = Bots.ELeftFoot;
+            this.neck = Bots.ENeck;
+            this.rightHand = Bots.ERightHand;
+            this.leftHand = Bots.ELeftHand;
+            this.rightFoot = Bots.ERightFoot;
+            this.leftFoot = Bots.ELeftFoot;
 
             //set limb objects according to gender
-            switch (this.iBodyType)
+            switch (this.bodyType)
             {
                 case EMaleNormal:
                 {
-                    this.iTorso = Bots.ETorsoMale1;
-                    this.iRightUpperArm = Bots.ERightUpperArmMale;
-                    this.iRightLowerArm = Bots.ERightLowerArmMale;
-                    this.iLeftUpperArm = Bots.ELeftUpperArmMale;
-                    this.iLeftLowerArm = Bots.ELeftLowerArmMale;
-                    this.iRightUpperLeg = Bots.ERightUpperLegMale;
-                    this.iLeftUpperLeg = Bots.ELeftUpperLegMale;
-                    this.iRightLowerLeg = Bots.ERightLowerLegMale;
-                    this.iLeftLowerLeg = Bots.ELeftLowerLegMale;
+                    this.torso = Bots.ETorsoMale1;
+                    this.rightUpperArm = Bots.ERightUpperArmMale;
+                    this.rightLowerArm = Bots.ERightLowerArmMale;
+                    this.leftUpperArm = Bots.ELeftUpperArmMale;
+                    this.leftLowerArm = Bots.ELeftLowerArmMale;
+                    this.rightUpperLeg = Bots.ERightUpperLegMale;
+                    this.leftUpperLeg = Bots.ELeftUpperLegMale;
+                    this.rightLowerLeg = Bots.ERightLowerLegMale;
+                    this.leftLowerLeg = Bots.ELeftLowerLegMale;
                     break;
                 }
 
                 case EFemaleNormal:
                 {
-                    this.iTorso = Bots.ETorsoFemale1;
-                    this.iRightUpperArm = Bots.ERightUpperArmFemale;
-                    this.iRightLowerArm = Bots.ERightLowerArmFemale;
-                    this.iLeftUpperArm = Bots.ELeftUpperArmFemale;
-                    this.iLeftLowerArm = Bots.ELeftLowerArmFemale;
-                    this.iRightUpperLeg = Bots.ERightUpperLegFemale;
-                    this.iLeftUpperLeg = Bots.ELeftUpperLegFemale;
-                    this.iRightLowerLeg = Bots.ERightLowerLegFemale;
-                    this.iLeftLowerLeg = Bots.ELeftLowerLegFemale;
+                    this.torso = Bots.ETorsoFemale1;
+                    this.rightUpperArm = Bots.ERightUpperArmFemale;
+                    this.rightLowerArm = Bots.ERightLowerArmFemale;
+                    this.leftUpperArm = Bots.ELeftUpperArmFemale;
+                    this.leftLowerArm = Bots.ELeftLowerArmFemale;
+                    this.rightUpperLeg = Bots.ERightUpperLegFemale;
+                    this.leftUpperLeg = Bots.ELeftUpperLegFemale;
+                    this.rightLowerLeg = Bots.ERightLowerLegFemale;
+                    this.leftLowerLeg = Bots.ELeftLowerLegFemale;
                     break;
                 }
             }

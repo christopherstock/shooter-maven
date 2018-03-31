@@ -193,57 +193,57 @@
             //assign template
             this.template = aTemp;
 
-            BotPatternBase aTemplate = aTemp.iBase;
+            BotPatternBase aTemplate = aTemp.base;
 
-            if ( aTemp.iHat != null )
+            if ( aTemp.hat != null )
             {
-                this.hat = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.iHat ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.0f );
-                this.hat.changeTexture(             WallTex.ETest.getMetaData(),          aTemp.iTexHat.getMetaData()                  );
+                this.hat = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.hat), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.0f );
+                this.hat.changeTexture(             WallTex.ETest.getMetaData(),          aTemp.texHat.getMetaData()                  );
             }
 
-            if ( aTemp.iGlasses != null )
+            if ( aTemp.glasses != null )
             {
-                this.glasses = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.iGlasses ), aAnchor, 0.0f, 1.0f, aParentGameObject, -1.0f );
-                this.glasses.changeTexture(             WallTex.ETest.getMetaData(),         aTemp.iTexGlassesGlass.getMetaData()         );
-                this.glasses.changeTexture(             BotTex.EHairBlonde.getMetaData(),    aTemp.iTexGlassesHolder.getMetaData()        );
+                this.glasses = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.glasses), aAnchor, 0.0f, 1.0f, aParentGameObject, -1.0f );
+                this.glasses.changeTexture(             WallTex.ETest.getMetaData(),         aTemp.texGlassesGlass.getMetaData()         );
+                this.glasses.changeTexture(             BotTex.EHairBlonde.getMetaData(),    aTemp.texGlassesHolder.getMetaData()        );
             }
 
             //assign limbs
-            this.head = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.iHead               ), aAnchor, 0.0f, 1.0f, aParentGameObject, -1.0f );
-            this.face = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.iFace               ), aAnchor, 0.0f, 1.0f, aParentGameObject, -1.0f );
-            this.rightUpperArm = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.iRightUpperArm      ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
-            this.rightLowerArm = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.iRightLowerArm      ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
-            this.torso = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.iTorso              ), aAnchor, 0.0f, 1.0f, aParentGameObject, 1.0f  );
-            this.neck = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.iNeck               ), aAnchor, 0.0f, 1.0f, aParentGameObject, -1.0f  );
-            this.leftUpperArm = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.iLeftUpperArm       ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
-            this.leftLowerArm = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.iLeftLowerArm       ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
-            this.rightHand = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.iRightHand          ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
-            this.leftHand = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.iLeftHand           ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
-            this.rightUpperLeg = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.iRightUpperLeg      ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.5f  );
-            this.leftUpperLeg = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.iLeftUpperLeg       ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.5f  );
-            this.rightLowerLeg = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.iRightLowerLeg      ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.5f  );
-            this.leftLowerLeg = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.iLeftLowerLeg       ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.5f  );
-            this.rightFoot = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.iRightFoot          ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
-            this.leftFoot = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.iLeftFoot           ), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
+            this.head = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.head), aAnchor, 0.0f, 1.0f, aParentGameObject, -1.0f );
+            this.face = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.face), aAnchor, 0.0f, 1.0f, aParentGameObject, -1.0f );
+            this.rightUpperArm = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.rightUpperArm), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
+            this.rightLowerArm = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.rightLowerArm), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
+            this.torso = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.torso), aAnchor, 0.0f, 1.0f, aParentGameObject, 1.0f  );
+            this.neck = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.neck), aAnchor, 0.0f, 1.0f, aParentGameObject, -1.0f  );
+            this.leftUpperArm = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.leftUpperArm), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
+            this.leftLowerArm = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.leftLowerArm), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
+            this.rightHand = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.rightHand), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
+            this.leftHand = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.leftHand), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
+            this.rightUpperLeg = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.rightUpperLeg), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.5f  );
+            this.leftUpperLeg = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.leftUpperLeg), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.5f  );
+            this.rightLowerLeg = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.rightLowerLeg), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.5f  );
+            this.leftLowerLeg = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.leftLowerLeg), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.5f  );
+            this.rightFoot = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.rightFoot), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
+            this.leftFoot = new BotMesh( Shooter.game.engine.d3ds.getFaces( aTemp.leftFoot), aAnchor, 0.0f, 1.0f, aParentGameObject, 0.33f );
 
             //assign textures for bot meshes
-            this.rightUpperLeg.changeTexture(   WallTex.ETest.getMetaData(),          ( aTemplate.iTexRightUpperLeg == null ? aTemp.iSkin.getMetaData() : aTemplate.iTexRightUpperLeg .getMetaData()  )         );
-            this.leftUpperLeg.changeTexture(    WallTex.ETest.getMetaData(),          ( aTemplate.iTexLeftUpperLeg  == null ? aTemp.iSkin.getMetaData() : aTemplate.iTexLeftUpperLeg  .getMetaData()  )         );
-            this.rightLowerLeg.changeTexture(   WallTex.ETest.getMetaData(),          ( aTemplate.iTexRightLowerLeg == null ? aTemp.iSkin.getMetaData() : aTemplate.iTexRightLowerLeg .getMetaData()  )         );
-            this.leftLowerLeg.changeTexture(    WallTex.ETest.getMetaData(),          ( aTemplate.iTexLeftLowerLeg  == null ? aTemp.iSkin.getMetaData() : aTemplate.iTexLeftLowerLeg  .getMetaData()  )         );
-            this.leftFoot.changeTexture(        WallTex.ETest.getMetaData(),          ( aTemplate.iTexLeftFoot      == null ? aTemp.iSkin.getMetaData() : aTemplate.iTexLeftFoot      .getMetaData()  )         );
-            this.rightFoot.changeTexture(       WallTex.ETest.getMetaData(),          ( aTemplate.iTexRightFoot     == null ? aTemp.iSkin.getMetaData() : aTemplate.iTexRightFoot     .getMetaData()  )         );
-            this.leftUpperArm.changeTexture(    WallTex.ETest.getMetaData(),          ( aTemplate.iTexLeftUpperArm  == null ? aTemp.iSkin.getMetaData() : aTemplate.iTexLeftUpperArm  .getMetaData()  )         );
-            this.rightUpperArm.changeTexture(   WallTex.ETest.getMetaData(),          ( aTemplate.iTexRightUpperArm == null ? aTemp.iSkin.getMetaData() : aTemplate.iTexRightUpperArm .getMetaData()  )         );
-            this.leftLowerArm.changeTexture(    WallTex.ETest.getMetaData(),          ( aTemplate.iTexLeftLowerArm  == null ? aTemp.iSkin.getMetaData() : aTemplate.iTexLeftLowerArm  .getMetaData()  )         );
-            this.rightLowerArm.changeTexture(   WallTex.ETest.getMetaData(),          ( aTemplate.iTexRightLowerArm == null ? aTemp.iSkin.getMetaData() : aTemplate.iTexRightLowerArm .getMetaData()  )         );
-            this.leftHand.changeTexture(        WallTex.ETest.getMetaData(),          ( aTemplate.iTexLeftHand      == null ? aTemp.iSkin.getMetaData() : aTemplate.iTexLeftHand      .getMetaData()  )         );
-            this.rightHand.changeTexture(       WallTex.ETest.getMetaData(),          ( aTemplate.iTexRightHand     == null ? aTemp.iSkin.getMetaData() : aTemplate.iTexRightHand     .getMetaData()  )         );
-            this.neck.changeTexture(            WallTex.ETest.getMetaData(),          ( aTemplate.iTexNeck          == null ? aTemp.iSkin.getMetaData() : aTemplate.iTexNeck          .getMetaData()  )         );
-            this.torso.changeTexture(           WallTex.ETest.getMetaData(),          ( aTemplate.iTexTorso    == null ? aTemp.iSkin.getMetaData() : aTemplate.iTexTorso    .getMetaData()  )         );
+            this.rightUpperLeg.changeTexture(   WallTex.ETest.getMetaData(),          ( aTemplate.texRightUpperLeg == null ? aTemp.skin.getMetaData() : aTemplate.texRightUpperLeg.getMetaData()  )         );
+            this.leftUpperLeg.changeTexture(    WallTex.ETest.getMetaData(),          ( aTemplate.texLeftUpperLeg == null ? aTemp.skin.getMetaData() : aTemplate.texLeftUpperLeg.getMetaData()  )         );
+            this.rightLowerLeg.changeTexture(   WallTex.ETest.getMetaData(),          ( aTemplate.texRightLowerLeg == null ? aTemp.skin.getMetaData() : aTemplate.texRightLowerLeg.getMetaData()  )         );
+            this.leftLowerLeg.changeTexture(    WallTex.ETest.getMetaData(),          ( aTemplate.texLeftLowerLeg == null ? aTemp.skin.getMetaData() : aTemplate.texLeftLowerLeg.getMetaData()  )         );
+            this.leftFoot.changeTexture(        WallTex.ETest.getMetaData(),          ( aTemplate.texLeftFoot == null ? aTemp.skin.getMetaData() : aTemplate.texLeftFoot.getMetaData()  )         );
+            this.rightFoot.changeTexture(       WallTex.ETest.getMetaData(),          ( aTemplate.texRightFoot == null ? aTemp.skin.getMetaData() : aTemplate.texRightFoot.getMetaData()  )         );
+            this.leftUpperArm.changeTexture(    WallTex.ETest.getMetaData(),          ( aTemplate.texLeftUpperArm == null ? aTemp.skin.getMetaData() : aTemplate.texLeftUpperArm.getMetaData()  )         );
+            this.rightUpperArm.changeTexture(   WallTex.ETest.getMetaData(),          ( aTemplate.texRightUpperArm == null ? aTemp.skin.getMetaData() : aTemplate.texRightUpperArm.getMetaData()  )         );
+            this.leftLowerArm.changeTexture(    WallTex.ETest.getMetaData(),          ( aTemplate.texLeftLowerArm == null ? aTemp.skin.getMetaData() : aTemplate.texLeftLowerArm.getMetaData()  )         );
+            this.rightLowerArm.changeTexture(   WallTex.ETest.getMetaData(),          ( aTemplate.texRightLowerArm == null ? aTemp.skin.getMetaData() : aTemplate.texRightLowerArm.getMetaData()  )         );
+            this.leftHand.changeTexture(        WallTex.ETest.getMetaData(),          ( aTemplate.texLeftHand == null ? aTemp.skin.getMetaData() : aTemplate.texLeftHand.getMetaData()  )         );
+            this.rightHand.changeTexture(       WallTex.ETest.getMetaData(),          ( aTemplate.texRightHand == null ? aTemp.skin.getMetaData() : aTemplate.texRightHand.getMetaData()  )         );
+            this.neck.changeTexture(            WallTex.ETest.getMetaData(),          ( aTemplate.texNeck == null ? aTemp.skin.getMetaData() : aTemplate.texNeck.getMetaData()  )         );
+            this.torso.changeTexture(           WallTex.ETest.getMetaData(),          ( aTemplate.texTorso == null ? aTemp.skin.getMetaData() : aTemplate.texTorso.getMetaData()  )         );
 
-            this.head.changeTexture(            BotTex.EHairBlonde.getMetaData(),     aTemp.iTexHair.getMetaData()                            );
-            this.face.changeTexture(            WallTex.ETest.getMetaData(),          aTemp.iTexFaceEyesOpen.getMetaData()                    );
+            this.head.changeTexture(            BotTex.EHairBlonde.getMetaData(),     aTemp.texHair.getMetaData()                            );
+            this.face.changeTexture(            WallTex.ETest.getMetaData(),          aTemp.texFaceEyesOpen.getMetaData()                    );
 
             //assign initial arm position
             this.assignArmsPosition( ArmsPosition.ERestInHip             );

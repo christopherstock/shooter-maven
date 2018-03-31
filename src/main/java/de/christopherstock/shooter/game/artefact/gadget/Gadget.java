@@ -14,31 +14,31 @@
     import  de.christopherstock.shooter.game.artefact.ArtefactType.*;
 
     /*******************************************************************************************************************
-    *   A close-combat Wearpon.
+    *   A non-combat item for the adventure part.
     *******************************************************************************************************************/
     @SuppressWarnings("PointlessArithmeticExpression")
     public final class Gadget extends ArtefactKind
     {
-        private                 int                     iGiveTakeAnim               = 0;
-        public                  GiveTakeAnim            iGiveTakeAnimState          = null;
+        private                 int             giveTakeAnim            = 0;
+        public                  GiveTakeAnim    giveTakeAnimState       = null;
 
-        private int                     iTicksAnimGive              = 0;
-        private int                     iTicksAnimHold              = 0;
-        private int                     iTicksAnimRecall            = 0;
+        private                 int             ticksAnimGive           = 0;
+        private                 int             ticksAnimHold           = 0;
+        private                 int             ticksAnimRecall         = 0;
 
-        public Gadget( int aTicksAnimGive, int aTicksAnimHold, int aTicksAnimRecall )
+        public Gadget( int ticksAnimGive, int ticksAnimHold, int ticksAnimRecall )
         {
-            this.iGiveTakeAnimState = GiveTakeAnim.ENone;
-            this.iTicksAnimGive = aTicksAnimGive;
-            this.iTicksAnimHold = aTicksAnimHold;
-            this.iTicksAnimRecall = aTicksAnimRecall;
+            this.giveTakeAnimState = GiveTakeAnim.ENone;
+            this.ticksAnimGive     = ticksAnimGive;
+            this.ticksAnimHold     = ticksAnimHold;
+            this.ticksAnimRecall   = ticksAnimRecall;
         }
 
         @Override
-        public boolean use(Artefact artefact, ShotSource ss, Point2D.Float shooterXY )
+        public boolean use( Artefact artefact, ShotSource ss, Point2D.Float shooterXY )
         {
             //can only be used if not being animated
-            if (this.iGiveTakeAnimState == GiveTakeAnim.ENone )
+            if (this.giveTakeAnimState == GiveTakeAnim.ENone )
             {
                 //ShooterDebug.major.out( "use gadget !" );
 
@@ -78,7 +78,7 @@
 
         public final void handleGadget()
         {
-            switch (this.iGiveTakeAnimState)
+            switch (this.giveTakeAnimState)
             {
                 case ENone:
                 {
@@ -88,20 +88,20 @@
 
                 case EOffer:
                 {
-                    if ( --this.iGiveTakeAnim == 0 )
+                    if ( --this.giveTakeAnim == 0 )
                     {
-                        this.iGiveTakeAnim = this.iTicksAnimHold;
-                        this.iGiveTakeAnimState = GiveTakeAnim.EHold;
+                        this.giveTakeAnim = this.ticksAnimHold;
+                        this.giveTakeAnimState = GiveTakeAnim.EHold;
                     }
                     break;
                 }
 
                 case EHold:
                 {
-                    if ( --this.iGiveTakeAnim == 0 )
+                    if ( --this.giveTakeAnim == 0 )
                     {
-                        this.iGiveTakeAnim = this.iTicksAnimRecall;
-                        this.iGiveTakeAnimState = GiveTakeAnim.EDraw;
+                        this.giveTakeAnim = this.ticksAnimRecall;
+                        this.giveTakeAnimState = GiveTakeAnim.EDraw;
 
                         //launch the gadget-action here!
                         Shooter.game.engine.player.launchAction( this );
@@ -111,9 +111,9 @@
 
                 case EDraw:
                 {
-                    if ( --this.iGiveTakeAnim == 0 )
+                    if ( --this.giveTakeAnim == 0 )
                     {
-                        this.iGiveTakeAnimState = GiveTakeAnim.ENone;
+                        this.giveTakeAnimState = GiveTakeAnim.ENone;
                     }
                     break;
                 }
@@ -122,14 +122,14 @@
 
         private void startGiveAnim()
         {
-            this.iGiveTakeAnim = this.iTicksAnimGive;
-            this.iGiveTakeAnimState = GiveTakeAnim.EOffer;
+            this.giveTakeAnim = this.ticksAnimGive;
+            this.giveTakeAnimState = GiveTakeAnim.EOffer;
         }
 
         public final void stopGiveAnim()
         {
-            this.iGiveTakeAnim = 0;
-            this.iGiveTakeAnimState = GiveTakeAnim.ENone;
+            this.giveTakeAnim = 0;
+            this.giveTakeAnimState = GiveTakeAnim.ENone;
         }
 
         public final int[] getGiveTakeDrawMod()
@@ -137,7 +137,7 @@
             int[] ret = new int[] { 0, 0, };
 
             //give/take animation?
-            switch (this.iGiveTakeAnimState)
+            switch (this.giveTakeAnimState)
             {
                 case ENone:
                 {
@@ -147,8 +147,8 @@
 
                 case EOffer:
                 {
-                    ret[ 0 ] -= (this.parentKind.getArtefactImage().width  / PlayerSettings.GIVE_TAKE_ANIM_RATIO ) * (this.iTicksAnimGive - this.iGiveTakeAnim) / this.iTicksAnimGive;
-                    ret[ 1 ] += (this.parentKind.getArtefactImage().height / PlayerSettings.GIVE_TAKE_ANIM_RATIO ) * (this.iTicksAnimGive - this.iGiveTakeAnim) / this.iTicksAnimGive;
+                    ret[ 0 ] -= (this.parentKind.getArtefactImage().width  / PlayerSettings.GIVE_TAKE_ANIM_RATIO ) * (this.ticksAnimGive - this.giveTakeAnim) / this.ticksAnimGive;
+                    ret[ 1 ] += (this.parentKind.getArtefactImage().height / PlayerSettings.GIVE_TAKE_ANIM_RATIO ) * (this.ticksAnimGive - this.giveTakeAnim) / this.ticksAnimGive;
                     break;
                 }
 
@@ -161,8 +161,8 @@
 
                 case EDraw:
                 {
-                    ret[ 0 ] -= (this.parentKind.getArtefactImage().width  / PlayerSettings.GIVE_TAKE_ANIM_RATIO ) * this.iGiveTakeAnim / this.iTicksAnimRecall;
-                    ret[ 1 ] += (this.parentKind.getArtefactImage().height / PlayerSettings.GIVE_TAKE_ANIM_RATIO ) * this.iGiveTakeAnim / this.iTicksAnimRecall;
+                    ret[ 0 ] -= (this.parentKind.getArtefactImage().width  / PlayerSettings.GIVE_TAKE_ANIM_RATIO ) * this.giveTakeAnim / this.ticksAnimRecall;
+                    ret[ 1 ] += (this.parentKind.getArtefactImage().height / PlayerSettings.GIVE_TAKE_ANIM_RATIO ) * this.giveTakeAnim / this.ticksAnimRecall;
                     break;
                 }
             }

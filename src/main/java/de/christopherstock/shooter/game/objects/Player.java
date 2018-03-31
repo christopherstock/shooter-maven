@@ -407,7 +407,7 @@
                 &&
                     (
                             !(this.iArtefactSet.currentArtefact.artefactType.artefactKind instanceof Gadget )
-                        ||  ( (Gadget) this.iArtefactSet.currentArtefact.artefactType.artefactKind).iGiveTakeAnimState == GiveTakeAnim.ENone
+                        ||  ( (Gadget) this.iArtefactSet.currentArtefact.artefactType.artefactKind).giveTakeAnimState == GiveTakeAnim.ENone
                     )
             )
             {

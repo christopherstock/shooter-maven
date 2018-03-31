@@ -136,7 +136,7 @@
 
                 try
                 {
-                    Level.currentSection().getBotByID( LevelSetupTestMayflowerOffice.OFFICE_PARTNER_1 ).iBotMeshes.assignArmsPosition( ArmsPosition.EAimHighBoth );
+                    Level.currentSection().getBotByID( LevelSetupTestMayflowerOffice.OFFICE_PARTNER_1 ).botMeshes.assignArmsPosition( ArmsPosition.EAimHighBoth );
                 }
                 catch ( Throwable t )
                 {

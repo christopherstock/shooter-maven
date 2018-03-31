@@ -23,7 +23,6 @@
     import  de.christopherstock.shooter.game.artefact.gadget.Gadget;
     import  de.christopherstock.shooter.game.bot.*;
     import  de.christopherstock.shooter.game.objects.*;
-    import  de.christopherstock.shooter.ui.hud.*;
     import  de.christopherstock.shooter.ui.hud.HUD.*;
 
     /*******************************************************************************************************************
@@ -408,14 +407,14 @@
                 if (this.iBots.elementAt( i ).isDead() )
                 {
                     //decrease disappear timer
-                    --this.iBots.elementAt( i ).iDisappearTimer;
+                    --this.iBots.elementAt( i ).disappearTimer;
 
-                    if (this.iBots.elementAt( i ).iDisappearTimer <= General.FADE_OUT_FACES_TOTAL_TICKS )
+                    if (this.iBots.elementAt( i ).disappearTimer <= General.FADE_OUT_FACES_TOTAL_TICKS )
                     {
                         this.iBots.elementAt( i ).fadeOutAllFaces();
                     }
 
-                    if (this.iBots.elementAt( i ).iDisappearTimer <= 0 )
+                    if (this.iBots.elementAt( i ).disappearTimer <= 0 )
                     {
                         this.iBots.removeElementAt( i );
                     }
@@ -601,7 +600,7 @@
         {
             for ( Bot bot : this.iBots)
             {
-                if ( bot.iID == id )
+                if ( bot.id == id )
                 {
                     return bot;
                 }

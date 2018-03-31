@@ -7,7 +7,7 @@
     *   The main class.
     *
     *   TODO    Improve output for preloader / startup phase.
-    *   TODO    Delete all 'a' and 'i' prefixes from variables. ( start at Gadget )
+    *   TODO    Delete all 'a' and 'i' prefixes from variables. ( start at BotEvent )
     *
     *   TODO    Add skybox!
     *   TODO    Different heights for particle effects.
