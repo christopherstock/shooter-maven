@@ -442,13 +442,14 @@
                 SoundFg.EPlayerHit1.playGlobalFx( 20 );
 
                 //substract damage - clip rock bottom
+/*
                 this.setHealth(this.health - descent );
-
+*/
                 //start red screen anim
                 //HUDFx.launchDamageFX( descent );
 
                 //start damage fx
-                Shooter.game.engine.hudFx.launchDamageFX( 15 );
+                Shooter.game.engine.hudFx.launchDamageFX( 1 );
 
                 //play damage sound delayed
                 SoundFg.EPlayerHit1.playGlobalFx( 20 );

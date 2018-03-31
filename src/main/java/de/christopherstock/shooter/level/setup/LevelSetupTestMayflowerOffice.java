@@ -38,9 +38,8 @@
         private     static      final   int         SECTION_THREE               = 2;
         private     static      final   int         SECTION_FOUR                = 3;
 
-        public      static      final   int         GENERAL                     = 0;
-        public      static      final   int         OFFICE_PARTNER_1            = 1;
-        private     static      final   int         OFFICE_PARTNER_2            = 2;
+        public      static      final   int         OFFICE_PARTNER_1            = 0;
+        private     static      final   int         OFFICE_PARTNER_2            = 1;
 
         @Override
         public final LevelConfigMain createNewLevelConfig()
@@ -108,6 +107,7 @@
                     },
                     new BotFactory[]
                     {
+                        new BotFactory( OFFICE_PARTNER_1, BotKind.EUnitSecurity,          new LibVertex( 8.75f, 18.0f, 2.5f ), 135.0f, new Bot.BotAction[] { /* new Bot.BotUseAction( BotEvent.ELevel1AcclaimPlayer ), new Bot.BotGiveAction( ArtefactType.EMobilePhoneSEW890i, BotEvent.ETakeMobileTest ), new Bot.BotGiveAction( ArtefactType.EChips, BotEvent.ETakeCrackersTest ) */ } ),
                     }
                 ),
 
@@ -162,7 +162,7 @@
                             new Wall(   Others.EChairOffice1,   new LibVertex(  1.0f,   1.0f,   0.0f    ), 255.0f,  LibScalation.ENone,        LibInvert.ENo,  WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ELeather1,     new LibTexture[] { WallTex.EChrome2, },   0, WallHealth.ESolidWood, FXSize.ESmall, null  ),
                             new Sprite( Others.ESprite1,        new LibVertex(  1.25f,  6.5f,   0.0f    ),          LibScalation.EAddHalf,     WallCollidable.EYes, WallTex.EPlant2 ),
                             new Wall(   Others.EWhiteboard1,    new LibVertex(  2.5f,   12.0f,  0.7f    ), 90.0f,   LibScalation.EDouble,      LibInvert.ENo,  WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EWhiteboard1,  null, 0,               WallHealth.ESolidWood, FXSize.ESmall, null  ),
-                            new Wall(   Others.EPoster1,        new LibVertex(  4.0f,   12.0f,  0.7f    ), 90.0f,   LibScalation.EAddHalf,     LibInvert.ENo,  WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EPoster3,      null, 0,               WallHealth.ESolidWood, FXSize.ESmall, null  ),
+                            new Wall(   Others.EPoster1,        new LibVertex(  4.0f,   12.0f,  0.7f    ), 90.0f,   LibScalation.EAddHalf,     LibInvert.ENo,  WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EPoster4,      null, 0,               WallHealth.ESolidWood, FXSize.ESmall, null  ),
                             new Wall(   Others.ESofa1,          new LibVertex(  7.0f,   2.0f,   0.0f    ), 0.0f,    LibScalation.ENone,        LibInvert.ENo,  WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ELeather2,     new LibTexture[] { WallTex.ETest, }, 0, WallHealth.EFurniture, FXSize.ELarge, null  ),
                         },
                         null,
@@ -191,6 +191,7 @@
                         WALL_OFFICE, CARPET_OFFICE, WallTex.ECeiling1,
                         new Wall[]
                         {
+                            new Wall(   Others.EPoster1,        new LibVertex(  5.0f,   8.0f,  0.50f   ), 90.0f,   LibScalation.EDouble,     LibInvert.ENo,  WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EPoster6,      null, 0,               WallHealth.ESolidWood, FXSize.ESmall, null  ),
                         },
                         null,
                         null,

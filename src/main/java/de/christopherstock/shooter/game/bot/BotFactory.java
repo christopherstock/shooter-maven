@@ -96,8 +96,8 @@
                 {
                     switch ( LibMath.getRandom( 0, 1 ) )
                     {
-                        case 0: return new Bot(  new BotPattern( BotPatternBase.EPilot1, this.kind),  Bot.BotType.ETypeFriend, this.anchor,  new Point2D.Float[] { new Point2D.Float( 7.0f, 4.0f ), new Point2D.Float( 7.0f, 10.0f ), }, BotJob.EWalkWaypoints,     new Artefact[] { new Artefact( ArtefactType.ESpaz12 ) }, this.facingAngle, this.actions, BotHealth.ECivilian, this.id, BotHanded.ERightHanded    );
-                        case 1: return new Bot(  new BotPattern( BotPatternBase.EPilot1, this.kind),  Bot.BotType.ETypeFriend, this.anchor,  new Point2D.Float[] { new Point2D.Float( 7.0f, 4.0f ), new Point2D.Float( 7.0f, 10.0f ), }, BotJob.EWalkWaypoints,     new Artefact[] { new Artefact( ArtefactType.ESpaz12 ) }, this.facingAngle, this.actions, BotHealth.ECivilian, this.id, BotHanded.ERightHanded    );
+                        case 0: return new Bot(  new BotPattern( BotPatternBase.EPilot1, this.kind),  Bot.BotType.ETypeFriend, this.anchor,  new Point2D.Float[] { new Point2D.Float( 7.0f, 4.0f ), new Point2D.Float( 7.0f, 8.0f ), }, BotJob.EWalkWaypoints,     new Artefact[] { new Artefact( ArtefactType.ESpaz12 ) }, this.facingAngle, this.actions, BotHealth.ECivilian, this.id, BotHanded.ERightHanded    );
+                        case 1: return new Bot(  new BotPattern( BotPatternBase.EPilot1, this.kind),  Bot.BotType.ETypeFriend, this.anchor,  new Point2D.Float[] { new Point2D.Float( 7.0f, 4.0f ), new Point2D.Float( 7.0f, 8.0f ), }, BotJob.EWalkWaypoints,     new Artefact[] { new Artefact( ArtefactType.ESpaz12 ) }, this.facingAngle, this.actions, BotHealth.ECivilian, this.id, BotHanded.ERightHanded    );
                     }
                     break;
                 }

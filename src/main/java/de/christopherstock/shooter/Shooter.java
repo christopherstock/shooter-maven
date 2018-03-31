@@ -6,10 +6,9 @@
     /*******************************************************************************************************************
     *   The main class.
     *
+    *   TODO    Revise level design.
     *   TODO    Complete the MVP.
     *
-    *   TODO    Revise level design.
-    *   TODO    Mayflower branding and textures ( posters etc. ).
     *   TODO    Prune all singleton patterns.
     *   TODO    Different heights for particle effects (blood).
     *   TODO    Turn BulletHole.bulletHoles non static!
