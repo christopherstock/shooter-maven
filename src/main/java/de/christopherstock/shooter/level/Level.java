@@ -90,13 +90,13 @@
             for ( ArtefactType w : LevelCurrent.currentLevelConfig.iStartupWearpons )
             {
                 Artefact toDeliver = new Artefact( w );
-                Shooter.game.engine.player.iArtefactSet.deliverArtefact( toDeliver );
+                Shooter.game.engine.player.artefactSet.deliverArtefact( toDeliver );
 
                 //reload if firearm
                 if ( w.isFireArm() )
                 {
                     //ShooterDebug.bugfix.out( "reload initial wearpon" );
-                    toDeliver.reload( Shooter.game.engine.player.iAmmoSet, false, false, null );
+                    toDeliver.reload( Shooter.game.engine.player.ammoSet, false, false, null );
                 }
             }
 

@@ -4,7 +4,7 @@
     import  java.awt.geom.*;
     import  java.util.*;
     import  de.christopherstock.lib.*;
-    import de.christopherstock.lib.LibTransformationMode;
+    import  de.christopherstock.lib.LibTransformationMode;
     import  de.christopherstock.lib.g3d.*;
     import  de.christopherstock.lib.g3d.face.*;
     import  de.christopherstock.lib.g3d.face.LibFace.*;
@@ -29,35 +29,35 @@
             ;
         }
 
-        private     static  final   LibColors           DEBUG_COLOR         = LibColors.EGreen;
+        private     static  final   LibColors           DEBUG_COLOR                 = LibColors.EGreen;
 
-        private                     LibVertex           iAnchor                 = null;
-        private                     ItemKind            iKind                   = null;
-        private                     boolean             iCollisionWithPlayer    = false;
-        private                     Mesh                iMesh                   = null;
-        private                     float               iStartRotZ              = 0.0f;
-        private LibRotating iIsRotating             = null;
-        private                     float               iRotationZ              = 0.0f;
-        private boolean             iRemove                 = false;
-        private Artefact            iArtefact               = null;
-        protected                   float               iDropTarget             = 0.0f;
-        protected                   float               iDropBegin              = 0.0f;
+        private                     LibVertex           anchor                      = null;
+        private                     ItemKind            kind                        = null;
+        private                     boolean             collisionWithPlayer         = false;
+        private                     Mesh                mesh                        = null;
+        private                     float               startRotZ                   = 0.0f;
+        private                     LibRotating         isRotating                  = null;
+        private                     float               rotationZ                   = 0.0f;
+        private                     boolean             remove                      = false;
+        private                     Artefact            artefact                    = null;
+        protected                   float               dropTarget                  = 0.0f;
+        protected                   float               dropBegin                   = 0.0f;
 
-        public ItemToPickUp( ItemKind aKind, Artefact aArtefact, float x, float y, float z, float aRotZ, LibRotating aIsRotating )
+        public ItemToPickUp( ItemKind kind, Artefact artefact, float x, float y, float z, float rotZ, LibRotating isRotating )
         {
-            this.iKind = aKind;
-            this.iArtefact = aArtefact;
-            this.iAnchor = new LibVertex( x, y, z );
-            this.iStartRotZ = aRotZ;
-            this.iIsRotating = aIsRotating;
+            this.kind       = kind;
+            this.artefact   = artefact;
+            this.anchor     = new LibVertex( x, y, z );
+            this.startRotZ  = rotZ;
+            this.isRotating = isRotating;
         }
 
         public final void draw()
         {
-            if (this.iKind.iMeshFile != null )
+            if (this.kind.meshFile != null )
             {
                 //draw mesh
-                this.iMesh.draw();
+                this.mesh.draw();
             }
             else
             {
@@ -65,14 +65,14 @@
                 if ( drawDebugCircle )
                 {
                     //draw debug shape
-                    switch (this.iKind.iType )
+                    switch (this.kind.type)
                     {
                         case ECircle:
                         {
                             if ( ShooterDebug.DEBUG_DRAW_ITEM_CIRCLE )
                             {
                                 //Debug.item.out( "drawing item .." );
-                                new LibFaceEllipseFloor( ShooterDebug.face, null, DEBUG_COLOR, this.iAnchor.x, this.iAnchor.y, this.iAnchor.z, this.iKind.iRadius, this.iKind.iRadius, ShooterSetting.Performance.ELLIPSE_SEGMENTS ).draw();
+                                new LibFaceEllipseFloor( ShooterDebug.face, null, DEBUG_COLOR, this.anchor.x, this.anchor.y, this.anchor.z, this.kind.radius, this.kind.radius, ShooterSetting.Performance.ELLIPSE_SEGMENTS ).draw();
                             }
                             break;
                         }
@@ -83,36 +83,36 @@
 
         public final boolean shallBeRemoved()
         {
-            return this.iRemove;
+            return this.remove;
         }
 
         public final void animate()
         {
-            if (this.iMesh != null )
+            if (this.mesh != null )
             {
                 //rotate if desired
-                if (this.iIsRotating == LibRotating.EYes )
+                if (this.isRotating == LibRotating.EYes )
                 {
-                    this.iMesh.translateAndRotateXYZ(this.iAnchor.x, this.iAnchor.y, this.iAnchor.z, 0.0f, 0.0f, this.iRotationZ, null, LibTransformationMode.EOriginalsToTransformed );
-                    this.iRotationZ += ItemSettings.SPEED_ROTATING;
+                    this.mesh.translateAndRotateXYZ(this.anchor.x, this.anchor.y, this.anchor.z, 0.0f, 0.0f, this.rotationZ, null, LibTransformationMode.EOriginalsToTransformed );
+                    this.rotationZ += ItemSettings.SPEED_ROTATING;
                 }
 
                 //drop if desired
-                if (this.iDropBegin > this.iDropTarget)
+                if (this.dropBegin > this.dropTarget)
                 {
-                    this.iDropBegin -= ItemSettings.SPEED_FALLING;
+                    this.dropBegin -= ItemSettings.SPEED_FALLING;
 
                     //clip on target
-                    if (this.iDropBegin <= this.iDropTarget)
+                    if (this.dropBegin <= this.dropTarget)
                     {
-                        this.iDropBegin = this.iDropTarget;
+                        this.dropBegin = this.dropTarget;
 
                         //turn to lying item
                         this.loadD3ds();
                     }
                     else
                     {
-                        this.iMesh.translateAndRotateXYZ( 0.0f, 0.0f, -ItemSettings.SPEED_FALLING, 0.0f, 0.0f, 0.0f, null, LibTransformationMode.EOriginalsToOriginals );
+                        this.mesh.translateAndRotateXYZ( 0.0f, 0.0f, -ItemSettings.SPEED_FALLING, 0.0f, 0.0f, 0.0f, null, LibTransformationMode.EOriginalsToOriginals );
                     }
                 }
             }
@@ -125,22 +125,22 @@
         {
             //check collision of 2 circles ( easy  task.. )
             Area player = new Area( Shooter.game.engine.player.getCylinder().getCircle() );
-            Ellipse2D.Float itemCircle = new Ellipse2D.Float(this.iAnchor.x - this.iKind.iRadius, this.iAnchor.y - this.iKind.iRadius, 2 * this.iKind.iRadius, 2 * this.iKind.iRadius );
+            Ellipse2D.Float itemCircle = new Ellipse2D.Float(this.anchor.x - this.kind.radius, this.anchor.y - this.kind.radius, 2 * this.kind.radius, 2 * this.kind.radius);
             Area item   = new Area( itemCircle );
             player.intersect( item );
             if
             (
                     !player.isEmpty()
-                &&  Shooter.game.engine.player.getCylinder().checkCollision(this.iAnchor.z )
+                &&  Shooter.game.engine.player.getCylinder().checkCollision(this.anchor.z )
             )
             {
-                if ( !this.iCollisionWithPlayer)
+                if ( !this.collisionWithPlayer)
                 {
                     boolean assignAmmoToNewArtefact = false;
                     //check if player already holds this artefact
-                    if (this.iArtefact != null )
+                    if (this.artefact != null )
                     {
-                        if ( !Shooter.game.engine.player.iArtefactSet.contains(this.iArtefact) )
+                        if ( !Shooter.game.engine.player.artefactSet.contains(this.artefact) )
                         {
                             //ShooterDebug.major.out( "player has not this item" );
                             assignAmmoToNewArtefact = true;
@@ -148,83 +148,83 @@
                     }
 
                     //perform item event
-                    for ( GameEvent event : this.iKind.iItemEvents )
+                    for ( GameEvent event : this.kind.itemEvents)
                     {
                         event.perform( null );
                     }
 
                     //play sound fx
-                    if (this.iKind.iPickupSound != null )
+                    if (this.kind.pickupSound != null )
                     {
-                        this.iKind.iPickupSound.playGlobalFx();
+                        this.kind.pickupSound.playGlobalFx();
                     }
 
                     //give magazine ammo to player
-                    if (this.iArtefact != null )
+                    if (this.artefact != null )
                     {
                         if ( assignAmmoToNewArtefact )
                         {
                             //give ammo to new artefact
-                            //ShooterDebug.major.out( "firearm has ammo " + iArtefact.magazineAmmo );
-                            Shooter.game.engine.player.iArtefactSet.assignMagazine(this.iArtefact);
+                            //ShooterDebug.major.out( "firearm has ammo " + artefact.magazineAmmo );
+                            Shooter.game.engine.player.artefactSet.assignMagazine(this.artefact);
                         }
                         else
                         {
-                            if (this.iArtefact.artefactType.artefactKind instanceof FireArm )
+                            if (this.artefact.artefactType.artefactKind instanceof FireArm )
                             {
                                 //give ammo from magazine to stack
-                                Shooter.game.engine.player.iAmmoSet.addAmmo( ( (FireArm) this.iArtefact.artefactType.artefactKind).ammoType, this.iArtefact.magazineAmmo);
+                                Shooter.game.engine.player.ammoSet.addAmmo( ( (FireArm) this.artefact.artefactType.artefactKind).ammoType, this.artefact.magazineAmmo);
                             }
                         }
                     }
 
                     //show hud message
-                    if (this.iKind.iHudMessage != null )
+                    if (this.kind.hudMessage != null )
                     {
                         //ShooterDebug.bugfix.out( "hud message launching" );
-                        HUDMessageManager.getSingleton().showMessage(this.iKind.iHudMessage );
+                        HUDMessageManager.getSingleton().showMessage(this.kind.hudMessage);
                     }
                 }
 
                 //mark as collected
-                this.iCollisionWithPlayer = true;
+                this.collisionWithPlayer = true;
 
                 //check if single event
-                if (this.iKind.iSingleEvent )
+                if (this.kind.singleEvent)
                 {
-                    this.iRemove = true;
+                    this.remove = true;
                 }
             }
             else
             {
                 //release collision ( for repeated items )
-                this.iCollisionWithPlayer = false;
+                this.collisionWithPlayer = false;
             }
         }
 
         public final void loadD3ds()
         {
-            if (this.iKind.iMeshFile != null )
+            if (this.kind.meshFile != null )
             {
-                this.iMesh = new Mesh( Shooter.game.engine.d3ds.getFaces(this.iKind.iMeshFile ), this.iAnchor, this.iStartRotZ, 1.0f, LibInvert.ENo, this, LibTransformationMode.EOriginalsToTransformed, DrawMethod.EAlwaysDraw );
+                this.mesh = new Mesh( Shooter.game.engine.d3ds.getFaces(this.kind.meshFile), this.anchor, this.startRotZ, 1.0f, LibInvert.ENo, this, LibTransformationMode.EOriginalsToTransformed, DrawMethod.EAlwaysDraw );
 
                 //translate rotating items to the meshe's center in order to rotate around the (fixed) anchor
-                if (this.iIsRotating == LibRotating.EYes )
+                if (this.isRotating == LibRotating.EYes )
                 {
-                    Point2D.Float center = this.iMesh.getCenterPointXY();
-                    this.iMesh.translate( -center.x, -center.y, 0.0f, LibTransformationMode.EOriginalsToOriginals );
+                    Point2D.Float center = this.mesh.getCenterPointXY();
+                    this.mesh.translate( -center.x, -center.y, 0.0f, LibTransformationMode.EOriginalsToOriginals );
                 }
             }
         }
 
         public final void assignMesh( Mesh mesh )
         {
-            this.iMesh = mesh; //new Mesh( mesh.getFaces(), anchor, iStartRotZ, 1.0f, LibInvert.ENo, this, LibTransformationMode.EOriginalsToTransformed, DrawMethod.EAlwaysDraw );
+            this.mesh = mesh; //new Mesh( mesh.getFaces(), anchor, startRotZ, 1.0f, LibInvert.ENo, this, LibTransformationMode.EOriginalsToTransformed, DrawMethod.EAlwaysDraw );
         }
 
         public final LibVertex getAnchor()
         {
-            return this.iAnchor;
+            return this.anchor;
         }
 
         public final float getCarriersFaceAngle()

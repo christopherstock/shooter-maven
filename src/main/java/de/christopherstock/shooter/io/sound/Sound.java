@@ -13,7 +13,9 @@
     *******************************************************************************************************************/
     public class Sound
     {
-        public                          Vector<LibSoundClip>    soundQueue              = new Vector<LibSoundClip>();
+        public                          Vector<LibSoundClip>    soundQueue                  = new Vector<LibSoundClip>();
+
+        private                         SoundBg                 currentBgSound              = null;
 
         public void init()
         {
@@ -89,6 +91,28 @@
             for ( SoundBg sound : SoundBg.values() )
             {
                 sound.createPlayer();
+            }
+        }
+
+        public void startBgSound(SoundBg sound )
+        {
+            //stop current sound
+            this.stopCurrentBgSound();
+
+            //assign new sound as current
+            this.currentBgSound = sound;
+
+            //start new sound threaded
+            this.currentBgSound.player.start();
+        }
+
+        public void stopCurrentBgSound()
+        {
+            //stop current sound
+            if ( this.currentBgSound != null && this.currentBgSound.player != null )
+            {
+                this.currentBgSound.player.removeControllerListener( this.currentBgSound.controllerListener);
+                this.currentBgSound.player.stop();
             }
         }
     }

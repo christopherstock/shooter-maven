@@ -75,16 +75,16 @@
             Shooter.game.engine.keys.toggleMainMenu.checkLaunchingAction();
 
             //change to main menu
-            if ( Shooter.game.engine.keys.toggleMainMenu.iLaunchAction )
+            if ( Shooter.game.engine.keys.toggleMainMenu.launchAction)
             {
-                Shooter.game.engine.keys.toggleMainMenu.iLaunchAction = false;
+                Shooter.game.engine.keys.toggleMainMenu.launchAction = false;
                 Shooter.game.orderMainStateChange( MainState.EMainMenu );
             }
 
             //launch test exploisions?
-            if ( Shooter.game.engine.keys.explosion.iLaunchAction )
+            if ( Shooter.game.engine.keys.explosion.launchAction)
             {
-                Shooter.game.engine.keys.explosion.iLaunchAction = false;
+                Shooter.game.engine.keys.explosion.launchAction = false;
 /*
                 float baseZ = ShooterGameShooter.game.engine.player.getAnchor().z;
 
@@ -98,41 +98,41 @@
             }
 
             //player action?
-            if ( Shooter.game.engine.keys.playerAction.iLaunchAction )
+            if ( Shooter.game.engine.keys.playerAction.launchAction)
             {
-                Shooter.game.engine.keys.playerAction.iLaunchAction = false;
+                Shooter.game.engine.keys.playerAction.launchAction = false;
                 Shooter.game.engine.player.launchAction( null );
             }
 
             //player action?
-            if ( Shooter.game.engine.keys.crouching.iLaunchAction )
+            if ( Shooter.game.engine.keys.crouching.launchAction)
             {
-                Shooter.game.engine.keys.crouching.iLaunchAction = false;
+                Shooter.game.engine.keys.crouching.launchAction = false;
                 Shooter.game.engine.player.toggleCrouching();
             }
 
             //gainHealth
-            if ( Shooter.game.engine.keys.gainHealth.iLaunchAction )
+            if ( Shooter.game.engine.keys.gainHealth.launchAction)
             {
-                Shooter.game.engine.keys.gainHealth.iLaunchAction = false;
+                Shooter.game.engine.keys.gainHealth.launchAction = false;
 
                 //heal player
                 Shooter.game.engine.player.heal( 10 );
             }
 
             //hurt
-            if ( Shooter.game.engine.keys.damageFx.iLaunchAction )
+            if ( Shooter.game.engine.keys.damageFx.launchAction)
             {
-                Shooter.game.engine.keys.damageFx.iLaunchAction = false;
+                Shooter.game.engine.keys.damageFx.launchAction = false;
 
                 //hurt player
                 Shooter.game.engine.player.hurt( 10 );
             }
 
             //launch msg?
-            if ( Shooter.game.engine.keys.enterKey.iLaunchAction )
+            if ( Shooter.game.engine.keys.enterKey.launchAction)
             {
-                Shooter.game.engine.keys.enterKey.iLaunchAction = false;
+                Shooter.game.engine.keys.enterKey.launchAction = false;
 
                 try
                 {

@@ -95,49 +95,49 @@
 
                 case EGainWearponKnife:
                 {
-                    Shooter.game.engine.player.iArtefactSet.deliverArtefact( new Artefact( ArtefactType.EKnife ) );
+                    Shooter.game.engine.player.artefactSet.deliverArtefact( new Artefact( ArtefactType.EKnife ) );
                     break;
                 }
 
                 case EGainWearponWaltherPPK:
                 {
-                    Shooter.game.engine.player.iArtefactSet.deliverArtefact( new Artefact( ArtefactType.EWaltherPPK ) );
+                    Shooter.game.engine.player.artefactSet.deliverArtefact( new Artefact( ArtefactType.EWaltherPPK ) );
                     break;
                 }
 
                 case EGainWearponMagnum357:
                 {
-                    Shooter.game.engine.player.iArtefactSet.deliverArtefact( new Artefact( ArtefactType.EMagnum357 ) );
+                    Shooter.game.engine.player.artefactSet.deliverArtefact( new Artefact( ArtefactType.EMagnum357 ) );
                     break;
                 }
 
                 case EGainWearponShotgun:
                 {
-                    Shooter.game.engine.player.iArtefactSet.deliverArtefact( new Artefact( ArtefactType.ESpaz12 ) );
+                    Shooter.game.engine.player.artefactSet.deliverArtefact( new Artefact( ArtefactType.ESpaz12 ) );
                     break;
                 }
 
                 case EGainGadgetBottle1:
                 {
-                    Shooter.game.engine.player.iArtefactSet.deliverArtefact( new Artefact( ArtefactType.EBottleVolvic ) );
+                    Shooter.game.engine.player.artefactSet.deliverArtefact( new Artefact( ArtefactType.EBottleVolvic ) );
                     break;
                 }
 
                 case EGainGadgetHandset1:
                 {
-                    Shooter.game.engine.player.iArtefactSet.deliverArtefact( new Artefact( ArtefactType.EMobilePhoneSEW890i ) );
+                    Shooter.game.engine.player.artefactSet.deliverArtefact( new Artefact( ArtefactType.EMobilePhoneSEW890i ) );
                     break;
                 }
 
                 case EGainGadgetCrackers:
                 {
-                    Shooter.game.engine.player.iArtefactSet.deliverArtefact( new Artefact( ArtefactType.EChips ) );
+                    Shooter.game.engine.player.artefactSet.deliverArtefact( new Artefact( ArtefactType.EChips ) );
                     break;
                 }
 
                 case EGainGadgetKeycard:
                 {
-                    Shooter.game.engine.player.iArtefactSet.deliverArtefact( new Artefact( ArtefactType.EKeycard1 ) );
+                    Shooter.game.engine.player.artefactSet.deliverArtefact( new Artefact( ArtefactType.EKeycard1 ) );
                     break;
                 }
 

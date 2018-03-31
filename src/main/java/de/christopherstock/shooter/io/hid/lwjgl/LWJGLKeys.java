@@ -1,7 +1,7 @@
 
     package de.christopherstock.shooter.io.hid.lwjgl;
 
-    import de.christopherstock.shooter.io.hid.*;
+    import  de.christopherstock.shooter.io.hid.*;
     import  org.lwjgl.input.*;
     import  org.lwjgl.opengl.*;
     import  de.christopherstock.shooter.*;
@@ -42,30 +42,30 @@
             boolean displayHasFocus = Display.isActive();
 
             //view and walk
-            keyHoldStrafeLeft                   = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_A          ) );
-            keyHoldStrafeRight                  = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_D          ) );
-            keyHoldWalkUp                       = displayHasFocus && ( ( Keyboard.isKeyDown( Keyboard.KEY_W          ) || Keyboard.isKeyDown( Keyboard.KEY_UP    ) ) );
-            keyHoldWalkDown                     = displayHasFocus && ( ( Keyboard.isKeyDown( Keyboard.KEY_S          ) || Keyboard.isKeyDown( Keyboard.KEY_DOWN  ) ) );
-            keyHoldTurnLeft                     = displayHasFocus && ( ( Keyboard.isKeyDown( Keyboard.KEY_Q          ) || Keyboard.isKeyDown( Keyboard.KEY_LEFT  ) ) );
-            keyHoldTurnRight                    = displayHasFocus && ( ( Keyboard.isKeyDown( Keyboard.KEY_E          ) || Keyboard.isKeyDown( Keyboard.KEY_RIGHT ) ) );
-            keyHoldLookUp                       = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_NUMPAD8    ) || Keyboard.isKeyDown( Keyboard.KEY_8    ) );
-            keyHoldLookDown                     = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_NUMPAD2    ) || Keyboard.isKeyDown( Keyboard.KEY_2    ) );
-            keyHoldCenterView                   = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_NUMPAD5    ) || Keyboard.isKeyDown( Keyboard.KEY_5    ) );
-            keyHoldAlternate                    = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_LMENU      ) );
-            keyHoldFire                         = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_LCONTROL   ) || Keyboard.isKeyDown( Keyboard.KEY_RCONTROL ) );
-            keyHoldZoom                         = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_X          ) );
+            this.keyHoldStrafeLeft = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_A          ) );
+            this.keyHoldStrafeRight= displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_D          ) );
+            this.keyHoldWalkUp     = displayHasFocus && ( ( Keyboard.isKeyDown( Keyboard.KEY_W          ) || Keyboard.isKeyDown( Keyboard.KEY_UP    ) ) );
+            this.keyHoldWalkDown   = displayHasFocus && ( ( Keyboard.isKeyDown( Keyboard.KEY_S          ) || Keyboard.isKeyDown( Keyboard.KEY_DOWN  ) ) );
+            this.keyHoldTurnLeft   = displayHasFocus && ( ( Keyboard.isKeyDown( Keyboard.KEY_Q          ) || Keyboard.isKeyDown( Keyboard.KEY_LEFT  ) ) );
+            this.keyHoldTurnRight  = displayHasFocus && ( ( Keyboard.isKeyDown( Keyboard.KEY_E          ) || Keyboard.isKeyDown( Keyboard.KEY_RIGHT ) ) );
+            this.keyHoldLookUp     = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_NUMPAD8    ) || Keyboard.isKeyDown( Keyboard.KEY_8    ) );
+            this.keyHoldLookDown   = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_NUMPAD2    ) || Keyboard.isKeyDown( Keyboard.KEY_2    ) );
+            this.keyHoldCenterView = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_NUMPAD5    ) || Keyboard.isKeyDown( Keyboard.KEY_5    ) );
+            this.keyHoldAlternate  = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_LMENU      ) );
+            this.keyHoldFire       = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_LCONTROL   ) || Keyboard.isKeyDown( Keyboard.KEY_RCONTROL ) );
+            this.keyHoldZoom       = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_X          ) );
 
             //actions
-            playerAction.iKeyHold               = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_SPACE      ) );
-            crouching.iKeyHold                  = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_Y          ) );
-            reload.iKeyHold                     = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_R          ) );
+            this.playerAction.keyHold = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_SPACE      ) );
+            this.crouching.keyHold    = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_Y          ) );
+            this.reload.keyHold       = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_R          ) );
 
             //debug keys
-            gainHealth.iKeyHold                 = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_H          ) );
-            damageFx.iKeyHold                   = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_T          ) );
-            enterKey.iKeyHold              = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_RETURN     ) );
-            explosion.iKeyHold                  = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_C          ) );
-            toggleMainMenu.iKeyHold             = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_ESCAPE     ) );
+            this.gainHealth.keyHold     = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_H          ) );
+            this.damageFx.keyHold       = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_T          ) );
+            this.enterKey.keyHold       = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_RETURN     ) );
+            this.explosion.keyHold      = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_C          ) );
+            this.toggleMainMenu.keyHold = displayHasFocus && (   Keyboard.isKeyDown( Keyboard.KEY_ESCAPE     ) );
 
             if ( Keyboard.isKeyDown( Keyboard.KEY_B ) )
             {

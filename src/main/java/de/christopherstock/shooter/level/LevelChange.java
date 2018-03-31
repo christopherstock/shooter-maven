@@ -45,7 +45,7 @@
                         //start according bg music
                         if ( !ShooterDebug.DISABLE_SOUNDS )
                         {
-                            SoundBg.startSound( LevelCurrent.currentLevelConfig.iBgSound );
+                            Shooter.game.engine.sound.startBgSound( LevelCurrent.currentLevelConfig.iBgSound );
                         }
                     }
 

@@ -55,7 +55,7 @@
             //only if messages are available
             if (this.messageQueue.size() > 0 )
             {
-                int drawY = OffsetsOrtho.EBorderHudY + ( Shooter.game.engine.player.iArtefactSet.showAmmoInHUD() ? 2 * this.messageQueue.elementAt( 0 ).getTexImgHeight() : 0 );
+                int drawY = OffsetsOrtho.EBorderHudY + ( Shooter.game.engine.player.artefactSet.showAmmoInHUD() ? 2 * this.messageQueue.elementAt( 0 ).getTexImgHeight() : 0 );
 
                 for (int i = this.messageQueue.size() - 1; i >= 0; --i )
                 {

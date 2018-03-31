@@ -6,28 +6,28 @@
     *******************************************************************************************************************/
     public class KeyControl
     {
-        public                          boolean         iKeyHold                = false;
-        public                          boolean         iLaunchAction           = false;
-        private                         long            iNextMillis             = 0;
-        private                         long            iDelayAfterReload       = 0;
+        public                          boolean         keyHold                     = false;
+        public                          boolean         launchAction                = false;
+        private                         long            nextMillis                  = 0;
+        private                         long            delayAfterReload            = 0;
 
-        public KeyControl( int aDelayAfterReload )
+        public KeyControl( int delayAfterReload )
         {
-            this.iDelayAfterReload = aDelayAfterReload;
+            this.delayAfterReload = delayAfterReload;
         }
 
         public void checkLaunchingAction()
         {
-            if (this.iKeyHold)
+            if (this.keyHold)
             {
                 //check reload blocker
-                if (this.iNextMillis <= System.currentTimeMillis() )
+                if (this.nextMillis <= System.currentTimeMillis() )
                 {
                     //set timestamp for next allowed player action
-                    this.iNextMillis = System.currentTimeMillis() + this.iDelayAfterReload;
+                    this.nextMillis = System.currentTimeMillis() + this.delayAfterReload;
 
                     //trigger the action
-                    this.iLaunchAction = true;
+                    this.launchAction = true;
                 }
             }
         }

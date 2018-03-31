@@ -6,24 +6,24 @@
     /*******************************************************************************************************************
     *   The main class.
     *
+    *   TODO    Delete all 'a' and 'i' prefixes from variables. ( start at Level )
     *   TODO    Improve output for preloader / startup phase.
-    *   TODO    Delete all 'a' and 'i' prefixes from variables. ( start at BotEvent )
-    *
-    *   TODO    Add skybox!
-    *   TODO    Different heights for particle effects.
-    *   TODO    Mayflower branding and textures ( posters etc. ).
-    *
-    *   TODO    only for FireArms! Move ArtefactType.fXImages to Firearms (Wearpons)!
     *   TODO    Optimize fields in ArtefactType!
-    *   TODO    Outsource iconImage and UI-matters from ShooterEngine.
-    *   TODO    Remove ALL static fields!
-    *   TODO    Revise level design.
+    *   TODO    make new subclass:  Wearpon that derives from ArtefactKind!!
+    *   TODO    only for FireArms! Move ArtefactType.fXImages to Firearms (Wearpons)!
     *   TODO    Remove all linter warnings!
     *   TODO    Move all CloseCombat constants to settings!
-    *   TODO    make new subclass:  Wearpon that derives from ArtefactKind!!
+    *   TODO    Remove ALL static fields!
+    *   TODO    Different heights for particle effects (blood).
+    *   TODO    Mayflower branding and textures ( posters etc. ).
+    *   TODO    Outsource iconImage and UI-matters from ShooterEngine.
+    *
+    *   TODO    Revise level design.
+    *
     *   TODO    Complete version 4.0.0.
     *   TODO    Complete the MVP.
     *
+    *   TODO    Add skybox!
     *   TODO    let random assign different topping positions for ShooterWallCollection.createDeskOffice
     *   TODO    slow panning for zoomed glView?
     *   TODO    Refactor the Artefact-System.

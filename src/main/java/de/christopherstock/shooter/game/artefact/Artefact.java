@@ -63,10 +63,10 @@
             else
             {
                 //reload?
-                if ( Shooter.game.engine.keys.reload.iLaunchAction || Shooter.game.engine.mouse.holdButtonCenter)
+                if ( Shooter.game.engine.keys.reload.launchAction || Shooter.game.engine.mouse.holdButtonCenter)
                 {
                     //reload if the wearpon uses ammo
-                    Shooter.game.engine.keys.reload.iLaunchAction   = false;
+                    Shooter.game.engine.keys.reload.launchAction = false;
                     Shooter.game.engine.mouse.holdButtonCenter = false;
 
                     //if the wearpon has ammo
@@ -126,10 +126,10 @@
             }
 
             //zoom animation?
-            if ( p.iZoom != 0.0f )
+            if ( p.zoom != 0.0f )
             {
-                modX += this.artefactType.getArtefactImage().width  * 0.75f * p.iScaleFactor * 2;
-                modY -= this.artefactType.getArtefactImage().height * 0.5f  * p.iScaleFactor / 2;
+                modX += this.artefactType.getArtefactImage().width  * 0.75f * p.scaleFactor * 2;
+                modY -= this.artefactType.getArtefactImage().height * 0.5f  * p.scaleFactor / 2;
             }
 
             //draw fire fx behind artefact
@@ -151,8 +151,8 @@
                         randomX + modX + modGiveTake[ 0 ] + Shooter.game.engine.glView.width - this.artefactType.fXOffset.x,
                         randomY + modY + modGiveTake[ 1 ] + this.artefactType.fXOffset.y,
                         1.0f,
-                        1.0f + p.iScaleFactor * 1.5f,
-                        1.0f + p.iScaleFactor * 1.5f,
+                        1.0f + p.scaleFactor * 1.5f,
+                        1.0f + p.scaleFactor * 1.5f,
                         true
                     );
                 }
@@ -169,8 +169,8 @@
                     modX + modGiveTake[ 0 ] + Shooter.game.engine.glView.width - this.artefactType.getArtefactImage().width,
                     modY + modGiveTake[ 1 ] - this.artefactType.getArtefactImage().height / 8,
                     1.0f,
-                    1.0f + p.iScaleFactor * 1.5f,
-                    1.0f + p.iScaleFactor * 1.5f,
+                    1.0f + p.scaleFactor * 1.5f,
+                    1.0f + p.scaleFactor * 1.5f,
                     true
                 );
             }

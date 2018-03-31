@@ -361,7 +361,7 @@
                                         if ( ga.key == ( (Gadget)artefact ).parentKind)
                                         {
                                             ga.event.perform( this );
-                                            Shooter.game.engine.player.iArtefactSet.extractArtefact( artefact );
+                                            Shooter.game.engine.player.artefactSet.extractArtefact( artefact );
                                         }
                                     }
                                 }
@@ -1356,8 +1356,8 @@
                     //p.loadD3ds(); //old solution
                     this.botMeshes.equippedItemRight.setTranslatedAsOriginalVertices();
                     p.assignMesh(this.botMeshes.equippedItemRight);
-                    p.iDropTarget = this.getAnchor().z;
-                    p.iDropBegin  = this.botMeshes.equippedItemRight.getCenterZ();
+                    p.dropTarget = this.getAnchor().z;
+                    p.dropBegin = this.botMeshes.equippedItemRight.getCenterZ();
                     Level.currentSection().addItem( p );
                 }
             }

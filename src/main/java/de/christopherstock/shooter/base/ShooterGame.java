@@ -58,7 +58,7 @@
             }
 
             //stop all bg sounds ( hangs on mac )
-            SoundBg.stopCurrentSound();
+            this.engine.sound.stopCurrentBgSound();
 
             this.engine.destroy();
         }

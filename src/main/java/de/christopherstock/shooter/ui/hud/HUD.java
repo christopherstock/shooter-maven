@@ -68,16 +68,16 @@
             if ( Level.currentSection() != null )
             {
                 //draw player's wearpon or gadget
-                Shooter.game.engine.player.iArtefactSet.drawArtefactOrtho();
+                Shooter.game.engine.player.artefactSet.drawArtefactOrtho();
 
                 //draw ammo if the wearpon uses ammo
-                if ( Shooter.game.engine.player.iArtefactSet.showAmmoInHUD() )
+                if ( Shooter.game.engine.player.artefactSet.showAmmoInHUD() )
                 {
                     //draw ammo
                     this.drawAmmo();
 
                     //draw crosshair if placer aims
-                    if ( Shooter.game.engine.player.iAiming )
+                    if ( Shooter.game.engine.player.aiming)
                     {
                         this.drawCrosshair();
                     }
@@ -109,14 +109,14 @@
 
         private void drawAmmo()
         {
-            Artefact currentWearpon = Shooter.game.engine.player.iArtefactSet.getArtefact();
+            Artefact currentWearpon = Shooter.game.engine.player.artefactSet.getArtefact();
 
             //only if this is a reloadable wearpon
             if ( currentWearpon.artefactType.isFireArm() /* && Shooter.game.hud.iAnimationState == LibAnimation.EAnimationNone */ )
             {
                 //create current ammo string
                 this.iCurrentAmmoStringMagazineAmmo = currentWearpon.getCurrentAmmoStringMagazineAmmo();
-                this.iCurrentAmmoStringTotalAmmo = currentWearpon.getCurrentAmmoStringTotalAmmo( Shooter.game.engine.player.iAmmoSet );
+                this.iCurrentAmmoStringTotalAmmo = currentWearpon.getCurrentAmmoStringTotalAmmo( Shooter.game.engine.player.ammoSet);
 
                 //recreate ammo image if changed
                 if (this.iDisplayAmmoStringMagazineAmmo == null || !this.iDisplayAmmoStringTotalAmmo.equals(this.iCurrentAmmoStringTotalAmmo) || !this.iDisplayAmmoStringMagazineAmmo.equals(this.iCurrentAmmoStringMagazineAmmo) )
@@ -197,7 +197,7 @@
         {
             //draw crosshair
             int   modY = 0; //(int)( ( ShooterGameShooter.game.engine.player.getView().rot.x / PlayerAttributes.MAX_LOOKING_X ) * ( Shooter.game.engine.frame.height / 5 ) );
-            CrossHair crosshair = Shooter.game.engine.player.iArtefactSet.getArtefactType().getCrossHair();
+            CrossHair crosshair = Shooter.game.engine.player.artefactSet.getArtefactType().getCrossHair();
             Shooter.game.engine.glView.drawOrthoBitmapBytes
             (
                 crosshair.getImage(),
@@ -256,20 +256,20 @@
                             {
                                 case EActionNext:
                                 {
-                                    Shooter.game.engine.player.iArtefactSet.chooseNextWearponOrGadget( true );
+                                    Shooter.game.engine.player.artefactSet.chooseNextWearponOrGadget( true );
                                     break;
                                 }
 
                                 case EActionPrevious:
                                 {
-                                    Shooter.game.engine.player.iArtefactSet.choosePreviousWearponOrGadget( true );
+                                    Shooter.game.engine.player.artefactSet.choosePreviousWearponOrGadget( true );
                                     break;
                                 }
 
                                 case EActionReload:
                                 {
                                     //reload ammo
-                                    Shooter.game.engine.player.iArtefactSet.getArtefact().performReload( Shooter.game.engine.player.iAmmoSet, true, null, false );
+                                    Shooter.game.engine.player.artefactSet.getArtefact().performReload( Shooter.game.engine.player.ammoSet, true, null, false );
 
                                     this.iAnimationState = LibAnimation.EAnimationShow;
                                     this.iAnimationPlayerRightHand = ShooterSetting.Performance.TICKS_WEARPON_HIDE_SHOW;
@@ -278,7 +278,7 @@
 
                                 case EActionDie:
                                 {
-                                    Shooter.game.engine.player.iArtefactSet.setArtefact( Shooter.game.engine.player.iArtefactSet.hands);
+                                    Shooter.game.engine.player.artefactSet.setArtefact( Shooter.game.engine.player.artefactSet.hands);
 
                                     //iHideWearpon = true;
                                     break;

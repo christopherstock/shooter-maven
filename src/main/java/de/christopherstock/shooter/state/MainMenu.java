@@ -210,9 +210,9 @@
             Shooter.game.engine.keys.toggleMainMenu.checkLaunchingAction();
 
             //change to game
-            if ( Shooter.game.engine.keys.toggleMainMenu.iLaunchAction )
+            if ( Shooter.game.engine.keys.toggleMainMenu.launchAction)
             {
-                Shooter.game.engine.keys.toggleMainMenu.iLaunchAction = false;
+                Shooter.game.engine.keys.toggleMainMenu.launchAction = false;
                 Shooter.game.orderMainStateChange( MainState.EIngame );
             }
 
@@ -228,9 +228,9 @@
             }
 
             //launch msg?
-            if ( Shooter.game.engine.keys.enterKey.iLaunchAction )
+            if ( Shooter.game.engine.keys.enterKey.launchAction)
             {
-                Shooter.game.engine.keys.enterKey.iLaunchAction = false;
+                Shooter.game.engine.keys.enterKey.launchAction = false;
 
                 Shooter.game.engine.mainMenu.selectItem();
             }
