@@ -139,7 +139,18 @@
             GL11.glEnable(          GL11.GL_DEPTH_TEST                                      );      //enable depth-sorting [ jams the scene :-( ]
             GL11.glDepthFunc(       GL11.GL_LEQUAL                                          );      //less or equal depth-testing! GL.GL_LESS caused problems in combination with blending!
             GL11.glHint(            GL11.GL_PERSPECTIVE_CORRECTION_HINT, GL11.GL_NICEST     );      //really nice perspective-calculations
+
             GL11.glDisable(         GL11.GL_LIGHTING                                        );      //disable lighting
+            GL11.glDisable(         GL11.GL_LIGHT0                                          );
+            GL11.glDisable(         GL11.GL_LIGHT1                                          );
+            GL11.glDisable(         GL11.GL_LIGHT2                                          );
+            GL11.glDisable(         GL11.GL_LIGHT3                                          );
+            GL11.glDisable(         GL11.GL_LIGHT4                                          );
+            GL11.glDisable(         GL11.GL_LIGHT5                                          );
+            GL11.glDisable(         GL11.GL_LIGHT6                                          );
+            GL11.glDisable(         GL11.GL_LIGHT7                                          );
+            GL11.glDisable(         GL11.GL_COLOR_MATERIAL                                  );      //disable colored material by lights
+
             GL11.glEnable(          GL11.GL_TEXTURE_2D                                      );      //enable textures
             GL11.glEnable(          GL11.GL_NORMALIZE                                       );      //force normal lengths to 1
 /*
@@ -608,8 +619,14 @@
             GL11.glEnable( GL11.GL_LIGHTING    );
 
             //disable all single light sources
-            GL11.glDisable( GL11.GL_LIGHT0 );   GL11.glDisable( GL11.GL_LIGHT1 );   GL11.glDisable( GL11.GL_LIGHT2 );   GL11.glDisable( GL11.GL_LIGHT3 );
-            GL11.glDisable( GL11.GL_LIGHT4 );   GL11.glDisable( GL11.GL_LIGHT5 );   GL11.glDisable( GL11.GL_LIGHT6 );   GL11.glDisable( GL11.GL_LIGHT7 );
+            GL11.glDisable( GL11.GL_LIGHT0 );
+            GL11.glDisable( GL11.GL_LIGHT1 );
+            GL11.glDisable( GL11.GL_LIGHT2 );
+            GL11.glDisable( GL11.GL_LIGHT3 );
+            GL11.glDisable( GL11.GL_LIGHT4 );
+            GL11.glDisable( GL11.GL_LIGHT5 );
+            GL11.glDisable( GL11.GL_LIGHT6 );
+            GL11.glDisable( GL11.GL_LIGHT7 );
 
             //ShooterDebug.bugfix.out("enable lights !");
             for ( int i = 0; ( i < lights.length && i < 8 ); ++i )

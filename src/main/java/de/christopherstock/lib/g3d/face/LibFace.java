@@ -28,13 +28,13 @@
             ;
         }
 
-        protected LibDebug                debug                       = null;
+        protected                   LibDebug                debug                       = null;
 
         private                     LibVertex               anchor                      = null;
-        private LibGLTextureMetaData texture                     = null;
+        private                     LibGLTextureMetaData    texture                     = null;
         private                     LibColors               color                       = null;
 
-        protected                   LibVertex               normal                      = null;
+        private                     LibVertex               normal                      = null;
 
         public                      LibVertex[]             originalVertices            = null;
         public                      LibVertex[]             transformedVertices         = null;
@@ -42,8 +42,8 @@
         protected                   float                   faceAngleHorz               = 0.0f;
         protected                   float                   faceAngleVert               = 0.0f;
         protected                   DrawMethod              drawMethod                  = null;
-        private float                   alpha                       = 1.0f;
-        private float                   darkenOpacity               = 1.0f;
+        private                     float                   alpha                       = 1.0f;
+        private                     float                   darkenOpacity               = 1.0f;
 
         /***************************************************************************************************************
         *   Constructs a new face.
@@ -53,7 +53,7 @@
         *   @param  texture     The texture to use. May be <code>null</code>.
         *   @param  color       The color for this face. May be <code>null</code>.
         ***************************************************************************************************************/
-        protected LibFace(LibDebug debug, LibVertex anchor, LibGLTextureMetaData texture, LibColors color, LibVertex faceNormal)
+        protected LibFace( LibDebug debug, LibVertex anchor, LibGLTextureMetaData texture, LibColors color, LibVertex faceNormal )
         {
             this.debug = debug;
             this.anchor = anchor;

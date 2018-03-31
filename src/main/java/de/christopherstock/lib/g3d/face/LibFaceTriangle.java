@@ -453,7 +453,7 @@
             LibVertex aCopy    = new LibVertex(this.originalVertices[ 0 ] );
             LibVertex bCopy    = new LibVertex(this.originalVertices[ 1 ] );
             LibVertex cCopy    = new LibVertex(this.originalVertices[ 2 ] );
-            LibVertex normCopy = (this.normal == null ? null : this.normal.copy() );
+            LibVertex normCopy = (this.getFaceNormal() == null ? null : this.getFaceNormal().copy() );
             return new LibFaceTriangle
             (
                     this.debug,
