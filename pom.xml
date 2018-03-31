@@ -8,7 +8,7 @@
     <groupId>de.christopherstock.shooter</groupId>
     <artifactId>shooter-maven</artifactId>
     <packaging>jar</packaging>
-    <version>0.4.0-SNAPSHOT</version>
+    <version>0.4.1-SNAPSHOT</version>
     <name>shooter-maven</name>
     <url>http://maven.apache.org</url>
 

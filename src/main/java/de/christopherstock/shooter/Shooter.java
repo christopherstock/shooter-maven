@@ -6,22 +6,17 @@
     /*******************************************************************************************************************
     *   The main class.
     *
+    *   TODO    Complete the MVP.
+    *
+    *   TODO    Revise level design.
+    *   TODO    Mayflower branding and textures ( posters etc. ).
+    *   TODO    Prune all singleton patterns.
+    *   TODO    Different heights for particle effects (blood).
+    *   TODO    Turn BulletHole.bulletHoles non static!
     *   TODO    Optimize fields in ArtefactType!
     *   TODO    make new subclass:  Wearpon that derives from ArtefactKind!!
     *   TODO    only for FireArms! Move ArtefactType.fXImages to Firearms (Wearpons)!
     *   TODO    Move all CloseCombat constants to settings!
-    *   TODO    Remove ALL static fields!
-    *   TODO    Turn BulletHole.bulletHoles non static!
-    *   TODO    Prune all singleton patterns.
-    *   TODO    Different heights for particle effects (blood).
-    *   TODO    Mayflower branding and textures ( posters etc. ).
-    *   TODO    Outsource iconImage and UI-matters from ShooterEngine.
-    *
-    *   TODO    Revise level design.
-    *
-    *   TODO    Complete version 4.0.0.
-    *   TODO    Complete the MVP.
-    *
     *   TODO    Add skybox!
     *   TODO    let random assign different topping positions for ShooterWallCollection.createDeskOffice
     *   TODO    slow panning for zoomed glView?
