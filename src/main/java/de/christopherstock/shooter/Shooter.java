@@ -6,6 +6,9 @@
     /*******************************************************************************************************************
     *   The main class.
     *
+    *   TODO    Put sniper rifle after auto shotgun.
+    *   TODO    Fix inoperative sound loop.
+    *   TODO    Restart bg sound on level restart.
     *   TODO    Prune all singleton patterns.
     *   TODO    Different heights for particle effects (blood).
     *   TODO    Turn BulletHole.bulletHoles non static!
