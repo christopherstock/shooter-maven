@@ -80,7 +80,7 @@
                 }
 
                 BufferedReader  inStream = new BufferedReader( new InputStreamReader( is ) );
-                StringBuffer    sb       = new StringBuffer();
+                StringBuilder    sb       = new StringBuilder();
                 while ( true )
                 {
                     String l = inStream.readLine();

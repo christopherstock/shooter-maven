@@ -6,9 +6,6 @@
     import  de.christopherstock.shooter.base.ShooterWallCollection.DoorStyle;
     import  de.christopherstock.shooter.base.ShooterWallCollection.WallStyle;
     import  de.christopherstock.lib.*;
-    import  de.christopherstock.lib.LibInvert;
-    import  de.christopherstock.lib.LibScalation;
-    import  de.christopherstock.lib.LibViewSet;
     import  de.christopherstock.lib.fx.LibFX.FXSize;
     import  de.christopherstock.lib.g3d.*;
     import  de.christopherstock.lib.g3d.face.LibFace.*;

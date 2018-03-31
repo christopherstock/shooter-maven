@@ -498,7 +498,7 @@
                 // if ( cylinder.heightsIntersect( lowestZ, highestZ, false ) )
                 {
                     //debug.bugfix.out("INTERSECT - return float with z [" + highestZ + "]");
-                    v.add( new Float(this.highestZ) );
+                    v.add( this.highestZ );
                 }
             }
 

@@ -289,8 +289,8 @@
             {
                 for ( LibVertex v : f.getVerticesToDraw() )
                 {
-                    if ( lowestZ  == null || v.z < lowestZ) lowestZ  = new Float( v.z );
-                    if ( highestZ == null || v.z > highestZ) highestZ = new Float( v.z );
+                    if ( lowestZ  == null || v.z < lowestZ) lowestZ  = v.z;
+                    if ( highestZ == null || v.z > highestZ) highestZ = v.z;
                 }
             }
 
@@ -313,10 +313,10 @@
             {
                 for ( LibVertex v : f.getOriginalVertices() )
                 {
-                    if ( lowestX  == null || v.x < lowestX) lowestX   = new Float( v.x );
-                    if ( lowestY  == null || v.y < lowestY) lowestY   = new Float( v.y );
-                    if ( highestX == null || v.x > highestX) highestX = new Float( v.x );
-                    if ( highestY == null || v.y > highestY) highestY = new Float( v.y );
+                    if ( lowestX  == null || v.x < lowestX) lowestX   = v.x;
+                    if ( lowestY  == null || v.y < lowestY) lowestY   = v.y;
+                    if ( highestX == null || v.x > highestX) highestX = v.x;
+                    if ( highestY == null || v.y > highestY) highestY = v.y;
                 }
             }
 

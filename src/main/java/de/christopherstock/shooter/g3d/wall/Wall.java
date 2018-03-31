@@ -4,7 +4,6 @@
     import  java.awt.geom.*;
     import  java.util.*;
     import  de.christopherstock.lib.*;
-    import de.christopherstock.lib.LibTransformationMode;
     import  de.christopherstock.lib.fx.*;
     import  de.christopherstock.lib.fx.LibFX.*;
     import  de.christopherstock.lib.g3d.*;
@@ -201,7 +200,7 @@
                             {
                                 baseZ = Shooter.game.engine.player.getAnchor().z;
                             }
-                            this.baseZ = new Float( baseZ );
+                            this.baseZ = baseZ;
                         }
 
                         if ( f.highestZ - distanceFromFloor - ( ( f.highestZ - f.lowestZ) / 2 ) < this.baseZ)

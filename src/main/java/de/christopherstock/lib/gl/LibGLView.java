@@ -15,7 +15,6 @@
     import  de.christopherstock.shooter.Shooter;
     import  org.lwjgl.LWJGLException;
     import  org.lwjgl.opengl.*;
-    import  org.lwjgl.opengl.DisplayMode;
     import  org.lwjgl.util.glu.*;
 
     /*******************************************************************************************************************
@@ -225,10 +224,10 @@
             for ( LibFace face : faces )
             {
                 Float distance = null;
-/*
+
                 //this is inoperative because the face normals are not points but directions!
                 if ( face.getFaceNormal() != null ) distance = new Float( LibMathGeometry.getDistanceXY( face.getFaceNormal(), cameraViewPoint ) );
-*/
+
                 {
                     distance = LibMathGeometry.getDistanceXY( face.getAnchor(), cameraViewPoint );
                 }

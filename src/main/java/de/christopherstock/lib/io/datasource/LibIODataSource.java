@@ -25,7 +25,8 @@
         /***************************************************************************************************************
         *   Construct a <CODE>ByteBufferDataSource</CODE> from a <CODE>ByteBuffer</CODE>.
         *
-        *   @param source The <CODE>ByteBuffer</CODE> that is used to create the the <CODE>DataSource</CODE>.
+        *   @param input       The <CODE>ByteBuffer</CODE> that is used to create the the <CODE>DataSource</CODE>.
+        *   @param contentType The content type of the specified buffer.
         ***************************************************************************************************************/
         public LibIODataSource(ByteBuffer input, String contentType)
         {

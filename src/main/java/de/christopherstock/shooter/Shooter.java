@@ -6,13 +6,13 @@
     /*******************************************************************************************************************
     *   The main class.
     *
-    *   TODO    Remove all linter warnings!
-    *
     *   TODO    Optimize fields in ArtefactType!
     *   TODO    make new subclass:  Wearpon that derives from ArtefactKind!!
     *   TODO    only for FireArms! Move ArtefactType.fXImages to Firearms (Wearpons)!
     *   TODO    Move all CloseCombat constants to settings!
     *   TODO    Remove ALL static fields!
+    *   TODO    Turn BulletHole.bulletHoles non static!
+    *   TODO    Prune all singleton patterns.
     *   TODO    Different heights for particle effects (blood).
     *   TODO    Mayflower branding and textures ( posters etc. ).
     *   TODO    Outsource iconImage and UI-matters from ShooterEngine.

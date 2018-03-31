@@ -3,7 +3,6 @@
 
     import  java.awt.geom.Point2D;
     import  de.christopherstock.lib.*;
-    import  de.christopherstock.lib.LibAnimation;
     import  de.christopherstock.lib.g3d.*;
     import  de.christopherstock.lib.game.LibShot.ShotSource;
     import  de.christopherstock.lib.gl.*;

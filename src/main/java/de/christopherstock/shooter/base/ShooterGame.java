@@ -2,7 +2,6 @@
     package de.christopherstock.shooter.base;
 
     import  de.christopherstock.shooter.*;
-    import  de.christopherstock.shooter.io.sound.*;
     import  de.christopherstock.shooter.level.*;
     import  de.christopherstock.shooter.state.*;
     import  org.lwjgl.opengl.Display;
@@ -101,7 +100,6 @@
             this.destroyed = true;
         }
 
-        // TODO check if required?
         public final void orderMainStateChange( MainState futureMainState )
         {
             this.engine.mainStateToChangeTo = futureMainState;

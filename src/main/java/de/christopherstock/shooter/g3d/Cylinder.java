@@ -4,7 +4,6 @@
     import  java.awt.geom.*;
     import  java.util.*;
     import  de.christopherstock.lib.*;
-    import  de.christopherstock.lib.LibTransformationMode;
     import  de.christopherstock.lib.g3d.*;
     import  de.christopherstock.lib.g3d.face.*;
     import  de.christopherstock.lib.game.*;
@@ -386,8 +385,9 @@
         /***************************************************************************************************************
          *   Check collision with the given cylinder.
          *
-         *    @param circle  Circle to check horizontal collision with.
-         *    @return        <code>true</code> if collision appears. Otherwise <code>false</code>.
+         *    @param z The z point of the collision to check.
+         *
+         *    @return <code>true</code> if collision appears. Otherwise <code>false</code>.
          ***************************************************************************************************************/
          public final boolean checkCollision( float z )
          {
@@ -470,7 +470,7 @@
             if (this.checkCollision( c.getCircle() ) && c.heightsIntersect(this.anchor.z, this.anchor.z + this.height, false, false ) )
             {
                 //no height information is required here ..
-                v.add( new Float( 42 ) );
+                v.add( 42.0f );
             }
 
             return v;

@@ -85,7 +85,6 @@
             g.drawString( str, x, y - g.getFontMetrics().getDescent() );
         }
 
-        // TODO outsource to Graphics!
         public static int getStringWidth( Graphics2D g, String str, Font fnt )
         {
             g.setFont( fnt );
