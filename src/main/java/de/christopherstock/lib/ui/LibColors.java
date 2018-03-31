@@ -13,6 +13,8 @@
         EBlackTranslucent(              0x77000000      ),
 
         ERed(                           0xffff0000      ),
+        ERedTranslucent(                0x77ff0000      ),
+
         ERedDark(                       0xff662222      ),
         ERedLight(                      0xffff6666      ),
         EGreen(                         0xff00ff00      ),

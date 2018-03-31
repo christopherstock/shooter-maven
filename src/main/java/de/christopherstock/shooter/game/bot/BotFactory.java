@@ -36,7 +36,7 @@
         {
             EUnitSecurity(          Glasses.ENever,         Hat.ENever,     BotSkinType.SET_NORTH_EUROPEAN, BotBodyType.values() ),
             EUnitPilot(             Glasses.EAlways,        Hat.EAlways,    BotSkinType.SET_SOUTH_EUROPEAN, BotBodyType.values() ),
-            EUnitSpecialForces(     Glasses.ESometimes,     Hat.ESometimes, BotSkinType.SET_NORTH_AFRICAN,  BotBodyType.values() ),
+            EUnitSpecialForces(     Glasses.ESometimes,     Hat.ESometimes, BotSkinType.SET_SOUTH_EUROPEAN, BotBodyType.values() ),
             EUnitOfficeEmployee(    Glasses.EOften,         Hat.ENever,     BotSkinType.SET_NORTH_EUROPEAN, BotBodyType.values() ),
             ;
 
@@ -106,8 +106,8 @@
                 {
                     switch ( LibMath.getRandom( 0, 1 ) )
                     {
-                        case 0: return new Bot(  new BotPattern( BotPatternBase.ESpecialForces, this.kind),  Bot.BotType.ETypeFriend, this.anchor,  null, BotJob.EWatchPlayer,     new Artefact[] { new Artefact( ArtefactType.ESpaz12 ) }, this.facingAngle, this.actions, BotHealth.EPrivateSoldier, this.id, BotHanded.ERightHanded );
-                        case 1: return new Bot(  new BotPattern( BotPatternBase.ESpecialForces, this.kind),  Bot.BotType.ETypeFriend, this.anchor,  null, BotJob.EWatchPlayer,     new Artefact[] { new Artefact( ArtefactType.ESpaz12 ) }, this.facingAngle, this.actions, BotHealth.EPrivateSoldier, this.id, BotHanded.ERightHanded );
+                        case 0: return new Bot(  new BotPattern( BotPatternBase.ESpecialForces, this.kind),  Bot.BotType.ETypeEnemy, this.anchor,  null, BotJob.EAttackPlayerFire,     new Artefact[] { new Artefact( ArtefactType.ESpaz12 ) }, this.facingAngle, this.actions, BotHealth.EPrivateSoldier, this.id, BotHanded.ERightHanded);
+                        case 1: return new Bot(  new BotPattern( BotPatternBase.ESpecialForces, this.kind),  Bot.BotType.ETypeEnemy, this.anchor,  null, BotJob.EAttackPlayerFire,     new Artefact[] { new Artefact( ArtefactType.ESpaz12 ) }, this.facingAngle, this.actions, BotHealth.EPrivateSoldier, this.id, BotHanded.ERightHanded);
                     }
                     break;
                 }

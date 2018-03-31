@@ -39,9 +39,8 @@
         public void init()
         {
             //init panes
-            this.damagePane      = LibGLTextureImage.getFullOpaque( LibColors.ERed.colABGR,    Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
+            this.damagePane      = LibGLTextureImage.getFullOpaque( LibColors.ERedTranslucent.colABGR,    Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
             this.healthPane      = LibGLTextureImage.getFullOpaque( LibColors.EWhite.colABGR,  Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
-            this.damagePane      = LibGLTextureImage.getFullOpaque( LibColors.ERed.colABGR,    Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
             this.deadPane        = LibGLTextureImage.getFullOpaque( LibColors.EBlack.colABGR,  Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
             this.adrenalinePane  = LibGLTextureImage.getFullOpaque( LibColors.EYellow.colABGR, Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
 
@@ -101,7 +100,7 @@
             //draw dead effect
             if ( this.drawDeadFx )
             {
-                float alpha = (float)this.animationHUDDeadFX / (float) ShooterSetting.Performance.TICKS_DEAD_FX;
+                float alpha = ( (float)this.animationHUDDeadFX / (float) ShooterSetting.Performance.TICKS_DEAD_FX );
                 Shooter.game.engine.glView.drawOrthoBitmapBytes( this.deadPane, 0, 0, alpha );
             }
 
