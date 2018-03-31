@@ -6,8 +6,6 @@
     /*******************************************************************************************************************
     *   The main class.
     *
-    *   TODO    Delete all 'a' and 'i' prefixes from variables. ( start at Level )
-    *   TODO    Improve output for preloader / startup phase.
     *   TODO    Optimize fields in ArtefactType!
     *   TODO    make new subclass:  Wearpon that derives from ArtefactKind!!
     *   TODO    only for FireArms! Move ArtefactType.fXImages to Firearms (Wearpons)!

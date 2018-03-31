@@ -69,7 +69,7 @@
         ***************************************************************************************************************/
         public final void increase( int percentage )
         {
-            ShooterDebug.init.out( "preloader increase to [" + percentage + "]" );
+            // ShooterDebug.init.out( "preloader increase to [" + percentage + "]" );
 
             this.percentageLoaded = percentage;
 

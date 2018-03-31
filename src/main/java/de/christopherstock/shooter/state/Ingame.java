@@ -7,7 +7,7 @@
     import  de.christopherstock.shooter.g3d.mesh.BotMeshes.ArmsPosition;
     import  de.christopherstock.shooter.level.*;
     import  de.christopherstock.shooter.level.setup.*;
-    import de.christopherstock.lib.LibViewSet;
+    import  de.christopherstock.lib.LibViewSet;
     import  de.christopherstock.lib.fx.*;
 
     /*******************************************************************************************************************
@@ -47,6 +47,8 @@
                 Shooter.game.engine.glView.setCamera( cam );
 
                 //this would be the right time to enable lights
+                // Shooter.game.engine.glView.setLightsOn();
+
                 //draw all game components
                 Level.currentSection().draw();                          //draw the level
                 Level.currentSection().drawAllItems();                  //draw all items

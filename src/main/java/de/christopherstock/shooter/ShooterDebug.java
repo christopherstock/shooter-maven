@@ -9,6 +9,7 @@
     *******************************************************************************************************************/
     public enum ShooterDebug implements LibDebug
     {
+        init(               true    ),      //logs initialization
         sound(              false   ),      //logs sound matters
         editor(             false   ),      //logs level editor matters
         bulletHole(         false   ),      //logs extra-info about bullet-holes
@@ -17,7 +18,6 @@
         playerAction(       false   ),      //logs player actions
         bot(                false   ),      //logs bot behaviour
         face(               false   ),      //logs face calcs
-        init(               true    ),      //logs initialization
         wallDestroy(        false   ),      //logs destroyed walls
         floorChange(        false   ),      //logs z change behaviour
         level(              false   ),      //logs player actions

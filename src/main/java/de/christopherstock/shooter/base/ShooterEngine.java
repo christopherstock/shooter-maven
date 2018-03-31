@@ -96,6 +96,8 @@
             this.initMainMenu();
 
             this.preloader.increase( 100 );
+            ShooterDebug.init.out( "Completed init phase. Ordering main state change" );
+
             Shooter.game.orderMainStateChange( ShooterSetting.Startup.STARTUP_STATE_AFTER_PRELOADER );
             LevelChange.orderLevelChange( Startup.STARTUP_LEVEL_MAIN, Startup.STARTUP_LEVEL_SECTION, true );
         }
@@ -126,6 +128,8 @@
         ***************************************************************************************************************/
         private void initFrame()
         {
+            ShooterDebug.init.out( "init JFrame" );
+
             BufferedImage iconImage = null;
             try
             {
@@ -151,7 +155,7 @@
         ***************************************************************************************************************/
         private void initGL()
         {
-            ShooterDebug.init.out( "init GL" );
+            ShooterDebug.init.out( "init GL View" );
 
             this.glView = new LibGLView
             (
@@ -168,6 +172,8 @@
         ***************************************************************************************************************/
         private void initFonts()
         {
+            ShooterDebug.init.out( "init Fonts" );
+
             this.fonts = new Fonts();
             this.fonts.init();
         }
@@ -177,6 +183,8 @@
         ***************************************************************************************************************/
         private void initMouse()
         {
+            ShooterDebug.init.out( "init Mouse system" );
+
             this.mouse = new LWJGLMouse();
             this.mouse.init();
         }
@@ -186,6 +194,8 @@
         ***************************************************************************************************************/
         private void initKeys()
         {
+            ShooterDebug.init.out( "init Key system" );
+
             this.keys = new LWJGLKeys();
         }
 
@@ -194,6 +204,8 @@
         ***************************************************************************************************************/
         private void initTextures()
         {
+            ShooterDebug.init.out( "init Texture system" );
+
             this.textures = new ShooterTexture();
             this.textures.loadAllImages();
             this.glView.initTextures( this.textures.getAllTextureImages() );
@@ -204,6 +216,8 @@
         ***************************************************************************************************************/
         private void init3ds()
         {
+            ShooterDebug.init.out( "init 3ds max files" );
+
             this.d3ds = new ShooterD3ds( ShooterDebug.d3ds );
             this.d3ds.init();
         }
@@ -213,6 +227,8 @@
         ***************************************************************************************************************/
         private void initHUD()
         {
+            ShooterDebug.init.out( "init HUD" );
+
             this.hud = new HUD();
         }
 
@@ -221,6 +237,8 @@
         ***************************************************************************************************************/
         private void initFPS()
         {
+            ShooterDebug.init.out( "init FPS counter" );
+
             this.fps = new LibFPS( this.fonts.fps, ShooterSetting.Colors.EFpsFg.colABGR, ShooterSetting.Colors.EFpsOutline.colABGR, ShooterDebug.glImage );
         }
 
@@ -229,6 +247,8 @@
         ***************************************************************************************************************/
         private void initHUDFx()
         {
+            ShooterDebug.init.out( "init HUD effects" );
+
             this.hudFx = new HUDFx();
             this.hudFx.init();
         }
@@ -238,6 +258,8 @@
         ***************************************************************************************************************/
         private void initSound()
         {
+            ShooterDebug.init.out( "init sound system" );
+
             this.sound = new Sound();
             this.sound.init();
         }
@@ -247,6 +269,8 @@
         ***************************************************************************************************************/
         private void initMainMenu()
         {
+            ShooterDebug.init.out( "init Main menu" );
+
             this.mainMenu = new MainMenu();
             this.mainMenu.init();
         }

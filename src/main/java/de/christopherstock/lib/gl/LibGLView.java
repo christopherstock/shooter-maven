@@ -8,7 +8,7 @@
     import  de.christopherstock.lib.*;
     import  de.christopherstock.lib.g3d.*;
     import  de.christopherstock.lib.g3d.face.LibFace;
-    import de.christopherstock.lib.gl.LibGLTextureImage.*;
+    import  de.christopherstock.lib.gl.LibGLTextureImage.*;
     import  de.christopherstock.lib.gl.LibGLTextureMetaData.Translucency;
     import  de.christopherstock.lib.math.*;
     import  de.christopherstock.lib.ui.*;
@@ -23,21 +23,21 @@
     *******************************************************************************************************************/
     public final class LibGLView
     {
-        public      static  final   float               VIEW_ANGLE                  = 60.0f;
-        private     static  final   float               DEPTH_BUFFER_SIZE           = 1.0f;
-        private     static  final   float               VIEW_MIN                    = 0.1f;
-        private     static  final   float               VIEW_MAX                    = 100.0f;
+        public      static  final   float                   VIEW_ANGLE                  = 60.0f;
+        private     static  final   float                   DEPTH_BUFFER_SIZE           = 1.0f;
+        private     static  final   float                   VIEW_MIN                    = 0.1f;
+        private     static  final   float                   VIEW_MAX                    = 100.0f;
 
-        private                     LibDebug            debug                       = null;
-        private                     LibFrame            panel                       = null;
+        private                     LibDebug                debug                       = null;
+        private                     LibFrame                panel                       = null;
 
-        public                      int                 width                       = 0;
-        public                      int                 height                      = 0;
-        private                     float               aspectRatio                 = 0.0f;
+        public                      int                     width                       = 0;
+        public                      int                     height                      = 0;
+        private                     float                   aspectRatio                 = 0.0f;
 
-        private                     Vector<LibFace>     firstPrioDrawingQueue       = new Vector<LibFace>();
-        private                     Vector<LibFace>     defaultFaceDrawingQueue     = new Vector<LibFace>();
-        private LibGLTextureMetaData lastOpaqueTexture           = null;
+        private                     Vector<LibFace>         firstPrioDrawingQueue       = new Vector<LibFace>();
+        private                     Vector<LibFace>         defaultFaceDrawingQueue     = new Vector<LibFace>();
+        private                     LibGLTextureMetaData    lastOpaqueTexture           = null;
 
         public LibGLView( LibDebug debug, LibFrame panel, int width, int height )
         {
@@ -71,7 +71,7 @@
                         &&  currentBpp  == dm.getBitsPerPixel()
                     )
                     {
-                        this.debug.out( "picked display mode [" + dm.getWidth() + "][" + dm.getHeight() + "][" + dm.getBitsPerPixel() + "]" );
+                        this.debug.out( " picked display mode [" + dm.getWidth() + "][" + dm.getHeight() + "][" + dm.getBitsPerPixel() + "]" );
                         displayMode = dm;
                         break;
                     }
@@ -80,44 +80,41 @@
                 // if can't find a mode, notify the user the give up
                 if ( displayMode == null )
                 {
-                    this.debug.err( "Display mode not available!" );
+                    this.debug.err( " Display mode not available!" );
                     return;
                 }
 
                 // configure and create the LWJGL display
-                this.debug.out( "Setting display mode.." );
+                this.debug.out( " Setting display mode.." );
                 Display.setDisplayMode( displayMode );
-                this.debug.out( "Setting display mode Ok" );
+                this.debug.out( " Setting display mode Ok" );
                 Display.setFullscreen( false );
-                this.debug.out( "setting fullscreen false Ok" );
 
                 //((Canvas)frame.getCanvas() ).setFocusable(false);
 
                 //set native canvas as parent displayable
                 Display.setParent( this.panel.getCanvas() );
-                this.debug.out( "setting native Canvas Ok" );
+                this.debug.out( " Setting native Canvas Ok" );
 
                 //create the display
                 Display.setInitialBackground( 1.0f, 1.0f, 1.0f );
                 Display.create();
-                this.debug.out( "Display creation Ok" );
+                this.debug.out( " Display creation Ok" );
 
                 //request focus ( hangs?? )
               //frame.getCanvas().requestFocus();
-                this.debug.out( "Requesting focus Ok" );
+                this.debug.out( " Requesting focus Ok" );
             }
             catch ( LWJGLException e)
             {
                 this.debug.trace( e );
             }
 
-            this.debug.out( "invoked init-method of LWJGLView" );
-
             //assign the frame's dimensions and parse its offsets
             this.width  = Display.getParent().getWidth();
             this.height = Display.getParent().getHeight();
 
-            this.debug.out( "assigned frame dimensions [" + this.width + "]x[" + this.height + "]" );
+            this.debug.out( " Assigned frame dimensions [" + this.width + "]x[" + this.height + "]" );
 
             //run through some based OpenGL capability settings
 
