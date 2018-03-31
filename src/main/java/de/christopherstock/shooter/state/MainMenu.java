@@ -16,8 +16,10 @@
     {
         public enum MainMenuItem
         {
-            EStartNewGameFacility(      "START NEW GAME - FACILITY"     ),
+            EStartNewGameFacility(      "START NEW GAME"                ),
+/*
             EStartNewGameTestOffice(    "START NEW GAME - TEST-OFFICE"  ),
+*/
             EContinueGame(              "CONTINUE GAME"                 ),
 /*
             ESaveGame(                  "SAVE GAME"                     ),
@@ -114,14 +116,14 @@
                         Shooter.game.orderMainStateChange( MainState.EIngame );
                         break;
                     }
-
+/*
                     case EStartNewGameTestOffice:
                     {
                         LevelChange.orderLevelChange( new LevelSetupTestFacility(), ShooterSetting.Startup.STARTUP_LEVEL_SECTION, true );
                         Shooter.game.orderMainStateChange( MainState.EIngame );
                         break;
                     }
-
+*/
                     case EContinueGame:
                     {
                         //ShooterGameLevel.orderLevelChange( ShooterSetting.General.STARTUP_LEVEL, true );

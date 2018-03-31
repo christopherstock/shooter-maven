@@ -23,7 +23,7 @@
         {
             public      static  final   MainState   STARTUP_STATE_AFTER_PRELOADER       = MainState.EIngame;
             public      static  final   LevelSetup  STARTUP_LEVEL_MAIN                  = new LevelSetupTestMayflowerOffice();
-            public      static  final   int         STARTUP_LEVEL_SECTION               = LevelSetupTestMayflowerOffice.SECTION_FOUR;
+            public      static  final   int         STARTUP_LEVEL_SECTION               = LevelSetupTestMayflowerOffice.SECTION_ONE;
         }
 
         public static final class General

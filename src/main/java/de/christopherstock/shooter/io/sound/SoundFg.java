@@ -115,7 +115,7 @@
         private void playFx(float volume, float balance, int delay, Point2D.Float distantLocation )
         {
             //break on disabled system
-            if ( ShooterDebug.DISABLE_SOUNDS ) return;
+            if ( ShooterDebug.DISABLE_SOUNDS || ShooterDebug.DEBUG_MODE ) return;
 
             //break on low memory
             //if ( LibSoundClip.disabledByMemory ) return;

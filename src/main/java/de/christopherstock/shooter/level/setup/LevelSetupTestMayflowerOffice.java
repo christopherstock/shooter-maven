@@ -47,11 +47,7 @@
             return new LevelConfigMain
             (
                 "Test Facility",
-
-true ?
-                new LibViewSet( 6.0f, 38.0f, 0.0f, 0.0f, 0.0f, 0.0f )
-:                new LibViewSet( 2.0f, 2.0f, 2.5f, 0.0f, 0.0f, 185.0f ),
-
+                new LibViewSet( 2.0f, 2.0f, 2.5f, 0.0f, 0.0f, 185.0f ),
                 new ArtefactType[]   {  ArtefactType.ETranquilizerGun,  ArtefactType.EWaltherPPK,  ArtefactType.EMagnum357, ArtefactType.EAutoShotgun, ArtefactType.ESpaz12,  ArtefactType.ERCP180,  ArtefactType.ESniperRifle, ArtefactType.EAdrenaline, },
                 new ItemEvent[]  {  ItemEvent.EGainAmmo20TranquilizerDarts, ItemEvent.EGainAmmo20TranquilizerDarts, ItemEvent.EGainAmmo20TranquilizerDarts, ItemEvent.EGainAmmo20TranquilizerDarts, ItemEvent.EGainAmmo20Bullet44mm,  ItemEvent.EGainAmmo20Bullet44mm, ItemEvent.EGainAmmo20Bullet44mm,ItemEvent.EGainAmmo20Bullet44mm,ItemEvent.EGainAmmo20Bullet44mm, ItemEvent.EGainAmmo40ShotgunShells, ItemEvent.EGainAmmo40ShotgunShells, ItemEvent.EGainAmmo40ShotgunShells, ItemEvent.EGainAmmo18MagnumBullet, ItemEvent.EGainGadgetHandset1, ItemEvent.EGainGadgetCrackers, ItemEvent.EGainAmmo120Bullet792mm, ItemEvent.EGainAmmo120Bullet792mm, },
                 InvisibleZeroLayerZ.ENo,
@@ -142,6 +138,7 @@ true ?
                     },
                     new BotFactory[]
                     {
+                        new BotFactory( OFFICE_PARTNER_2, BotKind.EUnitOfficeEmployee, new LibVertex( 7.0f,  25.0f, 0.0f ), 180.0f, new Bot.BotAction[] { new Bot.BotUseAction( BotEvent.ELevel1AcclaimPlayer ), new Bot.BotGiveAction( ArtefactType.EMobilePhoneSEW890i, BotEvent.ETakeMobileTest ), new Bot.BotGiveAction( ArtefactType.EChips, BotEvent.ETakeCrackersTest ) } ),
                     }
                 ),
             };
@@ -167,7 +164,7 @@ true ?
                         {
                             new Wall(   Others.EChairOffice1,   new LibVertex(  1.0f,   1.0f,   0.0f    ), 255.0f,  LibScalation.ENone,        LibInvert.ENo,  WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ELeather1,     new LibTexture[] { WallTex.EChrome2, },   0, WallHealth.ESolidWood, FXSize.ESmall, null  ),
                             new Sprite( Others.ESprite1,        new LibVertex(  1.25f,  6.5f,   0.0f    ),          LibScalation.EAddHalf,     WallCollidable.EYes, WallTex.EPlant2 ),
-                            new Wall(   Others.EWhiteboard1,    new LibVertex(  2.5f,   12.0f,  0.7f    ), 90.0f,   LibScalation.EDouble,      LibInvert.ENo,  WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EPoster3,  null, 0,               WallHealth.ESolidWood, FXSize.ESmall, null  ),
+                            new Wall(   Others.EWhiteboard1,    new LibVertex(  2.5f,   12.0f,  0.7f    ), 90.0f,   LibScalation.EDouble,      LibInvert.ENo,  WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EPoster8,  null, 0,               WallHealth.ESolidWood, FXSize.ESmall, null  ),
                             new Wall(   Others.EPoster1,        new LibVertex(  4.0f,   12.0f,  0.7f    ), 90.0f,   LibScalation.EAddHalf,     LibInvert.ENo,  WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EPoster4,      null, 0,               WallHealth.ESolidWood, FXSize.ESmall, null  ),
                             new Wall(   Others.ESofa1,          new LibVertex(  7.0f,   2.0f,   0.0f    ), 0.0f,    LibScalation.ENone,        LibInvert.ENo,  WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ELeather2,     new LibTexture[] { WallTex.ETest, }, 0, WallHealth.EFurniture, FXSize.ELarge, null  ),
                         },
@@ -309,30 +306,35 @@ true ?
                     //hallway
                     ShooterWallCollection.createRoom
                     (
-                        5.0f, 34.0f, 0.0f, 0.0f, 2, 8,
-                        WallStyle.ENoWall, WallStyle.ESolidWall, WallStyle.ENoWall, WallStyle.ESolidWall,
+                        4.0f, 30.0f, -0.01f, 0.0f, 4, 12,
+                        WallStyle.ENoWall, WallStyle.ESolidWall, WallStyle.ESolidWall, WallStyle.ESolidWall,
                         WallTex.EGlass1, WallHealth.ESolidGlass, WallAction.EDoorSlideRight,
                         DoorStyle.ENoDoor, 0,
-                        WALL_OFFICE, CARPET_OFFICE, WallTex.ECeiling1,
+                        WALL_OFFICE, WallTex.ECarpet1, WallTex.ECeiling1,
                         new Wall[]
                         {
-                            new Wall(   Others.EWhiteboard1,    new LibVertex(  0.0f,   0.5f,  0.7f    ), 180.0f,   LibScalation.EDouble,      LibInvert.ENo,  WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EPoster8,  null, 0,               WallHealth.ESolidWood, FXSize.ESmall, null  ),
-                            new Wall(   Others.EWhiteboard1,    new LibVertex(  0.0f,   4.0f,  0.7f    ), 180.0f,   LibScalation.EDouble,      LibInvert.ENo,  WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EPoster9,  null, 0,               WallHealth.ESolidWood, FXSize.ESmall, null  ),
-                            new Wall(   Others.EWhiteboard1,    new LibVertex(  0.0f,   7.5f,  0.7f    ), 180.0f,   LibScalation.EDouble,      LibInvert.ENo,  WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EPoster3,  null, 0,               WallHealth.ESolidWood, FXSize.ESmall, null  ),
+                            new Wall(   Others.EWhiteboard1,    new LibVertex(  0.0f,   -2.5f,  0.7f    ), 180.0f,   LibScalation.EDouble,      LibInvert.ENo,  WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EPoster8,  null, 0,               WallHealth.ESolidWood, FXSize.ESmall, null  ),
+                            new Wall(   Others.EWhiteboard1,    new LibVertex(  0.0f,   3.5f,  0.7f    ), 180.0f,   LibScalation.EDouble,      LibInvert.ENo,  WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EPoster9,  null, 0,               WallHealth.ESolidWood, FXSize.ESmall, null  ),
+                            new Wall(   Others.EWhiteboard1,    new LibVertex(  0.0f,   9.5f,  0.7f    ), 180.0f,   LibScalation.EDouble,      LibInvert.ENo,  WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EPoster3,  null, 0,               WallHealth.ESolidWood, FXSize.ESmall, null  ),
+
+                            new Sprite( Others.ESprite1,        new LibVertex( 3.2f, 3.0f, 0.0f  ), LibScalation.EAddHalf,   WallCollidable.EYes, WallTex.EPlant1 ),
+                            new Sprite( Others.ESprite1,        new LibVertex( 3.2f, 6.5f, 0.0f  ), LibScalation.EAddHalf,   WallCollidable.EYes, WallTex.EPlant1 ),
+                            new Sprite( Others.ESprite1,        new LibVertex( 3.2f, 10.0f, 0.0f ), LibScalation.EAddHalf,   WallCollidable.EYes, WallTex.EPlant2 ),
                         },
                         null,
                         null,
                         null,
                         new int[] { 1, }
                     ),
+/*
                     // corner
                     ShooterWallCollection.createRoom
                     (
-                        5.0f, 32.0f, 0.0f, 0.0f, 2, 2,
+                        4.0f, 26.0f, 0.0f, 0.0f, 4, 4,
                         WallStyle.ESolidWall, WallStyle.ESolidWall, WallStyle.ENoWall, WallStyle.ENoWall,
                         WallTex.EGlass1, WallHealth.ESolidGlass, WallAction.EDoorSlideRight,
                         DoorStyle.ENoDoor, 0,
-                        WALL_OFFICE, CARPET_OFFICE, WallTex.ECeiling1,
+                        WALL_OFFICE, WallTex.ECarpet1, WallTex.ECeiling1,
                         new Wall[]
                         {
                         },
@@ -340,6 +342,101 @@ true ?
                         null,
                         null,
                         new int[] { 1, }
+                    ),
+*/
+
+
+                    //casino
+                    ShooterWallCollection.createRoom
+                    (
+                        4.0f, 22.0f, -0.01f, 0.0f, 9, 14,
+                        WallStyle.EWindowsAndCeilingWindows, WallStyle.ESolidWall, WallStyle.EWindowsAndCeilingWindows, WallStyle.EWindowsAndCeilingWindows,
+                        WallTex.EGlass1, WallHealth.ESolidGlass, WallAction.EDoorSwingCounterClockwise,
+                        DoorStyle.EAnchorDefault, 6,
+                        WallTex.EBricks2, WallTex.ECarpet1, WallTex.ECeiling1,
+                        new Wall[]
+                        {
+                            new Sprite( Others.ESprite1, new LibVertex( 5.5f, 0.75f, 0.0f ), LibScalation.EAddThird,   WallCollidable.EYes, WallTex.EPlant1 ),
+                            new Wall(   Others.ESodaMachine1,   new LibVertex( 7.5f, 0.5f,  0.0f ), 270.0f, LibScalation.ENone,   LibInvert.ENo,  WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ESodaMachine2,   null, 0,         WallHealth.EVendingMachine, FXSize.ELarge, SoundFg.EExplosion1 ),
+
+                            new Sprite( Others.ESprite1, new LibVertex( 8.0f, 3.0f,  0.0f ), LibScalation.EAddHalf,   WallCollidable.EYes, WallTex.EPlant2 ),
+                            new Sprite( Others.ESprite1, new LibVertex( 8.0f, 7.5f,  0.0f ), LibScalation.EAddHalf,   WallCollidable.EYes, WallTex.EPlant1 ),
+                            new Sprite( Others.ESprite1, new LibVertex( 8.0f, 12.5f, 0.0f ), LibScalation.EAddHalf,   WallCollidable.EYes, WallTex.EPlant2 ),
+                            new Wall(   Others.ESofa1,   new LibVertex( 8.5f, 10.0f, 0.0f ), 0.0f,   LibScalation.ENone,   LibInvert.ENo,  WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EClothDarkRed, new LibTexture[] { WallTex.ETest, }, 0, WallHealth.EFurniture,      FXSize.ELarge, null                     ),
+                            new Wall(   Others.ESofa1,   new LibVertex( 8.5f, 5.0f,  0.0f ), 0.0f,   LibScalation.ENone,   LibInvert.ENo,  WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EClothDarkRed, new LibTexture[] { WallTex.ETest, }, 0, WallHealth.EFurniture,      FXSize.ELarge, null                     ),
+                        },
+                        null,
+                        null,
+                        null,
+                        new int[] { 0, 1, 2, }
+                    ),
+
+                    new WallCollection
+                    (
+                        ShooterWallCollection.createCrate(      5.5f, 20.0f, -0.01f, 10.0f, LibScalation.ETriple ),
+                        new Wall[] { ShooterWallCollection.createCrate(  0.0f, 0.0f, 0.65f, -10.0f, LibScalation.ETriple ), }
+                    ),
+
+                    new WallCollection
+                    (
+                        ShooterWallCollection.createCrate(      7.0f, 20.0f, -0.01f, 20.0f, LibScalation.ETriple ),
+                        new Wall[] { ShooterWallCollection.createCrate(  0.0f, 0.0f, 0.65f, -10.0f, LibScalation.ETriple ), }
+                    ),
+
+                    new WallCollection
+                    (
+                        ShooterWallCollection.createCrate(      8.5f, 20.0f, -0.01f, 40.0f, LibScalation.ETriple ),
+                        new Wall[] { ShooterWallCollection.createCrate(  0.0f, 0.0f, 0.65f, -10.0f, LibScalation.ETriple ), }
+                    ),
+
+                    new WallCollection
+                    (
+                        ShooterWallCollection.createCrate(      5.5f, 18.5f, -0.01f, 70.0f, LibScalation.ETriple ),
+                        new Wall[] { ShooterWallCollection.createCrate(  0.0f, 0.0f, 0.65f, -10.0f, LibScalation.ETriple ), }
+                    ),
+
+                    new WallCollection
+                    (
+                        ShooterWallCollection.createCrate(      7.0f, 18.5f, -0.01f, 90.0f, LibScalation.ETriple ),
+                        new Wall[] { ShooterWallCollection.createCrate(  0.0f, 0.0f, 0.65f, -10.0f, LibScalation.ETriple ), }
+                    ),
+
+                    new WallCollection
+                    (
+                        ShooterWallCollection.createCrate(      8.5f, 18.5f, -0.01f, 80.0f, LibScalation.ETriple ),
+                        new Wall[] { ShooterWallCollection.createCrate(  0.0f, 0.0f, 0.65f, -10.0f, LibScalation.ETriple ), }
+                    ),
+
+                    //small office
+                    ShooterWallCollection.createRoom
+                    (
+                        4.0f, 24.0f, -0.01f,   180.0f,   5,  5,
+                        WallStyle.ESolidWall, WallStyle.ENoWall, WallStyle.ESolidWall, WallStyle.EWindowsAndCeilingWindows,
+                        WallTex.EWood1, WallHealth.EUnbreakale, WallAction.EDoorSwingClockwise,
+                        DoorStyle.ENoDoor, 0,
+                        WallTex.EBricks2, WallTex.ECarpet1, WallTex.ECeiling1,
+                        new Wall[]
+                        {
+                            new Sprite( Others.ESprite1,      new LibVertex( 1.0f, 4.0f, 0.0f ), LibScalation.EAddQuarter, WallCollidable.EYes, WallTex.EPlant2 ),
+                            new Wall(   Others.EPoster1,      new LibVertex( 3.0f,   0.01f, 0.7f   ), 270.0f,  LibScalation.EAddHalf,     LibInvert.ENo,  WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EPoster7,      null,                                   0, WallHealth.ESolidWood, FXSize.ESmall, null   ),
+                            new Wall(   Others.EChairOffice1, new LibVertex( 3.0f,   1.0f,  0.0f   ), 290.0f,  LibScalation.ENone,        LibInvert.ENo,  WallCollidable.EYes, WallAction.ENone,   WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.ELeather1,     new LibTexture[] { WallTex.EChrome2, }, 0, WallHealth.ESolidWood, FXSize.ESmall, null   ),
+                            new Article( Others.EWhiteboard1, 3.0f,   4.8f,  0.9f, 90.0f, LibScalation.EAddThird, LibInvert.ENo, WallTex.EPoster3, WallHealth.ESolidWood, FXSize.ESmall, null ),
+                        },
+                        new int[] { 1, 2, },
+                        null,
+                        null,
+                        null
+                    ),
+
+                    //office desk ( must be a separate wallCollection! .. cannot be applied to small office?
+                    new WallCollection
+                    (
+                        new Wall(       Others.EDeskOffice1,    new LibVertex( 0.5f, 22.5f, -0.01f   ), 90.0f,   LibScalation.ENone, LibInvert.ENo, WallCollidable.EYes, WallAction.ENone,  WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EWood1, new LibTexture[] { WallTex.EScreen2, }, 0, WallHealth.ESolidWood, FXSize.ESmall, null   ),
+                        new Wall[]
+                        {
+                            new Wall(   Others.EKeyboard1,      new LibVertex(  -0.25f,  0.0f,  0.8f ), 180.0f, LibScalation.ENone, LibInvert.EYes, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EWood1, new LibTexture[] { WallTex.EScreen2, }, 0, WallHealth.EElectricalDevice, FXSize.ESmall, null   ),
+                            new Wall(   Others.EScreen1,        new LibVertex(  -0.75f,  0.0f,  0.8f ), 180.0f, LibScalation.ENone, LibInvert.EYes, WallCollidable.EYes, WallAction.ENone, WallClimbable.ENo, DrawMethod.EAlwaysDraw, WallTex.EWood1,  new LibTexture[] { WallTex.EScreen2, }, 0, WallHealth.EElectricalDevice, FXSize.ESmall, null   ),
+                        }
                     ),
                 },
             };

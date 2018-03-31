@@ -42,7 +42,7 @@
                         Shooter.game.engine.hudFx.disableAllFx();
 
                         //start according bg music
-                        if ( !ShooterDebug.DISABLE_SOUNDS )
+                        if ( !ShooterDebug.DISABLE_SOUNDS && !ShooterDebug.DEBUG_MODE )
                         {
                             Shooter.game.engine.sound.startBgSound( LevelCurrent.currentLevelConfig.bgSound);
                         }
