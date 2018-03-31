@@ -16,7 +16,7 @@
     public class Ingame
     {
         // TODO prune!
-        private static Ingame singleton                   = null;
+        private         static          Ingame      singleton                       = null;
 
         private Ingame()
         {
@@ -145,9 +145,9 @@
 
 /*
                 //launch action on all bots
-                if ( ShooterGameLevel.current().iBots.size() > 0 )
+                if ( ShooterGameLevel.current().bots.size() > 0 )
                 {
-                    for ( Bot b : ShooterGameLevel.current().iBots )
+                    for ( Bot b : ShooterGameLevel.current().bots )
                     {
                         //move bot limbs
 
@@ -161,7 +161,7 @@
                 //show avatar message
                 //AvatarMessage.showDebugMessage();
 
-                //Level.current().iBots.elementAt( 0 ).say( Sound.EFemaleGiggle1 );
+                //Level.current().bots.elementAt( 0 ).say( Sound.EFemaleGiggle1 );
             }
         }
     }

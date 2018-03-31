@@ -2,7 +2,6 @@
     package de.christopherstock.shooter.level;
 
     import  de.christopherstock.shooter.*;
-    import  de.christopherstock.shooter.io.sound.*;
     import  de.christopherstock.shooter.level.setup.*;
     import  de.christopherstock.shooter.ui.hud.*;
 
@@ -11,12 +10,12 @@
     *******************************************************************************************************************/
     public class LevelChange
     {
-        private         static          LevelSetup           levelMainToChangeTo             = null;
-        private         static          int                         levelSectionIndexToChangeTo     = -1;
-        private         static          boolean                     resetOnLevelChange              = false;
-        private         static          long                        levelChangeBlocker              = 0;
+        private         static          LevelSetup              levelMainToChangeTo             = null;
+        private         static          int                     levelSectionIndexToChangeTo     = -1;
+        private         static          boolean                 resetOnLevelChange              = false;
+        private         static          long                    levelChangeBlocker              = 0;
 
-        public static void orderLevelChange(LevelSetup newLevelMain, int newLevelSectionIndex, boolean reset )
+        public static void orderLevelChange( LevelSetup newLevelMain, int newLevelSectionIndex, boolean reset )
         {
             levelMainToChangeTo         = newLevelMain;
             levelSectionIndexToChangeTo = newLevelSectionIndex;
@@ -45,12 +44,12 @@
                         //start according bg music
                         if ( !ShooterDebug.DISABLE_SOUNDS )
                         {
-                            Shooter.game.engine.sound.startBgSound( LevelCurrent.currentLevelConfig.iBgSound );
+                            Shooter.game.engine.sound.startBgSound( LevelCurrent.currentLevelConfig.bgSound);
                         }
                     }
 
                     //show HUD message
-                    HUDMessageManager.getSingleton().showMessage( "Changing to level section [" + LevelCurrent.currentSectionConfigData[ levelSectionIndexToChangeTo ].iDescSection + "]" );
+                    HUDMessageManager.getSingleton().showMessage( "Changing to level section [" + LevelCurrent.currentSectionConfigData[ levelSectionIndexToChangeTo ].descSection + "]" );
 
                     //change current level - do NOT change to constructor! level is referenced in init() !
                     LevelCurrent.currentSection = LevelCurrent.currentSections[ levelSectionIndexToChangeTo ];

@@ -18,7 +18,7 @@
         ESmallest,
         ;
 
-        private LibGLTextureImage iImg         = null;
+        private                 LibGLTextureImage           img                 = null;
 
         public static void loadImages()
         {
@@ -30,11 +30,11 @@
 
         private void loadImage()
         {
-            this.iImg = new LibGLTextureImage( LibImage.load( ShooterSetting.Path.ECrossHair.url + this.toString() + LibExtension.png.getSpecifier(), ShooterDebug.glImage, false ), ImageUsage.EOrtho, ShooterDebug.glImage, true );
+            this.img = new LibGLTextureImage( LibImage.load( ShooterSetting.Path.ECrossHair.url + this.toString() + LibExtension.png.getSpecifier(), ShooterDebug.glImage, false ), ImageUsage.EOrtho, ShooterDebug.glImage, true );
         }
 
         public final LibGLTextureImage getImage()
         {
-            return this.iImg;
+            return this.img;
         }
     }

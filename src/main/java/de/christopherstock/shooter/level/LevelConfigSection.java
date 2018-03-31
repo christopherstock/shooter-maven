@@ -11,18 +11,18 @@
     *******************************************************************************************************************/
     public class LevelConfigSection
     {
-        protected               String                  iDescSection            = null;
-        protected               BackGround              iBg                     = null;
-        protected               LibColors               iBgCol                  = null;
-        protected               ItemToPickUp[]          iItems                  = null;
-        protected               BotFactory[]            iBots                   = null;
+        protected               String                  descSection             = null;
+        protected               BackGround              bg                      = null;
+        protected               LibColors               bgCol                   = null;
+        protected               ItemToPickUp[]          items                   = null;
+        protected               BotFactory[]            bots                    = null;
 
-        public LevelConfigSection( String aDesc, LibColors aBgCol, BackGround aBg, ItemToPickUp[] aItems, BotFactory[] aStartupBots )
+        public LevelConfigSection( String desc, LibColors bgCol, BackGround bg, ItemToPickUp[] items, BotFactory[] startupBots )
         {
-            this.iDescSection = aDesc;
-            this.iBgCol = aBgCol;
-            this.iBg = aBg;
-            this.iItems = aItems;
-            this.iBots = aStartupBots;
+            this.descSection = desc;
+            this.bgCol       = bgCol;
+            this.bg          = bg;
+            this.items       = items;
+            this.bots        = startupBots;
         }
     }

@@ -19,7 +19,7 @@
         ENight1,
         ;
 
-        private LibGLTextureImage bgImage                     = null;
+        private                 LibGLTextureImage               bgImage                     = null;
 
         public static void loadImages()
         {

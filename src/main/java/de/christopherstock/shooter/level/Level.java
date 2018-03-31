@@ -3,9 +3,8 @@
 
     import  java.awt.geom.Point2D;
     import  java.util.*;
-
     import  de.christopherstock.lib.LibDebug;
-    import de.christopherstock.lib.LibViewSet;
+    import  de.christopherstock.lib.LibViewSet;
     import  de.christopherstock.lib.fx.*;
     import  de.christopherstock.lib.fx.LibFX.*;
     import  de.christopherstock.lib.g3d.*;
@@ -15,7 +14,7 @@
     import  de.christopherstock.lib.math.*;
     import  de.christopherstock.lib.ui.*;
     import  de.christopherstock.shooter.*;
-    import de.christopherstock.shooter.ShooterSetting.*;
+    import  de.christopherstock.shooter.ShooterSetting.*;
     import  de.christopherstock.shooter.g3d.*;
     import  de.christopherstock.shooter.g3d.mesh.*;
     import  de.christopherstock.shooter.g3d.wall.*;
@@ -30,13 +29,13 @@
     *******************************************************************************************************************/
     public class Level implements LibFloorStack
     {
-        private                     Vector<ItemToPickUp>        iItems                          = null;
-        private                     Vector<Bot>                 iBots                           = null;
-        private                     WallCollection[]            iWallCollections                = null;
-        private                     int                         iCurrentSectionIndex            = 0;
-        private                     int                         iAdrenalineTicks                = 0;
-        private                     int                         iAdrenalineDelayLevel           = 0;
-        private                     int                         iAdrenalineDelayPlayer          = 0;
+        private                     Vector<ItemToPickUp>        items                       = null;
+        private                     Vector<Bot>                 bots                        = null;
+        private                     WallCollection[]            wallCollections             = null;
+        private                     int                         currentSectionIndex         = 0;
+        private                     int                         adrenalineTicks             = 0;
+        private                     int                         adrenalineDelayLevel        = 0;
+        private                     int                         adrenalineDelayPlayer       = 0;
 
         public static enum InvisibleZeroLayerZ
         {
@@ -45,10 +44,10 @@
             ;
         }
 
-        private Level( int aConfig )
+        private Level( int config )
         {
             //keep target level as own config
-            this.iCurrentSectionIndex = aConfig;
+            this.currentSectionIndex = config;
         }
 
         public static void init()
@@ -64,7 +63,7 @@
             //create player
             Shooter.game.engine.player = new Player
             (
-                LevelCurrent.currentLevelConfig.iStartPosition,
+                LevelCurrent.currentLevelConfig.startPosition,
                 General.DISABLE_GRAVITY
             );
 
@@ -83,11 +82,11 @@
         private void initPlayer()
         {
             //handle startup items and wearpons to the player
-            for ( ItemEvent i : LevelCurrent.currentLevelConfig.iStartupItems )
+            for ( ItemEvent i : LevelCurrent.currentLevelConfig.startupItems)
             {
                 i.perform( null );
             }
-            for ( ArtefactType w : LevelCurrent.currentLevelConfig.iStartupWearpons )
+            for ( ArtefactType w : LevelCurrent.currentLevelConfig.startupWearpons)
             {
                 Artefact toDeliver = new Artefact( w );
                 Shooter.game.engine.player.artefactSet.deliverArtefact( toDeliver );
@@ -110,20 +109,20 @@
         private void initLevel()
         {
             //spawn specified items
-            this.iItems = new Vector<ItemToPickUp>();
-            if ( LevelCurrent.currentSectionConfigData[this.iCurrentSectionIndex].iItems != null )
+            this.items = new Vector<ItemToPickUp>();
+            if ( LevelCurrent.currentSectionConfigData[this.currentSectionIndex].items != null )
             {
-                for ( ItemToPickUp aItem : LevelCurrent.currentSectionConfigData[this.iCurrentSectionIndex].iItems )
+                for ( ItemToPickUp aItem : LevelCurrent.currentSectionConfigData[this.currentSectionIndex].items)
                 {
                     //load item's d3ds and add it to the stack
                     aItem.loadD3ds();
-                    this.iItems.add( aItem );
+                    this.items.add( aItem );
                 }
             }
 
             //create and add all bots
-            this.iBots = new Vector<Bot>();
-            for ( BotFactory b : LevelCurrent.currentSectionConfigData[this.iCurrentSectionIndex].iBots )
+            this.bots = new Vector<Bot>();
+            for ( BotFactory b : LevelCurrent.currentSectionConfigData[this.currentSectionIndex].bots)
             {
                 //init / reset bot
                 Bot botToAdd = b.createBot();
@@ -132,10 +131,10 @@
             }
         }
 
-        private void addBot(Bot botToAdd)
+        private void addBot( Bot botToAdd )
         {
-            this.iBots.add( botToAdd );
-            ShooterDebug.bot.out( "adding bot. capacity is now [" + this.iBots.size() + "]" );
+            this.bots.add( botToAdd );
+            ShooterDebug.bot.out( "adding bot. capacity is now [" + this.bots.size() + "]" );
         }
 
         /***************************************************************************************************************
@@ -144,7 +143,7 @@
         public final void draw()
         {
             //draw all walls
-            for ( WallCollection meshCollection : this.iWallCollections)
+            for ( WallCollection meshCollection : this.wallCollections)
             {
                 meshCollection.draw();
             }
@@ -159,7 +158,7 @@
         {
             //collect all hit points
             Vector<Float> hitPointsZ = new Vector<Float>();
-            for ( WallCollection meshCollection : this.iWallCollections)
+            for ( WallCollection meshCollection : this.wallCollections)
             {
                 //launch vertical collision check on all mesh-collections
                 hitPointsZ.addAll( meshCollection.checkCollisionVert( cylinder, exclude ) );
@@ -173,14 +172,14 @@
         public final void launchAction( Cylinder cylinder, Gadget gadget, float faceAngle )
         {
             //launch action on all mesh collections
-            for ( WallCollection meshCollection : this.iWallCollections)
+            for ( WallCollection meshCollection : this.wallCollections)
             {
                 //launch the shot on this mesh-collection
                 meshCollection.launchAction( cylinder, gadget, faceAngle );
             }
 
             //launch action on all bots
-            for ( Bot b : this.iBots)
+            for ( Bot b : this.bots)
             {
                 b.launchAction( cylinder, gadget, faceAngle );
             }
@@ -192,7 +191,7 @@
             Vector<LibHitPoint> allHitPoints = new Vector<LibHitPoint>();
 
             //launch the shot on all walls
-            for ( WallCollection wallCollection : this.iWallCollections)
+            for ( WallCollection wallCollection : this.wallCollections)
             {
                 allHitPoints.addAll( wallCollection.launchShot( s ) );
             }
@@ -389,7 +388,7 @@
         private void animateWalls()
         {
             //browse all mesh-collections
-            for ( WallCollection meshCollection : this.iWallCollections)
+            for ( WallCollection meshCollection : this.wallCollections)
             {
                 //animate all mesh-collections
                 meshCollection.animate();
@@ -398,25 +397,25 @@
 
         private void animateBots()
         {
-            for (int i = this.iBots.size() - 1; i >= 0; --i )
+            for (int i = this.bots.size() - 1; i >= 0; --i )
             {
                 //animate bot
-                this.iBots.elementAt( i ).animate();
+                this.bots.elementAt( i ).animate();
 
                 //prune if disappearing
-                if (this.iBots.elementAt( i ).isDead() )
+                if (this.bots.elementAt( i ).isDead() )
                 {
                     //decrease disappear timer
-                    --this.iBots.elementAt( i ).disappearTimer;
+                    --this.bots.elementAt( i ).disappearTimer;
 
-                    if (this.iBots.elementAt( i ).disappearTimer <= General.FADE_OUT_FACES_TOTAL_TICKS )
+                    if (this.bots.elementAt( i ).disappearTimer <= General.FADE_OUT_FACES_TOTAL_TICKS )
                     {
-                        this.iBots.elementAt( i ).fadeOutAllFaces();
+                        this.bots.elementAt( i ).fadeOutAllFaces();
                     }
 
-                    if (this.iBots.elementAt( i ).disappearTimer <= 0 )
+                    if (this.bots.elementAt( i ).disappearTimer <= 0 )
                     {
-                        this.iBots.removeElementAt( i );
+                        this.bots.removeElementAt( i );
                     }
                 }
             }
@@ -430,7 +429,7 @@
         public final void drawAllBots()
         {
             //Debug.bot.out( "drawing ALL bots .."+botQueue.size()+"" );
-            for ( Bot bot : this.iBots)
+            for ( Bot bot : this.bots)
             {
                 bot.draw();
             }
@@ -439,7 +438,7 @@
         public final boolean checkCollisionOnWalls( Cylinder cylinder )
         {
             //browse all mesh collections
-            for ( WallCollection meshCollection : this.iWallCollections)
+            for ( WallCollection meshCollection : this.wallCollections)
             {
                 //launch the collision on all mesh-collections
                 if ( meshCollection.checkCollisionHorz( cylinder ) ) return true;
@@ -451,7 +450,7 @@
         public final boolean checkCollisionOnBots( Cylinder cylinder )
         {
             //browse all bots
-            for ( Bot bot : this.iBots)
+            for ( Bot bot : this.bots)
             {
                 //launch the cylinder on all mesh-collections
                 if ( bot.checkCollision( cylinder ) ) return true;
@@ -462,23 +461,23 @@
 
         public final void drawBg( LibViewSet cam )
         {
-            if ( LevelCurrent.currentSectionConfigData[this.iCurrentSectionIndex].iBg != null ) LevelCurrent.currentSectionConfigData[this.iCurrentSectionIndex].iBg.drawOrtho( cam.rot.x, cam.rot.z );
+            if ( LevelCurrent.currentSectionConfigData[this.currentSectionIndex].bg != null ) LevelCurrent.currentSectionConfigData[this.currentSectionIndex].bg.drawOrtho( cam.rot.x, cam.rot.z );
         }
 
         public final void orderLevelSectionChangeUp( boolean reset )
         {
-            LevelChange.orderLevelChange( LevelCurrent.currentLevelMain, this.iCurrentSectionIndex + 1, reset );
+            LevelChange.orderLevelChange( LevelCurrent.currentLevelMain, this.currentSectionIndex + 1, reset );
         }
 
         public final void orderLevelSectionChangeDown( boolean reset )
         {
-            LevelChange.orderLevelChange( LevelCurrent.currentLevelMain, this.iCurrentSectionIndex - 1, reset );
+            LevelChange.orderLevelChange( LevelCurrent.currentLevelMain, this.currentSectionIndex - 1, reset );
         }
 
         public final void drawAllItems()
         {
             //Debug.item.out( "drawing ALL items .."+itemQueue.size()+"" );
-            for ( ItemToPickUp item : this.iItems)
+            for ( ItemToPickUp item : this.items)
             {
                 item.draw();
             }
@@ -487,30 +486,30 @@
         private void animateItems()
         {
             //browse reversed
-            for (int j = this.iItems.size() - 1; j >= 0; --j )
+            for (int j = this.items.size() - 1; j >= 0; --j )
             {
                 //check if item is collected
-                if (this.iItems.elementAt( j ).shallBeRemoved() )
+                if (this.items.elementAt( j ).shallBeRemoved() )
                 {
                     //remove collected items
-                    this.iItems.removeElementAt( j );
+                    this.items.removeElementAt( j );
                 }
                 else
                 {
                     //check collisions on non-collected items
-                    this.iItems.elementAt( j ).animate();
+                    this.items.elementAt( j ).animate();
                 }
             }
         }
 
         public final Vector<Bot> getBots()
         {
-            return this.iBots;
+            return this.bots;
         }
 
         public final LibColors getBackgroundColor()
         {
-            return LevelCurrent.currentSectionConfigData[this.iCurrentSectionIndex].iBgCol;
+            return LevelCurrent.currentSectionConfigData[this.currentSectionIndex].bgCol;
         }
 
         public final void render()
@@ -519,34 +518,34 @@
             boolean runLevel  = false;
 
             //check player and level animation
-            if (this.iAdrenalineTicks-- > 0 )
+            if (this.adrenalineTicks-- > 0 )
             {
                 //enable adrenaline fx
                 Shooter.game.engine.hudFx.drawAdrenalineFx = true;
 
                 //check player animation
-                if (this.iAdrenalineDelayPlayer > 0 )
+                if (this.adrenalineDelayPlayer > 0 )
                 {
-                    --this.iAdrenalineDelayPlayer;
+                    --this.adrenalineDelayPlayer;
                 }
                 else
                 {
                     //animate level and restart delay
-                    this.iAdrenalineDelayPlayer = 2;
+                    this.adrenalineDelayPlayer = 2;
 
                     //animate player
                     runPlayer = true;
                 }
 
                 //check level animation
-                if (this.iAdrenalineDelayLevel > 0 )
+                if (this.adrenalineDelayLevel > 0 )
                 {
-                    --this.iAdrenalineDelayLevel;
+                    --this.adrenalineDelayLevel;
                 }
                 else
                 {
                     //animate level and restart delay
-                    this.iAdrenalineDelayLevel = 10;
+                    this.adrenalineDelayLevel = 10;
 
                     //animate level
                     runLevel = true;
@@ -588,17 +587,17 @@
 
         public final boolean hasInvisibleZLayer()
         {
-            return ( LevelCurrent.currentLevelConfig.iHasInvisibleZLayer == InvisibleZeroLayerZ.EYes );
+            return ( LevelCurrent.currentLevelConfig.hasInvisibleZLayer == InvisibleZeroLayerZ.EYes );
         }
 
         public final void startAdrenaline()
         {
-            this.iAdrenalineTicks = ShooterSetting.General.TICKS_ADRENALINE;
+            this.adrenalineTicks = ShooterSetting.General.TICKS_ADRENALINE;
         }
 
         public final Bot getBotByID( int id )
         {
-            for ( Bot bot : this.iBots)
+            for ( Bot bot : this.bots)
             {
                 if ( bot.id == id )
                 {
@@ -612,11 +611,11 @@
         public final void assignWalls()
         {
             //assign walls
-            this.iWallCollections = LevelCurrent.getLevelWalls(this.iCurrentSectionIndex);
+            this.wallCollections = LevelCurrent.getLevelWalls(this.currentSectionIndex);
         }
 
         public final void addItem( ItemToPickUp p )
         {
-            this.iItems.add( p );
+            this.items.add( p );
         }
     }

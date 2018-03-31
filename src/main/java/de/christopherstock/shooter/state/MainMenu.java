@@ -28,8 +28,8 @@
             EQuitGame(                  "QUIT GAME"                     ),
             ;
 
-            protected LibGLTextureImage unselected                      = null;
-            protected LibGLTextureImage selected                        = null;
+            protected               LibGLTextureImage       unselected                      = null;
+            protected               LibGLTextureImage       selected                        = null;
 
             private MainMenuItem( String label )
             {
@@ -37,7 +37,7 @@
                 this.selected   = LibGLTextureImage.getFromString( label, Shooter.game.engine.fonts.mainMenu, LibColors.EOrangeMF.colABGR, null, LibColors.EBlack.colABGR, ShooterDebug.glImage );
             }
 
-            protected void draw(int x, int y, MainMenuItem selectedItem)
+            protected void draw( int x, int y, MainMenuItem selectedItem )
             {
                 Shooter.game.engine.glView.drawOrthoBitmapBytes( ( this == selectedItem ? this.selected : this.unselected), x, y, 1.0f );
             }

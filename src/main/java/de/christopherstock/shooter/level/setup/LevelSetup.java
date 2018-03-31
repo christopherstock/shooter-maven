@@ -9,9 +9,9 @@
     *******************************************************************************************************************/
     public abstract class LevelSetup
     {
-        protected           float       iOffsetX                = 0.0f;
-        protected           float       iOffsetY                = 0.0f;
-        protected           float       iOffsetZ                = 0.0f;
+        protected           float       offsetX             = 0.0f;
+        protected           float       offsetY             = 0.0f;
+        protected           float       offsetZ             = 0.0f;
 
         public abstract LevelConfigMain createNewLevelConfig();
 

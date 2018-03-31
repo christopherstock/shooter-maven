@@ -1,7 +1,7 @@
 
     package de.christopherstock.shooter.level;
 
-    import de.christopherstock.lib.LibViewSet;
+    import  de.christopherstock.lib.LibViewSet;
     import  de.christopherstock.shooter.game.artefact.ArtefactType;
     import  de.christopherstock.shooter.game.objects.ItemEvent;
     import  de.christopherstock.shooter.io.sound.*;
@@ -12,20 +12,28 @@
     *******************************************************************************************************************/
     public class LevelConfigMain
     {
-        private String                  iDescLevel              = null;
-        protected LibViewSet iStartPosition          = null;
-        protected               ArtefactType[]          iStartupWearpons        = null;
-        protected               ItemEvent[]             iStartupItems           = null;
-        protected               InvisibleZeroLayerZ     iHasInvisibleZLayer     = null;
-        protected               SoundBg                 iBgSound                = null;
+        private                 String                  descLevel                   = null;
+        protected               LibViewSet              startPosition               = null;
+        protected               ArtefactType[]          startupWearpons             = null;
+        protected               ItemEvent[]             startupItems                = null;
+        protected               InvisibleZeroLayerZ     hasInvisibleZLayer          = null;
+        protected               SoundBg                 bgSound                     = null;
 
-        public LevelConfigMain(String aDesc, LibViewSet aStartPosition, ArtefactType[] aStartupWearpons, ItemEvent[] aStartupItems, InvisibleZeroLayerZ aHasInvisibleZLayer, SoundBg aBgSound )
+        public LevelConfigMain
+        (
+            String              desc,
+            LibViewSet          startPosition,
+            ArtefactType[]      startupWearpons,
+            ItemEvent[]         startupItems,
+            InvisibleZeroLayerZ hasInvisibleZLayer,
+            SoundBg             bgSound
+        )
         {
-            this.iDescLevel = aDesc;
-            this.iStartPosition = aStartPosition;
-            this.iStartupWearpons = aStartupWearpons;
-            this.iStartupItems = aStartupItems;
-            this.iHasInvisibleZLayer = aHasInvisibleZLayer;
-            this.iBgSound = aBgSound;
+            this.descLevel          = desc;
+            this.startPosition      = startPosition;
+            this.startupWearpons    = startupWearpons;
+            this.startupItems       = startupItems;
+            this.hasInvisibleZLayer = hasInvisibleZLayer;
+            this.bgSound            = bgSound;
         }
     }

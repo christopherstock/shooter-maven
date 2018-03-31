@@ -27,24 +27,24 @@
             ;
         }
 
-        public              LibAnimation        iAnimationState                     = LibAnimation.EAnimationNone;
-        private             ChangeAction        iActionAfterHide                    = null;
+        public              LibAnimation        animationState                      = LibAnimation.EAnimationNone;
+        private             ChangeAction        actionAfterHide                     = null;
 
-        private             LibGLTextureImage   iAmmoImageMagazineAmmo              = null;
-        private             LibGLTextureImage   iAmmoImageTotalAmmo                 = null;
-        private             String              iDisplayAmmoStringMagazineAmmo      = null;
-        private             String              iDisplayAmmoStringTotalAmmo         = null;
-        private             String              iCurrentAmmoStringMagazineAmmo      = null;
-        private             String              iCurrentAmmoStringTotalAmmo         = null;
+        private             LibGLTextureImage   ammoImageMagazineAmmo               = null;
+        private             LibGLTextureImage   ammoImageTotalAmmo                  = null;
+        private             String              displayAmmoStringMagazineAmmo       = null;
+        private             String              displayAmmoStringTotalAmmo          = null;
+        private             String              currentAmmoStringMagazineAmmo       = null;
+        private             String              currentAmmoStringTotalAmmo          = null;
 
-        private             LibGLTextureImage   iHealthImage                        = null;
-        private             String              iDisplayHealthString                = null;
-        private             String              iCurrentHealthString                = null;
+        private             LibGLTextureImage   healthImage                         = null;
+        private             String              displayHealthString                 = null;
+        private             String              currentHealthString                 = null;
 
-        private             int                 iAnimationPlayerRightHand           = 0;
-        private             int                 iHealthShowTimer                    = 0;
+        private             int                 animationPlayerRightHand            = 0;
+        private             int                 healthShowTimer                     = 0;
 
-        public              boolean             iHideWearpon                        = false;
+        public              boolean             hideWearpon                         = false;
 
         public HUD()
         {
@@ -85,7 +85,7 @@
 
                 //draw health if currently changed
                 boolean drawHealthWarning = Shooter.game.engine.player.isHealthLow();
-                if (this.iHealthShowTimer > 0 || drawHealthWarning )
+                if (this.healthShowTimer > 0 || drawHealthWarning )
                 {
                     this.drawHealth( drawHealthWarning );
                 }
@@ -112,29 +112,29 @@
             Artefact currentWearpon = Shooter.game.engine.player.artefactSet.getArtefact();
 
             //only if this is a reloadable wearpon
-            if ( currentWearpon.artefactType.isFireArm() /* && Shooter.game.hud.iAnimationState == LibAnimation.EAnimationNone */ )
+            if ( currentWearpon.artefactType.isFireArm() /* && Shooter.game.hud.animationState == LibAnimation.EAnimationNone */ )
             {
                 //create current ammo string
-                this.iCurrentAmmoStringMagazineAmmo = currentWearpon.getCurrentAmmoStringMagazineAmmo();
-                this.iCurrentAmmoStringTotalAmmo = currentWearpon.getCurrentAmmoStringTotalAmmo( Shooter.game.engine.player.ammoSet);
+                this.currentAmmoStringMagazineAmmo = currentWearpon.getCurrentAmmoStringMagazineAmmo();
+                this.currentAmmoStringTotalAmmo = currentWearpon.getCurrentAmmoStringTotalAmmo( Shooter.game.engine.player.ammoSet);
 
                 //recreate ammo image if changed
-                if (this.iDisplayAmmoStringMagazineAmmo == null || !this.iDisplayAmmoStringTotalAmmo.equals(this.iCurrentAmmoStringTotalAmmo) || !this.iDisplayAmmoStringMagazineAmmo.equals(this.iCurrentAmmoStringMagazineAmmo) )
+                if (this.displayAmmoStringMagazineAmmo == null || !this.displayAmmoStringTotalAmmo.equals(this.currentAmmoStringTotalAmmo) || !this.displayAmmoStringMagazineAmmo.equals(this.currentAmmoStringMagazineAmmo) )
                 {
-                    this.iDisplayAmmoStringMagazineAmmo = this.iCurrentAmmoStringMagazineAmmo;
-                    this.iDisplayAmmoStringTotalAmmo = this.iCurrentAmmoStringTotalAmmo;
-                    this.iAmmoImageMagazineAmmo = LibGLTextureImage.getFromString
+                    this.displayAmmoStringMagazineAmmo = this.currentAmmoStringMagazineAmmo;
+                    this.displayAmmoStringTotalAmmo = this.currentAmmoStringTotalAmmo;
+                    this.ammoImageMagazineAmmo = LibGLTextureImage.getFromString
                     (
-                        this.iDisplayAmmoStringMagazineAmmo,
+                        this.displayAmmoStringMagazineAmmo,
                         Shooter.game.engine.fonts.ammo,
                         Colors.EFpsFg.colARGB,
                         null,
                         Colors.EFpsOutline.colARGB,
                         ShooterDebug.glImage
                     );
-                    this.iAmmoImageTotalAmmo = LibGLTextureImage.getFromString
+                    this.ammoImageTotalAmmo = LibGLTextureImage.getFromString
                     (
-                            this.iDisplayAmmoStringTotalAmmo,
+                            this.displayAmmoStringTotalAmmo,
                         Shooter.game.engine.fonts.ammo,
                         Colors.EFpsFg.colARGB,
                         null,
@@ -147,31 +147,31 @@
                 Shooter.game.engine.glView.drawOrthoBitmapBytes( ( (FireArm)currentWearpon.artefactType.artefactKind).getAmmoTypeImage(), Shooter.game.engine.glView.width - OffsetsOrtho.EBorderHudX - 50, OffsetsOrtho.EBorderHudY );
 
                 //draw magazine ammo
-                Shooter.game.engine.glView.drawOrthoBitmapBytes(this.iAmmoImageMagazineAmmo, Shooter.game.engine.glView.width - OffsetsOrtho.EBorderHudX - 50 - ( (FireArm)currentWearpon.artefactType.artefactKind).getAmmoTypeImage().width - this.iAmmoImageMagazineAmmo.width, OffsetsOrtho.EBorderHudY );
+                Shooter.game.engine.glView.drawOrthoBitmapBytes(this.ammoImageMagazineAmmo, Shooter.game.engine.glView.width - OffsetsOrtho.EBorderHudX - 50 - ( (FireArm)currentWearpon.artefactType.artefactKind).getAmmoTypeImage().width - this.ammoImageMagazineAmmo.width, OffsetsOrtho.EBorderHudY );
 
                 //draw total ammo
-                Shooter.game.engine.glView.drawOrthoBitmapBytes(this.iAmmoImageTotalAmmo, Shooter.game.engine.glView.width - OffsetsOrtho.EBorderHudX - this.iAmmoImageTotalAmmo.width, OffsetsOrtho.EBorderHudY );
+                Shooter.game.engine.glView.drawOrthoBitmapBytes(this.ammoImageTotalAmmo, Shooter.game.engine.glView.width - OffsetsOrtho.EBorderHudX - this.ammoImageTotalAmmo.width, OffsetsOrtho.EBorderHudY );
             }
         }
 
         public final void healthChanged()
         {
-            this.iHealthShowTimer = HUDSettings.TICKS_SHOW_HEALTH_AFTER_CHANGE;
+            this.healthShowTimer = HUDSettings.TICKS_SHOW_HEALTH_AFTER_CHANGE;
         }
 
         private void drawHealth( boolean drawHealthWarning )
         {
             //draw player health
-            this.iCurrentHealthString = String.valueOf( Shooter.game.engine.player.getHealth() );
+            this.currentHealthString = String.valueOf( Shooter.game.engine.player.getHealth() );
 
             //recreate ammo image if changed
-            if (this.iDisplayHealthString == null || !this.iDisplayHealthString.equals(this.iCurrentHealthString) )
+            if (this.displayHealthString == null || !this.displayHealthString.equals(this.currentHealthString) )
             {
-                this.iDisplayHealthString = this.iCurrentHealthString;
+                this.displayHealthString = this.currentHealthString;
 
-                this.iHealthImage = LibGLTextureImage.getFromString
+                this.healthImage = LibGLTextureImage.getFromString
                 (
-                    this.iDisplayHealthString,
+                    this.displayHealthString,
                     Shooter.game.engine.fonts.health,
                     ( drawHealthWarning ? Colors.EHealthFgWarning.colABGR : Colors.EHealthFgNormal.colABGR ),
                     null,
@@ -182,15 +182,15 @@
 
             //fade last displayed ticks ( not for health warning )
             float alpha = 1.0f;
-            if (this.iHealthShowTimer < HUDSettings.TICKS_FADE_OUT_HEALTH && !drawHealthWarning )
+            if (this.healthShowTimer < HUDSettings.TICKS_FADE_OUT_HEALTH && !drawHealthWarning )
             {
-                alpha = this.iHealthShowTimer / (float)HUDSettings.TICKS_FADE_OUT_HEALTH;
+                alpha = this.healthShowTimer / (float)HUDSettings.TICKS_FADE_OUT_HEALTH;
             }
 
-            //if ( iHealthShowTimer <  )
+            //if ( healthShowTimer <  )
 
             //draw health image
-            Shooter.game.engine.glView.drawOrthoBitmapBytes(this.iHealthImage, OffsetsOrtho.EBorderHudX, OffsetsOrtho.EBorderHudY, alpha );
+            Shooter.game.engine.glView.drawOrthoBitmapBytes(this.healthImage, OffsetsOrtho.EBorderHudX, OffsetsOrtho.EBorderHudY, alpha );
         }
 
         private void drawCrosshair()
@@ -218,15 +218,15 @@
         private void animateHUDScores()
         {
             //animate HUD-effects
-            if (this.iHealthShowTimer > 0 ) --this.iHealthShowTimer;
+            if (this.healthShowTimer > 0 ) --this.healthShowTimer;
         }
 
         private void animateRightHand()
         {
             //animate right hand
-            if (this.iAnimationPlayerRightHand > 0 )
+            if (this.animationPlayerRightHand > 0 )
             {
-                switch (this.iAnimationState)
+                switch (this.animationState)
                 {
                     case EAnimationNone:
                     {
@@ -235,24 +235,24 @@
 
                     case EAnimationShow:
                     {
-                        --this.iAnimationPlayerRightHand;
+                        --this.animationPlayerRightHand;
 
                         //check if animation is over
-                        if (this.iAnimationPlayerRightHand == 0 )
+                        if (this.animationPlayerRightHand == 0 )
                         {
-                            this.iAnimationState = LibAnimation.EAnimationNone;
+                            this.animationState = LibAnimation.EAnimationNone;
                         }
                         break;
                     }
 
                     case EAnimationHide:
                     {
-                        --this.iAnimationPlayerRightHand;
+                        --this.animationPlayerRightHand;
 
                         //check if animation is over
-                        if (this.iAnimationPlayerRightHand == 0 )
+                        if (this.animationPlayerRightHand == 0 )
                         {
-                            switch (this.iActionAfterHide)
+                            switch (this.actionAfterHide)
                             {
                                 case EActionNext:
                                 {
@@ -271,8 +271,8 @@
                                     //reload ammo
                                     Shooter.game.engine.player.artefactSet.getArtefact().performReload( Shooter.game.engine.player.ammoSet, true, null, false );
 
-                                    this.iAnimationState = LibAnimation.EAnimationShow;
-                                    this.iAnimationPlayerRightHand = ShooterSetting.Performance.TICKS_WEARPON_HIDE_SHOW;
+                                    this.animationState = LibAnimation.EAnimationShow;
+                                    this.animationPlayerRightHand = ShooterSetting.Performance.TICKS_WEARPON_HIDE_SHOW;
                                     break;
                                 }
 
@@ -280,7 +280,7 @@
                                 {
                                     Shooter.game.engine.player.artefactSet.setArtefact( Shooter.game.engine.player.artefactSet.hands);
 
-                                    //iHideWearpon = true;
+                                    //hideWearpon = true;
                                     break;
                                 }
                             }
@@ -293,29 +293,29 @@
 
         public final void startHandAnimation( LibAnimation newAnimationState, ChangeAction newActionAfterHide )
         {
-            this.iAnimationPlayerRightHand = ShooterSetting.Performance.TICKS_WEARPON_HIDE_SHOW;
-            this.iAnimationState = newAnimationState;
-            this.iActionAfterHide = newActionAfterHide;
+            this.animationPlayerRightHand = ShooterSetting.Performance.TICKS_WEARPON_HIDE_SHOW;
+            this.animationState = newAnimationState;
+            this.actionAfterHide = newActionAfterHide;
         }
 
         public final void stopHandAnimation()
         {
-            this.iAnimationPlayerRightHand = 0;
-            this.iAnimationState = LibAnimation.EAnimationNone;
+            this.animationPlayerRightHand = 0;
+            this.animationState = LibAnimation.EAnimationNone;
         }
 
         public final boolean animationActive()
         {
-            return (this.iAnimationPlayerRightHand != 0 );
+            return (this.animationPlayerRightHand != 0 );
         }
 
         public final int getAnimationRightHand()
         {
-            return this.iAnimationPlayerRightHand;
+            return this.animationPlayerRightHand;
         }
 
         public void resetAnimation()
         {
-            this.iAnimationPlayerRightHand = 0;
+            this.animationPlayerRightHand = 0;
         }
     }

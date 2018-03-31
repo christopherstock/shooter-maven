@@ -57,47 +57,47 @@
 
         private     static          Vector<AvatarMessage>   messageQueue            = new Vector<AvatarMessage>();
 
-        private static          int                     currentDebugMsg         = 0;
+        private     static          int                     currentDebugMsg         = 0;
 
         private     static          int                     anim                    = 0;
         private     static          AnimState               animState               = AnimState.EDisabled;
 
-        private LibGLTextureImage bgBar                   = null;
-        private                     Font                    iFont                   = null;
-        private LibGLTextureImage iImgAvatar              = null;
-        private                     LibGLTextureImage[]            textLines               = null;
+        private                     LibGLTextureImage       bgBar                   = null;
+        private                     Font                    font                    = null;
+        private                     LibGLTextureImage       imgAvatar               = null;
+        private                     LibGLTextureImage[]     textLines               = null;
         private                     int                     blockHeight             = 0;
-        private                     int                     iDrawX                  = 0;
-        private                     int                     iDrawY                  = 0;
-        private                     String                  iText                   = null;
+        private                     int                     drawX                   = 0;
+        private                     int                     drawY                   = 0;
+        private                     String                  text                    = null;
 
-        private AvatarMessage( AvatarImage aImage, String aText, Font aFont, Color bgColor )
+        private AvatarMessage( AvatarImage image, String text, Font font, Color bgColor )
         {
-            this.iText = aText;
-            this.iFont = aFont;
-            this.iImgAvatar = new LibGLTextureImage( aImage.img, ImageUsage.EOrtho, ShooterDebug.glImage, false );
+            this.text = text;
+            this.font = font;
+            this.imgAvatar = new LibGLTextureImage( image.img, ImageUsage.EOrtho, ShooterDebug.glImage, false );
 
             //calculate text
-            String[] textLinesS = LibStrings.breakLinesOptimized( Shooter.game.engine.frame.getGraphics(), this.iText, this.iFont, Shooter.game.engine.glView.width - 3 * OffsetsOrtho.EAvatarMsgX - this.iImgAvatar.width - OffsetsOrtho.EBorderHudX );
+            String[] textLinesS = LibStrings.breakLinesOptimized( Shooter.game.engine.frame.getGraphics(), this.text, this.font, Shooter.game.engine.glView.width - 3 * OffsetsOrtho.EAvatarMsgX - this.imgAvatar.width - OffsetsOrtho.EBorderHudX );
             this.textLines = new LibGLTextureImage[ textLinesS.length ];
             for (int i = 0; i < this.textLines.length; ++i )
             {
-                this.textLines[ i ] = LibGLTextureImage.getFromString( textLinesS[ i ], this.iFont, ShooterSetting.Colors.EAvatarMessageText.colABGR, null, ShooterSetting.Colors.EAvatarMessageTextOutline.colABGR, ShooterDebug.glImage );
+                this.textLines[ i ] = LibGLTextureImage.getFromString( textLinesS[ i ], this.font, ShooterSetting.Colors.EAvatarMessageText.colABGR, null, ShooterSetting.Colors.EAvatarMessageTextOutline.colABGR, ShooterDebug.glImage );
             }
             this.blockHeight = (this.textLines.length * this.textLines[ 0 ].height ); //+ ( ( textLines.length - 1 ) * ShooterSetting.HUD.LINE_SPACING_RATIO_EMPTY_LINES ) );
-            this.iDrawX = 3 * OffsetsOrtho.EAvatarMsgX + this.iImgAvatar.width;
-            this.iDrawY = Shooter.game.engine.glView.height - OffsetsOrtho.EAvatarMsgY - this.textLines[ 0 ].height - OffsetsOrtho.EAvatarBgPanelHeight / 2 + this.blockHeight / 2;
+            this.drawX = 3 * OffsetsOrtho.EAvatarMsgX + this.imgAvatar.width;
+            this.drawY = Shooter.game.engine.glView.height - OffsetsOrtho.EAvatarMsgY - this.textLines[ 0 ].height - OffsetsOrtho.EAvatarBgPanelHeight / 2 + this.blockHeight / 2;
 
             //create bar if not done
-            this.bgBar = LibGLTextureImage.getFullOpaque( bgColor, Shooter.game.engine.glView.width - this.iImgAvatar.width - 3 * OffsetsOrtho.EAvatarMsgX, this.iImgAvatar.height, ShooterDebug.glImage );
+            this.bgBar = LibGLTextureImage.getFullOpaque( bgColor, Shooter.game.engine.glView.width - this.imgAvatar.width - 3 * OffsetsOrtho.EAvatarMsgX, this.imgAvatar.height, ShooterDebug.glImage );
         }
 
-        public static void showMessage(AvatarImage img, String text, Color bgColor )
+        public static void showMessage( AvatarImage img, String text, Color bgColor )
         {
             //check if this message is already on the queue!
             for ( AvatarMessage m : messageQueue )
             {
-                if ( m.iText.equals( text ) )
+                if ( m.text.equals( text ) )
                 {
                     return;
                 }
@@ -200,16 +200,16 @@
             }
 
             //draw bg bar
-            Shooter.game.engine.glView.drawOrthoBitmapBytes(this.bgBar, 2 * OffsetsOrtho.EAvatarMsgX + this.iImgAvatar.width, Shooter.game.engine.glView.height - OffsetsOrtho.EAvatarMsgY - this.bgBar.height, alphaBgBar );
+            Shooter.game.engine.glView.drawOrthoBitmapBytes(this.bgBar, 2 * OffsetsOrtho.EAvatarMsgX + this.imgAvatar.width, Shooter.game.engine.glView.height - OffsetsOrtho.EAvatarMsgY - this.bgBar.height, alphaBgBar );
 
             //draw avatar image
-            Shooter.game.engine.glView.drawOrthoBitmapBytes(this.iImgAvatar, OffsetsOrtho.EAvatarMsgX, Shooter.game.engine.glView.height - OffsetsOrtho.EAvatarMsgY - this.bgBar.height, alphaAvatarImg );
+            Shooter.game.engine.glView.drawOrthoBitmapBytes(this.imgAvatar, OffsetsOrtho.EAvatarMsgX, Shooter.game.engine.glView.height - OffsetsOrtho.EAvatarMsgY - this.bgBar.height, alphaAvatarImg );
 
             //draw text
-            int y = this.iDrawY;
+            int y = this.drawY;
             for ( LibGLTextureImage textLine : this.textLines)
             {
-                Shooter.game.engine.glView.drawOrthoBitmapBytes(textLine, this.iDrawX, y, alphaAvatarImg);
+                Shooter.game.engine.glView.drawOrthoBitmapBytes(textLine, this.drawX, y, alphaAvatarImg);
                 y -= textLine.height;
             }
         }

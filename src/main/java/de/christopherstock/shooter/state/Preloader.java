@@ -2,13 +2,12 @@
     package de.christopherstock.shooter.state;
 
     import  de.christopherstock.lib.gl.*;
-    import de.christopherstock.lib.io.*;
+    import  de.christopherstock.lib.io.*;
     import  de.christopherstock.lib.ui.*;
     import  de.christopherstock.shooter.*;
-
-    import javax.imageio.*;
-    import java.awt.image.*;
-    import java.io.*;
+    import  javax.imageio.*;
+    import  java.awt.image.*;
+    import  java.io.*;
 
     /*******************************************************************************************************************
     *   Represents the preloader shown in the 1st state of the game.
@@ -16,7 +15,7 @@
     public class Preloader
     {
         /** The background image. */
-        private LibGLTextureImage bgImage                     = null;
+        private                     LibGLTextureImage       bgImage                     = null;
 
         /** The current percentage of loaded contents. */
         private                     int                     percentageLoaded            = 0;

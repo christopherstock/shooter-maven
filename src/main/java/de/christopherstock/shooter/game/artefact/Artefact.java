@@ -99,7 +99,7 @@
             //hide/show animation?
             if ( Shooter.game.engine.hud.animationActive() )
             {
-                switch ( Shooter.game.engine.hud.iAnimationState )
+                switch ( Shooter.game.engine.hud.animationState)
                 {
                     case EAnimationNone:
                     {
@@ -161,7 +161,7 @@
             }
 
             //draw artefact
-            if ( !Shooter.game.engine.hud.iHideWearpon )
+            if ( !Shooter.game.engine.hud.hideWearpon)
             {
                 Shooter.game.engine.glView.drawOrthoBitmapBytes
                 (
