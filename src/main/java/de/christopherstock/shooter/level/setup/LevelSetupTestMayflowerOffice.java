@@ -139,6 +139,8 @@
                     new BotFactory[]
                     {
                         new BotFactory( OFFICE_PARTNER_2, BotKind.EUnitOfficeEmployee, new LibVertex( 7.0f,  25.0f, 0.0f ), 180.0f, new Bot.BotAction[] { new Bot.BotUseAction( BotEvent.ELevel1AcclaimPlayer ), new Bot.BotGiveAction( ArtefactType.EMobilePhoneSEW890i, BotEvent.ETakeMobileTest ), new Bot.BotGiveAction( ArtefactType.EChips, BotEvent.ETakeCrackersTest ) } ),
+                        new BotFactory( OFFICE_PARTNER_1, BotKind.EUnitSpecialForces,  new LibVertex( 9.0f,  29.0f, 0.0f ), 190.0f, new Bot.BotAction[] { /* new Bot.BotUseAction( BotEvent.ELevel1AcclaimPlayer ), new Bot.BotGiveAction( ArtefactType.EMobilePhoneSEW890i, BotEvent.ETakeMobileTest ), new Bot.BotGiveAction( ArtefactType.EChips, BotEvent.ETakeCrackersTest ) */ } ),
+                        new BotFactory( OFFICE_PARTNER_1, BotKind.EUnitSecurity,       new LibVertex( 6.5f,  33.0f, 0.0f ), 185.0f, new Bot.BotAction[] { /* new Bot.BotUseAction( BotEvent.ELevel1AcclaimPlayer ), new Bot.BotGiveAction( ArtefactType.EMobilePhoneSEW890i, BotEvent.ETakeMobileTest ), new Bot.BotGiveAction( ArtefactType.EChips, BotEvent.ETakeCrackersTest ) */ } ),
                     }
                 ),
             };
