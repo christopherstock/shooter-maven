@@ -6,7 +6,6 @@
     /*******************************************************************************************************************
     *   The main class.
     *
-    *   TODO    Put sniper rifle after auto shotgun.
     *   TODO    Fix inoperative sound loop.
     *   TODO    Restart bg sound on level restart.
     *   TODO    Prune all singleton patterns.
@@ -14,6 +13,8 @@
     *   TODO    Turn BulletHole.bulletHoles non static!
     *   TODO    Optimize fields in ArtefactType!
     *   TODO    make new subclass:  Wearpon that derives from ArtefactKind!!
+    *   TODO    Limit framerate!
+    *   TODO    Enemies on bottom floor!
     *   TODO    only for FireArms! Move ArtefactType.fXImages to Firearms (Wearpons)!
     *   TODO    Move all CloseCombat constants to settings!
     *   TODO    Add skybox!
