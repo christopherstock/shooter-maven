@@ -34,6 +34,8 @@
         EPink(                          0xffff5555      ),
         EYellow(                        0xffffff00      ),
         EYellowLight(                   0xffffff66      ),
+        EYellowTranslucent(             0x55ffff00      ),
+
         EGrey(                          0xff909090      ),
         EGreyLight(                     0xffbbbbbb      ),
         EGreyDark(                      0xff444444      ),

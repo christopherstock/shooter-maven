@@ -46,7 +46,7 @@
             public      static  final   float       SPEED_ZOOM                          = 4.0f;     //per tick
             public      static  final   float       MAX_ZOOM                            = LibGLView.VIEW_ANGLE - 0.5f;
 
-            public      static  final   int         TICKS_ADRENALINE                    = 1000;
+            public      static  final   int         TICKS_ADRENALINE                    = 1500;
         }
 
         public static final class HUDSettings

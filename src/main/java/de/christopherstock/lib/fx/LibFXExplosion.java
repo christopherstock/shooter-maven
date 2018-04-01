@@ -87,19 +87,19 @@
                     (
                         new LibFXPoint
                         (
-                                this.debug,
-                                this.baseZ,
+                            this.debug,
+                            this.baseZ,
                             FXType.EExplosion,
                             EXPLOSION_COLORS[ LibMath.getRandom( 0, EXPLOSION_COLORS.length - 1 ) ],
                             angle,
-                                this.anchor.x + radius * LibMath.sinDeg( angle ),
-                                this.anchor.y + radius * LibMath.cosDeg( angle ),
-                                this.anchor.z,
-                                this.size,
+                            this.anchor.x + radius * LibMath.sinDeg( angle ),
+                            this.anchor.y + radius * LibMath.cosDeg( angle ),
+                            this.anchor.z,
+                            this.size,
                             wave,
-                                this.lifetime,
+                            this.lifetime,
                             FXGravity.ENormal,
-                                this.fadeOutTicks,
+                            this.fadeOutTicks,
                             null //new Sprite( Others.ESprite1, new LibVertex( iPoint.x, iPoint.y, iPoint.z ), LibScalation.ELowerThreeQuarters, WallCollidable.ENo, WallTex.ESliver1 )
                         )
                     );

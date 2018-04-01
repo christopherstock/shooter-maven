@@ -149,6 +149,7 @@
         public final void launchWallSliver(LibParticleQuantity sliverQuantity, float angleMod, int lifetime, FXSize size, FXGravity gravity, Object exclude, LibFloorStack floorStack )
         {
             float SIZE = 0.01f;
+/*
             boolean drawRedSliverLine = false;
             if ( drawRedSliverLine )
             {
@@ -158,7 +159,7 @@
                 {
                     LibFXManager.launchStaticPoint
                     (
-                            this.debug,
+                        this.debug,
                         new LibVertex
                         (
                                 this.vertex.x - LibMath.sinDeg(this.horzSliverAngle) * distance,
@@ -168,11 +169,11 @@
                         LibColors.ERed,
                         SIZE,
                         lifetime,
-                            this.fadeOutTicks
+                        this.fadeOutTicks
                     );
                 }
             }
-
+*/
             //ignore non-climbable walls
             if ( exclude instanceof LibClimbable )
             {
@@ -182,12 +183,14 @@
                 }
             }
 
+            //random translation occurs HERE!
+
             //get sliver vertex ( translate a bit to shot source in order to distance it from walls )
             LibVertex sliverVertex = new LibVertex
             (
-                    this.vertex.x - ( LibMath.sinDeg(this.horzInvertedShotAngle) * 0.1f ),
-                    this.vertex.y - ( LibMath.cosDeg(this.horzInvertedShotAngle) * 0.1f ),
-                    this.vertex.z
+                    this.vertex.x - ( LibMath.sinDeg(this.horzInvertedShotAngle) * 0.01f ),
+                    this.vertex.y - ( LibMath.cosDeg(this.horzInvertedShotAngle) * 0.01f ),
+                    this.vertex.z // + ( (float)LibMath.getRandom( 0, 100 ) * 0.001f )
             );
 
             //launch sliver fx on this hole
@@ -203,17 +206,17 @@
 
             LibFXManager.launchSliver
             (
-                    this.debug,
+                this.debug,
                 sliverVertex,
-                    this.sliverColors,
-                    this.horzSliverAngle,
+                this.sliverColors,
+                this.horzSliverAngle,
                 sliverQuantity,
                 angleMod,
                 lifetime,
                 size,
                 gravity,
                 baseZ,
-                    this.fadeOutTicks
+                this.fadeOutTicks
             );
         }
 

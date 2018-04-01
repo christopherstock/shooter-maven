@@ -40,9 +40,9 @@
         {
             //init panes
             this.damagePane      = LibGLTextureImage.getFullOpaque( LibColors.ERedTranslucent.colABGR,    Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
-            this.healthPane      = LibGLTextureImage.getFullOpaque( LibColors.EWhite.colABGR,  Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
-            this.deadPane        = LibGLTextureImage.getFullOpaque( LibColors.EBlack.colABGR,  Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
-            this.adrenalinePane  = LibGLTextureImage.getFullOpaque( LibColors.EYellow.colABGR, Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
+            this.healthPane      = LibGLTextureImage.getFullOpaque( LibColors.EWhite.colABGR,             Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
+            this.deadPane        = LibGLTextureImage.getFullOpaque( LibColors.EBlack.colABGR,             Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
+            this.adrenalinePane  = LibGLTextureImage.getFullOpaque( LibColors.EYellowTranslucent.colABGR, Shooter.game.engine.glView.width, Shooter.game.engine.glView.height, ShooterDebug.glImage );
 
             try
             {
@@ -104,6 +104,7 @@
                 Shooter.game.engine.glView.drawOrthoBitmapBytes( this.deadPane, 0, 0, alpha );
             }
 
+            // draw adrenaline fx
             if ( this.drawAdrenalineFx )
             {
                 float alpha = 0.05f;

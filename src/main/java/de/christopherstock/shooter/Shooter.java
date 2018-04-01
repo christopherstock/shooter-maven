@@ -9,7 +9,6 @@
     *   TODO    Fix inoperative sound loop.
     *   TODO    Restart bg sound on level restart.
     *   TODO    Prune all singleton patterns.
-    *   TODO    Different heights for particle effects (blood).
     *   TODO    Turn BulletHole.bulletHoles non static!
     *   TODO    Optimize fields in ArtefactType!
     *   TODO    make new subclass:  Wearpon that derives from ArtefactKind!!

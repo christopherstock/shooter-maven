@@ -77,20 +77,20 @@
                     {
                         case ELow:
                         {
-                            this.speedZ = 0.00001f * LibMath.getRandom( 1, 3 );
-                            this.speedXY = 0.0015f  * LibMath.getRandom( 2, 25 );
+                            this.speedZ = 0.000001f * (float)LibMath.getRandom( 1, 100 );
+                            this.speedXY = 0.0015f * (float)LibMath.getRandom( 2, 25 );
                             break;
                         }
                         case ENormal:
                         {
-                            this.speedZ = 0.00008f * LibMath.getRandom( 1, 3 );
-                            this.speedXY = 0.0030f  * LibMath.getRandom( 2, 25 );
+                            this.speedZ = 0.000002f * (float)LibMath.getRandom( 1, 100 );
+                            this.speedXY = 0.0030f * (float)LibMath.getRandom( 2, 25 );
                             break;
                         }
                         case EHigh:
                         {
-                            this.speedZ = 0.00012f * LibMath.getRandom( 1, 3 );
-                            this.speedXY = 0.0045f  * LibMath.getRandom( 2, 25 );
+                            this.speedZ = 0.000003f *  (float)LibMath.getRandom( 1, 100 );
+                            this.speedXY = 0.0045f  * (float)LibMath.getRandom( 2, 25 );
                             break;
                         }
                     }

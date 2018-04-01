@@ -15,17 +15,17 @@
         private int                 particlesToLaunch       = 0;
         private float               angleMod                = 0.0f;
         private FXGravity           gravity                 = null;
-        private float               baseZ                   = 0;
+        private float               baseZ                   = 0.0f;
 
-        protected LibFXSliver(LibDebug aDebug, LibVertex aAnchor, LibColors[] aSliverColors, LibParticleQuantity particleQuantity, float aAngleMod, int aLifetime, FXSize aSize, FXGravity aGravity, float aBaseZ, int aFadeOutTicks )
+        protected LibFXSliver(LibDebug debug, LibVertex anchor, LibColors[] sliverColors, LibParticleQuantity particleQuantity, float angleMod, int lifetime, FXSize size, FXGravity gravity, float baseZ, int fadeOutTicks )
         {
-            super( aDebug, aAnchor, aLifetime, aFadeOutTicks );
+            super( debug, anchor, lifetime, fadeOutTicks );
 
-            this.sliverColors = aSliverColors;
-            this.angleMod = aAngleMod;
-            this.size = aSize;
-            this.gravity = aGravity;
-            this.baseZ = aBaseZ;
+            this.sliverColors = sliverColors;
+            this.angleMod     = angleMod;
+            this.size         = size;
+            this.gravity      = gravity;
+            this.baseZ        = baseZ;
 
             switch ( particleQuantity )
             {
@@ -72,19 +72,23 @@
                 (
                     new LibFXPoint
                     (
-                            this.debug,
-                            this.baseZ,
+                        this.debug,
+
+
+                        this.baseZ, // + ( 0.01f * (float)LibMath.getRandom( -300, 300 ) ),
+
+
                         FXType.ESliver,
-                            this.sliverColors[ LibMath.getRandom( 0, this.sliverColors.length - 1 ) ],
+                        this.sliverColors[ LibMath.getRandom( 0, this.sliverColors.length - 1 ) ],
                         angle + angleMod,
-                            this.anchor.x + radius * LibMath.sinDeg( angle ),
-                            this.anchor.y + radius * LibMath.cosDeg( angle ),
-                            this.anchor.z,
-                            this.size,
+                        this.anchor.x + radius * LibMath.sinDeg( angle ),
+                        this.anchor.y + radius * LibMath.cosDeg( angle ),
+                        this.anchor.z,
+                        this.size,
                         0,
-                            this.lifetime,
-                            this.gravity,
-                            this.fadeOutTicks,
+                        this.lifetime,
+                        this.gravity,
+                        this.fadeOutTicks,
                         null //new Sprite( Others.ESprite1, new LibVertex( iPoint.x, iPoint.y, iPoint.z ), LibScalation.ELowerThreeQuarters, WallCollidable.ENo, WallTex.ESliver1 )
                     )
                 );
