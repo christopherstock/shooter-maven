@@ -16,7 +16,7 @@
     {
         public enum MainMenuItem
         {
-            EStartNewGameFacility(      "START NEW GAME"                ),
+            EStartNewGame(              "START NEW GAME"                ),
 /*
             EStartNewGameTestOffice(    "START NEW GAME - TEST-OFFICE"  ),
 */
@@ -58,7 +58,7 @@
 
         public void init()
         {
-            this.currentMainMenuItem = MainMenuItem.EStartNewGameFacility;
+            this.currentMainMenuItem = MainMenuItem.EStartNewGame;
         }
 
         public final void draw()
@@ -110,7 +110,7 @@
                 SoundFg.ELocked1.playGlobalFx();
                 switch ( this.currentMainMenuItem )
                 {
-                    case EStartNewGameFacility:
+                    case EStartNewGame:
                     {
                         LevelChange.orderLevelChange( new LevelSetupTestMayflowerOffice(), ShooterSetting.Startup.STARTUP_LEVEL_SECTION, true );
                         Shooter.game.orderMainStateChange( MainState.EIngame );

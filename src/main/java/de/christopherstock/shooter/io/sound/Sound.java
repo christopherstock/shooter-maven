@@ -113,6 +113,8 @@
             {
                 this.currentBgSound.player.removeControllerListener( this.currentBgSound.controllerListener);
                 this.currentBgSound.player.stop();
+
+                this.currentBgSound.player.setMediaTime( new Time( 0 ) );
             }
         }
     }

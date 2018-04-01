@@ -7,21 +7,22 @@
     *   The main class.
     *
     *   TODO    Fix inoperative sound loop.
-    *   TODO    Restart bg sound on level restart.
     *   TODO    Prune all singleton patterns.
     *   TODO    Turn BulletHole.bulletHoles non static!
+    *   TODO    Prefix 'Shooter' only for main and base classes!
+    *   TODO    Stop sounds when the game is quit!
+    *
+    *   TODO    Add skybox!
+    *
+    *   TODO    Complete v.4.0.2
     *
     *   TODO    Optimize fields in ArtefactType!
     *   TODO    make new subclass:  Wearpon that derives from ArtefactKind!!
     *   TODO    only for FireArms! Move ArtefactType.fXImages to Firearms (Wearpons)!
     *   TODO    Move all CloseCombat constants to settings!
-    *
-    *   TODO    Add skybox!
     *   TODO    let random assign different topping positions for ShooterWallCollection.createDeskOffice
-    *   TODO    slow panning for zoomed glView?
     *   TODO    Refactor the Artefact-System.
-    *   TODO    Simple switch for lighting?
-    *   TODO    Prefix 'Shooter' only for main and base classes!
+    *   TODO    slow panning for zoomed glView?
     *   TODO    WearponKind.java - remove parentKind ?
     *   TODO    enum GiveTakeAnim to Gadget?
     *   TODO    Own class for FireFxOffset ?? (use Point2D or Distance-class?)
@@ -33,9 +34,6 @@
     *   TODO    sprites for bot fire ( muzzle flash )!
     *   TODO    let bot drop multiple items on being killed
     *   TODO    improve collisions? ( make player collisions via ray casting? )
-    *   TODO    bsp engine / algo
-    *   TODO    Stop sounds when the game is quit!
-    *   TODO    create cool story level data
     *   TODO    create double-handed bots or artefacts? - 2 x currentArtefact?
     *******************************************************************************************************************/
     public class Shooter
