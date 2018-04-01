@@ -6,8 +6,6 @@
     /*******************************************************************************************************************
     *   The main class.
     *
-    *   TODO    Limit framerate!
-    *
     *   TODO    Fix inoperative sound loop.
     *   TODO    Restart bg sound on level restart.
     *   TODO    Prune all singleton patterns.

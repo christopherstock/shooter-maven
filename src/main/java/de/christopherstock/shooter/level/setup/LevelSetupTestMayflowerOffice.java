@@ -328,25 +328,6 @@
                         null,
                         new int[] { 1, }
                     ),
-/*
-                    // corner
-                    ShooterWallCollection.createRoom
-                    (
-                        4.0f, 26.0f, 0.0f, 0.0f, 4, 4,
-                        WallStyle.ESolidWall, WallStyle.ESolidWall, WallStyle.ENoWall, WallStyle.ENoWall,
-                        WallTex.EGlass1, WallHealth.ESolidGlass, WallAction.EDoorSlideRight,
-                        DoorStyle.ENoDoor, 0,
-                        WALL_OFFICE, WallTex.ECarpet1, WallTex.ECeiling1,
-                        new Wall[]
-                        {
-                        },
-                        null,
-                        null,
-                        null,
-                        new int[] { 1, }
-                    ),
-*/
-
 
                     //casino
                     ShooterWallCollection.createRoom

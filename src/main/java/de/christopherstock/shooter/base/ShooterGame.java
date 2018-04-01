@@ -1,6 +1,7 @@
 
     package de.christopherstock.shooter.base;
 
+    import de.christopherstock.lib.ui.LibUI;
     import  de.christopherstock.shooter.*;
     import  de.christopherstock.shooter.level.*;
     import  de.christopherstock.shooter.state.*;
@@ -37,18 +38,34 @@
             // tick until main thread is destroyed
             while ( !this.destroyed )
             {
+                // meassure tick time
+                long tickStart = System.currentTimeMillis();
+
+                // render the current scene
                 this.render();
 
-                //update fps
+                // update fps
                 this.engine.fps.update();
 
-                //invoke callback 3d drawing
+                // invoke callback 3d drawing
                 this.draw();
 
-                //delay for specified delay time
+                // delay
+                long tickTime = (System.currentTimeMillis() - tickStart);
+                long tickDelay = 0;
+                if ( tickTime < ShooterSetting.Performance.MIN_THREAD_DELAY )
+                {
+                    tickDelay = ShooterSetting.Performance.MIN_THREAD_DELAY - tickTime;
+                }
+                else
+                {
+                    tickDelay = 0;
+                }
+
+                // delay for specified delay time
                 try
                 {
-                    Thread.sleep( ShooterSetting.Performance.THREAD_DELAY );
+                    Thread.sleep( tickDelay );
                 }
                 catch ( InterruptedException ie )
                 {
@@ -56,7 +73,7 @@
                 }
             }
 
-            //stop all bg sounds ( hangs on mac )
+            // stop all bg sounds ( hangs on mac )
             this.engine.sound.stopCurrentBgSound();
 
             this.engine.destroy();

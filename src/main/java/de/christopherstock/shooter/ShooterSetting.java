@@ -143,7 +143,8 @@
 
         public static final class Performance
         {
-            public  static  final   int             THREAD_DELAY                        = 0;
+            // --- min thread delay in ms per tick ---
+            public  static  final   int             MIN_THREAD_DELAY                    = 16;
 
             // --- performance settings --- //
             public  static  final   int             COLLISION_CHECKING_STEPS            = 5;

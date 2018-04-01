@@ -31,7 +31,10 @@
 
     /*******************************************************************************************************************
     *   All settings for level 'Test Office Casino'.
+    *
+    *   An unreferenced level.
     *******************************************************************************************************************/
+    @Deprecated
     public class LevelSetupTestFacility extends LevelSetup
     {
         private     static      final   int         SECTION_ONE                 = 0;
