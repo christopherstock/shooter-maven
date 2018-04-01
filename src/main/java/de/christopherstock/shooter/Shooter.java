@@ -6,7 +6,6 @@
     /*******************************************************************************************************************
     *   The main class.
     *
-    *   TODO    Fix inoperative sound loop.
     *   TODO    Prune all singleton patterns.
     *   TODO    Turn BulletHole.bulletHoles non static!
     *   TODO    Prefix 'Shooter' only for main and base classes!

@@ -15,20 +15,20 @@
     public enum SoundBg
     {
 /*
-        EExtraction(    131000000000L,       134649000000L,     4323000000L,    134649000000L         ),
-        EPelagic2(      131000000000L,       134649000000L,     4323000000L,    134649000000L         ),
+        EExtraction(     131000000000L,       134649000000L,     4323000000L,     134649000000L         ),
+        EPelagic2(       131000000000L,       134649000000L,     4323000000L,     134649000000L         ),
 */
-        EExtraction(     0L,                  134649000000L,     4323000000L,    134649000000L         ),
-        EInvestigationX( 0L,                  134649000000L,     4323000000L,    134649000000L         ),
+        EExtraction(     0L,                  138820000000L,     0L,              138820000000L         ),
+        EInvestigationX( 0L,                  134600000000L,     0L,              134600000000L         ),
 /*
-        EPelagic2(      0L,                  134649000000L,     4323000000L,    134649000000L         ),
+        EPelagic2(       0L,                  134649000000L,     4323000000L,     134649000000L         ),
 */
         ;
 
         protected           Player                  player                      = null;
         protected           ControllerListener      controllerListener          = null;
 
-        private             long                    initNanoSecondStart         = 0;
+        public              long                    initNanoSecondStart         = 0;
         private             long                    initNanoSecondEnd           = 0;
         private             long                    loopNanoSecondStart         = 0;
         private             long                    loopNanoSecondEnd           = 0;
@@ -57,7 +57,7 @@
             }
         }
 
-        private void start()
+        public void start()
         {
             if (this.player != null )
             {

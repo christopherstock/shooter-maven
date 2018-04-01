@@ -103,7 +103,7 @@
             this.currentBgSound = sound;
 
             //start new sound threaded
-            this.currentBgSound.player.start();
+            this.currentBgSound.start();
         }
 
         public void stopCurrentBgSound()
