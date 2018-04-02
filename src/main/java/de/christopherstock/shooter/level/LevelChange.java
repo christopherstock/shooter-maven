@@ -49,7 +49,7 @@
                     }
 
                     //show HUD message
-                    HUDMessageManager.getSingleton().showMessage( "Changing to level section [" + LevelCurrent.currentSectionConfigData[ levelSectionIndexToChangeTo ].descSection + "]" );
+                    Shooter.game.engine.hudMessagesManager.showMessage( "Changing to level section [" + LevelCurrent.currentSectionConfigData[ levelSectionIndexToChangeTo ].descSection + "]" );
 
                     //change current level - do NOT change to constructor! level is referenced in init() !
                     LevelCurrent.currentSection = LevelCurrent.currentSections[ levelSectionIndexToChangeTo ];

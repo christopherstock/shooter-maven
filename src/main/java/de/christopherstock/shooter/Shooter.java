@@ -6,13 +6,11 @@
     /*******************************************************************************************************************
     *   The main class.
     *
-    *   TODO    Prune all singleton patterns.
     *   TODO    Turn BulletHole.bulletHoles non static!
     *   TODO    Prefix 'Shooter' only for main and base classes!
     *   TODO    Stop sounds when the game is quit!
-    *
     *   TODO    Add skybox!
-    *
+    *   TODO    Adjust OpenGraph tags.
     *   TODO    Complete v.4.0.2
     *
     *   TODO    Optimize fields in ArtefactType!

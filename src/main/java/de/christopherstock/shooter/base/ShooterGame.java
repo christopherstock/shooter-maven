@@ -1,7 +1,6 @@
 
     package de.christopherstock.shooter.base;
 
-    import de.christopherstock.lib.ui.LibUI;
     import  de.christopherstock.shooter.*;
     import  de.christopherstock.shooter.level.*;
     import  de.christopherstock.shooter.state.*;
@@ -95,14 +94,14 @@
 
                 case EMainMenu:
                 {
-                    Ingame.getSingleton().draw();
+                    this.engine.ingame.draw();
                     this.engine.mainMenu.draw();
                     break;
                 }
 
                 case EIngame:
                 {
-                    Ingame.getSingleton().draw();
+                    this.engine.ingame.draw();
                     break;
                 }
             }
@@ -167,7 +166,7 @@
 
                     LevelChange.checkChangeToSection();
 
-                    Ingame.getSingleton().checkGameKeyEvents();
+                    this.engine.ingame.checkGameKeyEvents();
 
                     if ( Level.currentSection() != null )
                     {

@@ -2,8 +2,7 @@
     package de.christopherstock.shooter.ui.hud;
 
     import  java.util.*;
-
-    import de.christopherstock.shooter.Shooter;
+    import  de.christopherstock.shooter.Shooter;
     import  de.christopherstock.shooter.ShooterSetting.OffsetsOrtho;
 
     /*******************************************************************************************************************
@@ -19,15 +18,7 @@
             ;
         }
 
-        private         static          HUDMessageManager       singleton               = null;
-
         private                         Vector<HUDMessage>      messageQueue            = new Vector<HUDMessage>();
-
-        public static HUDMessageManager getSingleton()
-        {
-            if ( singleton == null ) singleton = new HUDMessageManager();
-            return singleton;
-        }
 
         public final void showMessage( String txt )
         {

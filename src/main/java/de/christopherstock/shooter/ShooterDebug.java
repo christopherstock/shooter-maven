@@ -64,12 +64,12 @@
 
         public final void out( Object obj )
         {
-            if ( DEBUG_MODE && this.iDebugEnabled) System.out.println( "[" + LibStringFormat.getSingleton().formatDateTime() + "] " + obj );
+            if ( DEBUG_MODE && this.iDebugEnabled) System.out.println( "[" + LibStringFormat.formatDateTime() + "] " + obj );
         }
 
         public final void err( Object obj )
         {
-            if ( DEBUG_MODE ) System.err.println( "[" + LibStringFormat.getSingleton().formatDateTime() + "] " + obj );
+            if ( DEBUG_MODE ) System.err.println( "[" + LibStringFormat.formatDateTime() + "] " + obj );
         }
 
         public final void trace( Throwable obj )
@@ -84,9 +84,9 @@
                 Runtime r = Runtime.getRuntime();
 
                 this.out( "========================================================"                         );
-                this.out( " free:  [" + LibStringFormat.getSingleton().formatNumber( r.freeMemory()  ) + "]" );
-                this.out( " total: [" + LibStringFormat.getSingleton().formatNumber( r.totalMemory() ) + "]" );
-                this.out( "  max:  [" + LibStringFormat.getSingleton().formatNumber( r.maxMemory()   ) + "]" );
+                this.out( " free:  [" + LibStringFormat.formatNumber( r.freeMemory()  ) + "]" );
+                this.out( " total: [" + LibStringFormat.formatNumber( r.totalMemory() ) + "]" );
+                this.out( "  max:  [" + LibStringFormat.formatNumber( r.maxMemory()   ) + "]" );
             }
         }
 

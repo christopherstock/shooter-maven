@@ -144,14 +144,14 @@
                 case EGiveCrackers:
                 {
                     EGainGadgetCrackers.perform( null );
-                    HUDMessageManager.getSingleton().showMessage( ShooterStrings.HUDMessages.TAKE_CRACKERS );
+                    Shooter.game.engine.hudMessagesManager.showMessage( ShooterStrings.HUDMessages.TAKE_CRACKERS );
                     break;
                 }
 
                 case EGiveKeycard:
                 {
                     EGainGadgetKeycard.perform( null );
-                    HUDMessageManager.getSingleton().showMessage( ShooterStrings.HUDMessages.TAKE_KEYCARD );
+                    Shooter.game.engine.hudMessagesManager.showMessage( ShooterStrings.HUDMessages.TAKE_KEYCARD );
                     break;
                 }
 

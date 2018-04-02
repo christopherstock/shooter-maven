@@ -181,7 +181,7 @@
                     if (this.kind.hudMessage != null )
                     {
                         //ShooterDebug.bugfix.out( "hud message launching" );
-                        HUDMessageManager.getSingleton().showMessage(this.kind.hudMessage);
+                        Shooter.game.engine.hudMessagesManager.showMessage(this.kind.hudMessage);
                     }
                 }
 

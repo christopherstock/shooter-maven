@@ -95,7 +95,7 @@
             AvatarMessage.drawMessage();
 
             //draw all hud messages
-            HUDMessageManager.getSingleton().drawAll();
+            Shooter.game.engine.hudMessagesManager.drawAll();
 
             //draw fullscreen hud effects
             Shooter.game.engine.hudFx.drawHUDEffects();
@@ -208,11 +208,11 @@
 
         public final void onRun()
         {
-            Shooter.game.engine.hudFx.animateEffects();         //animate hud-effects
-            AvatarMessage.animate();                            //animate avatar msgs
-            this.animateHUDScores();                            //animate health timer etc.
-            this.animateRightHand();                            //animate right hand
-            HUDMessageManager.getSingleton().animateAll();      //animate hud msgs
+            Shooter.game.engine.hudFx.animateEffects();             //animate hud-effects
+            AvatarMessage.animate();                                //animate avatar msgs
+            this.animateHUDScores();                                //animate health timer etc.
+            this.animateRightHand();                                //animate right hand
+            Shooter.game.engine.hudMessagesManager.animateAll();    //animate hud msgs
         }
 
         private void animateHUDScores()

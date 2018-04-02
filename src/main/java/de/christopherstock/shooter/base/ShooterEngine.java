@@ -48,14 +48,18 @@
         public                      ShooterD3ds             d3ds                        = null;
         /** Heads up display. */
         public                      HUD                     hud                         = null;
-        /** Frames per second counter. */
-        public                      LibFPS                  fps                         = null;
         /** Heads up display effects. */
         public                      HUDFx                   hudFx                       = null;
+        /** Heads up display message manager. */
+        public                      HUDMessageManager       hudMessagesManager          = null;
+        /** Frames per second counter. */
+        public                      LibFPS                  fps                         = null;
         /** The sound system. */
         public                      Sound                   sound                       = null;
         /** The main menu. */
         public                      MainMenu                mainMenu                    = null;
+        /** The ingame instance. */
+        public                      Ingame                  ingame                      = null;
 
         /***************************************************************************************************************
         *   Inits the game engine.
@@ -87,13 +91,10 @@
             this.initFPS();
 
             this.preloader.increase( 70 );
-            this.initHUDFx();
-
-            this.preloader.increase( 80 );
             this.initSound();
 
-            this.preloader.increase( 90 );
-            this.initMainMenu();
+            this.preloader.increase( 80 );
+            this.initStates();
 
             this.preloader.increase( 100 );
             ShooterDebug.init.out( "Completed init phase. Ordering main state change" );
@@ -228,8 +229,14 @@
         private void initHUD()
         {
             ShooterDebug.init.out( "init HUD" );
-
             this.hud = new HUD();
+
+            ShooterDebug.init.out( "init HUD effects" );
+            this.hudFx = new HUDFx();
+            this.hudFx.init();
+
+            ShooterDebug.init.out( "init HUD message manager" );
+            this.hudMessagesManager = new HUDMessageManager();
         }
 
         /***************************************************************************************************************
@@ -240,17 +247,6 @@
             ShooterDebug.init.out( "init FPS counter" );
 
             this.fps = new LibFPS( this.fonts.fps, ShooterSetting.Colors.EFpsFg.colABGR, ShooterSetting.Colors.EFpsOutline.colABGR, ShooterDebug.glImage );
-        }
-
-        /***************************************************************************************************************
-        *   Inits the HUD effects.
-        ***************************************************************************************************************/
-        private void initHUDFx()
-        {
-            ShooterDebug.init.out( "init HUD effects" );
-
-            this.hudFx = new HUDFx();
-            this.hudFx.init();
         }
 
         /***************************************************************************************************************
@@ -265,14 +261,16 @@
         }
 
         /***************************************************************************************************************
-        *   Inits the main menu.
+        *   Inits the main menu and the ingame instance.
         ***************************************************************************************************************/
-        private void initMainMenu()
+        private void initStates()
         {
             ShooterDebug.init.out( "init Main menu" );
-
             this.mainMenu = new MainMenu();
             this.mainMenu.init();
+
+            ShooterDebug.init.out( "init Ingame instance" );
+            this.ingame = new Ingame();
         }
 
         /***************************************************************************************************************

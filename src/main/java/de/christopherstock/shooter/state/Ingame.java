@@ -15,19 +15,6 @@
     *******************************************************************************************************************/
     public class Ingame
     {
-        private         static          Ingame      singleton                       = null;
-
-        private Ingame()
-        {
-            //preloader constructor
-        }
-
-        public static Ingame getSingleton()
-        {
-            if ( singleton == null ) singleton = new Ingame();
-            return singleton;
-        }
-
         public final void draw()
         {
             //level may be null if not set
@@ -68,7 +55,6 @@
             //draw hud
             Shooter.game.engine.hud.draw();
         }
-
 
         public void checkGameKeyEvents()
         {
