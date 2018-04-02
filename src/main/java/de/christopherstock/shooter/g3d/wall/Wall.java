@@ -173,7 +173,7 @@
                 this.energy.dyingTransZ = -( (this.energy.currentDyingTick * this.energy.currentDyingTick) * 0.002f );
 
                 //remove all bullet holes this wall carries
-                BulletHoleManager.removeForWall( this );
+                Shooter.game.engine.bulletHoleManager.removeForWall( this );
 
                 for ( LibFaceTriangle f : this.getFaces() )
                 {
@@ -377,7 +377,7 @@
                 this.darkenAllFaces( opacity , true, false, 0.1f, 0.0f );
 
                 //darken all bullet holes for this wall
-                BulletHoleManager.darkenAll( this, opacity );
+                Shooter.game.engine.bulletHoleManager.darkenAll( this, opacity );
 
                 //check if killed
                 if (this.energy.healthCurrent <= 0 )

@@ -1007,14 +1007,14 @@
                             playerMoved = true;
 
                             //translate all bullet holes to new position
-                            BulletHoleManager.translateAll( this, nextPosX - oldPosX, nextPosY - oldPosY, 0.0f );
+                            Shooter.game.engine.bulletHoleManager.translateAll( this, nextPosX - oldPosX, nextPosY - oldPosY, 0.0f );
                         }
                     }
 
                     //rotate if faceAngle changed
                     if (this.faceAngleChanged)
                     {
-                        BulletHoleManager.rotateForBot( this, this.facingAngle);
+                        Shooter.game.engine.bulletHoleManager.rotateForBot( this, this.facingAngle);
                     }
                     break;
                 }

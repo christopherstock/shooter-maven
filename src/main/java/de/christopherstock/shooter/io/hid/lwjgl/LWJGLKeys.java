@@ -70,7 +70,7 @@
 
             if ( Keyboard.isKeyDown( Keyboard.KEY_B ) )
             {
-                BulletHoleManager.clearBulletHoles();
+                Shooter.game.engine.bulletHoleManager.clearBulletHoles();
             }
 /*
             if ( Keyboard.isKeyDown( Keyboard.KEY_N ) )

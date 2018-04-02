@@ -140,7 +140,7 @@
             float dis = BulletHoles.MIN_DISTANCE_FROM_FACE;
 
             //check distance to all other bullet-holes
-            for ( BulletHole bulletHole : BulletHoleManager.bulletHoles )
+            for ( BulletHole bulletHole : Shooter.game.engine.bulletHoleManager.bulletHoles )
             {
                 //should be distance3d :/
                 if ( new Point2D.Float( bulletHole.hitPoint.vertex.x, bulletHole.hitPoint.vertex.y ).distance( new Point2D.Float(this.hitPoint.vertex.x, this.hitPoint.vertex.y ) ) < BulletHoles.MIN_POINT_DISTANCE_FOR_SAME_LAYER_MULTIPLIER * this.hitPoint.shot.bulletHoleSize.size )
@@ -157,7 +157,7 @@
             float dis = BulletHoles.MIN_DISTANCE_FROM_FACE;
 
             //check distance to all other bullet-holes
-            for ( BulletHole bulletHole : BulletHoleManager.bulletHoles )
+            for ( BulletHole bulletHole : Shooter.game.engine.bulletHoleManager.bulletHoles )
             {
                 //should be distance3d :/
                 if ( Math.abs( bulletHole.hitPoint.vertex.z - this.hitPoint.vertex.z ) < BulletHoles.MIN_POINT_DISTANCE_FOR_SAME_LAYER_MULTIPLIER * this.hitPoint.shot.bulletHoleSize.size )

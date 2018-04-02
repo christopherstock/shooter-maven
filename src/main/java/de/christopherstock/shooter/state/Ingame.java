@@ -44,7 +44,7 @@
               //if ( ShooterGameShooter.game.engine.player.showAmmoInHUD() ) ShooterGameShooter.game.engine.player.getCrosshair().draw();
 
                 //bullet holes and fx points
-                BulletHoleManager.drawAll();                                //draw all bullet holes
+                Shooter.game.engine.bulletHoleManager.drawAll();            //draw all bullet holes
                 LibFXManager.drawAll();                                     //draw all fx points
                 Shooter.game.engine.player.drawStandingCircle();            //draw circle on players bottom location
 

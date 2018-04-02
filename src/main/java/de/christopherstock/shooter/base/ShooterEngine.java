@@ -10,6 +10,7 @@
     import  de.christopherstock.lib.ui.LibUI;
     import  de.christopherstock.shooter.*;
     import  de.christopherstock.shooter.ShooterSetting.*;
+    import de.christopherstock.shooter.g3d.BulletHoleManager;
     import  de.christopherstock.shooter.game.objects.Player;
     import  de.christopherstock.shooter.io.hid.lwjgl.*;
     import  de.christopherstock.shooter.io.sound.*;
@@ -60,6 +61,8 @@
         public                      MainMenu                mainMenu                    = null;
         /** The ingame instance. */
         public                      Ingame                  ingame                      = null;
+        /** The bullet hole manager. */
+        public                      BulletHoleManager       bulletHoleManager           = null;
 
         /***************************************************************************************************************
         *   Inits the game engine.
@@ -95,6 +98,9 @@
 
             this.preloader.increase( 80 );
             this.initStates();
+
+            this.preloader.increase( 90 );
+            this.initBulletHoleManager();
 
             this.preloader.increase( 100 );
             ShooterDebug.init.out( "Completed init phase. Ordering main state change" );
@@ -271,6 +277,15 @@
 
             ShooterDebug.init.out( "init Ingame instance" );
             this.ingame = new Ingame();
+        }
+
+        /***************************************************************************************************************
+        *   Inits the manager for handling all bullet holes.
+        ***************************************************************************************************************/
+        private void initBulletHoleManager()
+        {
+            ShooterDebug.init.out( "init Bullet hole manager" );
+            this.bulletHoleManager = new BulletHoleManager();
         }
 
         /***************************************************************************************************************

@@ -6,7 +6,6 @@
     /*******************************************************************************************************************
     *   The main class.
     *
-    *   TODO    Turn BulletHole.bulletHoles non static!
     *   TODO    Prefix 'Shooter' only for main and base classes!
     *   TODO    Stop sounds when the game is quit!
     *   TODO    Add skybox!

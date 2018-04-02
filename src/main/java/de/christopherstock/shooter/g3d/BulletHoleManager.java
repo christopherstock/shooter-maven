@@ -18,12 +18,12 @@
     *******************************************************************************************************************/
     public class BulletHoleManager
     {
-        public      static          Vector<BulletHole>      bulletHoles                     = new Vector<BulletHole>();
+        public                      Vector<BulletHole>      bulletHoles                     = new Vector<BulletHole>();
 
-        public static void drawAll()
+        public void drawAll()
         {
             //draw all points
-            for ( BulletHole bulletHole : BulletHoleManager.bulletHoles )
+            for ( BulletHole bulletHole : this.bulletHoles )
             {
                 if ( bulletHole.projectileTemplate != null )
                 {
@@ -41,10 +41,10 @@
             }
         }
 
-        public static void translateAll(LibGameObject bhc, float transX, float transY, float transZ )
+        public void translateAll(LibGameObject bhc, float transX, float transY, float transZ )
         {
             //browse all bullet-holes
-            for ( BulletHole bulletHole : BulletHoleManager.bulletHoles )
+            for ( BulletHole bulletHole : this.bulletHoles )
             {
                 //check if this bullet hole belongs to the specified bot
                 if ( bulletHole.hitPoint.carrier == bhc )
@@ -68,10 +68,10 @@
         }
 
         //only z-rotation are allowed for bullet-holes!
-        public static void rotateForBot(Bot bhc, float rotZ )
+        public void rotateForBot(Bot bhc, float rotZ )
         {
             //browse all bullet-holes
-            for ( BulletHole bulletHole : BulletHoleManager.bulletHoles )
+            for ( BulletHole bulletHole : this.bulletHoles )
             {
                 //check if this bullet hole belongs to the specified bot
                 if ( bulletHole.hitPoint.carrier == bhc )
@@ -93,10 +93,10 @@
             }
         }
 
-        public static void rotateForWall(Wall bhc, float rotX, float rotY, float rotZ )
+        public void rotateForWall(Wall bhc, float rotX, float rotY, float rotZ )
         {
             //browse all bullet-holes
-            for ( BulletHole bulletHole : BulletHoleManager.bulletHoles )
+            for ( BulletHole bulletHole : this.bulletHoles )
             {
                 //check if this bullet hole belongs to the specified mersh
                 if ( bulletHole.hitPoint.carrier == bhc )
@@ -113,45 +113,45 @@
             }
         }
 
-        public static void removeForWall(Wall bhc )
+        public void removeForWall(Wall bhc )
         {
             //browse all bullet-holes reversed
-            for (int i = BulletHoleManager.bulletHoles.size() - 1; i >= 0; --i )
+            for (int i = this.bulletHoles.size() - 1; i >= 0; --i )
             {
                 //check if this bullet hole belongs to the specified mersh
-                if ( BulletHoleManager.bulletHoles.elementAt( i ).hitPoint.carrier == bhc )
+                if ( this.bulletHoles.elementAt( i ).hitPoint.carrier == bhc )
                 {
                     //remove this bullet hole
-                    BulletHoleManager.bulletHoles.removeElementAt( i );
+                    this.bulletHoles.removeElementAt( i );
                 }
             }
         }
 
-        public static void darkenAll(Wall bhc, float opacity )
+        public void darkenAll(Wall bhc, float opacity )
         {
             //browse all bullet-holes reversed
-            for (int i = BulletHoleManager.bulletHoles.size() - 1; i >= 0; --i )
+            for (int i = this.bulletHoles.size() - 1; i >= 0; --i )
             {
                 //check if this bullet hole belongs to the specified mersh
-                if ( BulletHoleManager.bulletHoles.elementAt( i ).hitPoint.carrier == bhc )
+                if ( this.bulletHoles.elementAt( i ).hitPoint.carrier == bhc )
                 {
                     //darken bulletHole
-                    BulletHoleManager.bulletHoles.elementAt( i ).darken( opacity );
+                    this.bulletHoles.elementAt( i ).darken( opacity );
                 }
             }
         }
 
-        public static void clearBulletHoles()
+        public void clearBulletHoles()
         {
-            BulletHoleManager.bulletHoles.removeAllElements();
+            this.bulletHoles.removeAllElements();
         }
 
-        public static void addBulletHole(LibHitPoint hitPoint, LibD3dsFile aProjectile )
+        public void addBulletHole(LibHitPoint hitPoint, LibD3dsFile aProjectile )
         {
             //add to bullet-hole-stack, prune stack if overflowing
-            BulletHoleManager.bulletHoles.add( new BulletHole( hitPoint, aProjectile ) );
-            if ( BulletHoleManager.bulletHoles.size() > ShooterSetting.Performance.MAX_NUMBER_BULLET_HOLES ) BulletHoleManager.bulletHoles.removeElementAt( 0 );
+            this.bulletHoles.add( new BulletHole( hitPoint, aProjectile ) );
+            if ( this.bulletHoles.size() > ShooterSetting.Performance.MAX_NUMBER_BULLET_HOLES ) this.bulletHoles.removeElementAt( 0 );
 
-            ShooterDebug.bulletHole.out( " new bullet hole count: [" + BulletHoleManager.bulletHoles.size() + "]" );
+            ShooterDebug.bulletHole.out( " new bullet hole count: [" + this.bulletHoles.size() + "]" );
         }
     }
