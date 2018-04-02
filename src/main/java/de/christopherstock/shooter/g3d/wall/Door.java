@@ -193,7 +193,7 @@
                             );
 
                             //rotate mesh's bullet holes
-                            BulletHole.rotateForWall( this, rotX, rotY, 0.0f );
+                            BulletHoleManager.rotateForWall( this, rotX, rotY, 0.0f );
                             break;
                         }
                     }
@@ -288,7 +288,7 @@
                             );
 
                             //rotate mesh's bullet holes
-                            BulletHole.rotateForWall( this, -rotX, -rotY, 0.0f );
+                            BulletHoleManager.rotateForWall( this, -rotX, -rotY, 0.0f );
                             break;
                         }
                     }
@@ -377,7 +377,7 @@
             );
 
             //translate mesh's bullet holes
-            BulletHole.translateAll( this, ( open ? 1.0f : -1.0f ) * (this.wallAction == WallAction.EDoorSlideRight ? 1.0f : -1.0f ) * transX, ( open ? 1.0f : -1.0f ) * (this.wallAction == WallAction.EDoorSlideRight ? 1.0f : -1.0f ) * transY, 0.0f );
+            BulletHoleManager.translateAll( this, ( open ? 1.0f : -1.0f ) * (this.wallAction == WallAction.EDoorSlideRight ? 1.0f : -1.0f ) * transX, ( open ? 1.0f : -1.0f ) * (this.wallAction == WallAction.EDoorSlideRight ? 1.0f : -1.0f ) * transY, 0.0f );
 
             //check collision to player
             this.checkOnDoorAnimation( open );
@@ -401,7 +401,7 @@
             );
 
             //rotate mesh's bullet holes
-            BulletHole.rotateForWall( this, 0.0f, 0.0f, ( open ? ( counterClockwise ? 1.0f : -1.0f ) : ( counterClockwise ? -1.0f : 1.0f ) ) * DoorSettings.DOOR_ANGLE_OPEN / DoorSettings.DOOR_TICKS_OPEN_CLOSE );
+            BulletHoleManager.rotateForWall( this, 0.0f, 0.0f, ( open ? ( counterClockwise ? 1.0f : -1.0f ) : ( counterClockwise ? -1.0f : 1.0f ) ) * DoorSettings.DOOR_ANGLE_OPEN / DoorSettings.DOOR_TICKS_OPEN_CLOSE );
 
             //check collision to player
             this.checkOnDoorAnimation( open );
@@ -413,13 +413,13 @@
 
             //translate mesh and bullet hole
             this.translate( 0.0f, 0.0f, ( up ? MOVE_DELTA : -MOVE_DELTA ), LibTransformationMode.EOriginalsToOriginals );
-            BulletHole.translateAll( this, 0.0f, 0.0f, ( up ? MOVE_DELTA : -MOVE_DELTA ) );
+            BulletHoleManager.translateAll( this, 0.0f, 0.0f, ( up ? MOVE_DELTA : -MOVE_DELTA ) );
 
             //same for ceiling
             if (this.wallElevatorCeiling != null )
             {
                 this.wallElevatorCeiling.translate( 0.0f, 0.0f, ( up ? MOVE_DELTA : -MOVE_DELTA ), LibTransformationMode.EOriginalsToOriginals );
-                BulletHole.translateAll(this.wallElevatorCeiling, 0.0f, 0.0f, ( up ? MOVE_DELTA : -MOVE_DELTA ) );
+                BulletHoleManager.translateAll(this.wallElevatorCeiling, 0.0f, 0.0f, ( up ? MOVE_DELTA : -MOVE_DELTA ) );
             }
         }
 

@@ -36,17 +36,17 @@
                 // Shooter.game.engine.glView.setLightsOn();
 
                 //draw all game components
-                Level.currentSection().draw();                          //draw the level
-                Level.currentSection().drawAllItems();                  //draw all items
-                Level.currentSection().drawAllBots();                   //draw all bots
+                Level.currentSection().draw();                              //draw the level
+                Level.currentSection().drawAllItems();                      //draw all items
+                Level.currentSection().drawAllBots();                       //draw all bots
 
                 //draw player's crosshair if the wearpon uses ammo
               //if ( ShooterGameShooter.game.engine.player.showAmmoInHUD() ) ShooterGameShooter.game.engine.player.getCrosshair().draw();
 
                 //bullet holes and fx points
-                BulletHole.drawAll();                                           //draw all bullet holes
-                LibFXManager.drawAll();                                         //draw all fx points
-                Shooter.game.engine.player.drawStandingCircle();          //draw circle on players bottom location
+                BulletHoleManager.drawAll();                                //draw all bullet holes
+                LibFXManager.drawAll();                                     //draw all fx points
+                Shooter.game.engine.player.drawStandingCircle();            //draw circle on players bottom location
 
                 //flush face queue to force an immediate redraw
                 Shooter.game.engine.glView.flushFaceQueue( Shooter.game.engine.player.getAnchor() );

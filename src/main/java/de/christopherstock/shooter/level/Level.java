@@ -55,7 +55,7 @@
             //ShooterDebug.bugfix.out( "Init level" );
 
             //remove all bullet holes
-            BulletHole.clearBulletHoles();
+            BulletHoleManager.clearBulletHoles();
 
             //remove all particles
             LibFXManager.removeAllFxPoints();
@@ -266,7 +266,7 @@
                                     drawBulletHoleAndPlaySound  = false;
 
                                     //append projectile for last point
-                                    BulletHole.addBulletHole( affectedHitPoint, s.projectile);
+                                    BulletHoleManager.addBulletHole( affectedHitPoint, s.projectile);
                                 }
                             }
 
@@ -274,7 +274,7 @@
                             if ( drawBulletHoleAndPlaySound && s.bulletHoleSize != LibHoleSize.ENone )
                             {
                                 //draw bullet hole
-                                BulletHole.addBulletHole( affectedHitPoint, null );
+                                BulletHoleManager.addBulletHole( affectedHitPoint, null );
                             }
 
                             //only once per wall

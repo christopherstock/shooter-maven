@@ -1,6 +1,7 @@
 
     package de.christopherstock.shooter.io.hid.lwjgl;
 
+    import de.christopherstock.shooter.g3d.BulletHoleManager;
     import  de.christopherstock.shooter.io.hid.*;
     import  org.lwjgl.input.*;
     import  org.lwjgl.opengl.*;
@@ -69,7 +70,7 @@
 
             if ( Keyboard.isKeyDown( Keyboard.KEY_B ) )
             {
-                BulletHole.clearBulletHoles();
+                BulletHoleManager.clearBulletHoles();
             }
 /*
             if ( Keyboard.isKeyDown( Keyboard.KEY_N ) )

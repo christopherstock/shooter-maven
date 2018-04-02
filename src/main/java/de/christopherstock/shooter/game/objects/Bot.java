@@ -1007,14 +1007,14 @@
                             playerMoved = true;
 
                             //translate all bullet holes to new position
-                            BulletHole.translateAll( this, nextPosX - oldPosX, nextPosY - oldPosY, 0.0f );
+                            BulletHoleManager.translateAll( this, nextPosX - oldPosX, nextPosY - oldPosY, 0.0f );
                         }
                     }
 
                     //rotate if faceAngle changed
                     if (this.faceAngleChanged)
                     {
-                        BulletHole.rotateForBot( this, this.facingAngle);
+                        BulletHoleManager.rotateForBot( this, this.facingAngle);
                     }
                     break;
                 }

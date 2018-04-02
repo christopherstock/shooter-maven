@@ -14,25 +14,21 @@
     import  de.christopherstock.shooter.*;
     import  de.christopherstock.shooter.ShooterSetting.BulletHoles;
     import  de.christopherstock.shooter.g3d.mesh.*;
-    import  de.christopherstock.shooter.g3d.wall.Wall;
-    import  de.christopherstock.shooter.game.objects.*;
 
     /*******************************************************************************************************************
     *   Represents a bullet-hole on a wall or an object.
     *******************************************************************************************************************/
     public class BulletHole
     {
-        private     static          Vector<BulletHole>      bulletHoles                                     = new Vector<BulletHole>();
+        protected                   LibHitPoint             hitPoint                                        = null;
+        protected                   Mesh                    projectile                                      = null;
+        protected                   LibFaceEllipseWall      face                                            = null;
+        protected                   LibD3dsFile             projectileTemplate                              = null;
+        protected                   LibVertex               originalPosition                                = null;
+        protected                   LibVertex               position                                        = null;
+        protected                   float                   carriersLastFaceAngle                           = 0.0f;
 
-        private                     LibHitPoint             hitPoint                                        = null;
-        private                     Mesh                    projectile                                      = null;
-        private                     LibFaceEllipseWall      face                                            = null;
-        private                     LibD3dsFile             projectileTemplate                              = null;
-        private                     LibVertex               originalPosition                                = null;
-        private                     LibVertex               position                                        = null;
-        private                     float                   carriersLastFaceAngle                           = 0.0f;
-
-        private BulletHole( LibHitPoint hitPoint, LibD3dsFile projectile )
+        protected BulletHole( LibHitPoint hitPoint, LibD3dsFile projectile )
         {
             this.hitPoint           = hitPoint;
             this.projectileTemplate = projectile;
@@ -115,7 +111,7 @@
             this.updateFace( true );
         }
 
-        private void updateFace( boolean newRandomTexRot )
+        public void updateFace( boolean newRandomTexRot )
         {
             this.face = new LibFaceEllipseWall
             (
@@ -133,128 +129,7 @@
             );
         }
 
-        public static void drawAll()
-        {
-            //draw all points
-            for ( BulletHole bulletHole : BulletHole.bulletHoles )
-            {
-                if ( bulletHole.projectileTemplate != null )
-                {
-                    //projectile
-                    if ( bulletHole.projectile != null )
-                    {
-                        bulletHole.projectile.draw();
-                    }
-                }
-                else
-                {
-                    //bullet hole
-                    bulletHole.face.draw();
-                }
-            }
-        }
-
-        public static void translateAll(LibGameObject bhc, float transX, float transY, float transZ )
-        {
-            //browse all bullet-holes
-            for ( BulletHole bulletHole : BulletHole.bulletHoles )
-            {
-                //check if this bullet hole belongs to the specified bot
-                if ( bulletHole.hitPoint.carrier == bhc )
-                {
-                    //translate it!
-                    bulletHole.position.x           += transX;
-                    bulletHole.position.y           += transY;
-                    bulletHole.position.z           += transZ;
-                    bulletHole.originalPosition.x   += transX;
-                    bulletHole.originalPosition.y   += transY;
-                    bulletHole.originalPosition.z   += transZ;
-                    bulletHole.updateFace( false );
-
-                    //translate projectile
-                    if ( bulletHole.projectile != null )
-                    {
-                        bulletHole.projectile.translate( transX, transY, transZ, LibTransformationMode.ETransformedToTransformed );
-                    }
-                }
-            }
-        }
-
-        //only z-rotation are allowed for bullet-holes!
-        public static void rotateForBot(Bot bhc, float rotZ )
-        {
-            //browse all bullet-holes
-            for ( BulletHole bulletHole : BulletHole.bulletHoles )
-            {
-                //check if this bullet hole belongs to the specified bot
-                if ( bulletHole.hitPoint.carrier == bhc )
-                {
-                    //reverse last translation
-                    LibMatrix transformationMatrix = new LibMatrix( 0.0f, 0.0f, rotZ - bulletHole.carriersLastFaceAngle);
-                    LibVertex translatedHitPoint = transformationMatrix.transformVertexF( bulletHole.position, bhc.getAnchor() );
-
-                    //assign new face angle
-                    bulletHole.hitPoint.horzFaceAngle += ( rotZ - bulletHole.carriersLastFaceAngle);
-
-                    //asssign new hit-point and update face
-                    bulletHole.position = translatedHitPoint;
-                    bulletHole.updateFace( false );
-
-                    //assign new rotations
-                    bulletHole.carriersLastFaceAngle = rotZ;
-                }
-            }
-        }
-
-        public static void rotateForWall(Wall bhc, float rotX, float rotY, float rotZ )
-        {
-            //browse all bullet-holes
-            for ( BulletHole bulletHole : BulletHole.bulletHoles )
-            {
-                //check if this bullet hole belongs to the specified mersh
-                if ( bulletHole.hitPoint.carrier == bhc )
-                {
-                    //rotate bulletHole for mesh
-                    bulletHole.rotateAroundVertex( bhc.getAnchor(), rotX, rotY, rotZ );
-
-                    //rotate projectile
-                    if ( bulletHole.projectile != null )
-                    {
-                        bulletHole.projectile.translateAndRotateXYZ( 0.0f, 0.0f, 0.0f, rotX, rotY, rotZ, bhc.getAnchor(), LibTransformationMode.ETransformedToTransformed );
-                    }
-                }
-            }
-        }
-
-        public static void removeForWall(Wall bhc )
-        {
-            //browse all bullet-holes reversed
-            for ( int i = BulletHole.bulletHoles.size() - 1; i >= 0; --i )
-            {
-                //check if this bullet hole belongs to the specified mersh
-                if ( BulletHole.bulletHoles.elementAt( i ).hitPoint.carrier == bhc )
-                {
-                    //remove this bullet hole
-                    BulletHole.bulletHoles.removeElementAt( i );
-                }
-            }
-        }
-
-        public static void darkenAll(Wall bhc, float opacity )
-        {
-            //browse all bullet-holes reversed
-            for ( int i = BulletHole.bulletHoles.size() - 1; i >= 0; --i )
-            {
-                //check if this bullet hole belongs to the specified mersh
-                if ( BulletHole.bulletHoles.elementAt( i ).hitPoint.carrier == bhc )
-                {
-                    //darken bulletHole
-                    BulletHole.bulletHoles.elementAt( i ).darken( opacity );
-                }
-            }
-        }
-
-        private void darken(float opacity )
+        public void darken(float opacity )
         {
             this.face.darken( opacity );
             //if ( projectile != null ) projectile.darkenAllFaces( opacity, useRandomSubstract, useRandomAdd, maxSubstract, maxAdd );
@@ -265,7 +140,7 @@
             float dis = BulletHoles.MIN_DISTANCE_FROM_FACE;
 
             //check distance to all other bullet-holes
-            for ( BulletHole bulletHole : BulletHole.bulletHoles )
+            for ( BulletHole bulletHole : BulletHoleManager.bulletHoles )
             {
                 //should be distance3d :/
                 if ( new Point2D.Float( bulletHole.hitPoint.vertex.x, bulletHole.hitPoint.vertex.y ).distance( new Point2D.Float(this.hitPoint.vertex.x, this.hitPoint.vertex.y ) ) < BulletHoles.MIN_POINT_DISTANCE_FOR_SAME_LAYER_MULTIPLIER * this.hitPoint.shot.bulletHoleSize.size )
@@ -282,7 +157,7 @@
             float dis = BulletHoles.MIN_DISTANCE_FROM_FACE;
 
             //check distance to all other bullet-holes
-            for ( BulletHole bulletHole : BulletHole.bulletHoles )
+            for ( BulletHole bulletHole : BulletHoleManager.bulletHoles )
             {
                 //should be distance3d :/
                 if ( Math.abs( bulletHole.hitPoint.vertex.z - this.hitPoint.vertex.z ) < BulletHoles.MIN_POINT_DISTANCE_FOR_SAME_LAYER_MULTIPLIER * this.hitPoint.shot.bulletHoleSize.size )
@@ -294,7 +169,7 @@
             return dis;
         }
 
-        private void rotateAroundVertex(LibVertex vertex, float rotX, float rotY, float rotZ )
+        public void rotateAroundVertex(LibVertex vertex, float rotX, float rotY, float rotZ )
         {
             //increase saved rot z
             ShooterDebug.bulletHole.out( " turn for [" + rotZ + "]" );
@@ -319,19 +194,5 @@
                 projectile = null;
             }
 */
-        }
-
-        public static void clearBulletHoles()
-        {
-            BulletHole.bulletHoles.removeAllElements();
-        }
-
-        public static void addBulletHole(LibHitPoint hitPoint, LibD3dsFile aProjectile )
-        {
-            //add to bullet-hole-stack, prune stack if overflowing
-            BulletHole.bulletHoles.add( new BulletHole( hitPoint, aProjectile ) );
-            if ( BulletHole.bulletHoles.size() > ShooterSetting.Performance.MAX_NUMBER_BULLET_HOLES ) BulletHole.bulletHoles.removeElementAt( 0 );
-
-            ShooterDebug.bulletHole.out( " new bullet hole count: [" + BulletHole.bulletHoles.size() + "]" );
         }
     }
