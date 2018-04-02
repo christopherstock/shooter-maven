@@ -6,31 +6,29 @@
     /*******************************************************************************************************************
     *   The main class.
     *
-    *   TODO    Prefix 'Shooter' only for main and base classes!
-    *   TODO    Stop sounds when the game is quit!
     *   TODO    Add skybox!
     *   TODO    Adjust OpenGraph tags.
-    *   TODO    Complete v.4.0.2
+    *   TODO    Complete v.0.4.2
     *
     *   TODO    Optimize fields in ArtefactType!
-    *   TODO    make new subclass:  Wearpon that derives from ArtefactKind!!
-    *   TODO    only for FireArms! Move ArtefactType.fXImages to Firearms (Wearpons)!
+    *   TODO    Make new subclass:  Wearpon that derives from ArtefactKind!!
+    *   TODO    Only for FireArms! Move ArtefactType.fXImages to Firearms (Wearpons)!
     *   TODO    Move all CloseCombat constants to settings!
-    *   TODO    let random assign different topping positions for ShooterWallCollection.createDeskOffice
+    *   TODO    Let random assign different topping positions for ShooterWallCollection.createDeskOffice
     *   TODO    Refactor the Artefact-System.
-    *   TODO    slow panning for zoomed glView?
+    *   TODO    Slow panning for zoomed glView?
     *   TODO    WearponKind.java - remove parentKind ?
-    *   TODO    enum GiveTakeAnim to Gadget?
+    *   TODO    Enum GiveTakeAnim to Gadget?
     *   TODO    Own class for FireFxOffset ?? (use Point2D or Distance-class?)
-    *   TODO    suitable door textures
-    *   TODO    different wall heights?
-    *   TODO    new textures from http://www.cgtextures.com/
-    *   TODO    wall type "two glassed wall-windows with one socket in the middle"
-    *   TODO    door sockets have wrong tiling
-    *   TODO    sprites for bot fire ( muzzle flash )!
-    *   TODO    let bot drop multiple items on being killed
-    *   TODO    improve collisions? ( make player collisions via ray casting? )
-    *   TODO    create double-handed bots or artefacts? - 2 x currentArtefact?
+    *   TODO    Suitable door textures
+    *   TODO    Different wall heights?
+    *   TODO    New textures from http://www.cgtextures.com/
+    *   TODO    Wall type "two glassed wall-windows with one socket in the middle"
+    *   TODO    Door sockets have wrong tiling
+    *   TODO    Sprites for bot fire ( muzzle flash )!
+    *   TODO    Let bot drop multiple items on being killed
+    *   TODO    Improve collisions? ( make player collisions via ray casting? )
+    *   TODO    Create double-handed bots or artefacts? - 2 x currentArtefact?
     *******************************************************************************************************************/
     public class Shooter
     {

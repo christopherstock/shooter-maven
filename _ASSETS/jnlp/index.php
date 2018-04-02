@@ -7,7 +7,10 @@
 <html>
 
     <head>
-        <title>3D Shooter Engine</title>
+
+        <title>LWJGL 3D Shooter Engine</title>
+
+        <meta charset="UTF-8" />
 
         <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
         <meta http-equiv="content-style-type" content="text/css">
@@ -39,6 +42,15 @@
         <meta name="audience" content="all">
         <meta name="revisit-after" content="4 days">
         <meta name="robots" content="index follow">
+
+        <meta property="og:image" content="http://ninjas.jenetic.de/res/image/promo/promo.jpg" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1196" />
+        <meta property="og:image:height" content="628" />
+        <meta property="og:title" content="Coding Ninjas" />
+        <meta property="og:url" content="http://ninjas.jenetic.de/" />
+        <meta property="og:site_name" content="http://ninjas.jenetic.de/" />
+        <meta property="og:description" content="An example Node.js project for the Developer Camp 2018 in the context of the Würzburg Web Week." />
 
     </head>
 
