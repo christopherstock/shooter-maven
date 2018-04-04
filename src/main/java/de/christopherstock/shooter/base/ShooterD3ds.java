@@ -41,6 +41,7 @@
             ERingBook1,
             EScreen1,
             EShelves1,
+            ESkyBox1,
             ESodaMachine1,
             ESofa1,
             EStairs3x3,

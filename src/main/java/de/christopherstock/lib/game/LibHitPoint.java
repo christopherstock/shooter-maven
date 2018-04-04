@@ -21,8 +21,8 @@
         public                      LibShot                 shot                        = null;
         public                      LibGameObject           carrier                     = null;
         public                      LibVertex               vertex                      = null;
-        public LibGLTextureMetaData bulletHoleTexture           = null;
-        public LibGLTextureMetaData wallTexture                 = null;
+        public                      LibGLTextureMetaData    bulletHoleTexture           = null;
+        public                      LibGLTextureMetaData    wallTexture                 = null;
         public                      float                   horzShotAngle               = 0.0f;
         public                      float                   horzInvertedShotAngle       = 0.0f;
         public                      float                   horzFaceAngle               = 0.0f;

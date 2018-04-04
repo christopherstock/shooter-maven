@@ -12,7 +12,10 @@
     public class LevelConfigSection
     {
         protected               String                  descSection             = null;
+
+        // TODO prune!
         protected               BackGround              bg                      = null;
+
         protected               LibColors               bgCol                   = null;
         protected               ItemToPickUp[]          items                   = null;
         protected               BotFactory[]            bots                    = null;

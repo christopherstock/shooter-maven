@@ -3,11 +3,11 @@
 
     import  java.awt.geom.Point2D;
     import  java.util.*;
-    import  de.christopherstock.lib.LibDebug;
-    import  de.christopherstock.lib.LibViewSet;
+    import  de.christopherstock.lib.*;
     import  de.christopherstock.lib.fx.*;
     import  de.christopherstock.lib.fx.LibFX.*;
     import  de.christopherstock.lib.g3d.*;
+    import  de.christopherstock.lib.g3d.face.LibFace;
     import  de.christopherstock.lib.game.*;
     import  de.christopherstock.lib.game.LibShot.*;
     import  de.christopherstock.lib.gl.LibFloorStack;
@@ -15,6 +15,8 @@
     import  de.christopherstock.lib.ui.*;
     import  de.christopherstock.shooter.*;
     import  de.christopherstock.shooter.ShooterSetting.*;
+    import  de.christopherstock.shooter.base.ShooterD3ds;
+    import  de.christopherstock.shooter.base.ShooterTexture;
     import  de.christopherstock.shooter.g3d.*;
     import  de.christopherstock.shooter.g3d.mesh.*;
     import  de.christopherstock.shooter.g3d.wall.*;
@@ -36,6 +38,7 @@
         private                     int                         adrenalineTicks             = 0;
         private                     int                         adrenalineDelayLevel        = 0;
         private                     int                         adrenalineDelayPlayer       = 0;
+        private                     Wall                        skyBox                      = null;
 
         public static enum InvisibleZeroLayerZ
         {
@@ -52,12 +55,12 @@
 
         public static void init()
         {
-            //ShooterDebug.bugfix.out( "Init level" );
+            // ShooterDebug.bugfix.out( "Init level" );
 
-            //remove all bullet holes
+            // remove all bullet holes
             Shooter.game.engine.bulletHoleManager.clearBulletHoles();
 
-            //remove all particles
+            // remove all particles
             LibFXManager.removeAllFxPoints();
 
             //create player
@@ -129,6 +132,25 @@
                 //ShooterDebug.bugfix.out( "reset bot" );
                 this.addBot( botToAdd );
             }
+
+            this.skyBox = new Wall
+            (
+                ShooterD3ds.Others.ESkyBox1,
+                new LibVertex( 0.0f, 0.0f, 0.0f ),
+                290.0f,
+                LibScalation.ENone,
+                LibInvert.ENo,
+                Wall.WallCollidable.ENo,
+                Wall.WallAction.ENone,
+                Wall.WallClimbable.ENo,
+                LibFace.DrawMethod.EAlwaysDraw,
+                null,
+                null,
+                0,
+                WallHealth.EUnbreakale,
+                FXSize.ESmall,
+                null
+            );
         }
 
         private void addBot( Bot botToAdd )
@@ -140,13 +162,21 @@
         /***************************************************************************************************************
         *   Draws the level onto the screen.
         ***************************************************************************************************************/
-        public final void draw()
+        public final void drawWalls()
         {
             //draw all walls
-            for ( WallCollection meshCollection : this.wallCollections)
+            for ( WallCollection meshCollection : this.wallCollections )
             {
                 meshCollection.draw();
             }
+        }
+
+        /***************************************************************************************************************
+        *   Draws the skybox onto the screen.
+        ***************************************************************************************************************/
+        public final void drawSkyBox()
+        {
+            this.skyBox.draw();
         }
 
         public final Float getHighestFloor(LibGameObject parentGameObject, LibVertex anchor, float radius, float height, int collisionCheckingSteps, LibDebug debug, boolean debugDrawBotCircles, float bottomCollisionToleranceZ, float minBottomCollisionToleranceZ, int ellipseSegments, Object exclude )
@@ -459,6 +489,8 @@
             return false;
         }
 
+        /** Replaced by skyBox. */
+        @Deprecated
         public final void drawBg( LibViewSet cam )
         {
             if ( LevelCurrent.currentSectionConfigData[this.currentSectionIndex].bg != null ) LevelCurrent.currentSectionConfigData[this.currentSectionIndex].bg.drawOrtho( cam.rot.x, cam.rot.z );
@@ -500,6 +532,11 @@
                     this.items.elementAt( j ).animate();
                 }
             }
+        }
+
+        private void animateSkyBox()
+        {
+            this.skyBox.setNewAnchor( Shooter.game.engine.player.getAnchor(), true, LibTransformationMode.EOriginalsToTransformed );
         }
 
         public final Vector<Bot> getBots()
@@ -578,6 +615,9 @@
 
                 //check if player picked up an item
                 this.animateItems();
+
+                // animate skyBox
+                this.animateSkyBox();
 
                 //animate particle systems and HUD
                 LibFXManager.onRun();

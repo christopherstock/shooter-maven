@@ -25,10 +25,10 @@
 
                 //get camera from player's position and orientation
                 LibViewSet cam = Shooter.game.engine.player.getCameraPositionAndRotation();
-
+/*
                 //draw scene bg
                 Level.currentSection().drawBg( cam );
-
+*/
                 //set player's camera
                 Shooter.game.engine.glView.setCamera( cam );
 
@@ -36,9 +36,10 @@
                 // Shooter.game.engine.glView.setLightsOn();
 
                 //draw all game components
-                Level.currentSection().draw();                              //draw the level
-                Level.currentSection().drawAllItems();                      //draw all items
-                Level.currentSection().drawAllBots();                       //draw all bots
+                Level.currentSection().drawWalls();    // draw the level
+                Level.currentSection().drawSkyBox();   // draw sky box
+                Level.currentSection().drawAllItems(); // draw all items
+                Level.currentSection().drawAllBots();  // draw all bots
 
                 //draw player's crosshair if the wearpon uses ammo
               //if ( ShooterGameShooter.game.engine.player.showAmmoInHUD() ) ShooterGameShooter.game.engine.player.getCrosshair().draw();
