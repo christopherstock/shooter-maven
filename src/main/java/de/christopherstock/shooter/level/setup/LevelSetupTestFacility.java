@@ -27,7 +27,6 @@
     import  de.christopherstock.shooter.io.sound.*;
     import  de.christopherstock.shooter.level.*;
     import  de.christopherstock.shooter.level.Level.*;
-    import  de.christopherstock.shooter.ui.hud.*;
 
     /*******************************************************************************************************************
     *   All settings for level 'Test Office Casino'.
@@ -142,7 +141,7 @@
                     //casino
                     ShooterWallCollection.createRoom
                     (
-                            this.offsetX + 0.0f, this.offsetY + 0.0f, this.offsetZ + 2.5f,   0.0f,   9,  14,
+                        this.offsetX + 0.0f, this.offsetY + 0.0f, this.offsetZ + 2.5f,   0.0f,   9,  14,
                         WallStyle.ENoWall, WallStyle.ESolidWall, WallStyle.ENoWall, WallStyle.EWindowsAndCeilingWindows,
                         WallTex.EGlass1, WallHealth.ESolidGlass, WallAction.EDoorSlideLeft,
                         DoorStyle.EAnchorDefault, 6,
@@ -184,7 +183,7 @@
                     //right hallway
                     ShooterWallCollection.createRoom
                     (
-                            this.offsetX + 0.0f, this.offsetY - 12.0f, this.offsetZ + 2.5f,   0.0f,   4,  6,
+                        this.offsetX + 0.0f, this.offsetY - 12.0f, this.offsetZ + 2.5f,   0.0f,   4,  6,
                         WallStyle.EWindowsAndCeilingWindows, WallStyle.ESolidWall, WallStyle.ENoWall, WallStyle.ENoWall,
                         WallTex.EGlass1, WallHealth.ESolidGlass, WallAction.EDoorSwingCounterClockwise,
                         DoorStyle.ENoDoor, 0,
@@ -233,7 +232,7 @@
                     //left hallway
                     ShooterWallCollection.createRoom
                     (
-                            this.offsetX + 0.0f, this.offsetY + 8.0f, this.offsetZ + 2.5f,   0.0f,   4,  5,
+                        this.offsetX + 0.0f, this.offsetY + 8.0f, this.offsetZ + 2.5f,   0.0f,   4,  5,
                         WallStyle.ENoWall, WallStyle.ESolidWall, WallStyle.ENoWall, WallStyle.ENoWall,
                         WallTex.EGlass1, WallHealth.ESolidGlass, WallAction.EDoorSwingCounterClockwise,
                         DoorStyle.ENoDoor, 0,
@@ -315,7 +314,7 @@
                     //normal office
                     ShooterWallCollection.createRoom
                     (
-                            this.offsetX + 6.0f, this.offsetY + 2.0f, this.offsetZ + 0.0f,   90.0f,   5,  5,
+                        this.offsetX + 6.0f, this.offsetY + 2.0f, this.offsetZ + 0.0f,   90.0f,   5,  5,
                         WallStyle.ESolidWall, WallStyle.ESolidWall, WallStyle.ESolidWall, WallStyle.EWindowsAndCeilingWindows,
                         WallTex.EGlass1, WallHealth.ESolidGlass, WallAction.EDoorSlideRight,
                         DoorStyle.EAnchorDefault, 2,

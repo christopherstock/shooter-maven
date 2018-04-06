@@ -82,7 +82,7 @@
                 new LevelConfigSection
                 (
                     "Test Facility - 1st section",
-                    LibColors.ERedDark,
+                    LibColors.EWhite,
                     new ItemToPickUp[]
                     {
                         //new ItemToPickUp( ItemKind.EGameEventLevel1ChangeToNextSection, null, 10.0f, 5.0f, 0.0f, 0.0f, LibRotating.ENo ),
@@ -98,7 +98,7 @@
                 new LevelConfigSection
                 (
                     "Test Facility - 2nd section",
-                    LibColors.ERedLight,
+                    LibColors.EWhite,
                     new ItemToPickUp[]
                     {
                     },
@@ -112,7 +112,7 @@
                 new LevelConfigSection
                 (
                     "Test Facility - 3rd section",
-                    LibColors.ERedLight,
+                    LibColors.EWhite,
                     new ItemToPickUp[]
                     {
                     },
@@ -127,7 +127,7 @@
                 new LevelConfigSection
                 (
                     "Test Facility - 4th section",
-                    LibColors.ERedLight,
+                    LibColors.EWhite,
                     new ItemToPickUp[]
                     {
                     },

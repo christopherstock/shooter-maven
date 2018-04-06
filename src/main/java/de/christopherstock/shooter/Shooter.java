@@ -6,11 +6,10 @@
     /*******************************************************************************************************************
     *   The main class.
     *
-    *   TODO    Adjust OpenGraph tags.
     *   TODO    Move FPS to class HUD.
-    *   TODO    Fix SkyBox ?
-    *   TODO    Set scene bg color?
     *   TODO    Complete v.0.4.2
+    *   TODO    Why are floating differences in 3dsmax ASE export files?
+    *   TODO    Adjust OpenGraph tags.
     *
     *   TODO    Optimize fields in ArtefactType!
     *   TODO    Make new subclass:  Wearpon that derives from ArtefactKind!!
