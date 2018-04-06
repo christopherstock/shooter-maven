@@ -6,8 +6,10 @@
     /*******************************************************************************************************************
     *   The main class.
     *
-    *   TODO    Add skybox!
     *   TODO    Adjust OpenGraph tags.
+    *   TODO    Move FPS to class HUD.
+    *   TODO    Fix SkyBox ?
+    *   TODO    Set scene bg color?
     *   TODO    Complete v.0.4.2
     *
     *   TODO    Optimize fields in ArtefactType!

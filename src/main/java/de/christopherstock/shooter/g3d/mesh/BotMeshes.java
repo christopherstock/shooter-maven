@@ -1215,8 +1215,7 @@
         {
             //ShooterDebug.bugfix.out( "Set item [" + newItem + "] on arm [" + arm + "]" );
 
-            Vector<Mesh> newMeshes = new Vector<Mesh>();
-            newMeshes.addAll( Arrays.asList(this.meshes) );
+            Vector<Mesh> newMeshes = new Vector<Mesh>( Arrays.asList(this.meshes) );
 
             switch ( arm )
             {

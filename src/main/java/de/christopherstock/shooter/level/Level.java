@@ -16,7 +16,6 @@
     import  de.christopherstock.shooter.*;
     import  de.christopherstock.shooter.ShooterSetting.*;
     import  de.christopherstock.shooter.base.ShooterD3ds;
-    import  de.christopherstock.shooter.base.ShooterTexture;
     import  de.christopherstock.shooter.g3d.*;
     import  de.christopherstock.shooter.g3d.mesh.*;
     import  de.christopherstock.shooter.g3d.wall.*;
@@ -487,13 +486,6 @@
             }
 
             return false;
-        }
-
-        /** Replaced by skyBox. */
-        @Deprecated
-        public final void drawBg( LibViewSet cam )
-        {
-            if ( LevelCurrent.currentSectionConfigData[this.currentSectionIndex].bg != null ) LevelCurrent.currentSectionConfigData[this.currentSectionIndex].bg.drawOrtho( cam.rot.x, cam.rot.z );
         }
 
         public final void orderLevelSectionChangeUp( boolean reset )

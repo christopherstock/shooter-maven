@@ -23,7 +23,6 @@
     import  de.christopherstock.shooter.io.sound.*;
     import  de.christopherstock.shooter.level.*;
     import  de.christopherstock.shooter.level.Level.*;
-    import  de.christopherstock.shooter.ui.hud.*;
 
     /*******************************************************************************************************************
     *   All settings for level 'Test Facility'.
@@ -84,7 +83,6 @@
                 (
                     "Test Facility - 1st section",
                     LibColors.ERedDark,
-                    BackGround.ENight1,
                     new ItemToPickUp[]
                     {
                         //new ItemToPickUp( ItemKind.EGameEventLevel1ChangeToNextSection, null, 10.0f, 5.0f, 0.0f, 0.0f, LibRotating.ENo ),
@@ -101,7 +99,6 @@
                 (
                     "Test Facility - 2nd section",
                     LibColors.ERedLight,
-                    BackGround.ENight1,
                     new ItemToPickUp[]
                     {
                     },
@@ -116,7 +113,6 @@
                 (
                     "Test Facility - 3rd section",
                     LibColors.ERedLight,
-                    BackGround.ENight1,
                     new ItemToPickUp[]
                     {
                     },
@@ -132,7 +128,6 @@
                 (
                     "Test Facility - 4th section",
                     LibColors.ERedLight,
-                    BackGround.ENight1,
                     new ItemToPickUp[]
                     {
                     },

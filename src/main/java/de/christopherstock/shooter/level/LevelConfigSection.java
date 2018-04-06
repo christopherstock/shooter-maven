@@ -13,18 +13,14 @@
     {
         protected               String                  descSection             = null;
 
-        // TODO prune!
-        protected               BackGround              bg                      = null;
-
         protected               LibColors               bgCol                   = null;
         protected               ItemToPickUp[]          items                   = null;
         protected               BotFactory[]            bots                    = null;
 
-        public LevelConfigSection( String desc, LibColors bgCol, BackGround bg, ItemToPickUp[] items, BotFactory[] startupBots )
+        public LevelConfigSection( String desc, LibColors bgCol, ItemToPickUp[] items, BotFactory[] startupBots )
         {
             this.descSection = desc;
             this.bgCol       = bgCol;
-            this.bg          = bg;
             this.items       = items;
             this.bots        = startupBots;
         }

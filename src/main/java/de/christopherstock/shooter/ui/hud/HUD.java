@@ -54,7 +54,6 @@
             //load all images
             ArtefactType.loadImages();
             AmmoSet.loadImages();
-            BackGround.loadImages();
             AvatarImage.loadImages();
             CrossHair.loadImages();
 

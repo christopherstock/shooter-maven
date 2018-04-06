@@ -345,7 +345,6 @@
                 (
                     "Test Offices - 1st floor",
                     LibColors.EWhite,
-                    BackGround.ECountry1,
                     new ItemToPickUp[]
                     {
                         new ItemToPickUp( ItemKind.EGameEventLevel1ChangeToNextSection, null, 2.0f, 15.0f, 0.0f, 0.0f, LibRotating.ENo ),
@@ -376,7 +375,6 @@
                 (
                     "Test Offices - Basement",
                     LibColors.EWhite,
-                    BackGround.ENight1,
                     new ItemToPickUp[]
                     {
                         new ItemToPickUp( ItemKind.EGameEventLevel1ChangeToPreviousLevel, null, 2.0f, 15.0f, 2.5f, 0.0f, LibRotating.ENo ),
