@@ -8,7 +8,7 @@
 
     <information>
         <title>Shooter</title>
-        <version>0.4.1</version>
+        <version>0.4.2</version>
         <vendor>Christopher Stock</vendor>
         <homepage href="http:/www.christopherstock.de" />
         <description>LWJGL 3D Shooter</description>
@@ -23,7 +23,7 @@
         <j2se href="http://java.sun.com/products/autodl/j2se" version="1.6+" initial-heap-size="1024M" max-heap-size="1024M" />
         <j2se href="http://java.sun.com/products/autodl/j2se" version="1.5+" initial-heap-size="1024M" max-heap-size="1024M" />
 
-        <jar href="shooter-maven-0.4.1-SNAPSHOT-jar-with-dependencies.jar" />
+        <jar href="shooter-maven-0.4.2-jar-with-dependencies.jar" />
 
         <nativelib href="natives.jar"/>
 

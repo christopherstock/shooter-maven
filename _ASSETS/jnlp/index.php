@@ -8,49 +8,45 @@
 
     <head>
 
-        <title>LWJGL 3D Shooter Engine</title>
-
         <meta charset="UTF-8" />
 
-        <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
-        <meta http-equiv="content-style-type" content="text/css">
-        <meta http-equiv="content-script-type" content="text/javascript">
+        <title>LWJGL 3D Shooter Engine</title>
 
         <link rel="icon"          href="favicon.ico" type="image/x-icon">
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
         <meta http-equiv="imagetoolbar" content="no">
 
-        <meta name="dc.title" content="3D Shooter Engine">
-        <meta name="dc.description" content="3D Shooter Engine">
-        <meta name="dc.identifier" scheme="url" content="http://www.christopherstock.de">
-        <meta name="dc.subject" content="3D Shooter Engine">
-        <meta name="dc.creator.personalname" content="3D Shooter Engine">
-        <meta name="dc.creator.personalname.address" scheme="e-mail" content="info@christopherstock.de">
-        <meta name="dc.publisher.corporatename" content="3D Shooter Engine">
-        <meta name="dc.publisher.corporatename.address" scheme="e-mail" content="info@christopherstock.de">
-        <meta name="dc.date" scheme="iso8601" content="2011-03-20">
-        <meta name="dc.rights" scheme="urn" content="3D Shooter Engine">
+        <meta name="dc.title" content="LWJGL 3D Shooter Engine">
+        <meta name="dc.description" content="LWJGL 3D Shooter Engine">
+        <meta name="dc.identifier" scheme="url" content="http://shooter.jenetic.de">
+        <meta name="dc.subject" content="LWJGL 3D Shooter Engine">
+        <meta name="dc.creator.personalname" content="LWJGL 3D Shooter Engine">
+        <meta name="dc.creator.personalname.address" scheme="e-mail" content="email@christopherstock.de">
+        <meta name="dc.publisher.corporatename" content="LWJGL 3D Shooter Engine">
+        <meta name="dc.publisher.corporatename.address" scheme="e-mail" content="email@christopherstock.de">
+        <meta name="dc.date" scheme="iso8601" content="2018-04-09">
+        <meta name="dc.rights" scheme="urn" content="LWJGL 3D Shooter Engine">
 
-        <meta name="author" content="3D Shooter Engine">
-        <meta name="publisher" content="3D Shooter Engine">
-        <meta name="copyright" content="3D Shooter Engine">
-        <meta name="keywords" content="3D Shooter Engine Frammersbach">
-        <meta name="description" content="3D Shooter Engine">
+        <meta name="author" content="LWJGL 3D Shooter Engine">
+        <meta name="publisher" content="LWJGL 3D Shooter Engine">
+        <meta name="copyright" content="LWJGL 3D Shooter Engine">
+        <meta name="keywords" content="LWJGL 3D Shooter Engine">
+        <meta name="description" content="LWJGL 3D Shooter Engine">
         <meta name="expires" content="never">
-        <meta name="page-type" content="3D Shooter Engine">
+        <meta name="page-type" content="LWJGL 3D Shooter Engine">
         <meta name="audience" content="all">
         <meta name="revisit-after" content="4 days">
         <meta name="robots" content="index follow">
 
-        <meta property="og:image" content="http://ninjas.jenetic.de/res/image/promo/promo.jpg" />
+        <meta property="og:image" content="http://shooter.jenetic.de/FacebookBadge.png" />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="1196" />
         <meta property="og:image:height" content="628" />
-        <meta property="og:title" content="Coding Ninjas" />
-        <meta property="og:url" content="http://ninjas.jenetic.de/" />
-        <meta property="og:site_name" content="http://ninjas.jenetic.de/" />
-        <meta property="og:description" content="An example Node.js project for the Developer Camp 2018 in the context of the Würzburg Web Week." />
+        <meta property="og:title" content="LWJGL 3D Shooter Engine" />
+        <meta property="og:url" content="http://shooter.jenetic.de/" />
+        <meta property="og:site_name" content="http://shooter.jenetic.de/" />
+        <meta property="og:description" content="A First Person Shooter in pure Java and OpenGL using the Java Leightweight Game Library (LWJGL) and the Maven build tool." />
 
     </head>
 
@@ -61,7 +57,7 @@
                 <td>
 
                     <h1 style="font-family: arial; font-size: 25px;">
-                        Klick the duke to launch the 3D Shooter Engine
+                        Click the duke to launch the 3D Shooter Engine
                     </h1>
 
                     <a href="Shooter.jnlp">

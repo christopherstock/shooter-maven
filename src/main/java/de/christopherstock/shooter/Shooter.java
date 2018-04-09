@@ -6,8 +6,6 @@
     /*******************************************************************************************************************
     *   The main class.
     *
-    *   TODO    Adjust OpenGraph tags.
-    *
     *   TODO    Check, why floating point differences in 3dsmax ASE export files exist?
     *   TODO    Optimize fields in ArtefactType!
     *   TODO    Make new subclass:  Wearpon that derives from ArtefactKind!!
