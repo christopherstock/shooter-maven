@@ -3,7 +3,8 @@ A First Person Shooter in pure Java and OpenGL using the Java Leightweight Game 
 
 ## Play the game online
 Visit [http://shooter.jenetic.de](http://shooter.jenetic.de)
-This domain must be added to your [Java exceptional sites](https://www.java.com/en/download/faq/exception_sitelist.xml).
+
+This domain must be added to your [Java Exception Site List](https://www.java.com/en/download/faq/exception_sitelist.xml).
 
 ## Installing all Java Dependencies and Build the Project
 ```
