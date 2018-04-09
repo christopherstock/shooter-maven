@@ -44,7 +44,7 @@
                 this.render();
 
                 // update fps
-                this.engine.fps.update();
+                this.engine.hud.fps.update();
 
                 // invoke callback 3d drawing
                 this.draw();

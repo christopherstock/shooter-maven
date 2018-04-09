@@ -3,11 +3,10 @@
 
     import  java.awt.Color;
     import  java.awt.Font;
-    import java.util.concurrent.TimeUnit;
-
+    import  java.util.concurrent.TimeUnit;
     import  de.christopherstock.lib.*;
     import  de.christopherstock.lib.gl.*;
-    import de.christopherstock.shooter.Shooter;
+    import  de.christopherstock.shooter.Shooter;
 
     /*******************************************************************************************************************
     *   The Frames Per Second display.

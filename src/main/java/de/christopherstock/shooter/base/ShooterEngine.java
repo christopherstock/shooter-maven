@@ -53,8 +53,6 @@
         public                      HUDFx                   hudFx                       = null;
         /** Heads up display message manager. */
         public                      HUDMessageManager       hudMessagesManager          = null;
-        /** Frames per second counter. */
-        public                      LibFPS                  fps                         = null;
         /** The sound system. */
         public                      Sound                   sound                       = null;
         /** The main menu. */
@@ -89,9 +87,6 @@
 
             this.preloader.increase( 50 );
             this.initHUD();
-
-            this.preloader.increase( 60 );
-            this.initFPS();
 
             this.preloader.increase( 70 );
             this.initSound();
@@ -243,16 +238,6 @@
 
             ShooterDebug.init.out( "init HUD message manager" );
             this.hudMessagesManager = new HUDMessageManager();
-        }
-
-        /***************************************************************************************************************
-        *   Inits the Frames Per Second counter.
-        ***************************************************************************************************************/
-        private void initFPS()
-        {
-            ShooterDebug.init.out( "init FPS counter" );
-
-            this.fps = new LibFPS( this.fonts.fps, ShooterSetting.Colors.EFpsFg.colABGR, ShooterSetting.Colors.EFpsOutline.colABGR, ShooterDebug.glImage );
         }
 
         /***************************************************************************************************************

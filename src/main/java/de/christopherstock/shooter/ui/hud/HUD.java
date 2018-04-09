@@ -3,6 +3,7 @@
 
     import  de.christopherstock.lib.LibAnimation;
     import  de.christopherstock.lib.gl.*;
+    import  de.christopherstock.lib.ui.LibFPS;
     import  de.christopherstock.shooter.*;
     import  de.christopherstock.shooter.ShooterSetting.Colors;
     import  de.christopherstock.shooter.ShooterSetting.HUDSettings;
@@ -46,6 +47,9 @@
 
         public              boolean             hideWearpon                         = false;
 
+        /** Frames per second counter. */
+        public              LibFPS              fps                                 = null;
+
         public HUD()
         {
             //parse ortho offsets
@@ -58,7 +62,7 @@
             CrossHair.loadImages();
 
             //init fps
-
+            this.initFPS();
         }
 
         public final void draw()
@@ -100,7 +104,7 @@
             Shooter.game.engine.hudFx.drawHUDEffects();
 
             //draw frames per second last
-            Shooter.game.engine.fps.draw( OffsetsOrtho.EBorderHudX, OffsetsOrtho.EBorderHudY );
+            Shooter.game.engine.hud.fps.draw( OffsetsOrtho.EBorderHudX, OffsetsOrtho.EBorderHudY );
 
             //draw debug logs
             //Shooter.game.engine.player.drawDebugLog(      g );
@@ -316,5 +320,15 @@
         public void resetAnimation()
         {
             this.animationPlayerRightHand = 0;
+        }
+
+        /***************************************************************************************************************
+        *   Inits the Frames Per Second counter.
+        ***************************************************************************************************************/
+        private void initFPS()
+        {
+            ShooterDebug.init.out( "init FPS counter" );
+
+            this.fps = new LibFPS( Shooter.game.engine.fonts.fps, ShooterSetting.Colors.EFpsFg.colABGR, ShooterSetting.Colors.EFpsOutline.colABGR, ShooterDebug.glImage );
         }
     }

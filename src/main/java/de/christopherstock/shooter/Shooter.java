@@ -6,11 +6,9 @@
     /*******************************************************************************************************************
     *   The main class.
     *
-    *   TODO    Move FPS to class HUD.
-    *   TODO    Complete v.0.4.2
-    *   TODO    Why are floating differences in 3dsmax ASE export files?
     *   TODO    Adjust OpenGraph tags.
     *
+    *   TODO    Check, why floating point differences in 3dsmax ASE export files exist?
     *   TODO    Optimize fields in ArtefactType!
     *   TODO    Make new subclass:  Wearpon that derives from ArtefactKind!!
     *   TODO    Only for FireArms! Move ArtefactType.fXImages to Firearms (Wearpons)!
