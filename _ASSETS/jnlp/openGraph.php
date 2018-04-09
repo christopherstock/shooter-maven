@@ -55,6 +55,10 @@
                         Click the duke to launch the 3D Shooter Engine
                     </h1>
 
+					<h2>
+					    This domain (http://shooter.jenetic.de) must be added to your <a href="https://www.java.com/en/download/faq/exception_sitelist.xml">Java Exception Site List</a> for this Java Web Start application to start.
+					<h2>
+
                     <a href="Shooter.jnlp">
                         <img src="java_rocks.png" border="0px">
                     </a>
