@@ -10,7 +10,7 @@
         <link rel="icon"          href="favicon.ico" type="image/x-icon">
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
-        <meta http-equiv="imagetoolbar" content="no">
+        <link rel="stylesheet" href="styles.css">
 
         <meta name="dc.title" content="LWJGL 3D Shooter Engine">
         <meta name="dc.description" content="LWJGL 3D Shooter Engine">
@@ -51,17 +51,29 @@
             <tr>
                 <td>
 
-                    <h1 style="font-family: arial; font-size: 25px;">
-                        Click the duke to launch the 3D Shooter Engine
+                    <h1>
+                        LWJGL 3D Shooter Engine
                     </h1>
 
-					<h2>
-					    This domain (http://shooter.jenetic.de) must be added to your <a href="https://www.java.com/en/download/faq/exception_sitelist.xml">Java Exception Site List</a> for this Java Web Start application to start.
-					<h2>
+                    <p>
+                        A First Person Shooter in pure <a href="https://www.java.com/de/" target="_blank">Java</a> and <a href="https://www.opengl.org/" target="_blank">OpenGL</a> using the <a href="https://www.lwjgl.org/" target="_blank">Java Leightweight Game Library (LWJGL)</a> and the <a href="https://maven.apache.org/" target="_blank">Apache Maven</a> build tool.<br>
+                        Find the <a href="https://github.com/christopherstock/shooter-maven" target="_blank">Project and Build Instructions on GitHub</a><br>.
+                    <p>
+
+                    <h2>
+                        Starting the Online Demo
+                    </h2>
+
+                    <p>
+                        <b>1.</b> Add this domain (http://shooter.jenetic.de) to your <a href="https://www.java.com/en/download/faq/exception_sitelist.xml" target="_blank">Java Exception Site List</a>.<br>
+                        <b>2.</b> Click the Java Duke Icon for the Java Web Start Application to start.
+                    </p>
 
                     <a href="Shooter.jnlp">
-                        <img src="java_rocks.png" border="0px">
+                        <img src="java_rocks.png" border="0px" width="100px" alt="Launch the LWJGL 3D Shooter Engine"><br><br>
                     </a>
+
+                    <img src="FacebookBadge.png" alt="LWJGL 3D Shooter Engine" class="screen">
 
                 </td>
             </tr>

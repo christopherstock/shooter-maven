@@ -1,0 +1,34 @@
+
+    body
+    {
+        margin:             50px;
+        font:               15px arial, sans-serif;
+        color:              #373737;
+        text-align:         center;
+    }
+
+    a
+    {
+        color:              #f50000;
+        transition:         color 0.5s ease-in-out;
+        text-decoration:    none;
+        font-weight:        bold;
+    }
+
+    a:hover
+    {
+        color: #f598e0;
+    }
+
+    p
+    {
+        line-height:        150%;
+    }
+
+    img.screen
+    {
+        border:             1px solid #4b4b4b;
+        max-width:          1196px;
+        width:              90%;
+        height:             auto;
+    }
