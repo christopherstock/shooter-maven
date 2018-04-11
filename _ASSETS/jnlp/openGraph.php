@@ -43,6 +43,13 @@
         <meta property="og:site_name" content="http://shooter.jenetic.de/" />
         <meta property="og:description" content="A First Person Shooter in pure Java and OpenGL using the Java Leightweight Game Library (LWJGL) and the Maven build tool." />
 
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:description" content="A First Person Shooter in pure Java and OpenGL using the Java Leightweight Game Library (LWJGL) and the Maven build tool." />
+        <meta name="twitter:title" content="LWJGL 3D Shooter Engine" />
+        <meta name="twitter:site" content="@jenetic1980" />
+        <meta name="twitter:image" content="http://shooter.jenetic.de/FacebookBadge.png" />
+        <meta name="twitter:creator" content="@jenetic1980" />
+
     </head>
 
     <body>
